@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Marek Matejka <Unknown>\n"
+"Last-Translator: Marek Dobransky <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,9 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Marek Matejka https://launchpad.net/~marek-matejka"
+"  Marek Dobransky https://launchpad.net/~marekdobr\n"
+"  Marek Matejka https://launchpad.net/~marek-matejka\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Description of application
 #: tmp_strings.xml:12(string)
@@ -212,13 +214,15 @@ msgstr ""
 
 #: tmp_strings.xml:85(listitem)
 msgid "Support for many file endings and mime types."
-msgstr ""
+msgstr "Podpora pre mnohé prípony súborov a typy MIME."
 
 #: tmp_strings.xml:86(listitem)
 msgid ""
 "Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can "
 "use OI File Manager."
 msgstr ""
+"Podporuje významy PICK_FILE a PICK_DIRECTORY, čiže iné aplikácie môžu "
+"používať OI Správcu Súborov."
 
 #: tmp_strings.xml:88(string) tmp_strings.xml:245(string)
 msgid "Available extensions for \"OI File Manager\":"

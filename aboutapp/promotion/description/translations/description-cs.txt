@@ -1,7 +1,56 @@
 # Application:
-O aplikaci OpenIntents
+OI Info
 
 # Promo text:
-A standalone about dialog that is shared between apps.
+Samostatný informační dialog "o aplikaci", který je aplikacemi sdílen.
 
 # Description:
+OI Info je samostatný dialog "O aplikaci", který je sdílen mezi aplikacemi. Tato aplikace je vyvolána přes menu jiných OI aplikací. Umožňuje Vám zobrazit si informace o verzi, odkazy, zásluhy a licenci aplikace. Zásluhy zahrnují autory, dokumentační tým, překladatele a umělce. Všechnu tuto funkcionalitu Vám přinášíme v jednoduchém a efektivním vzhledu. 
+
+Tato aplikace je bez reklam a nevyžaduje přístup k internetu. 
+
+Zdrojové kód této open source aplikace je dostupný na stránkách: 
+http://code.google.com/p/openintents
+
+Pro úplný seznam změn a seznam často kladených dotazů navštivte prosím: 
+http://www.openintents.org
+
+Můžete také pomoci zlepšit překlad do Vašeho jazyka na Launchpadu: 
+https://translations.launchpad.net/openintents/trunk
+
+Vlastnosti: 
+* Zobrazuje záložky s obecnými informacemi, zásluhami a licencí.
+* Ukazuje překladatele všech jazykových verzí.
+* Získává informace z manifestu aplikace pomocí výchozích tagů a metadat.
+* Volitelně mohou všechna pole být upravena pomocí extra dat v intentech.
+
+Aplikace podporující OI Info: 
+* OI Poznámkový blok
+* OI Správce souborů
+* OI Nákupní seznam
+* OI Převést do CSV
+* OI Sejf
+* OI Minutka
+* OI Baterka
+
+Klíčová slova: 
+* O, Zásluhy, Informace.
+* OI, OpenIntents, Open Intents.
+
+Mezinárodní verze: 
+OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+
+
+Prohledat řetězce pro Market: 
+* extension for OI Notepad
+* extension for OI File Manager
+* extension for OI Shopping List
+* extension for OI Convert CSV
+* extension for OI Safe
+* extension for OI Coundown
+* extension for OI Flashlight
+* extension for OI Update
+
+
+
+

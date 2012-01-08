@@ -24,6 +24,7 @@ msgstr ""
 "This is a dummy translation so that the credits are counted as translated.\n"
 "\n"
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  friedger https://launchpad.net/~friedger\n"
 "  kenn dhia https://launchpad.net/~kendhia"
@@ -183,7 +184,7 @@ msgstr "أنقل العنصر الى قائمة أخرى"
 
 #: tmp_strings.xml:76(string)
 msgid "Copy item"
-msgstr ""
+msgstr "نسخ عنصر"
 
 #. Button label to add an item to the list.
 #: tmp_strings.xml:79(string)
@@ -284,9 +285,8 @@ msgid "Priority 1-4: %s"
 msgstr "الأولوية 1-4: %s"
 
 #: tmp_strings.xml:116(string)
-#, fuzzy
 msgid "Are you sure you want to permanently delete this item?"
-msgstr "هل أنت متأكد من رغبتك في حذف هذا العنصر من قوائم تسوقك باستمرار ؟"
+msgstr "هل انت متأكد من رغبتك في حذف هذا العنصر باستمرار ؟"
 
 #: tmp_strings.xml:117(string)
 msgid "Delete"
@@ -411,7 +411,7 @@ msgstr "أمر ترتيب-اختر العناصر"
 
 #: tmp_strings.xml:163(string)
 msgid "Change sort order of list items in Pick Items mode."
-msgstr "تغيير أمر ترتيب قائمة العناصر في اختيار صيغة العناصر."
+msgstr "تغيير فرز قائمة العناصر في اختيار وضع  العناصر."
 
 #: tmp_strings.xml:164(string)
 msgid "Choose sort order"
@@ -469,23 +469,23 @@ msgstr ""
 
 #: tmp_strings.xml:177(string)
 msgid "Keep track of separate prices for each item at each store."
-msgstr ""
+msgstr "تتبع الأسعار المنفصلة لكل عنصر في كل متجر"
 
 #: tmp_strings.xml:178(string)
 msgid "Disable screen lock"
-msgstr ""
+msgstr "تعطيل قفل الشاشة"
 
 #: tmp_strings.xml:179(string)
 msgid "Prevents the screen to be locked when checked."
-msgstr ""
+msgstr "منع الشاشة من الايقاف عند التحديد."
 
 #: tmp_strings.xml:180(string)
 msgid "Reset Quantity"
-msgstr ""
+msgstr "اعادة الكمية"
 
 #: tmp_strings.xml:181(string)
 msgid "Resets the quantity when adding items again."
-msgstr ""
+msgstr "اعادة الكمية عند اضافة عناصرمرة أخرى."
 
 #: tmp_strings.xml:182(string)
 msgid "Barcode Scanner"
@@ -514,15 +514,15 @@ msgstr "أظهر الوحدات"
 #: tmp_strings.xml:192(string) tmp_strings.xml:193(string)
 #: tmp_strings.xml:195(string)
 msgid "Subtotal by priority"
-msgstr ""
+msgstr "المجموع حسب الأولوية"
 
 #: tmp_strings.xml:194(string)
 msgid "No subtotal by priority shown."
-msgstr ""
+msgstr "لم يظهر أي مجموع حسب الأولوية"
 
 #: tmp_strings.xml:196(string)
 msgid "Include checked items"
-msgstr ""
+msgstr "شمل العناصر المحددة"
 
 #: tmp_strings.xml:197(string)
 msgid "Subtotal by priority includes checked items"
@@ -534,7 +534,7 @@ msgstr ""
 
 #: tmp_strings.xml:199(string)
 msgid "Pick items directly in list"
-msgstr ""
+msgstr "اختيار العناصر مباشرة في القائمة"
 
 #: tmp_strings.xml:200(string)
 msgid "Switch main list to edit mode to re-add existing items"
@@ -550,7 +550,7 @@ msgstr "السماح ببعض اوامر الترتيب"
 
 #: tmp_strings.xml:203(string)
 msgid "Items are sorted in Pick Items mode just as in Shopping mode."
-msgstr ""
+msgstr "تم فرز العناصر بطريقة اختيار العناصر كما في وضع  التسوق."
 
 #: tmp_strings.xml:204(string)
 msgid "Sort order for Pick Items mode can be chosen separately."
@@ -559,12 +559,12 @@ msgstr ""
 #. Preference title: Shake the phone to clean up the list.
 #: tmp_strings.xml:207(string)
 msgid "Shake to clean up"
-msgstr ""
+msgstr "هز للتنظيف"
 
 #. Preference summary: Shake the phone to clean up the list.
 #: tmp_strings.xml:210(string)
 msgid "Shake the phone to clean up the list."
-msgstr ""
+msgstr "هز الهاتف لتنظيف القائمة."
 
 #: tmp_strings.xml:212(string)
 msgid "Advanced settings"
@@ -572,7 +572,7 @@ msgstr "إعدادات متقدمة"
 
 #: tmp_strings.xml:213(string)
 msgid "Additional settings."
-msgstr ""
+msgstr "الاعدادات الاضافية."
 
 #. Preference category: General settings
 #: tmp_strings.xml:216(string)
@@ -581,7 +581,7 @@ msgstr "عام"
 
 #: tmp_strings.xml:217(string)
 msgid "Pick Items"
-msgstr ""
+msgstr "اختر العناصر"
 
 #: tmp_strings.xml:219(string)
 msgid "Appearance"
@@ -597,15 +597,15 @@ msgstr "أحصل الى اضافات جديدة"
 
 #: tmp_strings.xml:223(string)
 msgid "Search for extensions and themes online."
-msgstr ""
+msgstr "البحث عن الملحقات  والثيمات اونلاين"
 
 #: tmp_strings.xml:224(string)
 msgid "Get add-ons from Market"
-msgstr ""
+msgstr "الحصول على الاضافات من المتجر"
 
 #: tmp_strings.xml:225(string)
 msgid "Get add-ons from OpenIntents"
-msgstr ""
+msgstr "الحصول على الاضافات من OpenIntents"
 
 #: tmp_strings.xml:226(string)
 msgid "Extensions"
@@ -617,23 +617,23 @@ msgstr "الثيمات"
 
 #: tmp_strings.xml:228(string)
 msgid "Search for extensions at Android Market."
-msgstr ""
+msgstr "البحث عن الملحقات  في متجر أندرويد"
 
 #: tmp_strings.xml:229(string)
 msgid "Search for themes at Android Market."
-msgstr ""
+msgstr "البحث عن الثيمات في متجر أندرويد"
 
 #: tmp_strings.xml:230(string)
 msgid "Get extensions from the OpenIntents homepage."
-msgstr ""
+msgstr "الحصول على الملحقات من الصفحة الرئيسية لـ OpenIntents"
 
 #: tmp_strings.xml:231(string)
 msgid "Get themes from the OpenIntents homepage."
-msgstr ""
+msgstr "الحصول على الثيمات  من الصفحة الرئيسية لـ OpenIntents"
 
 #: tmp_strings.xml:232(string)
 msgid "Quick Edit Mode"
-msgstr ""
+msgstr "صيغة التعديل السريع"
 
 #: tmp_strings.xml:233(string)
 msgid "Touch Priority or Quantity values for a menu of common values."
@@ -644,49 +644,48 @@ msgid "Touching Priority or Quantity values summons the Edit Item dialog."
 msgstr ""
 
 #: tmp_strings.xml:235(string)
-#, fuzzy
 msgid "Reset all settings"
-msgstr "اعدادات الثيم"
+msgstr "اعادة جميع الاعدادات"
 
 #: tmp_strings.xml:236(string)
-#, fuzzy
 msgid "Do you really want to RESET ALL settings? This cannot be undone."
-msgstr "هل أنت متأكد من رغبتك في حذف هذا المتجر  ؟"
+msgstr "هل أنت متأكد من رغبتك في اعادة جميع الاعدادات ؟ لا يمكن التراجع عنه."
 
 #: tmp_strings.xml:237(string)
 msgid "All settings have been reset"
-msgstr ""
+msgstr "تم اعادة جميع الاعدادات"
 
 #. Permission to read shopping lists
 #: tmp_strings.xml:245(string)
 msgid "read shopping lists"
-msgstr ""
+msgstr "قراءة قوائم التسوق"
 
 #: tmp_strings.xml:246(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
+"السماح للتطبيق بقراءة قوائم التسوق. القوائم والعناصرالمشفرة تقدم مشفرة."
 
 #. Permission to write to shopping lists
 #: tmp_strings.xml:248(string)
 msgid "write shopping lists"
-msgstr ""
+msgstr "كتابة قوائم التسوق"
 
 #: tmp_strings.xml:249(string)
 msgid ""
 "Allows an application to create new lists and items or change existing ones."
-msgstr ""
+msgstr "السماح لتطبيق بانشاء قوائم أو عناصر جديدة أو تغير الموجودة مسبقا."
 
 #. Preference sort order: List unchecked items first, sort items alphabetically
 #: tmp_strings.xml:258(item)
 msgid "unchecked first, alphabetical"
-msgstr ""
+msgstr "الغير محددة أولا، أبجديا"
 
 #. Preference sort order: Sort by item name
 #: tmp_strings.xml:260(item)
 msgid "alphabetical"
-msgstr ""
+msgstr "أبجديا"
 
 #. Preference sort order: Newest item first
 #: tmp_strings.xml:262(item)
@@ -716,21 +715,21 @@ msgstr "الأغلى أولا"
 #. Preference sort order: List unchecked items first, sort alphabetically by tags
 #: tmp_strings.xml:272(item)
 msgid "unchecked first, tags alphabetical"
-msgstr ""
+msgstr "الغير محددة أولا، العلامات أبجديا"
 
 #. Preference sort order: List unchecked items first, priority, sort items alphabetically
 #: tmp_strings.xml:274(item)
 msgid "unchecked first, priority, alphabetical"
-msgstr ""
+msgstr "الغير محددة أولا،الأولوية، أبجديا"
 
 #. Preference sort order: List unchecked items first, priority, tags, sort items alphabetically
 #: tmp_strings.xml:276(item)
 msgid "unchecked first, priority, tags alphabetical"
-msgstr ""
+msgstr "الغير محددة أولا، االأولوية العلامات أبجديا"
 
 #: tmp_strings.xml:280(item)
 msgid "Not shown"
-msgstr ""
+msgstr "لا يظهر"
 
 #: tmp_strings.xml:281(item)
 msgid "Priority 1"
@@ -766,12 +765,12 @@ msgstr "واسع"
 #. Preference orientation: landscape
 #: tmp_strings.xml:302(item)
 msgid "Landscape"
-msgstr ""
+msgstr "المشهد"
 
 #. Preference orientation: portrait
 #: tmp_strings.xml:304(item)
 msgid "Portrait"
-msgstr ""
+msgstr "لوحة"
 
 #. Preference capitalization: No capitalization
 #: tmp_strings.xml:309(item)
@@ -781,17 +780,17 @@ msgstr "لاشيء"
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
 msgid "Per Sentence"
-msgstr ""
+msgstr "لكل جملة"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
 msgid "Per Word"
-msgstr ""
+msgstr "لكل كلمة"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
 #: tmp_strings.xml:320(string)
 msgid "Editing item notes requires OI Notepad."
-msgstr ""
+msgstr "تعديل ملاحظات العنصر يحتاج الى مفكرة OI"
 
 #. Name of application "OI Notepad". Translations should be consistent.
 #: tmp_strings.xml:322(string)
@@ -810,17 +809,16 @@ msgstr "اختر قائمة :"
 
 #: tmp_strings.xml:340(string)
 msgid "Previous page"
-msgstr ""
+msgstr "الصفحة السابقة"
 
 #: tmp_strings.xml:341(string)
 msgid "Next page"
-msgstr ""
+msgstr "الصفحة التالية"
 
 #: tmp_strings.xml:342(string)
-#, fuzzy
 msgid "Choose a list"
-msgstr "اختر الكتابة بأحرف كبيرة"
+msgstr "اختر قائمة"
 
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
-msgstr ""
+msgstr "لا يوجد أي عناصر في الصفحة  %d"

@@ -1,4 +1,11 @@
-OI Tungkol ay nakapag-iisang tungkol usapan na dyalogo sa pagitan ng mga apps. Ang applikasyon na ito ay mapapatakbo sa pamamagitan ng menu ng iba pang mga OI na applikasyon. Ito ay nagpapahintulot sa iyo na tingnan ang bersyon impormasyon, mga link, mga kredito, at lisensya ng isang applikasyon. Ang kredito ay kasama ang mga may-akda, taga dokument, mga tagasalin, at mga artist. Lahat ng magagawa nito ay pinagsama sa simple at episyente na ayos. 
+# Application:
+OI Tungkol
+
+# Promo text:
+Isang nakapag-iisang tungkol na dyalogo na ibinabahagi sa pagitan ng mga app.
+
+# Description:
+OI Tungkol ay nakapag-iisang tungkol na dyalogo na ibinabahagi sa pagitan ng mga apps. Ang applikasyon na ito ay mapapatakbo sa pamamagitan ng menu ng iba pang mga OI na applikasyon. Ito ay nagpapahintulot sa iyo na tingnan ang bersyon impormasyon, mga link, mga kredito, at lisensya ng isang applikasyon. Ang kredito ay kasama ang mga may-akda, taga dokument, mga tagasalin, at mga artist. Lahat ng magagawa nito ay pinagsama sa simple at episyente na ayos. 
 
 Ang applikasyon na ito ay walang patalastas at hindi nangangailangan ng pahintulot ng internet. 
 
@@ -31,7 +38,7 @@ Keywords:
 * OI, OpenIntents, Bukas na Layunin.
 
 Internasyonal na mga bersyon: 
-O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI O Programe, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
 
 
 Search strings para sa Merkado: 

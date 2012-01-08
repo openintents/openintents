@@ -1,0 +1,581 @@
+# Czech translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Matěj Konečný <Unknown>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#: tmp_strings.xml:3(translators)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Matěj Konečný https://launchpad.net/~matejkon"
+
+#. Description of application
+#: tmp_strings.xml:12(string)
+msgid "OI About is a standalone about dialog that is shared between apps."
+msgstr ""
+"OI Info je samostatný dialog \"O aplikaci\", který je sdílen mezi aplikacemi."
+
+#: tmp_strings.xml:13(string)
+msgid "This application is invoked through the menu of other OI applications."
+msgstr "Tato aplikace je vyvolána přes menu jiných OI aplikací."
+
+#: tmp_strings.xml:14(string)
+msgid ""
+"It allows you to view version information, links, credits, and license of an "
+"application."
+msgstr ""
+"Umožňuje Vám zobrazit si informace o verzi, odkazy, zásluhy a licenci "
+"aplikace."
+
+#: tmp_strings.xml:15(string)
+msgid "Credits include authors, documentation, translators, and artists."
+msgstr "Zásluhy zahrnují autory, dokumentační tým, překladatele a umělce."
+
+#: tmp_strings.xml:16(string)
+msgid ""
+"All of this functionality is brought together in a simplistic and efficient "
+"layout."
+msgstr ""
+"Všechnu tuto funkcionalitu Vám přinášíme v jednoduchém a efektivním vzhledu."
+
+#: tmp_strings.xml:18(string) tmp_strings.xml:68(string)
+#: tmp_strings.xml:121(string) tmp_strings.xml:168(string)
+#: tmp_strings.xml:223(string) tmp_strings.xml:281(string)
+msgid ""
+"This application is ad free and does not require the internet permission."
+msgstr "Tato aplikace je bez reklam a nevyžaduje přístup k internetu."
+
+#: tmp_strings.xml:20(string) tmp_strings.xml:76(string)
+#: tmp_strings.xml:123(string) tmp_strings.xml:170(string)
+#: tmp_strings.xml:231(string) tmp_strings.xml:278(string)
+msgid ""
+"The source code of this free and open source application is available at:"
+msgstr "Zdrojové kód této open source aplikace je dostupný na stránkách:"
+
+#: tmp_strings.xml:23(string) tmp_strings.xml:70(string)
+#: tmp_strings.xml:126(string) tmp_strings.xml:173(string)
+#: tmp_strings.xml:225(string) tmp_strings.xml:283(string)
+msgid ""
+"For the complete list of changes and a list of frequently asked questions, "
+"please visit:"
+msgstr ""
+"Pro úplný seznam změn a seznam často kladených dotazů navštivte prosím:"
+
+#: tmp_strings.xml:26(string) tmp_strings.xml:73(string)
+#: tmp_strings.xml:129(string) tmp_strings.xml:176(string)
+#: tmp_strings.xml:228(string) tmp_strings.xml:286(string)
+msgid ""
+"You can help to improve the translation into your language at Launchpad:"
+msgstr "Můžete také pomoci zlepšit překlad do Vašeho jazyka na Launchpadu:"
+
+#: tmp_strings.xml:29(string) tmp_strings.xml:79(string)
+#: tmp_strings.xml:132(string) tmp_strings.xml:179(string)
+#: tmp_strings.xml:234(string) tmp_strings.xml:289(string)
+msgid "Features:"
+msgstr "Vlastnosti:"
+
+#: tmp_strings.xml:30(listitem)
+msgid "Shows general info, credits, and license tabs."
+msgstr "Zobrazuje záložky s obecnými informacemi, zásluhami a licencí."
+
+#: tmp_strings.xml:31(listitem)
+msgid "Shows translators of all language versions."
+msgstr "Ukazuje překladatele všech jazykových verzí."
+
+#: tmp_strings.xml:32(listitem)
+msgid ""
+"Retrieves information from application manifest through default tags and "
+"metadata."
+msgstr ""
+"Získává informace z manifestu aplikace pomocí výchozích tagů a metadat."
+
+#: tmp_strings.xml:33(listitem)
+msgid "Optionally, all fields can be modified through intent extras."
+msgstr ""
+"Volitelně mohou všechna pole být upravena pomocí extra dat v intentech."
+
+#: tmp_strings.xml:35(string)
+msgid "Applications that work with \"OI About\":"
+msgstr "Aplikace podporující OI Info:"
+
+#: tmp_strings.xml:36(listitem)
+msgid "OI Notepad"
+msgstr "OI Poznámkový blok"
+
+#: tmp_strings.xml:37(listitem)
+msgid "OI File manager"
+msgstr "OI Správce souborů"
+
+#: tmp_strings.xml:38(listitem)
+msgid "OI Shopping List"
+msgstr "OI Nákupní seznam"
+
+#: tmp_strings.xml:39(listitem)
+msgid "OI Convert CSV"
+msgstr "OI Převést do CSV"
+
+#: tmp_strings.xml:40(listitem)
+msgid "OI Safe"
+msgstr "OI Sejf"
+
+#: tmp_strings.xml:41(listitem)
+msgid "OI Countdown"
+msgstr "OI Minutka"
+
+#: tmp_strings.xml:42(listitem)
+msgid "OI Flashlight"
+msgstr "OI Baterka"
+
+#: tmp_strings.xml:44(string) tmp_strings.xml:94(string)
+#: tmp_strings.xml:144(string) tmp_strings.xml:201(string)
+#: tmp_strings.xml:251(string) tmp_strings.xml:308(string)
+msgid "Keywords:"
+msgstr "Klíčová slova:"
+
+#: tmp_strings.xml:45(listitem)
+msgid "About, Credits, Information."
+msgstr "O, Zásluhy, Informace."
+
+#: tmp_strings.xml:46(listitem)
+msgid "OI, OpenIntents, Open Intents."
+msgstr "OI, OpenIntents, Open Intents."
+
+#: tmp_strings.xml:48(string) tmp_strings.xml:100(string)
+#: tmp_strings.xml:148(string) tmp_strings.xml:205(string)
+#: tmp_strings.xml:257(string) tmp_strings.xml:312(string)
+msgid "International versions:"
+msgstr "Mezinárodní verze:"
+
+#: tmp_strings.xml:51(string) tmp_strings.xml:103(string)
+#: tmp_strings.xml:151(string) tmp_strings.xml:208(string)
+#: tmp_strings.xml:260(string)
+msgid "Search strings for Market:"
+msgstr "Prohledat řetězce pro Market:"
+
+#. Description of application
+#: tmp_strings.xml:65(string)
+msgid ""
+"OI File Manager allows you to browse your SD card, create directories, "
+"rename, copy, move, and delete files."
+msgstr ""
+"OI Správce souborů Vám umožňuje procházet Vaši SD kartu, vytvářet složky, "
+"přejmenovávat, kopírovat, přesouvat a mazat soubory."
+
+#: tmp_strings.xml:66(string)
+msgid ""
+"It also acts as an extension to other applications to display \"Open\" and "
+"\"Save\" dialogs."
+msgstr ""
+"Funguje také jako rozšíření do ostatních aplikací zobrazující dialogy "
+"\"Otevřít\" a \"Uložit\"."
+
+#: tmp_strings.xml:80(listitem)
+msgid "Show list of files with thumbnails for images."
+msgstr "Zobrazuje seznam souborů s náhledy pro obrázky"
+
+#: tmp_strings.xml:81(listitem)
+msgid "Move, copy, rename, and delete files."
+msgstr "Přesouvá, kopíruje, přejmenovává a maže soubory."
+
+#: tmp_strings.xml:82(listitem)
+msgid "Create and delete directories (folders)."
+msgstr "Vytváří a maže složky."
+
+#: tmp_strings.xml:83(listitem)
+msgid "Send files by email."
+msgstr "Zasílá soubory emailem."
+
+#: tmp_strings.xml:84(listitem)
+msgid ""
+"Acts as an extension to other applications, like GMail, to attach files."
+msgstr ""
+"Funguje jako rozšíření do jiných aplikací, jako například do GMailu pro "
+"přikládání příloh."
+
+#: tmp_strings.xml:85(listitem)
+msgid "Support for many file endings and mime types."
+msgstr "Podpora pro mnoho koncovek souborů a mime typů."
+
+#: tmp_strings.xml:86(listitem)
+msgid ""
+"Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can "
+"use OI File Manager."
+msgstr ""
+"Podporuje PICK_FILE a PICK_DIRECTORY intenty, a ostatní aplikace tak mohou "
+"použít OI Správce souborů."
+
+#: tmp_strings.xml:88(string) tmp_strings.xml:245(string)
+msgid "Available extensions for \"OI File Manager\":"
+msgstr "Dostupná rozšíření pro OI Správce souborů:"
+
+#: tmp_strings.xml:89(listitem) tmp_strings.xml:138(listitem)
+#: tmp_strings.xml:190(listitem) tmp_strings.xml:246(listitem)
+#: tmp_strings.xml:300(listitem)
+msgid "Show the license information with \"OI About\"."
+msgstr "Zobrazit licenční infomace s OI Infem."
+
+#: tmp_strings.xml:91(string) tmp_strings.xml:248(string)
+msgid "Applications that work with \"OI File Manager\":"
+msgstr "Aplikace, které pracují s OI Správcem souborů"
+
+#: tmp_strings.xml:92(listitem)
+msgid "Open and save text files in \"OI Notepad\"."
+msgstr "Otevírat a ukládat textové soubory v OI Poznámkovém bloku."
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:96(listitem)
+msgid "file manager, filemanager, file explorer"
+msgstr "file manager, filemanager, file explorer, správce souborů"
+
+#. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
+#: tmp_strings.xml:98(listitem) tmp_strings.xml:255(listitem)
+msgid "OI, IO, OpenIntents, Open Intents"
+msgstr "OI, IO, OpenIntents, Open Intents"
+
+#. Description of application
+#: tmp_strings.xml:116(string)
+msgid ""
+"OI Flashlight is a simple and effective application that helps you find a "
+"way in the dark."
+msgstr ""
+"OI Baterka je jednoduchá a efektivní aplikace, s níž najdete svou cestu tmou."
+
+#: tmp_strings.xml:117(string)
+msgid ""
+"OI Flashlight locks the display backlight on, clearly illuminating the "
+"surrounding area."
+msgstr ""
+"OI Baterka zapne podsvícení displeje, jasně osvětlujíc okolní prostředí."
+
+#: tmp_strings.xml:118(string)
+msgid ""
+"For devices with a camera flash, OI Flashlight can also use the flash as a "
+"bright torch to brighten the room."
+msgstr ""
+"Na zařízeních s bleskem fotoaparátu umí OI Baterka použít i ten jako "
+"svítilnu pro rozjasnění místnosti."
+
+#: tmp_strings.xml:119(string)
+msgid ""
+"The color of the backlight is completely customizable with OI Color Picker."
+msgstr "Barva podsvícení je nastavitelná pomocí OI Výběru barev."
+
+#: tmp_strings.xml:133(listitem)
+msgid "Lock the display backlight on."
+msgstr "Nastaví podsvícení displeje na maximum a neumožní mu se vypnout."
+
+#: tmp_strings.xml:134(listitem)
+msgid "Lock camera flash on."
+msgstr "Zapne blesk fotoaparátu."
+
+#: tmp_strings.xml:135(listitem)
+msgid "The color of backlight is customizable."
+msgstr "Barva podsvícení je nastavitelná."
+
+#: tmp_strings.xml:137(string)
+msgid "Available extensions for \"OI Flashlight\":"
+msgstr "Dostupná rozšíření pro OI Baterku:"
+
+#: tmp_strings.xml:139(listitem)
+msgid "Change the color of the backlight with \"OI Color Picker\"."
+msgstr "Změnit barvu podsvícení OI Výběrem barev."
+
+#: tmp_strings.xml:141(string)
+msgid "Applications that work with \"OI Flashlight\":"
+msgstr "Aplikace, které pracují s OI Baterkou:"
+
+#: tmp_strings.xml:142(listitem) tmp_strings.xml:198(listitem)
+#: tmp_strings.xml:304(listitem)
+msgid "Update with \"OI Update\"."
+msgstr "Aktualizovat s OI Update."
+
+#: tmp_strings.xml:145(listitem)
+msgid "Flashlight, light, Backlight"
+msgstr "Baterka, světlo, podsvícení, svítilna, Flashlight, light, Backlight"
+
+#: tmp_strings.xml:146(listitem) tmp_strings.xml:203(listitem)
+#: tmp_strings.xml:310(listitem)
+msgid "OI, OpenIntents, Open Intents"
+msgstr "OI, OpenIntents, Open Intents"
+
+#. Description of application
+#: tmp_strings.xml:163(string)
+msgid "OI Notepad is a full-featured open source note taking application."
+msgstr "OI Poznámkový blok je open source aplikace pro správu poznámek."
+
+#: tmp_strings.xml:164(string)
+msgid ""
+"With it you can tag, search, and send your notes, in addition to basic "
+"functionality such as creating, deleting, and editing notes."
+msgstr ""
+"S OI Poznámkovým blokem můžete tagovat (štítkovat), hledat a odesílat své "
+"poznámky, které s ním předtím vytvoříte, smažete nebo upravíte."
+
+#: tmp_strings.xml:165(string)
+msgid ""
+"Advanced features like encryption, import/export, and voice memos are all "
+"available through extensions."
+msgstr ""
+"Pokročilé vlastnosti jako šifrování, import/export a hlasové poznámky jsou "
+"všechny dostupné pomocí rozšíření."
+
+#: tmp_strings.xml:166(string)
+msgid ""
+"All of this functionality is brought together in a simplistic and efficient "
+"layout, customizable through a variety of themes."
+msgstr ""
+"Toto všechno Vám přinášíme zabalené v jednoduchém a efektivním rozhraní "
+"přizpůsobitelné množstvím motivů."
+
+#: tmp_strings.xml:180(listitem)
+msgid "Add, edit and delete notes."
+msgstr "Přidávat, upravovat a mazat poznámky."
+
+#: tmp_strings.xml:181(listitem)
+msgid "Long-press on notes to add tags."
+msgstr "Dlouze stiskněte na poznámky pro přidání tagů."
+
+#: tmp_strings.xml:182(listitem)
+msgid "Change font size and sort order."
+msgstr "Změnit velikost písma a pořadí řazení."
+
+#: tmp_strings.xml:183(listitem)
+msgid "A clearly arranged layout with a variety of themes."
+msgstr "Intuitivní rozhraní s množstvím motivů."
+
+#: tmp_strings.xml:184(listitem)
+msgid "Quickly search through notes."
+msgstr "Rychle prohledávat poznámky."
+
+#: tmp_strings.xml:185(listitem)
+msgid "Send notes as MMS or SMS."
+msgstr "Zasílat poznámky jako MMS nebo SMS."
+
+#: tmp_strings.xml:187(string)
+msgid "Available extensions for \"OI Notepad\":"
+msgstr "Dostupná rozšíření pro OI Poznámkový blok:"
+
+#: tmp_strings.xml:188(listitem)
+msgid "Record and attach voice memos to notes with \"OI Voice Notes\"."
+msgstr "Nahrávat a připojovat hlasové poznámky s OI Hlasovými poznámkami."
+
+#: tmp_strings.xml:189(listitem)
+msgid "With \"OI Convert CSV\" import/export notes from the SD card."
+msgstr "S OI Převést na CSV můžete importovat/exportovat poznámky z SD karty."
+
+#: tmp_strings.xml:191(listitem)
+msgid "Insert the date and time into notes with \"OI Insert Date\"."
+msgstr "Vložit datum a čas do poznámek s OI Vložit datum."
+
+#: tmp_strings.xml:192(listitem)
+msgid "Turn text upside down with \"Upside Down\"."
+msgstr "Otočit text Seshora dolů se \"Seshora dolů\"."
+
+#: tmp_strings.xml:194(string)
+msgid "Applications that work with \"OI Notepad\":"
+msgstr "Aplikace, které pracují s OI Poznámkovým blokem:"
+
+#: tmp_strings.xml:195(listitem)
+msgid "Back up notes with \"My Backup Pro\"."
+msgstr "Zálohujte poznámky s \"My Backup Pro\"."
+
+#: tmp_strings.xml:196(listitem)
+msgid "Encrypt notes using \"OI Safe\"."
+msgstr "Šifrujte poznámky pomocí OI Sejfu."
+
+#: tmp_strings.xml:197(listitem)
+msgid "Manage notes on your SD Card with \"OI File Manager\"."
+msgstr "Spravujte poznámky na SD kartě s OI Správcem souborů."
+
+#: tmp_strings.xml:199(listitem)
+msgid ""
+"Share notes through \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", and "
+"many other applications."
+msgstr ""
+"Sdílejte poznámky na Facebook, Gmail, Google+, Twitter a mnoho jiných "
+"aplikací."
+
+#: tmp_strings.xml:202(listitem)
+msgid "Note, Notepad, Note book, Notes"
+msgstr "Poznámka, poznámky, poznámkový blok"
+
+#. Description of application
+#: tmp_strings.xml:220(string)
+msgid ""
+"OI Safe safely protects all of your passwords and other private data using "
+"industry standard AES encryption."
+msgstr ""
+"OI Sejf bezpečně ochraňuje všechna Vaše hesla a jiná soukromá data pomocí "
+"AES šifrování, které je průmyslovým standardem."
+
+#: tmp_strings.xml:221(string)
+msgid ""
+"It also acts as an extension to OI Notepad to encrypt notes created in OI "
+"Notepad."
+msgstr ""
+"Funguje také jako rozšíření do OI Poznámkového bloku a umožňuje šifrovat "
+"poznámky vytvořené v OI Poznámkovém bloku."
+
+#: tmp_strings.xml:235(listitem)
+msgid "Securely protect data using AES encryption."
+msgstr "Bezpečně ochraňuje data pomocí AES šifrování."
+
+#: tmp_strings.xml:236(listitem)
+msgid "Freely move data entries between categories."
+msgstr "Bez překážek přesunuje data mezi kategoriemi."
+
+#: tmp_strings.xml:237(listitem)
+msgid "Import/Export data entries and databases."
+msgstr "Importuje/Exportuje data a databáze."
+
+#: tmp_strings.xml:238(listitem)
+msgid "Backup/Restore entries."
+msgstr "Zálohuje/Obnovuje záznamy."
+
+#: tmp_strings.xml:239(listitem)
+msgid "Includes secure password generator."
+msgstr "Obsahuje generátor bezpečných hesel."
+
+#: tmp_strings.xml:240(listitem)
+msgid "Automatic timeout to protect encrypted documents."
+msgstr ""
+"Automaticky se po určené době zamyká pro lepší ochranu zašifrovaných "
+"dokumentů."
+
+#: tmp_strings.xml:241(listitem)
+msgid "Encrypt OI Notepad notes."
+msgstr "Šifruje poznámky z OI Poznámkového bloku"
+
+#: tmp_strings.xml:242(listitem)
+msgid "Support for Obscura picture safe."
+msgstr "Podpora pro \"Obscura picture safe\"."
+
+#: tmp_strings.xml:243(listitem)
+msgid "MyBackup Pro."
+msgstr "MyBackup Pro."
+
+#: tmp_strings.xml:249(listitem)
+msgid "Encrypt notes created in \"OI Notepad\"."
+msgstr "Šifruje poznámky vytvořené v OI Poznámkovém bloku."
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:253(listitem)
+msgid "safe, encrpytion, password, protection"
+msgstr ""
+"safe, encrpytion, password, protection, bezpečný, sejf, hesla, ochrana, "
+"správce hesel, heslo"
+
+#. Description of application
+#: tmp_strings.xml:272(string)
+msgid ""
+"OI Shopping List is a powerful application which makes it easy to create and "
+"manage checklists."
+msgstr "OI Nákupní seznam zjednodušuje vytváření a správu kontrolních seznamů."
+
+#: tmp_strings.xml:273(string)
+msgid ""
+"OI Shopping List makes it easy to add items to a list, check the item off, "
+"and remove it from the list."
+msgstr ""
+"Po stažení OI Nákupního seznamu už nikdy nebude jednoduší přidávat položky "
+"do seznamu, odškrtávat ty položky nebo je odstraňovat se seznamu."
+
+#: tmp_strings.xml:274(string)
+msgid ""
+"The application can track separate prices for each store that you use, and "
+"features a high level of customization."
+msgstr ""
+"Aplikace umožňuje uchovávat ceny pro každý obchod zvlášť a vyznačuje se "
+"vysokou úrovní přizpůsobení."
+
+#: tmp_strings.xml:275(string)
+msgid ""
+"Font size, sort order, list columns, and list cleanup behavior are all "
+"settings controlled by the user."
+msgstr ""
+"Velikost písma, pořadí řazení, sloupce seznamu a chování úklidu seznamu jsou "
+"všechno nastavení kontrolovaná uživatelem."
+
+#: tmp_strings.xml:276(string)
+msgid ""
+"All of these features are brought together in a crisp layout that is "
+"customizable through a variety of themes."
+msgstr ""
+"Všechny tyto vlastnosti Vám přinášíme ve svěžím rozhraní, které je "
+"přizpůsobitelné množstvím různých motivů."
+
+#: tmp_strings.xml:290(listitem)
+msgid "Add, edit and delete lists."
+msgstr "Přidává, upravuje a maže seznamy."
+
+#: tmp_strings.xml:291(listitem)
+msgid "Create, delete, and check items quickly and easily."
+msgstr "Vytváří, odstraňuje a zaškrtává položky svižně a jednoduše."
+
+#: tmp_strings.xml:292(listitem)
+msgid "Variety of themes."
+msgstr "Množství motivů."
+
+#: tmp_strings.xml:293(listitem)
+msgid "Customizable font size and sort order."
+msgstr "Přizpůsobitelná velikost písma a pořadí řazení."
+
+#: tmp_strings.xml:294(listitem)
+msgid "Keep track of separate prices for each store."
+msgstr "Může uchovávat cenu pro každý obchod zvlášť."
+
+#: tmp_strings.xml:295(listitem)
+msgid "Customizable list columns."
+msgstr "Přizpůsobitelné sloupce seznamu."
+
+#: tmp_strings.xml:297(string)
+msgid "Available extensions for \"OI Shopping List\":"
+msgstr "Dostupná rozšíření pro OI Seznam nákupů:"
+
+#: tmp_strings.xml:298(listitem)
+msgid "Add a recorded message to a note with \"OI Voice Notes\"."
+msgstr "Přidat nahranou zprávu k poznámce s OI Hlasovými poznámkami."
+
+#: tmp_strings.xml:299(listitem)
+msgid "Import/export shopping lists with \"OI Convert CSV\"."
+msgstr "Importovat/exportovat nákupní seznamy s OI Převést do CSV"
+
+#: tmp_strings.xml:301(listitem)
+msgid "Enter/check items with \"Barcode OI Plugin\"."
+msgstr "Vložit/zaškrtnout položky s pluginem \"OI Čárový kód\"."
+
+#: tmp_strings.xml:303(string)
+msgid "Applications that work with \"OI Shopping List\":"
+msgstr "Aplikace, které pracují s OI Nákupním seznamem:"
+
+#: tmp_strings.xml:305(listitem)
+msgid "Backup lists with \"My Backup Pro\"."
+msgstr "Zálohovat seznamy s \"My Backup Pro\"."
+
+#: tmp_strings.xml:306(listitem)
+msgid "Import ingredients of recipes with \"Bites\"."
+msgstr "Importovat ingredience receptů s \"Bites\"."
+
+#: tmp_strings.xml:309(listitem)
+msgid "Shopping, List, Shopping List, Checklist"
+msgstr ""
+"Shopping, List, Shopping List, Checklist, kontrolní seznam, todo, todo list, "
+"todolist, nákupní seznam, seznam"
+
+#: tmp_strings.xml:315(string)
+msgid "Extensions:"
+msgstr "Rozšíření:"

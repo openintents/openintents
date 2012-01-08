@@ -641,9 +641,8 @@ msgid "Touching Priority or Quantity values summons the Edit Item dialog."
 msgstr ""
 
 #: tmp_strings.xml:235(string)
-#, fuzzy
 msgid "Reset all settings"
-msgstr "Ρυθμίσεις θέματος"
+msgstr ""
 
 #: tmp_strings.xml:236(string)
 msgid "Do you really want to RESET ALL settings? This cannot be undone."
@@ -818,9 +817,8 @@ msgid "Next page"
 msgstr ""
 
 #: tmp_strings.xml:342(string)
-#, fuzzy
 msgid "Choose a list"
-msgstr "Επιλογή κεφαλαιοποίησης"
+msgstr ""
 
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"

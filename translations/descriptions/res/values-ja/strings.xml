@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  thebowseat https://launchpad.net/~takeshimochida</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI 情報はアプリケーションの間で共有されるスタンドアローン情報ダイアログです。</string>
+		<string>このアプリケーションは他の OI アプリケーションのメニューから呼び出されます。</string>
+		<string>アプリケーションのバージョン情報、リンク、クレジットやライセンスを見ることができます。</string>
+		<string>クレジットは著者、ドキュメンテーション、翻訳者やアーティストを含みます。</string>
+		<string>すべての機能はシンプルで効率的なレイアウトで集結されています。</string>
+		<emptyline/>
+		<string>このアプリケーションは広告を含まず、インターネット許可を必要としません。</string>
+		<emptyline/>
+		<string>この無料でオープンソースのアプリケーションのソースコードは以下の場所から取得できます：</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>すべての変更リストや質問リストを見るには：</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>あなたもこの言語の翻訳を Launchpad で改善することができます：</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>機能：</string>
+		<listitem>一般情報、クレジットとライセンスタブを表示します。</listitem>
+		<listitem>すべての言語の翻訳者を表示します。</listitem>
+		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
+		<listitem>すべてのフィールドはインテント エクストラ から任意で変更することができます。</listitem>
+		<emptyline/>
+		<string>"OI 情報" と動作するアプリケーション：</string>
+		<listitem>OI メモ帳</listitem>
+		<listitem>OI ファイルマネージャー</listitem>
+		<listitem>OI ショッピングリスト</listitem>
+		<listitem>OI CSV 変換</listitem>
+		<listitem>OI 金庫</listitem>
+		<listitem>OI カウントダウン</listitem>
+		<listitem>OI フラッシュライト</listitem>
+		<emptyline/>
+		<string>キーワード:</string>
+		<listitem>情報とクレジット</listitem>
+		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<emptyline/>
+		<string>国際バージョン：</string>
+		<international/>
+		<emptyline/>
+		<string>マーケット用に文字列を検索：</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
+		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
+		<emptyline/>
+		<string>このアプリケーションは広告を含まず、インターネット許可を必要としません。</string>
+		<emptyline/>
+		<string>すべての変更リストや質問リストを見るには：</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>あなたもこの言語の翻訳を Launchpad で改善することができます：</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>この無料でオープンソースのアプリケーションのソースコードは以下の場所から取得できます：</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>機能：</string>
+		<listitem>ファイルの画像用のサムネイルのリストを表示する。</listitem>
+		<listitem>ファイルの移動・コピー・削除。</listitem>
+		<listitem>ディレクトリ (フォルダー) の作成・削除</listitem>
+		<listitem>ファイルをメールで送る</listitem>
+		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
+		<listitem>様々なファイルエンディングとMIMEタイプ のサポート。</listitem>
+		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
+		<emptyline/>
+		<string>"OI ファイルマネージャー" の利用可能な拡張子：</string>
+		<listitem>"OI 情報" のライセンス情報を表示する。</listitem>
+		<emptyline/>
+		<string>"OI ファイルマネージャー" と動作するアプリケーション：</string>
+		<listitem>"OI メモ帳" でテキストファイルを開く・保存する。</listitem>
+		<emptyline/>
+		<string>キーワード:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>ファイルマネージャ、ファイル・マネージャー、ファイル マネージャー</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>国際バージョン：</string>
+		<international/>
+		<emptyline/>
+		<string>マーケット用に文字列を検索：</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI フラッシュライトは暗闇の中であなたを助けるシンプルで効果的なアプリケーションです。</string>
+		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
+		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
+		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<emptyline/>
+		<string>このアプリケーションは広告を含まず、インターネット許可を必要としません。</string>
+		<emptyline/>
+		<string>この無料でオープンソースのアプリケーションのソースコードは以下の場所から取得できます：</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>すべての変更リストや質問リストを見るには：</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>あなたもこの言語の翻訳を Launchpad で改善することができます：</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>機能：</string>
+		<listitem>ディスプレーバックライトをオンにロックする。</listitem>
+		<listitem>カメラのフラッシュをオンにロックする。</listitem>
+		<listitem>バックライトのカラーは変更することができます。</listitem>
+		<emptyline/>
+		<string>"OI フラッシュライト" で利用可能な拡張子：</string>
+		<listitem>"OI 情報" のライセンス情報を表示する。</listitem>
+		<listitem>"OI カラーピッカー" でバックライトの色を変更する。</listitem>
+		<emptyline/>
+		<string>"OI フラッシュライト" と動作するアプリケーション：</string>
+		<listitem>"OI アップデート" でアップデート。</listitem>
+		<emptyline/>
+		<string>キーワード:</string>
+		<listitem>フラッシュライト、ライト、バックライト</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>国際バージョン：</string>
+		<international/>
+		<emptyline/>
+		<string>マーケット用に文字列を検索：</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Notepad is a full-featured open source note taking application.</string>
+		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
+		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
+		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<emptyline/>
+		<string>このアプリケーションは広告を含まず、インターネット許可を必要としません。</string>
+		<emptyline/>
+		<string>この無料でオープンソースのアプリケーションのソースコードは以下の場所から取得できます：</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>すべての変更リストや質問リストを見るには：</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>あなたもこの言語の翻訳を Launchpad で改善することができます：</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>機能：</string>
+		<listitem>ノートの追加・編集・削除。</listitem>
+		<listitem>Long-press on notes to add tags.</listitem>
+		<listitem>フォントサイズと並べ替え順序を変更。</listitem>
+		<listitem>A clearly arranged layout with a variety of themes.</listitem>
+		<listitem>Quickly search through notes.</listitem>
+		<listitem>Send notes as MMS or SMS.</listitem>
+		<emptyline/>
+		<string>"OI メモ帳" で利用可能な拡張子：</string>
+		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
+		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
+		<listitem>"OI 情報" のライセンス情報を表示する。</listitem>
+		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
+		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<emptyline/>
+		<string>"OI メモ帳"  と動作するアプリケーション：</string>
+		<listitem>Back up notes with "My Backup Pro".</listitem>
+		<listitem>"OI 金庫" を使ってノートを暗号化。</listitem>
+		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
+		<listitem>"OI アップデート" でアップデート。</listitem>
+		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<emptyline/>
+		<string>キーワード:</string>
+		<listitem>ノート、メモ帳、ノートブック、ノート</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>国際バージョン：</string>
+		<international/>
+		<emptyline/>
+		<string>マーケット用に文字列を検索：</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
+		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<emptyline/>
+		<string>このアプリケーションは広告を含まず、インターネット許可を必要としません。</string>
+		<emptyline/>
+		<string>すべての変更リストや質問リストを見るには：</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>あなたもこの言語の翻訳を Launchpad で改善することができます：</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>この無料でオープンソースのアプリケーションのソースコードは以下の場所から取得できます：</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>機能：</string>
+		<listitem>AES 暗号を使ってデータを安全に暗号化。</listitem>
+		<listitem>Freely move data entries between categories.</listitem>
+		<listitem>データエントリーやデータベースをインポート・エクスポート。</listitem>
+		<listitem>エントリーをバックアップ・復元。</listitem>
+		<listitem>安全パスワード作成機能が含まれています。</listitem>
+		<listitem>暗号化されたドキュメントを保護するための自動タイムアウト。</listitem>
+		<listitem>OI メモ帳のノートを暗号化。</listitem>
+		<listitem>Obscura 画像金庫のサポート。</listitem>
+		<listitem>マイバックアップ プロ</listitem>
+		<emptyline/>
+		<string>"OI ファイルマネージャー" の利用可能な拡張子：</string>
+		<listitem>"OI 情報" のライセンス情報を表示する。</listitem>
+		<emptyline/>
+		<string>"OI ファイルマネージャー" と動作するアプリケーション：</string>
+		<listitem>"OI メモ帳" で作成されたノートを暗号化する。</listitem>
+		<emptyline/>
+		<string>キーワード:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>safe, encrpytion, password, protection</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>国際バージョン：</string>
+		<international/>
+		<emptyline/>
+		<string>マーケット用に文字列を検索：</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
+		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
+		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
+		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
+		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<emptyline/>
+		<string>この無料でオープンソースのアプリケーションのソースコードは以下の場所から取得できます：</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>このアプリケーションは広告を含まず、インターネット許可を必要としません。</string>
+		<emptyline/>
+		<string>すべての変更リストや質問リストを見るには：</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>あなたもこの言語の翻訳を Launchpad で改善することができます：</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>機能：</string>
+		<listitem>リストを追加・変数・削除。</listitem>
+		<listitem>アイテムをすばやく簡単に作成・削除・チェック。</listitem>
+		<listitem>様々なテーマ。</listitem>
+		<listitem>カスタマイズ可能なフォントサイズと並べ替え順序。</listitem>
+		<listitem>各店の別々の値段を記録する。</listitem>
+		<listitem>カスタマイズ可能なリスト列。</listitem>
+		<emptyline/>
+		<string>"OI ショッピングリスト" で利用可能な拡張子：</string>
+		<listitem>"OI ボイスノート" でノートに録音したメッセージを追加。</listitem>
+		<listitem>"OI CSV 変換" でショッピングリストをインポート・エクスポート。</listitem>
+		<listitem>"OI 情報" のライセンス情報を表示する。</listitem>
+		<listitem>"OI バーコードプラグイン" でアイテムを入力・チェック。</listitem>
+		<emptyline/>
+		<string>"OI ショッピングリスト" と動作するアプリケーション：</string>
+		<listitem>"OI アップデート" でアップデート。</listitem>
+		<listitem>"マイバックアッププロ" でリストをバックアップ。</listitem>
+		<listitem>"Bites"でレシピの材料をインポート。</listitem>
+		<emptyline/>
+		<string>キーワード:</string>
+		<listitem>ショッピング、リスト、ショッピングリスト、チェックリスト</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>国際バージョン：</string>
+		<international/>
+		<emptyline/>
+		<string>拡張子：</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+</main>

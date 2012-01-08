@@ -282,9 +282,8 @@ msgid "Priority 1-4: %s"
 msgstr "प्रधानता १-४: %s"
 
 #: tmp_strings.xml:116(string)
-#, fuzzy
 msgid "Are you sure you want to permanently delete this item?"
-msgstr "क्या आप हमेशा के लिए यह आइटम को इस स्टोर से हटाना चाहते है?"
+msgstr ""
 
 #: tmp_strings.xml:117(string)
 msgid "Delete"
@@ -642,14 +641,12 @@ msgid "Touching Priority or Quantity values summons the Edit Item dialog."
 msgstr "छूने के प्रधानता या मुल्ये मानों आइटम संपादन सवांद के लिए"
 
 #: tmp_strings.xml:235(string)
-#, fuzzy
 msgid "Reset all settings"
-msgstr "विषयवस्तु सेटिंग"
+msgstr ""
 
 #: tmp_strings.xml:236(string)
-#, fuzzy
 msgid "Do you really want to RESET ALL settings? This cannot be undone."
-msgstr "क्या आप सचमुच इस स्टोर को हटाना चाहते हैं"
+msgstr ""
 
 #: tmp_strings.xml:237(string)
 msgid "All settings have been reset"
@@ -817,9 +814,8 @@ msgid "Next page"
 msgstr ""
 
 #: tmp_strings.xml:342(string)
-#, fuzzy
 msgid "Choose a list"
-msgstr "कैपिटलाइज़ेशन चुने"
+msgstr ""
 
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"

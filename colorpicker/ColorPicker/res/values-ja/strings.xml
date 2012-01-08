@@ -6,24 +6,59 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Peli https://launchpad.net/~peli0101
-  bkiw https://launchpad.net/~bkiw</string>
+  thebowseat https://launchpad.net/~takeshimochida</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
-	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	<string name="about_comments">OpenIntents カラーピッカーは OI フラッシュライトやほかの対応したアプリケーションの拡張機能です。</string>
 	
 	<!-- ***************************
-	     Applicatio-specific strings
+	     Application-specific strings
 	     *************************** -->
-    <string name="app_name">OI 色の選択</string>
-    <string name="color_picker">色の選択</string>
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI カラーピッカー</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">カラーピッカー</string>
+    
+    <string name="recent_colors_condensed">最近</string>
+    <string name="recent_colors">最近利用したカラー</string>
+    <string name="recent_colors_expanded">最近選択したカラー</string>
+    <string name="recent_colors_clear_history">クリア</string>
+    <string name="recent_colors_empty">最近選択したカラーがありません</string>
+    
+    <string name="confirm_color_title">どの色を使用しますか？</string>
+    <string name="confirm_color_message">この色を使用しますか？中央の丸をクリックすることでこのメッセージを避けることができます。</string>
+    
     
 	<!-- About -->
-	<string name="about">このソフトウェアについて</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-	<string name="aboutapp_get">Get OI About</string>
-	
+	<string name="about">情報</string>
+	<string name="aboutapp_not_available">バージョン %s\n\n 全ての情報 (連絡、クレジット、ライセンス) を表示できる対応した拡張機能がありません。</string>
+	<string name="aboutapp_get">OI の情報を入手する</string>
+
+
 	<!-- Update -->
-	<string name="update_error">ダウンロード用アプリが利用できません。</string>
+	<string name="update_error">ダウンロードアプリケーションはまだありません。</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">OI フラッシュライトでカラー を選択するには、メニュー &gt; カラー を押して下さい。</string>
+    <string name="title_app_flashlight">OI フラッシュライト</string>
+    
+    <string name="info_app_spiral_wallpaper">催眠術のようなアニメスパイラルライブ壁紙</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwisterライブ壁紙</string>
+    
+    <string name="info_app_bettr_flickr">アンドロイド用のネイティブ Flickr インターフェース</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">アニメキャラクターを作成するにはアートワークをミックスしてマッチしてください。</string>
+    <string name="title_app_character_gen">アニメキャラクター作成機</string>
+    
+    
+	<string name="info_activity_text">このアプリケーションは以下のアプリケーションと使用できます：</string>
+    <string name="info_launch">%s を起動</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">このアプリケーションは %1$s %2$s 以上が必要です。</string>
+	<string name="info_get">%s を入手する</string>
 </resources>

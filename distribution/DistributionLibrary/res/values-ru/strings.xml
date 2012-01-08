@@ -85,7 +85,7 @@
     <string name="oi_distribution_safe">OI Safe</string>
     <!-- Dialog message. -->
     <string name="oi_distribution_safe_not_available">Совместимые приложения для шифрования не доступны</string>
-    <string name="oi_distribution_safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
+    <string name="oi_distribution_safe_not_available_decrypt">Нет совместимого приложения для расшифровки.\n\nПримечание: Необходимо восстановить главный ключ из файла резервной копии, чтобы получить доступ к ранее зашифрованным данным.</string>
     
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
     <string name="oi_distribution_download_market_message">Пожалуйста скачайте %s с Маркета или сайта OpenIntents</string>

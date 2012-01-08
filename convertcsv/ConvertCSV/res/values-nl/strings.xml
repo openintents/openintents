@@ -73,7 +73,7 @@
     <string name="dont_ask_again">Niet opnieuw vragen. Altijd overschrijven!</string>
     
     <string name="warn_restore_policy_title">Importeer beleid is ingesteld op HERSTELLEN</string>
-    <string name="warn_restore_policy">Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE them with the contents of the CSV file. Are you sure?</string>
+    <string name="warn_restore_policy">Uw huidige importeer beleid is ingesteld op VERWIJDER ALLE HUIDIGE GEGEVENS en VERVANG ze met de gegevens van het CSV bestand. Weet u het zeker?</string>
     
     <string name="menu_settings">Instellingen</string>
     <string name="csv_file_format">CSV bestandsformaat</string>
@@ -136,26 +136,26 @@
     
     <string-array name="import_policy">
         <item>DUPLICEREN - sta duplicaties van gegevens toe.</item>
-        <item>"HOUDEN - Overschrijf geen bestaande gegevens."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
         <item>Overschrijf - Overschrijf bestaande gegevens.</item>
         <item>Herstellen - VERWIJDER ALLES, dan importeren.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>DUPLICEREN - Voeg een tweede kopie toe van een document als het al bestaat.</item>
-        <item>"BEHOUDEN - Overschrijf geen bestaande gegevens, negeer degene in het CSV bestand."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>Overschrijven - Een gegeven in het CSV bestand zal een bestaand gegeven OVERSCHRIJVEN.</item>
         <item>Herstel reservekopie - VERWIJDER AL UW BESTAANDE GEGEVENS, importeer dan het CSV bestand.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>DUPLICEREN - sta duplicaties van gegevens toe.</item>
-        <item>"HOUDEN - Overschrijf geen bestaande gegevens."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>DUPLICEREN - Voeg een tweede kopie toe van een document als het al bestaat.</item>
-        <item>"BEHOUDEN - Overschrijf geen bestaande gegevens, negeer degene in het CSV bestand."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>

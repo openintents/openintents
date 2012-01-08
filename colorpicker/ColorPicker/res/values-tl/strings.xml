@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Liezl https://launchpad.net/~liezl-200</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">Ang OpenIntents Tagapili ng Kulay ay isang ekstensyon para sa OI plaslayt at iba pang mga magkakatugmang aplikasyon.</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Tagapili ng Kulay</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">Tagapili ng Kulay</string>
+    
+    <string name="recent_colors_condensed">Kamakailan</string>
+    <string name="recent_colors">Kamakailang mga kulay</string>
+    <string name="recent_colors_expanded">Kamakailang pinili na mga kulay</string>
+    <string name="recent_colors_clear_history">Burahin</string>
+    <string name="recent_colors_empty">Walang kamakailang napiling mga kulay.</string>
+    
+    <string name="confirm_color_title">Gamitin ang kulay?</string>
+    <string name="confirm_color_message">Gamitin ang bagong kulay? Maaari mong maiwasan ang mensaheng ito sa pamamagitan ng pag-click sa bilog sa gitna.</string>
+    
+    
+	<!-- About -->
+	<string name="about">Tungkol</string>
+	<string name="aboutapp_not_available">Bersyon %s\n\n Walang mga katugmang ekstensyon na magagamit upang ipakita ang buong impormasyon (kontak, kredito, lisensya).</string>
+	<string name="aboutapp_get">Kumuha OI Tungkol</string>
+
+
+	<!-- Update -->
+	<string name="update_error">Download applikasyon ay hindi magagamit.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">Upang pumili ng isang kulay sa OI plaslayt, pindutin ang menu &gt; Kulay.</string>
+    <string name="title_app_flashlight">OI Plaslayt</string>
+    
+    <string name="info_app_spiral_wallpaper">Pampatulog, animado spiral may Buhay na wallpaper.</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister may Buhay na wallpaper.</string>
+    
+    <string name="info_app_bettr_flickr">Katutubong Flickr interface para sa Android</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">Magkahalo at magkatugmang likhang sining na pangbuo ng mga karakter sa Anime</string>
+    <string name="title_app_character_gen">Pangbuo ng Karakter ng Anime</string>
+    
+    
+	<string name="info_activity_text">Ang app na ito ay maaaring magamit sa mga sumusunod na aplikasyon:</string>
+    <string name="info_launch">Ilunsad ang %s</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">Ang app na ito ay nangangailangan ng %1$s %2$s o mas mataas.</string>
+	<string name="info_get">Kumuha %s</string>
+</resources>

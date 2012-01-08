@@ -1,0 +1,355 @@
+# Sindhi translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: happynawani <Unknown>\n"
+"Language-Team: Sindhi <sd@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  happynawani https://launchpad.net/~happynawani"
+
+#. ***************************
+#. 	     Applicatio-specific strings
+#. 	     ***************************
+#: tmp_strings.xml:13(string) tmp_strings.xml:21(string)
+msgid "OI Update"
+msgstr "OI अद्यतन"
+
+#: tmp_strings.xml:15(string)
+msgid "A new version of %s is available.\\nWould you like to upgrade?"
+msgstr "%s जो हिक्क नयो संस्करण उपलब्ध आ \\n तहां अपग्रेड करण  चाहीन्दावा?"
+
+#: tmp_strings.xml:16(string)
+msgid "A new version of %1$s is available at %2$s.\\n%3$s\\n"
+msgstr "%1$s जो हिक्क नयो संस्करण %2$s ते उपलब्ध आहे|\\n%3$s\\n"
+
+#: tmp_strings.xml:17(string)
+msgid "A new version of %1$s is available.\\n%2$s\\n"
+msgstr ""
+"%1$s जो हिक्क नयो संस्करण उपलब्ध आहे \n"
+"%2$s"
+
+#: tmp_strings.xml:18(string)
+msgid "A new version of %1$s is available at %2$s."
+msgstr "%1$s जो हिक्क नयो संस्करण %2$sते उपलब्ध आहे"
+
+#: tmp_strings.xml:19(string)
+msgid "A new version of %s is available."
+msgstr "s जो हिक्क नयो संस्करण उपलब्ध आह%"
+
+#: tmp_strings.xml:20(string)
+msgid "Android Market not available."
+msgstr "Android बाजार उपलब्ध काने"
+
+#: tmp_strings.xml:22(string)
+msgid "Android Market"
+msgstr "Android बाजार"
+
+#: tmp_strings.xml:23(string)
+msgid "AndAppStore.com"
+msgstr "AndAppStore.com"
+
+#: tmp_strings.xml:25(string)
+msgid "Version %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
+msgstr "संस्करण%1$s\\nSD कार्ड%2$s\\n\\n\\OS\\n%3$s"
+
+#: tmp_strings.xml:26(string)
+msgid "free space: %s"
+msgstr "ख़ाली जगह: %s"
+
+#: tmp_strings.xml:27(string)
+msgid "Board %1$s\\nBrand %2$s\\nDevice %3$s\\nID %4$s\\nModel %5$s"
+msgstr "बोर्ड%1$s\\nब्रांड%2$s\\nडिवाइस %3$s\\nID %4$s\\nमॉडल%5$s"
+
+#: tmp_strings.xml:29(string)
+msgid "Perform update now!"
+msgstr "अद्यतन कयो!"
+
+#: tmp_strings.xml:30(string)
+msgid "Try update from Market now!"
+msgstr "हाणे बाजार मां अद्यतन करण जी कोशिश कयो !"
+
+#: tmp_strings.xml:31(string)
+msgid "Try update from AndAppStore now!"
+msgstr "AndAppStore मां हाणे अद्यतन करण जी कोशिश कयो !"
+
+#: tmp_strings.xml:32(string)
+msgid "Remind me later!"
+msgstr "मुखे पो याद दियार जो!"
+
+#: tmp_strings.xml:33(string)
+msgid "Ignore this update"
+msgstr "इन्ह अद्यतन ते ध्यान न द्यो"
+
+#: tmp_strings.xml:34(string)
+msgid "Ignore all further updates"
+msgstr "अगतां वारे सड़े अद्यतन ते ध्यान न द्यो"
+
+#: tmp_strings.xml:35(string)
+msgid "Ok"
+msgstr "ठीक आ"
+
+#: tmp_strings.xml:37(string)
+msgid ""
+"Update could not be started!\\n\\nPlease contact application developer!\\n\\n"
+"%s"
+msgstr ""
+"अद्यतन शुरू न थी सग्यो  \n"
+"\n"
+" कृपया अनुप्रयोग विकासक खे संपर्क  कयो ! \n"
+" \n"
+"%s"
+
+#: tmp_strings.xml:38(string)
+msgid "Application is up-to-date."
+msgstr "अनुप्रयोग  सामयिक  आहे"
+
+#: tmp_strings.xml:39(string)
+msgid "Checking for new version."
+msgstr "नए संस्करण जे लाये जाँच ती थे"
+
+#: tmp_strings.xml:40(string)
+msgid "Building list of applications."
+msgstr "आवेदन जे लाये सूची ती ठये"
+
+#: tmp_strings.xml:41(string)
+msgid "Check AndAppStore.com"
+msgstr "AndAppStore.com खे जान्च्यो"
+
+#: tmp_strings.xml:42(string)
+msgid "Check versions"
+msgstr "संस्करण जाँचयो"
+
+#: tmp_strings.xml:43(string)
+msgid "Show all"
+msgstr "सब दिखार्यो"
+
+#: tmp_strings.xml:44(string)
+msgid "Refresh"
+msgstr "ताजो कयो"
+
+#: tmp_strings.xml:45(string)
+msgid "Checked AndAppStore"
+msgstr "AndAppStore खे जान्च्यो"
+
+#: tmp_strings.xml:46(string)
+msgid "Current version: %s"
+msgstr "वर्तमान संस्करण:%s"
+
+#: tmp_strings.xml:47(string)
+msgid "Current version code: %s"
+msgstr "वर्तमान संस्करण कोड:%s"
+
+#: tmp_strings.xml:48(string)
+msgid "Newer version: %s"
+msgstr "नए संस्करण:%s"
+
+#: tmp_strings.xml:49(string)
+msgid "Newer version: %1$s - %2$s"
+msgstr "नया संस्करण:%1$s - %2$s"
+
+#: tmp_strings.xml:50(string)
+msgid "Newer version available."
+msgstr "नया संस्करण उपलब्ध आहिन"
+
+#: tmp_strings.xml:51(string)
+msgid "No update information found."
+msgstr "कोई अद्यतन जानकारी काने"
+
+#: tmp_strings.xml:52(string)
+msgid "OI Update - List of new versions"
+msgstr "OI अद्यतन- नए संस्करणन जी सूची"
+
+#: tmp_strings.xml:53(string)
+msgid "OI Update - New versions at AndAppStore"
+msgstr "OI अद्यतन - AndAppStore ते नया संस्करण"
+
+#: tmp_strings.xml:54(string)
+msgid "OI Update - List of managed applications"
+msgstr "OI अद्यतन - प्रबंधित अनुप्रयोगन जी सूची"
+
+#: tmp_strings.xml:55(string)
+msgid "OI Update - List of managed applications (check at AndAppStore)"
+msgstr "OI अद्यतन - प्रबंधित आवेदनन जी सूची (AndAppStore ते जांच कयो )"
+
+#: tmp_strings.xml:56(string)
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+#: tmp_strings.xml:57(string)
+msgid "Auto check"
+msgstr "स्वतः जांच"
+
+#: tmp_strings.xml:58(string)
+msgid "Ignored"
+msgstr "उपेक्षित"
+
+#: tmp_strings.xml:59(string)
+msgid "Updates are currently ignored. Would you like to receive updates again?"
+msgstr "अद्यतन वर्तमान में नजान्दाज़ थ्यल आहिन|श तहां वारी सां अद्यतन प्राप्त करण चाह्यो ता"
+
+#: tmp_strings.xml:60(string)
+msgid "Unknown"
+msgstr "अज्ञात"
+
+#: tmp_strings.xml:61(string)
+msgid ""
+"No update information available. Please check manually and ask the developer "
+"to support OI Update in the future."
+msgstr ""
+"कोई अद्यतन जानकारी उपलब्ध काने|कृपया मैनुअल तरीके सां जांच कयो अऊँ डेवेलपर सां पूछ्यो OI  "
+"अद्यतन जे समर्थन लाये"
+
+#: tmp_strings.xml:62(string)
+msgid "Search on Market"
+msgstr "बाजार पर खोजयो"
+
+#: tmp_strings.xml:63(string)
+msgid "Search on AndAppStore"
+msgstr "AndAppStore पर खोजयो"
+
+#: tmp_strings.xml:64(string)
+msgid "Processing %s"
+msgstr "प्रसंस्करण%s"
+
+#: tmp_strings.xml:66(string)
+msgid ""
+"The update process of this application directs to a different site than "
+"Android Market. Applications installed from unknown sources might exhibit a "
+"security risk."
+msgstr ""
+"इन्ह अनुप्रयोग जी अद्यतन प्रक्रिया Android बाजार जे आलावा हिक्क बी साईट ते वाठी वेंदो आ "
+"|अज्ञात स्रोतन माँ स्थापित थ्यल अनुप्रयोग सुरक्षा जोखिम दिखारे ता सगन"
+
+#: tmp_strings.xml:70(string)
+msgid "Continue anyway"
+msgstr "त भी जारी राख्यो"
+
+#: tmp_strings.xml:71(string)
+msgid "Abort"
+msgstr "शद्यो"
+
+#: tmp_strings.xml:73(string)
+msgid "Auto update"
+msgstr "स्वतः अद्यतन"
+
+#: tmp_strings.xml:74(string)
+msgid "If checked, search for updates is performed regularly"
+msgstr "यदि जांच कयो त अद्यातानन लाये खोज हर रोज थीन्दी आ"
+
+#: tmp_strings.xml:75(string)
+msgid "Update interval"
+msgstr "अंतराल खे अद्यतित कयो"
+
+#: tmp_strings.xml:76(string)
+msgid "Set the interval how often the update search should be performed."
+msgstr "अद्यतन खोज कमला थ्यनी खपे इन्ह लाये अन्तराल सेट कयो"
+
+#: tmp_strings.xml:77(string)
+msgid "Select interval"
+msgstr "अंतराल खे चून्दयो"
+
+#: tmp_strings.xml:78(string)
+msgid "every_month"
+msgstr "every_month"
+
+#: tmp_strings.xml:79(string)
+msgid "Warning"
+msgstr "चेतावनी"
+
+#: tmp_strings.xml:80(string)
+msgid ""
+"If you uncheck this item, you will no longer receive notifications for "
+"updates. Do you still want to uncheck auto update?"
+msgstr ""
+"यदि तहां इन्ह आईटम खे अन्चेच्क कंदव त तहां खे अद्यतन जे बारे  में कोई सूच्नऊँ न मिलान्दव|शा "
+"तहां हाडे भी स्वतः अद्यतन खे अन्चेच्क त करण चाह्यो ?"
+
+#: tmp_strings.xml:82(string)
+msgid "Use AndAppStore"
+msgstr "AndAppStore जो प्रयोग कयो"
+
+#: tmp_strings.xml:83(string)
+msgid "Use version information provided by AndAppStore.com"
+msgstr "AndAppStore.com द्वारा दिनल संस्करण जी जानकारीय जो उपयोग कयो"
+
+#: tmp_strings.xml:85(string)
+msgid "Read update information"
+msgstr "अद्यतन जानकरी पद्यो"
+
+#: tmp_strings.xml:86(string)
+msgid "Write update information"
+msgstr "अद्यतन जानकरी लिख्यो"
+
+#: tmp_strings.xml:87(string)
+msgid ""
+"Read information about installed applications, update locations and requests."
+msgstr "स्थापित अनुप्रयोगन, अद्यतन स्थानन अऊँ अनुरोधन जे बारे में जानकारी पढ़यो"
+
+#: tmp_strings.xml:88(string)
+msgid ""
+"Write information about installed applications, update locations and "
+"requests."
+msgstr "स्थापित अनुप्रयोगन, अद्यतन स्थानन अऊँ अनुरोधन जे बारे में जानकारी लिख्यो"
+
+#. About
+#: tmp_strings.xml:92(string)
+msgid "About"
+msgstr "के बारे में"
+
+#: tmp_strings.xml:93(string)
+msgid "About %s"
+msgstr "%s के बारे में"
+
+#: tmp_strings.xml:94(string)
+msgid ""
+"Version %s \\n\\n OI Update keeps you informed on new application versions."
+"\\n OpenIntents allows different Android applications to share data using "
+"intents and open interfaces.\\n\\n For more information and other great "
+"applications visit OpenIntents at www.openintents.org"
+msgstr ""
+"संस्करण%s \\n\\nOI अद्यतन तहां खे नए अनुप्रयोग संस्करण जी जानकारी दीन्दो तव| "
+"\\nopenintents इन्तेंट्स अऊँ खुल्यल इंटरफेस खे उपयोग करे अलग अलग Anroid अनुप्रयोगन खे पंजो "
+"डाटा सझन जी अनुमति दीन्दो आ\\n\\nअधिक जानकारी जे लाये अऊँ महँ अनुप्रयोगन लाये "
+"Openintents वनों www.openintents.org"
+
+#. EULA
+#: tmp_strings.xml:102(string)
+msgid "OI Update EULA"
+msgstr "OI अद्यतन EULA"
+
+#: tmp_strings.xml:103(string)
+msgid ""
+"\"Copyright 2008 OpenIntents.org\\n Licensed under the Apache License, "
+"Version 2.0 (the \\\"License\\\"); you may not use this file except in "
+"compliance with the License. You may obtain a copy of the License at\\n "
+"http://www.apache.org/licenses/LICENSE-2.0\\n Unless required by applicable "
+"law or agreed to in writing, software distributed under the License is "
+"distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY "
+"KIND, either express or implied. See the License for the specific language "
+"governing permissions and limitations under the License.\\n \\n\""
+msgstr ""
+
+#: tmp_strings.xml:110(string)
+msgid "Accept"
+msgstr "स्विकार्यो"
+
+#: tmp_strings.xml:111(string)
+msgid "Cancel"
+msgstr "रद्द कयो"

@@ -330,7 +330,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "DOPPELT - Erlaubt doppelte Einträge."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-msgid "\"KEEP - Don't overwrite existing records.\""
+#, fuzzy
+msgid "KEEP - Don't overwrite existing records."
 msgstr "\"BEHALTEN - Bestehende Einträge nicht überschreiben.\""
 
 #: tmp_strings.xml:138(item)
@@ -348,9 +349,9 @@ msgstr ""
 "besteht."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+#, fuzzy
 msgid ""
-"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-"\""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
 "\"BEHALTEN - Bestehende Einträge nicht überschreiben, Einträge aus der CSV-"
 "Datei ignorieren.\""

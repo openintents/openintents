@@ -30,6 +30,7 @@
 	<string name="about_translators">Launchpad Contributions:
   Andrew Mike https://launchpad.net/~logomancer
   Feder Sáiz https://launchpad.net/~federsaiz-deactivatedaccount
+  Fitoschido https://launchpad.net/~fitoschido
   Jonay https://launchpad.net/~jonay-santana
   Paco Molinero https://launchpad.net/~franciscomol</string>
 	
@@ -42,14 +43,14 @@
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_filemanager">OI File Manager</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Lista de compras</string>
+	<string name="info_app_shopping">Lista de compras OI</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_notepad">Bloc de notas OI</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_safe">OI Safe</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Lanzar %s y seleccionar el menú &gt; Acerca de.</string>
+	<string name="info_instructions">Abra %s y seleccione el menú &gt; Acerca de.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -71,9 +72,9 @@
 	<string name="l_credits">Créditos</string>
 	<string name="l_license">Licencia</string>
 	<string name="l_info">Información general</string>
-	<string name="l_recent_changes">Cambios Recientes</string>
+	<string name="l_recent_changes">Cambios recientes</string>
 	
-	<string name="no_information_available">Información no disponible</string>
+	<string name="no_information_available">No hay información disponible.</string>
 	
 	<!-- ***************************
 	     International languages

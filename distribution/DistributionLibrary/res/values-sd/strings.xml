@@ -8,6 +8,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   happynawani https://launchpad.net/~happynawani</string>
 	
 	<!-- ***************************
@@ -44,66 +45,66 @@
 	
 	<!-- Update -->
 	<!-- Menu command to look for updates. -->
-    <string name="oi_distribution_menu_update">Check updates</string>
-	<string name="oi_distribution_update_box_text">Check manually for updates or install OI Update for automatic notifications.</string>
-	<string name="oi_distribution_update_check_now">Check now</string>
-	<string name="oi_distribution_update_get_updater">Get OI Updater</string>
-	<string name="oi_distribution_update_error">Download application not available.</string>
+    <string name="oi_distribution_menu_update">अद्यतन जी  जांच कयो</string>
+	<string name="oi_distribution_update_box_text">|अद्यतन लाये मैन्युअल जाँच कयो या पंजोपांड सूचित थ्यंडा लाये OI अद्यतन स्थापित कयो</string>
+	<string name="oi_distribution_update_check_now">हिम्म्ल जाँच कयो</string>
+	<string name="oi_distribution_update_get_updater">OI अद्यतनकर्ता प्राप्त कयो</string>
+	<string name="oi_distribution_update_error">|डाउनलोड अनुप्रयोग मौजूद काने</string>
 	
     <!-- Name of the application "OI Update". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_update_app">OI Update</string>
+    <string name="oi_distribution_update_app">OI अद्यतन</string>
     
     <!-- About -->
     <!-- Menu command to open the "about" or "info" dialog. -->
-    <string name="oi_distribution_about">About</string>
+    <string name="oi_distribution_about">जे बारे में</string>
     <!-- %s is the version number (e.g. "1.2.1") -->
-	<string name="oi_distribution_aboutapp_not_available">No compatible extension available to display full info (contact, credits, license).</string>
+	<string name="oi_distribution_aboutapp_not_available">पूरी जानकारी (संपर्क, श्रेय, लाइसेंस) दिसण लाये  कोई संगत पुर्ण एक्सटेंशन मौजूद कान|</string>
     
     
     <!-- Button text: Get the application "OI About". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_aboutapp_get">Get OI About</string>
+    <string name="oi_distribution_aboutapp_get">OI \'जे बारें में\' प्राप्त कयो</string>
     
     <!-- Name of the application "OI About". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_aboutapp">OI About</string>
+    <string name="oi_distribution_aboutapp">OI  जे बारे में</string>
     
     <!-- Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_barcodescanner">Barcode OI Plugin</string>
+    <string name="oi_distribution_barcodescanner">बारकोड OI प्लगइन</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_barcodescanner_not_available">No compatible barcode scanner is available.</string>
+    <string name="oi_distribution_barcodescanner_not_available">|कोई संगत बारकोड स्कैनर मौजूद काने</string>
     
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_filemanager">OI File Manager</string>
+    <string name="oi_distribution_filemanager">OI फ़ाइल प्रबंधक</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_filemanager_not_available">No compatible file manager is available.</string>
+    <string name="oi_distribution_filemanager_not_available">कोई संगत पुर्ण फ़ाइल प्रबंधक मौजूद काने</string>
     
     <!-- Safe -->
     <!-- Name of the application "OI Safe". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_safe">OI Safe</string>
+    <string name="oi_distribution_safe">OI सुरक्षित</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_safe_not_available">No compatible application for encryption is available.</string>
-    <string name="oi_distribution_safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
+    <string name="oi_distribution_safe_not_available">एन्क्रिप्शन जे लाये कोई संगत पुर्ण अनुप्रयोग मौजूद काने</string>
+    <string name="oi_distribution_safe_not_available_decrypt">|डिक्रिप्शन जे लाये कोई संगत पुर्ण अनुप्रयोग मौजूद काने |\n\nनोट कयो :पहरों वारे एन्क्रिप्टेड डेटा जो  उपयोग करण लाये तहान्खे बैकअप फ़ाइल माँ मास्टर कुंजी  वारी सां स्थापित करणी पवंदव</string>
     
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_market_message">Please download %s from the Market or the OpenIntents website.</string>
+    <string name="oi_distribution_download_market_message">|बाजार या OpenIntents वेबसाइट माँ%s डाउनलोड कयो</string>
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_message">Please download %s from the OpenIntents website.</string>
+    <string name="oi_distribution_download_message">|OpenIntents वेबसाइट माँ %s डाउनलोड कयो</string>
     <!-- Dialog button: download the suggested application from Android Market. -->
-    <string name="oi_distribution_download_market">Market download</string>
+    <string name="oi_distribution_download_market">बाजार माँ डाउनलोड कयो</string>
     <!-- Dialog button: download the suggested application from the developer web site. -->
-    <string name="oi_distribution_download_web">Web download</string>
+    <string name="oi_distribution_download_web">वेब माँ डाउनलोड कयो</string>
 	<!-- Dialog title: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_title">Download %s</string>
+    <string name="oi_distribution_download_title">डाउनलोड कयो %s</string>
 	
 	<!-- %s is an application name (e.g. "OI About can be used with the following applications:") -->
-	<string name="oi_distribution_info_activity_text">%s can be used with the following applications:</string>
+	<string name="oi_distribution_info_activity_text">%sहेठ लिख्यल अनुप्रयोगों सां गड़  इस्तेमाल थी तो सके :</string>
 	<!-- %s is an application name (e.g. "Launch OI Notepad") -->
-    <string name="oi_distribution_info_launch">Launch %s</string>
+    <string name="oi_distribution_info_launch">%s लॉन्च कयो</string>
     <!-- %1$s is the current application name. %2$s is another application name, and %3$s is the other application\'s version name
     (e.g. "OI About requires OI Notepad 1.2.0 or higher.") -->
-	<string name="oi_distribution_info_not_available">%1$s requires %2$s %3$s or higher.</string>
+	<string name="oi_distribution_info_not_available">%1$s खे जरूअत्त तस %2$s %3$s या वधीक जी</string>
 	<!-- Title of a dialog. -->
-	<string name="oi_distribution_info_instructions">Instructions</string>
+	<string name="oi_distribution_info_instructions">निर्देश</string>
 	<!-- Error message -->
-	<string name="oi_distribution_launch_error">Application could not be launched</string>
+	<string name="oi_distribution_launch_error">अनुप्रयोग शुरू न थी सग्यो</string>
 	
 </resources>

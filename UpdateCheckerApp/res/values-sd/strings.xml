@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  happynawani https://launchpad.net/~happynawani</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI अद्यतन</string>
+    
+    <string name="update_available">%s जो हिक्क नयो संस्करण उपलब्ध आ \n तहां अपग्रेड करण  चाहीन्दावा?</string>
+    <string name="update_available_3">%1$s जो हिक्क नयो संस्करण %2$s ते उपलब्ध आहे|\n%3$s\n</string>
+    <string name="update_available_2">%1$s जो हिक्क नयो संस्करण उपलब्ध आहे 
+%2$s</string>
+    <string name="update_available_location_no_comment">%1$s जो हिक्क नयो संस्करण %2$sते उपलब्ध आहे</string>
+    <string name="update_available_no_comment">s जो हिक्क नयो संस्करण उपलब्ध आह%</string>
+	<string name="market_not_available">Android बाजार उपलब्ध काने</string>
+    <string name="market_search_term">OI अद्यतन</string>
+	<string name="android_market">Android बाजार</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">संस्करण%1$s\nSD कार्ड%2$s\n\n\OS\n%3$s</string>
+    <string name="free_space">ख़ाली जगह: %s</string>
+    <string name="os_info">बोर्ड%1$s\nब्रांड%2$s\nडिवाइस %3$s\nID %4$s\nमॉडल%5$s</string>
+    
+    <string name="do_update">अद्यतन कयो!</string>
+    <string name="do_update_market">हाणे बाजार मां अद्यतन करण जी कोशिश कयो !</string>
+    <string name="do_update_andAppStore">AndAppStore मां हाणे अद्यतन करण जी कोशिश कयो !</string>
+    <string name="remind_me_later">मुखे पो याद दियार जो!</string>
+    <string name="ignore_this_update">इन्ह अद्यतन ते ध्यान न द्यो</string>
+    <string name="ignore_all_further_updates">अगतां वारे सड़े अद्यतन ते ध्यान न द्यो</string>
+    <string name="ok">ठीक आ</string>
+    
+    <string name="update_not_started">अद्यतन शुरू न थी सग्यो  
+
+ कृपया अनुप्रयोग विकासक खे संपर्क  कयो ! 
+ 
+%s</string>
+    <string name="app_up_to_date">अनुप्रयोग  सामयिक  आहे</string>
+    <string name="checking">नए संस्करण जे लाये जाँच ती थे</string>
+    <string name="building_app_list">आवेदन जे लाये सूची ती ठये</string>
+    <string name="check_andappstore">AndAppStore.com खे जान्च्यो</string>
+    <string name="check_versions">संस्करण जाँचयो</string>
+    <string name="show_versions">सब दिखार्यो</string>
+    <string name="refresh">ताजो कयो</string>
+    <string name="checked_against_andappstore">AndAppStore खे जान्च्यो</string>
+    <string name="current_version">वर्तमान संस्करण:%s</string>
+    <string name="current_version_code">वर्तमान संस्करण कोड:%s</string>
+    <string name="newer_version">नए संस्करण:%s</string>
+    <string name="newer_version_comment">नया संस्करण:%1$s - %2$s</string>
+    <string name="newer_version_available">नया संस्करण उपलब्ध आहिन</string>
+    <string name="no_update_info_found">कोई अद्यतन जानकारी काने</string>
+    <string name="title_list_new_versions">OI अद्यतन- नए संस्करणन जी सूची</string>
+    <string name="title_list_new_versions_from_andappstore">OI अद्यतन - AndAppStore ते नया संस्करण</string>
+    <string name="title_list_all_versions">OI अद्यतन - प्रबंधित अनुप्रयोगन जी सूची</string>
+    <string name="title_list_all_versions_from_andappstore">OI अद्यतन - प्रबंधित आवेदनन जी सूची (AndAppStore ते जांच कयो )</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="auto_update">स्वतः जांच</string>
+    <string name="ignore_title">उपेक्षित</string>
+    <string name="ignore_text">अद्यतन वर्तमान में नजान्दाज़ थ्यल आहिन|श तहां वारी सां अद्यतन प्राप्त करण चाह्यो ता</string>
+    <string name="unknown_title">अज्ञात</string>
+    <string name="unknown_text">कोई अद्यतन जानकारी उपलब्ध काने|कृपया मैनुअल तरीके सां जांच कयो अऊँ डेवेलपर सां पूछ्यो OI  अद्यतन जे समर्थन लाये</string>
+    <string name="search_on_market">बाजार पर खोजयो</string>
+    <string name="search_on_andappstore">AndAppStore पर खोजयो</string>
+    <string name="processing">प्रसंस्करण%s</string>
+    
+    <string name="warn">इन्ह अनुप्रयोग जी अद्यतन प्रक्रिया Android बाजार जे आलावा हिक्क बी साईट ते वाठी वेंदो आ |अज्ञात स्रोतन माँ स्थापित थ्यल अनुप्रयोग सुरक्षा जोखिम दिखारे ता सगन</string>
+    <string name="continue_anyway">त भी जारी राख्यो</string>
+    <string name="abort">शद्यो</string>
+    
+    <string name="preference_auto_update">स्वतः अद्यतन</string>
+    <string name="preference_auto_update_summary">यदि जांच कयो त अद्यातानन लाये खोज हर रोज थीन्दी आ</string>
+    <string name="title_update_interval">अंतराल खे अद्यतित कयो</string>
+    <string name="summary_update_interval">अद्यतन खोज कमला थ्यनी खपे इन्ह लाये अन्तराल सेट कयो</string>
+    <string name="dialog_title_update_interval">अंतराल खे चून्दयो</string>
+    <string name="default_update_interval">every_month</string>
+    <string name="preference_warning_title">चेतावनी</string>
+    <string name="preference_warning_text">यदि तहां इन्ह आईटम खे अन्चेच्क कंदव त तहां खे अद्यतन जे बारे  में कोई सूच्नऊँ न मिलान्दव|शा तहां हाडे भी स्वतः अद्यतन खे अन्चेच्क त करण चाह्यो ?</string>
+    
+    <string name="preference_andappstore">AndAppStore जो प्रयोग कयो</string>
+    <string name="preference_andappstore_summary">AndAppStore.com द्वारा दिनल संस्करण जी जानकारीय जो उपयोग कयो</string>
+    
+    <string name="permission_read_update_info">अद्यतन जानकरी पद्यो</string>
+    <string name="permission_write_update_info">अद्यतन जानकरी लिख्यो</string>
+    <string name="permission_read_update_info_descr">स्थापित अनुप्रयोगन, अद्यतन स्थानन अऊँ अनुरोधन जे बारे में जानकारी पढ़यो</string>
+    <string name="permission_write_update_info_descr">स्थापित अनुप्रयोगन, अद्यतन स्थानन अऊँ अनुरोधन जे बारे में जानकारी लिख्यो</string>
+
+
+	<!-- About -->
+	<string name="about">के बारे में</string>
+	<string name="about_title">%s के बारे में</string>
+	<string name="about_text">संस्करण%s \n\nOI अद्यतन तहां खे नए अनुप्रयोग संस्करण जी जानकारी दीन्दो तव| \nopenintents इन्तेंट्स अऊँ खुल्यल इंटरफेस खे उपयोग करे अलग अलग Anroid अनुप्रयोगन खे पंजो डाटा सझन जी अनुमति दीन्दो आ\n\nअधिक जानकारी जे लाये अऊँ महँ अनुप्रयोगन लाये Openintents वनों www.openintents.org</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI अद्यतन EULA</string>
+<string name="eula_description">
+"Copyright 2008 OpenIntents.org\n
+Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
+http://www.apache.org/licenses/LICENSE-2.0\n
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n
+\n"
+</string>
+	<string name="eula_accept">स्विकार्यो</string>
+	<string name="eula_refuse">रद्द कयो</string>
+	
+</resources>

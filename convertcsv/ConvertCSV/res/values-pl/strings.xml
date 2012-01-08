@@ -136,26 +136,26 @@
     
     <string-array name="import_policy">
         <item>POWIELAJ - pozwala powielać zapisy.</item>
-        <item>"ZATRZYMAJ - nie nadpisuj istniejących zapisów."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
         <item>Nadpisz - nadpisz istniejące zapisy.</item>
         <item>Przywróć - USUŃ WSZYSTKIE, potem importuj.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>POWIEL - dodaj drugą kopię zapisu jeśli już istnieje.</item>
-        <item>"ZATRZYMAJ - nie nadpisuj istniejącego zapisu, ignoruj umieszczony w pliku CSV."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>Nadpisz - zapis z pliku CSV NADPISZE istniejący zapis.</item>
         <item>Przywróć kopię zapasową - USUŃ WSZYSTKIE ISTNIEJĄCE ZAPISY, potem importuj plik CSV.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>POWIELAJ - pozwala powielać zapisy.</item>
-        <item>"ZATRZYMAJ - nie nadpisuj istniejących zapisów."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>POWIEL - dodaj drugą kopię zapisu jeśli już istnieje.</item>
-        <item>"ZATRZYMAJ - nie nadpisuj istniejącego zapisu, ignoruj umieszczony w pliku CSV."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>

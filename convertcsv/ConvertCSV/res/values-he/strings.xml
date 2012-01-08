@@ -22,7 +22,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
-  Dvir Oren https://launchpad.net/~dvir0776</string>
+  Dvir Oren https://launchpad.net/~dvir0776
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Explanation what this application does. -->
 	<string name="about_comments">הרחבה זו לחנות קניות OI ופנקס OI שנותן לך לייבא ולייצא רשימות ופתקים בפורמט קובץ CSV.</string>
@@ -134,26 +135,26 @@
     
     <string-array name="import_policy">
         <item>כפול - הרשה כפילויות לרשומות.</item>
-        <item>"שמור - אל תכתוב מחדש רשומות קיימות."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
         <item>כתיבה מחדש - כתוב מחדש רשומות קיימות.</item>
         <item>שחזר - מחק הכל, ואז ייבא.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>כפולות - הוסף עותק נוסף של רשומה אם הוא כבר קיים.</item>
-        <item>"שמור - אל תכתוב מחדש רשומה קיימת, התעלם מהרשומה בקובץ ה-CSV".</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>כתיבה מחדש - רשומה בתוך CSV תכתוב מחדש רשומה קיימת</item>
         <item>שחזור גיבוי - מחק את כל הרשומות הקיימות שלך, ואז ייבא את קובץ ה-CSV</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>כפול - הרשה כפילויות לרשומות.</item>
-        <item>"שמור - אל תכתוב מחדש רשומות קיימות."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>כפולות - הוסף עותק נוסף של רשומה אם הוא כבר קיים.</item>
-        <item>"שמור - אל תכתוב מחדש רשומה קיימת, התעלם מהרשומה בקובץ ה-CSV".</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>

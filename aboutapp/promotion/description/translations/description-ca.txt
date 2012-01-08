@@ -1,0 +1,56 @@
+# Application:
+OI Quant a
+
+# Promo text:
+Un diàleg de quant a independent compartit entre aplicacions.
+
+# Description:
+OI Quant a és un diàleg independent que es comparteix entre aplicacions. Aquesta aplicació s'invoca mitjançant el menú d'altres aplicacions d'OI. Et permet veure informació de la versió, enllaços, crèdits i la llicència d'una aplicació. Els crèdits inclouen els autors, documentació, traductors i artistes. Tota aquesta funcionalitat s'aporta en un format simple i efficient. 
+
+Aquesta aplicació no té anuncis i no necessita permisos a Internet. 
+
+El codi font d'això és lliure i l'aplicació de codi obert està disponible a: 
+http://code.google.com/p/openintents
+
+Per a una llista sencera de canvis i una llista de preguntes més freqüents, vegeu: 
+http://www.openintents.org
+
+Podeu ajudar a millorar la traducció al vostre idioma a Launchpad 
+https://translations.launchpad.net/openintents/trunk
+
+Característiques 
+* Mostra pestanyes d'informació general, crèdits i llicència
+* Mostra els traductors de totes les versions idiomàtiques.
+* Aconsegueix informació del manifest de l'aplicació mitjançant les etiquetes per defecte i metadades.
+* Opcionalment, es poden modificar tots els camps mitjançant extres d'intent.
+
+Aplicacions que funcionen amb "OI Quant a": 
+* Bloc de notes d'OI
+* Gestor de fitxers d'OI
+* Llista de compra d'OI
+* Convertor a CSV d'OI
+* OI Segur
+* Compte enrere d'OI
+* OI Flashlight
+
+Paraules clau: 
+* Quant a, crèdits, informació.
+* OI, OpenIntents, Open Intents.
+
+Versions internacionals: 
+OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+
+
+Cerca cadenes al Mercat: 
+* extension for OI Notepad
+* extension for OI File Manager
+* extension for OI Shopping List
+* extension for OI Convert CSV
+* extension for OI Safe
+* extension for OI Coundown
+* extension for OI Flashlight
+* extension for OI Update
+
+
+
+

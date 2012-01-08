@@ -1,0 +1,355 @@
+# Japanese translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: thebowseat <Unknown>\n"
+"Language-Team: Japanese <ja@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:25(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  thebowseat https://launchpad.net/~takeshimochida"
+
+#. Explanation what this application does.
+#: tmp_strings.xml:28(string)
+msgid ""
+"This extension to OI Shopping list and OI Notepad lets you import and export "
+"lists and notes in the CSV file format."
+msgstr ""
+"OI ショッピングリストと OI メモ帳の拡張機能は CSV ファイルフォーマットのリス"
+"トやノートをインポートしたりエクスポートしたりすることができます。"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:34(string)
+msgid "OI Shopping List"
+msgstr "OI ショッピングリスト"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:36(string) tmp_strings.xml:96(string)
+msgid "OI Notepad"
+msgstr "OI メモ帳"
+
+#. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
+#: tmp_strings.xml:39(string)
+msgid "Launch %s and select menu &gt; Convert CSV."
+msgstr "%s を起動して メニュー &gt; CSV を変換 を選択"
+
+#. Application name. Can be localized.
+#. 	  "CSV" is a common file extension meaning "comma separated values".
+#. 	  "OI" and "CSV" should not be changed.
+#: tmp_strings.xml:47(string)
+msgid "OI Convert CSV"
+msgstr "OI CSV 変換"
+
+#: tmp_strings.xml:48(string)
+msgid "Convert CSV"
+msgstr "CSV を変換"
+
+#: tmp_strings.xml:49(string)
+msgid "Convert CSV to Notepad"
+msgstr "CSV をメモ帳に変換"
+
+#: tmp_strings.xml:50(string)
+msgid "Convert CSV to Shopping list"
+msgstr "CSV をショッピングリストに変換"
+
+#: tmp_strings.xml:51(string)
+msgid "Convert all notes"
+msgstr "すべてのノートを変換"
+
+#: tmp_strings.xml:52(string)
+msgid "Convert all shopping lists"
+msgstr "すべてのショッピングリストを変換"
+
+#: tmp_strings.xml:53(string)
+msgid "Convert list '%s'"
+msgstr "リスト '%s' を変換"
+
+#: tmp_strings.xml:54(string)
+msgid "File path"
+msgstr "ファイルの場所"
+
+#: tmp_strings.xml:55(string)
+msgid "Import"
+msgstr "インポート"
+
+#: tmp_strings.xml:56(string)
+msgid "Export"
+msgstr "エクスポート"
+
+#: tmp_strings.xml:57(string)
+msgid "Error writing to file"
+msgstr "ファイルへ書き込む際にエラーが発生しました"
+
+#: tmp_strings.xml:58(string)
+msgid "Error reading from file"
+msgstr "ファイルを読み込む際にエラーが発生しました"
+
+#: tmp_strings.xml:59(string)
+msgid "Wrong CSV format"
+msgstr "CSV フォーマットが間違っています"
+
+#: tmp_strings.xml:60(string)
+msgid "File not found"
+msgstr "ファイルが見つかりません"
+
+#: tmp_strings.xml:61(string)
+msgid "Not yet implemented, please choose different option."
+msgstr "まだ実装されていません、別のオプションを選択してください。"
+
+#: tmp_strings.xml:62(string)
+msgid "Import finished"
+msgstr "インポートが完了しました"
+
+#: tmp_strings.xml:63(string)
+msgid "Export finished"
+msgstr "エクスポートが完了しました"
+
+#: tmp_strings.xml:64(string)
+msgid "Select notepad CSV file"
+msgstr "メモ帳 CSV ファイルを選択"
+
+#: tmp_strings.xml:65(string)
+msgid "Select shopping list CSV file"
+msgstr "ショッピングリスト CSV ファイルを選択"
+
+#: tmp_strings.xml:66(string)
+msgid "Current Import Policy:"
+msgstr "現在のインポートポリシー:"
+
+#: tmp_strings.xml:67(string)
+msgid "Import Policy"
+msgstr "インポートポリシー"
+
+#: tmp_strings.xml:68(string) tmp_strings.xml:83(string)
+msgid "Select the import policy to use"
+msgstr "使用するインポートポリシーを選択してください"
+
+#: tmp_strings.xml:70(string)
+msgid "The file exists. Do you want to overwrite?"
+msgstr "ファイルはすでに存在します。上書きしますか？"
+
+#: tmp_strings.xml:71(string)
+msgid "Don't ask again. Always overwrite!"
+msgstr "二度と聞かない。いつも上書きする！"
+
+#: tmp_strings.xml:73(string)
+msgid "Import policy set to RESTORE"
+msgstr "インポートポリシーが RESTORE に設定されました"
+
+#: tmp_strings.xml:74(string)
+msgid ""
+"Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE "
+"them with the contents of the CSV file. Are you sure?"
+msgstr ""
+"あなたの現在のインポートポリシーはすべての記録を削除し、 CSV ファイル内のコン"
+"テンツで置き換えることになっています。よろしいですか？"
+
+#: tmp_strings.xml:76(string)
+msgid "Settings"
+msgstr "設定"
+
+#: tmp_strings.xml:77(string)
+msgid "CSV file format"
+msgstr "CSV ファイルフォーマット"
+
+#: tmp_strings.xml:78(string)
+msgid "Select CSV file format"
+msgstr "CSV ファイルフォーマットを選択"
+
+#: tmp_strings.xml:79(string)
+msgid "Select encoding"
+msgstr "エンコードを選択"
+
+#: tmp_strings.xml:80(string)
+msgid "Default"
+msgstr "デフォルト"
+
+#: tmp_strings.xml:81(string)
+msgid "Use custom encoding (advanced users)"
+msgstr "カスタムエンコードを使用する (上級ユーザー)"
+
+#: tmp_strings.xml:82(string)
+msgid "Select a CSV file format"
+msgstr "CSV ファイルフォーマットを一つ選択"
+
+#. Preference category title
+#: tmp_strings.xml:87(string)
+msgid "Common settings"
+msgstr "一般設定"
+
+#: tmp_strings.xml:88(string)
+msgid "Import/export settings that apply to Notepad and Shopping list."
+msgstr "メモ帳とショッピングリストに適応される設定をインポート/エクスポート"
+
+#: tmp_strings.xml:89(string)
+msgid "Ask if file exists"
+msgstr "ファイルがすでに存在する場合に聞く"
+
+#: tmp_strings.xml:90(string)
+msgid ""
+"If checked a dialog appears to confirm overwriting if the export file "
+"already exists."
+msgstr ""
+"チェックされていると既に存在するファイルを上書きするときに確認ダイアログが表"
+"示されます。"
+
+#: tmp_strings.xml:92(string)
+msgid "Application specific settings"
+msgstr "アプリケーションの詳しい設定"
+
+#: tmp_strings.xml:93(string)
+msgid "Filename"
+msgstr "ファイル名"
+
+#: tmp_strings.xml:94(string)
+msgid "Full path for file."
+msgstr "ファイルのフルパス"
+
+#: tmp_strings.xml:97(string)
+msgid "Import/export settings for OI Notepad."
+msgstr "OI メモ帳の設定をインポート/エクスポート"
+
+#: tmp_strings.xml:99(string)
+msgid "OI Shopping list"
+msgstr "OI ショッピングリスト"
+
+#: tmp_strings.xml:100(string)
+msgid "Import/export settings for OI Shopping list."
+msgstr "OI ショッピングリストの設定をインポート/エクスポートする"
+
+#: tmp_strings.xml:102(string)
+msgid "Converting..."
+msgstr "変換中..."
+
+#: tmp_strings.xml:103(string)
+msgid "Ok"
+msgstr "OK"
+
+#: tmp_strings.xml:104(string)
+msgid "Import stores"
+msgstr "店をインポートする"
+
+#: tmp_strings.xml:105(string)
+msgid "Import HandyShopper store names only as item tags."
+msgstr "HandyShopper 店名をアイテムタグとしてインポート"
+
+#: tmp_strings.xml:106(string)
+msgid "Import HandyShopper stores and per-store price and aisle information."
+msgstr "HandyShopper 店、各店の価格と通路情報をインポート"
+
+#. Permission
+#: tmp_strings.xml:110(string)
+msgid "read notes"
+msgstr "ノートの閲覧"
+
+#: tmp_strings.xml:111(string)
+msgid ""
+"Allows an application to read notes. Note that encrypted notes are provided "
+"in the encrypted format."
+msgstr ""
+"他のアプリケーションがノートを閲覧する事を許可します。暗号化されたノートは暗"
+"号化された状態で提供される事に注意してください。"
+
+#. Permission
+#: tmp_strings.xml:113(string)
+msgid "write notes"
+msgstr "ノートの作成・編集"
+
+#: tmp_strings.xml:114(string)
+msgid "Allows an application to create new notes or modify existing notes."
+msgstr "他のアプリケーションにノートの新規作成や編集を許可します。"
+
+#. Permission
+#: tmp_strings.xml:118(string)
+msgid "read shopping lists"
+msgstr "ショッピングリストの閲覧"
+
+#: tmp_strings.xml:119(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+"他のアプリケーションにショッピングリストを閲覧する事を許可します。暗号化され"
+"たリストやアイテムは暗号化された状態で提供される事に注意してください。"
+
+#. Permission
+#: tmp_strings.xml:121(string)
+msgid "write shopping lists"
+msgstr "ショッピングリストの作成・編集"
+
+#: tmp_strings.xml:122(string)
+msgid ""
+"Allows an application to create new lists and items or modify existing ones."
+msgstr "他のアプリケーションにリストやアイテムの新規追加や編集を許可します。"
+
+#: tmp_strings.xml:125(item)
+msgid "MS Outlook Notes"
+msgstr "MS Outlook ノート"
+
+#: tmp_strings.xml:126(item)
+msgid "Palm CSV"
+msgstr "Palm CSV"
+
+#: tmp_strings.xml:127(item)
+msgid "JPilot Memo"
+msgstr "JPilot メモ"
+
+#: tmp_strings.xml:131(item)
+msgid "MS Outlook Tasks"
+msgstr "MS Outlook タスク"
+
+#: tmp_strings.xml:132(item)
+msgid "HandyShopper"
+msgstr "HandyShopper"
+
+#: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
+msgid "DUPLICATE - Allow duplicates of records."
+msgstr "重複- 記録の重複を許可する"
+
+#: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
+#, fuzzy
+msgid "KEEP - Don't overwrite existing records."
+msgstr "\"保つ- 存在する記録に上書きしない。\""
+
+#: tmp_strings.xml:138(item)
+msgid "Overwrite - Overwrite existing records."
+msgstr "上書き- 存在する記録に上書き"
+
+#: tmp_strings.xml:139(item)
+msgid "Restore - DELETE ALL, then import."
+msgstr "復元- すべてを削除し、インポートする。"
+
+#: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
+msgid "DUPLICATE - Add a second copy of a record if it already exists."
+msgstr "重複- 存在する記録がある場合、二つ目のコピーを追加する。"
+
+#: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+#, fuzzy
+msgid ""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
+msgstr "\"保つ- 存在する記録は上書きせず、CSV ファイル内の記録を無視する。\""
+
+#: tmp_strings.xml:145(item)
+msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
+msgstr "上書き- CSV 内の記録は存在する記録を上書きします。"
+
+#: tmp_strings.xml:146(item)
+msgid ""
+"Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
+msgstr ""
+"バックアップを復元- すべての記録を削除し、CSV ファイルをインポートします。"

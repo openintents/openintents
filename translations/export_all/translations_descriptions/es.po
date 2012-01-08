@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Martín González <Unknown>\n"
+"Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,6 +21,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Fitoschido https://launchpad.net/~fitoschido\n"
 "  Martín González https://launchpad.net/~mgonzlezgmz\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm"
@@ -121,15 +122,15 @@ msgstr "Aplicaciones que funcionan con \"OI About\":"
 
 #: tmp_strings.xml:36(listitem)
 msgid "OI Notepad"
-msgstr "OI Notepad"
+msgstr "Bloc de notas OI"
 
 #: tmp_strings.xml:37(listitem)
 msgid "OI File manager"
-msgstr "OI File manager"
+msgstr "Gestor de archivos OI"
 
 #: tmp_strings.xml:38(listitem)
 msgid "OI Shopping List"
-msgstr "OI Shopping List"
+msgstr "Lista de compras OI"
 
 #: tmp_strings.xml:39(listitem)
 msgid "OI Convert CSV"

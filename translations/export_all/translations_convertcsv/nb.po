@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Arne Tobias Malkenes Ødegaard <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,6 +21,8 @@ msgstr ""
 #: tmp_strings.xml:25(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias"
 
 #. Explanation what this application does.
 #: tmp_strings.xml:28(string)
@@ -28,314 +30,332 @@ msgid ""
 "This extension to OI Shopping list and OI Notepad lets you import and export "
 "lists and notes in the CSV file format."
 msgstr ""
+"Denne utvidelsen til OI Handleliste og OI Notatblokk lar deg importere og "
+"eksportere lister og notater i filformatet CSV."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
 msgid "OI Shopping List"
-msgstr ""
+msgstr "OI Handleliste"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:36(string) tmp_strings.xml:96(string)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI Notatblokk"
 
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:39(string)
 msgid "Launch %s and select menu &gt; Convert CSV."
-msgstr ""
+msgstr "Start %s og velg meny &gt; Konverter CSV."
 
 #. Application name. Can be localized.
 #. 	  "CSV" is a common file extension meaning "comma separated values".
 #. 	  "OI" and "CSV" should not be changed.
 #: tmp_strings.xml:47(string)
 msgid "OI Convert CSV"
-msgstr ""
+msgstr "OI Konverter CSV"
 
 #: tmp_strings.xml:48(string)
 msgid "Convert CSV"
-msgstr ""
+msgstr "Konverter CSV"
 
 #: tmp_strings.xml:49(string)
 msgid "Convert CSV to Notepad"
-msgstr ""
+msgstr "Konverter CSV til Notatblokk"
 
 #: tmp_strings.xml:50(string)
 msgid "Convert CSV to Shopping list"
-msgstr ""
+msgstr "Konverter CSV til Handleliste"
 
 #: tmp_strings.xml:51(string)
 msgid "Convert all notes"
-msgstr ""
+msgstr "Konverter alle notater"
 
 #: tmp_strings.xml:52(string)
 msgid "Convert all shopping lists"
-msgstr ""
+msgstr "Konverter alle handlelister"
 
 #: tmp_strings.xml:53(string)
 msgid "Convert list '%s'"
-msgstr ""
+msgstr "Konverter liste '%s'"
 
 #: tmp_strings.xml:54(string)
 msgid "File path"
-msgstr ""
+msgstr "Filsti"
 
 #: tmp_strings.xml:55(string)
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: tmp_strings.xml:56(string)
 msgid "Export"
-msgstr ""
+msgstr "Eksporter"
 
 #: tmp_strings.xml:57(string)
 msgid "Error writing to file"
-msgstr ""
+msgstr "Feil ved skriving til fil"
 
 #: tmp_strings.xml:58(string)
 msgid "Error reading from file"
-msgstr ""
+msgstr "Feil ved lesing av fil"
 
 #: tmp_strings.xml:59(string)
 msgid "Wrong CSV format"
-msgstr ""
+msgstr "Feil CSV-format"
 
 #: tmp_strings.xml:60(string)
 msgid "File not found"
-msgstr ""
+msgstr "Fil ikke funnet"
 
 #: tmp_strings.xml:61(string)
 msgid "Not yet implemented, please choose different option."
-msgstr ""
+msgstr "Ikke implementert ennå, vennligst velg et annet alternativ."
 
 #: tmp_strings.xml:62(string)
 msgid "Import finished"
-msgstr ""
+msgstr "Importering ferdig"
 
 #: tmp_strings.xml:63(string)
 msgid "Export finished"
-msgstr ""
+msgstr "Eksportering ferdig"
 
 #: tmp_strings.xml:64(string)
 msgid "Select notepad CSV file"
-msgstr ""
+msgstr "Velg notatblokk CSV-fil"
 
 #: tmp_strings.xml:65(string)
 msgid "Select shopping list CSV file"
-msgstr ""
+msgstr "Velg handleliste CSV-fil"
 
 #: tmp_strings.xml:66(string)
 msgid "Current Import Policy:"
-msgstr ""
+msgstr "Nåværende importpolitikk:"
 
 #: tmp_strings.xml:67(string)
 msgid "Import Policy"
-msgstr ""
+msgstr "Importpolitikk"
 
 #: tmp_strings.xml:68(string) tmp_strings.xml:83(string)
 msgid "Select the import policy to use"
-msgstr ""
+msgstr "Velg importpolitikken å bruke"
 
 #: tmp_strings.xml:70(string)
 msgid "The file exists. Do you want to overwrite?"
-msgstr ""
+msgstr "Filen eksisterer. Vil du overskrive?"
 
 #: tmp_strings.xml:71(string)
 msgid "Don't ask again. Always overwrite!"
-msgstr ""
+msgstr "Ikke spør igjen. Overskriv alltid!"
 
 #: tmp_strings.xml:73(string)
 msgid "Import policy set to RESTORE"
-msgstr ""
+msgstr "Importpolitikk sett til GJENOPPRETT"
 
 #: tmp_strings.xml:74(string)
 msgid ""
 "Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE "
 "them with the contents of the CSV file. Are you sure?"
 msgstr ""
+"Din nåværende importpolitikk er sett til SLETT ALLE NÅVÆRENDE POSTER og "
+"ERSTATT dem med inneholdene av CSV-filen. Er du sikker?"
 
 #: tmp_strings.xml:76(string)
 msgid "Settings"
-msgstr ""
+msgstr "Innstillinger"
 
 #: tmp_strings.xml:77(string)
 msgid "CSV file format"
-msgstr ""
+msgstr "CSV filformat"
 
 #: tmp_strings.xml:78(string)
 msgid "Select CSV file format"
-msgstr ""
+msgstr "Velg CSV filformat"
 
 #: tmp_strings.xml:79(string)
 msgid "Select encoding"
-msgstr ""
+msgstr "Velg koding"
 
 #: tmp_strings.xml:80(string)
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 #: tmp_strings.xml:81(string)
 msgid "Use custom encoding (advanced users)"
-msgstr ""
+msgstr "Bruk tilpasset koding (avanserte brukere)"
 
 #: tmp_strings.xml:82(string)
 msgid "Select a CSV file format"
-msgstr ""
+msgstr "Velg et CSV-filformat"
 
 #. Preference category title
 #: tmp_strings.xml:87(string)
 msgid "Common settings"
-msgstr ""
+msgstr "Vanlige innstillinger"
 
 #: tmp_strings.xml:88(string)
 msgid "Import/export settings that apply to Notepad and Shopping list."
 msgstr ""
+"Importer/eksporter innstillinger som gjelder for Notatblokk og Handleliste."
 
 #: tmp_strings.xml:89(string)
 msgid "Ask if file exists"
-msgstr ""
+msgstr "Spør om fil eksisterer"
 
 #: tmp_strings.xml:90(string)
 msgid ""
 "If checked a dialog appears to confirm overwriting if the export file "
 "already exists."
 msgstr ""
+"En dialog dukker opp hvis krysset for å bekrefte overskriving hvis "
+"eksportfilen allerede eksisterer."
 
 #: tmp_strings.xml:92(string)
 msgid "Application specific settings"
-msgstr ""
+msgstr "Innstillinger spesifikke til applikasjon"
 
 #: tmp_strings.xml:93(string)
 msgid "Filename"
-msgstr ""
+msgstr "Filnavn"
 
 #: tmp_strings.xml:94(string)
 msgid "Full path for file."
-msgstr ""
+msgstr "Full sti for fil."
 
 #: tmp_strings.xml:97(string)
 msgid "Import/export settings for OI Notepad."
-msgstr ""
+msgstr "Importer/eksporter innstillinger fra OI Notatblokk."
 
 #: tmp_strings.xml:99(string)
 msgid "OI Shopping list"
-msgstr ""
+msgstr "OI Handleliste"
 
 #: tmp_strings.xml:100(string)
 msgid "Import/export settings for OI Shopping list."
-msgstr ""
+msgstr "Importer/eksporter innstillinger fra OI Handleliste."
 
 #: tmp_strings.xml:102(string)
 msgid "Converting..."
-msgstr ""
+msgstr "Konverterer..."
 
 #: tmp_strings.xml:103(string)
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: tmp_strings.xml:104(string)
 msgid "Import stores"
-msgstr ""
+msgstr "Importer butikker"
 
 #: tmp_strings.xml:105(string)
 msgid "Import HandyShopper store names only as item tags."
-msgstr ""
+msgstr "Importer HandyShopper butikknavn bare som elementmerker."
 
 #: tmp_strings.xml:106(string)
 msgid "Import HandyShopper stores and per-store price and aisle information."
 msgstr ""
+"Importer HandyShopper-butikker, priser per butikk og hylleradinformasjon."
 
 #. Permission
 #: tmp_strings.xml:110(string)
 msgid "read notes"
-msgstr ""
+msgstr "les notater"
 
 #: tmp_strings.xml:111(string)
 msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
 msgstr ""
+"Lar en applikasjon lese notater. Noter at krypterte notater blir levert i "
+"det krypterte"
 
 #. Permission
 #: tmp_strings.xml:113(string)
 msgid "write notes"
-msgstr ""
+msgstr "skriv notater"
 
 #: tmp_strings.xml:114(string)
 msgid "Allows an application to create new notes or modify existing notes."
-msgstr ""
+msgstr "Lar en applikasjon opprette nye notater eller endre eksisterende."
 
 #. Permission
 #: tmp_strings.xml:118(string)
 msgid "read shopping lists"
-msgstr ""
+msgstr "les handlelister"
 
 #: tmp_strings.xml:119(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
+"Lar en applikasjon lese handlelister. Noter at krypterte lister og punkter "
+"blir levert i det krypterte formatet."
 
 #. Permission
 #: tmp_strings.xml:121(string)
 msgid "write shopping lists"
-msgstr ""
+msgstr "skriv handlelister"
 
 #: tmp_strings.xml:122(string)
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
 msgstr ""
+"Lar en applikasjon opprette nye lister og punkter eller endre eksisterende."
 
 #: tmp_strings.xml:125(item)
 msgid "MS Outlook Notes"
-msgstr ""
+msgstr "MS Outlook Notater"
 
 #: tmp_strings.xml:126(item)
 msgid "Palm CSV"
-msgstr ""
+msgstr "Palm CSV"
 
 #: tmp_strings.xml:127(item)
 msgid "JPilot Memo"
-msgstr ""
+msgstr "JPilot Memo"
 
 #: tmp_strings.xml:131(item)
 msgid "MS Outlook Tasks"
-msgstr ""
+msgstr "MS Outlook Oppgaver"
 
 #: tmp_strings.xml:132(item)
 msgid "HandyShopper"
-msgstr ""
+msgstr "HandyShopper"
 
 #: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
 msgid "DUPLICATE - Allow duplicates of records."
-msgstr ""
+msgstr "DUPLISER - Tillatt duplisering av poster."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-msgid "\"KEEP - Don't overwrite existing records.\""
-msgstr ""
+#, fuzzy
+msgid "KEEP - Don't overwrite existing records."
+msgstr "\"BEHOLD - Ikke overskriv eksisterende poster.\""
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
-msgstr ""
+msgstr "Overskriv - Overskriv eksisterende poster."
 
 #: tmp_strings.xml:139(item)
 msgid "Restore - DELETE ALL, then import."
-msgstr ""
+msgstr "Gjenopprett - SLETT ALT, så importer."
 
 #: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
 msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr ""
+"DUPLISER - Legg til en ny kopi av en post hvis den allerede eksisterer."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+#, fuzzy
 msgid ""
-"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-"\""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
+"\"BEHOLD - Ikke overskriv en eksisterende post, ignorer den i CSV-filen.\""
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
-msgstr ""
+msgstr "Overskriv - En post i CSV'en vil OVERSKRIVE en eksisterende post."
 
 #: tmp_strings.xml:146(item)
 msgid ""
 "Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
 msgstr ""
+"Gjenopprett sikkerhetskopi - SLETT ALLE DINE EKSISTERENDE POSTER, så "
+"importer CSV-filen."

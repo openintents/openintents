@@ -74,7 +74,7 @@
     <string name="file_exists">Файл существует. Вы хотите перезаписать?</string>
     <string name="dont_ask_again">Больше не спрашивать. Всегда перезаписывать!</string>
     
-    <string name="warn_restore_policy_title">Import policy set to RESTORE</string>
+    <string name="warn_restore_policy_title">Политика импорта - ВОССТАНОВЛЕНИЕ</string>
     <string name="warn_restore_policy">Выбрана политика импорта на УДАЛЕНИЕ ВСЕ ЗАПИСИ и ЗАМЕНА их содержимым файла CSV.Вы уверены?</string>
     
     <string name="menu_settings">Настройки</string>
@@ -128,7 +128,7 @@
     <string-array name="notepad_format">
         <item>MS Outlook Notes</item>
         <item>Palm CSV</item>
-        <item>JPilot Memo</item>
+        <item>заметка JPilot</item>
     </string-array>
     
     <string-array name="shoppinglist_format">
@@ -137,27 +137,27 @@
     </string-array>
     
     <string-array name="import_policy">
-        <item>DUPLICATE - возможность дублирования записей</item>
-        <item>"KEEP - Don\'t overwrite existing records."</item>
-        <item>Overwrite - Overwrite existing records.</item>
-        <item>Restore - DELETE ALL, then import.</item>
+        <item>ДУБЛИРОВАТЬ - возможность дублирования записей</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>Переписать - Переписать существующие записи</item>
+        <item>Восстановление - УДАЛИТЬ ВСЁ,  затем импортировать.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
-        <item>DUPLICATE - Add a second copy of a record if it already exists.</item>
-        <item>"KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file."</item>
+        <item>ДУБЛИРОВАТЬ - Если запись существует, добавить копию.</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>Переписать - запись в формате CSV будет ПЕРЕПИСЫВАТЬ существующие записи.</item>
-        <item>Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file.</item>
+        <item>Восстановить - УДАЛИТЬ ВСЕ СУЩЕСТВУЮЩИЕ ЗАПИСИ, а затем импортировать файл CSV.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
-        <item>DUPLICATE - возможность дублирования записей</item>
-        <item>"KEEP - Don\'t overwrite existing records."</item>
+        <item>ДУБЛИРОВАТЬ - возможность дублирования записей</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
-        <item>DUPLICATE - Add a second copy of a record if it already exists.</item>
-        <item>"KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file."</item>
+        <item>ДУБЛИРОВАТЬ - Если запись существует, добавить копию.</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>

@@ -1,0 +1,356 @@
+# Punjabi translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Angad Singh  <Unknown>\n"
+"Language-Team: Punjabi <pa@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Angad Singh  https://launchpad.net/~angad21-02-1996"
+
+#. ***************************
+#. 	     Applicatio-specific strings
+#. 	     ***************************
+#: tmp_strings.xml:13(string) tmp_strings.xml:21(string)
+msgid "OI Update"
+msgstr "OI ਉਦਯਤਨ"
+
+#: tmp_strings.xml:15(string)
+msgid "A new version of %s is available.\\nWould you like to upgrade?"
+msgstr "%s ਦਾ ਇੱਕ ਨਵਾਂ ਸੰਸਕਰਣ ਉਪਲੱਬਧ ਹੈ  \\n ਕੀ ਤੁਹਾਨੂੰ ਅਪਗਰੇਡ ਕਰਣਾ ਚਾਹਾਂਗੇ ?"
+
+#: tmp_strings.xml:16(string)
+msgid "A new version of %1$s is available at %2$s.\\n%3$s\\n"
+msgstr "%1$s  ਦੇ ਇੱਕ ਨਵੇਂ ਸੰਸਕਰਣ ਉੱਤੇ ਉਪਲੱਬਧ ਹੈ  %2$s.\\n %3$s\\n"
+
+#: tmp_strings.xml:17(string)
+msgid "A new version of %1$s is available.\\n%2$s\\n"
+msgstr "%1$s  ਦੇ ਇੱਕ ਨਵੇਂ ਸੰਸਕਰਣ ਉੱਤੇ ਉਪਲੱਬਧ \\n%2$s\\n"
+
+#: tmp_strings.xml:18(string)
+msgid "A new version of %1$s is available at %2$s."
+msgstr "%1$s  ਦੇ ਇੱਕ ਨਵੇਂ ਸੰਸਕਰਣ ਉੱਤੇ ਉਪਲੱਬਧ ਹੈ  %2$s."
+
+#: tmp_strings.xml:19(string)
+msgid "A new version of %s is available."
+msgstr "%s ਦਾ ਇੱਕ ਨਵਾਂ ਸੰਸਕਰਣ ਉਪਲੱਬਧ ਹੈ ."
+
+#: tmp_strings.xml:20(string)
+msgid "Android Market not available."
+msgstr "Android ਬਾਜ਼ਾਰ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ ."
+
+#: tmp_strings.xml:22(string)
+msgid "Android Market"
+msgstr "Android ਬਾਜ਼ਾਰ"
+
+#: tmp_strings.xml:23(string)
+msgid "AndAppStore.com"
+msgstr "AndAppStore.com"
+
+#: tmp_strings.xml:25(string)
+msgid "Version %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
+msgstr "ਸੰਸਕਰਣ %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
+
+#: tmp_strings.xml:26(string)
+msgid "free space: %s"
+msgstr "ਅਜ਼ਾਦ ਆਕਾਸ਼ %s"
+
+#: tmp_strings.xml:27(string)
+msgid "Board %1$s\\nBrand %2$s\\nDevice %3$s\\nID %4$s\\nModel %5$s"
+msgstr "ਬੋਰਡ %1$s\\n ਬਰਾਂਡ %2$s\\n ਡਿਵਾਇਸ %3$\\n ਆਈਡੀ %4$s\\n ਮਾਡਲ %5$s"
+
+#: tmp_strings.xml:29(string)
+msgid "Perform update now!"
+msgstr "ਨੁਮਾਇਸ਼ ਹੁਣ ਅਦਿਅਤਨ !"
+
+#: tmp_strings.xml:30(string)
+msgid "Try update from Market now!"
+msgstr "ਹੁਣ ਬਾਜ਼ਾਰ ਵਲੋਂ ਅਦਿਅਤਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ !"
+
+#: tmp_strings.xml:31(string)
+msgid "Try update from AndAppStore now!"
+msgstr "ਅਤੇ ਐਪ ਸਟੋਰ ਵਲੋਂ ਹੁਣ ਅਦਿਅਤਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ !"
+
+#: tmp_strings.xml:32(string)
+msgid "Remind me later!"
+msgstr "ਮੈਨੂੰ ਬਾਅਦ ਵਿੱਚ ਯਾਦ ਦਵਾਣਾ ਹੈ !"
+
+#: tmp_strings.xml:33(string)
+msgid "Ignore this update"
+msgstr "ਇਸ ਅਦਿਅਤਨ ਉੱਤੇ ਧਿਆਨ ਨਹੀਂ ਦਿਓ"
+
+#: tmp_strings.xml:34(string)
+msgid "Ignore all further updates"
+msgstr "ਸਾਰੇ ਅੱਗੇ ਅਦਿਅਤਨ ਉੱਤੇ ਧਿਆਨ ਨਹੀਂ ਦਿਓ"
+
+#: tmp_strings.xml:35(string)
+msgid "Ok"
+msgstr "ਠੀਕ ਹੈ"
+
+#: tmp_strings.xml:37(string)
+msgid ""
+"Update could not be started!\\n\\nPlease contact application developer!\\n\\n"
+"%s"
+msgstr "ਅਦਿਅਤਨ ਸ਼ੁਰੂ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ! \\n\\n ਕ੍ਰਿਪਾ ਸੰਪਰਕ ਆਵੇਦਨ ਡੇਵਲਪਰ !\\n \\n%s"
+
+#: tmp_strings.xml:38(string)
+msgid "Application is up-to-date."
+msgstr "ਆਵੇਦਨ ਅਪ ਕਰਣ ਦੀ ਤਾਰੀਖ ਹੈ ."
+
+#: tmp_strings.xml:39(string)
+msgid "Checking for new version."
+msgstr "ਨਵੇਂ ਸੰਸਕਰਣ ਲਈ ਜਾਂਚ ਹੋ ਰਹੀ ਹੈ ."
+
+#: tmp_strings.xml:40(string)
+msgid "Building list of applications."
+msgstr "ਭਵਨ ਆਵੇਦਨਾਂ ਦੀ ਸੂਚੀ ."
+
+#: tmp_strings.xml:41(string)
+msgid "Check AndAppStore.com"
+msgstr "AndAppStore.com ਦੀ ਜਾਂਚ ਕਰੋਏ"
+
+#: tmp_strings.xml:42(string)
+msgid "Check versions"
+msgstr "ਸੰਸਕਰਣੋਂ ਦੀ ਜਾਂਚ ਕਰੋਏ"
+
+#: tmp_strings.xml:43(string)
+msgid "Show all"
+msgstr "ਸਾਰੇ ਦਿਖਾਵਾਂ"
+
+#: tmp_strings.xml:44(string)
+msgid "Refresh"
+msgstr "ਤਾਜ਼ਾ ਕਰੋ"
+
+#: tmp_strings.xml:45(string)
+msgid "Checked AndAppStore"
+msgstr "ਚੇਕਡ AndAppStore"
+
+#: tmp_strings.xml:46(string)
+msgid "Current version: %s"
+msgstr "ਵਰਤਮਾਨ ਸੰਸਕਰਣ : %s"
+
+#: tmp_strings.xml:47(string)
+msgid "Current version code: %s"
+msgstr "ਵਰਤਮਾਨ ਸੰਸਕਰਣ ਕੋਡ :  %s"
+
+#: tmp_strings.xml:48(string)
+msgid "Newer version: %s"
+msgstr "ਨਵੇਂ ਸੰਸਕਰਣ :  %s"
+
+#: tmp_strings.xml:49(string)
+msgid "Newer version: %1$s - %2$s"
+msgstr "ਨਵੇਂ ਸੰਸਕਰਣ %1$s - %2$s"
+
+#: tmp_strings.xml:50(string)
+msgid "Newer version available."
+msgstr "ਨਵਾਂ ਸੰਸਕਰਣ ਉਪਲੱਬਧ ."
+
+#: tmp_strings.xml:51(string)
+msgid "No update information found."
+msgstr "ਨਹੀਂ ਨਵੀਨੀਕਰਣ ਜਾਣਕਾਰੀ ਪਾਇਆ ."
+
+#: tmp_strings.xml:52(string)
+msgid "OI Update - List of new versions"
+msgstr "OI ਅਦਿਅਤਨ  -  ਨਵੇਂ ਸੰਸਕਰਣੋਂ ਦੀ ਸੂਚੀ"
+
+#: tmp_strings.xml:53(string)
+msgid "OI Update - New versions at AndAppStore"
+msgstr "OI ਅਦਿਅਤਨ  -  AndAppStore ਉੱਤੇ ਨਵਾਂ ਸੰਸਕਰਣ"
+
+#: tmp_strings.xml:54(string)
+msgid "OI Update - List of managed applications"
+msgstr "OI ਅਦਿਅਤਨ  -  ਕਾਮਯਾਬ ਰਹੇ ਅਨੁਪ੍ਰਯੋਗੋਂ ਦੀ ਸੂਚੀ"
+
+#: tmp_strings.xml:55(string)
+msgid "OI Update - List of managed applications (check at AndAppStore)"
+msgstr "OI ਅਦਿਅਤਨ  -  ਕਾਮਯਾਬ ਰਹੇ ਆਵੇਦਨਾਂ ਦੀ ਸੂਚੀ  ( AndAppStore ਉੱਤੇ ਜਾਂਚ )"
+
+#: tmp_strings.xml:56(string)
+msgid "Settings"
+msgstr "ਸੈਟਿੰਗ"
+
+#: tmp_strings.xml:57(string)
+msgid "Auto check"
+msgstr "ਆਟੋ ਚੇਕ"
+
+#: tmp_strings.xml:58(string)
+msgid "Ignored"
+msgstr "ਅਣਡਿੱਠਾ"
+
+#: tmp_strings.xml:59(string)
+msgid "Updates are currently ignored. Would you like to receive updates again?"
+msgstr ""
+"ਅਦਿਅਤਨ ਵਰਤਮਾਨ ਦੀ ਅਨਦੇਖੀ ਕਰ ਰਹੇ ਹਨ .  ਤੁਸੀ ਅਦਿਅਤਨੋਂ ਨੂੰ ਫਿਰ ਵਲੋਂ ਪ੍ਰਾਪਤ ਕਰਣਾ ਚਾਹਾਂਗੇ ?"
+
+#: tmp_strings.xml:60(string)
+msgid "Unknown"
+msgstr "ਅਣਜਾਣ"
+
+#: tmp_strings.xml:61(string)
+msgid ""
+"No update information available. Please check manually and ask the developer "
+"to support OI Update in the future."
+msgstr ""
+"ਕੋਈ ਨਵੀਨੀਕਰਣ ਜਾਣਕਾਰੀ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ .  ਮੈਨਿਉਅਲ ਦੀ ਜਾਂਚ ਕਰੀਏ ਅਤੇ ਡੇਵਲਪਰ ਪੁੱਛਣ ਲਈ ਭਵਿੱਖ "
+"ਵਿੱਚ ਪੁਰਾਨਾ ਅਦਿਅਤਨ ਸਮਰਥਨ ."
+
+#: tmp_strings.xml:62(string)
+msgid "Search on Market"
+msgstr "ਬਾਜ਼ਾਰ ਉੱਤੇ ਖੋਜਾਂ"
+
+#: tmp_strings.xml:63(string)
+msgid "Search on AndAppStore"
+msgstr "AndAppStore ਉੱਤੇ ਖੋਜਾਂ"
+
+#: tmp_strings.xml:64(string)
+msgid "Processing %s"
+msgstr "ਪ੍ਰਸੰਸਕਰਣ %s"
+
+#: tmp_strings.xml:66(string)
+msgid ""
+"The update process of this application directs to a different site than "
+"Android Market. Applications installed from unknown sources might exhibit a "
+"security risk."
+msgstr ""
+"ਇਸ ਆਵੇਦਨ  ਦੇ ਨਵੀਨੀਕਰਣ ਦੀ ਪਰਿਕ੍ਰੀਆ Android ਬਾਜ਼ਾਰ ਦੀ ਤੁਲਣਾ ਵਿੱਚ ਇੱਕ ਵੱਖ ਸਾਇਟ ਲਈ "
+"ਨਿਰਦੇਸ਼ .  ਅਗਿਆਤ ਸਰੋਤਾਂ ਵਲੋਂ ਸਥਾਪਤ ਅਨੁਪ੍ਰਯੋਗੋਂ  ਦੇ ਇੱਕ ਸੁਰੱਖਿਆ ਜੋਖਮ ਨੁਮਾਇਸ਼ ਹੋ ਸਕਦਾ ਹੈ ."
+
+#: tmp_strings.xml:70(string)
+msgid "Continue anyway"
+msgstr "ਕਿਸੇ ਵੀ ਤਰਾਂ ਜਾਰੀ"
+
+#: tmp_strings.xml:71(string)
+msgid "Abort"
+msgstr "ਛੱਡੋ"
+
+#: tmp_strings.xml:73(string)
+msgid "Auto update"
+msgstr "ਆਟੋ ਨਵੀਨੀਕਰਣ"
+
+#: tmp_strings.xml:74(string)
+msgid "If checked, search for updates is performed regularly"
+msgstr "ਜੇਕਰ ਜਾਂਚ ਕੀਤੀ ,  ਨੇਮੀ ਰੂਪ ਵਲੋਂ ਅਦਿਅਤਨ ਲਈ ਖੋਜ ਕੀਤਾ ਜਾਂਦਾ ਹੈ"
+
+#: tmp_strings.xml:75(string)
+msgid "Update interval"
+msgstr "ਅੱਪਡੇਟ ਅੰਤਰਾਲ"
+
+#: tmp_strings.xml:76(string)
+msgid "Set the interval how often the update search should be performed."
+msgstr "ਅੰਤਰਾਲ ਕਿੰਨੀ ਵਾਰ ਨਵੀਨੀਕਰਣ ਖੋਜ ਨੁਮਾਇਸ਼ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ ਸੇਟ ."
+
+#: tmp_strings.xml:77(string)
+msgid "Select interval"
+msgstr "ਅੰਤਰਾਲ ਦਾ ਸੰਗ੍ਰਹਿ ਕਰੋਏ"
+
+#: tmp_strings.xml:78(string)
+msgid "every_month"
+msgstr "ਹਰ _ ਮਹੀਨੇ"
+
+#: tmp_strings.xml:79(string)
+msgid "Warning"
+msgstr "ਚੇਤਾਵਨੀ"
+
+#: tmp_strings.xml:80(string)
+msgid ""
+"If you uncheck this item, you will no longer receive notifications for "
+"updates. Do you still want to uncheck auto update?"
+msgstr ""
+"ਜੇਕਰ ਤੁਸੀ ਅਨਚੇਕ ਇਸ ਨਸ਼ਾ ,  ਤੁਸੀ ਨਹੀਂ ਰਹਿ ਅਦਿਅਤਨ ਲਈ ਸੂਚਨਾ ਪ੍ਰਾਪਤ ਹੋਵੇਗਾ .  ਕੀ ਤੁਸੀ ਹੁਣੇ ਵੀ "
+"ਨੂੰ ਅਨਚੇਕ ਆਪਣੇ ਆਪ :  ਅਦਿਅਤਨ ਕਰਣਾ ਚਾਹੁੰਦੇ ਹੋ ?"
+
+#: tmp_strings.xml:82(string)
+msgid "Use AndAppStore"
+msgstr "AndAppStore ਦਾ ਪ੍ਰਯੋਗ ਕਰੋਏ"
+
+#: tmp_strings.xml:83(string)
+msgid "Use version information provided by AndAppStore.com"
+msgstr "ਸੰਸਕਰਣ AndAppStore.com ਦੁਆਰਾ ਉਪਲੱਬਧ ਕਰਾਈ ਗਈ ਜਾਣਕਾਰੀ ਦਾ ਵਰਤੋ ਕਰੋਏ"
+
+#: tmp_strings.xml:85(string)
+msgid "Read update information"
+msgstr "ਅਦਿਅਤਨ ਜਾਣਕਾਰੀ ਪੜ੍ਹੀਏ"
+
+#: tmp_strings.xml:86(string)
+msgid "Write update information"
+msgstr "ਅਦਿਅਤਨ ਜਾਣਕਾਰੀ ਲਿਖੀਏ"
+
+#: tmp_strings.xml:87(string)
+msgid ""
+"Read information about installed applications, update locations and requests."
+msgstr "ਸਥਾਪਤ ਅਨੁਪ੍ਰਯੋਗੋਂ ,  ਨਵੀਨੀਕਰਣ ਸਥਾਨਾਂ ਅਤੇ ਅਨੁਰੋਧੋਂ  ਦੇ ਬਾਰੇ ਵਿੱਚ ਜਾਣਕਾਰੀ ਪੜ੍ਹੀਏ ."
+
+#: tmp_strings.xml:88(string)
+msgid ""
+"Write information about installed applications, update locations and "
+"requests."
+msgstr "ਸਥਾਪਤ ਅਨੁਪ੍ਰਯੋਗੋਂ ,  ਨਵੀਨੀਕਰਣ ਸਥਾਨਾਂ ਅਤੇ ਅਨੁਰੋਧੋਂ  ਦੇ ਬਾਰੇ ਵਿੱਚ ਜਾਣਕਾਰੀ  ਦੇ ਲਿਖੀਏ ."
+
+#. About
+#: tmp_strings.xml:92(string)
+msgid "About"
+msgstr "ਇਸ ਬਾਰੇ"
+
+#: tmp_strings.xml:93(string)
+msgid "About %s"
+msgstr "%s ਬਾਰੇ"
+
+#: tmp_strings.xml:94(string)
+msgid ""
+"Version %s \\n\\n OI Update keeps you informed on new application versions."
+"\\n OpenIntents allows different Android applications to share data using "
+"intents and open interfaces.\\n\\n For more information and other great "
+"applications visit OpenIntents at www.openintents.org"
+msgstr ""
+"ਸੰਸਕਰਣ %s \\n\\n OI ਪੁਰਾਨਾ ਅਦਿਅਤਨ ਰਹਿੰਦੀ ਹੈ ਤੂੰ ਨਵੇਂ ਆਵੇਦਨ ਸੰਸਕਰਣੋਂ ਉੱਤੇ ਸੂਚਤसौभाग्य  \\n "
+"OpenIntents ਵੱਖ Android  ਦੇ ਅਨੁਪ੍ਰਯੋਗੋਂ intents ਅਤੇ ਖੁੱਲ੍ਹਾਖੁੱਲ੍ਹਾ ਇੰਟਰਫੇਸ  ਦੇ ਡੇਟਾ ਦਾ ਵਰਤੋ "
+"ਸਾਂਝਾ ਕਰਣ ਲਈ ਆਗਿਆ ਦਿੰਦਾ ਹੈ  \\n\\n ਜਿਆਦਾ ਜਾਣਕਾਰੀ ਅਤੇ ਹੋਰ ਮਹਾਨ ਅਨੁਪ੍ਰਯੋਗੋਂ ਲਈ ਪਤਾ  www."
+"openintents.org ਉੱਤੇ OpenIntents ਯਾਤਰਾ"
+
+#. EULA
+#: tmp_strings.xml:102(string)
+msgid "OI Update EULA"
+msgstr "OI ਅਦਿਅਤਨ EULA"
+
+#: tmp_strings.xml:103(string)
+msgid ""
+"\"Copyright 2008 OpenIntents.org\\n Licensed under the Apache License, "
+"Version 2.0 (the \\\"License\\\"); you may not use this file except in "
+"compliance with the License. You may obtain a copy of the License at\\n "
+"http://www.apache.org/licenses/LICENSE-2.0\\n Unless required by applicable "
+"law or agreed to in writing, software distributed under the License is "
+"distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY "
+"KIND, either express or implied. See the License for the specific language "
+"governing permissions and limitations under the License.\\n \\n\""
+msgstr ""
+"ਕਾਪੀਰਾਇਟ ੨ , ੦੦੮ OpenIntents.org\\n ਅਪਾਚੇ ਲਾਇਸੇਂਸ ,  ਸੰਸਕਰਣ 2.0  ਦੇ ਅਨੁਸਾਰ ਲਾਇਸੇਂਸ  "
+"(\\\" ਲਾਇਸੇਂਸ \\\");  ਤੁਸੀ ਲਾਇਸੇਂਸ  ਦੇ ਨਾਲ ਅਨੁਪਾਲਨ ਵਿੱਚ ਛੱਡਕੇ ਇਸ ਫਾਇਲ ਦਾ ਵਰਤੋ ਨਹੀਂ ਤੁਸੀ  "
+"\\n http ਉੱਤੇ ਲਾਇਸੇਂਸ ਦੀ ਇੱਕ ਨਕਲ ਪ੍ਰਾਪਤ ਕਰ ਸੱਕਦੇ ਹੋ ਹੋ ਸਕਦਾ ਹੈ  www.apache.org/ "
+"licenses / LICENSE -2.0: //\\n ਜਦੋਂ ਤੱਕ ਲਾਗੂ ਕਨੂੰਨ ਦੁਆਰਾ ਲੋੜ ਜਾਂ ਲਿਖਤੀ ਰੂਪ ਵਿੱਚ ਸਹਿਮਤ "
+"ਹੋਏ ,  ਲਾਇਸੇਂਸ  ਦੇ ਤਹਿਤ ਵੰਡਵਾਂ ਸਾਫਟਵੇਯਰ ਇੱਕ ਵਰਗਾ ਹੈ ਆਧਾਰ ਉੱਤੇ ਵੰਡਵਾਂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ,  ਕਿਸੇ "
+"ਵੀ ਪ੍ਰਕਾਰ ਦੀਆਂ ਵਾਰੰਟੀਆਂ ਜਾਂ ਸ਼ਰਤਾਂ  ਦੇ  ਦੇ ਬਿਨਾਂ , ਜਾਂ ਤਾਂ ਵਿਅਕਤ ਜਾਂ ਰਖਿਆ ਹੋਇਆ .  ਵਿਸ਼ੇਸ਼ "
+"ਭਾਸ਼ਾ ਲਈ ਲਾਇਸੇਂਸ  ਦੇ ਅਨੁਸਾਰ  \\n\\n ਅਨੁਮਤੀਯਾਂ ਅਤੇ ਸੀਮਾਵਾਂ ਦੀ ਗਵਰਨਿੰਗ ਲਾਇਸੇਂਸ ਵੇਖੋ"
+
+#: tmp_strings.xml:110(string)
+msgid "Accept"
+msgstr "ਮਨਜ਼ੂਰ"
+
+#: tmp_strings.xml:111(string)
+msgid "Cancel"
+msgstr "ਰੱਦ ਕਰੋ"

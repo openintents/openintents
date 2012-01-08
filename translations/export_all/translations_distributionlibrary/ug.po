@@ -26,6 +26,7 @@ msgstr "OI  چۈشەندۈرۈش ئامبىرى"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Sahran https://launchpad.net/~sahran"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
@@ -128,13 +129,12 @@ msgstr "OI ھەققىدە"
 #. Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.
 #: tmp_strings.xml:69(string)
 msgid "Barcode OI Plugin"
-msgstr ""
+msgstr "OI تاياقچە كود قىستۇرمىسى"
 
 #. Dialog message.
 #: tmp_strings.xml:71(string)
-#, fuzzy
 msgid "No compatible barcode scanner is available."
-msgstr "ماسلىشىشچان ھۆججەت باشقۇرغۇچ يوق."
+msgstr "ماسلىشىدىغان تاياقچە كود تاراغۇچ يوق."
 
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:74(string)

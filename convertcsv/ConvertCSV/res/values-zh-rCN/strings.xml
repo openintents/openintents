@@ -135,26 +135,26 @@
     
     <string-array name="import_policy">
         <item>复制 - 允许重复记录。</item>
-        <item>“继续 - 不要覆盖现有的记录。”</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
         <item>覆盖 - 覆盖现有记录。</item>
         <item>还原 - 全部删除，然后导入。</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>复制- 添加一个纪录两个副本，如果它已经存在。</item>
-        <item>“保持 - 不覆盖现有的记录，忽略一个CSV文件。”</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>覆盖 - 用CSV的记录将覆盖现有的记录。</item>
         <item>恢复备份 - 删除所有现有的记录，然后导入CSV文件。</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>复制 - 允许重复记录。</item>
-        <item>“继续 - 不要覆盖现有的记录。”</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>复制- 添加一个纪录两个副本，如果它已经存在。</item>
-        <item>“保持 - 不覆盖现有的记录，忽略一个CSV文件。”</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>

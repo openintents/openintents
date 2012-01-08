@@ -1,3 +1,10 @@
+# Application:
+OI Plaslayt
+
+# Promo text:
+Ang OpenIntent plaslayt ay tumutulong sa iyo na hanapin ang daan sa dilim. Ang ilaw sa likod ng display ay pinanatiling naka bukas habang ang aplikasyon na ito ay tumatakbo
+
+# Description:
 Ang OI plasleyt  ay isang simple at epektibong applikasyon na tumutulong sa iyo na makahanap ng daan sa dilim. Ang OI plasleyt ay nagpapanatili na bukas ang ilaw sa likod ng display, malinaw na nag-iilaw sa paligid na lugar. Para sa mga aparato na may camera flash, ang OI plaslayt ay maaari ring gamitin ang flash na ito bilang isang maliwanag na tanglaw para lumiwanag ang kuwarto. Ang kulay ng ilaw sa likod ay lubos na napapasadya sa OI Tagapili ng Kulay. 
 
 Ang applikasyon na ito ay walang patalastas at hindi nangangailangan ng pahintulot ng internet. 
@@ -28,7 +35,7 @@ Keywords:
 * OI, OpenIntents, Bukas na Layunin
 
 Internasyonal na mga bersyon: 
-Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒, פנס OI
+Lanternă OI, Llanterna d'OI, OI Baterka, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
 
 
 Search strings para sa Merkado: 

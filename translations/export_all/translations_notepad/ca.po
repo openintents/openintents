@@ -1,0 +1,501 @@
+# Catalan translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Joan Creus <Unknown>\n"
+"Language-Team: Catalan <ca@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:30(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Joan Creus https://launchpad.net/~joan-creus-c"
+
+#. Short explanation of the application
+#: tmp_strings.xml:33(string)
+msgid "OI Notepad allows to create, edit, and delete notes."
+msgstr "El bloc de notes d'OI et permet crear, editar i esborrar nodes."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
+#: tmp_strings.xml:117(string)
+msgid "OI Notepad"
+msgstr "Bloc de notes d'OI"
+
+#: tmp_strings.xml:42(string)
+msgid "Delete"
+msgstr "Suprimeix"
+
+#: tmp_strings.xml:43(string)
+msgid "Add note"
+msgstr "Afegeix una nota"
+
+#: tmp_strings.xml:44(string)
+msgid "Revert"
+msgstr "Desfés"
+
+#: tmp_strings.xml:45(string)
+msgid "Discard"
+msgstr "Descarta"
+
+#: tmp_strings.xml:47(string)
+msgid "Use menu to add new notes."
+msgstr "Utilitzeu el menú per afegir notes noves"
+
+#: tmp_strings.xml:49(string) tmp_strings.xml:53(string)
+msgid "Edit note"
+msgstr "Editeu la nota"
+
+#: tmp_strings.xml:50(string)
+msgid "Edit title"
+msgstr "Editeu el títol"
+
+#: tmp_strings.xml:52(string)
+msgid "Create note"
+msgstr "Crea una nota"
+
+#: tmp_strings.xml:55(string)
+msgid "Note"
+msgstr "Nota"
+
+#: tmp_strings.xml:56(string)
+msgid "Note title:"
+msgstr "Títol de la nota:"
+
+#: tmp_strings.xml:57(string)
+msgid "%s (new note)"
+msgstr "%s (nota nova)"
+
+#: tmp_strings.xml:58(string)
+msgid "%s (edit note)"
+msgstr "%s (edita la nota)"
+
+#. Title: Pick note for shortcut (to be placed on the home screen)
+#: tmp_strings.xml:61(string)
+msgid "Pick note for shortcut"
+msgstr "Escull una nota per la drecera"
+
+#. Dialog box
+#: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
+msgid "OK"
+msgstr "D'acord"
+
+#: tmp_strings.xml:65(string)
+msgid "Error"
+msgstr "Error"
+
+#: tmp_strings.xml:66(string)
+msgid "Error loading note"
+msgstr "Error carregant la nota"
+
+#. <string name="no_notes">Note list is empty.</string>
+#: tmp_strings.xml:69(string)
+msgid "Share"
+msgstr "Comparteix"
+
+#: tmp_strings.xml:70(string)
+msgid "Empty note"
+msgstr "Nota buida"
+
+#: tmp_strings.xml:71(string)
+msgid "No application available for sharing."
+msgstr "Cap aplicació disponible per compartir"
+
+#: tmp_strings.xml:73(string)
+msgid "Encrypting note"
+msgstr "Encriptant la nota"
+
+#: tmp_strings.xml:74(string)
+msgid "Encrypted"
+msgstr "Encriptat"
+
+#: tmp_strings.xml:75(string)
+msgid "Encrypt"
+msgstr "Encripta"
+
+#: tmp_strings.xml:76(string)
+msgid "Decrypt"
+msgstr "Desxifra"
+
+#: tmp_strings.xml:77(string)
+msgid "Undo encryption"
+msgstr "Desfés encriptació"
+
+#: tmp_strings.xml:78(string)
+msgid "Do not encrypt"
+msgstr "No encriptis"
+
+#: tmp_strings.xml:79(string)
+msgid "Already encrypted."
+msgstr "Ja està encriptat"
+
+#: tmp_strings.xml:80(string)
+msgid "Not encrypted."
+msgstr "No està encriptat"
+
+#: tmp_strings.xml:81(string)
+msgid "Encryption failed."
+msgstr "No s'ha pogut encriptar."
+
+#: tmp_strings.xml:82(string)
+msgid "Decryption failed."
+msgstr "No s'ha pogut desencriptar"
+
+#: tmp_strings.xml:84(string)
+msgid "Edit tags"
+msgstr "Edita etiquetes"
+
+#: tmp_strings.xml:85(string)
+msgid "Touch to see list"
+msgstr "Clica per veure la llista"
+
+#: tmp_strings.xml:86(string)
+msgid "Enter tags, separated by comma"
+msgstr "Entreu etiquetes, separades per coma"
+
+#: tmp_strings.xml:88(string)
+msgid "Save to SD card"
+msgstr "Desa a una targeta SD"
+
+#: tmp_strings.xml:89(string)
+msgid "Open from SD card"
+msgstr "Obre d'una targeta SD"
+
+#: tmp_strings.xml:90(string)
+msgid "File name"
+msgstr "Nom del fitxer"
+
+#: tmp_strings.xml:91(string) tmp_strings.xml:102(string)
+#: tmp_strings.xml:106(string)
+msgid "Save"
+msgstr "Desa"
+
+#: tmp_strings.xml:92(string)
+msgid "Open"
+msgstr "Obre"
+
+#: tmp_strings.xml:93(string)
+msgid "Error while writing file"
+msgstr "Error escrivint al fitxer"
+
+#: tmp_strings.xml:94(string)
+msgid "Error while reading file"
+msgstr "Error llegint el fitxer"
+
+#: tmp_strings.xml:95(string)
+msgid "File not found"
+msgstr "No s'ha trobat el fitxer"
+
+#: tmp_strings.xml:96(string)
+msgid "Note saved"
+msgstr "S'ha desat la nota"
+
+#: tmp_strings.xml:97(string)
+msgid "File exists already"
+msgstr "El fitxer ja existeix"
+
+#: tmp_strings.xml:98(string)
+msgid "Do you really want to overwrite the existing file?"
+msgstr "Estàs segur que vols sobreescriure el fitxer ja existent?"
+
+#. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
+#: tmp_strings.xml:101(string)
+msgid "Import"
+msgstr "Importa"
+
+#: tmp_strings.xml:103(string)
+msgid "Save as"
+msgstr "Anomena i desa"
+
+#: tmp_strings.xml:104(string)
+msgid "Text modified"
+msgstr "Text modificat"
+
+#: tmp_strings.xml:105(string)
+msgid "Do you want to save the changes?"
+msgstr "Voleu desar els canvis?"
+
+#: tmp_strings.xml:107(string)
+msgid "Don't save"
+msgstr "No desis"
+
+#: tmp_strings.xml:109(string)
+msgid "Theme"
+msgstr "Tema"
+
+#: tmp_strings.xml:110(string)
+msgid "Pick a theme"
+msgstr "Escull un tema"
+
+#. Preference fontsize: default font size
+#: tmp_strings.xml:111(string) tmp_strings.xml:200(item)
+msgid "Default"
+msgstr "Per defecte"
+
+#: tmp_strings.xml:112(string)
+msgid "Monospaced font"
+msgstr "Font monoespaiada"
+
+#: tmp_strings.xml:113(string)
+msgid "Serif font"
+msgstr "Tipus de lletra Serif"
+
+#. Search
+#: tmp_strings.xml:116(string) tmp_strings.xml:121(string)
+msgid "Search"
+msgstr "Cerca"
+
+#. %s is the search string
+#: tmp_strings.xml:119(string)
+msgid "No results found for %s."
+msgstr "No s'han trobat resultats per a %s"
+
+#: tmp_strings.xml:120(string)
+msgid "OI Notepad search"
+msgstr "Cerca del bloc de notes de l'OI"
+
+#. The description that will show up in the search settings for this source.
+#: tmp_strings.xml:124(string)
+msgid "Titles of your notes"
+msgstr "Títols de les teves notes"
+
+#: tmp_strings.xml:128(string)
+msgid "Cancel"
+msgstr "Canceŀla"
+
+#: tmp_strings.xml:129(string)
+msgid "Use this theme for all lists"
+msgstr "Utilitza aquest tema per a totes les llistes"
+
+#: tmp_strings.xml:130(string)
+msgid "Get more themes"
+msgstr "Aconsegueix més temes"
+
+#: tmp_strings.xml:132(string)
+msgid "All notes"
+msgstr "Totes les notes"
+
+#. Title for settings regarding the list of notes
+#: tmp_strings.xml:136(string)
+msgid "Notes List"
+msgstr "Llista de notes"
+
+#: tmp_strings.xml:137(string) tmp_strings.xml:138(string)
+msgid "List Sorting Order"
+msgstr "Ordenació de la llista"
+
+#: tmp_strings.xml:139(string)
+msgid "The order in which notes are shown in the notes list"
+msgstr "Ordre en el qual es mostren les notes a la llista de notes"
+
+#: tmp_strings.xml:140(string)
+msgid "Marquee note titles."
+msgstr "Títols de nota Marquee"
+
+#: tmp_strings.xml:141(string)
+msgid "Continuously scroll note titles that are too long."
+msgstr "Desplaça automàticament els títols que són massa llargs"
+
+#: tmp_strings.xml:143(string)
+msgid "Note Editor"
+msgstr "Editor de notes"
+
+#: tmp_strings.xml:144(string)
+msgid "Font size"
+msgstr "Mida de la lletra"
+
+#: tmp_strings.xml:145(string)
+msgid "Change font size"
+msgstr "Canvia la mida de la lletra"
+
+#: tmp_strings.xml:146(string)
+msgid "Choose font size"
+msgstr "Escull la mida de la lletra"
+
+#: tmp_strings.xml:147(string)
+msgid "Auto-create Links"
+msgstr "Crea automàticament enllaços"
+
+#: tmp_strings.xml:148(string)
+msgid "Create links for phone numbers and email/street/web addresses"
+msgstr "Crea enllaços per a números de telèfon i adreces de correu/carrer/web"
+
+#: tmp_strings.xml:149(string)
+msgid "Do not create links on notes"
+msgstr "No creïs enllaços a les notes"
+
+#: tmp_strings.xml:151(string)
+msgid "Settings"
+msgstr "Preferències"
+
+#: tmp_strings.xml:152(string)
+msgid "Sort Order"
+msgstr "Ordenació"
+
+#. Permission to read notes.
+#: tmp_strings.xml:160(string)
+msgid "read notes"
+msgstr "llegeix notes"
+
+#: tmp_strings.xml:161(string)
+msgid ""
+"Allows an application to read notes. Note that encrypted notes are provided "
+"in the encrypted format."
+msgstr ""
+"Permet a una aplicació llegir notes. Tingueu en compte que les notes "
+"encriptades es mostren en el format encriptat."
+
+#. Permission to write notes.
+#: tmp_strings.xml:163(string)
+msgid "write notes"
+msgstr "escriu notes"
+
+#: tmp_strings.xml:164(string)
+msgid "Allows an application to create new notes or modify existing notes."
+msgstr "Permet a una aplicació crear notes noves o modificar-ne les existents."
+
+#. Permission to read shopping lists.
+#: tmp_strings.xml:168(string)
+msgid "read shopping lists"
+msgstr "llegeix llistes de compra"
+
+#: tmp_strings.xml:169(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+"Permet a una aplicació llegir notes de compra. Tingueu en compte que les "
+"llistes encriptades es mostren en el format encriptat."
+
+#. Permission to write shopping lists.
+#: tmp_strings.xml:171(string)
+msgid "write shopping lists"
+msgstr "escriu llistes de compra"
+
+#: tmp_strings.xml:172(string)
+msgid ""
+"Allows an application to create new lists and items or modify existing ones."
+msgstr ""
+"Permet a una aplicació crear noves llistes i elements o modificar-ne els "
+"existents."
+
+#. Permission to encrypt and decrypt data.
+#: tmp_strings.xml:176(string)
+msgid "encrypt and decrypt data"
+msgstr "encripta i desxifra informació"
+
+#: tmp_strings.xml:177(string)
+msgid ""
+"Allows the application to encrypt and decrypt text, and access the passwords "
+"they have stored in OI Safe."
+msgstr ""
+"Permet a l'aplicació encriptar i desxifrar text, i a accedir les "
+"contrasenyes que s'han desat a OI Segur."
+
+#: tmp_strings.xml:186(item)
+msgid "Alphabetical"
+msgstr "Alfabèticament"
+
+#: tmp_strings.xml:187(item)
+msgid "Reverse Alphabetical"
+msgstr "Ordre alfabètic invers"
+
+#: tmp_strings.xml:188(item)
+msgid "Last Modified"
+msgstr "Modificat per darrer cop"
+
+#: tmp_strings.xml:189(item)
+msgid "First Modified"
+msgstr "Modificat per primer cop"
+
+#: tmp_strings.xml:190(item)
+msgid "Newest to Oldest"
+msgstr "De més nou a més vell"
+
+#: tmp_strings.xml:191(item)
+msgid "Oldest to Newest"
+msgstr "De més vell a més nou"
+
+#. Preference fontsize: tiny font size
+#: tmp_strings.xml:196(item)
+msgid "Tiny"
+msgstr "Minúscula"
+
+#. Preference fontsize: small font size
+#: tmp_strings.xml:198(item)
+msgid "Small"
+msgstr "Petita"
+
+#. Preference fontsize: large font size
+#: tmp_strings.xml:202(item)
+msgid "Large"
+msgstr "Gran"
+
+#: tmp_strings.xml:205(string)
+msgid "Add-ons"
+msgstr "Complements"
+
+#: tmp_strings.xml:206(string)
+msgid "Get new add-ons"
+msgstr "Aconsegueix complements"
+
+#: tmp_strings.xml:207(string)
+msgid "Search for extensions and themes online."
+msgstr "Cerca extensions i temes en línia."
+
+#: tmp_strings.xml:208(string)
+msgid "Get add-ons from Market"
+msgstr "Aconsegueix complements del Mercat"
+
+#: tmp_strings.xml:209(string)
+msgid "Get add-ons from OpenIntents"
+msgstr "Aconsegueix complements d'OpenIntents"
+
+#: tmp_strings.xml:210(string)
+msgid "Extensions"
+msgstr "Extensions"
+
+#: tmp_strings.xml:211(string)
+msgid "Themes"
+msgstr "Temes"
+
+#: tmp_strings.xml:212(string)
+msgid "Search for extensions at Android Market."
+msgstr "Cerca extensions al Mercat d'Android"
+
+#: tmp_strings.xml:213(string)
+msgid "Search for themes at Android Market."
+msgstr "Cerca temes al Mercat d'Android"
+
+#: tmp_strings.xml:214(string)
+msgid "Get extensions from the OpenIntents homepage."
+msgstr "Aconsegueix extensions de la pàgina d'inici d'OpenIntents"
+
+#: tmp_strings.xml:215(string)
+msgid "Get themes from the OpenIntents homepage."
+msgstr "Aconsegueix temes de la pàgina d'inici d'OpenIntents"
+
+#: tmp_strings.xml:216(string)
+msgid "Deletion Confirmation"
+msgstr "Confirmació de la supressió"
+
+#: tmp_strings.xml:217(string)
+msgid "Are you sure you want to delete this note?"
+msgstr "Esteu segurs que voleu suprimir aquesta nota?"
+
+#: tmp_strings.xml:219(string)
+msgid "New note"
+msgstr "Nota nova"

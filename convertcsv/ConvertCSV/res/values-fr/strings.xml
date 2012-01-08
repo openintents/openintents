@@ -22,7 +22,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
-  Anshuman Jaiswal https://launchpad.net/~good-anshuman</string>
+  John Andre https://launchpad.net/~john-andre
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Explanation what this application does. -->
 	<string name="about_comments">Cette extension de achats liste et OI OI Bloc-notes vous permet d\'importer et des listes d\'exportation et des notes dans le format de fichier CSV.</string>
@@ -134,26 +135,26 @@
     
     <string-array name="import_policy">
         <item>DUPLICATE - Autoriser les doublons d\'enregistrements.</item>
-        <item>"garder - Ne pas écraser les enregistrements existants."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
         <item>Ecraser - Ecraser les enregistrements existants.</item>
         <item>Restaurer - Supprimer tout, puis les importer.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>DUPLICATE - Ajouter une deuxième copie d\'un enregistrement si elle existe déjà.</item>
-        <item>"GARDER - Ne pas écraser un enregistrement existant, ignorer la une dans le fichier CSV."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>Ecraser - Un record dans le CSV va écraser un enregistrement existant.</item>
         <item>Restaurer la sauvegarde - supprimer tous vos enregistrements existants, puis importer le fichier CSV.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>DUPLICATE - Autoriser les doublons d\'enregistrements.</item>
-        <item>"garder - Ne pas écraser les enregistrements existants."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>DUPLICATE - Ajouter une deuxième copie d\'un enregistrement si elle existe déjà.</item>
-        <item>"GARDER - Ne pas écraser un enregistrement existant, ignorer la une dans le fichier CSV."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>

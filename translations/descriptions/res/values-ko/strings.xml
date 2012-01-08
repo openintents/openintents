@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
-  Jihyeok Seo https://launchpad.net/~limeburst</translators>
+  Jihyeok Seo https://launchpad.net/~limeburst
+  OpenIntents devs https://launchpad.net/~openintents-devs</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->

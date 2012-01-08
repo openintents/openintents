@@ -22,6 +22,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
+  Fitoschido https://launchpad.net/~fitoschido
   OpenIntents devs https://launchpad.net/~openintents-devs
   Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm
   dcb116 https://launchpad.net/~dcb116</string>
@@ -33,9 +34,9 @@
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Lista de Compras</string>
+	<string name="info_app_shopping">Lista de compras OI</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">Bloc de Notas OI</string>
+	<string name="info_app_notepad">Bloc de notas OI</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
 	<string name="info_instructions">Launch %s and select menu &gt; Convert CSV.</string>
@@ -72,7 +73,7 @@
     <string name="file_exists">El archivo existe. Quiere reescribirlo</string>
     <string name="dont_ask_again">No preguntar de nuevo. Reescribir siempre</string>
     
-    <string name="warn_restore_policy_title">Import policy set to RESTORE</string>
+    <string name="warn_restore_policy_title">Política de importación establecido en RESTAURAR</string>
     <string name="warn_restore_policy">Su política actual de importación esta configurada para BORRAR TODOS LOS DATOS ACTUALES y REEMPLAZARLOS con en el contenido del archivo CSV. ¿Esta seguro?</string>
     
     <string name="menu_settings">Configuración</string>
@@ -95,7 +96,7 @@
     <string name="preference_filename">Nombre de archivo</string>
     <string name="preference_filename_summary">Ruta completa del archivo</string>
     
-    <string name="preference_notepad">Bloc de Notas OI</string>
+    <string name="preference_notepad">Bloc de notas OI</string>
     <string name="preference_notepad_summary">Configuración de Importación/Exportación para OI Bloc de Notas</string>
     
     <string name="preference_shoppinglist">OI Lista de Compras</string>
@@ -104,7 +105,7 @@
 	<string name="converting">Convirtiendo...</string>
 	<string name="dialog_ok">Ok</string>
 	<string name="preference_stores">Importar tiendas</string>
-	<string name="preference_stores_off_summary">Import HandyShopper store names only as item tags.</string>
+	<string name="preference_stores_off_summary">Importar nombres de tiendas de HandyShopper solo como etiquetas.</string>
 	<string name="preference_stores_on_summary">Importar tiendas de HandyShopper y precios por-tienda y ordenar la información</string>
 
 	<!-- OI Notepad -->
@@ -136,26 +137,26 @@
     
     <string-array name="import_policy">
         <item>DUPLICAR - Permitir duplicacion de registros.</item>
-        <item>"CONSERVAR - No re-escribir registros existentes."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
         <item>Re-escribir - Re-escribir registros existentes</item>
         <item>Restaurar - BORRAR TODO, entonces importar.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>DUPLICAR - Agregar una segunda copia del registro si ya existe.</item>
-        <item>"Conservar - No re-escribir un registro existente, ignorar el del archivo CSV."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>Re-escribir - Un registro en el archivo CSV RE-ESCRIBIRA al registro existente.</item>
         <item>Restaurar Respaldo - BORRA TODO SUS REGISTROS EXISTENTES, entonces importa el archivo CSV.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>DUPLICAR - Permitir duplicacion de registros.</item>
-        <item>"CONSERVAR - No re-escribir registros existentes."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>DUPLICAR - Agregar una segunda copia del registro si ya existe.</item>
-        <item>"Conservar - No re-escribir un registro existente, ignorar el del archivo CSV."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>

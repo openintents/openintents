@@ -136,26 +136,26 @@
     
     <string-array name="import_policy">
         <item>ДУБЛИКАТ- Позволение за копиране на записи.</item>
-        <item>ВНИМАВАЙ- Не презаписвай съществуващи файлове.</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
         <item>Презаписване- Презапиши съществуващи записи.</item>
         <item>Възстанови- ИЗТРИЙ ВСИЧКИ, след това вмъкни.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>ДУБЛИКАТ- Добави второ копие на записа ако той вече съществува.</item>
-        <item>ВНИМАВАЙ- не презаписвай съществуващ запис, игнорирай този в CSV файла.</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>Презаписване- запис в CSV ще ПРЕЗАПИШЕ съществуващ запис.</item>
         <item>Възстановяване на резервното копие- ИЗТРИЙ ВСИЧКИ ТВОЙ СЪЩЕСТВУВАЩИ ЗАПИСИ, след това вмъкни CSV файла.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>ДУБЛИКАТ- Позволение за копиране на записи.</item>
-        <item>ВНИМАВАЙ- Не презаписвай съществуващи файлове.</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>ДУБЛИКАТ- Добави второ копие на записа ако той вече съществува.</item>
-        <item>ВНИМАВАЙ- не презаписвай съществуващ запис, игнорирай този в CSV файла.</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>

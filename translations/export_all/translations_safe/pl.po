@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Tomasz Zieliński <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,8 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Andrzej Ziółek https://launchpad.net/~andro-v-zik\n"
 "  Damian Skrodzki https://launchpad.net/~damienix\n"
-"  OpenIntents devs https://launchpad.net/~openintents-devs"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
+"  Tomasz Zieliński https://launchpad.net/~tomek0517"
 
 #. Short explanation of the application
 #: tmp_strings.xml:28(string)
@@ -180,7 +181,7 @@ msgstr "Eksportuj bazę danych"
 
 #: tmp_strings.xml:67(string)
 msgid "Select a file for export"
-msgstr ""
+msgstr "Wybierz plik do eksportu"
 
 #: tmp_strings.xml:68(string)
 msgid ""
@@ -212,7 +213,7 @@ msgstr "Importuj bazę danych"
 
 #: tmp_strings.xml:72(string)
 msgid "Select a file for import"
-msgstr ""
+msgstr "Wypierz plik do importu"
 
 #: tmp_strings.xml:73(string)
 msgid "Import file is missing:"
@@ -399,11 +400,11 @@ msgstr "Archiwizowanie nie powiodło się:"
 
 #: tmp_strings.xml:115(string)
 msgid "Select a file for backup"
-msgstr ""
+msgstr "Wybierz plik, na którym ma zostać wykonana kopia zapasowa"
 
 #: tmp_strings.xml:116(string)
 msgid "Error while backing up"
-msgstr ""
+msgstr "Błąd podczas tworzenia kopii zapasowej"
 
 #: tmp_strings.xml:117(string)
 msgid "Restore"
@@ -432,11 +433,11 @@ msgstr ""
 
 #: tmp_strings.xml:121(string)
 msgid "Select a file for restore"
-msgstr ""
+msgstr "Wybierz plik do przywrócenia"
 
 #: tmp_strings.xml:122(string)
 msgid "Error while restoring"
-msgstr ""
+msgstr "Błąd podczas przywracania"
 
 #. Toast message. %s contains a more detailed error message.
 #: tmp_strings.xml:125(string)
@@ -605,13 +606,12 @@ msgid "Auto Backup Days"
 msgstr "Dni automatycznego archiwizowania"
 
 #: tmp_strings.xml:196(string)
-#, fuzzy
 msgid "Default backup path"
-msgstr "Dni automatycznego archiwizowania"
+msgstr "Domyślna ścieżka kopii zapasowej"
 
 #: tmp_strings.xml:197(string)
 msgid "Default export path"
-msgstr ""
+msgstr "Domyślna ścieżka eksportu"
 
 #: tmp_strings.xml:200(string)
 msgid "Decrypt (OI Safe)"
@@ -784,11 +784,11 @@ msgstr "Wyłącz automatyczne archiwizowanie"
 
 #: tmp_strings.xml:242(string)
 msgid "Time to autolock: %s"
-msgstr ""
+msgstr "Czas automatycznego blokowania: %s"
 
 #: tmp_strings.xml:243(string)
 msgid "While not downloaded, default location will be used."
-msgstr ""
+msgstr "Dopóki nie jest pobrany, domyślne położenie będzie używane."
 
 #. Permission to access master password
 #: tmp_strings.xml:251(string)

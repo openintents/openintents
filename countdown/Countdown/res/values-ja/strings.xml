@@ -7,7 +7,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Peli https://launchpad.net/~peli0101
-  bkiw https://launchpad.net/~bkiw</string>
+  bkiw https://launchpad.net/~bkiw
+  thebowseat https://launchpad.net/~takeshimochida</string>
 	
     <!-- Short explanation of the application -->
 	<string name="about_comments">OI Countdownは指定した時間が経った事を通知します。</string>
@@ -16,7 +17,7 @@
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
-    <string name="app_name">OI Countdown</string>
+    <string name="app_name">OI カウントダウン</string>
     
     <string name="start">開始</string>
     <string name="stop">停止</string>
@@ -55,7 +56,7 @@
     <string name="title_pick">カウントダウンを選択</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
-    <string name="title_setcountdown_action">OI Countdown</string>
+    <string name="title_setcountdown_action">OI カウントダウン</string>
     
     <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
 	<string name="error_title">エラー</string>

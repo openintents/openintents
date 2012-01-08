@@ -137,26 +137,26 @@
     
     <string-array name="import_policy">
         <item>KOPYALA - Kayıtları kopyalamanıza izin verir</item>
-        <item>"SAKLA - Var olan kayıtların üstüne yazma. "</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
         <item>Üstüne yaz - Var olan kayıtların üstüne yazar.</item>
         <item>Geri Al - HEPSİNİ SİLi daha sonra içe aktar.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>KOPYALA - Eğer kayıt mevcutsa ikinci bir koptasını oluştur.</item>
-        <item>"SAKLA - Var olan kayıtların üstüne yazma, CSV dosyasındakini hariç tut. "</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>Üstüne yaz - CSV deki bir kayıt var olan bir dosyanın ÜSTÜNE YAZACAK.</item>
         <item>Yedeklemeyi Geri Al - VAR OLAN BÜTÜN KAYITLARI SİLER, ve CSV dosyasını içe aktarır.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>KOPYALA - Kayıtları kopyalamanıza izin verir</item>
-        <item>"SAKLA - Var olan kayıtların üstüne yazma. "</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>KOPYALA - Eğer kayıt mevcutsa ikinci bir koptasını oluştur.</item>
-        <item>"SAKLA - Var olan kayıtların üstüne yazma, CSV dosyasındakini hariç tut. "</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>

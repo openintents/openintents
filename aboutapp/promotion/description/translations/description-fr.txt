@@ -38,7 +38,7 @@ Mots-clés:
 * OI, OpenIntents, Open Intents.
 
 Les versions internationales: 
-O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI O Programe, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
 
 
 Les chaînes de recherche pour le marché: 

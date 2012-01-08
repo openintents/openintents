@@ -291,7 +291,7 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr ""
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item) 
-msgid "\"KEEP - Don't overwrite existing records.\""
+msgid "KEEP - Don't overwrite existing records."
 msgstr ""
 
 #: tmp_strings.xml:138(item) 
@@ -307,7 +307,7 @@ msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr ""
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item) 
-msgid "\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file.\""
+msgid "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
 
 #: tmp_strings.xml:145(item) 

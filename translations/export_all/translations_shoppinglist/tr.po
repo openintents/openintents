@@ -287,11 +287,8 @@ msgid "Priority 1-4: %s"
 msgstr "Öncelik 1-4:%s"
 
 #: tmp_strings.xml:116(string)
-#, fuzzy
 msgid "Are you sure you want to permanently delete this item?"
 msgstr ""
-"Bu öğeyi alışveriş listesinden kalıcı olarak silmek istediğinize emin "
-"misiniz?"
 
 #: tmp_strings.xml:117(string)
 msgid "Delete"
@@ -651,14 +648,12 @@ msgstr ""
 "Öncelik veya miktarlara dokunduğunuzda , öğe düzenleme menüsünü çağırırsınız."
 
 #: tmp_strings.xml:235(string)
-#, fuzzy
 msgid "Reset all settings"
-msgstr "Tema ayarları"
+msgstr ""
 
 #: tmp_strings.xml:236(string)
-#, fuzzy
 msgid "Do you really want to RESET ALL settings? This cannot be undone."
-msgstr "Bu mağazayı silmek istediğinizden emin misiniz?"
+msgstr ""
 
 #: tmp_strings.xml:237(string)
 msgid "All settings have been reset"
@@ -828,9 +823,8 @@ msgid "Next page"
 msgstr ""
 
 #: tmp_strings.xml:342(string)
-#, fuzzy
 msgid "Choose a list"
-msgstr "Büyük harfle başlamasını seç"
+msgstr ""
 
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"

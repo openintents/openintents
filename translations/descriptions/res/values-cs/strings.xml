@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  Matěj Konečný https://launchpad.net/~matejkon</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Info je samostatný dialog "O aplikaci", který je sdílen mezi aplikacemi.</string>
+		<string>Tato aplikace je vyvolána přes menu jiných OI aplikací.</string>
+		<string>Umožňuje Vám zobrazit si informace o verzi, odkazy, zásluhy a licenci aplikace.</string>
+		<string>Zásluhy zahrnují autory, dokumentační tým, překladatele a umělce.</string>
+		<string>Všechnu tuto funkcionalitu Vám přinášíme v jednoduchém a efektivním vzhledu.</string>
+		<emptyline/>
+		<string>Tato aplikace je bez reklam a nevyžaduje přístup k internetu.</string>
+		<emptyline/>
+		<string>Zdrojové kód této open source aplikace je dostupný na stránkách:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Pro úplný seznam změn a seznam často kladených dotazů navštivte prosím:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Můžete také pomoci zlepšit překlad do Vašeho jazyka na Launchpadu:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Vlastnosti:</string>
+		<listitem>Zobrazuje záložky s obecnými informacemi, zásluhami a licencí.</listitem>
+		<listitem>Ukazuje překladatele všech jazykových verzí.</listitem>
+		<listitem>Získává informace z manifestu aplikace pomocí výchozích tagů a metadat.</listitem>
+		<listitem>Volitelně mohou všechna pole být upravena pomocí extra dat v intentech.</listitem>
+		<emptyline/>
+		<string>Aplikace podporující OI Info:</string>
+		<listitem>OI Poznámkový blok</listitem>
+		<listitem>OI Správce souborů</listitem>
+		<listitem>OI Nákupní seznam</listitem>
+		<listitem>OI Převést do CSV</listitem>
+		<listitem>OI Sejf</listitem>
+		<listitem>OI Minutka</listitem>
+		<listitem>OI Baterka</listitem>
+		<emptyline/>
+		<string>Klíčová slova:</string>
+		<listitem>O, Zásluhy, Informace.</listitem>
+		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<emptyline/>
+		<string>Mezinárodní verze:</string>
+		<international/>
+		<emptyline/>
+		<string>Prohledat řetězce pro Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Správce souborů Vám umožňuje procházet Vaši SD kartu, vytvářet složky, přejmenovávat, kopírovat, přesouvat a mazat soubory.</string>
+		<string>Funguje také jako rozšíření do ostatních aplikací zobrazující dialogy "Otevřít" a "Uložit".</string>
+		<emptyline/>
+		<string>Tato aplikace je bez reklam a nevyžaduje přístup k internetu.</string>
+		<emptyline/>
+		<string>Pro úplný seznam změn a seznam často kladených dotazů navštivte prosím:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Můžete také pomoci zlepšit překlad do Vašeho jazyka na Launchpadu:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Zdrojové kód této open source aplikace je dostupný na stránkách:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Vlastnosti:</string>
+		<listitem>Zobrazuje seznam souborů s náhledy pro obrázky</listitem>
+		<listitem>Přesouvá, kopíruje, přejmenovává a maže soubory.</listitem>
+		<listitem>Vytváří a maže složky.</listitem>
+		<listitem>Zasílá soubory emailem.</listitem>
+		<listitem>Funguje jako rozšíření do jiných aplikací, jako například do GMailu pro přikládání příloh.</listitem>
+		<listitem>Podpora pro mnoho koncovek souborů a mime typů.</listitem>
+		<listitem>Podporuje PICK_FILE a PICK_DIRECTORY intenty, a ostatní aplikace tak mohou použít OI Správce souborů.</listitem>
+		<emptyline/>
+		<string>Dostupná rozšíření pro OI Správce souborů:</string>
+		<listitem>Zobrazit licenční infomace s OI Infem.</listitem>
+		<emptyline/>
+		<string>Aplikace, které pracují s OI Správcem souborů</string>
+		<listitem>Otevírat a ukládat textové soubory v OI Poznámkovém bloku.</listitem>
+		<emptyline/>
+		<string>Klíčová slova:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>file manager, filemanager, file explorer, správce souborů</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Mezinárodní verze:</string>
+		<international/>
+		<emptyline/>
+		<string>Prohledat řetězce pro Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Baterka je jednoduchá a efektivní aplikace, s níž najdete svou cestu tmou.</string>
+		<string>OI Baterka zapne podsvícení displeje, jasně osvětlujíc okolní prostředí.</string>
+		<string>Na zařízeních s bleskem fotoaparátu umí OI Baterka použít i ten jako svítilnu pro rozjasnění místnosti.</string>
+		<string>Barva podsvícení je nastavitelná pomocí OI Výběru barev.</string>
+		<emptyline/>
+		<string>Tato aplikace je bez reklam a nevyžaduje přístup k internetu.</string>
+		<emptyline/>
+		<string>Zdrojové kód této open source aplikace je dostupný na stránkách:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Pro úplný seznam změn a seznam často kladených dotazů navštivte prosím:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Můžete také pomoci zlepšit překlad do Vašeho jazyka na Launchpadu:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Vlastnosti:</string>
+		<listitem>Nastaví podsvícení displeje na maximum a neumožní mu se vypnout.</listitem>
+		<listitem>Zapne blesk fotoaparátu.</listitem>
+		<listitem>Barva podsvícení je nastavitelná.</listitem>
+		<emptyline/>
+		<string>Dostupná rozšíření pro OI Baterku:</string>
+		<listitem>Zobrazit licenční infomace s OI Infem.</listitem>
+		<listitem>Změnit barvu podsvícení OI Výběrem barev.</listitem>
+		<emptyline/>
+		<string>Aplikace, které pracují s OI Baterkou:</string>
+		<listitem>Aktualizovat s OI Update.</listitem>
+		<emptyline/>
+		<string>Klíčová slova:</string>
+		<listitem>Baterka, světlo, podsvícení, svítilna, Flashlight, light, Backlight</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Mezinárodní verze:</string>
+		<international/>
+		<emptyline/>
+		<string>Prohledat řetězce pro Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Poznámkový blok je open source aplikace pro správu poznámek.</string>
+		<string>S OI Poznámkovým blokem můžete tagovat (štítkovat), hledat a odesílat své poznámky, které s ním předtím vytvoříte, smažete nebo upravíte.</string>
+		<string>Pokročilé vlastnosti jako šifrování, import/export a hlasové poznámky jsou všechny dostupné pomocí rozšíření.</string>
+		<string>Toto všechno Vám přinášíme zabalené v jednoduchém a efektivním rozhraní přizpůsobitelné množstvím motivů.</string>
+		<emptyline/>
+		<string>Tato aplikace je bez reklam a nevyžaduje přístup k internetu.</string>
+		<emptyline/>
+		<string>Zdrojové kód této open source aplikace je dostupný na stránkách:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Pro úplný seznam změn a seznam často kladených dotazů navštivte prosím:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Můžete také pomoci zlepšit překlad do Vašeho jazyka na Launchpadu:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Vlastnosti:</string>
+		<listitem>Přidávat, upravovat a mazat poznámky.</listitem>
+		<listitem>Dlouze stiskněte na poznámky pro přidání tagů.</listitem>
+		<listitem>Změnit velikost písma a pořadí řazení.</listitem>
+		<listitem>Intuitivní rozhraní s množstvím motivů.</listitem>
+		<listitem>Rychle prohledávat poznámky.</listitem>
+		<listitem>Zasílat poznámky jako MMS nebo SMS.</listitem>
+		<emptyline/>
+		<string>Dostupná rozšíření pro OI Poznámkový blok:</string>
+		<listitem>Nahrávat a připojovat hlasové poznámky s OI Hlasovými poznámkami.</listitem>
+		<listitem>S OI Převést na CSV můžete importovat/exportovat poznámky z SD karty.</listitem>
+		<listitem>Zobrazit licenční infomace s OI Infem.</listitem>
+		<listitem>Vložit datum a čas do poznámek s OI Vložit datum.</listitem>
+		<listitem>Otočit text Seshora dolů se "Seshora dolů".</listitem>
+		<emptyline/>
+		<string>Aplikace, které pracují s OI Poznámkovým blokem:</string>
+		<listitem>Zálohujte poznámky s "My Backup Pro".</listitem>
+		<listitem>Šifrujte poznámky pomocí OI Sejfu.</listitem>
+		<listitem>Spravujte poznámky na SD kartě s OI Správcem souborů.</listitem>
+		<listitem>Aktualizovat s OI Update.</listitem>
+		<listitem>Sdílejte poznámky na Facebook, Gmail, Google+, Twitter a mnoho jiných aplikací.</listitem>
+		<emptyline/>
+		<string>Klíčová slova:</string>
+		<listitem>Poznámka, poznámky, poznámkový blok</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Mezinárodní verze:</string>
+		<international/>
+		<emptyline/>
+		<string>Prohledat řetězce pro Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Sejf bezpečně ochraňuje všechna Vaše hesla a jiná soukromá data pomocí AES šifrování, které je průmyslovým standardem.</string>
+		<string>Funguje také jako rozšíření do OI Poznámkového bloku a umožňuje šifrovat poznámky vytvořené v OI Poznámkovém bloku.</string>
+		<emptyline/>
+		<string>Tato aplikace je bez reklam a nevyžaduje přístup k internetu.</string>
+		<emptyline/>
+		<string>Pro úplný seznam změn a seznam často kladených dotazů navštivte prosím:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Můžete také pomoci zlepšit překlad do Vašeho jazyka na Launchpadu:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Zdrojové kód této open source aplikace je dostupný na stránkách:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Vlastnosti:</string>
+		<listitem>Bezpečně ochraňuje data pomocí AES šifrování.</listitem>
+		<listitem>Bez překážek přesunuje data mezi kategoriemi.</listitem>
+		<listitem>Importuje/Exportuje data a databáze.</listitem>
+		<listitem>Zálohuje/Obnovuje záznamy.</listitem>
+		<listitem>Obsahuje generátor bezpečných hesel.</listitem>
+		<listitem>Automaticky se po určené době zamyká pro lepší ochranu zašifrovaných dokumentů.</listitem>
+		<listitem>Šifruje poznámky z OI Poznámkového bloku</listitem>
+		<listitem>Podpora pro "Obscura picture safe".</listitem>
+		<listitem>MyBackup Pro.</listitem>
+		<emptyline/>
+		<string>Dostupná rozšíření pro OI Správce souborů:</string>
+		<listitem>Zobrazit licenční infomace s OI Infem.</listitem>
+		<emptyline/>
+		<string>Aplikace, které pracují s OI Správcem souborů</string>
+		<listitem>Šifruje poznámky vytvořené v OI Poznámkovém bloku.</listitem>
+		<emptyline/>
+		<string>Klíčová slova:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>safe, encrpytion, password, protection, bezpečný, sejf, hesla, ochrana, správce hesel, heslo</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Mezinárodní verze:</string>
+		<international/>
+		<emptyline/>
+		<string>Prohledat řetězce pro Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Nákupní seznam zjednodušuje vytváření a správu kontrolních seznamů.</string>
+		<string>Po stažení OI Nákupního seznamu už nikdy nebude jednoduší přidávat položky do seznamu, odškrtávat ty položky nebo je odstraňovat se seznamu.</string>
+		<string>Aplikace umožňuje uchovávat ceny pro každý obchod zvlášť a vyznačuje se vysokou úrovní přizpůsobení.</string>
+		<string>Velikost písma, pořadí řazení, sloupce seznamu a chování úklidu seznamu jsou všechno nastavení kontrolovaná uživatelem.</string>
+		<string>Všechny tyto vlastnosti Vám přinášíme ve svěžím rozhraní, které je přizpůsobitelné množstvím různých motivů.</string>
+		<emptyline/>
+		<string>Zdrojové kód této open source aplikace je dostupný na stránkách:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Tato aplikace je bez reklam a nevyžaduje přístup k internetu.</string>
+		<emptyline/>
+		<string>Pro úplný seznam změn a seznam často kladených dotazů navštivte prosím:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Můžete také pomoci zlepšit překlad do Vašeho jazyka na Launchpadu:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Vlastnosti:</string>
+		<listitem>Přidává, upravuje a maže seznamy.</listitem>
+		<listitem>Vytváří, odstraňuje a zaškrtává položky svižně a jednoduše.</listitem>
+		<listitem>Množství motivů.</listitem>
+		<listitem>Přizpůsobitelná velikost písma a pořadí řazení.</listitem>
+		<listitem>Může uchovávat cenu pro každý obchod zvlášť.</listitem>
+		<listitem>Přizpůsobitelné sloupce seznamu.</listitem>
+		<emptyline/>
+		<string>Dostupná rozšíření pro OI Seznam nákupů:</string>
+		<listitem>Přidat nahranou zprávu k poznámce s OI Hlasovými poznámkami.</listitem>
+		<listitem>Importovat/exportovat nákupní seznamy s OI Převést do CSV</listitem>
+		<listitem>Zobrazit licenční infomace s OI Infem.</listitem>
+		<listitem>Vložit/zaškrtnout položky s pluginem "OI Čárový kód".</listitem>
+		<emptyline/>
+		<string>Aplikace, které pracují s OI Nákupním seznamem:</string>
+		<listitem>Aktualizovat s OI Update.</listitem>
+		<listitem>Zálohovat seznamy s "My Backup Pro".</listitem>
+		<listitem>Importovat ingredience receptů s "Bites".</listitem>
+		<emptyline/>
+		<string>Klíčová slova:</string>
+		<listitem>Shopping, List, Shopping List, Checklist, kontrolní seznam, todo, todo list, todolist, nákupní seznam, seznam</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Mezinárodní verze:</string>
+		<international/>
+		<emptyline/>
+		<string>Rozšíření:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+</main>

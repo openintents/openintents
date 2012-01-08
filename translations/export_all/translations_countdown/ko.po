@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: CSro <choongsan@gmail.com>\n"
+"Last-Translator: Jihyeok Seo <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,17 +22,18 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  CSro https://launchpad.net/~choongsan"
+"  CSro https://launchpad.net/~choongsan\n"
+"  Jihyeok Seo https://launchpad.net/~limeburst"
 
 #. Short explanation of the application
 #: tmp_strings.xml:11(string)
 msgid "OI Countdown notifies you after a specified amount of time."
-msgstr ""
+msgstr "OI 카운트다운은 정해둔 시간이 다 되면 알려줍니다."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string) tmp_strings.xml:56(string)
 msgid "OI Countdown"
-msgstr ""
+msgstr "OI 카운트다운"
 
 #: tmp_strings.xml:19(string)
 msgid "Start"
@@ -52,11 +53,11 @@ msgstr "계속"
 
 #: tmp_strings.xml:24(string)
 msgid "Use menu to add new countdown."
-msgstr ""
+msgstr "메뉴를 사용해서 카운트다운을 추가하세요."
 
 #: tmp_strings.xml:25(string)
 msgid "Countdown list"
-msgstr ""
+msgstr "카운트다운 목록"
 
 #: tmp_strings.xml:27(string)
 msgid "Delete"
@@ -77,17 +78,17 @@ msgstr "벨소리"
 #. Menu item: Set the countdown by setting a final date or deadline.
 #: tmp_strings.xml:33(string)
 msgid "Set date"
-msgstr ""
+msgstr "날짜 설정"
 
 #. Menu item: Set the countdown by setting a duration.
 #: tmp_strings.xml:36(string)
 msgid "Set duration"
-msgstr ""
+msgstr "시간 설정"
 
 #. Menu item: Set the action to be performed at the end of the countdown.
 #: tmp_strings.xml:39(string)
 msgid "Set action"
-msgstr ""
+msgstr "동작 설정"
 
 #: tmp_strings.xml:41(string)
 msgid "e.g. pizza"
@@ -96,7 +97,7 @@ msgstr "예. 피자"
 #. Title of the activity for setting (editing) the countdown.
 #: tmp_strings.xml:44(string)
 msgid "Set countdown"
-msgstr ""
+msgstr "카운트다운 설정"
 
 #. Title of the activity for creating a new countdown.
 #: tmp_strings.xml:47(string)
@@ -126,17 +127,17 @@ msgstr "초읽기를 불러오는중 에러 발생"
 #. Checkbox label whether to notifications.
 #: tmp_strings.xml:67(string)
 msgid "Notification in status bar"
-msgstr ""
+msgstr "상태 표시줄에 알림 보이기"
 
 #. Checkbox label whether to launch automation task through the status bar
 #: tmp_strings.xml:70(string)
 msgid "Launch through status bar"
-msgstr ""
+msgstr "상태 표시줄에서 실행하기"
 
 #. Checkbox label whether to use the ring tone for notifications.
 #: tmp_strings.xml:73(string)
 msgid "Ring"
-msgstr ""
+msgstr "소리"
 
 #. Checkbox label whether to vibrate.
 #: tmp_strings.xml:76(string)
@@ -151,17 +152,17 @@ msgstr "조명"
 #. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
 #: tmp_strings.xml:82(string)
 msgid "Action: %s"
-msgstr ""
+msgstr "동작: %s"
 
 #. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
 #: tmp_strings.xml:85(string)
 msgid "Select action: %s"
-msgstr ""
+msgstr "동작 선택: %s"
 
 #. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
 #: tmp_strings.xml:88(string)
 msgid "Select countdown: %s"
-msgstr ""
+msgstr "카운트다운 선택: %s"
 
 #. Button to test an action.
 #: tmp_strings.xml:91(string)
@@ -181,7 +182,7 @@ msgstr "버리기"
 #. For the countdown display. "%s" is the number of days remaining (more than 1).
 #: tmp_strings.xml:100(string)
 msgid "days"
-msgstr ""
+msgstr "일"
 
 #. For the countdown display. "%s" is 1 (the number of days remaining).
 #: tmp_strings.xml:103(string)
@@ -201,7 +202,7 @@ msgstr "단축키"
 #. Options in "Select action" dialog box; Title of the group containing the list of all automation tasks
 #: tmp_strings.xml:112(string)
 msgid "Automation tasks"
-msgstr ""
+msgstr "자동화 작업"
 
 #. Title of dialog when user is selecting shortcut to add as activity
 #: tmp_strings.xml:116(string)
@@ -211,12 +212,12 @@ msgstr "단축키 선택"
 #. Title of dialog when user is selecting shortcut to add as activity
 #: tmp_strings.xml:119(string)
 msgid "Select automation task"
-msgstr ""
+msgstr "자동화 작업 선택"
 
 #. The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action.
 #: tmp_strings.xml:122(string)
 msgid "Select activity"
-msgstr ""
+msgstr "동작 선택"
 
 #. Automation action to start a countdown.
 #: tmp_strings.xml:128(item)
@@ -247,7 +248,7 @@ msgstr "온라인에서 확장기능 찾기"
 
 #: tmp_strings.xml:143(string)
 msgid "Get extensions from"
-msgstr ""
+msgstr "다음 위치에서 확장 기능 받기"
 
 #: tmp_strings.xml:144(string)
 msgid "Android Market"
@@ -263,26 +264,26 @@ msgstr "OpenIntents"
 
 #: tmp_strings.xml:147(string)
 msgid "Get extensions from the OpenIntents homepage."
-msgstr ""
+msgstr "OpenIntents에서 확장 기능 받기."
 
 #. Preference title: Set the notification timeout (2 sec, 10 min, ...)
 #: tmp_strings.xml:150(string)
 msgid "Notification timeout"
-msgstr ""
+msgstr "알림 타임아웃"
 
 #. Preference summary: Set notification timeout (2 sec, 10 min, ...)
 #: tmp_strings.xml:153(string)
 msgid "Timeout for ring, vibrate, or light notification."
-msgstr ""
+msgstr "소리, 진동, 빛 알림에 대한 타임아웃."
 
 #. Dialog title to set timeout for notification
 #: tmp_strings.xml:156(string)
 msgid "Set timeout"
-msgstr ""
+msgstr "타임아웃 설정"
 
 #: tmp_strings.xml:160(item)
 msgid "2 seconds"
-msgstr ""
+msgstr "2 초"
 
 #: tmp_strings.xml:161(item)
 msgid "5 seconds"

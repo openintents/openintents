@@ -304,11 +304,11 @@ msgstr "قايسى ئىزاھاتنىڭ ئىزاھات تىزىملىكىدە ك
 
 #: tmp_strings.xml:140(string)
 msgid "Marquee note titles."
-msgstr ""
+msgstr "ھەرىكەتچان ئىزاھات ماۋزۇسى."
 
 #: tmp_strings.xml:141(string)
 msgid "Continuously scroll note titles that are too long."
-msgstr ""
+msgstr "ئۆزلۈكسىز دومىلايدىغان ئىزاھات ماۋزۇسى بەك ئۇزۇن."
 
 #: tmp_strings.xml:143(string)
 msgid "Note Editor"

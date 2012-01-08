@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Anshuman Jaiswal <Unknown>\n"
+"Last-Translator: John Andre <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,9 @@ msgstr "OI Bibliothèque de distribution"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Anshuman Jaiswal https://launchpad.net/~good-anshuman"
+"  John Andre https://launchpad.net/~john-andre\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
+"  Peli https://launchpad.net/~peli0101"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
 #. 		Translation should be short, since this is a title.
@@ -134,9 +136,8 @@ msgstr ""
 
 #. Dialog message.
 #: tmp_strings.xml:71(string)
-#, fuzzy
 msgid "No compatible barcode scanner is available."
-msgstr "Aucun gestionnaire de fichiers compatibles sont disponibles."
+msgstr ""
 
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:74(string)

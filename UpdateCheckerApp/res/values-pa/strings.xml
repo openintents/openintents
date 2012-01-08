@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Angad Singh  https://launchpad.net/~angad21-02-1996</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI ਉਦਯਤਨ</string>
+    
+    <string name="update_available">%s ਦਾ ਇੱਕ ਨਵਾਂ ਸੰਸਕਰਣ ਉਪਲੱਬਧ ਹੈ  \n ਕੀ ਤੁਹਾਨੂੰ ਅਪਗਰੇਡ ਕਰਣਾ ਚਾਹਾਂਗੇ ?</string>
+    <string name="update_available_3">%1$s  ਦੇ ਇੱਕ ਨਵੇਂ ਸੰਸਕਰਣ ਉੱਤੇ ਉਪਲੱਬਧ ਹੈ  %2$s.\n %3$s\n</string>
+    <string name="update_available_2">%1$s  ਦੇ ਇੱਕ ਨਵੇਂ ਸੰਸਕਰਣ ਉੱਤੇ ਉਪਲੱਬਧ \n%2$s\n</string>
+    <string name="update_available_location_no_comment">%1$s  ਦੇ ਇੱਕ ਨਵੇਂ ਸੰਸਕਰਣ ਉੱਤੇ ਉਪਲੱਬਧ ਹੈ  %2$s.</string>
+    <string name="update_available_no_comment">%s ਦਾ ਇੱਕ ਨਵਾਂ ਸੰਸਕਰਣ ਉਪਲੱਬਧ ਹੈ .</string>
+	<string name="market_not_available">Android ਬਾਜ਼ਾਰ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ .</string>
+    <string name="market_search_term">OI ਉਦਯਤਨ</string>
+	<string name="android_market">Android ਬਾਜ਼ਾਰ</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">ਸੰਸਕਰਣ %1$s\nSD card %2$s\n\nOS\n%3$s</string>
+    <string name="free_space">ਅਜ਼ਾਦ ਆਕਾਸ਼ %s</string>
+    <string name="os_info">ਬੋਰਡ %1$s\n ਬਰਾਂਡ %2$s\n ਡਿਵਾਇਸ %3$\n ਆਈਡੀ %4$s\n ਮਾਡਲ %5$s</string>
+    
+    <string name="do_update">ਨੁਮਾਇਸ਼ ਹੁਣ ਅਦਿਅਤਨ !</string>
+    <string name="do_update_market">ਹੁਣ ਬਾਜ਼ਾਰ ਵਲੋਂ ਅਦਿਅਤਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ !</string>
+    <string name="do_update_andAppStore">ਅਤੇ ਐਪ ਸਟੋਰ ਵਲੋਂ ਹੁਣ ਅਦਿਅਤਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ !</string>
+    <string name="remind_me_later">ਮੈਨੂੰ ਬਾਅਦ ਵਿੱਚ ਯਾਦ ਦਵਾਣਾ ਹੈ !</string>
+    <string name="ignore_this_update">ਇਸ ਅਦਿਅਤਨ ਉੱਤੇ ਧਿਆਨ ਨਹੀਂ ਦਿਓ</string>
+    <string name="ignore_all_further_updates">ਸਾਰੇ ਅੱਗੇ ਅਦਿਅਤਨ ਉੱਤੇ ਧਿਆਨ ਨਹੀਂ ਦਿਓ</string>
+    <string name="ok">ਠੀਕ ਹੈ</string>
+    
+    <string name="update_not_started">ਅਦਿਅਤਨ ਸ਼ੁਰੂ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ! \n\n ਕ੍ਰਿਪਾ ਸੰਪਰਕ ਆਵੇਦਨ ਡੇਵਲਪਰ !\n \n%s</string>
+    <string name="app_up_to_date">ਆਵੇਦਨ ਅਪ ਕਰਣ ਦੀ ਤਾਰੀਖ ਹੈ .</string>
+    <string name="checking">ਨਵੇਂ ਸੰਸਕਰਣ ਲਈ ਜਾਂਚ ਹੋ ਰਹੀ ਹੈ .</string>
+    <string name="building_app_list">ਭਵਨ ਆਵੇਦਨਾਂ ਦੀ ਸੂਚੀ .</string>
+    <string name="check_andappstore">AndAppStore.com ਦੀ ਜਾਂਚ ਕਰੋਏ</string>
+    <string name="check_versions">ਸੰਸਕਰਣੋਂ ਦੀ ਜਾਂਚ ਕਰੋਏ</string>
+    <string name="show_versions">ਸਾਰੇ ਦਿਖਾਵਾਂ</string>
+    <string name="refresh">ਤਾਜ਼ਾ ਕਰੋ</string>
+    <string name="checked_against_andappstore">ਚੇਕਡ AndAppStore</string>
+    <string name="current_version">ਵਰਤਮਾਨ ਸੰਸਕਰਣ : %s</string>
+    <string name="current_version_code">ਵਰਤਮਾਨ ਸੰਸਕਰਣ ਕੋਡ :  %s</string>
+    <string name="newer_version">ਨਵੇਂ ਸੰਸਕਰਣ :  %s</string>
+    <string name="newer_version_comment">ਨਵੇਂ ਸੰਸਕਰਣ %1$s - %2$s</string>
+    <string name="newer_version_available">ਨਵਾਂ ਸੰਸਕਰਣ ਉਪਲੱਬਧ .</string>
+    <string name="no_update_info_found">ਨਹੀਂ ਨਵੀਨੀਕਰਣ ਜਾਣਕਾਰੀ ਪਾਇਆ .</string>
+    <string name="title_list_new_versions">OI ਅਦਿਅਤਨ  -  ਨਵੇਂ ਸੰਸਕਰਣੋਂ ਦੀ ਸੂਚੀ</string>
+    <string name="title_list_new_versions_from_andappstore">OI ਅਦਿਅਤਨ  -  AndAppStore ਉੱਤੇ ਨਵਾਂ ਸੰਸਕਰਣ</string>
+    <string name="title_list_all_versions">OI ਅਦਿਅਤਨ  -  ਕਾਮਯਾਬ ਰਹੇ ਅਨੁਪ੍ਰਯੋਗੋਂ ਦੀ ਸੂਚੀ</string>
+    <string name="title_list_all_versions_from_andappstore">OI ਅਦਿਅਤਨ  -  ਕਾਮਯਾਬ ਰਹੇ ਆਵੇਦਨਾਂ ਦੀ ਸੂਚੀ  ( AndAppStore ਉੱਤੇ ਜਾਂਚ )</string>
+    <string name="settings">ਸੈਟਿੰਗ</string>
+    <string name="auto_update">ਆਟੋ ਚੇਕ</string>
+    <string name="ignore_title">ਅਣਡਿੱਠਾ</string>
+    <string name="ignore_text">ਅਦਿਅਤਨ ਵਰਤਮਾਨ ਦੀ ਅਨਦੇਖੀ ਕਰ ਰਹੇ ਹਨ .  ਤੁਸੀ ਅਦਿਅਤਨੋਂ ਨੂੰ ਫਿਰ ਵਲੋਂ ਪ੍ਰਾਪਤ ਕਰਣਾ ਚਾਹਾਂਗੇ ?</string>
+    <string name="unknown_title">ਅਣਜਾਣ</string>
+    <string name="unknown_text">ਕੋਈ ਨਵੀਨੀਕਰਣ ਜਾਣਕਾਰੀ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ .  ਮੈਨਿਉਅਲ ਦੀ ਜਾਂਚ ਕਰੀਏ ਅਤੇ ਡੇਵਲਪਰ ਪੁੱਛਣ ਲਈ ਭਵਿੱਖ ਵਿੱਚ ਪੁਰਾਨਾ ਅਦਿਅਤਨ ਸਮਰਥਨ .</string>
+    <string name="search_on_market">ਬਾਜ਼ਾਰ ਉੱਤੇ ਖੋਜਾਂ</string>
+    <string name="search_on_andappstore">AndAppStore ਉੱਤੇ ਖੋਜਾਂ</string>
+    <string name="processing">ਪ੍ਰਸੰਸਕਰਣ %s</string>
+    
+    <string name="warn">ਇਸ ਆਵੇਦਨ  ਦੇ ਨਵੀਨੀਕਰਣ ਦੀ ਪਰਿਕ੍ਰੀਆ Android ਬਾਜ਼ਾਰ ਦੀ ਤੁਲਣਾ ਵਿੱਚ ਇੱਕ ਵੱਖ ਸਾਇਟ ਲਈ ਨਿਰਦੇਸ਼ .  ਅਗਿਆਤ ਸਰੋਤਾਂ ਵਲੋਂ ਸਥਾਪਤ ਅਨੁਪ੍ਰਯੋਗੋਂ  ਦੇ ਇੱਕ ਸੁਰੱਖਿਆ ਜੋਖਮ ਨੁਮਾਇਸ਼ ਹੋ ਸਕਦਾ ਹੈ .</string>
+    <string name="continue_anyway">ਕਿਸੇ ਵੀ ਤਰਾਂ ਜਾਰੀ</string>
+    <string name="abort">ਛੱਡੋ</string>
+    
+    <string name="preference_auto_update">ਆਟੋ ਨਵੀਨੀਕਰਣ</string>
+    <string name="preference_auto_update_summary">ਜੇਕਰ ਜਾਂਚ ਕੀਤੀ ,  ਨੇਮੀ ਰੂਪ ਵਲੋਂ ਅਦਿਅਤਨ ਲਈ ਖੋਜ ਕੀਤਾ ਜਾਂਦਾ ਹੈ</string>
+    <string name="title_update_interval">ਅੱਪਡੇਟ ਅੰਤਰਾਲ</string>
+    <string name="summary_update_interval">ਅੰਤਰਾਲ ਕਿੰਨੀ ਵਾਰ ਨਵੀਨੀਕਰਣ ਖੋਜ ਨੁਮਾਇਸ਼ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ ਸੇਟ .</string>
+    <string name="dialog_title_update_interval">ਅੰਤਰਾਲ ਦਾ ਸੰਗ੍ਰਹਿ ਕਰੋਏ</string>
+    <string name="default_update_interval">ਹਰ _ ਮਹੀਨੇ</string>
+    <string name="preference_warning_title">ਚੇਤਾਵਨੀ</string>
+    <string name="preference_warning_text">ਜੇਕਰ ਤੁਸੀ ਅਨਚੇਕ ਇਸ ਨਸ਼ਾ ,  ਤੁਸੀ ਨਹੀਂ ਰਹਿ ਅਦਿਅਤਨ ਲਈ ਸੂਚਨਾ ਪ੍ਰਾਪਤ ਹੋਵੇਗਾ .  ਕੀ ਤੁਸੀ ਹੁਣੇ ਵੀ ਨੂੰ ਅਨਚੇਕ ਆਪਣੇ ਆਪ :  ਅਦਿਅਤਨ ਕਰਣਾ ਚਾਹੁੰਦੇ ਹੋ ?</string>
+    
+    <string name="preference_andappstore">AndAppStore ਦਾ ਪ੍ਰਯੋਗ ਕਰੋਏ</string>
+    <string name="preference_andappstore_summary">ਸੰਸਕਰਣ AndAppStore.com ਦੁਆਰਾ ਉਪਲੱਬਧ ਕਰਾਈ ਗਈ ਜਾਣਕਾਰੀ ਦਾ ਵਰਤੋ ਕਰੋਏ</string>
+    
+    <string name="permission_read_update_info">ਅਦਿਅਤਨ ਜਾਣਕਾਰੀ ਪੜ੍ਹੀਏ</string>
+    <string name="permission_write_update_info">ਅਦਿਅਤਨ ਜਾਣਕਾਰੀ ਲਿਖੀਏ</string>
+    <string name="permission_read_update_info_descr">ਸਥਾਪਤ ਅਨੁਪ੍ਰਯੋਗੋਂ ,  ਨਵੀਨੀਕਰਣ ਸਥਾਨਾਂ ਅਤੇ ਅਨੁਰੋਧੋਂ  ਦੇ ਬਾਰੇ ਵਿੱਚ ਜਾਣਕਾਰੀ ਪੜ੍ਹੀਏ .</string>
+    <string name="permission_write_update_info_descr">ਸਥਾਪਤ ਅਨੁਪ੍ਰਯੋਗੋਂ ,  ਨਵੀਨੀਕਰਣ ਸਥਾਨਾਂ ਅਤੇ ਅਨੁਰੋਧੋਂ  ਦੇ ਬਾਰੇ ਵਿੱਚ ਜਾਣਕਾਰੀ  ਦੇ ਲਿਖੀਏ .</string>
+
+
+	<!-- About -->
+	<string name="about">ਇਸ ਬਾਰੇ</string>
+	<string name="about_title">%s ਬਾਰੇ</string>
+	<string name="about_text">ਸੰਸਕਰਣ %s \n\n OI ਪੁਰਾਨਾ ਅਦਿਅਤਨ ਰਹਿੰਦੀ ਹੈ ਤੂੰ ਨਵੇਂ ਆਵੇਦਨ ਸੰਸਕਰਣੋਂ ਉੱਤੇ ਸੂਚਤसौभाग्य  \n OpenIntents ਵੱਖ Android  ਦੇ ਅਨੁਪ੍ਰਯੋਗੋਂ intents ਅਤੇ ਖੁੱਲ੍ਹਾਖੁੱਲ੍ਹਾ ਇੰਟਰਫੇਸ  ਦੇ ਡੇਟਾ ਦਾ ਵਰਤੋ ਸਾਂਝਾ ਕਰਣ ਲਈ ਆਗਿਆ ਦਿੰਦਾ ਹੈ  \n\n ਜਿਆਦਾ ਜਾਣਕਾਰੀ ਅਤੇ ਹੋਰ ਮਹਾਨ ਅਨੁਪ੍ਰਯੋਗੋਂ ਲਈ ਪਤਾ  www.openintents.org ਉੱਤੇ OpenIntents ਯਾਤਰਾ</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI ਅਦਿਅਤਨ EULA</string>
+<string name="eula_description">ਕਾਪੀਰਾਇਟ ੨ , ੦੦੮ OpenIntents.org\n ਅਪਾਚੇ ਲਾਇਸੇਂਸ ,  ਸੰਸਕਰਣ 2.0  ਦੇ ਅਨੁਸਾਰ ਲਾਇਸੇਂਸ  (\" ਲਾਇਸੇਂਸ \");  ਤੁਸੀ ਲਾਇਸੇਂਸ  ਦੇ ਨਾਲ ਅਨੁਪਾਲਨ ਵਿੱਚ ਛੱਡਕੇ ਇਸ ਫਾਇਲ ਦਾ ਵਰਤੋ ਨਹੀਂ ਤੁਸੀ  \n http ਉੱਤੇ ਲਾਇਸੇਂਸ ਦੀ ਇੱਕ ਨਕਲ ਪ੍ਰਾਪਤ ਕਰ ਸੱਕਦੇ ਹੋ ਹੋ ਸਕਦਾ ਹੈ  www.apache.org/ licenses / LICENSE -2.0: //\n ਜਦੋਂ ਤੱਕ ਲਾਗੂ ਕਨੂੰਨ ਦੁਆਰਾ ਲੋੜ ਜਾਂ ਲਿਖਤੀ ਰੂਪ ਵਿੱਚ ਸਹਿਮਤ ਹੋਏ ,  ਲਾਇਸੇਂਸ  ਦੇ ਤਹਿਤ ਵੰਡਵਾਂ ਸਾਫਟਵੇਯਰ ਇੱਕ ਵਰਗਾ ਹੈ ਆਧਾਰ ਉੱਤੇ ਵੰਡਵਾਂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ,  ਕਿਸੇ ਵੀ ਪ੍ਰਕਾਰ ਦੀਆਂ ਵਾਰੰਟੀਆਂ ਜਾਂ ਸ਼ਰਤਾਂ  ਦੇ  ਦੇ ਬਿਨਾਂ , ਜਾਂ ਤਾਂ ਵਿਅਕਤ ਜਾਂ ਰਖਿਆ ਹੋਇਆ .  ਵਿਸ਼ੇਸ਼ ਭਾਸ਼ਾ ਲਈ ਲਾਇਸੇਂਸ  ਦੇ ਅਨੁਸਾਰ  \n\n ਅਨੁਮਤੀਯਾਂ ਅਤੇ ਸੀਮਾਵਾਂ ਦੀ ਗਵਰਨਿੰਗ ਲਾਇਸੇਂਸ ਵੇਖੋ</string>
+	<string name="eula_accept">ਮਨਜ਼ੂਰ</string>
+	<string name="eula_refuse">ਰੱਦ ਕਰੋ</string>
+	
+</resources>

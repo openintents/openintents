@@ -1,0 +1,842 @@
+# Arabic translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: kenn dhia <Unknown>\n"
+"Language-Team: Arabic <ar@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:25(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  kenn dhia https://launchpad.net/~kendhia"
+
+#. Short explanation of the application
+#: tmp_strings.xml:28(string)
+msgid "OI Safe keeps all your private data encrypted."
+msgstr "حماية OI بقي جميع بياناتك الشخصية مشفرة."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:34(string)
+msgid "OI Safe"
+msgstr "حماية OI"
+
+#: tmp_strings.xml:35(string)
+msgid "No Passwords present for this category."
+msgstr "لا توجد أي كلمة مرور حالية لهته الفئة."
+
+#: tmp_strings.xml:36(string)
+msgid "No categories present. Please add one via Menu-&gt;Add"
+msgstr "لا توجد أي فئة حالية .رجاءا أضف واحدة عبر القائمة -&gt;أضف"
+
+#: tmp_strings.xml:37(string) tmp_strings.xml:206(string)
+msgid "Lock"
+msgstr "أغلق"
+
+#: tmp_strings.xml:38(string)
+msgid "View"
+msgstr "عرض"
+
+#: tmp_strings.xml:39(string)
+msgid "Edit"
+msgstr "تعديل"
+
+#: tmp_strings.xml:40(string)
+msgid "Add"
+msgstr "إضافة"
+
+#: tmp_strings.xml:41(string)
+msgid "Delete"
+msgstr "حذف"
+
+#: tmp_strings.xml:42(string)
+msgid "Password"
+msgstr "كلمة السر"
+
+#: tmp_strings.xml:43(string)
+msgid "Passwords"
+msgstr "كلمات المرور"
+
+#: tmp_strings.xml:44(string)
+msgid "Master Password"
+msgstr "كلمة المرور الرئيسية"
+
+#: tmp_strings.xml:45(string)
+msgid "Username"
+msgstr "إسم المستخدم"
+
+#: tmp_strings.xml:46(string)
+msgid "Website"
+msgstr "موق الكتروني"
+
+#: tmp_strings.xml:47(string)
+msgid "Description"
+msgstr "الوصف"
+
+#: tmp_strings.xml:48(string)
+msgid "Notes"
+msgstr "الملاحظات"
+
+#: tmp_strings.xml:49(string)
+msgid "Save"
+msgstr "حفظ"
+
+#: tmp_strings.xml:50(string)
+msgid "Invalid password. Please try again."
+msgstr "كلمة المرور خاطئة. رجاءا حاول مرة أخرى"
+
+#: tmp_strings.xml:51(string)
+msgid "Password must be at least 4 characters"
+msgstr "كلمة المرور يجب أن تكون على الأقل أكثر من 4 رموز"
+
+#: tmp_strings.xml:52(string)
+msgid "Description cannot be blank"
+msgstr "لا يمكن ان تبقى خانة الوصف فارغة."
+
+#: tmp_strings.xml:53(string)
+msgid "Name cannot be blank"
+msgstr "لا يمكن أي تبقى خانة الاسم فارغة."
+
+#: tmp_strings.xml:54(string)
+msgid ""
+"Please enter a password below, which will be used to keep your passwords "
+"safe."
+msgstr ""
+"رجاءا قم باخال كلمة سر في الأسفل ، كلمة السر هته تبقي كلمات السر الخاصة بك "
+"محمية."
+
+#: tmp_strings.xml:55(string)
+msgid ""
+"You are currently logged into OI Safe, meaning that other applications can "
+"request their passwords and decrypt/encrypt data. Lock to prevent further "
+"access until you type in your password again."
+msgstr ""
+"انت الان تهم بالدخول الى حماية OI، هذا يعني أن التطبيقات الأخرى بامكانها طلب "
+"كلمات السر الخاصة بها و تشفير/فك تفير البيانات. غلق لمنع الدخول الخارجي الى "
+"غاية تقوم بكتابة كلمة المرور مرة أخرى."
+
+#: tmp_strings.xml:56(string)
+msgid ""
+"Another application is asking to use the master key. Please type in your "
+"password to unlock it."
+msgstr ""
+"تطبيق آخر يطلب كلمة السر الرئيسية لاستعمالها. رجاءا أدخل كلمة السر لفتحها."
+
+#: tmp_strings.xml:57(string)
+msgid "Categories"
+msgstr "الفئات"
+
+#: tmp_strings.xml:58(string)
+msgid "Category"
+msgstr "الفئة"
+
+#: tmp_strings.xml:59(string)
+msgid "Business"
+msgstr "الأعمال"
+
+#: tmp_strings.xml:60(string)
+msgid "Personal"
+msgstr "شخصي"
+
+#: tmp_strings.xml:61(string)
+msgid "Name"
+msgstr "الإسم"
+
+#: tmp_strings.xml:62(string)
+msgid "Category is not empty. You must delete the passwords first."
+msgstr "الفئة ليست فارغة .يجب عليك حذف كلمة السر أولا."
+
+#: tmp_strings.xml:63(string)
+msgid "Cannot decrypt category"
+msgstr "لا يمكن فك تشفير الفئة"
+
+#: tmp_strings.xml:64(string)
+msgid "Cannot decrypt password"
+msgstr "لا يمكن فك تشفير كلمة السر"
+
+#: tmp_strings.xml:65(string)
+msgid "Error exporting database"
+msgstr "لا يمكن فك تشفير كلمة السر"
+
+#: tmp_strings.xml:66(string)
+msgid "Export Database"
+msgstr "تصدير قاعدة البيانات"
+
+#: tmp_strings.xml:67(string)
+msgid "Select a file for export"
+msgstr "اختر ملف للتصدير"
+
+#: tmp_strings.xml:68(string)
+msgid ""
+"This will export the password database to a plaintext file. THIS IS VERY "
+"DANGEROUS. Make sure that you delete the file after you are done with it. "
+"Are you sure you want to export?"
+msgstr ""
+"سيتم تصدير قاعدة بيانات كلمات السر الى ملف نص. هته العملية خطيرة جدا. تأكد "
+"من حذف الملف بعد الانتهاء منه . هل أنت متأكد من رغبتك في تصدير القاعدة ؟"
+
+#: tmp_strings.xml:69(string)
+msgid "Export to '%s' successful. Warning! The file is not encrypted."
+msgstr "تصدير  '%s' بنجاح . تحذير! هذا الملف غير مشفر."
+
+#: tmp_strings.xml:70(string)
+msgid ""
+"Unable to create export file 'oisafe.csv' on SDCARD. You might try "
+"disconnecting USB from computer."
+msgstr ""
+"لا يمكن انشاء ملف تصدير   'oisafe.csv' في SDCARD.  يجب عليك فصل USB من "
+"الجهاز."
+
+#: tmp_strings.xml:71(string)
+msgid "Import Database"
+msgstr "استيراد قاعدة"
+
+#: tmp_strings.xml:72(string)
+msgid "Select a file for import"
+msgstr "اختر ملف للاستيراد"
+
+#: tmp_strings.xml:73(string)
+msgid "Import file is missing:"
+msgstr "ملف الاستيراد مفقود :"
+
+#: tmp_strings.xml:74(string)
+msgid ""
+"Unable to import file 'oisafe.csv' from SDCARD. You might try disconnecting "
+"USB from computer."
+msgstr ""
+"لا يمكن انشاء ملف تصدير   'oisafe.csv' في SDCARD.  يجب عليك فصل USB من "
+"الجهاز."
+
+#: tmp_strings.xml:75(string)
+msgid "First line is missing fields."
+msgstr "لا يوجد أي حقل في السطر الأول."
+
+#: tmp_strings.xml:76(string)
+msgid "Import"
+msgstr "استيراد"
+
+#: tmp_strings.xml:77(string)
+msgid "Do you want to replace the database (import from %s)?"
+msgstr "هل تود استبدال قاعدة البيانات (المستوردة من %s )؟"
+
+#: tmp_strings.xml:78(string)
+msgid "Yes"
+msgstr "نعم"
+
+#: tmp_strings.xml:79(string)
+msgid "No"
+msgstr "لا"
+
+#: tmp_strings.xml:80(string)
+msgid "Please wait while importing..."
+msgstr "رجاءا انتظر أثناء الاستيراد..."
+
+#: tmp_strings.xml:81(string)
+msgid "No categories found."
+msgstr "لم يتم العثور على فئات."
+
+#: tmp_strings.xml:82(string)
+msgid "No entries found in CSV."
+msgstr "لم يتم العثور على أي مدخلات في CSV ."
+
+#: tmp_strings.xml:83(string)
+msgid "Too many categories."
+msgstr "فئات كثيرة."
+
+#: tmp_strings.xml:84(string)
+msgid "Not enough fields"
+msgstr "مدخلات غير كافية."
+
+#: tmp_strings.xml:85(string)
+msgid "Blank category"
+msgstr "فئة فارغة."
+
+#: tmp_strings.xml:86(string)
+msgid "Blank description"
+msgstr "وصف فارغ."
+
+#: tmp_strings.xml:87(string)
+msgid "Delete Database"
+msgstr "أحذف قاعدة البيانات."
+
+#: tmp_strings.xml:88(string)
+msgid ""
+"Are you really sure you want to delete the database? This cannot be undone."
+msgstr ""
+"هل أنت متأكد أنك تود حذف قاعدة البيانات ؟ هذا الأمر لا يمكن التراجع عنه."
+
+#: tmp_strings.xml:89(string)
+msgid "Added"
+msgstr "تمت الإضافة"
+
+#: tmp_strings.xml:90(string)
+msgid "entries"
+msgstr "المدخلات"
+
+#: tmp_strings.xml:91(string)
+msgid "Import complete"
+msgstr "انتهى الاستيراد"
+
+#: tmp_strings.xml:92(string)
+msgid ""
+"Since it is not secure to keep passwords in clear text CSV files, would you "
+"like to delete"
+msgstr "لأنه ليس آمنا أن تترك كلمات السر في ملف نص CSV ، هل تود الحذف"
+
+#: tmp_strings.xml:93(string)
+msgid "Edit Entry"
+msgstr "تعديل المدخل"
+
+#: tmp_strings.xml:94(string)
+msgid "View Entry"
+msgstr "عرض المدخل"
+
+#: tmp_strings.xml:95(string)
+msgid "Help"
+msgstr "المساعدة"
+
+#: tmp_strings.xml:96(string)
+msgid "Close"
+msgstr "إغلاق"
+
+#: tmp_strings.xml:97(string)
+msgid "Go"
+msgstr "اذهب"
+
+#: tmp_strings.xml:98(string)
+msgid "Delete Password"
+msgstr "أحذف كلمة السر."
+
+#: tmp_strings.xml:99(string)
+msgid "Are you sure you want to delete this password?"
+msgstr "هل أنت متأكد أنك تود حذف كلمة السر هته ؟"
+
+#: tmp_strings.xml:100(string)
+msgid "Change Master Password"
+msgstr "تغيير كلمة السر الرئيسية"
+
+#: tmp_strings.xml:101(string)
+msgid ""
+"Use this to change the password you use to unlock OI Safe. Your data will be "
+"re-encrypted with the new password. The more complex your password is, the "
+"safer your data will be."
+msgstr ""
+"استعمل هته لتغيير كلمة السر لفتح حماية OI .. بياناتك سيتم اعادة تشفيرها مع "
+"كلمة السر الجديدة. كلما تكون كلمة السر معقدة أكثر ، بياناتك تكون محمية أكثر."
+
+#: tmp_strings.xml:102(string)
+msgid "Old password"
+msgstr "كلمة المرور القديمة"
+
+#: tmp_strings.xml:103(string)
+msgid "New password"
+msgstr "كلمة مرور جديدة"
+
+#: tmp_strings.xml:104(string)
+msgid "Verify password"
+msgstr "التحقق من كلمة المرور"
+
+#: tmp_strings.xml:105(string)
+msgid "New and Verify passwords do not match."
+msgstr "كلمة السر الجديدة وكلمة التحقق عير متطابقتان."
+
+#: tmp_strings.xml:106(string)
+msgid "Old password is invalid. Please try again."
+msgstr "كلمة السر القديمة خاطئة. رجاءا حاول مرة أخرى."
+
+#: tmp_strings.xml:107(string)
+msgid "Error changing password"
+msgstr "خطأ أثناء تغيير كلمة السر"
+
+#: tmp_strings.xml:108(string)
+msgid "Master Password changed"
+msgstr "تم تغيير كلمة السر الرئيسية"
+
+#: tmp_strings.xml:109(string)
+msgid "Confirm"
+msgstr "تأكيد"
+
+#: tmp_strings.xml:110(string)
+msgid "Password entries do not match."
+msgstr "كلمات السر المدخلة غير متطابقة."
+
+#: tmp_strings.xml:111(string)
+msgid "Backup"
+msgstr "نسخة إحتياطية"
+
+#: tmp_strings.xml:112(string)
+msgid "Backing up to"
+msgstr "خذ نسخة احتياطية الى"
+
+#: tmp_strings.xml:113(string)
+msgid "Complete. Passwords backed up:"
+msgstr "انتهى. تم أحذ نسخة احتياطية عن كلمات المرور :"
+
+#: tmp_strings.xml:114(string)
+msgid "Backup failed:"
+msgstr "فشل أخذ نسخة احتياطية :"
+
+#: tmp_strings.xml:115(string)
+msgid "Select a file for backup"
+msgstr "اختر ملف للنسخة الاحتياطية"
+
+#: tmp_strings.xml:116(string)
+msgid "Error while backing up"
+msgstr "خطأ أثناء أخذ نسخة احتياطية"
+
+#: tmp_strings.xml:117(string)
+msgid "Restore"
+msgstr "استرجاع"
+
+#: tmp_strings.xml:118(string)
+msgid "Filename"
+msgstr "إسم الملف"
+
+#: tmp_strings.xml:119(string)
+msgid ""
+"Backup file not found. You need to perform a backup first to create it. Or "
+"copy a backup from your PC."
+msgstr ""
+"لم يتم العثور على ملف النسخة الاحتياطية. يجب أن تقوم بعمل نسخة احتياطية "
+"لانشائها. أو انسخ واحدة من حاسوبك."
+
+#: tmp_strings.xml:120(string)
+msgid ""
+"Please provide the password used by the backup file. Your master password "
+"will be set to this."
+msgstr ""
+"رجاءا قدم كلمة السر المستعملة من ملف النسخة الاحتياطية. سيتم ظبط كلمة السر "
+"الرئيسية على  كلمة السر هته."
+
+#: tmp_strings.xml:121(string)
+msgid "Select a file for restore"
+msgstr "اختر ملف للاسترجاع."
+
+#: tmp_strings.xml:122(string)
+msgid "Error while restoring"
+msgstr "خطأ  أثناء الاسترجاع."
+
+#. Toast message. %s contains a more detailed error message.
+#: tmp_strings.xml:125(string)
+msgid "Unable to open file: %s"
+msgstr "غير قادر على فتح الملف : %s"
+
+#. Toast message. %s contains the version number of the database.
+#: tmp_strings.xml:128(string)
+msgid "Version not supported: %s"
+msgstr "نسخة غير مدعومة : %s"
+
+#: tmp_strings.xml:130(string)
+msgid "Restore error."
+msgstr "خطأ في الاسترجاع."
+
+#: tmp_strings.xml:131(string)
+msgid "Bad password."
+msgstr "كلمة سر سيئة."
+
+#: tmp_strings.xml:132(string)
+msgid "Restore Database"
+msgstr "استرجاع قاعدة البيانات."
+
+#: tmp_strings.xml:133(string)
+msgid "Are you sure you want to replace the current data?"
+msgstr "هل أنت متأكد أنك تود استبدال البيانات الحالية ؟"
+
+#: tmp_strings.xml:134(string)
+msgid "Found %1$s passwords from backup dated %2$s."
+msgstr "تم العثور على %1$s من النسخة الاحتياطية تحت تاريخ.%2$s"
+
+#: tmp_strings.xml:135(string)
+msgid "Complete. Passwords restored: %s"
+msgstr "انتهى. كلمات السر المسترجعة هي : %s"
+
+#: tmp_strings.xml:136(string)
+msgid "copied to Clipboard"
+msgstr "نسخ إلى الحافظة"
+
+#: tmp_strings.xml:137(string)
+msgid "Invalid website"
+msgstr "موقع التكروني خاطئ"
+
+#: tmp_strings.xml:138(string)
+msgid "Database Error"
+msgstr "خطأ في قاعدة البيانات"
+
+#: tmp_strings.xml:139(string)
+msgid "Database error. Out of space?"
+msgstr ""
+
+#. Menu label to open a category
+#: tmp_strings.xml:142(string)
+msgid "Open"
+msgstr "فتح"
+
+#: tmp_strings.xml:144(string)
+msgid "Database Version Error"
+msgstr "خطأ في نسخة قاعدة البيانات"
+
+#: tmp_strings.xml:145(string)
+msgid ""
+"Sorry, but the version of the database is not supported. You must install "
+"the version associated with this database."
+msgstr ""
+"عذرا، لكن نسخةقاعدة البيانات غير مدعومة. يجب عليك تثبيت النسخة المرتبطة مع "
+"قاعدة البيانات."
+
+#. Menu label to move a password to another category
+#: tmp_strings.xml:148(string)
+msgid "Move"
+msgstr "نقل"
+
+#: tmp_strings.xml:150(string)
+msgid "Select Category"
+msgstr "اختيار الفئة"
+
+#. Toast that password has been moved to another category
+#: tmp_strings.xml:153(string)
+msgid "Moved to %s"
+msgstr "انقل الى %s"
+
+#: tmp_strings.xml:155(string)
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: tmp_strings.xml:156(string)
+msgid "Allow external access"
+msgstr "السماح بالدخول الخارجي"
+
+#: tmp_strings.xml:157(string)
+msgid "Allow other applications to secure your data with OI Safe"
+msgstr "السماح للتطبيقات الأخرى بحماية بياناتك باستعمال حمياة OI"
+
+#: tmp_strings.xml:158(string)
+msgid "OI Safe: Another application requests access."
+msgstr "حماية OI: تطبيق آخر يطلب الدخول."
+
+#: tmp_strings.xml:159(string)
+msgid "Allow other applications to secure your data with OI Safe."
+msgstr "السماح للتطبيقات الأخرى بحماية بياناتك باستعمال حماية OI."
+
+#: tmp_strings.xml:160(string)
+msgid "This can also be set in OI Safe's Menu / Settings."
+msgstr "يمكن ظبط هذه أيضامن قائمة حماية OI  قائمة/ الاعدادات."
+
+#. Preference title for auto lock timeout
+#: tmp_strings.xml:163(string) tmp_strings.xml:168(string)
+msgid "Auto lock timeout"
+msgstr "مهلة القفل التلقائي"
+
+#. Preference summary for auto lock timeout
+#: tmp_strings.xml:166(string)
+msgid "Number of minutes before timeout occurs and safe is locked"
+msgstr "عدد الدقائق قبل انتهاء المهلة و يتم غلق  الحماية."
+
+#. Preference title for lock (OI Safe) on screen lock (device)
+#: tmp_strings.xml:171(string)
+msgid "Lock on screen lock"
+msgstr "غلق قفل الشاشة"
+
+#. Preference summary for lock (OI Safe) on screen lock
+#: tmp_strings.xml:174(string)
+msgid "Lock when the screen locks"
+msgstr "غلق عند غلق الشاشة."
+
+#. Preference title: use a numeric keypad to enter the password
+#: tmp_strings.xml:177(string)
+msgid "Keypad"
+msgstr "لوحة مفاتيح"
+
+#. Preference summary: for a numeric keypad
+#: tmp_strings.xml:180(string)
+msgid "Use a keypad to enter Master Password"
+msgstr "استعمل لوحة المفاتيح لادخال كلمة السر الرئيسية"
+
+#. Preference title for keypad mute
+#: tmp_strings.xml:183(string)
+msgid "Keypad Mute"
+msgstr "كتم لوحة المفاتيح"
+
+#. Preference summary: Make the keypad sounds mute. 
+#. 	     If a user chooses this, then the keypad does not sound when pressing the keys.
+#: tmp_strings.xml:187(string)
+msgid "Mute keypad sounds"
+msgstr "كتم أصوات لوحة المفاتيح"
+
+#: tmp_strings.xml:189(string)
+msgid "Auto backup"
+msgstr "أخذ نسخة احتياطية أوتوماتيكيا"
+
+#: tmp_strings.xml:190(string)
+msgid "Automatically prompt to backup passwords"
+msgstr "موجه تلقائيا لأخذ نسخة احتياطية لكلمات المرور"
+
+#: tmp_strings.xml:192(string)
+msgid "Auto backup days"
+msgstr "أيام أخذ نسخة احتياطية"
+
+#: tmp_strings.xml:193(string)
+msgid "Number of days to wait before next auto backup"
+msgstr "عدد الأيام المنتظرة قبل المرة القادة لأخذ نسخة احتياطية تلقائيا"
+
+#: tmp_strings.xml:194(string)
+msgid "Auto Backup Days"
+msgstr "أيام أخذ نسخة احتياطية تلقائيا"
+
+#: tmp_strings.xml:196(string)
+msgid "Default backup path"
+msgstr "مسار النسخة الاحتياطية الافتراضي"
+
+#: tmp_strings.xml:197(string)
+msgid "Default export path"
+msgstr "مسار التصدير الافتراضي"
+
+#: tmp_strings.xml:200(string)
+msgid "Decrypt (OI Safe)"
+msgstr "فك التشفير(حماية OI)"
+
+#: tmp_strings.xml:201(string)
+msgid "Encrypt (OI Safe)"
+msgstr "تشفير (حمياة OI)"
+
+#: tmp_strings.xml:202(string)
+msgid "Get password (OI Safe)"
+msgstr "الحصول على كلمة المرور (حماية OI)"
+
+#: tmp_strings.xml:203(string)
+msgid "Set password (OI Safe)"
+msgstr "ظبط كلمة المرور (حماية OI)"
+
+#: tmp_strings.xml:204(string)
+msgid "Restart timer (OI Safe)"
+msgstr "موقت اعادة التشغيل (حماية OI)"
+
+#: tmp_strings.xml:205(string)
+msgid "Open OI Safe"
+msgstr "فتح حماية OI"
+
+#: tmp_strings.xml:207(string)
+msgid "Continue"
+msgstr "إستمرار"
+
+#: tmp_strings.xml:208(string)
+msgid "Generate Password"
+msgstr "توليد كلمة المرور"
+
+#: tmp_strings.xml:209(string)
+msgid "Password Length"
+msgstr "طور كلمة المرور"
+
+#: tmp_strings.xml:210(string)
+msgid "Uppercase [A-Z]"
+msgstr "حروف كبيرة [Z-A]"
+
+#: tmp_strings.xml:211(string)
+msgid "Lowercase [a-z]"
+msgstr "حروف صغيرة [z-a]"
+
+#: tmp_strings.xml:212(string)
+msgid "Numbers [0-9]"
+msgstr "أرقام[9-0]"
+
+#: tmp_strings.xml:213(string)
+msgid "Symbols [!@#$%^\\*]"
+msgstr "الرموز[!@#$%^\\*]"
+
+#: tmp_strings.xml:214(string)
+msgid "Copy to Current Entry"
+msgstr "نسخ الى المدخل الجالي"
+
+#: tmp_strings.xml:215(string)
+msgid "Copy to Clipboard"
+msgstr "نسخ إلي الحافظة"
+
+#: tmp_strings.xml:216(string)
+msgid "Cancel"
+msgstr "الغاء"
+
+#: tmp_strings.xml:217(string)
+msgid "Discard changes"
+msgstr "إهمل التغييرات"
+
+#: tmp_strings.xml:218(string)
+msgid "Entry saved"
+msgstr "تم حفظ المدخل"
+
+#: tmp_strings.xml:219(string)
+msgid "Unable to save due to database error"
+msgstr "غير قادر على الحفظ بسبب خطأ في قاعدة البيانات"
+
+#: tmp_strings.xml:220(string)
+msgid "Last edited"
+msgstr "التعديلات الأخيرة"
+
+#: tmp_strings.xml:221(string)
+msgid "unknown"
+msgstr "غير معروف"
+
+#: tmp_strings.xml:222(string)
+msgid "Crypto error:"
+msgstr "أخطاء التشفير :"
+
+#: tmp_strings.xml:223(string)
+msgid "Unique name"
+msgstr "اسم وحيد"
+
+#: tmp_strings.xml:224(string)
+msgid "Package access"
+msgstr "الدخول الى الحزمة"
+
+#: tmp_strings.xml:225(string)
+msgid "not found"
+msgstr "غير موجود"
+
+#: tmp_strings.xml:226(string)
+msgid "New master key"
+msgstr "كلمة سر رئيسية جديدة"
+
+#: tmp_strings.xml:227(string)
+msgid ""
+"A new random master key has been created. Use menu &gt; backup and store "
+"this key in a safe place. Without this key you may lose encrypted data."
+msgstr ""
+"تم انشاء كلمة سر رئيسية عشوائية.استعمل القائمة &gt; نسخة احتياطية لحفظ "
+"المفتاح في مكان آمن. بدون هذا المفتاح قد تفقد البيانات المشفرة."
+
+#: tmp_strings.xml:228(string)
+msgid "Switch mode"
+msgstr "تبديل الوضع"
+
+#: tmp_strings.xml:229(string)
+msgid "Decrypting..."
+msgstr "فك التشفير..."
+
+#: tmp_strings.xml:230(string)
+msgid "Search"
+msgstr "بحث"
+
+#: tmp_strings.xml:231(string)
+msgid "Searching..."
+msgstr "جاري البحث..."
+
+#: tmp_strings.xml:232(string)
+msgid "Type search criteria"
+msgstr "كتابة معايير البحث"
+
+#: tmp_strings.xml:233(string)
+msgid "Nothing found"
+msgstr "لم يتم العثور على أي شيء"
+
+#: tmp_strings.xml:234(string)
+msgid "Mute"
+msgstr "كتم"
+
+#: tmp_strings.xml:235(string)
+msgid "Sounds"
+msgstr "الأصوات"
+
+#: tmp_strings.xml:236(string)
+msgid "Previous"
+msgstr "السابق"
+
+#: tmp_strings.xml:237(string)
+msgid "Next"
+msgstr "التالي"
+
+#: tmp_strings.xml:238(string)
+msgid "AutoBackup"
+msgstr "اخذ نسخة احتياطية أوتوماتيكيا"
+
+#: tmp_strings.xml:239(string)
+msgid "No backup has been performed yet. Would you like to backup now?"
+msgstr "لم يتم تنفيذ أي نسخة احتياطية بعد. هل تود أخذ نسخة احتياطية الآن ؟"
+
+#: tmp_strings.xml:240(string)
+msgid "The last backup was %d days ago. Would you like to backup now?"
+msgstr "آخر نسخة احتياطية كانت منذ %d يوم. هل تود أخذ نسخة الآن."
+
+#: tmp_strings.xml:241(string)
+msgid "Turn off autobackup"
+msgstr "تعطيل أخذ نسخة احتياطية تلقائيا"
+
+#: tmp_strings.xml:242(string)
+msgid "Time to autolock: %s"
+msgstr "الوقت للقفل التلقائي:%s"
+
+#: tmp_strings.xml:243(string)
+msgid "While not downloaded, default location will be used."
+msgstr "عند عدم التعحميل، سيتم استعمالها من طرف الموضع الافتراضي."
+
+#. Permission to access master password
+#: tmp_strings.xml:251(string)
+msgid "access the master password"
+msgstr "الدخول الى كلمة السر الرئيسية."
+
+#: tmp_strings.xml:252(string)
+msgid ""
+"Allows the application to access the master key used for encryption and "
+"decryption. Should never be used except by OI Safe."
+msgstr ""
+"السباح للتطبيق بالدخول االى كلمة المرور الرئيسية لتشفير وفك تشفير .يجب عدم "
+"استعمالها ماعدى من طرف حماية OI."
+
+#. Permission to encrypt and decrypt data
+#: tmp_strings.xml:254(string)
+msgid "encrypt and decrypt data"
+msgstr "تشفير وفك تشفير البيانات"
+
+#: tmp_strings.xml:255(string)
+msgid ""
+"Allows the application to encrypt and decrypt text, and access the passwords "
+"they have stored in OI Safe."
+msgstr ""
+"السماح للتطبيقات بالتشفير وفك تشفير النصوص، والدخول الى كلمات المرور "
+"المحفوظة من طرفهم في حماية OI."
+
+#: tmp_strings.xml:263(item)
+msgid "1 minute"
+msgstr "دقيقة واحدة"
+
+#: tmp_strings.xml:264(item)
+msgid "5 minutes"
+msgstr "5 دقائق"
+
+#: tmp_strings.xml:265(item)
+msgid "10 minutes"
+msgstr "10 دقائق"
+
+#: tmp_strings.xml:266(item)
+msgid "15 minutes"
+msgstr "15 دقيقة"
+
+#: tmp_strings.xml:267(item)
+msgid "30 minutes"
+msgstr "30 دقيقة"
+
+#: tmp_strings.xml:272(item)
+msgid "1 day"
+msgstr "يوم واحد"
+
+#: tmp_strings.xml:273(item)
+msgid "7 days"
+msgstr "7 أيام"
+
+#: tmp_strings.xml:274(item)
+msgid "30 days"
+msgstr "30 يوما"
+
+#: tmp_strings.xml:275(item)
+msgid "60 days"
+msgstr "60 يوما"

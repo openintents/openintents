@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Stelescu Raul <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,6 +23,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Florentina Mușat https://launchpad.net/~kuchiki14\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  Stelescu Raul https://launchpad.net/~stelescuraul\n"
 "  iulargsb https://launchpad.net/~iulargsb"
@@ -284,10 +285,8 @@ msgid "Priority 1-4: %s"
 msgstr "Prioritate 1-4: %s"
 
 #: tmp_strings.xml:116(string)
-#, fuzzy
 msgid "Are you sure you want to permanently delete this item?"
 msgstr ""
-"Sigur doriți să ștergeți permanent acest articol din listele de cumpărături?"
 
 #: tmp_strings.xml:117(string)
 msgid "Delete"
@@ -659,14 +658,12 @@ msgstr ""
 "elemente."
 
 #: tmp_strings.xml:235(string)
-#, fuzzy
 msgid "Reset all settings"
-msgstr "Configurări temă"
+msgstr ""
 
 #: tmp_strings.xml:236(string)
-#, fuzzy
 msgid "Do you really want to RESET ALL settings? This cannot be undone."
-msgstr "Sigur doriți să ștergeți acest magazin?"
+msgstr ""
 
 #: tmp_strings.xml:237(string)
 msgid "All settings have been reset"
@@ -836,9 +833,8 @@ msgid "Next page"
 msgstr ""
 
 #: tmp_strings.xml:342(string)
-#, fuzzy
 msgid "Choose a list"
-msgstr "Alege capitalizarea"
+msgstr ""
 
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"

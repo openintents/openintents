@@ -39,7 +39,7 @@
     
 	<!-- About -->
 	<string name="about">О программе</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_not_available">Version %s\n\nНет совместимого расширения для отображения полной информации (контакты, лицензии).</string>
 	<string name="aboutapp_get">Получить OI About</string>
 
 

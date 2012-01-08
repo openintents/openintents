@@ -137,9 +137,8 @@ msgstr ""
 
 #. Dialog message.
 #: tmp_strings.xml:71(string)
-#, fuzzy
 msgid "No compatible barcode scanner is available."
-msgstr "Nu este disponibil niciun gestionar de fișiere compatibil."
+msgstr ""
 
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:74(string)

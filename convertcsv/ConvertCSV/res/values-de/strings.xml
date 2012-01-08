@@ -136,26 +136,26 @@
     
     <string-array name="import_policy">
         <item>DOPPELT - Erlaubt doppelte Einträge.</item>
-        <item>"BEHALTEN - Bestehende Einträge nicht überschreiben."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
         <item>Überschreiben - Überschreibe bestehende Einträge.</item>
         <item>Wiederherstellen - ALLE LÖSCHEN, danach importieren.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>KOPIEREN - Fügt eine zweite Kopie eines Eintrags hinzu, wenn er bereits besteht.</item>
-        <item>"BEHALTEN - Bestehende Einträge nicht überschreiben, Einträge aus der CSV-Datei ignorieren."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>Überschreiben - Ein Eintrag in der CSV-Datei wird bestehende Einträge ÜBERSCHREIBEN.</item>
         <item>Backup wiederherstellen - LÖSCHT ALLE BESTEHENDEN EINTRÄGE und importiert danach die CSV Datei.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>DOPPELT - Erlaubt doppelte Einträge.</item>
-        <item>"BEHALTEN - Bestehende Einträge nicht überschreiben."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>KOPIEREN - Fügt eine zweite Kopie eines Eintrags hinzu, wenn er bereits besteht.</item>
-        <item>"BEHALTEN - Bestehende Einträge nicht überschreiben, Einträge aus der CSV-Datei ignorieren."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>

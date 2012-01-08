@@ -313,7 +313,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "复制 - 允许重复记录。"
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-msgid "\"KEEP - Don't overwrite existing records.\""
+#, fuzzy
+msgid "KEEP - Don't overwrite existing records."
 msgstr "“继续 - 不要覆盖现有的记录。”"
 
 #: tmp_strings.xml:138(item)
@@ -329,9 +330,9 @@ msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr "复制- 添加一个纪录两个副本，如果它已经存在。"
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+#, fuzzy
 msgid ""
-"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-"\""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr "“保持 - 不覆盖现有的记录，忽略一个CSV文件。”"
 
 #: tmp_strings.xml:145(item)

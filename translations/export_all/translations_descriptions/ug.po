@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Sahran <Unknown>\n"
 "Language-Team: Uyghur <ug@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,6 +20,8 @@ msgstr ""
 #: tmp_strings.xml:3(translators)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Sahran https://launchpad.net/~sahran"
 
 #. Description of application
 #: tmp_strings.xml:12(string)
@@ -51,14 +53,14 @@ msgstr ""
 #: tmp_strings.xml:223(string) tmp_strings.xml:281(string)
 msgid ""
 "This application is ad free and does not require the internet permission."
-msgstr ""
+msgstr "بۇ ئەپتە ئېلان يوق، ئىنتېرنېت ھوقۇقى تەلەپ قىلمايدۇ."
 
 #: tmp_strings.xml:20(string) tmp_strings.xml:76(string)
 #: tmp_strings.xml:123(string) tmp_strings.xml:170(string)
 #: tmp_strings.xml:231(string) tmp_strings.xml:278(string)
 msgid ""
 "The source code of this free and open source application is available at:"
-msgstr ""
+msgstr "كودى ئوچۇق بۇ ئەپنىڭ ئەسلى كودى:"
 
 #: tmp_strings.xml:23(string) tmp_strings.xml:70(string)
 #: tmp_strings.xml:126(string) tmp_strings.xml:173(string)
@@ -66,28 +68,28 @@ msgstr ""
 msgid ""
 "For the complete list of changes and a list of frequently asked questions, "
 "please visit:"
-msgstr ""
+msgstr "ئۆزگىرىشنىڭ تەپسىلىي تىزىمىنى تۆۋەندىكى ئادرېستىن كۆرۈڭ:"
 
 #: tmp_strings.xml:26(string) tmp_strings.xml:73(string)
 #: tmp_strings.xml:129(string) tmp_strings.xml:176(string)
 #: tmp_strings.xml:228(string) tmp_strings.xml:286(string)
 msgid ""
 "You can help to improve the translation into your language at Launchpad:"
-msgstr ""
+msgstr "بۇ ئەپنى Launchpad تە ئۆز تىلىڭىزغا تەرجىمە قىلالايسىز:"
 
 #: tmp_strings.xml:29(string) tmp_strings.xml:79(string)
 #: tmp_strings.xml:132(string) tmp_strings.xml:179(string)
 #: tmp_strings.xml:234(string) tmp_strings.xml:289(string)
 msgid "Features:"
-msgstr ""
+msgstr "ئىقتىدارلار:"
 
 #: tmp_strings.xml:30(listitem)
 msgid "Shows general info, credits, and license tabs."
-msgstr ""
+msgstr "ئادەتتىكى ئۇچۇر، تۆھپىكارلار ۋە ئىجازەت بەتكۈچىنى كۆرسىتىدۇ."
 
 #: tmp_strings.xml:31(listitem)
 msgid "Shows translators of all language versions."
-msgstr ""
+msgstr "ھەممە تىللاردىكى نەشرىنىڭ تەرجىمانلىرىنى كۆرسىتىدۇ."
 
 #: tmp_strings.xml:32(listitem)
 msgid ""
@@ -105,57 +107,57 @@ msgstr ""
 
 #: tmp_strings.xml:36(listitem)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI خاتىرە دەپتەر"
 
 #: tmp_strings.xml:37(listitem)
 msgid "OI File manager"
-msgstr ""
+msgstr "OI ھۆججەت باشقۇرغۇچ"
 
 #: tmp_strings.xml:38(listitem)
 msgid "OI Shopping List"
-msgstr ""
+msgstr "OI سېتىۋېلىش تىزىمى"
 
 #: tmp_strings.xml:39(listitem)
 msgid "OI Convert CSV"
-msgstr ""
+msgstr "OI CSV ئايلاندۇر"
 
 #: tmp_strings.xml:40(listitem)
 msgid "OI Safe"
-msgstr ""
+msgstr "OI بىخەتەرلىك"
 
 #: tmp_strings.xml:41(listitem)
 msgid "OI Countdown"
-msgstr ""
+msgstr "OI تەتۈر ۋاقىت خاتىرىلىگۈچ"
 
 #: tmp_strings.xml:42(listitem)
 msgid "OI Flashlight"
-msgstr ""
+msgstr "OI قول چىراغ"
 
 #: tmp_strings.xml:44(string) tmp_strings.xml:94(string)
 #: tmp_strings.xml:144(string) tmp_strings.xml:201(string)
 #: tmp_strings.xml:251(string) tmp_strings.xml:308(string)
 msgid "Keywords:"
-msgstr ""
+msgstr "ھالقىلىق سۆزلەر:"
 
 #: tmp_strings.xml:45(listitem)
 msgid "About, Credits, Information."
-msgstr ""
+msgstr "ھەققىدە، تۆھپىكارلار، ئۇچۇر."
 
 #: tmp_strings.xml:46(listitem)
 msgid "OI, OpenIntents, Open Intents."
-msgstr ""
+msgstr "OI, OpenIntents, Open Intents."
 
 #: tmp_strings.xml:48(string) tmp_strings.xml:100(string)
 #: tmp_strings.xml:148(string) tmp_strings.xml:205(string)
 #: tmp_strings.xml:257(string) tmp_strings.xml:312(string)
 msgid "International versions:"
-msgstr ""
+msgstr "خەلقئارا نەشرى:"
 
 #: tmp_strings.xml:51(string) tmp_strings.xml:103(string)
 #: tmp_strings.xml:151(string) tmp_strings.xml:208(string)
 #: tmp_strings.xml:260(string)
 msgid "Search strings for Market:"
-msgstr ""
+msgstr "بازاردا ئىزدەش ئۇچۇرى:"
 
 #. Description of application
 #: tmp_strings.xml:65(string)
@@ -163,6 +165,8 @@ msgid ""
 "OI File Manager allows you to browse your SD card, create directories, "
 "rename, copy, move, and delete files."
 msgstr ""
+"OI ھۆججەت باشقۇرغۇچ SD كارتا زىيارەت قىلىش، مۇندەرىجە قۇرۇش، ھۆججەت ئاتىنى "
+"ئۆزگەرتىش، كۆچۈرۈش، يۆتكەش ۋە ئۆچۈرۈشكە يول قويىدۇ."
 
 #: tmp_strings.xml:66(string)
 msgid ""
@@ -172,62 +176,64 @@ msgstr ""
 
 #: tmp_strings.xml:80(listitem)
 msgid "Show list of files with thumbnails for images."
-msgstr ""
+msgstr "سۈرەتنىڭ كىچىك سۈرىتىنىڭ ھۆججەت تىزىمىنى كۆرسىتىدۇ."
 
 #: tmp_strings.xml:81(listitem)
 msgid "Move, copy, rename, and delete files."
-msgstr ""
+msgstr "ھۆججەت كۆچۈرۈش، يۆتكەش، ئات ئۆزگەرتىش ۋە ئۆچۈرۈش."
 
 #: tmp_strings.xml:82(listitem)
 msgid "Create and delete directories (folders)."
-msgstr ""
+msgstr "مۇندەرىجە (قىسقۇچ) قۇرۇش ۋە ئۆچۈرۈش ."
 
 #: tmp_strings.xml:83(listitem)
 msgid "Send files by email."
-msgstr ""
+msgstr "ئېلخەتتە ھۆججەت يوللاش."
 
 #: tmp_strings.xml:84(listitem)
 msgid ""
 "Acts as an extension to other applications, like GMail, to attach files."
-msgstr ""
+msgstr "باشقا ئەپ ئىشلىتىشكىمۇ بولىدۇ، مەسىلەن GMail، قوشۇمچە ھۆججەت قوشۇش."
 
 #: tmp_strings.xml:85(listitem)
 msgid "Support for many file endings and mime types."
-msgstr ""
+msgstr "نۇرغۇن ھۆججەت ئاخىرلىشىشى ۋە mime تىپىنى قوللايدۇ."
 
 #: tmp_strings.xml:86(listitem)
 msgid ""
 "Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can "
 "use OI File Manager."
 msgstr ""
+"PICK_FILE ۋەPICK_DIRECTORY قوللىغانلىقتىن باشقا ئەپلەر OI ھۆججەت باشقۇرغۇچنى "
+"ئىشلىتەلەيدۇ."
 
 #: tmp_strings.xml:88(string) tmp_strings.xml:245(string)
 msgid "Available extensions for \"OI File Manager\":"
-msgstr ""
+msgstr "«OI ھۆججەت باشقۇرغۇچ» نىڭ ئىشلەتكىلى بولىدىغان كەڭەيتىلمىلىرى:"
 
 #: tmp_strings.xml:89(listitem) tmp_strings.xml:138(listitem)
 #: tmp_strings.xml:190(listitem) tmp_strings.xml:246(listitem)
 #: tmp_strings.xml:300(listitem)
 msgid "Show the license information with \"OI About\"."
-msgstr ""
+msgstr "«OI ھەققىدە» ئىجازەت ئۇچۇرىنى كۆرسىتىدۇ."
 
 #: tmp_strings.xml:91(string) tmp_strings.xml:248(string)
 msgid "Applications that work with \"OI File Manager\":"
-msgstr ""
+msgstr "«OI ھۆججەت باشقۇرغۇچ» تا ئىشلەيدىغان ئەپلەر:"
 
 #: tmp_strings.xml:92(listitem)
 msgid "Open and save text files in \"OI Notepad\"."
-msgstr ""
+msgstr "تېكىست ھۆججەتلەرنى «OI خاتىرە دەپتەر»دە ئېچىپ ۋە ساقلايدۇ."
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:96(listitem)
 msgid "file manager, filemanager, file explorer"
-msgstr ""
+msgstr "ھۆججەت باشقۇرغۇچ، ھۆججەت باشقۇرغۇچ، ھۆججەت كۆرگۈ"
 
 #. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
 #: tmp_strings.xml:98(listitem) tmp_strings.xml:255(listitem)
 msgid "OI, IO, OpenIntents, Open Intents"
-msgstr ""
+msgstr "OI, IO, OpenIntents, Open Intents"
 
 #. Description of application
 #: tmp_strings.xml:116(string)
@@ -255,41 +261,41 @@ msgstr ""
 
 #: tmp_strings.xml:133(listitem)
 msgid "Lock the display backlight on."
-msgstr ""
+msgstr "تەگلىك نۇرى كۆرسىتىشنى قۇلۇپلايدۇ."
 
 #: tmp_strings.xml:134(listitem)
 msgid "Lock camera flash on."
-msgstr ""
+msgstr "كامېرا چىرىغىنى قۇلۇپلايدۇ."
 
 #: tmp_strings.xml:135(listitem)
 msgid "The color of backlight is customizable."
-msgstr ""
+msgstr "تەگلىك نۇرىنىڭ رەڭگىنى ئۆزلەشتۈرگىلى بولىدۇ."
 
 #: tmp_strings.xml:137(string)
 msgid "Available extensions for \"OI Flashlight\":"
-msgstr ""
+msgstr "«OI قول چىراغ»دا ئىشلەتكىلى بولىدىغان كەڭەيتىلمىلەر:"
 
 #: tmp_strings.xml:139(listitem)
 msgid "Change the color of the backlight with \"OI Color Picker\"."
-msgstr ""
+msgstr "«OI رەڭ تاللىغۇچ» تا تەگلىك نۇرىنىڭ رەڭگىنى ئۆزگەرتىدۇ."
 
 #: tmp_strings.xml:141(string)
 msgid "Applications that work with \"OI Flashlight\":"
-msgstr ""
+msgstr "«OI قول چىراغ»دا ئىشلەيدىغان ئەپلەر:"
 
 #: tmp_strings.xml:142(listitem) tmp_strings.xml:198(listitem)
 #: tmp_strings.xml:304(listitem)
 msgid "Update with \"OI Update\"."
-msgstr ""
+msgstr "«OI يېڭىلاش»تا يېڭىلايدۇ."
 
 #: tmp_strings.xml:145(listitem)
 msgid "Flashlight, light, Backlight"
-msgstr ""
+msgstr "قول چىراغ، چىراغ، تەگلىك نۇرى"
 
 #: tmp_strings.xml:146(listitem) tmp_strings.xml:203(listitem)
 #: tmp_strings.xml:310(listitem)
 msgid "OI, OpenIntents, Open Intents"
-msgstr ""
+msgstr "OI, OpenIntents, Open Intents"
 
 #. Description of application
 #: tmp_strings.xml:163(string)
@@ -316,7 +322,7 @@ msgstr ""
 
 #: tmp_strings.xml:180(listitem)
 msgid "Add, edit and delete notes."
-msgstr ""
+msgstr "ئىزاھات قوشۇش، تەھرىرلەش، ئۆچۈرۈش."
 
 #: tmp_strings.xml:181(listitem)
 msgid "Long-press on notes to add tags."
@@ -407,11 +413,11 @@ msgstr ""
 
 #: tmp_strings.xml:237(listitem)
 msgid "Import/Export data entries and databases."
-msgstr ""
+msgstr "سانلىق مەلۇمات تۈرى ۋە ساندانلارنى ئەكىر/چىقار."
 
 #: tmp_strings.xml:238(listitem)
 msgid "Backup/Restore entries."
-msgstr ""
+msgstr "تۈرلەرنى زاپاسلا/ ئەسلىگە كەلتۈر."
 
 #: tmp_strings.xml:239(listitem)
 msgid "Includes secure password generator."
@@ -431,7 +437,7 @@ msgstr ""
 
 #: tmp_strings.xml:243(listitem)
 msgid "MyBackup Pro."
-msgstr ""
+msgstr "MyBackup Pro."
 
 #: tmp_strings.xml:249(listitem)
 msgid "Encrypt notes created in \"OI Notepad\"."
@@ -475,19 +481,19 @@ msgstr ""
 
 #: tmp_strings.xml:290(listitem)
 msgid "Add, edit and delete lists."
-msgstr ""
+msgstr "تىزىمنى قوشۇش، تەھرىرلەش ۋە ئۆچۈرۈش."
 
 #: tmp_strings.xml:291(listitem)
 msgid "Create, delete, and check items quickly and easily."
-msgstr ""
+msgstr "تۈر قورۇش، ئۆچۈرۈش ۋە تەكشۈرۈش تېز ۋە ئاسان."
 
 #: tmp_strings.xml:292(listitem)
 msgid "Variety of themes."
-msgstr ""
+msgstr "ھەر خىل ئۆرنەكلەر."
 
 #: tmp_strings.xml:293(listitem)
 msgid "Customizable font size and sort order."
-msgstr ""
+msgstr "ئۆزلەشتۈرگىلى بولىدىغان خەت نۇسخا چوڭلۇقى ۋە تەرتىپلەش تەرتىپى."
 
 #: tmp_strings.xml:294(listitem)
 msgid "Keep track of separate prices for each store."
@@ -495,7 +501,7 @@ msgstr ""
 
 #: tmp_strings.xml:295(listitem)
 msgid "Customizable list columns."
-msgstr ""
+msgstr "ئۆزلەشتۈرگىلى بولىدىغان تىزىم ئىستونلىرى."
 
 #: tmp_strings.xml:297(string)
 msgid "Available extensions for \"OI Shopping List\":"
@@ -531,4 +537,4 @@ msgstr ""
 
 #: tmp_strings.xml:315(string)
 msgid "Extensions:"
-msgstr ""
+msgstr "كەڭەيتىلمەلەر:"

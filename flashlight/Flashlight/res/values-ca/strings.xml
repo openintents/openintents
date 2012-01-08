@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Joan Creus https://launchpad.net/~joan-creus-c</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">La llanterna d\'OpenIntents t\'ajuda a trobar el teu camí per les fosques. La llum de fons de la pantalla es manté oberta mentre l\'aplicació està engegada.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">Llanterna d\'OI</string>
+    
+    <string name="backlight_info">La llum de fons es manté oberta.</string>
+    
+    <string name="color">Color</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">Capturador de colors d\'OI</string>
+    
+    <string name="preferences">Preferències</string>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<!-- Title for preferences or settings -->
+	<string name="settings_titlebar">Preferències</string>
+	<string name="settings_title_keep_color">Mantenir el color</string>
+	<string name="settings_summary_keep_color">Desar el color pel següent cop que s\'engegui l\'aplicació Llanterna</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
+		user tries to access it. -->
+    <string name="color_picker_modularization_explanation">Per fer el capturador de colors més útil per a altres desenvolupadors, l\'hem dividit a la seva aplicació pròpia.</string>
+    <string name="setting_use_camera_flash">Utilitzar el flaix de la càmera</string>
+    <string name="setting_use_camera_flash_summary">Utilitzar el flaix de la càmera en lloc de la fons de llum de la pantalla.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <!-- Information to enable the camera flash as flashlight. -->
+    <string name="cameralight_info">Prem per activar la llum de la càmera (Pot tardar un segon).</string>
+    <string name="cameralight_stop_info">Prem per desactivar la llum de la càmera.</string>
+    
+</resources>

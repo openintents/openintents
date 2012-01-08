@@ -1,0 +1,838 @@
+# Filipino translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Liezl <Unknown>\n"
+"Language-Team: Filipino <fil@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:24(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Liezl https://launchpad.net/~liezl-200"
+
+#. Short explanation of the application
+#: tmp_strings.xml:27(string)
+msgid ""
+"OI Shopping list lets you keep track of your shopping items. You can also "
+"use it for other kinds of check lists, for example for ToDo lists or party "
+"guest lists."
+msgstr ""
+"Ang OI Listahan ng Bilihin ay nagbibigay-daan para masubaybayan mo ang iyong "
+"mga bilihin. Maaari mo ring gamitin ito para sa iba pang mga uri ng mga "
+"tseklist, halimbawa para sa mga ToDo listahan o mga listahan ng bisita ng "
+"parti."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:33(string)
+msgid "OI Shopping list"
+msgstr "OI Listahan ng Bilihin"
+
+#: tmp_strings.xml:35(string)
+msgid "New item"
+msgstr "Bagong bagay"
+
+#: tmp_strings.xml:36(string)
+msgid "New list"
+msgstr "Bagong listahan"
+
+#: tmp_strings.xml:37(string)
+msgid "Send list"
+msgstr "Listahan ng padala"
+
+#: tmp_strings.xml:38(string)
+msgid "Mark all items"
+msgstr "Markahan ang lahat ng mga bagay"
+
+#: tmp_strings.xml:39(string)
+msgid "Empty list not sent."
+msgstr "Ang walang laman na listahan ay hindi naipadala."
+
+#: tmp_strings.xml:40(string)
+msgid "No application available for sending."
+msgstr "Walang applikasyon na magagamit para sa pagpapadala."
+
+#: tmp_strings.xml:41(string)
+msgid "My shopping list"
+msgstr "Ang aking listahan ng bilihin"
+
+#: tmp_strings.xml:42(string)
+msgid "i.e. wishlist, family list"
+msgstr "ibig sabihin wishlist, listahan ng pamilya"
+
+#. Automation action to clean up a list.
+#: tmp_strings.xml:43(string) tmp_strings.xml:337(item)
+msgid "Clean up list"
+msgstr "Linisin ang listahan"
+
+#: tmp_strings.xml:44(string)
+msgid "Delete list"
+msgstr "Alisin ang listahan"
+
+#: tmp_strings.xml:45(string)
+msgid "Enter name of new shopping list"
+msgstr "Ipasok ang pangalan ng bagong listahan ng bilihin"
+
+#: tmp_strings.xml:46(string)
+msgid "Rename shopping list"
+msgstr "Palitan ang pangalan ng listahan ng bilihin"
+
+#: tmp_strings.xml:47(string) tmp_strings.xml:59(string)
+msgid "Edit item"
+msgstr "Baguhin ang bagay"
+
+#: tmp_strings.xml:48(string)
+msgid "Enter new store name"
+msgstr "Ipasok ang bagong pangalan ng tindahan"
+
+#: tmp_strings.xml:49(string)
+msgid "Please enter a name"
+msgstr "Paki pasok ang pangalan"
+
+#: tmp_strings.xml:50(string)
+msgid "No items are marked as crossed out."
+msgstr "Walang mga bagay na minarkahang hindi kasama."
+
+#: tmp_strings.xml:51(string)
+msgid "Do you really want to delete this shopping list?"
+msgstr "Gusto mo ba talagang alisin ang listahan ng bilihin?"
+
+#: tmp_strings.xml:52(string)
+msgid "Error while accessing shopping lists."
+msgstr "Mali habang kinunuha ang mga listahan ng bilihin."
+
+#: tmp_strings.xml:53(string)
+msgid "Pick an item"
+msgstr "Pumili ng bagay"
+
+#: tmp_strings.xml:54(string)
+msgid "Pick a list"
+msgstr "Pumili ng listahan"
+
+#: tmp_strings.xml:55(string)
+msgid "Theme"
+msgstr "Tema"
+
+#: tmp_strings.xml:56(string)
+msgid "Theme settings"
+msgstr "Mga settings ng Tema"
+
+#: tmp_strings.xml:57(string)
+msgid "Rename list"
+msgstr "Palitan ang pangalanan ng listahan"
+
+#: tmp_strings.xml:58(string)
+msgid "Mark item"
+msgstr "Markahan ang bagay"
+
+#: tmp_strings.xml:60(string)
+msgid "Auto add"
+msgstr "Awtomatikong magdagdag"
+
+#: tmp_strings.xml:61(string)
+msgid "Stores..."
+msgstr "Mga tindahan..."
+
+#: tmp_strings.xml:62(string)
+msgid "Rename store"
+msgstr "Palitan ang pangalan ng tindahan"
+
+#: tmp_strings.xml:63(string)
+msgid "Delete store"
+msgstr "Alisin ang tindahan"
+
+#: tmp_strings.xml:64(string)
+msgid "Do you really want to delete this store?"
+msgstr "Gusto mo ba talagang alisin ang tindahan na ito?"
+
+#: tmp_strings.xml:65(string)
+msgid "No items available"
+msgstr "Walang mga bagay na magagamit"
+
+#. Remove item from this list, but keep it internally, so that the user
+#. 	     can choose it later for inclusion again. Information like
+#. 	     tags or price will be kept.
+#: tmp_strings.xml:70(string)
+msgid "Remove item from list"
+msgstr "Alisin ang bagay sa listahan"
+
+#. Delete this item completely. If the user wants to add it again, they
+#. 	     have to enter all the information again.
+#: tmp_strings.xml:74(string)
+msgid "Delete item permanently"
+msgstr "Permanenteng alisin ang bagay"
+
+#: tmp_strings.xml:75(string)
+msgid "Move item to other list"
+msgstr "Ilipat ang bagay sa ibang listahan"
+
+#: tmp_strings.xml:76(string)
+msgid "Copy item"
+msgstr "Kopyahin ang bagay"
+
+#. Button label to add an item to the list.
+#: tmp_strings.xml:79(string)
+msgid "Add"
+msgstr "Magdagdag"
+
+#: tmp_strings.xml:81(string)
+msgid "Pick items"
+msgstr "Pumili ng mga bagay"
+
+#: tmp_strings.xml:82(string)
+msgid "Shopping"
+msgstr "Pamimili"
+
+#. Title supplement. '%s' is the name of the current list.
+#: tmp_strings.xml:85(string)
+msgid "%s - Pick items"
+msgstr "%s - Pumili ng mga bagay"
+
+#. Title supplement. '%s' is the name of the current list.
+#: tmp_strings.xml:88(string)
+msgid "%s - Shopping"
+msgstr "%s - Pamimili"
+
+#. Title supplement. '%s' is the name of the current item.
+#: tmp_strings.xml:91(string)
+msgid "%s - Stores"
+msgstr "%s - Mga Tindahan"
+
+#: tmp_strings.xml:92(string)
+msgid "Edit Item Stores"
+msgstr "Baguhin ang Bagay sa Tindahan"
+
+#: tmp_strings.xml:94(string)
+msgid "Tags"
+msgstr "Mga Tag"
+
+#: tmp_strings.xml:95(string)
+msgid "Price"
+msgstr "Presyo"
+
+#: tmp_strings.xml:96(string)
+msgid "Item"
+msgstr "Bagay"
+
+#: tmp_strings.xml:97(string)
+msgid "Quantity"
+msgstr "Dami"
+
+#: tmp_strings.xml:98(string)
+msgid "Priority"
+msgstr "Prioridad"
+
+#: tmp_strings.xml:99(string)
+msgid "Has Note"
+msgstr "May Tala"
+
+#: tmp_strings.xml:100(string)
+msgid "Units"
+msgstr "Mga Yunit"
+
+#: tmp_strings.xml:101(string)
+msgid "Note"
+msgstr "Tala"
+
+#: tmp_strings.xml:103(string)
+msgid "Other Quantity..."
+msgstr "Ibang Bilang..."
+
+#: tmp_strings.xml:104(string)
+msgid "Other Priority..."
+msgstr "Ibang Prioridad"
+
+#. Total sum of all prices. '%s' is the sum
+#: tmp_strings.xml:107(string)
+msgid "Total: %s"
+msgstr "Total: %s"
+
+#. Sum of all prices of the checked items. '%s' is the sum
+#: tmp_strings.xml:110(string)
+msgid "Checked: %s"
+msgstr "Na-tsek: %s"
+
+#: tmp_strings.xml:111(string)
+msgid "Priority 1: %s"
+msgstr "Prioridad 1: %s"
+
+#: tmp_strings.xml:112(string)
+msgid "Priority 1-2: %s"
+msgstr "Prioridad 1-2: %s"
+
+#: tmp_strings.xml:113(string)
+msgid "Priority 1-3: %s"
+msgstr "Prioridad 1-3: %s"
+
+#: tmp_strings.xml:114(string)
+msgid "Priority 1-4: %s"
+msgstr "Prioridad 1-4: %s"
+
+#: tmp_strings.xml:116(string)
+msgid "Are you sure you want to permanently delete this item?"
+msgstr "Sigurado ka bang gusto mong permanenteng alisin ang bagay na ito?"
+
+#: tmp_strings.xml:117(string)
+msgid "Delete"
+msgstr "Alisin"
+
+#. Added to an item to indicate it was bought.
+#: tmp_strings.xml:120(string)
+msgid "... OK"
+msgstr "... OK"
+
+#. The shortcut is created on the home screen.
+#: tmp_strings.xml:124(string)
+msgid "Pick list for shortcut"
+msgstr "Pumili ng listahan para sa shortcut"
+
+#. Shown if external application wants to insert new items.
+#: tmp_strings.xml:127(string)
+msgid "Pick list to insert items"
+msgstr "Pumili ng listahan para pasukan ng mga bagay"
+
+#. Title for selecting a theme
+#: tmp_strings.xml:131(string)
+msgid "Pick a theme"
+msgstr "Pumili ng tema"
+
+#: tmp_strings.xml:132(string)
+msgid "Choose a theme for this list"
+msgstr "Pumili ng tema para sa listahan"
+
+#. Preference fontsize: default font size
+#: tmp_strings.xml:133(string) tmp_strings.xml:293(item)
+#: tmp_strings.xml:300(item)
+msgid "Default"
+msgstr "Default"
+
+#: tmp_strings.xml:134(string)
+msgid "Classic"
+msgstr "klasiko"
+
+#: tmp_strings.xml:135(string)
+msgid "Android"
+msgstr "Android"
+
+#: tmp_strings.xml:136(string)
+msgid "Classic (from OI Shopping List)"
+msgstr "Klasiko (mula sa OI Listahan ng Bilihin)"
+
+#: tmp_strings.xml:137(string)
+msgid "Android (from OI Shopping List)"
+msgstr "Android (mula sa OI Listahan ng Bilihin)"
+
+#. Button label "OK"
+#: tmp_strings.xml:141(string)
+msgid "OK"
+msgstr "OK"
+
+#. Button label "Cancel"
+#: tmp_strings.xml:143(string)
+msgid "Cancel"
+msgstr "Kanselahin"
+
+#: tmp_strings.xml:144(string)
+msgid "Use this theme for all lists"
+msgstr "Gamitin itong tema para sa lahat ng mga listahan"
+
+#: tmp_strings.xml:145(string)
+msgid "Get more themes"
+msgstr "Kumuha ng iba pang mga tema"
+
+#. preferences
+#: tmp_strings.xml:148(string)
+msgid "Settings"
+msgstr "Mga Setting"
+
+#: tmp_strings.xml:150(string)
+msgid "Application settings"
+msgstr "Mga setting ng applikasyon"
+
+#: tmp_strings.xml:152(string)
+msgid "Unchecked on top"
+msgstr "Tanggalin ang tsek sa itaas"
+
+#: tmp_strings.xml:153(string)
+msgid "Always show unchecked items first"
+msgstr "Laging ipakita muna ang mga bagay na walang tsek"
+
+#: tmp_strings.xml:154(string)
+msgid "Font size"
+msgstr "Laki ng font"
+
+#: tmp_strings.xml:155(string)
+msgid "Change font size"
+msgstr "Palitan ang laki ng font"
+
+#: tmp_strings.xml:156(string)
+msgid "Choose font size"
+msgstr "Pumili ng laki ng font"
+
+#: tmp_strings.xml:157(string)
+msgid "Orientation"
+msgstr "Oryentasyon"
+
+#: tmp_strings.xml:158(string)
+msgid "Change orientation"
+msgstr "Palitan ang oryentasyon"
+
+#: tmp_strings.xml:159(string)
+msgid "Choose orientation"
+msgstr "Pumili ng oryentasyon"
+
+#: tmp_strings.xml:160(string)
+msgid "Sort order"
+msgstr "Pagsasaayos ng pagkakasunod-sunod"
+
+#: tmp_strings.xml:161(string)
+msgid "Change sort order of list items"
+msgstr "Palitan ang pagsasaayos ng pagkakasunod-sunod ng listahan ng mga bagay"
+
+#: tmp_strings.xml:162(string)
+msgid "Sort order - Pick Items"
+msgstr "Pagsasaayos ng pagkakasunod-sunod - Pumili ng mga Bagay"
+
+#: tmp_strings.xml:163(string)
+msgid "Change sort order of list items in Pick Items mode."
+msgstr ""
+"Palitan ang pagsasaayos ng pagkakasunod-sunod ng listahan ng mga bagay sa "
+"Pumili ng mga Bagay moda"
+
+#: tmp_strings.xml:164(string)
+msgid "Choose sort order"
+msgstr "Pumili ng pagsasaayos ng pagkakasunod-sunod"
+
+#: tmp_strings.xml:165(string)
+msgid "Choose sort order for Pick Items mode"
+msgstr ""
+"Pumili ng pagsasaayos ng pagkakasunod-sunod para sa Pumili ng mga Bagay moda"
+
+#: tmp_strings.xml:166(string)
+msgid "Load last list used"
+msgstr "Ikarga ang huling ginamit na listahan"
+
+#: tmp_strings.xml:167(string)
+msgid "Always start with the list viewed last time."
+msgstr "Laging magsimula sa listahan na huling tiningnan."
+
+#: tmp_strings.xml:168(string)
+msgid "Capitalization"
+msgstr "Kapitalisasyon"
+
+#: tmp_strings.xml:169(string)
+msgid "Automatic capitalization of entries"
+msgstr "Awtomatikong pag-kapitalisasyon ng mga ipinasok"
+
+#: tmp_strings.xml:170(string)
+msgid "Choose capitalization"
+msgstr "Piliin ang kapitalisasyon"
+
+#: tmp_strings.xml:171(string)
+msgid "Hide checked items"
+msgstr "Itago ang may tsek na mga bagay"
+
+#: tmp_strings.xml:172(string)
+msgid "Immediately hide items checked off."
+msgstr "Agad na itago ang mga item na walang tsek."
+
+#: tmp_strings.xml:173(string)
+msgid "Show price"
+msgstr "Ipakita ang presyo"
+
+#: tmp_strings.xml:174(string) tmp_strings.xml:185(string)
+#: tmp_strings.xml:187(string) tmp_strings.xml:189(string)
+#: tmp_strings.xml:191(string)
+msgid "Shown as extra column in list."
+msgstr "Ipinapakita bilang dagdag na kulumna sa listahan."
+
+#: tmp_strings.xml:175(string)
+msgid "Per-store prices"
+msgstr "Presyo sa bawat tindahan"
+
+#: tmp_strings.xml:176(string)
+msgid "Track per-store prices"
+msgstr "Subaybayan ang mga presyo sa bawat tindahan"
+
+#: tmp_strings.xml:177(string)
+msgid "Keep track of separate prices for each item at each store."
+msgstr ""
+"Mag-subaybay ng ibat-ibang mga presyo para sa bawat bagay sa bawat tindahan."
+
+#: tmp_strings.xml:178(string)
+msgid "Disable screen lock"
+msgstr "Huwag paganahin ang screen lock"
+
+#: tmp_strings.xml:179(string)
+msgid "Prevents the screen to be locked when checked."
+msgstr "Pinipigilan ang screen na ma-lock kapag may tsek."
+
+#: tmp_strings.xml:180(string)
+msgid "Reset Quantity"
+msgstr "I-reset ang Dami"
+
+#: tmp_strings.xml:181(string)
+msgid "Resets the quantity when adding items again."
+msgstr "I-reset ang dami kapag muling nagdadagdag ng mga bagay."
+
+#: tmp_strings.xml:182(string)
+msgid "Barcode Scanner"
+msgstr "Barcode Scanner"
+
+#: tmp_strings.xml:183(string)
+msgid "Long press the Add button to start Barcode OI Plugin (if installed)."
+msgstr ""
+"Matagal na pindutin ang Dagdag pindutan upang simulan ang barcode OI Plugin "
+"(kung naka-install)."
+
+#: tmp_strings.xml:184(string)
+msgid "Show tags"
+msgstr "Ipakita ang mga tag"
+
+#: tmp_strings.xml:186(string)
+msgid "Show quantity"
+msgstr "Ipakita ang bilang"
+
+#: tmp_strings.xml:188(string)
+msgid "Show priority"
+msgstr "Ipakita ang prioridad"
+
+#: tmp_strings.xml:190(string)
+msgid "Show units"
+msgstr "Ipakita ang mga yunit"
+
+#: tmp_strings.xml:192(string) tmp_strings.xml:193(string)
+#: tmp_strings.xml:195(string)
+msgid "Subtotal by priority"
+msgstr "Subtotal ayon sa prioridad"
+
+#: tmp_strings.xml:194(string)
+msgid "No subtotal by priority shown."
+msgstr "Walang subtotal ayon sa ipinakitang prioridad"
+
+#: tmp_strings.xml:196(string)
+msgid "Include checked items"
+msgstr "Isama ang may tsek na bagay"
+
+#: tmp_strings.xml:197(string)
+msgid "Subtotal by priority includes checked items"
+msgstr "Subtotal ayon sa prioridad na kasama ang mga bagay na may tsek"
+
+#: tmp_strings.xml:198(string)
+msgid "Subtotal by priority excludes checked items"
+msgstr "Subtotal ayon sa prioridad na hindi kasama ang mga bagay na may tsek"
+
+#: tmp_strings.xml:199(string)
+msgid "Pick items directly in list"
+msgstr "Pumili ng mga bagay direkta sa listahan"
+
+#: tmp_strings.xml:200(string)
+msgid "Switch main list to edit mode to re-add existing items"
+msgstr ""
+"Ilipat ang pangunahing listahan sa baguhin moda para muling-idagdag ang mga "
+"dating bagay"
+
+#: tmp_strings.xml:201(string)
+msgid "Add items to list using a dedicated dialog"
+msgstr "Magdagdag ng mga bagay sa listahan na gamit ang dedikadong diyalogo."
+
+#: tmp_strings.xml:202(string)
+msgid "Always same sort order"
+msgstr "Laging parehong pagsasaayos ng pagkakasunod-sunod"
+
+#: tmp_strings.xml:203(string)
+msgid "Items are sorted in Pick Items mode just as in Shopping mode."
+msgstr ""
+"Ang mga bagay ay pinagsunod-sunod sa Pumili ng mga Bagay moda tulad ng sa "
+"Shopping moda."
+
+#: tmp_strings.xml:204(string)
+msgid "Sort order for Pick Items mode can be chosen separately."
+msgstr ""
+"Ang mga pagsasaayos ng pagkakasunod-sunod para sa Pumili ng mga Bagay moda "
+"ay maaring piliing magkahiwalay."
+
+#. Preference title: Shake the phone to clean up the list.
+#: tmp_strings.xml:207(string)
+msgid "Shake to clean up"
+msgstr "Kalugin upang linisin"
+
+#. Preference summary: Shake the phone to clean up the list.
+#: tmp_strings.xml:210(string)
+msgid "Shake the phone to clean up the list."
+msgstr "Kalugin ang telepono para linisin ang listahan."
+
+#: tmp_strings.xml:212(string)
+msgid "Advanced settings"
+msgstr "Advanced na mga setting."
+
+#: tmp_strings.xml:213(string)
+msgid "Additional settings."
+msgstr "Karagdagang mga setting."
+
+#. Preference category: General settings
+#: tmp_strings.xml:216(string)
+msgid "General"
+msgstr "Pangkalahatan"
+
+#: tmp_strings.xml:217(string)
+msgid "Pick Items"
+msgstr "Pumili ng mga Bagay"
+
+#: tmp_strings.xml:219(string)
+msgid "Appearance"
+msgstr "Itsura"
+
+#: tmp_strings.xml:221(string)
+msgid "Add-ons"
+msgstr "Add-ons"
+
+#: tmp_strings.xml:222(string)
+msgid "Get new add-ons"
+msgstr "Kumuha ng bagong add-ons"
+
+#: tmp_strings.xml:223(string)
+msgid "Search for extensions and themes online."
+msgstr "Maghanap ng mga ekstensiyon at tema sa online."
+
+#: tmp_strings.xml:224(string)
+msgid "Get add-ons from Market"
+msgstr "Kumuha ng add-ons sa Merkado"
+
+#: tmp_strings.xml:225(string)
+msgid "Get add-ons from OpenIntents"
+msgstr "Kumuha ng add-ons sa OpenIntents"
+
+#: tmp_strings.xml:226(string)
+msgid "Extensions"
+msgstr "Mga Ekstensiyon"
+
+#: tmp_strings.xml:227(string)
+msgid "Themes"
+msgstr "Mga Tema"
+
+#: tmp_strings.xml:228(string)
+msgid "Search for extensions at Android Market."
+msgstr "Maghanap ng mga ekstensiyon sa Android Merkado"
+
+#: tmp_strings.xml:229(string)
+msgid "Search for themes at Android Market."
+msgstr "Maghanap ng mga tema sa Android Merkado"
+
+#: tmp_strings.xml:230(string)
+msgid "Get extensions from the OpenIntents homepage."
+msgstr "Maghanap ng mga ekstensiyon sa OpenIntents homepage."
+
+#: tmp_strings.xml:231(string)
+msgid "Get themes from the OpenIntents homepage."
+msgstr "Kumuha ng mga tema sa OpenIntents homepage."
+
+#: tmp_strings.xml:232(string)
+msgid "Quick Edit Mode"
+msgstr "Mabilis na Baguhin Moda"
+
+#: tmp_strings.xml:233(string)
+msgid "Touch Priority or Quantity values for a menu of common values."
+msgstr "Touch Prioridad o Dami para sa menu ng mga karaniwang halaga."
+
+#: tmp_strings.xml:234(string)
+msgid "Touching Priority or Quantity values summons the Edit Item dialog."
+msgstr "Hawakan na Prioridad o Dami patawag ang Baguhin ang Bagay diyalogo."
+
+#: tmp_strings.xml:235(string)
+msgid "Reset all settings"
+msgstr "I-reset ang lahat ng mga setting"
+
+#: tmp_strings.xml:236(string)
+msgid "Do you really want to RESET ALL settings? This cannot be undone."
+msgstr ""
+"Gusto mo ba talagang I-RESET ANG LAHAT ng mga setting? Ito ay hindi maaaring "
+"bawiin."
+
+#: tmp_strings.xml:237(string)
+msgid "All settings have been reset"
+msgstr "Lahat ng mga setting ay na-reset"
+
+#. Permission to read shopping lists
+#: tmp_strings.xml:245(string)
+msgid "read shopping lists"
+msgstr "Basahin ang listahan ng bilihin"
+
+#: tmp_strings.xml:246(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+"Payagan ang application na basahin ang listahan ng bilihin. Tandaan na ang "
+"naka-encrypt na listahan at mga bagay ay ibinigay sa naka-encrypt na porma."
+
+#. Permission to write to shopping lists
+#: tmp_strings.xml:248(string)
+msgid "write shopping lists"
+msgstr "sumulat ng listahan ng mga bilihin"
+
+#: tmp_strings.xml:249(string)
+msgid ""
+"Allows an application to create new lists and items or change existing ones."
+msgstr ""
+"Pinapayagan ang applikasyon na lumikha ng mga bagong listahan at mga bagay o "
+"baguhin ang dati na."
+
+#. Preference sort order: List unchecked items first, sort items alphabetically
+#: tmp_strings.xml:258(item)
+msgid "unchecked first, alphabetical"
+msgstr "tangalin ang tsek muna, alpabetiko"
+
+#. Preference sort order: Sort by item name
+#: tmp_strings.xml:260(item)
+msgid "alphabetical"
+msgstr "alpabetiko"
+
+#. Preference sort order: Newest item first
+#: tmp_strings.xml:262(item)
+msgid "newest first"
+msgstr "una ang pinakabago"
+
+#. Preference sort order: Oldest item first
+#: tmp_strings.xml:264(item)
+msgid "oldest first"
+msgstr "una ang pinakaluma"
+
+#. Preference sort order: Sort alphabetically by tags
+#: tmp_strings.xml:266(item)
+msgid "tags alphabetical"
+msgstr "Mga tag alpabetiko"
+
+#. Preference sort order: Sort by priority, then alphabetically by tags
+#: tmp_strings.xml:268(item)
+msgid "priority, tags alphabetical"
+msgstr "prioridad, mga tag alpabetiko"
+
+#. Preference sort order: Sort by price, the most expensive first
+#: tmp_strings.xml:270(item)
+msgid "most expensive first"
+msgstr "una ang pinakamahal"
+
+#. Preference sort order: List unchecked items first, sort alphabetically by tags
+#: tmp_strings.xml:272(item)
+msgid "unchecked first, tags alphabetical"
+msgstr "tanggalin muna ang tsek, mga tag alpabetiko"
+
+#. Preference sort order: List unchecked items first, priority, sort items alphabetically
+#: tmp_strings.xml:274(item)
+msgid "unchecked first, priority, alphabetical"
+msgstr "tanggalin muna ang tsek, prioridad, alpabetiko"
+
+#. Preference sort order: List unchecked items first, priority, tags, sort items alphabetically
+#: tmp_strings.xml:276(item)
+msgid "unchecked first, priority, tags alphabetical"
+msgstr "tanggalin muna ang tsek, prioridad, mga tag alpabetiko"
+
+#: tmp_strings.xml:280(item)
+msgid "Not shown"
+msgstr "Hindi ipinapakita"
+
+#: tmp_strings.xml:281(item)
+msgid "Priority 1"
+msgstr "Prioridad 1"
+
+#: tmp_strings.xml:282(item)
+msgid "Priority 1-2"
+msgstr "Prioridad 1-2"
+
+#: tmp_strings.xml:283(item)
+msgid "Priority 1-3"
+msgstr "Prioridad 1-3"
+
+#: tmp_strings.xml:284(item)
+msgid "Priority 1-4"
+msgstr "Prioridad 1-4"
+
+#. Preference fontsize: tiny font size
+#: tmp_strings.xml:289(item)
+msgid "Tiny"
+msgstr "Katiting"
+
+#. Preference fontsize: small font size
+#: tmp_strings.xml:291(item)
+msgid "Small"
+msgstr "Maliit"
+
+#. Preference fontsize: large font size
+#: tmp_strings.xml:295(item)
+msgid "Large"
+msgstr "Malaki"
+
+#. Preference orientation: landscape
+#: tmp_strings.xml:302(item)
+msgid "Landscape"
+msgstr "Landscape"
+
+#. Preference orientation: portrait
+#: tmp_strings.xml:304(item)
+msgid "Portrait"
+msgstr "Portrait"
+
+#. Preference capitalization: No capitalization
+#: tmp_strings.xml:309(item)
+msgid "None"
+msgstr "Wala"
+
+#. Preference capitalization: Automatically capitalize first letter of a sentence.
+#: tmp_strings.xml:311(item)
+msgid "Per Sentence"
+msgstr "Bawat Pangungusap"
+
+#. Preference capitalization: Automatically capitalize first letter of each word.
+#: tmp_strings.xml:313(item)
+msgid "Per Word"
+msgstr "Bawat Salita"
+
+#. Message box warning if user wants to edit a note, but OI Notepad is not installed.
+#: tmp_strings.xml:320(string)
+msgid "Editing item notes requires OI Notepad."
+msgstr "Ang pagbabago ng mga tala ay nangangailangan ng Oi Talaan."
+
+#. Name of application "OI Notepad". Translations should be consistent.
+#: tmp_strings.xml:322(string)
+msgid "OI Notepad"
+msgstr "OI Talaan"
+
+#. Label above spinner for all actions (automation tasks) that can be performed.
+#: tmp_strings.xml:328(string)
+msgid "Select action:"
+msgstr "Pumili ng aksyon:"
+
+#. Label above button that opens a list of all shopping lists to choose from.
+#: tmp_strings.xml:331(string)
+msgid "Select list:"
+msgstr "Pumili ng listahan:"
+
+#: tmp_strings.xml:340(string)
+msgid "Previous page"
+msgstr "Nakaraang pahina"
+
+#: tmp_strings.xml:341(string)
+msgid "Next page"
+msgstr "Susunod na pahina"
+
+#: tmp_strings.xml:342(string)
+msgid "Choose a list"
+msgstr "Pumili ng listahan"
+
+#: tmp_strings.xml:343(string)
+msgid "No items on page %d"
+msgstr "Walang mga bagay sa pahina %d"

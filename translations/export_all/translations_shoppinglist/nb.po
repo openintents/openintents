@@ -181,7 +181,7 @@ msgstr "Flytt punkt til annen liste"
 
 #: tmp_strings.xml:76(string)
 msgid "Copy item"
-msgstr ""
+msgstr "Kopier punkt"
 
 #. Button label to add an item to the list.
 #: tmp_strings.xml:79(string)
@@ -213,7 +213,7 @@ msgstr "%s - Butikker"
 
 #: tmp_strings.xml:92(string)
 msgid "Edit Item Stores"
-msgstr "Rediger butikkpunkt"
+msgstr "Rediger butikkpunkter"
 
 #: tmp_strings.xml:94(string)
 msgid "Tags"
@@ -282,11 +282,8 @@ msgid "Priority 1-4: %s"
 msgstr "Prioritet 1-4: %s"
 
 #: tmp_strings.xml:116(string)
-#, fuzzy
 msgid "Are you sure you want to permanently delete this item?"
-msgstr ""
-"Er du sikker på at du vil slette dette punktet fra denne handlelisten for "
-"alltid?"
+msgstr "VIl du slette dette punktet for alltid?"
 
 #: tmp_strings.xml:117(string)
 msgid "Delete"
@@ -489,11 +486,13 @@ msgstr "Tilbakestiller antall når nye punkter blir lagt til."
 
 #: tmp_strings.xml:182(string)
 msgid "Barcode Scanner"
-msgstr ""
+msgstr "Strekkodeleser"
 
 #: tmp_strings.xml:183(string)
 msgid "Long press the Add button to start Barcode OI Plugin (if installed)."
 msgstr ""
+"Hold inne Legg Til-knappen for å starte OI Strekkode-tillegget (hvis "
+"installert)."
 
 #: tmp_strings.xml:184(string)
 msgid "Show tags"
@@ -602,7 +601,7 @@ msgstr "Søk etter utvidelser og temaer på nettet."
 
 #: tmp_strings.xml:224(string)
 msgid "Get add-ons from Market"
-msgstr "Hent tillegg fra Android Market"
+msgstr "Hent tillegg fra Android Marked"
 
 #: tmp_strings.xml:225(string)
 msgid "Get add-ons from OpenIntents"
@@ -618,11 +617,11 @@ msgstr "Temaer"
 
 #: tmp_strings.xml:228(string)
 msgid "Search for extensions at Android Market."
-msgstr "Søk etter utvidelser i Android Market."
+msgstr "Søk etter utvidelser i Android Marked."
 
 #: tmp_strings.xml:229(string)
 msgid "Search for themes at Android Market."
-msgstr "Søk etter temaet i Android Market."
+msgstr "Søk etter temaer i Android Marked."
 
 #: tmp_strings.xml:230(string)
 msgid "Get extensions from the OpenIntents homepage."
@@ -647,18 +646,17 @@ msgstr ""
 "av punkter."
 
 #: tmp_strings.xml:235(string)
-#, fuzzy
 msgid "Reset all settings"
-msgstr "Temainnstillinger"
+msgstr "Tilbakestill alle innstillinger"
 
 #: tmp_strings.xml:236(string)
-#, fuzzy
 msgid "Do you really want to RESET ALL settings? This cannot be undone."
-msgstr "Vil du virkelig slette denne butikken?"
+msgstr ""
+"Vil du virkelig TILBAKESTILLE ALLE innstillinger? Dette kan ikke angres."
 
 #: tmp_strings.xml:237(string)
 msgid "All settings have been reset"
-msgstr ""
+msgstr "Alle innstillinger har blitt tilbakestilt"
 
 #. Permission to read shopping lists
 #: tmp_strings.xml:245(string)
@@ -817,17 +815,16 @@ msgstr "Velg liste:"
 
 #: tmp_strings.xml:340(string)
 msgid "Previous page"
-msgstr ""
+msgstr "Forrige side"
 
 #: tmp_strings.xml:341(string)
 msgid "Next page"
-msgstr ""
+msgstr "Neste side"
 
 #: tmp_strings.xml:342(string)
-#, fuzzy
 msgid "Choose a list"
-msgstr "Velg store forbokstaver"
+msgstr "Velg en liste"
 
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
-msgstr ""
+msgstr "Ingen punkter på side %d"

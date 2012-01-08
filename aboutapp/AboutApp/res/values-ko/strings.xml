@@ -28,25 +28,26 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  CSro https://launchpad.net/~choongsan</string>
+  CSro https://launchpad.net/~choongsan
+  Jihyeok Seo https://launchpad.net/~limeburst</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
-	<string name="about_comments">A standalone about dialog that is shared between apps.</string>
+	<string name="about_comments">앱 간 공유되는 스탠드얼론 설명 대화 상자입미다.</string>
 	
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
+	<string name="info_app_filemanager">OI 파일 관리자</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI 쇼핑 목록</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">OI 메모장</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_safe">OI Safe</string>
+	<string name="info_app_safe">OI 금고</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	<string name="info_instructions">%s 을(를) 실행하고 메뉴 &gt; 대하여 를 선택하세요.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -55,7 +56,7 @@
 	   This is an extension that shows an about dialog or info dialog.  -->
     <string name="app_name">OI에 대하여</string>
 	
-    <string name="menu_about">About OI About itself</string>
+    <string name="menu_about">OI에 대하여에 대하여</string>
     
     <!-- About some application, where "%s" is the name of another application. -->
     <string name="about_activity_name_extended">%s에 대하여</string>
@@ -64,11 +65,11 @@
 	<string name="l_documenters">문서 작성</string>
 	<string name="l_translators">번역</string>
 	<string name="l_artists">아트워크</string>
-	<string name="l_international_translators">International translations by</string>
+	<string name="l_international_translators">다음 분들에 의해 다국어로 번역되었습니다</string>
 	<string name="l_credits">만든이</string>
 	<string name="l_license">사용권</string>
 	<string name="l_info">일반 정보</string>
-	<string name="l_recent_changes">Recent changes</string>
+	<string name="l_recent_changes">최근 바뀜</string>
 	
 	<string name="no_information_available">정보가 없습니다.</string>
 	
@@ -77,35 +78,35 @@
 	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
-		<item>Arabic</item>
-		<item>Czech</item>
-		<item>Danish</item>
-		<item>German</item>
-		<item>English</item>
-		<item>Greek</item>
-		<item>Spanish</item>
-		<item>Persian</item>
-		<item>Finnish</item>
-		<item>Faroese</item>
-		<item>French</item>
-		<item>Croatian</item>
-		<item>Hungarian</item>
-		<item>Italian</item>
-		<item>Japanese</item>
-		<item>Korean</item>
-		<item>Lao</item>
-		<item>Dutch</item>
-		<item>Occitan (post 1500)</item>
-		<item>Polish</item>
-		<item>Portuguese</item>
-		<item>Brazilian Portuguese</item>
-		<item>Romanian</item>
-		<item>Russian</item>
-		<item>Sardinian</item>
-		<item>Slovak</item>
-		<item>Swedish</item>
-		<item>Turkish</item>
-		<item>Chinese (Simplified)</item>
-		<item>Chinese (Traditional)</item>
+		<item>아랍어</item>
+		<item>체코어</item>
+		<item>덴마크어</item>
+		<item>독일어</item>
+		<item>영어</item>
+		<item>그리스어</item>
+		<item>스페인어</item>
+		<item>페르시아어</item>
+		<item>핀란드어</item>
+		<item>페로스어</item>
+		<item>프랑스어</item>
+		<item>크로아티아어</item>
+		<item>헝가리어</item>
+		<item>이탈리아어</item>
+		<item>일본어</item>
+		<item>한국어</item>
+		<item>라오어</item>
+		<item>네덜란드어</item>
+		<item>오크어 (1500년 이후)</item>
+		<item>폴란드어</item>
+		<item>포르투갈어</item>
+		<item>브라질식 포르투갈어</item>
+		<item>루마니아어</item>
+		<item>러시아어</item>
+		<item>사르데냐어</item>
+		<item>슬로바키아어</item>
+		<item>스웨덴어</item>
+		<item>터키어</item>
+		<item>중국어 (간체)</item>
+		<item>중국어 (번체)</item>
 	</string-array>
 </resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Angad Singh  https://launchpad.net/~angad21-02-1996</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents ਰੰਗਚਇਨਕ ਪੁਰਾਨਾ ਟਾਰਚ ਅਤੇ ਹੋਰ ਸੰਗਤ ਅਨੁਪ੍ਰਯੋਗੋਂ ਲਈ ਇੱਕ ਵਿਸਥਾਰ ਹੈ .</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI ਰੰਗਚਇਨਕ</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">ਰੰਗਚਇਨਕ</string>
+    
+    <string name="recent_colors_condensed">ਤਾਜ਼ਾ</string>
+    <string name="recent_colors">ਹਾਲ ਹੀ  ਦੇ ਰੰਗ</string>
+    <string name="recent_colors_expanded">ਹਾਲ ਹੀ ਵਿੱਚ ਚੁਣਿਆ ਰੰਗ</string>
+    <string name="recent_colors_clear_history">ਸਾਫ਼ ਕਰੋ</string>
+    <string name="recent_colors_empty">ਉੱਥੇ ਨਹੀਂ ਕਰ ਰਹੇ ਹਨ ਹਾਲ ਹੀ ਵਿੱਚ ਚੁਣਿਆ ਰੰਗ .</string>
+    
+    <string name="confirm_color_title">ਰੰਗ ਦਾ ਪ੍ਰਯੋਗ ਕਰੋ ?</string>
+    <string name="confirm_color_message">ਇਸ ਨਵੇਂ ਰੰਗ ਦਾ ਵਰਤੋ ਕਰੋ ?  ਤੁਸੀ ਕੇਂਦਰ ਚਰਿੱਤਰ ਉੱਤੇ ਕਲਿਕ ਕਰਕੇ ਇਸ ਸੁਨੇਹਾ ਵਲੋਂ ਬਚਨ ਕਰ ਸੱਕਦੇ ਹੋ .</string>
+    
+    
+	<!-- About -->
+	<string name="about">ਇਸ ਬਾਰੇ</string>
+	<string name="aboutapp_not_available">ਸੰਸਕਰਣ: %s  \n\n  ਕੋਈ ਸੰਗਤ ਸਾਰਾ ਜਾਣਕਾਰੀ  ( ਸੰਪਰਕ ,  ਕਰੇਡਿਟ ,  ਲਾਇਸੇਂਸ )  ਦਿਖਾਇਆ ਹੋਇਆ ਕਰਣ ਲਈ ਉਪਲੱਬਧ ਏਕਸਟੇਂਸ਼ਨ .</string>
+	<string name="aboutapp_get">OI ਬਾਰੇ ਮਿਲ</string>
+
+
+	<!-- Update -->
+	<string name="update_error">ਡਾਉਨਲੋਡ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ ਆਵੇਦਨ .</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">OI ਟਾਰਚ ,  ਪ੍ਰੇਸ ਮੇਨੂ ਰੰਗ ਵਿੱਚ ਰੰਗ ਦਾ ਸੰਗ੍ਰਹਿ ਕਰੀਏ  </string>
+    <string name="title_app_flashlight">OI ਟਾਰਚ</string>
+    
+    <string name="info_app_spiral_wallpaper">ਕ੍ਰਿਤਰਿਮ ਨਿਦਰਾਵਸਥਾ ,  ਏਨਿਮੇਟੇਡ ਸਰਪਿਲ ਲਾਇਵ ਵਾਲਪੇਪਰ .</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister ਲਾਇਵ ਵਾਲਪੇਪਰ</string>
+    
+    <string name="info_app_bettr_flickr">Android ਲਈ ਮੂਲ ਨਿਵਾਸੀ ਫਲਿਕਰ ਇੰਟਰਫੇਸ</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">ਮਿਕਸ ਅਤੇ ਕਲਾਕ੍ਰਿਤੀ ਮੈਚ anime ਅੱਖਰ ਪੈਦਾ ਕਰਣ ਲਈ</string>
+    <string name="title_app_character_gen">ਮੋਬਾਇਲ ਫੋਨਾਂ  ਦੇ ਚਰਿੱਤਰ ਜਨਰੇਟਰ</string>
+    
+    
+	<string name="info_activity_text">ਇਸ ਐਪ ਨਿੱਚੇ ਲਿਖੇ ਅਨੁਪ੍ਰਯੋਗੋਂ  ਦੇ ਨਾਲ ਇਸਤੇਮਾਲ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ :</string>
+    <string name="info_launch">%s ਚਲਾਓ</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">ਇਸ ਐਪ %1$s %2$s ਜਾਂ ਜਿਆਦਾ ਦੀ ਲੋੜ ਹੈ .</string>
+	<string name="info_get">ਜਾਓ %s</string>
+</resources>

@@ -2,6 +2,7 @@
 <main>
 	<translators>Launchpad Contributions:
   Liezl https://launchpad.net/~liezl-200
+  OpenIntents devs https://launchpad.net/~openintents-devs
   abc https://launchpad.net/~abc-g</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
@@ -11,7 +12,7 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Tungkol ay nakapag-iisang tungkol usapan na dyalogo sa pagitan ng mga apps.</string>
+		<string>OI Tungkol ay nakapag-iisang tungkol na dyalogo na ibinabahagi sa pagitan ng mga apps.</string>
 		<string>Ang applikasyon na ito ay mapapatakbo sa pamamagitan ng menu ng iba pang mga OI na applikasyon.</string>
 		<string>Ito ay nagpapahintulot sa iyo na tingnan ang bersyon impormasyon, mga link, mga kredito, at lisensya ng isang applikasyon.</string>
 		<string>Ang kredito ay kasama ang mga may-akda, taga dokument, mga tagasalin, at mga artist.</string>

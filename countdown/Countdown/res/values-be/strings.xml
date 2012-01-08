@@ -6,7 +6,8 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Alexander Geroimenko https://launchpad.net/~geroimenko</string>
+  Alexander Geroimenko https://launchpad.net/~geroimenko
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
     <!-- Short explanation of the application -->
 	<string name="about_comments">OI Countdown паведамляе вас праз пэўны прамежак часу.</string>

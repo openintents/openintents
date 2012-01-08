@@ -1,7 +1,44 @@
 # Application:
-OI Flashlight
+مصباح يدوي OI
 
 # Promo text:
 OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.
 
 # Description:
+OI  هو مصباح كهربائي تطبيق بسيطة وفعالة تساعدك على إيجاد طريقة في الظلام. بتأمين OI مصباح الضوء الخلفي العرض على، وضوح إضاءة المنطقة المحيطة بها. للأجهزة مع فلاش كاميرا، OI مصباح يدوي أيضا استخدام الفلاش كشعلة ساطعة لإضاءة الغرفة. لون الخلفية تماما للتخصيص مع OI منتقي الألوان. 
+
+هذا التطبيق هو خالية من الإعلانات ولا يحتاج إذن الإنترنت. 
+
+شفرة المصدر لهذا التطبيق الحرة والمفتوحة المصدر متاحة في: 
+http://code.google.com/p/openintents
+
+لقائمة كاملة من التغييرات وقائمة بالأسئلة المطروحة بشكل متكرر، يرجى زيارة: 
+http://www.openintents.org
+
+يمكنك المساعدة على تحسين ترجمة إلى اللغة الخاصة بك في Launchpad: 
+https://translations.launchpad.net/openintents/trunk
+
+الميزات: 
+* تأمين الخفيفة إلى الوراء على العرض.
+* تأمين الكاميرا فلاش على.
+* لون الخفيفة إلى الوراء للتخصيص.
+
+الملحقات المتوفرة ل "OI مصباح": 
+* إظهار معلومات الترخيص مع " OI حول".
+* تغيير لون الخلفية مع "OI منتقي الألوان".
+
+التطبيقات التي تعمل مع "OI مصباح": 
+* التحديث مع "OI التحديث".
+
+الكلمات الأساسية: 
+* مصباح يدوي، الضوء الخلفي الخفيفة،
+* المقاصد مفتوحة OI, OpenIntents
+
+الإصدارات الدولية: 
+Lanternă OI, Llanterna d'OI, OI Baterka, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+
+
+سلاسل البحث للسوق: 
+* uses OI About
+* uses OI Color Picker
+* uses OI Update

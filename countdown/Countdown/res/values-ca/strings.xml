@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+    
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Joan Creus https://launchpad.net/~joan-creus-c</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">El compte enerere d\'OI et notifica després d\'un període de temps especificat.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">Compte enrere d\'OI</string>
+    
+    <string name="start">Inicia</string>
+    <string name="stop">Atura</string>
+    <string name="modify">Modifica</string>
+    <string name="cont">Continua</string>
+    
+	<string name="no_durations">Empreu el menú per afegir un nou compte enrere.</string>
+	<string name="countdown_list">Llista de comptes enrere</string>
+	
+    <string name="menu_delete">Elimina</string>
+    <string name="menu_edit">Edita</string>
+    <string name="menu_insert">Afegir compte enrere</string>
+    <string name="menu_pick_ringtone">So de trucada</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">Definir la data</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">Definir la durada</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">Definir l\'acció</string>
+    
+    <string name="hint_title">p.e. pizza</string>
+    
+    <!-- Title of the activity for setting (editing) the countdown. -->
+    <string name="title_setcountdown">Definir un compte enrere</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
+    <string name="title_create">Crear un compte enrere</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_edit">Editar un compte enrere</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">Escollir un compte enrere</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">Compte enrere d\'OI</string>
+    
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
+	<string name="error_title">Error</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
+	<string name="error_message">Error carregant el compte enrere</string>
+	
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
+	
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">Notificació a la barra d\'estat</string>
+	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">Engegar per mitjà de la barra d\'estat</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">So</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
+	<string name="vibrate">Vibrar</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">Llum</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="action">Acció: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_action">Seleccionar acció: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_countdown">Seleccionar compte enrere: %s</string>
+	
+	<!-- Button to test an action. -->
+	<string name="test">Prova-ho</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">Preferències</string>
+	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">Omet</string>
+	
+	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
+	<string name="days">dies</string>
+	
+	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
+	<string name="day">dia</string>
+	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">Aplicacions</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">Dreceres</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">Tasques d\'automació</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">Seleccionar drecera</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">Seleccionar tasca d\'automació</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">Seleccionar activitat</string>
+ 
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>Començar compte enrere</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>Aturar compte enrere</item>
+    </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+	<!-- Preference section title for general settings regarding the countdown -->
+    <string name="preference_countdown">Compte enrere</string>
+
+    <string name="preference_extensions">Extensions</string>
+    <string name="preference_get_extensions">Aconsegueix extensions</string>
+    <string name="preference_get_extensions_summary">Cerca extensions en línia.</string>
+    <string name="preference_get_extensions_from">Aconsegueix extensions de</string>
+    <string name="preference_extensions_market">Mercat d\'Android</string>
+    <string name="preference_extensions_market_summary">Cerca extensions al Mercat d\'Android</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">Aconsegueix extensions de la pàgina d\'inici d\'OpenIntents</string>
+	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">Temps d\'espera de notificació</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">Temps d\'espera per sonar, vibrar, o fer una notificació de llum.</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">Definir compte enrere</string>
+    
+    <!-- Timeout for notifications -->
+    <string-array name="preference_notification_timeout_entries">
+        <item>2 segons</item>
+        <item>5 segons</item>
+        <item>10 segons</item>
+        <item>30 segons</item>
+        <item>1 minut</item>
+        <item>5 minuts</item>
+        <item>10 minuts</item>
+    </string-array>
+</resources>

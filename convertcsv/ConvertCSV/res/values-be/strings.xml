@@ -22,7 +22,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
-  Alexander Geroimenko https://launchpad.net/~geroimenko</string>
+  Alexander Geroimenko https://launchpad.net/~geroimenko
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Explanation what this application does. -->
 	<string name="about_comments">Гэта пашырэнне для OI Shopping list і OI Notepad дазваляе вам імпартаваць і экспартаваць спісы і нататкі ў CSV файл.</string>
@@ -134,26 +135,26 @@
     
     <string-array name="import_policy">
         <item>ДУБЛЯВАЦЬ - Дазваляць дубляваць запісы.</item>
-        <item>"ПАКІНУЦЬ - Не перазапісваць існуючыя запісы."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
         <item>Перазапісаць - Перезапісаць існуючыя запісы.</item>
         <item>Аднавіць - ВЫДАЛІЦЬ УСЁ, а потым імпартаваць.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>ДУБЛЯВАЦЬ - Дадаць другую копію запісу, калі ўжо існуе.</item>
-        <item>"ПАКІНУЦЬ - Не перазапісваць існуючы запіс, ігнараваць ў CSV файле."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>Перазапісаць - Захаванне ў CSV ПЕРАПІША існуючы запіс.</item>
         <item>Аднаўленне рэзервовай копіі - ВЫДАЛЯЕ ЎСЕ ВАШЫ ЗАПІСЫ, а потым імпартыруе CSV файл.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>ДУБЛЯВАЦЬ - Дазваляць дубляваць запісы.</item>
-        <item>"ПАКІНУЦЬ - Не перазапісваць існуючыя запісы."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>ДУБЛЯВАЦЬ - Дадаць другую копію запісу, калі ўжо існуе.</item>
-        <item>"ПАКІНУЦЬ - Не перазапісваць існуючы запіс, ігнараваць ў CSV файле."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>

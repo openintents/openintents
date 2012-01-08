@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Matěj Konečný https://launchpad.net/~matejkon</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Update</string>
+    
+    <string name="update_available">Nová verze aplikace %s je dostupná.\nChcete ji aktualizovat?</string>
+    <string name="update_available_3">Nová verze %1$s je dostupná v %2$s.\n%3$s\n</string>
+    <string name="update_available_2">Nová verze %1$s je dostupná.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">Nová verze %1$s je dostupná v %2$s.</string>
+    <string name="update_available_no_comment">Je dostupná nová verze %s.</string>
+	<string name="market_not_available">Android Market není dostupný.</string>
+    <string name="market_search_term">OI Update</string>
+	<string name="android_market">Android Market</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">Verze %1$s\nSD karta %2$s\n\nOS\n%3$s</string>
+    <string name="free_space">volý prostor: %s</string>
+    <string name="os_info">Board %1$s\nZnačka %2$s\nZařízení %3$s\nID %4$s\nModel %5$s</string>
+    
+    <string name="do_update">Aktualizovat nyní!</string>
+    <string name="do_update_market">Zkusit aktualizovat z Marketu nyní!</string>
+    <string name="do_update_andAppStore">Zkusit aktualizovat z AndAppStore nyní!</string>
+    <string name="remind_me_later">Připomenout později!</string>
+    <string name="ignore_this_update">Ignorovat tuto aktualizaci</string>
+    <string name="ignore_all_further_updates">Ignorovat všechny další aktualizace</string>
+    <string name="ok">OK</string>
+    
+    <string name="update_not_started">Aktualizace nemohla začít!\n\nKontaktujte prosím vývojáře aplikace!\n\n%s</string>
+    <string name="app_up_to_date">Žádné aktualizace nejsou k dispozici.</string>
+    <string name="checking">Kontroluji, existuje-li nová verze.</string>
+    <string name="building_app_list">Vytvářím seznam aplikací.</string>
+    <string name="check_andappstore">Kontroluji AndAppStore.com</string>
+    <string name="check_versions">Zkontrolovat verze</string>
+    <string name="show_versions">Zobrazit vše</string>
+    <string name="refresh">Obnovit</string>
+    <string name="checked_against_andappstore">AndAppStore zkontrolován</string>
+    <string name="current_version">Současná verze: %s</string>
+    <string name="current_version_code">Současný kód verze: %s</string>
+    <string name="newer_version">Novější verze: %s</string>
+    <string name="newer_version_comment">Novější verze: %1$s - %2$s</string>
+    <string name="newer_version_available">Novější verze dostupná.</string>
+    <string name="no_update_info_found">Žádná informace o aktualizaci nebyla nalezena.</string>
+    <string name="title_list_new_versions">OI Update - Seznam nových verzí</string>
+    <string name="title_list_new_versions_from_andappstore">OI Update - Nová verze v AndAppStore</string>
+    <string name="title_list_all_versions">OI Update - Seznam spravovaných aplikací</string>
+    <string name="title_list_all_versions_from_andappstore">OI Update - Seznam spravovaných aplikací (zkontrolovat v AndAppStore)</string>
+    <string name="settings">Nastavení</string>
+    <string name="auto_update">Automaticky kontrolovat</string>
+    <string name="ignore_title">Ignorováno</string>
+    <string name="ignore_text">Aktualizace jsou v současnosti ignorovány. Přejete si znovu přijímat aktualizace?</string>
+    <string name="unknown_title">Neznámé</string>
+    <string name="unknown_text">Žádná informace o aktualizacích není dostupná. Zkontrolujte to prosím ručně a poproste vývojáře o podporu OI Update v budoucnosti.</string>
+    <string name="search_on_market">Hledat v Marketu</string>
+    <string name="search_on_andappstore">Hledat v AndAppStore</string>
+    <string name="processing">Zpracovávám %s</string>
+    
+    <string name="warn">Aktualizace této aplikace vede jinam než na Android Market. Aplikace nainstalované z neznámých zdrojů mohou představovat bezpečnostní riziko.</string>
+    <string name="continue_anyway">Přesto pokračovat</string>
+    <string name="abort">Zrušit</string>
+    
+    <string name="preference_auto_update">Automaticky aktualizovat</string>
+    <string name="preference_auto_update_summary">Pokud zaškrtnuto, aktualizace se hledají pravidelně</string>
+    <string name="title_update_interval">Interval aktualizací</string>
+    <string name="summary_update_interval">Nastavte interval, jak často by se měly hledat aktualizace.</string>
+    <string name="dialog_title_update_interval">Zvolte interval</string>
+    <string name="default_update_interval">every_month</string>
+    <string name="preference_warning_title">Varování</string>
+    <string name="preference_warning_text">Když odškrtnete tuto položku, už nebudete dostávat upozornění o aktualizacích. Stále ji chcete odškrtnout?</string>
+    
+    <string name="preference_andappstore">Použít AndAppStore</string>
+    <string name="preference_andappstore_summary">Použít informace o verzi poskytované AndAppStore.com</string>
+    
+    <string name="permission_read_update_info">Číst informace o aktualizacích</string>
+    <string name="permission_write_update_info">Zapisovat informace o aktualizacích</string>
+    <string name="permission_read_update_info_descr">Číst informace o nainstalovaných aktualizacích, místech aktualizací a požadavcích.</string>
+    <string name="permission_write_update_info_descr">Zapisovat informace o nainstalovaných aktualizacích, místech aktualizací a požadavcích.</string>
+
+
+	<!-- About -->
+	<string name="about">O aplikaci</string>
+	<string name="about_title">O %s</string>
+	<string name="about_text">Verze %s \n\n OI Update Vás informuje o nových verzích aplikací.\n OpenIntents povolují různým androidím aplikacím sdíled data pomocí jejich intentu a otevřených rozhraní.\n\n Pro více informací a jiné úžasné aplikace navštivte OpenIntents na www.openintents.org</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Update EULA OI Update EULA</string>
+<string name="eula_description">"Copyright 2008 OpenIntents.org\n Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n http://www.apache.org/licenses/LICENSE-2.0\n Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n \n"</string>
+	<string name="eula_accept">Přijmout</string>
+	<string name="eula_refuse">Zrušit</string>
+	
+</resources>

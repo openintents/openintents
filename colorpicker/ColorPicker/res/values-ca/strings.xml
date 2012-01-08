@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Joan Creus https://launchpad.net/~joan-creus-c</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">El capturador de colors d\'OpenIntents és una extensió de la llanterna d\'OI i altres aplicacions compatibles.</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">Capturador de colors d\'OI</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">Capturador de colors</string>
+    
+    <string name="recent_colors_condensed">Recent</string>
+    <string name="recent_colors">Colors recents</string>
+    <string name="recent_colors_expanded">Colors escollits recentment</string>
+    <string name="recent_colors_clear_history">Buida</string>
+    <string name="recent_colors_empty">No hi ha colors escollits recentment.</string>
+    
+    <string name="confirm_color_title">Utilitzar el color?</string>
+    <string name="confirm_color_message">Utilitzar aquest color nou? Podeu evitar aquest missatge clicant al cercle del centre.</string>
+    
+    
+	<!-- About -->
+	<string name="about">Quant a</string>
+	<string name="aboutapp_not_available">Versió %s\n\nNo hi ha cap extensió compatible per mostrar la informació sencera (contacte, crèdits, llicència).</string>
+	<string name="aboutapp_get">Aconsegueix OI Quant a</string>
+
+
+	<!-- Update -->
+	<string name="update_error">No es pot descarregar l\'aplicació.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">Per seleccionar un color a la llanterna d\'OI, premeu menú &gt; Color.</string>
+    <string name="title_app_flashlight">Llanterna d\'OI</string>
+    
+    <string name="info_app_spiral_wallpaper">Pantalla de fons hipnòtica, animada en espiral.</string>
+    <string name="title_app_spiral_wallpaper">Pantalla de fons HypnoTwiter</string>
+    
+    <string name="info_app_bettr_flickr">Interfície de Flickr nativa per a Android</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">Barreja i concorda obres d\'art per generar personatges anime</string>
+    <string name="title_app_character_gen">Generador de personatges Anime</string>
+    
+    
+	<string name="info_activity_text">Aquesta aplicació es pot utilitzar amb les aplicacions següents:</string>
+    <string name="info_launch">Engega %s</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">Aquesta app requereix %1$s %2$s o superior.</string>
+	<string name="info_get">Aconsegueix %s</string>
+</resources>

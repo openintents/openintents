@@ -5,109 +5,96 @@
 	     *************************** -->
 	
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
+	<string name="about_translators">Launchpad Contributions:
+  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">OI Update</string>
+    <string name="app_name">OI Oppdater</string>
     
-    <string name="update_available">A new version of %s is available.\nWould you like to upgrade?</string>
-    <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
-    <string name="update_available_2">A new version of %1$s is available.\n%2$s\n</string>
-    <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
-    <string name="update_available_no_comment">A new version of %s is available.</string>
-	<string name="market_not_available">Android Market not available.</string>
-    <string name="market_search_term">OI Update</string>
-	<string name="android_market">Android Market</string>
+    <string name="update_available">En ny versjon av %s er tilgjengelig.\nVil du oppgradere?</string>
+    <string name="update_available_3">En ny versjon av %1$s er tilgjengelig på %2$s.\n%3$s\n</string>
+    <string name="update_available_2">En ny versjon av %1$s er tilgjengelig.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">En ny versjon av %1$s er tilgjengelig på %2$s.</string>
+    <string name="update_available_no_comment">En ny versjon av %s er tilgjengelig.</string>
+	<string name="market_not_available">Android Marked ikke tilgjengelig.</string>
+    <string name="market_search_term">OI Oppdater</string>
+	<string name="android_market">Android Marked</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
-    <string name="about_text_extended">Version %1$s\nSD card %2$s\n\nOS\n%3$s</string>
-    <string name="free_space">free space: %s</string>
-    <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
+    <string name="about_text_extended">Versjon %1$s\nSD-kort %2$s\n\nOS\n%3$s</string>
+    <string name="free_space">tilgjengelig plass: %s</string>
+    <string name="os_info">Brett %1$s\nMerke %2$s\nEnhet %3$s\nID %4$s\nModell %5$s</string>
     
-    <string name="do_update">Perform update now!</string>
-    <string name="do_update_market">Try update from Market now!</string>
-    <string name="do_update_andAppStore">Try update from AndAppStore now!</string>
-    <string name="remind_me_later">Remind me later!</string>
-    <string name="ignore_this_update">Ignore this update</string>
-    <string name="ignore_all_further_updates">Ignore all further updates</string>
+    <string name="do_update">Utfører oppdatering nå!</string>
+    <string name="do_update_market">Prøv oppdatering fra Marked nå!</string>
+    <string name="do_update_andAppStore">Prøv oppdatering fra AndAppStore nå!</string>
+    <string name="remind_me_later">Minn meg på senere!</string>
+    <string name="ignore_this_update">Ignorer denne oppdateringen</string>
+    <string name="ignore_all_further_updates">Ignorer alle fremtidige oppdateringer</string>
     <string name="ok">Ok</string>
     
-    <string name="update_not_started">Update could not be started!\n\nPlease contact application developer!\n\n%s</string>
-    <string name="app_up_to_date">Application is up-to-date.</string>
-    <string name="checking">Checking for new version.</string>
-    <string name="building_app_list">Building list of applications.</string>
-    <string name="check_andappstore">Check AndAppStore.com</string>
-    <string name="check_versions">Check versions</string>
-    <string name="show_versions">Show all</string>
-    <string name="refresh">Refresh</string>
-    <string name="checked_against_andappstore">Checked AndAppStore</string>
-    <string name="current_version">Current version: %s</string>
-    <string name="current_version_code">Current version code: %s</string>
-    <string name="newer_version">Newer version: %s</string>
-    <string name="newer_version_comment">Newer version: %1$s - %2$s</string>
-    <string name="newer_version_available">Newer version available.</string>
-    <string name="no_update_info_found">No update information found.</string>
-    <string name="title_list_new_versions">OI Update - List of new versions</string>
-    <string name="title_list_new_versions_from_andappstore">OI Update - New versions at AndAppStore</string>
-    <string name="title_list_all_versions">OI Update - List of managed applications</string>
-    <string name="title_list_all_versions_from_andappstore">OI Update - List of managed applications (check at AndAppStore)</string>
-    <string name="settings">Settings</string>
-    <string name="auto_update">Auto check</string>
-    <string name="ignore_title">Ignored</string>
-    <string name="ignore_text">Updates are currently ignored. Would you like to receive updates again?</string>
-    <string name="unknown_title">Unknown</string>
-    <string name="unknown_text">No update information available. Please check manually and ask the developer to support OI Update in the future.</string>
-    <string name="search_on_market">Search on Market</string>
-    <string name="search_on_andappstore">Search on AndAppStore</string>
-    <string name="processing">Processing %s</string>
+    <string name="update_not_started">Oppdatering kunne ikke startes!\n\nVennligst kontakt utvikleren av applikasjonen!\n\n%s</string>
+    <string name="app_up_to_date">Applikasjon er oppdatert.</string>
+    <string name="checking">Sjekker etter ny versjon.</string>
+    <string name="building_app_list">Bygger liste med applikasjoner.</string>
+    <string name="check_andappstore">Sjekk AndAppStore.com</string>
+    <string name="check_versions">Sjekk versjoner</string>
+    <string name="show_versions">Vis alle</string>
+    <string name="refresh">Last på nytt</string>
+    <string name="checked_against_andappstore">Sjekket AndAppStore</string>
+    <string name="current_version">Nåværende versjon: %s</string>
+    <string name="current_version_code">Nåværende versjonkode: %s</string>
+    <string name="newer_version">Nyere versjon: %s</string>
+    <string name="newer_version_comment">Nyere versjon: %1$s - %2$s</string>
+    <string name="newer_version_available">Nyere versjon tilgjengelig.</string>
+    <string name="no_update_info_found">Ingen oppdateringsinformasjon tilgjengelig.</string>
+    <string name="title_list_new_versions">OI Oppdater - Liste over nye versjoner</string>
+    <string name="title_list_new_versions_from_andappstore">OI Oppdater - Nye versjoner på AndAppStore</string>
+    <string name="title_list_all_versions">OI Oppdater - Liste over administrerte applikasjoner</string>
+    <string name="title_list_all_versions_from_andappstore">OI Oppdater - Liste over administrerte applikasjoner (sjekk på AndAppStore)</string>
+    <string name="settings">Innstillinger</string>
+    <string name="auto_update">Sjekk automatisk</string>
+    <string name="ignore_title">Ignorert</string>
+    <string name="ignore_text">Oppdateringer blir nå ignorert. Ønsker du å motta oppdateringer igjen?</string>
+    <string name="unknown_title">Ukjent</string>
+    <string name="unknown_text">Ingen oppdateringsinformasjon tilgjengelig. Vennligst sjekk manuelt og spør utvikleren å støtte OI Oppdater i fremtiden.</string>
+    <string name="search_on_market">Søk på Marked</string>
+    <string name="search_on_andappstore">Søk på AndAppStore</string>
+    <string name="processing">Prosesserer %s</string>
     
-    <string name="warn">The update process of this application directs to
-    a different site than Android Market. Applications installed from unknown sources might
-    exhibit a security risk. 
-    </string>
-    <string name="continue_anyway">Continue anyway</string>
-    <string name="abort">Abort</string>
+    <string name="warn">Oppdateringsprosessen for denne applikasjonen viser til en annen side en Android Marked. Applikasjoner installert fra ukjente kilder er kanskje en sikkerhetsrisiko.</string>
+    <string name="continue_anyway">Fortsett uansett</string>
+    <string name="abort">Avbryt</string>
     
-    <string name="preference_auto_update">Auto update</string>
-    <string name="preference_auto_update_summary">If checked, search for updates is performed regularly</string>
-    <string name="title_update_interval">Update interval</string>
-    <string name="summary_update_interval">Set the interval how often the update search should be performed.</string>
-    <string name="dialog_title_update_interval">Select interval</string>
-    <string name="default_update_interval">every_month</string>
-    <string name="preference_warning_title">Warning</string>
-    <string name="preference_warning_text">If you uncheck this item, you will no longer receive notifications for updates. Do you still want to uncheck auto update?</string>
+    <string name="preference_auto_update">Automatisk oppdatering</string>
+    <string name="preference_auto_update_summary">Hvis markert, søk etter oppdateringer blir utført jevnlig</string>
+    <string name="title_update_interval">Oppdateringsintervall</string>
+    <string name="summary_update_interval">Sett intervallen for hvor ofte søk etter oppdateringer skal være utført.</string>
+    <string name="dialog_title_update_interval">Velg intervall</string>
+    <string name="default_update_interval">hver_måned</string>
+    <string name="preference_warning_title">Advarsel</string>
+    <string name="preference_warning_text">Fjerner du markeringen for dette punktet, vil du ikke lenger motta varsler for oppdateringer. Vil du fortsatt fjerne markeringen for automatisk oppdatering?</string>
     
-    <string name="preference_andappstore">Use AndAppStore</string>
-    <string name="preference_andappstore_summary">Use version information provided by AndAppStore.com</string>
+    <string name="preference_andappstore">Bruk AndAppStore</string>
+    <string name="preference_andappstore_summary">Bruk versjonsinformasjon levert av AndAppStore.com</string>
     
-    <string name="permission_read_update_info">Read update information</string>
-    <string name="permission_write_update_info">Write update information</string>
-    <string name="permission_read_update_info_descr">Read information about installed applications, update locations and requests.</string>
-    <string name="permission_write_update_info_descr">Write information about installed applications, update locations and requests.</string>
+    <string name="permission_read_update_info">Les oppdateringsinformasjon</string>
+    <string name="permission_write_update_info">Skriv oppdateringsinformasjon</string>
+    <string name="permission_read_update_info_descr">Les informasjon om installerte applikasjoner, oppdateringsplasseringer og forespørsler.</string>
+    <string name="permission_write_update_info_descr">Skriv informasjon om installerte applikasjoner, oppdateringsplasseringer og forespørsler.</string>
 
 
 	<!-- About -->
-	<string name="about">About</string>
-	<string name="about_title">About %s</string>
-	<string name="about_text">Version %s \n\n
-OI Update keeps you informed on new application versions.\n
-	
-OpenIntents allows different Android applications to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at www.openintents.org
-	</string>
+	<string name="about">Om</string>
+	<string name="about_title">Om %s</string>
+	<string name="about_text">Versjon %s \n\nOI Oppdatering holder deg informert om nye applikasjonversjoner.\nOpenIntents lar ulike applikasjoner for Android dele data ved bruk av intensjoner og åpne grensesnitt.\nFor mer informasjon og andre flotte applikasjoner besøk OpenIntents på www.openintents.org</string>
 	
 	<!-- EULA -->
-	<string name="eula_title">OI Update EULA</string>
-<string name="eula_description">
-"Copyright 2008 OpenIntents.org\n
-Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
-http://www.apache.org/licenses/LICENSE-2.0\n
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n
-\n"
-</string>
-	<string name="eula_accept">Accept</string>
-	<string name="eula_refuse">Cancel</string>
+	<string name="eula_title">Lisensavtale for OI Oppdater</string>
+<string name="eula_description">"Opphavsrett 2008 OpenIntents.org\nLisensert under Apache-lisensen, versjon 2.0 (\"Lisensen\"); du får ikke lov til å bruke denne filen bortsett fra i overholdelse med Lisensen. Du kan få tak i en kopi av Lisensen på\nhttp://www.apache.org/licenses/LICENSE-2.0\nHvis ikke påkrevd av gjeldende lov eller blitt enig om skriftlig, programvare utgitt under Lisensen er utgitt på et "SOM ER" GRUNNLAG, UTEN GARANTIER ELLER FORHOLD AV NOEN FORM, enten uttrykk eller antydet. Se Lisensen for det aktuelle språket som styrer tillatelser og begrensninger under Lisensen.\n\n"</string>
+	<string name="eula_accept">Aksepter</string>
+	<string name="eula_refuse">Avbryt</string>
 	
 </resources>

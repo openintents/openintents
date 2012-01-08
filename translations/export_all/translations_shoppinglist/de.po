@@ -289,11 +289,8 @@ msgid "Priority 1-4: %s"
 msgstr "Wichtig 1-4: %s"
 
 #: tmp_strings.xml:116(string)
-#, fuzzy
 msgid "Are you sure you want to permanently delete this item?"
 msgstr ""
-"Sind sie sicher, dass sie dieses Item permanent aus dieser Shopping Liste "
-"entfernen wollen?"
 
 #: tmp_strings.xml:117(string)
 msgid "Delete"
@@ -654,14 +651,12 @@ msgstr ""
 "Das Auswählen der Priorität oder der Anzahl ruft den Item Editierdialog auf."
 
 #: tmp_strings.xml:235(string)
-#, fuzzy
 msgid "Reset all settings"
-msgstr "Design Einstellungen"
+msgstr ""
 
 #: tmp_strings.xml:236(string)
-#, fuzzy
 msgid "Do you really want to RESET ALL settings? This cannot be undone."
-msgstr "Geschäft wirklich löschen?"
+msgstr ""
 
 #: tmp_strings.xml:237(string)
 msgid "All settings have been reset"
@@ -832,9 +827,8 @@ msgid "Next page"
 msgstr ""
 
 #: tmp_strings.xml:342(string)
-#, fuzzy
 msgid "Choose a list"
-msgstr "Großschreibung auswählen"
+msgstr ""
 
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"

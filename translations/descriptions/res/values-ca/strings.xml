@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  Joan Creus https://launchpad.net/~joan-creus-c</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Quant a és un diàleg independent que es comparteix entre aplicacions.</string>
+		<string>Aquesta aplicació s\'invoca mitjançant el menú d\'altres aplicacions d\'OI.</string>
+		<string>Et permet veure informació de la versió, enllaços, crèdits i la llicència d\'una aplicació.</string>
+		<string>Els crèdits inclouen els autors, documentació, traductors i artistes.</string>
+		<string>Tota aquesta funcionalitat s\'aporta en un format simple i efficient.</string>
+		<emptyline/>
+		<string>Aquesta aplicació no té anuncis i no necessita permisos a Internet.</string>
+		<emptyline/>
+		<string>El codi font d\'això és lliure i l\'aplicació de codi obert està disponible a:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Per a una llista sencera de canvis i una llista de preguntes més freqüents, vegeu:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Podeu ajudar a millorar la traducció al vostre idioma a Launchpad</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Característiques</string>
+		<listitem>Mostra pestanyes d\'informació general, crèdits i llicència</listitem>
+		<listitem>Mostra els traductors de totes les versions idiomàtiques.</listitem>
+		<listitem>Aconsegueix informació del manifest de l\'aplicació mitjançant les etiquetes per defecte i metadades.</listitem>
+		<listitem>Opcionalment, es poden modificar tots els camps mitjançant extres d\'intent.</listitem>
+		<emptyline/>
+		<string>Aplicacions que funcionen amb "OI Quant a":</string>
+		<listitem>Bloc de notes d\'OI</listitem>
+		<listitem>Gestor de fitxers d\'OI</listitem>
+		<listitem>Llista de compra d\'OI</listitem>
+		<listitem>Convertor a CSV d\'OI</listitem>
+		<listitem>OI Segur</listitem>
+		<listitem>Compte enrere d\'OI</listitem>
+		<listitem>OI Flashlight</listitem>
+		<emptyline/>
+		<string>Paraules clau:</string>
+		<listitem>Quant a, crèdits, informació.</listitem>
+		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<emptyline/>
+		<string>Versions internacionals:</string>
+		<international/>
+		<emptyline/>
+		<string>Cerca cadenes al Mercat:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>El gestor de fitxers d\'OI et permet navegar per la teva targeta SD, crear directoris, reanomenar, moure i esborrar fitxers.</string>
+		<string>També actua com a extensió a altres aplicacions per mostrar diàlegs "Obre" i "Desa".</string>
+		<emptyline/>
+		<string>Aquesta aplicació no té anuncis i no necessita permisos a Internet.</string>
+		<emptyline/>
+		<string>Per a una llista sencera de canvis i una llista de preguntes més freqüents, vegeu:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Podeu ajudar a millorar la traducció al vostre idioma a Launchpad</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>El codi font d\'això és lliure i l\'aplicació de codi obert està disponible a:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Característiques</string>
+		<listitem>Mostra una llista de fitxers amb previsualitzacions d\'imatges.</listitem>
+		<listitem>Mou, copia, reanomena i esborra fitxers.</listitem>
+		<listitem>Crea i esborra directoris (carpetes).</listitem>
+		<listitem>Envia fitxers per correu electrònic.</listitem>
+		<listitem>Actua com a extensió a altres aplicacions, com el GMail, per adjuntar fitxers.</listitem>
+		<listitem>Suporta moltes extensions de fitxer i tipus mime.</listitem>
+		<listitem>Suporta els intents PICK_FILE I PICK_DIRECTORY per tal que altres aplicacions puguin utilitzar el gestor de fitxers d\'OI.</listitem>
+		<emptyline/>
+		<string>Extensions disponibles per al gestor de fitxers d\'OI:</string>
+		<listitem>Mostra informació de llicència amb "OI Quant a"</listitem>
+		<emptyline/>
+		<string>Aplicacions que funcionen amb el "gestor de fitxers d\'OI":</string>
+		<listitem>Obre i desa fitxers de text amb el "bloc de notes d\'OI".</listitem>
+		<emptyline/>
+		<string>Paraules clau:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>gestor de fitxers, explorador de fitxers, explorador</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Versions internacionals:</string>
+		<international/>
+		<emptyline/>
+		<string>Cerca cadenes al Mercat:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Flashlight és una aplicació simple i efectiva que et permet trobar un camí entre la foscor.</string>
+		<string>OI Flashlight bloqueja la llum de fons, il·luminant clarament l\'àrea al voltant.</string>
+		<string>Per a dispositius amb càmera amb flaix OI Flashlight també pot utilitzar el flaix com a llanterna per il·luminar l\'habitació.</string>
+		<string>El color de la llum de fons és completament personalitzable amb el capturador de colors d\'OI.</string>
+		<emptyline/>
+		<string>Aquesta aplicació no té anuncis i no necessita permisos a Internet.</string>
+		<emptyline/>
+		<string>El codi font d\'això és lliure i l\'aplicació de codi obert està disponible a:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Per a una llista sencera de canvis i una llista de preguntes més freqüents, vegeu:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Podeu ajudar a millorar la traducció al vostre idioma a Launchpad</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Característiques</string>
+		<listitem>Manté bloquejada la llum de fons.</listitem>
+		<listitem>Manté el flaix de càmera activat.</listitem>
+		<listitem>El color de la llum de fons és personalitzable.</listitem>
+		<emptyline/>
+		<string>Extensions dispònibles per a l\'"OI Flashlight":</string>
+		<listitem>Mostra informació de llicència amb "OI Quant a"</listitem>
+		<listitem>Canvia el color de la llum de fons amb el "Capturador de Colors d\'OI".</listitem>
+		<emptyline/>
+		<string>Aplicacions que funcionen amb l\'"OI Flashlight":</string>
+		<listitem>Actualitza amb "OI Update".</listitem>
+		<emptyline/>
+		<string>Paraules clau:</string>
+		<listitem>Flashlight, light, llanterna, llum de fons</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Versions internacionals:</string>
+		<international/>
+		<emptyline/>
+		<string>Cerca cadenes al Mercat:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>El bloc de notes d\'OI és una aplicació de codi obert amb moltes característiques que et permet prendre notes.</string>
+		<string>Amb ella, pots etiquetar, cercar i enviar les teves notes, a part de funcions bàsiques com crear-ne, esborrar-ne o editar-ne.</string>
+		<string>També hi ha característiques avançades com encriptació, importació/exportació i memos de veu disponibles per mitjà d\'extensions.</string>
+		<string>Totes aquestes funcions són disponibles en un format simple i eficient, personalitzable per mitjà d\'un grapat de temes.</string>
+		<emptyline/>
+		<string>Aquesta aplicació no té anuncis i no necessita permisos a Internet.</string>
+		<emptyline/>
+		<string>El codi font d\'això és lliure i l\'aplicació de codi obert està disponible a:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Per a una llista sencera de canvis i una llista de preguntes més freqüents, vegeu:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Podeu ajudar a millorar la traducció al vostre idioma a Launchpad</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Característiques</string>
+		<listitem>Afegeix, edita i esborra notes.</listitem>
+		<listitem>Prem una estona a les notes per afegir-hi etiquetes.</listitem>
+		<listitem>Canvia la mida de lletra i l\'ordenació.</listitem>
+		<listitem>Un disseny arranjat clarament amb una diversitat de temes.</listitem>
+		<listitem>Cerca ràpidament per mitjà de notes.</listitem>
+		<listitem>Envia notes com a MMS o SMS.</listitem>
+		<emptyline/>
+		<string>Extensions disponibles per al "bloc de notes d\'OI":</string>
+		<listitem>Registra i adjunta memos de veu a notes amb "Notes de veu d\'OI".</listitem>
+		<listitem>Amb "Converteix a CSV d\'OI", importa i exporta notes d\'una targeta SD.</listitem>
+		<listitem>Mostra informació de llicència amb "OI Quant a"</listitem>
+		<listitem>Insereix la data i el temps en notes amb "Inserció de data d\'OI".</listitem>
+		<listitem>Gira el text cap per avall amb "Cap per avall".</listitem>
+		<emptyline/>
+		<string>Aplicacions que funcionen amb el "bloc de notes d\'OI".</string>
+		<listitem>Fes còpies de seguretat de notes amb "My Backup Pro".</listitem>
+		<listitem>Encripta notes amb "OI Safe".</listitem>
+		<listitem>Controla notes a la teva targeta SD amb el "gestor de fitxers d\'OI".</listitem>
+		<listitem>Actualitza amb "OI Update".</listitem>
+		<listitem>Comparteix notes per mitjà del "Facebook", "Gmail", "Google+", "Twitter", i moltes altres aplicacions.</listitem>
+		<emptyline/>
+		<string>Paraules clau:</string>
+		<listitem>Nota, bloc de notes, llibre de notes, notes, bloc</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Versions internacionals:</string>
+		<international/>
+		<emptyline/>
+		<string>Cerca cadenes al Mercat:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Safe protegeix de forma segura totes les teves contrasenyes i altres dades privades emprant l\'estàndard industrial d\'encriptació AES.</string>
+		<string>També actua com a extensió del bloc de notes d\'OI per encriptar notes d\'un bloc de notes d\'OI.</string>
+		<emptyline/>
+		<string>Aquesta aplicació no té anuncis i no necessita permisos a Internet.</string>
+		<emptyline/>
+		<string>Per a una llista sencera de canvis i una llista de preguntes més freqüents, vegeu:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Podeu ajudar a millorar la traducció al vostre idioma a Launchpad</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>El codi font d\'això és lliure i l\'aplicació de codi obert està disponible a:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Característiques</string>
+		<listitem>Protegeix de forma segura dades emprant encriptació AES.</listitem>
+		<listitem>Mou lliurement entrades de dades entre categories.</listitem>
+		<listitem>Importa o exporta entrades de dades i bases de dades</listitem>
+		<listitem>Fes còpies de seguretat o restaura entrades.</listitem>
+		<listitem>Inclou un generador de contrasenyes segur.</listitem>
+		<listitem>Temps d\'espera automàtic per protegir documents encriptats.</listitem>
+		<listitem>Encripta notes del bloc de notes d\'OI.</listitem>
+		<listitem>Suport per a Obscura picture safe.</listitem>
+		<listitem>MyBackup Pro.</listitem>
+		<emptyline/>
+		<string>Extensions disponibles per al gestor de fitxers d\'OI:</string>
+		<listitem>Mostra informació de llicència amb "OI Quant a"</listitem>
+		<emptyline/>
+		<string>Aplicacions que funcionen amb el "gestor de fitxers d\'OI":</string>
+		<listitem>Encripta notes creades al "bloc de notes d\'OI"</listitem>
+		<emptyline/>
+		<string>Paraules clau:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>segur, encriptació, contrasenya, protecció</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Versions internacionals:</string>
+		<international/>
+		<emptyline/>
+		<string>Cerca cadenes al Mercat:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>La llista de compra d\'OI és una aplicació potent que fa fàcil crear i controlar llistes de coses a fer.</string>
+		<string>La llista de compra d\'OI fa ben fàcil afegir elements a una llista, activar l\'element, i treure\'l de la llista.</string>
+		<string>L\'aplicació pot controlar diverses peces separades per a cada botiga que utilitzes, i té un alt nivell de personalització.</string>
+		<string>La mida de lletra, ordenació, columnes de la llista i comportament de la neteja de la llista són preferències controlables per l\'usuari.</string>
+		<string>Totes aquestes característiques s\'ajunten en un disseny que és personalitzable per mitjà d\'un grapat de temes.</string>
+		<emptyline/>
+		<string>El codi font d\'això és lliure i l\'aplicació de codi obert està disponible a:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Aquesta aplicació no té anuncis i no necessita permisos a Internet.</string>
+		<emptyline/>
+		<string>Per a una llista sencera de canvis i una llista de preguntes més freqüents, vegeu:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Podeu ajudar a millorar la traducció al vostre idioma a Launchpad</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Característiques</string>
+		<listitem>Afegeix, edita i esborra llistes.</listitem>
+		<listitem>Crea, esborra i activa elements fàcilment i ràpida.</listitem>
+		<listitem>Diversitat de temes.</listitem>
+		<listitem>Mida de lletra i ordenació personalitzables.</listitem>
+		<listitem>Recorda diversos preus per a cada botiga.</listitem>
+		<listitem>Columnes de la llista personalitzables.</listitem>
+		<emptyline/>
+		<string>Extensions disponibles per a la "llista de compra d\'OI":</string>
+		<listitem>Afegeix un missatge gravat a una nota amb "notes de veu d\'OI".</listitem>
+		<listitem>Importa o exporta llistes de compra amb "Converteix a CSV d\'OI".</listitem>
+		<listitem>Mostra informació de llicència amb "OI Quant a"</listitem>
+		<listitem>Entra o activa elements amb "Extensió de codi de barres d\'OI".</listitem>
+		<emptyline/>
+		<string>Aplicacions que funcionen amb la "llista de compra d\'OI".</string>
+		<listitem>Actualitza amb "OI Update".</listitem>
+		<listitem>Fes còpies de seguretat amb "My Backup Pro".</listitem>
+		<listitem>Importa ingredients de receptes amb "Bites".</listitem>
+		<emptyline/>
+		<string>Paraules clau:</string>
+		<listitem>compra, llista, llista de compra, coses a fer</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Versions internacionals:</string>
+		<international/>
+		<emptyline/>
+		<string>Extensions:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+</main>

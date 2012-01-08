@@ -6,7 +6,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  maimuzo https://launchpad.net/~maimuzo</string>
+  maimuzo https://launchpad.net/~maimuzo
+  thebowseat https://launchpad.net/~takeshimochida</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -14,18 +15,18 @@
     <string name="app_name">OI Update</string>
     
     <string name="update_available">%sの新バージョンが利用可能となりました。\nアップグレードしたいですか?</string>
-    <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
-    <string name="update_available_2">A new version of %1$s is available.\n%2$s\n</string>
-    <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
+    <string name="update_available_3">%1$s の新しいバージョンが %2$s で利用可能です。\n%3$s\n</string>
+    <string name="update_available_2">%1$s の新しいバージョンが利用可能です。\n%2$s\n</string>
+    <string name="update_available_location_no_comment">%1$s の新しいバージョンが %2$s で利用可能です。</string>
     <string name="update_available_no_comment">%sの新バージョンが利用可能となりました。</string>
 	<string name="market_not_available">Android Marketが利用できません。</string>
     <string name="market_search_term">OI Update</string>
 	<string name="android_market">Android Market</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
-    <string name="about_text_extended">Version %1$s\nSD card %2$s\n\nOS\n%3$s</string>
+    <string name="about_text_extended">バージョン%1$s\nSDカード %2$s\n\nOS\n%3$s</string>
     <string name="free_space">空き容量: %s</string>
-    <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
+    <string name="os_info">ボード %1$s\nブランド %2$s\nデバイス %3$s\nID %4$s\nモデル %5$s</string>
     
     <string name="do_update">すぐにアップデートする!</string>
     <string name="do_update_market">すぐにAndroid Marketからアップデートしてみる!</string>
@@ -47,7 +48,7 @@
     <string name="current_version">現在のバージョン: %s</string>
     <string name="current_version_code">現在のバージョンコード: %s</string>
     <string name="newer_version">最新バージョン: %s</string>
-    <string name="newer_version_comment">Newer version: %1$s - %2$s</string>
+    <string name="newer_version_comment">新しいバージョン: %1$s - %2$s</string>
     <string name="newer_version_available">最新バージョンが利用可能です。</string>
     <string name="no_update_info_found">アップデート情報が見つかりませんでした。</string>
     <string name="title_list_new_versions">OI Update - 新バージョンのリスト</string>
@@ -75,7 +76,7 @@
     <string name="dialog_title_update_interval">間隔を選択</string>
     <string name="default_update_interval">every_month</string>
     <string name="preference_warning_title">警告</string>
-    <string name="preference_warning_text">If you uncheck this item, you will no longer receive notifications for updates. Do you still want to uncheck auto update?</string>
+    <string name="preference_warning_text">この項目のチェックを外すと、まもなく更新情報を受信しなくなります。まだ自動更新のチェックを外したいですか?</string>
     
     <string name="preference_andappstore">AndAppStoreを使う</string>
     <string name="preference_andappstore_summary">バージョン情報を提供元としてAndAppStore.comを使う</string>

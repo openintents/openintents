@@ -135,26 +135,26 @@
     
     <string-array name="import_policy">
         <item>डुप्लीकेट - रिकॉर्ड को डुप्लिकेट करने की अनुमति देता है|</item>
-        <item>\"KEEP - Don\'t overwrite existing records.\"</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
         <item>अधिलेखित - मौजूदा रिकॉर्ड अधिलेखित करता है|</item>
         <item>पुनर्स्थापित करना - सभीमिटाएँ, फिर आयात करें|</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>डुप्लीकेट - एक रिकॉर्ड की एक दूसरे नकल जोड़ता है अगर यह पहले से ही मौजूद है|</item>
-        <item>\"KEEP -एक  मौजूदा  रिकॉर्ड  को  अधिलेखित  न  करें , CSV फाईल  में मौजूद रिकॉर्ड को अनदेखा करें |\"</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>अधिलेखित - CSV में एक रिकॉर्ड एक मौजूदा रिकॉर्ड को अधिलेखित कर देगा|</item>
         <item>बैकअप पुनर्स्थापित करना - अपने मौजूदा सभी रिकॉर्ड मिटायें, फिर CSV फ़ाइल आयात करते हैं|</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>डुप्लीकेट - रिकॉर्ड को डुप्लिकेट करने की अनुमति देता है|</item>
-        <item>\"KEEP - Don\'t overwrite existing records.\"</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>डुप्लीकेट - एक रिकॉर्ड की एक दूसरे नकल जोड़ता है अगर यह पहले से ही मौजूद है|</item>
-        <item>\"KEEP -एक  मौजूदा  रिकॉर्ड  को  अधिलेखित  न  करें , CSV फाईल  में मौजूद रिकॉर्ड को अनदेखा करें |\"</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>

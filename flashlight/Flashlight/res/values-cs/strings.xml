@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Matěj Konečný https://launchpad.net/~matejkon</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">OpenIntents Baterka pomáhá najít cestu ve tmě. Podsvícení displeje je zapnuté, dokud je zapnutá aplikace.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Baterka</string>
+    
+    <string name="backlight_info">Podsvícení displeje zůstává zapnuté.</string>
+    
+    <string name="color">Barva</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">OI Výběr barev</string>
+    
+    <string name="preferences">Předvolby</string>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<!-- Title for preferences or settings -->
+	<string name="settings_titlebar">Předvolby</string>
+	<string name="settings_title_keep_color">Zachovat barvu</string>
+	<string name="settings_summary_keep_color">Uložit barvu pro příště, až bude OI Baterka zapnuta.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
+		user tries to access it. -->
+    <string name="color_picker_modularization_explanation">Aby byl OI Výběr barev užitečnější pro ostatní vývojáře, oddělili jsme ho do samostatné aplikace.</string>
+    <string name="setting_use_camera_flash">Použít blesk fotoaparátu</string>
+    <string name="setting_use_camera_flash_summary">Použít blesk fotoaparátu místo podsvícení displeje.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <!-- Information to enable the camera flash as flashlight. -->
+    <string name="cameralight_info">Stiskněte pro povolení diody fotoaparátu (může chvíli trvat).</string>
+    <string name="cameralight_stop_info">Stiskněte pro zakázání diody fotoaparátu.</string>
+    
+</resources>

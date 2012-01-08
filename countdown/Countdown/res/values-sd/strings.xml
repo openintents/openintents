@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+    
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  happynawani https://launchpad.net/~happynawani</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">OI काउंटडाउन हिक्क निर्धारित समय खां पो तहां खे सूचित कंडी तव |</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI काउंटडाउन</string>
+    
+    <string name="start">प्रारंभ कयो</string>
+    <string name="stop">रोक्यो</string>
+    <string name="modify">संशोधित कयो</string>
+    <string name="cont">|जारी रख्यो</string>
+    
+	<string name="no_durations">नई उलटी गिनती जोड़न लाये मेनू जो उपयोग कयो|</string>
+	<string name="countdown_list">उलटी गिनती की सूची</string>
+	
+    <string name="menu_delete">मिटायो</string>
+    <string name="menu_edit">संपादित कयो</string>
+    <string name="menu_insert">उलटी गिनती जोड़यो</string>
+    <string name="menu_pick_ringtone">रिंगटोन</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">तिथि निर्धारित कयो</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">अवधि निर्धारित कयो</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">क्रिया निर्धारित कयो</string>
+    
+    <string name="hint_title">उदाहरणार्थ पिज़्ज़ा</string>
+    
+    <!-- Title of the activity for setting (editing) the countdown. -->
+    <string name="title_setcountdown">उलटी गिनती निर्धारित कयो</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
+    <string name="title_create">उलटी गिनती ठायो</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_edit">उलटी गिनती संपादित कयो</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">उलटी गिनती खंयो</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">OI काउंटडाउन</string>
+    
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
+	<string name="error_title">त्रुटि</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
+	<string name="error_message">उलटी गिनती लोड ठयण में  त्रुटी</string>
+	
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
+	
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">स्थिति पट्टी में अधिसूचना अथव</string>
+	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">स्थिति पट्टी जे माध्यम सां लॉन्च कयो</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">घंटी</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
+	<string name="vibrate">हिलना</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">रोशनी</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="action">क्रिया: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_action">क्रिया खे चुन्दयो:%s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_countdown">उलटी गिनती चुन्दयो : %s</string>
+	
+	<!-- Button to test an action. -->
+	<string name="test">परखें</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">सेटिंग्स</string>
+	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">खारिज कयो</string>
+	
+	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
+	<string name="days">दीयां</string>
+	
+	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
+	<string name="day">दिन</string>
+	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">अनुप्रयोग</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">शॉर्टकट्स</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">स्वचालन कार्य</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">शॉर्टकट चुन्द्यो</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">स्वचालन कार्य चुन्द्यो</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">गतिविधि चुन्द्यो</string>
+ 
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>उलटी गिनती प्रारंभ कयो</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>उलटी गिनती रोकयो</item>
+    </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+	<!-- Preference section title for general settings regarding the countdown -->
+    <string name="preference_countdown">उलटी गिनती</string>
+
+    <string name="preference_extensions">एक्सटेंशन्स</string>
+    <string name="preference_get_extensions">नया एक्सटेंशन प्राप्त कयो</string>
+    <string name="preference_get_extensions_summary">ऑनलाइन ही एक्सटेंशन खोजें|</string>
+    <string name="preference_get_extensions_from">एक्सटेंशन प्राप्त कयो हितान</string>
+    <string name="preference_extensions_market">Android बाजार</string>
+    <string name="preference_extensions_market_summary">Android बाजार में एक्सटेंशन खे गोल्यो</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">OpenIntents मुखपृष्ठ मां एक्सटेंशन प्राप्त कयो</string>
+	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">अधिसूचना समयबाह्य</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">घंटी,हिलने या रोशनी अधिसूचना जो  समयबाह्य थी चुको आ</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">समयबाह्य निर्धारित कयो</string>
+    
+    <!-- Timeout for notifications -->
+    <string-array name="preference_notification_timeout_entries">
+        <item>2 सेकंड</item>
+        <item>5 सेकंड</item>
+        <item>10 सेकंड</item>
+        <item>30 सेकंड</item>
+        <item>१ मिनट</item>
+        <item>५ मिनट</item>
+        <item>१० मिनट</item>
+    </string-array>
+</resources>

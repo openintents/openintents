@@ -5,3 +5,52 @@ OI About
 アプリ間で共有されるダイアログについての単体アプリ
 
 # Description:
+OI 情報はアプリケーションの間で共有されるスタンドアローン情報ダイアログです。 このアプリケーションは他の OI アプリケーションのメニューから呼び出されます。 アプリケーションのバージョン情報、リンク、クレジットやライセンスを見ることができます。 クレジットは著者、ドキュメンテーション、翻訳者やアーティストを含みます。 すべての機能はシンプルで効率的なレイアウトで集結されています。 
+
+このアプリケーションは広告を含まず、インターネット許可を必要としません。 
+
+この無料でオープンソースのアプリケーションのソースコードは以下の場所から取得できます： 
+http://code.google.com/p/openintents
+
+すべての変更リストや質問リストを見るには： 
+http://www.openintents.org
+
+あなたもこの言語の翻訳を Launchpad で改善することができます： 
+https://translations.launchpad.net/openintents/trunk
+
+機能： 
+* 一般情報、クレジットとライセンスタブを表示します。
+* すべての言語の翻訳者を表示します。
+* Retrieves information from application manifest through default tags and metadata.
+* すべてのフィールドはインテント エクストラ から任意で変更することができます。
+
+"OI 情報" と動作するアプリケーション： 
+* OI メモ帳
+* OI ファイルマネージャー
+* OI ショッピングリスト
+* OI CSV 変換
+* OI 金庫
+* OI カウントダウン
+* OI フラッシュライト
+
+キーワード: 
+* 情報とクレジット
+* OI, OpenIntents, Open Intents.
+
+国際バージョン： 
+OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+
+
+マーケット用に文字列を検索： 
+* extension for OI Notepad
+* extension for OI File Manager
+* extension for OI Shopping List
+* extension for OI Convert CSV
+* extension for OI Safe
+* extension for OI Coundown
+* extension for OI Flashlight
+* extension for OI Update
+
+
+
+

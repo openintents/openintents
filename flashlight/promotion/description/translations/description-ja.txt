@@ -1,7 +1,44 @@
 # Application:
-OI Flashlight
+OI フラッシュライト
 
 # Promo text:
-OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.
+OpenIntents フラッシュライトは暗闇の中であなたを助けます。このアプリケーションが動作している間、ディスプレーのバックライトはオンのままになります。
 
 # Description:
+OI フラッシュライトは暗闇の中であなたを助けるシンプルで効果的なアプリケーションです。 OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+
+このアプリケーションは広告を含まず、インターネット許可を必要としません。 
+
+この無料でオープンソースのアプリケーションのソースコードは以下の場所から取得できます： 
+http://code.google.com/p/openintents
+
+すべての変更リストや質問リストを見るには： 
+http://www.openintents.org
+
+あなたもこの言語の翻訳を Launchpad で改善することができます： 
+https://translations.launchpad.net/openintents/trunk
+
+機能： 
+* ディスプレーバックライトをオンにロックする。
+* カメラのフラッシュをオンにロックする。
+* バックライトのカラーは変更することができます。
+
+"OI フラッシュライト" で利用可能な拡張子： 
+* "OI 情報" のライセンス情報を表示する。
+* "OI カラーピッカー" でバックライトの色を変更する。
+
+"OI フラッシュライト" と動作するアプリケーション： 
+* "OI アップデート" でアップデート。
+
+キーワード: 
+* フラッシュライト、ライト、バックライト
+* OI, OpenIntents, Open Intents
+
+国際バージョン： 
+Lanternă OI, Llanterna d'OI, OI Baterka, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+
+
+マーケット用に文字列を検索： 
+* uses OI About
+* uses OI Color Picker
+* uses OI Update

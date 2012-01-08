@@ -22,7 +22,8 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Matěj Konečný https://launchpad.net/~matejkon"
+"  Matěj Konečný https://launchpad.net/~matejkon\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Short explanation of the application
 #: tmp_strings.xml:28(string)
@@ -180,7 +181,7 @@ msgstr "Exportovat databázi"
 
 #: tmp_strings.xml:67(string)
 msgid "Select a file for export"
-msgstr ""
+msgstr "Zvolte soubor pro export"
 
 #: tmp_strings.xml:68(string)
 msgid ""
@@ -210,7 +211,7 @@ msgstr "Importovat databázi"
 
 #: tmp_strings.xml:72(string)
 msgid "Select a file for import"
-msgstr ""
+msgstr "Zvolte soubor pro import"
 
 #: tmp_strings.xml:73(string)
 msgid "Import file is missing:"
@@ -397,11 +398,11 @@ msgstr "Záloha se nezdařila:"
 
 #: tmp_strings.xml:115(string)
 msgid "Select a file for backup"
-msgstr ""
+msgstr "Zvolte soubor pro zálohu"
 
 #: tmp_strings.xml:116(string)
 msgid "Error while backing up"
-msgstr ""
+msgstr "Chyba během zálohování"
 
 #: tmp_strings.xml:117(string)
 msgid "Restore"
@@ -429,11 +430,11 @@ msgstr ""
 
 #: tmp_strings.xml:121(string)
 msgid "Select a file for restore"
-msgstr ""
+msgstr "Zvolte soubor pro obnovu"
 
 #: tmp_strings.xml:122(string)
 msgid "Error while restoring"
-msgstr ""
+msgstr "Chyba během obnovování"
 
 #. Toast message. %s contains a more detailed error message.
 #: tmp_strings.xml:125(string)
@@ -602,13 +603,12 @@ msgid "Auto Backup Days"
 msgstr "Interval automatické zálohy"
 
 #: tmp_strings.xml:196(string)
-#, fuzzy
 msgid "Default backup path"
-msgstr "Interval automatické zálohy"
+msgstr "Výchozí zálohovací soubor"
 
 #: tmp_strings.xml:197(string)
 msgid "Default export path"
-msgstr ""
+msgstr "Výchozí exportní soubor"
 
 #: tmp_strings.xml:200(string)
 msgid "Decrypt (OI Safe)"
@@ -781,11 +781,11 @@ msgstr "Vypnout automatickou zálohu"
 
 #: tmp_strings.xml:242(string)
 msgid "Time to autolock: %s"
-msgstr ""
+msgstr "Čas do automatického zamknutí: %s"
 
 #: tmp_strings.xml:243(string)
 msgid "While not downloaded, default location will be used."
-msgstr ""
+msgstr "Dokud není stažen, bude použit výchozí soubor"
 
 #. Permission to access master password
 #: tmp_strings.xml:251(string)

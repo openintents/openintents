@@ -5,129 +5,130 @@
 	     *************************** -->
     
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
+	<string name="about_translators">Launchpad Contributions:
+  Sahran https://launchpad.net/~sahran</string>
 	
     <!-- Short explanation of the application -->
-	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
+	<string name="about_comments">OI تەتۈر ۋاقىت خاتىرىلىگۈچ مۇئەييەن ۋاقىتتا سىزنى ئەسكەرتىدۇ.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
-    <string name="app_name">OI Countdown</string>
+    <string name="app_name">OI تەتۈر ۋاقىت خاتىرىلىگۈچ</string>
     
-    <string name="start">Start</string>
-    <string name="stop">Stop</string>
-    <string name="modify">Modify</string>
-    <string name="cont">Continue</string>
+    <string name="start">باشلا</string>
+    <string name="stop">توختا</string>
+    <string name="modify">ئۆزگەرت</string>
+    <string name="cont">داۋاملاشتۇر</string>
     
-	<string name="no_durations">Use menu to add new countdown.</string>
-	<string name="countdown_list">Countdown list</string>
+	<string name="no_durations">تىزىملىكتىن يېڭى تەتۈر ۋاقىت خاتىرىلىگۈچ قوشىدۇ.</string>
+	<string name="countdown_list">تەتۈر ۋاقىت خاتىرىلىگۈچ تىزىمى</string>
 	
-    <string name="menu_delete">Delete</string>
-    <string name="menu_edit">Edit</string>
-    <string name="menu_insert">Add countdown</string>
-    <string name="menu_pick_ringtone">Ringtone</string>
+    <string name="menu_delete">ئۆچۈر</string>
+    <string name="menu_edit">تەھرىر</string>
+    <string name="menu_insert">تەتۈر ۋاقىت خاتىرىلىگۈچ قوش</string>
+    <string name="menu_pick_ringtone">قوڭغۇراق ئاۋازى</string>
     
     <!-- Menu item: Set the countdown by setting a final date or deadline. -->
-    <string name="menu_set_date">Set date</string>
+    <string name="menu_set_date">چېسلا تەڭشەك</string>
     
     <!-- Menu item: Set the countdown by setting a duration. -->
-    <string name="menu_set_duration">Set duration</string>
+    <string name="menu_set_duration">داۋاملىشىش ۋاقىت تەڭشىكى</string>
     
     <!-- Menu item: Set the action to be performed at the end of the countdown. -->
-    <string name="menu_set_action">Set action</string>
+    <string name="menu_set_action">مەشغۇلات تەڭشىكى</string>
     
-    <string name="hint_title">e.g. pizza</string>
+    <string name="hint_title">مەسىلەن: سامسا</string>
     
     <!-- Title of the activity for setting (editing) the countdown. -->
-    <string name="title_setcountdown">Set countdown</string>
+    <string name="title_setcountdown">تەتۈر ۋاقىت خاتىرىلىگۈچ تەڭشەك</string>
     
     <!-- Title of the activity for creating a new countdown. -->
-    <string name="title_create">Create countdown</string>
+    <string name="title_create">تەتۈر ۋاقىت خاتىرىلىگۈچ قۇر</string>
     
     <!-- Title of the activity for editing the countdown. -->
-    <string name="title_edit">Edit countdown</string>
+    <string name="title_edit">تەتۈر ۋاقىت خاتىرىلىگۈچ تەھرىر</string>
     
     <!-- Title of the activity for editing the countdown. -->
-    <string name="title_pick">Pick countdown</string>
+    <string name="title_pick">تەتۈر ۋاقىت خاتىرىلىگۈچ تاللاڭ</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
-    <string name="title_setcountdown_action">OI Countdown</string>
+    <string name="title_setcountdown_action">OI تەتۈر ۋاقىت خاتىرىلىگۈچ</string>
     
     <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
-	<string name="error_title">Error</string>
+	<string name="error_title">خاتالىق</string>
 	
 	<!-- Message to display when an internal error occurs. This should practially never happen. -->
-	<string name="error_message">Error loading countdown</string>
+	<string name="error_message">تەتۈر ۋاقىت خاتىرىلىگۈچنى يۈكلەش خاتالىقى</string>
 	
 	<!-- <string name="countdown_ended">Countdown ended</string>  -->
 	
 	<!-- Checkbox label whether to notifications. -->
-	<string name="notification_in_status_bar">Notification in status bar</string>
+	<string name="notification_in_status_bar">ھالەت بالداقتىكى ئۇقتۇرۇش</string>
 	
 	<!-- Checkbox label whether to launch automation task through the status bar -->
-	<string name="launch_through_status_bar">Launch through status bar</string>
+	<string name="launch_through_status_bar">ھالەت بالداقتىن قوزغات</string>
 	
 	<!-- Checkbox label whether to use the ring tone for notifications. -->
-	<string name="ring">Ring</string>
+	<string name="ring">قوڭغۇراق</string>
 	
 	<!-- Checkbox label whether to vibrate. -->
-	<string name="vibrate">Vibrate</string>
+	<string name="vibrate">تىترەت</string>
 	
 	<!-- Checkbox label whether to flash light for notifications. -->
-	<string name="light">Light</string>
+	<string name="light">چىراغ</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="action">Action: %s</string>
+	<string name="action">مەشغۇلات: %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="select_action">Select action: %s</string>
+	<string name="select_action">مەشغۇلات تاللاڭ: %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="select_countdown">Select countdown: %s</string>
+	<string name="select_countdown">تەتۈر ۋاقىت خاتىرىلىگۈچ تاللاڭ: %s</string>
 	
 	<!-- Button to test an action. -->
-	<string name="test">Test</string>
+	<string name="test">سىنا</string>
 	
 	<!-- Button to view / edit settings. -->
-	<string name="settings">Settings</string>
+	<string name="settings">تەڭشەكلەر</string>
 	
 	<!-- Button label to dismiss notification after countdown ended. -->
-	<string name="dismiss">Dismiss</string>
+	<string name="dismiss">تاشلىۋەت</string>
 	
 	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
-	<string name="days">days</string>
+	<string name="days">كۈن</string>
 	
 	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
-	<string name="day">day</string>
+	<string name="day">كۈن</string>
 	
 	<!--  -->
 	
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
-	<string name="group_applications">Applications</string>
+	<string name="group_applications">ئەپلەر</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
-	<string name="group_shortcuts">Shortcuts</string>
+	<string name="group_shortcuts">قىسقا يوللار</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
-	<string name="group_automation_tasks">Automation tasks</string>
+	<string name="group_automation_tasks">ئاپتوماتىك ۋەزىپەلەر</string>
 	
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_shortcut">Select shortcut</string>
+	<string name="title_select_shortcut">قىسقا يول تاللاڭ</string>
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_automation_task">Select automation task</string>
+	<string name="title_select_automation_task">ئاپتوماتىك ۋەزىپە تاللاڭ</string>
 	
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
-	<string name="activity_picker_label">Select activity</string>
+	<string name="activity_picker_label">پائالىيەت تاللاڭ</string>
  
 	<!-- Arrays -->
 	
     <string-array name="automation_actions">
     	<!-- Automation action to start a countdown. -->
-    	<item>Start countdown</item>
+    	<item>تەتۈر ۋاقىت خاتىرىلىگۈچ باشلا</item>
         <!-- Automation action to stop a countdown. -->
-    	<item>Stop countdown</item>
+    	<item>تەتۈر ۋاقىت خاتىرىلىگۈچ توختات</item>
     </string-array>
     
 	<!-- ***************************
@@ -135,34 +136,34 @@
 	     *************************** -->
 
 	<!-- Preference section title for general settings regarding the countdown -->
-    <string name="preference_countdown">Countdown</string>
+    <string name="preference_countdown">تەتۈر ۋاقىت خاتىرىلىگۈچ</string>
 
-    <string name="preference_extensions">Extensions</string>
-    <string name="preference_get_extensions">Get new extensions</string>
-    <string name="preference_get_extensions_summary">Search for extensions online.</string>
-    <string name="preference_get_extensions_from">Get extensions from</string>
-    <string name="preference_extensions_market">Android Market</string>
-    <string name="preference_extensions_market_summary">Search for extensions at Android Market.</string>
+    <string name="preference_extensions">كەڭەيتىلمەلەر</string>
+    <string name="preference_get_extensions">يېڭى كەڭەيتىلمەلەرگە ئېرىش</string>
+    <string name="preference_get_extensions_summary">كەڭەيتىلمەلەرنى توردىن ئىزدەيدۇ.</string>
+    <string name="preference_get_extensions_from">كەڭەيتىلمەلەرگە ئېرىشىش ئورنى</string>
+    <string name="preference_extensions_market">ئاندىرويىد بازار</string>
+    <string name="preference_extensions_market_summary">كەڭەيتىلمەلەرنى ئاندىرويىد بازاردىن ئىزدەيدۇ.</string>
     <string name="preference_extensions_developer">OpenIntents</string>
-    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+    <string name="preference_extensions_developer_summary">كەڭەيتىلمەلەرگە OpenIntents باش بەتتىن ئېرىشىدۇ.</string>
 	
 	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_title">Notification timeout</string>
+    <string name="preference_notification_timeout_title">ئۇقتۇرۇش مۆھلىتى</string>
     
     <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_summary">Timeout for ring, vibrate, or light notification.</string>
+    <string name="preference_notification_timeout_summary">مۆھلەت توشقاندا قوڭغۇراق، تىترەش ياكى چىراقنى لىپىلدىتىپ ئۇقتۇرىدۇ.</string>
     
     <!-- Dialog title to set timeout for notification -->
-    <string name="preference_notification_timeout_dialog_title">Set timeout</string>
+    <string name="preference_notification_timeout_dialog_title">مۆھلەت تەڭشىكى</string>
     
     <!-- Timeout for notifications -->
     <string-array name="preference_notification_timeout_entries">
-        <item>2 seconds</item>
-        <item>5 seconds</item>
-        <item>10 seconds</item>
-        <item>30 seconds</item>
-        <item>1 minute</item>
-        <item>5 minutes</item>
-        <item>10 minutes</item>
+        <item>2 سېكۇنت</item>
+        <item>5 سېكۇنت</item>
+        <item>10 سېكۇنت</item>
+        <item>30 سېكۇنت</item>
+        <item>1 مىنۇت</item>
+        <item>5 مىنۇت</item>
+        <item>10 مىنۇت</item>
     </string-array>
 </resources>

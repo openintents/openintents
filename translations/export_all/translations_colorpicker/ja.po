@@ -1,0 +1,152 @@
+# Japanese translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: thebowseat <Unknown>\n"
+"Language-Team: Japanese <ja@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  thebowseat https://launchpad.net/~takeshimochida"
+
+#. Strings for OI About
+#: tmp_strings.xml:11(string)
+msgid ""
+"OpenIntents Color Picker is an extension for OI Flashlight and other "
+"compatible applications."
+msgstr ""
+"OpenIntents カラーピッカーは OI フラッシュライトやほかの対応したアプリケー"
+"ションの拡張機能です。"
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:17(string)
+msgid "OI Color Picker"
+msgstr "OI カラーピッカー"
+
+#. Title of the color picker activity.
+#: tmp_strings.xml:20(string)
+msgid "Color picker"
+msgstr "カラーピッカー"
+
+#: tmp_strings.xml:22(string)
+msgid "Recent"
+msgstr "最近"
+
+#: tmp_strings.xml:23(string)
+msgid "Recent colors"
+msgstr "最近利用したカラー"
+
+#: tmp_strings.xml:24(string)
+msgid "Recently chosen colors"
+msgstr "最近選択したカラー"
+
+#: tmp_strings.xml:25(string)
+msgid "Clear"
+msgstr "クリア"
+
+#: tmp_strings.xml:26(string)
+msgid "There are no recently chosen colors."
+msgstr "最近選択したカラーがありません"
+
+#: tmp_strings.xml:28(string)
+msgid "Use color?"
+msgstr "どの色を使用しますか？"
+
+#: tmp_strings.xml:29(string)
+msgid ""
+"Use this new color? You can avoid this message by clicking on the center "
+"circle."
+msgstr ""
+"この色を使用しますか？中央の丸をクリックすることでこのメッセージを避けること"
+"ができます。"
+
+#. About
+#: tmp_strings.xml:33(string)
+msgid "About"
+msgstr "情報"
+
+#: tmp_strings.xml:34(string)
+msgid ""
+"Version %s\\n\\nNo compatible extension available to display full info "
+"(contact, credits, license)."
+msgstr ""
+"バージョン %s\\n\\n 全ての情報 (連絡、クレジット、ライセンス) を表示できる対"
+"応した拡張機能がありません。"
+
+#: tmp_strings.xml:35(string)
+msgid "Get OI About"
+msgstr "OI の情報を入手する"
+
+#. Update
+#: tmp_strings.xml:39(string)
+msgid "Download application not available."
+msgstr "ダウンロードアプリケーションはまだありません。"
+
+#. Message how to use OI Color Picker from within OI Flashlight.
+#: tmp_strings.xml:45(string)
+msgid "To select a color in OI Flashlight, press menu &gt; Color."
+msgstr ""
+"OI フラッシュライトでカラー を選択するには、メニュー &gt; カラー を押して下さ"
+"い。"
+
+#: tmp_strings.xml:46(string)
+msgid "OI Flashlight"
+msgstr "OI フラッシュライト"
+
+#: tmp_strings.xml:48(string)
+msgid "Hypnotic, animated spiral Live Wallpaper."
+msgstr "催眠術のようなアニメスパイラルライブ壁紙"
+
+#: tmp_strings.xml:49(string)
+msgid "HypnoTwister Live Wallpaper"
+msgstr "HypnoTwisterライブ壁紙"
+
+#: tmp_strings.xml:51(string)
+msgid "Native Flickr interface for Android"
+msgstr "アンドロイド用のネイティブ Flickr インターフェース"
+
+#: tmp_strings.xml:52(string)
+msgid "BettrFlickr"
+msgstr "BettrFlickr"
+
+#: tmp_strings.xml:54(string)
+msgid "Mix and match artwork to generate anime characters"
+msgstr ""
+"アニメキャラクターを作成するにはアートワークをミックスしてマッチしてくださ"
+"い。"
+
+#: tmp_strings.xml:55(string)
+msgid "Anime Character Generator"
+msgstr "アニメキャラクター作成機"
+
+#: tmp_strings.xml:58(string)
+msgid "This app can be used with the following applications:"
+msgstr "このアプリケーションは以下のアプリケーションと使用できます："
+
+#: tmp_strings.xml:59(string)
+msgid "Launch %s"
+msgstr "%s を起動"
+
+#. %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher").
+#: tmp_strings.xml:61(string)
+msgid "This app requires %1$s %2$s or higher."
+msgstr "このアプリケーションは %1$s %2$s 以上が必要です。"
+
+#: tmp_strings.xml:62(string)
+msgid "Get %s"
+msgstr "%s を入手する"

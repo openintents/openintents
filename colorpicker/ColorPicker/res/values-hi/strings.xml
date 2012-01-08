@@ -6,8 +6,9 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Anshuman Jaiswal https://launchpad.net/~good-anshuman
+  John Andre https://launchpad.net/~john-andre
   OpenIntents devs https://launchpad.net/~openintents-devs
+  Peli https://launchpad.net/~peli0101
   happynawani https://launchpad.net/~happynawani</string>
 	
 	<!-- Strings for OI About -->
@@ -20,21 +21,21 @@
     <string name="app_name">OI रंगचयनक</string>
     
     <!-- Title of the color picker activity. -->
-    <string name="color_picker">रंग चयनक</string>
+    <string name="color_picker">रंगचयनक</string>
     
-    <string name="recent_colors_condensed">हाल के</string>
+    <string name="recent_colors_condensed">हाल ही में</string>
     <string name="recent_colors">हाल ही के रंग</string>
-    <string name="recent_colors_expanded">हाल ही में चुना रंग</string>
-    <string name="recent_colors_clear_history">स्पष्ट</string>
-    <string name="recent_colors_empty">वहाँ नहीं कर रहे हैं हाल ही में चुना रंग.</string>
+    <string name="recent_colors_expanded">हाल ही में चुने गए रंग</string>
+    <string name="recent_colors_clear_history">खाली करें</string>
+    <string name="recent_colors_empty">हाल ही में चुने गए रंग नहीं हैं|</string>
     
     <string name="confirm_color_title">रंग का प्रयोग करें?</string>
-    <string name="confirm_color_message">इस नए रंग का उपयोग करें? आप केंद्र वृत्त पर क्लिक करके इस संदेश से बचने कर सकते हैं.</string>
+    <string name="confirm_color_message">इस नए रंग का उपयोग करें? आप केंद्र के चक्र पर क्लिक करके इस संदेश से बच सकते हैं|</string>
     
     
 	<!-- About -->
 	<string name="about">के बारे में</string>
-	<string name="aboutapp_not_available">संस्करणः% s \ n \ n कोई संगत पूर्ण जानकारी (संपर्क, क्रेडिट, लाइसेंस) प्रदर्शित करने के लिए उपलब्ध एक्सटेंशन.</string>
+	<string name="aboutapp_not_available">संस्करण%s\n\nपूरी जानकारी (संपर्क, श्रेय, लाइसेंस) प्रदर्शित करने के लिए कोई संगत पुर्ण एक्सटेंशन उपलब्ध नहीं है|</string>
 	<string name="aboutapp_get">OI \'के बारें में\' प्राप्त करें</string>
 
 
@@ -45,22 +46,22 @@
 	     Distribution
 	     *************************** -->
 	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
-    <string name="info_app_flashlight">OI टॉर्च, प्रेस मेनू&gt; रंग में रंग का चयन करें करने के लिए.</string>
+    <string name="info_app_flashlight">OI टॉर्च में रंग चुनने के लिए ,मेनू दबाएँ &gt;  रंग|</string>
     <string name="title_app_flashlight">OI टॉर्च</string>
     
-    <string name="info_app_spiral_wallpaper">कृत्रिम निद्रावस्था, एनिमेटेड सर्पिल लाइव वॉलपेपर.</string>
-    <string name="title_app_spiral_wallpaper">HypnoTwister लाइव वॉलपेपर</string>
+    <string name="info_app_spiral_wallpaper">कृत्रिम निद्रावस्था, एनिमेटेड सर्पिल के लाइव वॉलपेपर|</string>
+    <string name="title_app_spiral_wallpaper">कृत्रिम निद्रावस्था भांजनेवाला लाइव वॉलपेपर</string>
     
-    <string name="info_app_bettr_flickr">Android के लिए मूल निवासी फ़्लिकर इंटरफ़ेस</string>
+    <string name="info_app_bettr_flickr">Android के लिए मूल Flickr इंटरफ़ेस</string>
     <string name="title_app_bettr_flickr">BettrFlickr</string>
     
-    <string name="info_app_character_gen">मिक्स और कलाकृति मैच anime अक्षर उत्पन्न करने के लिए</string>
-    <string name="title_app_character_gen">मोबाइल फोनों के चरित्र जनरेटर</string>
+    <string name="info_app_character_gen">anime पात्र उत्पन्न करने के लिए कलाकृति को मिलाएं और मेल खिलाएं|</string>
+    <string name="title_app_character_gen">Anime पात्र उत्पन्नकर्ता</string>
     
     
-	<string name="info_activity_text">इस app निम्नलिखित अनुप्रयोगों के साथ इस्तेमाल किया जा सकता है:</string>
+	<string name="info_activity_text">यह अनुप्रयोग निम्नलिखित अनुप्रयोगों के साथ इस्तेमाल किया जा सकता है:</string>
     <string name="info_launch">%s लॉन्च करें</string>
     <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
-	<string name="info_not_available">इस app %1$s %2$s या अधिक की आवश्यकता है.</string>
-	<string name="info_get">जाओ %s</string>
+	<string name="info_not_available">को आवश्यकता है  %1$s %2$s या अधिक की|</string>
+	<string name="info_get">%s प्राप्त करें</string>
 </resources>

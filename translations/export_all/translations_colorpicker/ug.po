@@ -125,7 +125,7 @@ msgstr "BettrFlickr"
 
 #: tmp_strings.xml:54(string)
 msgid "Mix and match artwork to generate anime characters"
-msgstr ""
+msgstr "جانلاندۇرۇم ھەرپلەرنى قۇرۇش ئۈچۈن سەنئەتنى ئارىلاشتۇرۇپ ماسلاشتۇرۇڭ"
 
 #: tmp_strings.xml:55(string)
 msgid "Anime Character Generator"

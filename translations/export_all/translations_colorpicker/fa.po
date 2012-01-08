@@ -1,0 +1,148 @@
+# Persian translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Ben Jordan <Unknown>\n"
+"Language-Team: Persian <fa@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Ben Jordan https://launchpad.net/~ben-jordan86"
+
+#. Strings for OI About
+#: tmp_strings.xml:11(string)
+msgid ""
+"OpenIntents Color Picker is an extension for OI Flashlight and other "
+"compatible applications."
+msgstr ""
+"رنگ است كه آشغال openintents جمعكن  ميخواندندOI چراغ قوه برای گسترش و ديگر "
+"سازگار باشد."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:17(string)
+msgid "OI Color Picker"
+msgstr "OI رنگ آشغال جمعكن"
+
+#. Title of the color picker activity.
+#: tmp_strings.xml:20(string)
+msgid "Color picker"
+msgstr "رنگ آشغال جمعكن"
+
+#: tmp_strings.xml:22(string)
+msgid "Recent"
+msgstr "اخیر"
+
+#: tmp_strings.xml:23(string)
+msgid "Recent colors"
+msgstr "رنگهاي اخير"
+
+#: tmp_strings.xml:24(string)
+msgid "Recently chosen colors"
+msgstr "انتخاب رنگ اخیرا"
+
+#: tmp_strings.xml:25(string)
+msgid "Clear"
+msgstr "روشن است"
+
+#: tmp_strings.xml:26(string)
+msgid "There are no recently chosen colors."
+msgstr "در انتخاب رنگ اخيرا وجود ندارد."
+
+#: tmp_strings.xml:28(string)
+msgid "Use color?"
+msgstr "استفاده از رنگ?"
+
+#: tmp_strings.xml:29(string)
+msgid ""
+"Use this new color? You can avoid this message by clicking on the center "
+"circle."
+msgstr ""
+"استفاده از اين جديد بود. میتوانید اجتناب? از اين پيام را با كارت اعتباريشان "
+"پرداخت در مركز دايره ميباشد."
+
+#. About
+#: tmp_strings.xml:33(string)
+msgid "About"
+msgstr "در مورد"
+
+#: tmp_strings.xml:34(string)
+msgid ""
+"Version %s\\n\\nNo compatible extension available to display full info "
+"(contact, credits, license)."
+msgstr ""
+"نسخه %s\\n\\n سازگار تمديد كامل در اختيار تظاهر فرستنده فرانس اينفو (تماس "
+"با, اعتبارات, هرزگي)."
+
+#: tmp_strings.xml:35(string)
+msgid "Get OI About"
+msgstr "هر چه زودتر OI در مورد"
+
+#. Update
+#: tmp_strings.xml:39(string)
+msgid "Download application not available."
+msgstr "تقاضاى تقاضاى دانلود نيست.دانلود نيست."
+
+#. Message how to use OI Color Picker from within OI Flashlight.
+#: tmp_strings.xml:45(string)
+msgid "To select a color in OI Flashlight, press menu &gt; Color."
+msgstr "در انتخاب رنگ OI چراغ قوه, آزادي مطبوعات فهرست‌ انتخاب‌ > رنگ‌........"
+
+#: tmp_strings.xml:46(string)
+msgid "OI Flashlight"
+msgstr "OI لامپ‌ عكاسي‌"
+
+#: tmp_strings.xml:48(string)
+msgid "Hypnotic, animated spiral Live Wallpaper."
+msgstr "هيپنوتيزم‌ زنده زنده مارپيچ باکاغذدیواری تزءین کردن."
+
+#: tmp_strings.xml:49(string)
+msgid "HypnoTwister Live Wallpaper"
+msgstr "هيپنوتيزم‌ زنده زنده مارپيچ باکاغذدیواری تزءین کردن."
+
+#: tmp_strings.xml:51(string)
+msgid "Native Flickr interface for Android"
+msgstr "رابط کاربری فلیکر بر بومي به."
+
+#: tmp_strings.xml:52(string)
+msgid "BettrFlickr"
+msgstr "Bettrفلیکر"
+
+#: tmp_strings.xml:54(string)
+msgid "Mix and match artwork to generate anime characters"
+msgstr "مخلوط توليد هنرى و بازي قهرمانان هايی هنرندانه"
+
+#: tmp_strings.xml:55(string)
+msgid "Anime Character Generator"
+msgstr "دخشه‌ زا هايی هنرندانه"
+
+#: tmp_strings.xml:58(string)
+msgid "This app can be used with the following applications:"
+msgstr "اين  را می توان با برنامه های می تواند با اين درخواست:"
+
+#: tmp_strings.xml:59(string)
+msgid "Launch %s"
+msgstr "پرت‌ كردن‌ %s"
+
+#. %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher").
+#: tmp_strings.xml:61(string)
+msgid "This app requires %1$s %2$s or higher."
+msgstr "اين مستلزمنرم افزار %1$s %2$s و یا بالاتر"
+
+#: tmp_strings.xml:62(string)
+msgid "Get %s"
+msgstr "هر چه زودتر %s"

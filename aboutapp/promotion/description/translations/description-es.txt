@@ -25,9 +25,9 @@ Características:
 * Opcionalmente, todos los campos pueden ser modificados a través de otras acciones.
 
 Aplicaciones que funcionan con "OI About": 
-* OI Notepad
-* OI File manager
-* OI Shopping List
+* Bloc de notas OI
+* Gestor de archivos OI
+* Lista de compras OI
 * OI Convert CSV
 * OI Safe
 * OI Countdown
@@ -38,7 +38,7 @@ Palabras clave:
 * OI, OpenIntents, Open Intents.
 
 Versiones internacionales: 
-O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI O Programe, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
 
 
 Buscar en el Market: 

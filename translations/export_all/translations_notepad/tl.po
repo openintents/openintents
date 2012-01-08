@@ -408,7 +408,7 @@ msgid ""
 "they have stored in OI Safe."
 msgstr ""
 "Payagan ang application na mag-encrypt at mag-decrypt ng teksto, at makita "
-"ang mga password na tinago sa OI Safe"
+"ang mga password na tinago sa OI Kaha."
 
 #: tmp_strings.xml:186(item)
 msgid "Alphabetical"

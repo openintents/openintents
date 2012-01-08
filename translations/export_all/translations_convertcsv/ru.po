@@ -153,7 +153,7 @@ msgstr "Больше не спрашивать. Всегда перезапис�
 
 #: tmp_strings.xml:73(string)
 msgid "Import policy set to RESTORE"
-msgstr ""
+msgstr "Политика импорта - ВОССТАНОВЛЕНИЕ"
 
 #: tmp_strings.xml:74(string)
 msgid ""
@@ -316,7 +316,7 @@ msgstr "Palm CSV"
 
 #: tmp_strings.xml:127(item)
 msgid "JPilot Memo"
-msgstr ""
+msgstr "заметка JPilot"
 
 #: tmp_strings.xml:131(item)
 msgid "MS Outlook Tasks"
@@ -328,29 +328,30 @@ msgstr "HandyShopper"
 
 #: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
 msgid "DUPLICATE - Allow duplicates of records."
-msgstr "DUPLICATE - возможность дублирования записей"
+msgstr "ДУБЛИРОВАТЬ - возможность дублирования записей"
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-msgid "\"KEEP - Don't overwrite existing records.\""
-msgstr ""
+#, fuzzy
+msgid "KEEP - Don't overwrite existing records."
+msgstr "ОСТАВИТЬ - Не перезаписывать имеющиеся записи"
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
-msgstr ""
+msgstr "Переписать - Переписать существующие записи"
 
 #: tmp_strings.xml:139(item)
 msgid "Restore - DELETE ALL, then import."
-msgstr ""
+msgstr "Восстановление - УДАЛИТЬ ВСЁ,  затем импортировать."
 
 #: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
 msgid "DUPLICATE - Add a second copy of a record if it already exists."
-msgstr ""
+msgstr "ДУБЛИРОВАТЬ - Если запись существует, добавить копию."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+#, fuzzy
 msgid ""
-"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-"\""
-msgstr ""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
+msgstr "ОСТАВИТЬ - Не перезаписывать имеющиеся записи"
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
@@ -361,3 +362,5 @@ msgstr ""
 msgid ""
 "Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
 msgstr ""
+"Восстановить - УДАЛИТЬ ВСЕ СУЩЕСТВУЮЩИЕ ЗАПИСИ, а затем импортировать файл "
+"CSV."

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
-  Marek Matejka https://launchpad.net/~marek-matejka</translators>
+  Marek Dobransky https://launchpad.net/~marekdobr
+  Marek Matejka https://launchpad.net/~marek-matejka
+  OpenIntents devs https://launchpad.net/~openintents-devs</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->
@@ -83,8 +85,8 @@
 		<listitem>Vytváranie a mazanie adresárov (priečinkov).</listitem>
 		<listitem>Poslať súbory e-mailom.</listitem>
 		<listitem>Správa sa ako rozšírenie pre iné aplikácie, ako GMail, na pripínanie súborov.</listitem>
-		<listitem>Support for many file endings and mime types.</listitem>
-		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
+		<listitem>Podpora pre mnohé prípony súborov a typy MIME.</listitem>
+		<listitem>Podporuje významy PICK_FILE a PICK_DIRECTORY, čiže iné aplikácie môžu používať OI Správcu Súborov.</listitem>
 		<emptyline/>
 		<string>Dostupné rozšírenia pre "OI Správca Súborov":</string>
 		<listitem>Zobraziť informácie o licencií s "OI About".</listitem>

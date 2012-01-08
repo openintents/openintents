@@ -43,10 +43,10 @@
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
     <string name="color_picker_modularization_explanation">رەڭ سۈمۈرگۈچنى ئىجادكارلارغا تېخىمۇ پايدىلىق قىلىش ئۈچۈن بىز ئۇنى ئايرىم پىروگرامما قىلىپ پارچىلىدۇق.</string>
-    <string name="setting_use_camera_flash">Use camera flash</string>
-    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <string name="setting_use_camera_flash">كامېرا چاقماق چىراغنى ئىشلەت</string>
+    <string name="setting_use_camera_flash_summary">ئېكران تەگلىك نۇرىنى ئەمەس كامېرا چاقماق چىراغنى ئىشلىتىدۇ.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
     <!-- Information to enable the camera flash as flashlight. -->
-    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
-    <string name="cameralight_stop_info">Press to disable camera light.</string>
+    <string name="cameralight_info">بېسىلسا كامېرا چاقماق چىراغ قوزغىلىدۇ (بىر قانچە سېكۇنت كېتىشى مۇمكىن).</string>
+    <string name="cameralight_stop_info">بېسىلسا كامېرا چاقماق چىراغ چەكلىنىدۇ.</string>
     
 </resources>

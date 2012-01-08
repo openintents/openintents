@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+    
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Liezl https://launchpad.net/~liezl-200</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">OI Bilang-pababa nagaabiso sa iyo pagkalipas ng ilang oras.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Bilang-pababa</string>
+    
+    <string name="start">Simula</string>
+    <string name="stop">Hinto</string>
+    <string name="modify">Baguhin</string>
+    <string name="cont">Magpatuloy</string>
+    
+	<string name="no_durations">Gamitin ang menu para magdagdag ng mga bagong bilang-pababa.</string>
+	<string name="countdown_list">Listahan ng bilang-pababa</string>
+	
+    <string name="menu_delete">Alisin</string>
+    <string name="menu_edit">Baguhin</string>
+    <string name="menu_insert">Magdagdag ng bilang-pababa</string>
+    <string name="menu_pick_ringtone">Tunog ng ring</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">I-set ang petsa</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">I-set ang tagal</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">I-set ang aksyon</string>
+    
+    <string name="hint_title">halimbawa pizza</string>
+    
+    <!-- Title of the activity for setting (editing) the countdown. -->
+    <string name="title_setcountdown">I-set ang bilang-pababa</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
+    <string name="title_create">Lumikha ng bilang-pababa</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_edit">Baguhin ang bilang-pababa</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">Pumili ng bilang-pababa</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">OI Bilang-pababa</string>
+    
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
+	<string name="error_title">Mali</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
+	<string name="error_message">Mali sa pagkarga ng bilang-pababa</string>
+	
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
+	
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">Abiso sa status bar</string>
+	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">Ilunsad sa pamamagitan ng status bar</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">Ring</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
+	<string name="vibrate">Yanig</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">Ilaw</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="action">Aksyon: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_action">Pumili ng aksyon: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_countdown">Pumili ng bilang-pababa: %s</string>
+	
+	<!-- Button to test an action. -->
+	<string name="test">Subok</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">Mga Setting</string>
+	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">Balewalain</string>
+	
+	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
+	<string name="days">mga araw</string>
+	
+	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
+	<string name="day">araw</string>
+	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">Mga aplikasyon</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">Mga shortcut</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">pag-automatiko ng mga gawain</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">Piliin ang shortcut</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">Piliin ang pag-automatiko ng gawain</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">Piliin ang aktibidad</string>
+ 
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>Simulan ang bilang-pababa</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>Itigil ang bilang-pababa</item>
+    </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+	<!-- Preference section title for general settings regarding the countdown -->
+    <string name="preference_countdown">Bilang-pababa</string>
+
+    <string name="preference_extensions">Mga Ekstensiyon</string>
+    <string name="preference_get_extensions">Kumuha ng mga bagong ekstensyon</string>
+    <string name="preference_get_extensions_summary">Maghanap ng ekstensyon sa online.</string>
+    <string name="preference_get_extensions_from">Kumuha ng ekstensyon sa</string>
+    <string name="preference_extensions_market">Andriod Merkado</string>
+    <string name="preference_extensions_market_summary">Maghanap ng mga ekstensiyon sa Android Merkado</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">Kumuha ng mga ekstensiyon sa OpenIntents homepage.</string>
+	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">Timeout ng abiso</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">Timeout ng ring, yanig at ilaw na abiso</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">I-set ang timeout</string>
+    
+    <!-- Timeout for notifications -->
+    <string-array name="preference_notification_timeout_entries">
+        <item>2 segundo</item>
+        <item>5 segundo</item>
+        <item>10 segundo</item>
+        <item>30 segundo</item>
+        <item>1 minuto</item>
+        <item>5 minuto</item>
+        <item>10 minuto</item>
+    </string-array>
+</resources>

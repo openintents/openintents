@@ -113,7 +113,7 @@ msgstr "Walang lamang tala"
 
 #: tmp_strings.xml:71(string)
 msgid "No application available for sharing."
-msgstr "Walang application na magagamit para ipamahagi."
+msgstr "Walang aplikassyon na magagamit para ipamahagi."
 
 #: tmp_strings.xml:73(string)
 msgid "Encrypting note"
@@ -359,8 +359,8 @@ msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
 msgstr ""
-"Payagan ang application na bumasa ng mga tala. Tandaan na ang naka-encrypt "
-"na mga tala ay ibinigay sa naka-encrypt na ayos."
+"Pinapayagan ang aplikasyon na bumasa ng mga tala. Tandaan na ang naka-"
+"encrypt na mga tala ay ibinigay sa naka-encrypt na ayos."
 
 #. Permission to write notes.
 #: tmp_strings.xml:163(string)
@@ -370,7 +370,8 @@ msgstr "Sumulat ng mga tala"
 #: tmp_strings.xml:164(string)
 msgid "Allows an application to create new notes or modify existing notes."
 msgstr ""
-"Payagan ang application na lumikha ng bagong tala o baguhin ang dating tala."
+"Pinapayagan ang aplikasyon na lumikha ng bagong tala o baguhin ang dating "
+"tala."
 
 #. Permission to read shopping lists.
 #: tmp_strings.xml:168(string)
@@ -382,8 +383,9 @@ msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
-"Payagan ang application na basahin ang listahan ng bilihin. Tandaan na ang "
-"naka-encrypt na listahan at mga bagay ay ibinigay sa naka-encrypt na porma."
+"Pinapayagan ang aplikasyon na basahin ang listahan ng bilihin. Tandaan na "
+"ang naka-encrypt na listahan at mga bagay ay ibinigay sa naka-encrypt na "
+"porma."
 
 #. Permission to write shopping lists.
 #: tmp_strings.xml:171(string)
@@ -394,8 +396,8 @@ msgstr "sumulat ng listahan ng mga bilihin"
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
 msgstr ""
-"Payagan ang application na lumikha ng bagong listahan at bagay o baguhin ang "
-"dati na."
+"Pinapayagan ang aplikasyon na lumikha ng bagong listahan at bagay o baguhin "
+"ang dati na."
 
 #. Permission to encrypt and decrypt data.
 #: tmp_strings.xml:176(string)
@@ -407,8 +409,8 @@ msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
 msgstr ""
-"Payagan ang application na mag-encrypt at mag-decrypt ng teksto, at makita "
-"ang mga password na tinago sa OI Safe."
+"Pinapayagan ang applikasyon na mag-encrypt at mag-decrypt ng teksto, at "
+"makita ang mga password na tinago sa OI Kaha."
 
 #: tmp_strings.xml:186(item)
 msgid "Alphabetical"

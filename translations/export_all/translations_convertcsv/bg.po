@@ -330,7 +330,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "ДУБЛИКАТ- Позволение за копиране на записи."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-msgid "\"KEEP - Don't overwrite existing records.\""
+#, fuzzy
+msgid "KEEP - Don't overwrite existing records."
 msgstr "ВНИМАВАЙ- Не презаписвай съществуващи файлове."
 
 #: tmp_strings.xml:138(item)
@@ -346,9 +347,9 @@ msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr "ДУБЛИКАТ- Добави второ копие на записа ако той вече съществува."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+#, fuzzy
 msgid ""
-"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-"\""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
 "ВНИМАВАЙ- не презаписвай съществуващ запис, игнорирай този в CSV файла."
 

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Sahran <Unknown>\n"
 "Language-Team: Uyghur <ug@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,6 +21,8 @@ msgstr ""
 #: tmp_strings.xml:25(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Sahran https://launchpad.net/~sahran"
 
 #. Explanation what this application does.
 #: tmp_strings.xml:28(string)
@@ -28,314 +30,331 @@ msgid ""
 "This extension to OI Shopping list and OI Notepad lets you import and export "
 "lists and notes in the CSV file format."
 msgstr ""
+"OI سېتىۋېلىش تىزىمى ۋە OI  خاتىرە دەپتەر CSV ھۆججەت پىچىمىنى ئەكىرەلەيدۇ."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
 msgid "OI Shopping List"
-msgstr ""
+msgstr "OI سېتىۋېلىش تىزىمى"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:36(string) tmp_strings.xml:96(string)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI خاتىرە دەپتەر"
 
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:39(string)
 msgid "Launch %s and select menu &gt; Convert CSV."
-msgstr ""
+msgstr "%s نى قوزغىتىپ، تىزىملىك &gt; CSV كە ئايلاندۇرنى تاللاڭ."
 
 #. Application name. Can be localized.
 #. 	  "CSV" is a common file extension meaning "comma separated values".
 #. 	  "OI" and "CSV" should not be changed.
 #: tmp_strings.xml:47(string)
 msgid "OI Convert CSV"
-msgstr ""
+msgstr "OI CSV ئايلاندۇر"
 
 #: tmp_strings.xml:48(string)
 msgid "Convert CSV"
-msgstr ""
+msgstr "CSV كە ئايلاندۇر"
 
 #: tmp_strings.xml:49(string)
 msgid "Convert CSV to Notepad"
-msgstr ""
+msgstr "CSV  نى خاتىرە دەپتەرگە ئايلاندۇر"
 
 #: tmp_strings.xml:50(string)
 msgid "Convert CSV to Shopping list"
-msgstr ""
+msgstr "CSV نى سېتىۋېلىش تىزىمىغا ئايلاندۇر"
 
 #: tmp_strings.xml:51(string)
 msgid "Convert all notes"
-msgstr ""
+msgstr "ھەممە ئىزاھاتنى ئايلاندۇر"
 
 #: tmp_strings.xml:52(string)
 msgid "Convert all shopping lists"
-msgstr ""
+msgstr "ھەممە سېتىۋېلىش تىزىمىنى ئايلاندۇر"
 
 #: tmp_strings.xml:53(string)
 msgid "Convert list '%s'"
-msgstr ""
+msgstr "ئايلاندۇرۇش تىزىمى '%s'"
 
 #: tmp_strings.xml:54(string)
 msgid "File path"
-msgstr ""
+msgstr "ھۆججەت يولى"
 
 #: tmp_strings.xml:55(string)
 msgid "Import"
-msgstr ""
+msgstr "ئەكىر"
 
 #: tmp_strings.xml:56(string)
 msgid "Export"
-msgstr ""
+msgstr "چىقار"
 
 #: tmp_strings.xml:57(string)
 msgid "Error writing to file"
-msgstr ""
+msgstr "ھۆججەتكە يېزىۋاتقاندا خاتالىق كۆرۈلدى"
 
 #: tmp_strings.xml:58(string)
 msgid "Error reading from file"
-msgstr ""
+msgstr "ھۆججەت ئوقۇۋاتقاندا خاتالىق كۆرۈلدى"
 
 #: tmp_strings.xml:59(string)
 msgid "Wrong CSV format"
-msgstr ""
+msgstr "خاتا CSV پىچىمى"
 
 #: tmp_strings.xml:60(string)
 msgid "File not found"
-msgstr ""
+msgstr "ھۆججەت تېپىلمىدى"
 
 #: tmp_strings.xml:61(string)
 msgid "Not yet implemented, please choose different option."
-msgstr ""
+msgstr "ئىشلەتكىلى بولمايدۇ، باشقا تاللانما تاللاڭ."
 
 #: tmp_strings.xml:62(string)
 msgid "Import finished"
-msgstr ""
+msgstr "ئەكىرىش تامام."
 
 #: tmp_strings.xml:63(string)
 msgid "Export finished"
-msgstr ""
+msgstr "چىقىرىش تامام"
 
 #: tmp_strings.xml:64(string)
 msgid "Select notepad CSV file"
-msgstr ""
+msgstr "خاتىرە دەپتەر CSV ھۆججەت تاللاڭ"
 
 #: tmp_strings.xml:65(string)
 msgid "Select shopping list CSV file"
-msgstr ""
+msgstr "سېتىۋېلىش تىزىمى CSV ھۆججەت تاللاڭ"
 
 #: tmp_strings.xml:66(string)
 msgid "Current Import Policy:"
-msgstr ""
+msgstr "نۆۋەتتىكى ئەكىرىش تەدبىرى:"
 
 #: tmp_strings.xml:67(string)
 msgid "Import Policy"
-msgstr ""
+msgstr "ئەكىرىش تەدبىرى"
 
 #: tmp_strings.xml:68(string) tmp_strings.xml:83(string)
 msgid "Select the import policy to use"
-msgstr ""
+msgstr "ئەكىرىدىغان تەدبىرنى تاللاڭ"
 
 #: tmp_strings.xml:70(string)
 msgid "The file exists. Do you want to overwrite?"
-msgstr ""
+msgstr "ھۆججەت مەۋجۇت، قاپلىۋېتەمسىز؟"
 
 #: tmp_strings.xml:71(string)
 msgid "Don't ask again. Always overwrite!"
-msgstr ""
+msgstr "قايتا سورىما، ھەمىشە قاپلا!"
 
 #: tmp_strings.xml:73(string)
 msgid "Import policy set to RESTORE"
-msgstr ""
+msgstr "ئەكىرىش تەدبىرىنى ئەسلىگە كەلتۈر"
 
 #: tmp_strings.xml:74(string)
 msgid ""
 "Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE "
 "them with the contents of the CSV file. Are you sure?"
 msgstr ""
+"نۆۋەتتىكى ئەكىرىش تەدبىرى ئۆچۈرۈلدى. CSV ھۆججەتتە مەزمۇننى ئالماشتۇرىدۇ، "
+"راستمۇ؟"
 
 #: tmp_strings.xml:76(string)
 msgid "Settings"
-msgstr ""
+msgstr "تەڭشەكلەر"
 
 #: tmp_strings.xml:77(string)
 msgid "CSV file format"
-msgstr ""
+msgstr "CSV ھۆججەت پىچىمى"
 
 #: tmp_strings.xml:78(string)
 msgid "Select CSV file format"
-msgstr ""
+msgstr "CSV ھۆججەت پىچىمىنى تاللاڭ"
 
 #: tmp_strings.xml:79(string)
 msgid "Select encoding"
-msgstr ""
+msgstr "كودلاشنى تاللاڭ"
 
 #: tmp_strings.xml:80(string)
 msgid "Default"
-msgstr ""
+msgstr "كۆڭۈلدىكى"
 
 #: tmp_strings.xml:81(string)
 msgid "Use custom encoding (advanced users)"
-msgstr ""
+msgstr "ئۆزگىچە كودلاشنى ئىشلەت (ئالىي ئىشلەتكۈچى)"
 
 #: tmp_strings.xml:82(string)
 msgid "Select a CSV file format"
-msgstr ""
+msgstr "CSV ھۆججەت پىچىمىنى تاللاڭ"
 
 #. Preference category title
 #: tmp_strings.xml:87(string)
 msgid "Common settings"
-msgstr ""
+msgstr "ئورتاق تەڭشەكلەر"
 
 #: tmp_strings.xml:88(string)
 msgid "Import/export settings that apply to Notepad and Shopping list."
 msgstr ""
+"ئەكىر/چىقار تەڭشەكلەر خاتىرە دەپتەر ۋە سېتىۋېلىش تىزىم تەڭشىكىگە قوللىنىلىدۇ."
 
 #: tmp_strings.xml:89(string)
 msgid "Ask if file exists"
-msgstr ""
+msgstr "ھۆججەت مەۋجۇت بولسا سورا"
 
 #: tmp_strings.xml:90(string)
 msgid ""
 "If checked a dialog appears to confirm overwriting if the export file "
 "already exists."
-msgstr ""
+msgstr "ئەگەر ھۆججەت مەۋجۇت بولسا سۆزلەشكۈدە قاپلاشنى ئەسكەرتىدۇ."
 
 #: tmp_strings.xml:92(string)
 msgid "Application specific settings"
-msgstr ""
+msgstr "ئەپ چۈشەندۈرۈش تەڭشەكلىرى"
 
 #: tmp_strings.xml:93(string)
 msgid "Filename"
-msgstr ""
+msgstr "ھۆججەت ئاتى"
 
 #: tmp_strings.xml:94(string)
 msgid "Full path for file."
-msgstr ""
+msgstr "ھۆججەتنىڭ تولۇق يولى."
 
 #: tmp_strings.xml:97(string)
 msgid "Import/export settings for OI Notepad."
-msgstr ""
+msgstr "OI خاتىرە دەپتەر ئەكىر/چىقار تەڭشەكلىرى"
 
 #: tmp_strings.xml:99(string)
 msgid "OI Shopping list"
-msgstr ""
+msgstr "OI سېتىۋېلىش تىزىمى"
 
 #: tmp_strings.xml:100(string)
 msgid "Import/export settings for OI Shopping list."
-msgstr ""
+msgstr "OI سېتىۋېلىش تىزىمى ئەكىر/چىقار تەڭشەكلىرى"
 
 #: tmp_strings.xml:102(string)
 msgid "Converting..."
-msgstr ""
+msgstr "ئايلاندۇرۇۋاتىدۇ……"
 
 #: tmp_strings.xml:103(string)
 msgid "Ok"
-msgstr ""
+msgstr "جەزملە"
 
 #: tmp_strings.xml:104(string)
 msgid "Import stores"
-msgstr ""
+msgstr "دۇكاننى ئەكىر"
 
 #: tmp_strings.xml:105(string)
 msgid "Import HandyShopper store names only as item tags."
-msgstr ""
+msgstr "HandyShopper  ئاتىنى بەلگە سۈپىتىدە ئەكىر"
 
 #: tmp_strings.xml:106(string)
 msgid "Import HandyShopper stores and per-store price and aisle information."
 msgstr ""
+"HandyShopper دۇكىنى ۋە ھەر بىر دۇكاننىڭ باھا ۋە مال مەنبە ئۇچۇرىنى ئەكىرىدۇ."
 
 #. Permission
 #: tmp_strings.xml:110(string)
 msgid "read notes"
-msgstr ""
+msgstr "ئىزاھات ئوقۇ"
 
 #: tmp_strings.xml:111(string)
 msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
 msgstr ""
+"ئەپنىڭ ئىزاھات ئوقۇشىغا يول قويىدۇ. دىققەت شىفىرلانغان ئىزاھات شىفىرلانغان "
+"پىچىمدا تەمىنلىنىدۇ."
 
 #. Permission
 #: tmp_strings.xml:113(string)
 msgid "write notes"
-msgstr ""
+msgstr "ئىزاھات ياز"
 
 #: tmp_strings.xml:114(string)
 msgid "Allows an application to create new notes or modify existing notes."
 msgstr ""
+"ئەپنىڭ يېڭى ئىزاھات قۇرۇشى ياكى مەۋجۇت ئىزاھاتنى ئۆزگەرتىشىگە يول قويىدۇ."
 
 #. Permission
 #: tmp_strings.xml:118(string)
 msgid "read shopping lists"
-msgstr ""
+msgstr "سېتىۋېلىش تىزىمىنى ئوقۇ"
 
 #: tmp_strings.xml:119(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
+"ئەپنىڭ سېتىۋېلىش تىزىمىنى ئوقۇشىغا يول قويىدۇ. دىققەت شىفىرلانغان ئىزاھات "
+"شىفىرلانغان پىچىمدا تەمىنلىنىدۇ."
 
 #. Permission
 #: tmp_strings.xml:121(string)
 msgid "write shopping lists"
-msgstr ""
+msgstr "سېتىۋېلىش تىزىمىغا ياز"
 
 #: tmp_strings.xml:122(string)
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
 msgstr ""
+"ئەپنىڭ يېڭى تىزىم ۋە تۈر قۇرۇشى ياكى مەۋجۇت ئىزاھاتنى ئۆزگەرتىشىگە يول "
+"قويىدۇ."
 
 #: tmp_strings.xml:125(item)
 msgid "MS Outlook Notes"
-msgstr ""
+msgstr "MS Outlook ئىزاھات"
 
 #: tmp_strings.xml:126(item)
 msgid "Palm CSV"
-msgstr ""
+msgstr "Palm CSV"
 
 #: tmp_strings.xml:127(item)
 msgid "JPilot Memo"
-msgstr ""
+msgstr "JPilot خاتىرە"
 
 #: tmp_strings.xml:131(item)
 msgid "MS Outlook Tasks"
-msgstr ""
+msgstr "MS Outlook ۋەزىپە"
 
 #: tmp_strings.xml:132(item)
 msgid "HandyShopper"
-msgstr ""
+msgstr "HandyShopper"
 
 #: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
 msgid "DUPLICATE - Allow duplicates of records."
-msgstr ""
+msgstr "كۆچۈر - تەكرار خاتىرىگە يول قوي."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-msgid "\"KEEP - Don't overwrite existing records.\""
-msgstr ""
+#, fuzzy
+msgid "KEEP - Don't overwrite existing records."
+msgstr "\"ساقلاپ قال - نۆۋەتتە مەۋجۇت خاتىرىلەرنى قاپلىۋەتمە.\""
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
-msgstr ""
+msgstr "قاپلا - نۆۋەتتە مەۋجۇت خاتىرىلەرنى قاپلىۋەت."
 
 #: tmp_strings.xml:139(item)
 msgid "Restore - DELETE ALL, then import."
-msgstr ""
+msgstr "ئەسلىگە كەلتۈر - ھەممىنى ئۆچۈرۈپ ئاندىن ئەكىر."
 
 #: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
 msgid "DUPLICATE - Add a second copy of a record if it already exists."
-msgstr ""
+msgstr "كۆچۈر - ئەگەر مەۋجۇت بولسا بىر خاتىرىنى قوشۇپ ئىككى نۇسخا خاتىرىلەيدۇ."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+#, fuzzy
 msgid ""
-"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-"\""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
+"\"ساقلاپ قال - نۆۋەتتە مەۋجۇت خاتىرىنى قاپلىۋەتمەيدۇ، بىر CSV ھۆججەتكە پەرۋا "
+"قىلمايدۇ.\""
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
-msgstr ""
+msgstr "قاپلا - CSV  خاتىرىسى ئارقىلىق مەۋجۇت خاتىرىنى قاپلىۋېتىدۇ."
 
 #: tmp_strings.xml:146(item)
 msgid ""
 "Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
 msgstr ""
+"زاپاسنى ئەسلىگە كەلتۈر - نۆۋەتتە مەۋجۇت ھەممە خاتىرىنى ئۆچۈرۈپ ئاندىن CSV "
+"ھۆججەت ئەكىرىدۇ."

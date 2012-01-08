@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Marek Dobransky <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,18 +19,20 @@ msgstr ""
 
 #: tmp_strings.xml:3(string)
 msgid "OI Distribution Library"
-msgstr ""
+msgstr "OI Distribučná knižnica"
 
 #. Automatically filled in by Launchpad:
 #: tmp_strings.xml:10(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Marek Dobransky https://launchpad.net/~marekdobr"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
 #. 		Translation should be short, since this is a title.
 #: tmp_strings.xml:19(string)
 msgid "%s EULA"
-msgstr ""
+msgstr "%s EULA"
 
 #. EULA welcome message. %s is an application name, e.g. "... (EULA) for OI Notepad".
 #. 		Translation can be as long as required.
@@ -39,68 +41,72 @@ msgid ""
 "Please read and accept the following End User License Agreement (EULA) for %"
 "s."
 msgstr ""
+"Prosím prečítajte si nasledujúcu Licenčnú zmluvu koncového používateľa  "
+"(EULA) pre %s."
 
 #. Button: Accept terms of EULA.
 #: tmp_strings.xml:26(string)
 msgid "Accept"
-msgstr ""
+msgstr "Akceptovať"
 
 #. Button: Refuse terms of EULA.
 #: tmp_strings.xml:29(string)
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušiť"
 
 #. Application name and version. %1$s is the application name (e.g. "OI Notepad") and %2$s is the version number (e.g. "1.2.0").
 #. 	Keep unmodified, unless your language requires that the version number is displayed first.
 #: tmp_strings.xml:34(string)
 msgid "%1$s %2$s"
-msgstr ""
+msgstr "%1$s %2$s"
 
 #. Welcome message. %s is an application name.
 #: tmp_strings.xml:37(string)
 msgid "Welcome to this new version of %s."
-msgstr ""
+msgstr "Vitajte v novej verzii %s"
 
 #: tmp_strings.xml:39(string)
 msgid "Recent changes:"
-msgstr ""
+msgstr "Nedávne zmeny"
 
 #. Button: Continue to main application.
 #: tmp_strings.xml:42(string)
 msgid "Continue"
-msgstr ""
+msgstr "Pokračovať"
 
 #. Menu command to look for updates.
 #: tmp_strings.xml:46(string)
 msgid "Check updates"
-msgstr ""
+msgstr "Skontrolovať aktualizácie"
 
 #: tmp_strings.xml:47(string)
 msgid ""
 "Check manually for updates or install OI Update for automatic notifications."
 msgstr ""
+"Skontrolujte aktualizácie ručne alebo nainštalujte OI Aktualizácie pre "
+"automatické upozornenia."
 
 #: tmp_strings.xml:48(string)
 msgid "Check now"
-msgstr ""
+msgstr "Skontroluj teraz"
 
 #: tmp_strings.xml:49(string)
 msgid "Get OI Updater"
-msgstr ""
+msgstr "Získať OI Aktualizátor"
 
 #: tmp_strings.xml:50(string)
 msgid "Download application not available."
-msgstr ""
+msgstr "Stiahnutie aplikácie nie je dostupné."
 
 #. Name of the application "OI Update". Translations of the application name should be consistent.
 #: tmp_strings.xml:53(string)
 msgid "OI Update"
-msgstr ""
+msgstr "OI Aktualizácia"
 
 #. Menu command to open the "about" or "info" dialog.
 #: tmp_strings.xml:57(string)
 msgid "About"
-msgstr ""
+msgstr "O aplikácii"
 
 #. %s is the version number (e.g. "1.2.1")
 #: tmp_strings.xml:59(string)
@@ -108,46 +114,48 @@ msgid ""
 "No compatible extension available to display full info (contact, credits, "
 "license)."
 msgstr ""
+"Nie je dostupné žiadne kompatibilné rozšírenie pre zobrazenie všetkých "
+"informácii (kontakty, záväzky, licencie)."
 
 #. Button text: Get the application "OI About". Translations of the application name should be consistent.
 #: tmp_strings.xml:63(string)
 msgid "Get OI About"
-msgstr ""
+msgstr "Získať OI About"
 
 #. Name of the application "OI About". Translations of the application name should be consistent.
 #: tmp_strings.xml:66(string)
 msgid "OI About"
-msgstr ""
+msgstr "O aplikácii OpenIntents"
 
 #. Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.
 #: tmp_strings.xml:69(string)
 msgid "Barcode OI Plugin"
-msgstr ""
+msgstr "Čiarový kód OI doplnok"
 
 #. Dialog message.
 #: tmp_strings.xml:71(string)
 msgid "No compatible barcode scanner is available."
-msgstr ""
+msgstr "Žiadny kompatibilný skener čiarových kódov nie je k dispozícii"
 
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:74(string)
 msgid "OI File Manager"
-msgstr ""
+msgstr "OI Správca Súborov"
 
 #. Dialog message.
 #: tmp_strings.xml:76(string)
 msgid "No compatible file manager is available."
-msgstr ""
+msgstr "Nie je dostupný žiadny kompatibilný správca súborov."
 
 #. Name of the application "OI Safe". Translations of the application name should be consistent.
 #: tmp_strings.xml:80(string)
 msgid "OI Safe"
-msgstr ""
+msgstr "OI Trezor"
 
 #. Dialog message.
 #: tmp_strings.xml:82(string)
 msgid "No compatible application for encryption is available."
-msgstr ""
+msgstr "Žiadna kompatibilná šifrovacia aplikácia nie je k dispozícii"
 
 #: tmp_strings.xml:83(string)
 msgid ""
@@ -155,54 +163,57 @@ msgid ""
 "to restore the master key from a backup file in order to access previously "
 "encrypted data."
 msgstr ""
+"Žiadna kompatibilná aplikácia na dešifrovanie nie je dostupná.\\n"
+"\\nPoznámka: Musíte obnoviť univerzálny kľúč zo zálohovaného súboru pre "
+"prístup k skôr zašifrovaných údajom."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:86(string)
 msgid "Please download %s from the Market or the OpenIntents website."
-msgstr ""
+msgstr "Prosím stiahnite si %S z Obchodu alebo webových stránok OpenIntents."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:88(string)
 msgid "Please download %s from the OpenIntents website."
-msgstr ""
+msgstr "Prosím siahnite si %s z webových stránok OpenIntents"
 
 #. Dialog button: download the suggested application from Android Market.
 #: tmp_strings.xml:90(string)
 msgid "Market download"
-msgstr ""
+msgstr "Stiahnuť z obchodu"
 
 #. Dialog button: download the suggested application from the developer web site.
 #: tmp_strings.xml:92(string)
 msgid "Web download"
-msgstr ""
+msgstr "Stiahnuť z webu"
 
 #. Dialog title: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:94(string)
 msgid "Download %s"
-msgstr ""
+msgstr "Sťahujem %s"
 
 #. %s is an application name (e.g. "OI About can be used with the following applications:")
 #: tmp_strings.xml:97(string)
 msgid "%s can be used with the following applications:"
-msgstr ""
+msgstr "%s môže byť použité nasledujúcimi aplikáciami:"
 
 #. %s is an application name (e.g. "Launch OI Notepad")
 #: tmp_strings.xml:99(string)
 msgid "Launch %s"
-msgstr ""
+msgstr "Spustiť %s"
 
 #. %1$s is the current application name. %2$s is another application name, and %3$s is the other application's version name
 #.     (e.g. "OI About requires OI Notepad 1.2.0 or higher.")
 #: tmp_strings.xml:102(string)
 msgid "%1$s requires %2$s %3$s or higher."
-msgstr ""
+msgstr "%1$s vyžaduje %2$s %3$s alebo vyššiu."
 
 #. Title of a dialog.
 #: tmp_strings.xml:104(string)
 msgid "Instructions"
-msgstr ""
+msgstr "Pokyny"
 
 #. Error message
 #: tmp_strings.xml:106(string)
 msgid "Application could not be launched"
-msgstr ""
+msgstr "Aplikácia nemôže byť spustená"

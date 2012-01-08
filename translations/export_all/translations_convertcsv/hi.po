@@ -327,7 +327,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "डुप्लीकेट - रिकॉर्ड को डुप्लिकेट करने की अनुमति देता है|"
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-msgid "\"KEEP - Don't overwrite existing records.\""
+#, fuzzy
+msgid "KEEP - Don't overwrite existing records."
 msgstr "\\\"KEEP - Don't overwrite existing records.\\\""
 
 #: tmp_strings.xml:138(item)
@@ -343,9 +344,9 @@ msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr "डुप्लीकेट - एक रिकॉर्ड की एक दूसरे नकल जोड़ता है अगर यह पहले से ही मौजूद है|"
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+#, fuzzy
 msgid ""
-"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-"\""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
 "\\\"KEEP -एक  मौजूदा  रिकॉर्ड  को  अधिलेखित  न  करें , CSV फाईल  में मौजूद रिकॉर्ड को "
 "अनदेखा करें |\\\""

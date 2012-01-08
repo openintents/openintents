@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
-  Angad Singh  https://launchpad.net/~angad21-02-1996</translators>
+  Angad Singh  https://launchpad.net/~angad21-02-1996
+  OpenIntents devs https://launchpad.net/~openintents-devs</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->

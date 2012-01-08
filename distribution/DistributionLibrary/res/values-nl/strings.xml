@@ -8,7 +8,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Anshuman Jaiswal https://launchpad.net/~good-anshuman
+  John Andre https://launchpad.net/~john-andre
   Menno Vogel https://launchpad.net/~mennovogel90
   OpenIntents devs https://launchpad.net/~openintents-devs
   Willem-Martijn Brink https://launchpad.net/~willem-brink</string>
@@ -48,7 +48,7 @@
 	<!-- Update -->
 	<!-- Menu command to look for updates. -->
     <string name="oi_distribution_menu_update">Controleer updates</string>
-	<string name="oi_distribution_update_box_text">Check manually for updates or install OI Update for automatic notifications.</string>
+	<string name="oi_distribution_update_box_text">Controleer handmatig op updates of installeer OI Update voor automatische meldingen.</string>
 	<string name="oi_distribution_update_check_now">Check now</string>
 	<string name="oi_distribution_update_get_updater">Get OI Updater</string>
 	<string name="oi_distribution_update_error">Download application not available.</string>

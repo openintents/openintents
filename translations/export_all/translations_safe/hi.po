@@ -595,9 +595,8 @@ msgid "Auto Backup Days"
 msgstr "अपने आप बच्कुप के दिन"
 
 #: tmp_strings.xml:196(string)
-#, fuzzy
 msgid "Default backup path"
-msgstr "अपने आप बैकुप करने के दिन"
+msgstr ""
 
 #: tmp_strings.xml:197(string)
 msgid "Default export path"

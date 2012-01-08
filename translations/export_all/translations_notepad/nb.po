@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Arne Tobias Malkenes Ødegaard <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,471 +21,481 @@ msgstr ""
 #: tmp_strings.xml:30(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias"
 
 #. Short explanation of the application
 #: tmp_strings.xml:33(string)
 msgid "OI Notepad allows to create, edit, and delete notes."
-msgstr ""
+msgstr "OI Notatblokk lar deg opprette, redigere og slette notater."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
 #: tmp_strings.xml:117(string)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI Notatblokk"
 
 #: tmp_strings.xml:42(string)
 msgid "Delete"
-msgstr ""
+msgstr "Slett"
 
 #: tmp_strings.xml:43(string)
 msgid "Add note"
-msgstr ""
+msgstr "Legg til notat"
 
 #: tmp_strings.xml:44(string)
 msgid "Revert"
-msgstr ""
+msgstr "Tilbakestill"
 
 #: tmp_strings.xml:45(string)
 msgid "Discard"
-msgstr ""
+msgstr "Forkast"
 
 #: tmp_strings.xml:47(string)
 msgid "Use menu to add new notes."
-msgstr ""
+msgstr "Bruk meny for å legge til nye notater."
 
 #: tmp_strings.xml:49(string) tmp_strings.xml:53(string)
 msgid "Edit note"
-msgstr ""
+msgstr "Rediger notat"
 
 #: tmp_strings.xml:50(string)
 msgid "Edit title"
-msgstr ""
+msgstr "Rediger tittel"
 
 #: tmp_strings.xml:52(string)
 msgid "Create note"
-msgstr ""
+msgstr "Opprett notat"
 
 #: tmp_strings.xml:55(string)
 msgid "Note"
-msgstr ""
+msgstr "Notat"
 
 #: tmp_strings.xml:56(string)
 msgid "Note title:"
-msgstr ""
+msgstr "Tittel på notat:"
 
 #: tmp_strings.xml:57(string)
 msgid "%s (new note)"
-msgstr ""
+msgstr "%s (nytt notat)"
 
 #: tmp_strings.xml:58(string)
 msgid "%s (edit note)"
-msgstr ""
+msgstr "%s (rediger notat)"
 
 #. Title: Pick note for shortcut (to be placed on the home screen)
 #: tmp_strings.xml:61(string)
 msgid "Pick note for shortcut"
-msgstr ""
+msgstr "Velg notat for snarvei"
 
 #. Dialog box
 #: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: tmp_strings.xml:65(string)
 msgid "Error"
-msgstr ""
+msgstr "Feil"
 
 #: tmp_strings.xml:66(string)
 msgid "Error loading note"
-msgstr ""
+msgstr "Feil ved lasting av notat"
 
 #. <string name="no_notes">Note list is empty.</string>
 #: tmp_strings.xml:69(string)
 msgid "Share"
-msgstr ""
+msgstr "Del"
 
 #: tmp_strings.xml:70(string)
 msgid "Empty note"
-msgstr ""
+msgstr "Tomt notat"
 
 #: tmp_strings.xml:71(string)
 msgid "No application available for sharing."
-msgstr ""
+msgstr "Ingen applikasjon tilgjengelig for deling."
 
 #: tmp_strings.xml:73(string)
 msgid "Encrypting note"
-msgstr ""
+msgstr "Krypterer notat"
 
 #: tmp_strings.xml:74(string)
 msgid "Encrypted"
-msgstr ""
+msgstr "Kryptert"
 
 #: tmp_strings.xml:75(string)
 msgid "Encrypt"
-msgstr ""
+msgstr "Krypter"
 
 #: tmp_strings.xml:76(string)
 msgid "Decrypt"
-msgstr ""
+msgstr "Dekrypter"
 
 #: tmp_strings.xml:77(string)
 msgid "Undo encryption"
-msgstr ""
+msgstr "Angre kryptering"
 
 #: tmp_strings.xml:78(string)
 msgid "Do not encrypt"
-msgstr ""
+msgstr "Ikke krypter"
 
 #: tmp_strings.xml:79(string)
 msgid "Already encrypted."
-msgstr ""
+msgstr "Allerede kryptert."
 
 #: tmp_strings.xml:80(string)
 msgid "Not encrypted."
-msgstr ""
+msgstr "Ikke kryptert."
 
 #: tmp_strings.xml:81(string)
 msgid "Encryption failed."
-msgstr ""
+msgstr "Kryptering mislyktes."
 
 #: tmp_strings.xml:82(string)
 msgid "Decryption failed."
-msgstr ""
+msgstr "Dekryptering mislykket."
 
 #: tmp_strings.xml:84(string)
 msgid "Edit tags"
-msgstr ""
+msgstr "Rediger merker"
 
 #: tmp_strings.xml:85(string)
 msgid "Touch to see list"
-msgstr ""
+msgstr "Rør for å se liste"
 
 #: tmp_strings.xml:86(string)
 msgid "Enter tags, separated by comma"
-msgstr ""
+msgstr "Skriv merker, atskilt med komma"
 
 #: tmp_strings.xml:88(string)
 msgid "Save to SD card"
-msgstr ""
+msgstr "Lagre til SD-kort"
 
 #: tmp_strings.xml:89(string)
 msgid "Open from SD card"
-msgstr ""
+msgstr "Åpne fra SD-kort"
 
 #: tmp_strings.xml:90(string)
 msgid "File name"
-msgstr ""
+msgstr "Filnavn"
 
 #: tmp_strings.xml:91(string) tmp_strings.xml:102(string)
 #: tmp_strings.xml:106(string)
 msgid "Save"
-msgstr ""
+msgstr "Lagre"
 
 #: tmp_strings.xml:92(string)
 msgid "Open"
-msgstr ""
+msgstr "Åpne"
 
 #: tmp_strings.xml:93(string)
 msgid "Error while writing file"
-msgstr ""
+msgstr "Feil ved skriving av fil"
 
 #: tmp_strings.xml:94(string)
 msgid "Error while reading file"
-msgstr ""
+msgstr "Feil ved lesing av fil"
 
 #: tmp_strings.xml:95(string)
 msgid "File not found"
-msgstr ""
+msgstr "Fil ikke funnet"
 
 #: tmp_strings.xml:96(string)
 msgid "Note saved"
-msgstr ""
+msgstr "Notat lagret"
 
 #: tmp_strings.xml:97(string)
 msgid "File exists already"
-msgstr ""
+msgstr "Fil eksisterer allerede"
 
 #: tmp_strings.xml:98(string)
 msgid "Do you really want to overwrite the existing file?"
-msgstr ""
+msgstr "Vil du virkelig overskrive den eksisterende filen?"
 
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
 #: tmp_strings.xml:101(string)
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: tmp_strings.xml:103(string)
 msgid "Save as"
-msgstr ""
+msgstr "Lagre som"
 
 #: tmp_strings.xml:104(string)
 msgid "Text modified"
-msgstr ""
+msgstr "Tekst endret"
 
 #: tmp_strings.xml:105(string)
 msgid "Do you want to save the changes?"
-msgstr ""
+msgstr "Vil du lagre endringene?"
 
 #: tmp_strings.xml:107(string)
 msgid "Don't save"
-msgstr ""
+msgstr "Ikke lagre"
 
 #: tmp_strings.xml:109(string)
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: tmp_strings.xml:110(string)
 msgid "Pick a theme"
-msgstr ""
+msgstr "Velg et tema"
 
 #. Preference fontsize: default font size
 #: tmp_strings.xml:111(string) tmp_strings.xml:200(item)
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 #: tmp_strings.xml:112(string)
 msgid "Monospaced font"
-msgstr ""
+msgstr "Skrifttype med fast tegnavstand"
 
 #: tmp_strings.xml:113(string)
 msgid "Serif font"
-msgstr ""
+msgstr "Serif-skrifttype"
 
 #. Search
 #: tmp_strings.xml:116(string) tmp_strings.xml:121(string)
 msgid "Search"
-msgstr ""
+msgstr "Søk"
 
 #. %s is the search string
 #: tmp_strings.xml:119(string)
 msgid "No results found for %s."
-msgstr ""
+msgstr "Ingen resultater funnet for %s."
 
 #: tmp_strings.xml:120(string)
 msgid "OI Notepad search"
-msgstr ""
+msgstr "OI Notatblokk-søk"
 
 #. The description that will show up in the search settings for this source.
 #: tmp_strings.xml:124(string)
 msgid "Titles of your notes"
-msgstr ""
+msgstr "Titler på dine notater"
 
 #: tmp_strings.xml:128(string)
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: tmp_strings.xml:129(string)
 msgid "Use this theme for all lists"
-msgstr ""
+msgstr "Bruk dette temaet for alle lister"
 
 #: tmp_strings.xml:130(string)
 msgid "Get more themes"
-msgstr ""
+msgstr "Hent flere temaer"
 
 #: tmp_strings.xml:132(string)
 msgid "All notes"
-msgstr ""
+msgstr "Alle notater"
 
 #. Title for settings regarding the list of notes
 #: tmp_strings.xml:136(string)
 msgid "Notes List"
-msgstr ""
+msgstr "Notatliste"
 
 #: tmp_strings.xml:137(string) tmp_strings.xml:138(string)
 msgid "List Sorting Order"
-msgstr ""
+msgstr "Sorteringsrekkefølge for liste"
 
 #: tmp_strings.xml:139(string)
 msgid "The order in which notes are shown in the notes list"
-msgstr ""
+msgstr "Rekkefølgen notater er vist i notatlisten"
 
 #: tmp_strings.xml:140(string)
 msgid "Marquee note titles."
-msgstr ""
+msgstr "Merk notattitler."
 
 #: tmp_strings.xml:141(string)
 msgid "Continuously scroll note titles that are too long."
-msgstr ""
+msgstr "Kontinuerlig bla i notattitler som er for lange."
 
 #: tmp_strings.xml:143(string)
 msgid "Note Editor"
-msgstr ""
+msgstr "Notateditoren"
 
 #: tmp_strings.xml:144(string)
 msgid "Font size"
-msgstr ""
+msgstr "Skriftstørrelse"
 
 #: tmp_strings.xml:145(string)
 msgid "Change font size"
-msgstr ""
+msgstr "Endre skriftstørrelse"
 
 #: tmp_strings.xml:146(string)
 msgid "Choose font size"
-msgstr ""
+msgstr "Velg skriftstørrelse"
 
 #: tmp_strings.xml:147(string)
 msgid "Auto-create Links"
-msgstr ""
+msgstr "Opprett linker automatisk"
 
 #: tmp_strings.xml:148(string)
 msgid "Create links for phone numbers and email/street/web addresses"
-msgstr ""
+msgstr "Opprett linker for telefonnumre og e-post/gate/nett-adresser"
 
 #: tmp_strings.xml:149(string)
 msgid "Do not create links on notes"
-msgstr ""
+msgstr "Ikke opprett linker på notater"
 
 #: tmp_strings.xml:151(string)
 msgid "Settings"
-msgstr ""
+msgstr "Innstillinger"
 
 #: tmp_strings.xml:152(string)
 msgid "Sort Order"
-msgstr ""
+msgstr "Sorteringsrekkefølge"
 
 #. Permission to read notes.
 #: tmp_strings.xml:160(string)
 msgid "read notes"
-msgstr ""
+msgstr "les notater"
 
 #: tmp_strings.xml:161(string)
 msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
 msgstr ""
+"Lar en applikasjon å lese notater. Noter at krypterte notater blir levert i "
+"det krypterte formatet."
 
 #. Permission to write notes.
 #: tmp_strings.xml:163(string)
 msgid "write notes"
-msgstr ""
+msgstr "skriv notater"
 
 #: tmp_strings.xml:164(string)
 msgid "Allows an application to create new notes or modify existing notes."
 msgstr ""
+"Lar en applikasjon opprette nye notater eller endre eksisterende notater."
 
 #. Permission to read shopping lists.
 #: tmp_strings.xml:168(string)
 msgid "read shopping lists"
-msgstr ""
+msgstr "les handlelister"
 
 #: tmp_strings.xml:169(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
+"Lar en applikasjon lese handlelister. Noter at krypterte lister og punkter "
+"blir levert i det krypterte formatet."
 
 #. Permission to write shopping lists.
 #: tmp_strings.xml:171(string)
 msgid "write shopping lists"
-msgstr ""
+msgstr "skriv handlelister"
 
 #: tmp_strings.xml:172(string)
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
 msgstr ""
+"Lar en applikasjon opprette nye lister og punkter eller endre eksisterende."
 
 #. Permission to encrypt and decrypt data.
 #: tmp_strings.xml:176(string)
 msgid "encrypt and decrypt data"
-msgstr ""
+msgstr "krypter og dekrypter data"
 
 #: tmp_strings.xml:177(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
 msgstr ""
+"Lar en applikasjon kryptere eller dekryptere tekst, og få tilgang til "
+"passordene lagret i OI Safe."
 
 #: tmp_strings.xml:186(item)
 msgid "Alphabetical"
-msgstr ""
+msgstr "Alfabetisk"
 
 #: tmp_strings.xml:187(item)
 msgid "Reverse Alphabetical"
-msgstr ""
+msgstr "Omvendt alfabetisk"
 
 #: tmp_strings.xml:188(item)
 msgid "Last Modified"
-msgstr ""
+msgstr "Sist endret"
 
 #: tmp_strings.xml:189(item)
 msgid "First Modified"
-msgstr ""
+msgstr "Først endret"
 
 #: tmp_strings.xml:190(item)
 msgid "Newest to Oldest"
-msgstr ""
+msgstr "Nyest til eldst"
 
 #: tmp_strings.xml:191(item)
 msgid "Oldest to Newest"
-msgstr ""
+msgstr "Eldst til nyest"
 
 #. Preference fontsize: tiny font size
 #: tmp_strings.xml:196(item)
 msgid "Tiny"
-msgstr ""
+msgstr "Veldig liten"
 
 #. Preference fontsize: small font size
 #: tmp_strings.xml:198(item)
 msgid "Small"
-msgstr ""
+msgstr "Liten"
 
 #. Preference fontsize: large font size
 #: tmp_strings.xml:202(item)
 msgid "Large"
-msgstr ""
+msgstr "Stor"
 
 #: tmp_strings.xml:205(string)
 msgid "Add-ons"
-msgstr ""
+msgstr "Tillegg"
 
 #: tmp_strings.xml:206(string)
 msgid "Get new add-ons"
-msgstr ""
+msgstr "Hent nye tillegg"
 
 #: tmp_strings.xml:207(string)
 msgid "Search for extensions and themes online."
-msgstr ""
+msgstr "Søk etter utvidelser og temaer på nettet."
 
 #: tmp_strings.xml:208(string)
 msgid "Get add-ons from Market"
-msgstr ""
+msgstr "Hent tillegg fra Android Marked"
 
 #: tmp_strings.xml:209(string)
 msgid "Get add-ons from OpenIntents"
-msgstr ""
+msgstr "Hent tillegg fra OpenIntents"
 
 #: tmp_strings.xml:210(string)
 msgid "Extensions"
-msgstr ""
+msgstr "Utvidelser"
 
 #: tmp_strings.xml:211(string)
 msgid "Themes"
-msgstr ""
+msgstr "Temaer"
 
 #: tmp_strings.xml:212(string)
 msgid "Search for extensions at Android Market."
-msgstr ""
+msgstr "Søk etter utvidelser i Android Marked."
 
 #: tmp_strings.xml:213(string)
 msgid "Search for themes at Android Market."
-msgstr ""
+msgstr "Søk etter temaer i Android Marked."
 
 #: tmp_strings.xml:214(string)
 msgid "Get extensions from the OpenIntents homepage."
-msgstr ""
+msgstr "Hent utvidelser fra hjemmesiden til OpenIntents."
 
 #: tmp_strings.xml:215(string)
 msgid "Get themes from the OpenIntents homepage."
-msgstr ""
+msgstr "Hent temaer fra hjemmesiden til OpenIntents."
 
 #: tmp_strings.xml:216(string)
 msgid "Deletion Confirmation"
-msgstr ""
+msgstr "Slettingsbekreftelse"
 
 #: tmp_strings.xml:217(string)
 msgid "Are you sure you want to delete this note?"
-msgstr ""
+msgstr "Vil du slette dette notatet?"
 
 #: tmp_strings.xml:219(string)
 msgid "New note"
-msgstr ""
+msgstr "Nytt notat"

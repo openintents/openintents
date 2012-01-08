@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: Jocke Pihlström <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,11 +32,14 @@ msgid ""
 "use it for other kinds of check lists, for example for ToDo lists or party "
 "guest lists."
 msgstr ""
+"Med OI Shopping List kan du hålla koll på det du köper. Du kan också använda "
+"den för andra typer av checklistor, t.ex. för ToDo listor eller gästlistor "
+"till fester."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
 msgid "OI Shopping list"
-msgstr ""
+msgstr "OI Shopping list"
 
 #: tmp_strings.xml:35(string)
 msgid "New item"
@@ -44,11 +47,11 @@ msgstr "Ny post"
 
 #: tmp_strings.xml:36(string)
 msgid "New list"
-msgstr ""
+msgstr "Ny lista"
 
 #: tmp_strings.xml:37(string)
 msgid "Send list"
-msgstr ""
+msgstr "Skicka lista"
 
 #: tmp_strings.xml:38(string)
 msgid "Mark all items"
@@ -56,15 +59,15 @@ msgstr ""
 
 #: tmp_strings.xml:39(string)
 msgid "Empty list not sent."
-msgstr ""
+msgstr "Tom lista ej skickad"
 
 #: tmp_strings.xml:40(string)
 msgid "No application available for sending."
-msgstr ""
+msgstr "Ingen applikation tillgänglig för att skicka"
 
 #: tmp_strings.xml:41(string)
 msgid "My shopping list"
-msgstr ""
+msgstr "Min inköpslista"
 
 #: tmp_strings.xml:42(string)
 msgid "i.e. wishlist, family list"
@@ -73,19 +76,19 @@ msgstr "t ex önskelista, familjelista"
 #. Automation action to clean up a list.
 #: tmp_strings.xml:43(string) tmp_strings.xml:337(item)
 msgid "Clean up list"
-msgstr ""
+msgstr "Rensa lista"
 
 #: tmp_strings.xml:44(string)
 msgid "Delete list"
-msgstr ""
+msgstr "Ta bort lista"
 
 #: tmp_strings.xml:45(string)
 msgid "Enter name of new shopping list"
-msgstr ""
+msgstr "Skriv in nytt namn på inköpslista"
 
 #: tmp_strings.xml:46(string)
 msgid "Rename shopping list"
-msgstr ""
+msgstr "Byt namn på inköpslista"
 
 #: tmp_strings.xml:47(string) tmp_strings.xml:59(string)
 msgid "Edit item"
@@ -97,27 +100,27 @@ msgstr ""
 
 #: tmp_strings.xml:49(string)
 msgid "Please enter a name"
-msgstr ""
+msgstr "Ange ett namn"
 
 #: tmp_strings.xml:50(string)
 msgid "No items are marked as crossed out."
-msgstr ""
+msgstr "Inga poster är markerade som avbockade"
 
 #: tmp_strings.xml:51(string)
 msgid "Do you really want to delete this shopping list?"
-msgstr ""
+msgstr "Vill du verkligen ta bort den här inköpslistan"
 
 #: tmp_strings.xml:52(string)
 msgid "Error while accessing shopping lists."
-msgstr ""
+msgstr "Fel vid åtkomst till inköpslistor."
 
 #: tmp_strings.xml:53(string)
 msgid "Pick an item"
-msgstr ""
+msgstr "Välj en post"
 
 #: tmp_strings.xml:54(string)
 msgid "Pick a list"
-msgstr ""
+msgstr "Välj en lista"
 
 #: tmp_strings.xml:55(string)
 msgid "Theme"
@@ -125,11 +128,11 @@ msgstr "Tema"
 
 #: tmp_strings.xml:56(string)
 msgid "Theme settings"
-msgstr ""
+msgstr "Tema inställningar"
 
 #: tmp_strings.xml:57(string)
 msgid "Rename list"
-msgstr ""
+msgstr "Byt namn på lista"
 
 #: tmp_strings.xml:58(string)
 msgid "Mark item"
@@ -137,7 +140,7 @@ msgstr "Markera post"
 
 #: tmp_strings.xml:60(string)
 msgid "Auto add"
-msgstr ""
+msgstr "Lägg till automatiskt"
 
 #: tmp_strings.xml:61(string)
 msgid "Stores..."
@@ -157,7 +160,7 @@ msgstr ""
 
 #: tmp_strings.xml:65(string)
 msgid "No items available"
-msgstr ""
+msgstr "Inga poster tillgängliga"
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
@@ -170,7 +173,7 @@ msgstr "Ta bort post från lista"
 #. 	     have to enter all the information again.
 #: tmp_strings.xml:74(string)
 msgid "Delete item permanently"
-msgstr ""
+msgstr "Ta bort post permanent"
 
 #: tmp_strings.xml:75(string)
 msgid "Move item to other list"
@@ -187,7 +190,7 @@ msgstr "Lägg till"
 
 #: tmp_strings.xml:81(string)
 msgid "Pick items"
-msgstr ""
+msgstr "Välj poster"
 
 #: tmp_strings.xml:82(string)
 msgid "Shopping"
@@ -196,7 +199,7 @@ msgstr "Handlar"
 #. Title supplement. '%s' is the name of the current list.
 #: tmp_strings.xml:85(string)
 msgid "%s - Pick items"
-msgstr ""
+msgstr "%s - Välj poster"
 
 #. Title supplement. '%s' is the name of the current list.
 #: tmp_strings.xml:88(string)
@@ -260,7 +263,7 @@ msgstr "Total: %s"
 #. Sum of all prices of the checked items. '%s' is the sum
 #: tmp_strings.xml:110(string)
 msgid "Checked: %s"
-msgstr ""
+msgstr "Avbockat: %s"
 
 #: tmp_strings.xml:111(string)
 msgid "Priority 1: %s"
@@ -294,21 +297,21 @@ msgstr "... OK"
 #. The shortcut is created on the home screen.
 #: tmp_strings.xml:124(string)
 msgid "Pick list for shortcut"
-msgstr ""
+msgstr "Välj lista för genväg"
 
 #. Shown if external application wants to insert new items.
 #: tmp_strings.xml:127(string)
 msgid "Pick list to insert items"
-msgstr ""
+msgstr "Välj lista för att infoga poster"
 
 #. Title for selecting a theme
 #: tmp_strings.xml:131(string)
 msgid "Pick a theme"
-msgstr ""
+msgstr "Välj ett tema"
 
 #: tmp_strings.xml:132(string)
 msgid "Choose a theme for this list"
-msgstr ""
+msgstr "Välj ett tema för denna listan"
 
 #. Preference fontsize: default font size
 #: tmp_strings.xml:133(string) tmp_strings.xml:293(item)
@@ -322,15 +325,15 @@ msgstr "Klassisk"
 
 #: tmp_strings.xml:135(string)
 msgid "Android"
-msgstr ""
+msgstr "Android"
 
 #: tmp_strings.xml:136(string)
 msgid "Classic (from OI Shopping List)"
-msgstr ""
+msgstr "Klassisk (från OI Shopping List)"
 
 #: tmp_strings.xml:137(string)
 msgid "Android (from OI Shopping List)"
-msgstr ""
+msgstr "Android (från OI Shopping List)"
 
 #. Button label "OK"
 #: tmp_strings.xml:141(string)
@@ -344,11 +347,11 @@ msgstr "Avbryt"
 
 #: tmp_strings.xml:144(string)
 msgid "Use this theme for all lists"
-msgstr ""
+msgstr "Använd detta tema för alla listor"
 
 #: tmp_strings.xml:145(string)
 msgid "Get more themes"
-msgstr ""
+msgstr "Hämta mer teman"
 
 #. preferences
 #: tmp_strings.xml:148(string)
@@ -417,11 +420,11 @@ msgstr ""
 
 #: tmp_strings.xml:166(string)
 msgid "Load last list used"
-msgstr ""
+msgstr "Ladda senaste listan"
 
 #: tmp_strings.xml:167(string)
 msgid "Always start with the list viewed last time."
-msgstr ""
+msgstr "Starta alltid med senaste listan"
 
 #: tmp_strings.xml:168(string)
 msgid "Capitalization"
@@ -437,21 +440,21 @@ msgstr "Välj typ av versaler"
 
 #: tmp_strings.xml:171(string)
 msgid "Hide checked items"
-msgstr ""
+msgstr "Göm bockade poster"
 
 #: tmp_strings.xml:172(string)
 msgid "Immediately hide items checked off."
-msgstr ""
+msgstr "Göm genast bockade poster"
 
 #: tmp_strings.xml:173(string)
 msgid "Show price"
-msgstr ""
+msgstr "Visa pris"
 
 #: tmp_strings.xml:174(string) tmp_strings.xml:185(string)
 #: tmp_strings.xml:187(string) tmp_strings.xml:189(string)
 #: tmp_strings.xml:191(string)
 msgid "Shown as extra column in list."
-msgstr ""
+msgstr "Visa som extra kolumn i listan"
 
 #: tmp_strings.xml:175(string)
 msgid "Per-store prices"
@@ -491,11 +494,11 @@ msgstr ""
 
 #: tmp_strings.xml:184(string)
 msgid "Show tags"
-msgstr ""
+msgstr "Visa taggar"
 
 #: tmp_strings.xml:186(string)
 msgid "Show quantity"
-msgstr ""
+msgstr "Visa antal"
 
 #: tmp_strings.xml:188(string)
 msgid "Show priority"
@@ -553,7 +556,7 @@ msgstr ""
 #. Preference title: Shake the phone to clean up the list.
 #: tmp_strings.xml:207(string)
 msgid "Shake to clean up"
-msgstr ""
+msgstr "Skaka för att rensa"
 
 #. Preference summary: Shake the phone to clean up the list.
 #: tmp_strings.xml:210(string)
@@ -583,15 +586,15 @@ msgstr "Utseende"
 
 #: tmp_strings.xml:221(string)
 msgid "Add-ons"
-msgstr ""
+msgstr "Tillägg"
 
 #: tmp_strings.xml:222(string)
 msgid "Get new add-ons"
-msgstr ""
+msgstr "Hämta nya tillägg"
 
 #: tmp_strings.xml:223(string)
 msgid "Search for extensions and themes online."
-msgstr ""
+msgstr "Sök tillägg och teman online"
 
 #: tmp_strings.xml:224(string)
 msgid "Get add-ons from Market"
@@ -813,9 +816,8 @@ msgid "Next page"
 msgstr ""
 
 #: tmp_strings.xml:342(string)
-#, fuzzy
 msgid "Choose a list"
-msgstr "Välj typ av versaler"
+msgstr ""
 
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"

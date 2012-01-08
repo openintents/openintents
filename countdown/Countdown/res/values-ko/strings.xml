@@ -6,24 +6,25 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  CSro https://launchpad.net/~choongsan</string>
+  CSro https://launchpad.net/~choongsan
+  Jihyeok Seo https://launchpad.net/~limeburst</string>
 	
     <!-- Short explanation of the application -->
-	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
+	<string name="about_comments">OI 카운트다운은 정해둔 시간이 다 되면 알려줍니다.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
-    <string name="app_name">OI Countdown</string>
+    <string name="app_name">OI 카운트다운</string>
     
     <string name="start">시작</string>
     <string name="stop">정지</string>
     <string name="modify">수정</string>
     <string name="cont">계속</string>
     
-	<string name="no_durations">Use menu to add new countdown.</string>
-	<string name="countdown_list">Countdown list</string>
+	<string name="no_durations">메뉴를 사용해서 카운트다운을 추가하세요.</string>
+	<string name="countdown_list">카운트다운 목록</string>
 	
     <string name="menu_delete">삭제</string>
     <string name="menu_edit">편집</string>
@@ -31,18 +32,18 @@
     <string name="menu_pick_ringtone">벨소리</string>
     
     <!-- Menu item: Set the countdown by setting a final date or deadline. -->
-    <string name="menu_set_date">Set date</string>
+    <string name="menu_set_date">날짜 설정</string>
     
     <!-- Menu item: Set the countdown by setting a duration. -->
-    <string name="menu_set_duration">Set duration</string>
+    <string name="menu_set_duration">시간 설정</string>
     
     <!-- Menu item: Set the action to be performed at the end of the countdown. -->
-    <string name="menu_set_action">Set action</string>
+    <string name="menu_set_action">동작 설정</string>
     
     <string name="hint_title">예. 피자</string>
     
     <!-- Title of the activity for setting (editing) the countdown. -->
-    <string name="title_setcountdown">Set countdown</string>
+    <string name="title_setcountdown">카운트다운 설정</string>
     
     <!-- Title of the activity for creating a new countdown. -->
     <string name="title_create">초읽기 생성</string>
@@ -54,7 +55,7 @@
     <string name="title_pick">초읽기 선택</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
-    <string name="title_setcountdown_action">OI Countdown</string>
+    <string name="title_setcountdown_action">OI 카운트다운</string>
     
     <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
 	<string name="error_title">오류</string>
@@ -65,13 +66,13 @@
 	<!-- <string name="countdown_ended">Countdown ended</string>  -->
 	
 	<!-- Checkbox label whether to notifications. -->
-	<string name="notification_in_status_bar">Notification in status bar</string>
+	<string name="notification_in_status_bar">상태 표시줄에 알림 보이기</string>
 	
 	<!-- Checkbox label whether to launch automation task through the status bar -->
-	<string name="launch_through_status_bar">Launch through status bar</string>
+	<string name="launch_through_status_bar">상태 표시줄에서 실행하기</string>
 	
 	<!-- Checkbox label whether to use the ring tone for notifications. -->
-	<string name="ring">Ring</string>
+	<string name="ring">소리</string>
 	
 	<!-- Checkbox label whether to vibrate. -->
 	<string name="vibrate">진동</string>
@@ -80,13 +81,13 @@
 	<string name="light">조명</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="action">Action: %s</string>
+	<string name="action">동작: %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="select_action">Select action: %s</string>
+	<string name="select_action">동작 선택: %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="select_countdown">Select countdown: %s</string>
+	<string name="select_countdown">카운트다운 선택: %s</string>
 	
 	<!-- Button to test an action. -->
 	<string name="test">시험</string>
@@ -98,7 +99,7 @@
 	<string name="dismiss">버리기</string>
 	
 	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
-	<string name="days">days</string>
+	<string name="days">일</string>
 	
 	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
 	<string name="day">일</string>
@@ -110,17 +111,17 @@
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
 	<string name="group_shortcuts">단축키</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
-	<string name="group_automation_tasks">Automation tasks</string>
+	<string name="group_automation_tasks">자동화 작업</string>
 	
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
 	<string name="title_select_shortcut">단축키 선택</string>
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_automation_task">Select automation task</string>
+	<string name="title_select_automation_task">자동화 작업 선택</string>
 	
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
-	<string name="activity_picker_label">Select activity</string>
+	<string name="activity_picker_label">동작 선택</string>
  
 	<!-- Arrays -->
 	
@@ -141,24 +142,24 @@
     <string name="preference_extensions">확장 기능</string>
     <string name="preference_get_extensions">새 확장기능 가져오기</string>
     <string name="preference_get_extensions_summary">온라인에서 확장기능 찾기</string>
-    <string name="preference_get_extensions_from">Get extensions from</string>
+    <string name="preference_get_extensions_from">다음 위치에서 확장 기능 받기</string>
     <string name="preference_extensions_market">안드로이드 마켓</string>
     <string name="preference_extensions_market_summary">안드로이드 마켓에서 검색하기</string>
     <string name="preference_extensions_developer">OpenIntents</string>
-    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+    <string name="preference_extensions_developer_summary">OpenIntents에서 확장 기능 받기.</string>
 	
 	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_title">Notification timeout</string>
+    <string name="preference_notification_timeout_title">알림 타임아웃</string>
     
     <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_summary">Timeout for ring, vibrate, or light notification.</string>
+    <string name="preference_notification_timeout_summary">소리, 진동, 빛 알림에 대한 타임아웃.</string>
     
     <!-- Dialog title to set timeout for notification -->
-    <string name="preference_notification_timeout_dialog_title">Set timeout</string>
+    <string name="preference_notification_timeout_dialog_title">타임아웃 설정</string>
     
     <!-- Timeout for notifications -->
     <string-array name="preference_notification_timeout_entries">
-        <item>2 seconds</item>
+        <item>2 초</item>
         <item>5 초</item>
         <item>10 초</item>
         <item>30 초</item>

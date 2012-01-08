@@ -6,10 +6,10 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  CSro https://launchpad.net/~choongsan</string>
+  Jihyeok Seo https://launchpad.net/~limeburst</string>
 	
     <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_comments">OpenIntents 전등은 어두운 주변을 밝힐 수 있도록 도와줍니다. 앱이 실행되고 있는 중이라면 화면 백라이트를 켜 두어 주변을 밝혀줍니다.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -17,23 +17,23 @@
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI 전등</string>
     
-    <string name="backlight_info">The backlight stays turned on.</string>
+    <string name="backlight_info">백라이트가 켜진 상태로 유지됩니다.</string>
     
     <string name="color">색</string>
     
     <!-- Application name should be consistent across translations. -->
-    <string name="color_picker">OI Color Picker</string>
+    <string name="color_picker">OI 색 추출기</string>
     
-    <string name="preferences">Preferences</string>
+    <string name="preferences">설정</string>
     
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
 	
 	<!-- Title for preferences or settings -->
-	<string name="settings_titlebar">Preferences</string>
-	<string name="settings_title_keep_color">Keep color</string>
-	<string name="settings_summary_keep_color">Save color for next time Flashlight app is started</string>
+	<string name="settings_titlebar">설정</string>
+	<string name="settings_title_keep_color">색 유지하기</string>
+	<string name="settings_summary_keep_color">OI 전등이 다음 번에 실행될 때 까지 색을 저장합니다.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -41,11 +41,11 @@
 	
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.</string>
-    <string name="setting_use_camera_flash">Use camera flash</string>
-    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <string name="color_picker_modularization_explanation">색 추출기를 다른 개발자들이 사용할 수 있도록 두 앱으로 나누었습니다.</string>
+    <string name="setting_use_camera_flash">카메라 플래시 사용하기</string>
+    <string name="setting_use_camera_flash_summary">화면 백라이트 대신 카메라 플래시를 사용합니다.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
     <!-- Information to enable the camera flash as flashlight. -->
-    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
-    <string name="cameralight_stop_info">Press to disable camera light.</string>
+    <string name="cameralight_info">눌러서 카메라 플래시를 켜세요 (일 초 정도 걸립니다)</string>
+    <string name="cameralight_stop_info">눌러서 카메라 플래시를 끄세요.</string>
     
 </resources>

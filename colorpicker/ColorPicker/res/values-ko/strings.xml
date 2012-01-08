@@ -6,7 +6,8 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Jihyeok Seo https://launchpad.net/~limeburst</string>
+  Jihyeok Seo https://launchpad.net/~limeburst
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">OpenIntents 색 추출기는 OI 전등과, 다른 호환되는 앱의 확장 기능입니다.</string>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Ben Jordan https://launchpad.net/~ben-jordan86</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">رنگ است كه آشغال openintents جمعكن  ميخواندندOI چراغ قوه برای گسترش و ديگر سازگار باشد.</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI رنگ آشغال جمعكن</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">رنگ آشغال جمعكن</string>
+    
+    <string name="recent_colors_condensed">اخیر</string>
+    <string name="recent_colors">رنگهاي اخير</string>
+    <string name="recent_colors_expanded">انتخاب رنگ اخیرا</string>
+    <string name="recent_colors_clear_history">روشن است</string>
+    <string name="recent_colors_empty">در انتخاب رنگ اخيرا وجود ندارد.</string>
+    
+    <string name="confirm_color_title">استفاده از رنگ?</string>
+    <string name="confirm_color_message">استفاده از اين جديد بود. میتوانید اجتناب? از اين پيام را با كارت اعتباريشان پرداخت در مركز دايره ميباشد.</string>
+    
+    
+	<!-- About -->
+	<string name="about">در مورد</string>
+	<string name="aboutapp_not_available">نسخه %s\n\n سازگار تمديد كامل در اختيار تظاهر فرستنده فرانس اينفو (تماس با, اعتبارات, هرزگي).</string>
+	<string name="aboutapp_get">هر چه زودتر OI در مورد</string>
+
+
+	<!-- Update -->
+	<string name="update_error">تقاضاى تقاضاى دانلود نيست.دانلود نيست.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">در انتخاب رنگ OI چراغ قوه, آزادي مطبوعات فهرست‌ انتخاب‌ &gt; رنگ‌........</string>
+    <string name="title_app_flashlight">OI لامپ‌ عكاسي‌</string>
+    
+    <string name="info_app_spiral_wallpaper">هيپنوتيزم‌ زنده زنده مارپيچ باکاغذدیواری تزءین کردن.</string>
+    <string name="title_app_spiral_wallpaper">هيپنوتيزم‌ زنده زنده مارپيچ باکاغذدیواری تزءین کردن.</string>
+    
+    <string name="info_app_bettr_flickr">رابط کاربری فلیکر بر بومي به.</string>
+    <string name="title_app_bettr_flickr">Bettrفلیکر</string>
+    
+    <string name="info_app_character_gen">مخلوط توليد هنرى و بازي قهرمانان هايی هنرندانه</string>
+    <string name="title_app_character_gen">دخشه‌ زا هايی هنرندانه</string>
+    
+    
+	<string name="info_activity_text">اين  را می توان با برنامه های می تواند با اين درخواست:</string>
+    <string name="info_launch">پرت‌ كردن‌ %s</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">اين مستلزمنرم افزار %1$s %2$s و یا بالاتر</string>
+	<string name="info_get">هر چه زودتر %s</string>
+</resources>

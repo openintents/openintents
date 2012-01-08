@@ -51,6 +51,6 @@
     <string name="setting_use_camera_flash_summary">Benutze den Kamera Blitz anstelle der Bildschirmbeleuchtung.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
     <!-- Information to enable the camera flash as flashlight. -->
     <string name="cameralight_info">Klicken Sie, um das Kameralicht zu aktivieren. (Kann einige Sekunden dauern)</string>
-    <string name="cameralight_stop_info">Klicken Sie, um das Kameralicht dezuaktivieren.</string>
+    <string name="cameralight_stop_info">Klicken Sie, um das Kameralicht zu deaktivieren.</string>
     
 </resources>

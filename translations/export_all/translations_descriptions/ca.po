@@ -1,0 +1,588 @@
+# Catalan translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Joan Creus <Unknown>\n"
+"Language-Team: Catalan <ca@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#: tmp_strings.xml:3(translators)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Joan Creus https://launchpad.net/~joan-creus-c"
+
+#. Description of application
+#: tmp_strings.xml:12(string)
+msgid "OI About is a standalone about dialog that is shared between apps."
+msgstr ""
+"OI Quant a és un diàleg independent que es comparteix entre aplicacions."
+
+#: tmp_strings.xml:13(string)
+msgid "This application is invoked through the menu of other OI applications."
+msgstr ""
+"Aquesta aplicació s'invoca mitjançant el menú d'altres aplicacions d'OI."
+
+#: tmp_strings.xml:14(string)
+msgid ""
+"It allows you to view version information, links, credits, and license of an "
+"application."
+msgstr ""
+"Et permet veure informació de la versió, enllaços, crèdits i la llicència "
+"d'una aplicació."
+
+#: tmp_strings.xml:15(string)
+msgid "Credits include authors, documentation, translators, and artists."
+msgstr "Els crèdits inclouen els autors, documentació, traductors i artistes."
+
+#: tmp_strings.xml:16(string)
+msgid ""
+"All of this functionality is brought together in a simplistic and efficient "
+"layout."
+msgstr "Tota aquesta funcionalitat s'aporta en un format simple i efficient."
+
+#: tmp_strings.xml:18(string) tmp_strings.xml:68(string)
+#: tmp_strings.xml:121(string) tmp_strings.xml:168(string)
+#: tmp_strings.xml:223(string) tmp_strings.xml:281(string)
+msgid ""
+"This application is ad free and does not require the internet permission."
+msgstr "Aquesta aplicació no té anuncis i no necessita permisos a Internet."
+
+#: tmp_strings.xml:20(string) tmp_strings.xml:76(string)
+#: tmp_strings.xml:123(string) tmp_strings.xml:170(string)
+#: tmp_strings.xml:231(string) tmp_strings.xml:278(string)
+msgid ""
+"The source code of this free and open source application is available at:"
+msgstr ""
+"El codi font d'això és lliure i l'aplicació de codi obert està disponible a:"
+
+#: tmp_strings.xml:23(string) tmp_strings.xml:70(string)
+#: tmp_strings.xml:126(string) tmp_strings.xml:173(string)
+#: tmp_strings.xml:225(string) tmp_strings.xml:283(string)
+msgid ""
+"For the complete list of changes and a list of frequently asked questions, "
+"please visit:"
+msgstr ""
+"Per a una llista sencera de canvis i una llista de preguntes més freqüents, "
+"vegeu:"
+
+#: tmp_strings.xml:26(string) tmp_strings.xml:73(string)
+#: tmp_strings.xml:129(string) tmp_strings.xml:176(string)
+#: tmp_strings.xml:228(string) tmp_strings.xml:286(string)
+msgid ""
+"You can help to improve the translation into your language at Launchpad:"
+msgstr "Podeu ajudar a millorar la traducció al vostre idioma a Launchpad"
+
+#: tmp_strings.xml:29(string) tmp_strings.xml:79(string)
+#: tmp_strings.xml:132(string) tmp_strings.xml:179(string)
+#: tmp_strings.xml:234(string) tmp_strings.xml:289(string)
+msgid "Features:"
+msgstr "Característiques"
+
+#: tmp_strings.xml:30(listitem)
+msgid "Shows general info, credits, and license tabs."
+msgstr "Mostra pestanyes d'informació general, crèdits i llicència"
+
+#: tmp_strings.xml:31(listitem)
+msgid "Shows translators of all language versions."
+msgstr "Mostra els traductors de totes les versions idiomàtiques."
+
+#: tmp_strings.xml:32(listitem)
+msgid ""
+"Retrieves information from application manifest through default tags and "
+"metadata."
+msgstr ""
+"Aconsegueix informació del manifest de l'aplicació mitjançant les etiquetes "
+"per defecte i metadades."
+
+#: tmp_strings.xml:33(listitem)
+msgid "Optionally, all fields can be modified through intent extras."
+msgstr ""
+"Opcionalment, es poden modificar tots els camps mitjançant extres d'intent."
+
+#: tmp_strings.xml:35(string)
+msgid "Applications that work with \"OI About\":"
+msgstr "Aplicacions que funcionen amb \"OI Quant a\":"
+
+#: tmp_strings.xml:36(listitem)
+msgid "OI Notepad"
+msgstr "Bloc de notes d'OI"
+
+#: tmp_strings.xml:37(listitem)
+msgid "OI File manager"
+msgstr "Gestor de fitxers d'OI"
+
+#: tmp_strings.xml:38(listitem)
+msgid "OI Shopping List"
+msgstr "Llista de compra d'OI"
+
+#: tmp_strings.xml:39(listitem)
+msgid "OI Convert CSV"
+msgstr "Convertor a CSV d'OI"
+
+#: tmp_strings.xml:40(listitem)
+msgid "OI Safe"
+msgstr "OI Segur"
+
+#: tmp_strings.xml:41(listitem)
+msgid "OI Countdown"
+msgstr "Compte enrere d'OI"
+
+#: tmp_strings.xml:42(listitem)
+msgid "OI Flashlight"
+msgstr "OI Flashlight"
+
+#: tmp_strings.xml:44(string) tmp_strings.xml:94(string)
+#: tmp_strings.xml:144(string) tmp_strings.xml:201(string)
+#: tmp_strings.xml:251(string) tmp_strings.xml:308(string)
+msgid "Keywords:"
+msgstr "Paraules clau:"
+
+#: tmp_strings.xml:45(listitem)
+msgid "About, Credits, Information."
+msgstr "Quant a, crèdits, informació."
+
+#: tmp_strings.xml:46(listitem)
+msgid "OI, OpenIntents, Open Intents."
+msgstr "OI, OpenIntents, Open Intents."
+
+#: tmp_strings.xml:48(string) tmp_strings.xml:100(string)
+#: tmp_strings.xml:148(string) tmp_strings.xml:205(string)
+#: tmp_strings.xml:257(string) tmp_strings.xml:312(string)
+msgid "International versions:"
+msgstr "Versions internacionals:"
+
+#: tmp_strings.xml:51(string) tmp_strings.xml:103(string)
+#: tmp_strings.xml:151(string) tmp_strings.xml:208(string)
+#: tmp_strings.xml:260(string)
+msgid "Search strings for Market:"
+msgstr "Cerca cadenes al Mercat:"
+
+#. Description of application
+#: tmp_strings.xml:65(string)
+msgid ""
+"OI File Manager allows you to browse your SD card, create directories, "
+"rename, copy, move, and delete files."
+msgstr ""
+"El gestor de fitxers d'OI et permet navegar per la teva targeta SD, crear "
+"directoris, reanomenar, moure i esborrar fitxers."
+
+#: tmp_strings.xml:66(string)
+msgid ""
+"It also acts as an extension to other applications to display \"Open\" and "
+"\"Save\" dialogs."
+msgstr ""
+"També actua com a extensió a altres aplicacions per mostrar diàlegs \"Obre\" "
+"i \"Desa\"."
+
+#: tmp_strings.xml:80(listitem)
+msgid "Show list of files with thumbnails for images."
+msgstr "Mostra una llista de fitxers amb previsualitzacions d'imatges."
+
+#: tmp_strings.xml:81(listitem)
+msgid "Move, copy, rename, and delete files."
+msgstr "Mou, copia, reanomena i esborra fitxers."
+
+#: tmp_strings.xml:82(listitem)
+msgid "Create and delete directories (folders)."
+msgstr "Crea i esborra directoris (carpetes)."
+
+#: tmp_strings.xml:83(listitem)
+msgid "Send files by email."
+msgstr "Envia fitxers per correu electrònic."
+
+#: tmp_strings.xml:84(listitem)
+msgid ""
+"Acts as an extension to other applications, like GMail, to attach files."
+msgstr ""
+"Actua com a extensió a altres aplicacions, com el GMail, per adjuntar "
+"fitxers."
+
+#: tmp_strings.xml:85(listitem)
+msgid "Support for many file endings and mime types."
+msgstr "Suporta moltes extensions de fitxer i tipus mime."
+
+#: tmp_strings.xml:86(listitem)
+msgid ""
+"Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can "
+"use OI File Manager."
+msgstr ""
+"Suporta els intents PICK_FILE I PICK_DIRECTORY per tal que altres "
+"aplicacions puguin utilitzar el gestor de fitxers d'OI."
+
+#: tmp_strings.xml:88(string) tmp_strings.xml:245(string)
+msgid "Available extensions for \"OI File Manager\":"
+msgstr "Extensions disponibles per al gestor de fitxers d'OI:"
+
+#: tmp_strings.xml:89(listitem) tmp_strings.xml:138(listitem)
+#: tmp_strings.xml:190(listitem) tmp_strings.xml:246(listitem)
+#: tmp_strings.xml:300(listitem)
+msgid "Show the license information with \"OI About\"."
+msgstr "Mostra informació de llicència amb \"OI Quant a\""
+
+#: tmp_strings.xml:91(string) tmp_strings.xml:248(string)
+msgid "Applications that work with \"OI File Manager\":"
+msgstr "Aplicacions que funcionen amb el \"gestor de fitxers d'OI\":"
+
+#: tmp_strings.xml:92(listitem)
+msgid "Open and save text files in \"OI Notepad\"."
+msgstr "Obre i desa fitxers de text amb el \"bloc de notes d'OI\"."
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:96(listitem)
+msgid "file manager, filemanager, file explorer"
+msgstr "gestor de fitxers, explorador de fitxers, explorador"
+
+#. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
+#: tmp_strings.xml:98(listitem) tmp_strings.xml:255(listitem)
+msgid "OI, IO, OpenIntents, Open Intents"
+msgstr "OI, IO, OpenIntents, Open Intents"
+
+#. Description of application
+#: tmp_strings.xml:116(string)
+msgid ""
+"OI Flashlight is a simple and effective application that helps you find a "
+"way in the dark."
+msgstr ""
+"OI Flashlight és una aplicació simple i efectiva que et permet trobar un "
+"camí entre la foscor."
+
+#: tmp_strings.xml:117(string)
+msgid ""
+"OI Flashlight locks the display backlight on, clearly illuminating the "
+"surrounding area."
+msgstr ""
+"OI Flashlight bloqueja la llum de fons, il·luminant clarament l'àrea al "
+"voltant."
+
+#: tmp_strings.xml:118(string)
+msgid ""
+"For devices with a camera flash, OI Flashlight can also use the flash as a "
+"bright torch to brighten the room."
+msgstr ""
+"Per a dispositius amb càmera amb flaix OI Flashlight també pot utilitzar el "
+"flaix com a llanterna per il·luminar l'habitació."
+
+#: tmp_strings.xml:119(string)
+msgid ""
+"The color of the backlight is completely customizable with OI Color Picker."
+msgstr ""
+"El color de la llum de fons és completament personalitzable amb el "
+"capturador de colors d'OI."
+
+#: tmp_strings.xml:133(listitem)
+msgid "Lock the display backlight on."
+msgstr "Manté bloquejada la llum de fons."
+
+#: tmp_strings.xml:134(listitem)
+msgid "Lock camera flash on."
+msgstr "Manté el flaix de càmera activat."
+
+#: tmp_strings.xml:135(listitem)
+msgid "The color of backlight is customizable."
+msgstr "El color de la llum de fons és personalitzable."
+
+#: tmp_strings.xml:137(string)
+msgid "Available extensions for \"OI Flashlight\":"
+msgstr "Extensions dispònibles per a l'\"OI Flashlight\":"
+
+#: tmp_strings.xml:139(listitem)
+msgid "Change the color of the backlight with \"OI Color Picker\"."
+msgstr ""
+"Canvia el color de la llum de fons amb el \"Capturador de Colors d'OI\"."
+
+#: tmp_strings.xml:141(string)
+msgid "Applications that work with \"OI Flashlight\":"
+msgstr "Aplicacions que funcionen amb l'\"OI Flashlight\":"
+
+#: tmp_strings.xml:142(listitem) tmp_strings.xml:198(listitem)
+#: tmp_strings.xml:304(listitem)
+msgid "Update with \"OI Update\"."
+msgstr "Actualitza amb \"OI Update\"."
+
+#: tmp_strings.xml:145(listitem)
+msgid "Flashlight, light, Backlight"
+msgstr "Flashlight, light, llanterna, llum de fons"
+
+#: tmp_strings.xml:146(listitem) tmp_strings.xml:203(listitem)
+#: tmp_strings.xml:310(listitem)
+msgid "OI, OpenIntents, Open Intents"
+msgstr "OI, OpenIntents, Open Intents"
+
+#. Description of application
+#: tmp_strings.xml:163(string)
+msgid "OI Notepad is a full-featured open source note taking application."
+msgstr ""
+"El bloc de notes d'OI és una aplicació de codi obert amb moltes "
+"característiques que et permet prendre notes."
+
+#: tmp_strings.xml:164(string)
+msgid ""
+"With it you can tag, search, and send your notes, in addition to basic "
+"functionality such as creating, deleting, and editing notes."
+msgstr ""
+"Amb ella, pots etiquetar, cercar i enviar les teves notes, a part de "
+"funcions bàsiques com crear-ne, esborrar-ne o editar-ne."
+
+#: tmp_strings.xml:165(string)
+msgid ""
+"Advanced features like encryption, import/export, and voice memos are all "
+"available through extensions."
+msgstr ""
+"També hi ha característiques avançades com encriptació, importació/"
+"exportació i memos de veu disponibles per mitjà d'extensions."
+
+#: tmp_strings.xml:166(string)
+msgid ""
+"All of this functionality is brought together in a simplistic and efficient "
+"layout, customizable through a variety of themes."
+msgstr ""
+"Totes aquestes funcions són disponibles en un format simple i eficient, "
+"personalitzable per mitjà d'un grapat de temes."
+
+#: tmp_strings.xml:180(listitem)
+msgid "Add, edit and delete notes."
+msgstr "Afegeix, edita i esborra notes."
+
+#: tmp_strings.xml:181(listitem)
+msgid "Long-press on notes to add tags."
+msgstr "Prem una estona a les notes per afegir-hi etiquetes."
+
+#: tmp_strings.xml:182(listitem)
+msgid "Change font size and sort order."
+msgstr "Canvia la mida de lletra i l'ordenació."
+
+#: tmp_strings.xml:183(listitem)
+msgid "A clearly arranged layout with a variety of themes."
+msgstr "Un disseny arranjat clarament amb una diversitat de temes."
+
+#: tmp_strings.xml:184(listitem)
+msgid "Quickly search through notes."
+msgstr "Cerca ràpidament per mitjà de notes."
+
+#: tmp_strings.xml:185(listitem)
+msgid "Send notes as MMS or SMS."
+msgstr "Envia notes com a MMS o SMS."
+
+#: tmp_strings.xml:187(string)
+msgid "Available extensions for \"OI Notepad\":"
+msgstr "Extensions disponibles per al \"bloc de notes d'OI\":"
+
+#: tmp_strings.xml:188(listitem)
+msgid "Record and attach voice memos to notes with \"OI Voice Notes\"."
+msgstr "Registra i adjunta memos de veu a notes amb \"Notes de veu d'OI\"."
+
+#: tmp_strings.xml:189(listitem)
+msgid "With \"OI Convert CSV\" import/export notes from the SD card."
+msgstr ""
+"Amb \"Converteix a CSV d'OI\", importa i exporta notes d'una targeta SD."
+
+#: tmp_strings.xml:191(listitem)
+msgid "Insert the date and time into notes with \"OI Insert Date\"."
+msgstr "Insereix la data i el temps en notes amb \"Inserció de data d'OI\"."
+
+#: tmp_strings.xml:192(listitem)
+msgid "Turn text upside down with \"Upside Down\"."
+msgstr "Gira el text cap per avall amb \"Cap per avall\"."
+
+#: tmp_strings.xml:194(string)
+msgid "Applications that work with \"OI Notepad\":"
+msgstr "Aplicacions que funcionen amb el \"bloc de notes d'OI\"."
+
+#: tmp_strings.xml:195(listitem)
+msgid "Back up notes with \"My Backup Pro\"."
+msgstr "Fes còpies de seguretat de notes amb \"My Backup Pro\"."
+
+#: tmp_strings.xml:196(listitem)
+msgid "Encrypt notes using \"OI Safe\"."
+msgstr "Encripta notes amb \"OI Safe\"."
+
+#: tmp_strings.xml:197(listitem)
+msgid "Manage notes on your SD Card with \"OI File Manager\"."
+msgstr "Controla notes a la teva targeta SD amb el \"gestor de fitxers d'OI\"."
+
+#: tmp_strings.xml:199(listitem)
+msgid ""
+"Share notes through \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", and "
+"many other applications."
+msgstr ""
+"Comparteix notes per mitjà del \"Facebook\", \"Gmail\", \"Google+\", "
+"\"Twitter\", i moltes altres aplicacions."
+
+#: tmp_strings.xml:202(listitem)
+msgid "Note, Notepad, Note book, Notes"
+msgstr "Nota, bloc de notes, llibre de notes, notes, bloc"
+
+#. Description of application
+#: tmp_strings.xml:220(string)
+msgid ""
+"OI Safe safely protects all of your passwords and other private data using "
+"industry standard AES encryption."
+msgstr ""
+"OI Safe protegeix de forma segura totes les teves contrasenyes i altres "
+"dades privades emprant l'estàndard industrial d'encriptació AES."
+
+#: tmp_strings.xml:221(string)
+msgid ""
+"It also acts as an extension to OI Notepad to encrypt notes created in OI "
+"Notepad."
+msgstr ""
+"També actua com a extensió del bloc de notes d'OI per encriptar notes d'un "
+"bloc de notes d'OI."
+
+#: tmp_strings.xml:235(listitem)
+msgid "Securely protect data using AES encryption."
+msgstr "Protegeix de forma segura dades emprant encriptació AES."
+
+#: tmp_strings.xml:236(listitem)
+msgid "Freely move data entries between categories."
+msgstr "Mou lliurement entrades de dades entre categories."
+
+#: tmp_strings.xml:237(listitem)
+msgid "Import/Export data entries and databases."
+msgstr "Importa o exporta entrades de dades i bases de dades"
+
+#: tmp_strings.xml:238(listitem)
+msgid "Backup/Restore entries."
+msgstr "Fes còpies de seguretat o restaura entrades."
+
+#: tmp_strings.xml:239(listitem)
+msgid "Includes secure password generator."
+msgstr "Inclou un generador de contrasenyes segur."
+
+#: tmp_strings.xml:240(listitem)
+msgid "Automatic timeout to protect encrypted documents."
+msgstr "Temps d'espera automàtic per protegir documents encriptats."
+
+#: tmp_strings.xml:241(listitem)
+msgid "Encrypt OI Notepad notes."
+msgstr "Encripta notes del bloc de notes d'OI."
+
+#: tmp_strings.xml:242(listitem)
+msgid "Support for Obscura picture safe."
+msgstr "Suport per a Obscura picture safe."
+
+#: tmp_strings.xml:243(listitem)
+msgid "MyBackup Pro."
+msgstr "MyBackup Pro."
+
+#: tmp_strings.xml:249(listitem)
+msgid "Encrypt notes created in \"OI Notepad\"."
+msgstr "Encripta notes creades al \"bloc de notes d'OI\""
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:253(listitem)
+msgid "safe, encrpytion, password, protection"
+msgstr "segur, encriptació, contrasenya, protecció"
+
+#. Description of application
+#: tmp_strings.xml:272(string)
+msgid ""
+"OI Shopping List is a powerful application which makes it easy to create and "
+"manage checklists."
+msgstr ""
+"La llista de compra d'OI és una aplicació potent que fa fàcil crear i "
+"controlar llistes de coses a fer."
+
+#: tmp_strings.xml:273(string)
+msgid ""
+"OI Shopping List makes it easy to add items to a list, check the item off, "
+"and remove it from the list."
+msgstr ""
+"La llista de compra d'OI fa ben fàcil afegir elements a una llista, activar "
+"l'element, i treure'l de la llista."
+
+#: tmp_strings.xml:274(string)
+msgid ""
+"The application can track separate prices for each store that you use, and "
+"features a high level of customization."
+msgstr ""
+"L'aplicació pot controlar diverses peces separades per a cada botiga que "
+"utilitzes, i té un alt nivell de personalització."
+
+#: tmp_strings.xml:275(string)
+msgid ""
+"Font size, sort order, list columns, and list cleanup behavior are all "
+"settings controlled by the user."
+msgstr ""
+"La mida de lletra, ordenació, columnes de la llista i comportament de la "
+"neteja de la llista són preferències controlables per l'usuari."
+
+#: tmp_strings.xml:276(string)
+msgid ""
+"All of these features are brought together in a crisp layout that is "
+"customizable through a variety of themes."
+msgstr ""
+"Totes aquestes característiques s'ajunten en un disseny que és "
+"personalitzable per mitjà d'un grapat de temes."
+
+#: tmp_strings.xml:290(listitem)
+msgid "Add, edit and delete lists."
+msgstr "Afegeix, edita i esborra llistes."
+
+#: tmp_strings.xml:291(listitem)
+msgid "Create, delete, and check items quickly and easily."
+msgstr "Crea, esborra i activa elements fàcilment i ràpida."
+
+#: tmp_strings.xml:292(listitem)
+msgid "Variety of themes."
+msgstr "Diversitat de temes."
+
+#: tmp_strings.xml:293(listitem)
+msgid "Customizable font size and sort order."
+msgstr "Mida de lletra i ordenació personalitzables."
+
+#: tmp_strings.xml:294(listitem)
+msgid "Keep track of separate prices for each store."
+msgstr "Recorda diversos preus per a cada botiga."
+
+#: tmp_strings.xml:295(listitem)
+msgid "Customizable list columns."
+msgstr "Columnes de la llista personalitzables."
+
+#: tmp_strings.xml:297(string)
+msgid "Available extensions for \"OI Shopping List\":"
+msgstr "Extensions disponibles per a la \"llista de compra d'OI\":"
+
+#: tmp_strings.xml:298(listitem)
+msgid "Add a recorded message to a note with \"OI Voice Notes\"."
+msgstr "Afegeix un missatge gravat a una nota amb \"notes de veu d'OI\"."
+
+#: tmp_strings.xml:299(listitem)
+msgid "Import/export shopping lists with \"OI Convert CSV\"."
+msgstr "Importa o exporta llistes de compra amb \"Converteix a CSV d'OI\"."
+
+#: tmp_strings.xml:301(listitem)
+msgid "Enter/check items with \"Barcode OI Plugin\"."
+msgstr "Entra o activa elements amb \"Extensió de codi de barres d'OI\"."
+
+#: tmp_strings.xml:303(string)
+msgid "Applications that work with \"OI Shopping List\":"
+msgstr "Aplicacions que funcionen amb la \"llista de compra d'OI\"."
+
+#: tmp_strings.xml:305(listitem)
+msgid "Backup lists with \"My Backup Pro\"."
+msgstr "Fes còpies de seguretat amb \"My Backup Pro\"."
+
+#: tmp_strings.xml:306(listitem)
+msgid "Import ingredients of recipes with \"Bites\"."
+msgstr "Importa ingredients de receptes amb \"Bites\"."
+
+#: tmp_strings.xml:309(listitem)
+msgid "Shopping, List, Shopping List, Checklist"
+msgstr "compra, llista, llista de compra, coses a fer"
+
+#: tmp_strings.xml:315(string)
+msgid "Extensions:"
+msgstr "Extensions:"

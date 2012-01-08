@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Liezl https://launchpad.net/~liezl-200</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">Ang OpenIntent plaslayt ay tumutulong sa iyo na hanapin ang daan sa dilim. Ang ilaw sa likod ng display ay pinanatiling naka bukas habang ang aplikasyon na ito ay tumatakbo</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Plaslayt</string>
+    
+    <string name="backlight_info">Ang ilaw sa likod ay pinanatiling naka bukas.</string>
+    
+    <string name="color">Kulay</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">OI Tagapili ng Kulay</string>
+    
+    <string name="preferences">Mga Kagustuhan</string>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<!-- Title for preferences or settings -->
+	<string name="settings_titlebar">Mga Kagustuhan</string>
+	<string name="settings_title_keep_color">Panatilihin ang kulay</string>
+	<string name="settings_summary_keep_color">I-save ang kulay para sa susunod na patakbuhin ang plaslayt</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
+		user tries to access it. -->
+    <string name="color_picker_modularization_explanation">Para mas maging kapaki-pakinabang sa ibang mga developer ang Tagapili ng Kulay, hiniwalay namin ito sa kanyang sariling app.</string>
+    <string name="setting_use_camera_flash">Gamitin ang flash ng kamera</string>
+    <string name="setting_use_camera_flash_summary">Gamitin ang flash ng kamera sa halip ng ilaw sa likod ng screen.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <!-- Information to enable the camera flash as flashlight. -->
+    <string name="cameralight_info">Pindutin para paganahin ang ilaw ng kamera (maaaring tumagal ng isang segundo).</string>
+    <string name="cameralight_stop_info">Pindutin para huwag paganahin ang ilaw ng kamera.</string>
+    
+</resources>

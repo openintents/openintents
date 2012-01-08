@@ -9,7 +9,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   OpenIntents devs https://launchpad.net/~openintents-devs
-  Piotr Łazarczyk https://launchpad.net/~quazarxd</string>
+  Piotr Łazarczyk https://launchpad.net/~quazarxd
+  Tomasz Zieliński https://launchpad.net/~tomek0517</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -70,7 +71,7 @@
     <!-- Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_barcodescanner">Barcode OI Plugin</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_barcodescanner_not_available">No compatible barcode scanner is available.</string>
+    <string name="oi_distribution_barcodescanner_not_available">Nie ma kompatybilnego skanera kodów kreskowych.</string>
     
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_filemanager">OI File Manager</string>

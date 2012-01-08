@@ -1,0 +1,352 @@
+# Korean translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Jihyeok Seo <Unknown>\n"
+"Language-Team: Korean <ko@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:25(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Jihyeok Seo https://launchpad.net/~limeburst"
+
+#. Explanation what this application does.
+#: tmp_strings.xml:28(string)
+msgid ""
+"This extension to OI Shopping list and OI Notepad lets you import and export "
+"lists and notes in the CSV file format."
+msgstr ""
+"이 확장은 OI 쇼핑 목록과 OI 메모장에서 목록과 메모를 CSV 형식으로 불러오거나 "
+"내보낼 수 있습니다."
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:34(string)
+msgid "OI Shopping List"
+msgstr "OI 쇼핑 목록"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:36(string) tmp_strings.xml:96(string)
+msgid "OI Notepad"
+msgstr "OI 메모장"
+
+#. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
+#: tmp_strings.xml:39(string)
+msgid "Launch %s and select menu &gt; Convert CSV."
+msgstr "%s 을(를) 실행하고 메뉴 &gt; CSV 변환 을 선택하세요."
+
+#. Application name. Can be localized.
+#. 	  "CSV" is a common file extension meaning "comma separated values".
+#. 	  "OI" and "CSV" should not be changed.
+#: tmp_strings.xml:47(string)
+msgid "OI Convert CSV"
+msgstr "OI CSV 변환기"
+
+#: tmp_strings.xml:48(string)
+msgid "Convert CSV"
+msgstr "CSV 변환하기"
+
+#: tmp_strings.xml:49(string)
+msgid "Convert CSV to Notepad"
+msgstr "메모장으로 CSV 변환하기"
+
+#: tmp_strings.xml:50(string)
+msgid "Convert CSV to Shopping list"
+msgstr "쇼핑 목록으로 CSV 변환하기"
+
+#: tmp_strings.xml:51(string)
+msgid "Convert all notes"
+msgstr "모든 메모 변환하기"
+
+#: tmp_strings.xml:52(string)
+msgid "Convert all shopping lists"
+msgstr "모든 쇼핑 목록 변환하기"
+
+#: tmp_strings.xml:53(string)
+msgid "Convert list '%s'"
+msgstr "목록 '%s' 변환하기"
+
+#: tmp_strings.xml:54(string)
+msgid "File path"
+msgstr "파일 경로"
+
+#: tmp_strings.xml:55(string)
+msgid "Import"
+msgstr "불러오기"
+
+#: tmp_strings.xml:56(string)
+msgid "Export"
+msgstr "내보내기"
+
+#: tmp_strings.xml:57(string)
+msgid "Error writing to file"
+msgstr "파일에 쓰는 데 오류가 발생했습니다"
+
+#: tmp_strings.xml:58(string)
+msgid "Error reading from file"
+msgstr "파일을 읽는 데 오류가 발생하였습니다"
+
+#: tmp_strings.xml:59(string)
+msgid "Wrong CSV format"
+msgstr "CSV 형식이 잘못되었습니다"
+
+#: tmp_strings.xml:60(string)
+msgid "File not found"
+msgstr "파일을 찾을 수 없습니다"
+
+#: tmp_strings.xml:61(string)
+msgid "Not yet implemented, please choose different option."
+msgstr "아직 구현되지 않은 기능입니다. 다른 옵션을 선택해 주세요."
+
+#: tmp_strings.xml:62(string)
+msgid "Import finished"
+msgstr "가져오기 완료"
+
+#: tmp_strings.xml:63(string)
+msgid "Export finished"
+msgstr "내보내기 완료"
+
+#: tmp_strings.xml:64(string)
+msgid "Select notepad CSV file"
+msgstr "메모장 CSV 파일을 선택하세요"
+
+#: tmp_strings.xml:65(string)
+msgid "Select shopping list CSV file"
+msgstr "쇼핑 목록 CSV 파일을 선택하세요"
+
+#: tmp_strings.xml:66(string)
+msgid "Current Import Policy:"
+msgstr "현재 불러오기 설정:"
+
+#: tmp_strings.xml:67(string)
+msgid "Import Policy"
+msgstr "불러오기 설정"
+
+#: tmp_strings.xml:68(string) tmp_strings.xml:83(string)
+msgid "Select the import policy to use"
+msgstr "사용할 불러오기 설정을 선택하세요"
+
+#: tmp_strings.xml:70(string)
+msgid "The file exists. Do you want to overwrite?"
+msgstr "파일이 이미 존재합니다. 덮어쓰겠습니까?"
+
+#: tmp_strings.xml:71(string)
+msgid "Don't ask again. Always overwrite!"
+msgstr "다음부터 묻지 않고 항상 덮어 쓰기."
+
+#: tmp_strings.xml:73(string)
+msgid "Import policy set to RESTORE"
+msgstr "불러오기 설정이 복원 으로 설정되었습니다."
+
+#: tmp_strings.xml:74(string)
+msgid ""
+"Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE "
+"them with the contents of the CSV file. Are you sure?"
+msgstr ""
+"불러오기 설정이 지금 있는 모든 항목을 삭제한 후 CSV 파일을 불러오게 되 있습니"
+"다. 확실합니까?"
+
+#: tmp_strings.xml:76(string)
+msgid "Settings"
+msgstr "설정"
+
+#: tmp_strings.xml:77(string)
+msgid "CSV file format"
+msgstr "CSV 파일 형식"
+
+#: tmp_strings.xml:78(string)
+msgid "Select CSV file format"
+msgstr "CSV 파일 형식을 선택하세요"
+
+#: tmp_strings.xml:79(string)
+msgid "Select encoding"
+msgstr "인코딩 설정"
+
+#: tmp_strings.xml:80(string)
+msgid "Default"
+msgstr "기본값"
+
+#: tmp_strings.xml:81(string)
+msgid "Use custom encoding (advanced users)"
+msgstr "사용자 설정 인코딩 사용 (고급 사용자용)"
+
+#: tmp_strings.xml:82(string)
+msgid "Select a CSV file format"
+msgstr "CSV 파일 형식을 선택하세요"
+
+#. Preference category title
+#: tmp_strings.xml:87(string)
+msgid "Common settings"
+msgstr "일반 설정"
+
+#: tmp_strings.xml:88(string)
+msgid "Import/export settings that apply to Notepad and Shopping list."
+msgstr "메모장, 쇼핑 목록에 해당되는 불러오기/내보내기 설정."
+
+#: tmp_strings.xml:89(string)
+msgid "Ask if file exists"
+msgstr "파일이 존재하는지 묻기"
+
+#: tmp_strings.xml:90(string)
+msgid ""
+"If checked a dialog appears to confirm overwriting if the export file "
+"already exists."
+msgstr "체크된 경우 내보내기 파일이 이미 존재하면 덮어씌울지 묻습니다."
+
+#: tmp_strings.xml:92(string)
+msgid "Application specific settings"
+msgstr "앱 개별 설정"
+
+#: tmp_strings.xml:93(string)
+msgid "Filename"
+msgstr "파일 이름"
+
+#: tmp_strings.xml:94(string)
+msgid "Full path for file."
+msgstr "파일 전체 경로"
+
+#: tmp_strings.xml:97(string)
+msgid "Import/export settings for OI Notepad."
+msgstr "OI 메모장 불러오기/내보내기 설정"
+
+#: tmp_strings.xml:99(string)
+msgid "OI Shopping list"
+msgstr "OI 쇼핑 목록"
+
+#: tmp_strings.xml:100(string)
+msgid "Import/export settings for OI Shopping list."
+msgstr "OI 쇼핑 목록 불러오기/내보내기 설정"
+
+#: tmp_strings.xml:102(string)
+msgid "Converting..."
+msgstr "변환 중..."
+
+#: tmp_strings.xml:103(string)
+msgid "Ok"
+msgstr "확인"
+
+#: tmp_strings.xml:104(string)
+msgid "Import stores"
+msgstr "가게 불러오기"
+
+#: tmp_strings.xml:105(string)
+msgid "Import HandyShopper store names only as item tags."
+msgstr "항목 태그로만 HandyShopper 가게 이름 불러오기."
+
+#: tmp_strings.xml:106(string)
+msgid "Import HandyShopper stores and per-store price and aisle information."
+msgstr "HandyShopper 가게 이름, 가게별 가격, 코너 정보 불러오기."
+
+#. Permission
+#: tmp_strings.xml:110(string)
+msgid "read notes"
+msgstr "메모 읽기"
+
+#: tmp_strings.xml:111(string)
+msgid ""
+"Allows an application to read notes. Note that encrypted notes are provided "
+"in the encrypted format."
+msgstr ""
+"앱이 메모를 읽을 수 있게 합니다. 암호화된 메모는 암호화된 형식으로 제공됩니"
+"다."
+
+#. Permission
+#: tmp_strings.xml:113(string)
+msgid "write notes"
+msgstr "메모 작성하기"
+
+#: tmp_strings.xml:114(string)
+msgid "Allows an application to create new notes or modify existing notes."
+msgstr "앱이 새로운 메모를 만들거나 이미 있는 메모를 편집할 수 있게 합니다."
+
+#. Permission
+#: tmp_strings.xml:118(string)
+msgid "read shopping lists"
+msgstr "쇼핑 목록 읽기"
+
+#: tmp_strings.xml:119(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+"앱이 쇼핑 목록를 읽을 수 있게 합니다. 암호화된 목록는 암호화된 형식으로 제공"
+"됩니다."
+
+#. Permission
+#: tmp_strings.xml:121(string)
+msgid "write shopping lists"
+msgstr "쇼핑 목록 쓰기"
+
+#: tmp_strings.xml:122(string)
+msgid ""
+"Allows an application to create new lists and items or modify existing ones."
+msgstr "앱이 새로운 목록을 만들거나 이미 있는 목록을 편집할 수 있게 합니다."
+
+#: tmp_strings.xml:125(item)
+msgid "MS Outlook Notes"
+msgstr "MS 아웃룩 메모"
+
+#: tmp_strings.xml:126(item)
+msgid "Palm CSV"
+msgstr "Palm CSV"
+
+#: tmp_strings.xml:127(item)
+msgid "JPilot Memo"
+msgstr "JPilot 메모"
+
+#: tmp_strings.xml:131(item)
+msgid "MS Outlook Tasks"
+msgstr "MS 아웃룩 할 일"
+
+#: tmp_strings.xml:132(item)
+msgid "HandyShopper"
+msgstr "HandyShopper"
+
+#: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
+msgid "DUPLICATE - Allow duplicates of records."
+msgstr "사본 - 중복 항목 허용하기."
+
+#: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
+#, fuzzy
+msgid "KEEP - Don't overwrite existing records."
+msgstr "\"보존 - 항목 덮어쓰지 않기.\""
+
+#: tmp_strings.xml:138(item)
+msgid "Overwrite - Overwrite existing records."
+msgstr "덮어쓰기 - 지금 있는 항목에 덮어씁니다."
+
+#: tmp_strings.xml:139(item)
+msgid "Restore - DELETE ALL, then import."
+msgstr "복원 - 모두 삭제한 후 불러옵니다."
+
+#: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
+msgid "DUPLICATE - Add a second copy of a record if it already exists."
+msgstr "사본 - 이미 항목이 존재할 경우에도 사본을 만듭니다."
+
+#: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+#, fuzzy
+msgid ""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
+msgstr "\"보존 - CSV 파일에 있는 내용을 무시하고 덮어쓰지 않습니다.\""
+
+#: tmp_strings.xml:145(item)
+msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
+msgstr "덮어쓰기 - CSV 파일에 있는 내용을 지금 존재하는 항목에 덮어씌웁니다."
+
+#: tmp_strings.xml:146(item)
+msgid ""
+"Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
+msgstr "백업 복원 - 지금 있는 모든 항목을 삭제한 후, CSV 파일을 불러옵니다."

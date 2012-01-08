@@ -28,7 +28,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  maimuzo https://launchpad.net/~maimuzo</string>
+  thebowseat https://launchpad.net/~takeshimochida</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">アプリ間で共有されるダイアログについての単体アプリ</string>
@@ -37,16 +37,16 @@
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
+	<string name="info_app_filemanager">OI ファイルマネージャー</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI ショッピングリスト</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">OI メモ帳</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_safe">OI Safe</string>
+	<string name="info_app_safe">OI 金庫</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	<string name="info_instructions">%s を起動し メニュー &gt; 情報 を選択する</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -64,11 +64,11 @@
 	<string name="l_documenters">文書化した人</string>
 	<string name="l_translators">翻訳した人</string>
 	<string name="l_artists">デザイン担当</string>
-	<string name="l_international_translators">International translations by</string>
+	<string name="l_international_translators">国際翻訳は次の者によります：</string>
 	<string name="l_credits">クレジット</string>
 	<string name="l_license">ライセンス</string>
 	<string name="l_info">一般的な情報</string>
-	<string name="l_recent_changes">Recent changes</string>
+	<string name="l_recent_changes">最近の変更</string>
 	
 	<string name="no_information_available">利用できる情報はありません</string>
 	
@@ -77,35 +77,35 @@
 	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
-		<item>Arabic</item>
-		<item>Czech</item>
-		<item>Danish</item>
-		<item>German</item>
-		<item>English</item>
-		<item>Greek</item>
-		<item>Spanish</item>
-		<item>Persian</item>
-		<item>Finnish</item>
-		<item>Faroese</item>
-		<item>French</item>
-		<item>Croatian</item>
-		<item>Hungarian</item>
-		<item>Italian</item>
-		<item>Japanese</item>
-		<item>Korean</item>
-		<item>Lao</item>
-		<item>Dutch</item>
-		<item>Occitan (post 1500)</item>
-		<item>Polish</item>
-		<item>Portuguese</item>
-		<item>Brazilian Portuguese</item>
-		<item>Romanian</item>
-		<item>Russian</item>
-		<item>Sardinian</item>
-		<item>Slovak</item>
-		<item>Swedish</item>
-		<item>Turkish</item>
-		<item>Chinese (Simplified)</item>
-		<item>Chinese (Traditional)</item>
+		<item>アラビア語</item>
+		<item>チェコ語</item>
+		<item>デンマーク語</item>
+		<item>ドイツ語</item>
+		<item>英語</item>
+		<item>ギリシャ語</item>
+		<item>スペイン語</item>
+		<item>ペルシア語</item>
+		<item>フィンランド語</item>
+		<item>フェロー語</item>
+		<item>フランス語</item>
+		<item>クロアチア語</item>
+		<item>ハンガリー語</item>
+		<item>イタリア語</item>
+		<item>日本語</item>
+		<item>韓国語</item>
+		<item>ラオ語</item>
+		<item>オランダ語</item>
+		<item>オック語(1500年以降)</item>
+		<item>ポーランド語</item>
+		<item>ポルトガル語</item>
+		<item>ポルトガル語 (ブラジル)</item>
+		<item>ルーマニア語</item>
+		<item>ロシア語</item>
+		<item>サルデーニャ語</item>
+		<item>スロバキア語</item>
+		<item>スウェーデン語</item>
+		<item>トルコ語</item>
+		<item>中国語（簡体字）</item>
+		<item>中国語（繁体字）</item>
 	</string-array>
 </resources>

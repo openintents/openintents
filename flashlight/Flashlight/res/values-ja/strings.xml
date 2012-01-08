@@ -6,34 +6,36 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Peli https://launchpad.net/~peli0101</string>
+  Peli https://launchpad.net/~peli0101
+  bkiw https://launchpad.net/~bkiw
+  thebowseat https://launchpad.net/~takeshimochida</string>
 	
     <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_comments">OpenIntents フラッシュライトは暗闇の中であなたを助けます。このアプリケーションが動作している間、ディスプレーのバックライトはオンのままになります。</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
-    <string name="app_name">OI Flashlight</string>
+    <string name="app_name">OI フラッシュライト</string>
     
-    <string name="backlight_info">バックライトをつけたままにします。</string>
+    <string name="backlight_info">バックライトはついたままになります。</string>
     
-    <string name="color">色</string>
+    <string name="color">カラー</string>
     
     <!-- Application name should be consistent across translations. -->
-    <string name="color_picker">OI Color Picker</string>
+    <string name="color_picker">OI カラーピッカー</string>
     
-    <string name="preferences">Preferences</string>
+    <string name="preferences">設定</string>
     
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
 	
 	<!-- Title for preferences or settings -->
-	<string name="settings_titlebar">Preferences</string>
-	<string name="settings_title_keep_color">Keep color</string>
-	<string name="settings_summary_keep_color">Save color for next time Flashlight app is started</string>
+	<string name="settings_titlebar">設定</string>
+	<string name="settings_title_keep_color">色を保持する</string>
+	<string name="settings_summary_keep_color">フラッシュライト の次の起動時のために色を保存する</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -41,11 +43,11 @@
 	
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.</string>
-    <string name="setting_use_camera_flash">Use camera flash</string>
-    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <string name="color_picker_modularization_explanation">カラーピッカー をほかのデベロッパーに便利にするために、独自のアプリに分けました。</string>
+    <string name="setting_use_camera_flash">カメラのフラッシュを使う</string>
+    <string name="setting_use_camera_flash_summary">スクリーンのバックライトのかわりにカメラのフラッシュを使う</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
     <!-- Information to enable the camera flash as flashlight. -->
-    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
-    <string name="cameralight_stop_info">Press to disable camera light.</string>
+    <string name="cameralight_info">カメラのライトを有効にするには押して下さい（数秒かかるかもしれません）。</string>
+    <string name="cameralight_stop_info">カメラのライトを無効にするには押して下さい。</string>
     
 </resources>

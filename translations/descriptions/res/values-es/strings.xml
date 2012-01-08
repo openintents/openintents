@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
+  Fitoschido https://launchpad.net/~fitoschido
   Martín González https://launchpad.net/~mgonzlezgmz
   OpenIntents devs https://launchpad.net/~openintents-devs
   Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm</translators>
@@ -36,9 +37,9 @@
 		<listitem>Opcionalmente, todos los campos pueden ser modificados a través de otras acciones.</listitem>
 		<emptyline/>
 		<string>Aplicaciones que funcionan con "OI About":</string>
-		<listitem>OI Notepad</listitem>
-		<listitem>OI File manager</listitem>
-		<listitem>OI Shopping List</listitem>
+		<listitem>Bloc de notas OI</listitem>
+		<listitem>Gestor de archivos OI</listitem>
+		<listitem>Lista de compras OI</listitem>
 		<listitem>OI Convert CSV</listitem>
 		<listitem>OI Safe</listitem>
 		<listitem>OI Countdown</listitem>

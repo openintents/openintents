@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   kartik https://launchpad.net/~b-ballkartik96</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->

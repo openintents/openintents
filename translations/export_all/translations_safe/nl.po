@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Menno Vogel <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -221,10 +221,12 @@ msgid ""
 "Unable to import file 'oisafe.csv' from SDCARD. You might try disconnecting "
 "USB from computer."
 msgstr ""
+"Kan bestand 'oisafe.csv' niet van SD-kaart importeren. U kunt proberen om de "
+"USB uit de computer te halen."
 
 #: tmp_strings.xml:75(string)
 msgid "First line is missing fields."
-msgstr ""
+msgstr "De eerste regel mist velden."
 
 #: tmp_strings.xml:76(string)
 msgid "Import"
@@ -339,6 +341,9 @@ msgid ""
 "re-encrypted with the new password. The more complex your password is, the "
 "safer your data will be."
 msgstr ""
+"Gebruik dit om het wachtwoord dat u gebruikt om OI Kluis te openen te "
+"wijzigen. Uw data zal opnieuw versteuleld worden met het nieuwe wachtwoord. "
+"Hoe ingewikkelder uw wachtwoord is, hoe veiliger uw data zal zijn."
 
 #: tmp_strings.xml:102(string)
 msgid "Old password"
@@ -354,7 +359,7 @@ msgstr "Wachtwoord verifiëren"
 
 #: tmp_strings.xml:105(string)
 msgid "New and Verify passwords do not match."
-msgstr ""
+msgstr "Het nieuwe en het herhaalde wachtwoord komen niet overeen."
 
 #: tmp_strings.xml:106(string)
 msgid "Old password is invalid. Please try again."
@@ -386,7 +391,7 @@ msgstr "Reservekopie maken op"
 
 #: tmp_strings.xml:113(string)
 msgid "Complete. Passwords backed up:"
-msgstr ""
+msgstr "Voltooid, reservekopie gemaakt van wachtwoorden:"
 
 #: tmp_strings.xml:114(string)
 msgid "Backup failed:"
@@ -413,12 +418,16 @@ msgid ""
 "Backup file not found. You need to perform a backup first to create it. Or "
 "copy a backup from your PC."
 msgstr ""
+"Reservekopie bestand is niet gevonden. U moet eerst een reservekopie maken "
+"of een reservekopie van uw PC kopiëren."
 
 #: tmp_strings.xml:120(string)
 msgid ""
 "Please provide the password used by the backup file. Your master password "
 "will be set to this."
 msgstr ""
+"Vul het wachtwoord in, welke bij het reservekopie bestand is gebruikt. Uw "
+"hoofdwachtwoord zal hier naar gewijzigd worden."
 
 #: tmp_strings.xml:121(string)
 msgid "Select a file for restore"

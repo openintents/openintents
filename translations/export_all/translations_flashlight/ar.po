@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: kenn dhia <Unknown>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,6 +21,8 @@ msgstr ""
 #: tmp_strings.xml:8(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  kenn dhia https://launchpad.net/~kendhia"
 
 #. Short explanation of the application
 #: tmp_strings.xml:11(string)
@@ -32,7 +34,7 @@ msgstr ""
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
 msgid "OI Flashlight"
-msgstr ""
+msgstr "مصباح يدوي OI"
 
 #: tmp_strings.xml:19(string)
 msgid "The backlight stays turned on."
@@ -40,25 +42,25 @@ msgstr ""
 
 #: tmp_strings.xml:21(string)
 msgid "Color"
-msgstr ""
+msgstr "اللون"
 
 #. Application name should be consistent across translations.
 #: tmp_strings.xml:24(string)
 msgid "OI Color Picker"
-msgstr ""
+msgstr "منتقي الألوان OI"
 
 #. Title for preferences or settings
 #: tmp_strings.xml:26(string) tmp_strings.xml:33(string)
 msgid "Preferences"
-msgstr ""
+msgstr "الخيارات"
 
 #: tmp_strings.xml:34(string)
 msgid "Keep color"
-msgstr ""
+msgstr "ابقاء اللون"
 
 #: tmp_strings.xml:35(string)
 msgid "Save color for next time Flashlight app is started"
-msgstr ""
+msgstr "حفظ اللون للتشغيل التالي للمصباح اليدوي"
 
 #. Explanation that is displayed if Color Picker has not been installed yet, but 
 #. 		user tries to access it.
@@ -70,17 +72,17 @@ msgstr ""
 
 #: tmp_strings.xml:44(string)
 msgid "Use camera flash"
-msgstr ""
+msgstr "استعمل فلاش الكاميرا"
 
 #: tmp_strings.xml:45(string)
 msgid "Use the camera flash instead of the screen backlight."
-msgstr ""
+msgstr "استعمل ضوء الكاميرا بدلا من خلفية الشاشة."
 
 #. Information to enable the camera flash as flashlight.
 #: tmp_strings.xml:47(string)
 msgid "Press to enable camera light (May take a second)."
-msgstr ""
+msgstr "اظغط لتفعيل ضوء الكاميرا(قد يتسغرق ثانية)."
 
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
-msgstr ""
+msgstr "اظغط لتعطيل ضوء الكاميرا."

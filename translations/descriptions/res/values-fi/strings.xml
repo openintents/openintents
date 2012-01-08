@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
-  Madhu Sudan Saraogi https://launchpad.net/~madhusudansrg4</translators>
+  Madhu Sudan Saraogi https://launchpad.net/~madhusudansrg4
+  OpenIntents devs https://launchpad.net/~openintents-devs</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->
@@ -10,46 +11,46 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI About is a standalone about dialog that is shared between apps.</string>
-		<string>This application is invoked through the menu of other OI applications.</string>
-		<string>It allows you to view version information, links, credits, and license of an application.</string>
-		<string>Credits include authors, documentation, translators, and artists.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<string>OI Tietoja on itsenäinen noin dialogi, joka on jaettu apps.</string>
+		<string>Tämä sovellus on vedonnut kautta valikossa muiden OI sovelluksia.</string>
+		<string>Sen avulla voit katsella versiotiedot, linkkejä, hyvityksiä ja lupa hakemuksen.</string>
+		<string>Krediittiä sisältävät kirjailijat, dokumentointi, kääntäjiä, ja taiteilijoita.</string>
+		<string>Kaikki tämä toiminnallisuus kootaan yksinkertainen ja tehokas layout.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Tämä sovellus on mainos ilmainen eikä vaadi internet lupaa.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Lähdekoodi tämän ilmaisen ja avoimen lähdekoodin sovellus on saatavilla osoitteessa:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Täydellinen luettelo muutoksista ja luettelo usein kysyttyihin kysymyksiin osoitteessa:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Voit auttaa parantamaan käännös omalla kielelläsi Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Shows general info, credits, and license tabs.</listitem>
-		<listitem>Shows translators of all language versions.</listitem>
-		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
-		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<string>Ominaisuudet:</string>
+		<listitem>Näyttää yleinen info, hyvityksiä ja lisenssin välilehdet.</listitem>
+		<listitem>Näyttää kääntäjien kaikki kieliversiot.</listitem>
+		<listitem>Hakee tietoa sovellusluettelo kautta oletuksena tunnisteet ja metatiedot.</listitem>
+		<listitem>Vaihtoehtoisesti kaikki kentät voidaan muuttaa aikomus extrat.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI About":</string>
+		<string>Sovellukset Parissa työskenteleviä "OI About":</string>
 		<listitem>OI Notepad</listitem>
-		<listitem>OI File manager</listitem>
-		<listitem>OI Shopping List</listitem>
-		<listitem>OI Convert CSV</listitem>
+		<listitem>OI Tiedostonhallinta</listitem>
+		<listitem>OI ostoslista</listitem>
+		<listitem>OI Muunna CSV</listitem>
 		<listitem>OI Safe</listitem>
 		<listitem>OI Countdown</listitem>
-		<listitem>OI Flashlight</listitem>
+		<listitem>OI Taskulamppu</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>About, Credits, Information.</listitem>
-		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<string>Avainsanat:</string>
+		<listitem>Tietoja, Krediittiä, Information.</listitem>
+		<listitem>OI, OpenIntents, Open aikomukset.</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Kansainvälinen versiot:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Etsintä jousille Markkinoiden:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -63,21 +64,21 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
-		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
+		<string>OI File Managerin avulla voit selata SD-kortti, luoda hakemistoja, nimetä uudelleen, kopioida, siirtää ja poistaa tiedostoja.</string>
+		<string>Se toimii myös laajentamista muihin sovelluksiin näyttämään "Avaa" ja "Save" valintaikkunoissa.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Tämä sovellus on mainos ilmainen eikä vaadi internet lupaa.</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Täydellinen luettelo muutoksista ja luettelo usein kysyttyihin kysymyksiin osoitteessa:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Voit auttaa parantamaan käännös omalla kielelläsi Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Lähdekoodi tämän ilmaisen ja avoimen lähdekoodin sovellus on saatavilla osoitteessa:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
+		<string>Ominaisuudet:</string>
 		<listitem>Show list of files with thumbnails for images.</listitem>
 		<listitem>Move, copy, rename, and delete files.</listitem>
 		<listitem>Create and delete directories (folders).</listitem>
@@ -92,16 +93,16 @@
 		<string>Applications that work with "OI File Manager":</string>
 		<listitem>Open and save text files in "OI Notepad".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Avainsanat:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
 		<listitem>file manager, filemanager, file explorer</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Kansainvälinen versiot:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Etsintä jousille Markkinoiden:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -119,18 +120,18 @@
 		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
 		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Tämä sovellus on mainos ilmainen eikä vaadi internet lupaa.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Lähdekoodi tämän ilmaisen ja avoimen lähdekoodin sovellus on saatavilla osoitteessa:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Täydellinen luettelo muutoksista ja luettelo usein kysyttyihin kysymyksiin osoitteessa:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Voit auttaa parantamaan käännös omalla kielelläsi Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
+		<string>Ominaisuudet:</string>
 		<listitem>Lock the display backlight on.</listitem>
 		<listitem>Lock camera flash on.</listitem>
 		<listitem>The color of backlight is customizable.</listitem>
@@ -142,14 +143,14 @@
 		<string>Applications that work with "OI Flashlight":</string>
 		<listitem>Update with "OI Update".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Avainsanat:</string>
 		<listitem>Flashlight, light, Backlight</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Kansainvälinen versiot:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Etsintä jousille Markkinoiden:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -166,18 +167,18 @@
 		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
 		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Tämä sovellus on mainos ilmainen eikä vaadi internet lupaa.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Lähdekoodi tämän ilmaisen ja avoimen lähdekoodin sovellus on saatavilla osoitteessa:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Täydellinen luettelo muutoksista ja luettelo usein kysyttyihin kysymyksiin osoitteessa:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Voit auttaa parantamaan käännös omalla kielelläsi Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
+		<string>Ominaisuudet:</string>
 		<listitem>Add, edit and delete notes.</listitem>
 		<listitem>Long-press on notes to add tags.</listitem>
 		<listitem>Change font size and sort order.</listitem>
@@ -199,14 +200,14 @@
 		<listitem>Update with "OI Update".</listitem>
 		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Avainsanat:</string>
 		<listitem>Note, Notepad, Note book, Notes</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Kansainvälinen versiot:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Etsintä jousille Markkinoiden:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -221,18 +222,18 @@
 		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
 		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Tämä sovellus on mainos ilmainen eikä vaadi internet lupaa.</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Täydellinen luettelo muutoksista ja luettelo usein kysyttyihin kysymyksiin osoitteessa:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Voit auttaa parantamaan käännös omalla kielelläsi Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Lähdekoodi tämän ilmaisen ja avoimen lähdekoodin sovellus on saatavilla osoitteessa:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
+		<string>Ominaisuudet:</string>
 		<listitem>Securely protect data using AES encryption.</listitem>
 		<listitem>Freely move data entries between categories.</listitem>
 		<listitem>Import/Export data entries and databases.</listitem>
@@ -249,16 +250,16 @@
 		<string>Applications that work with "OI File Manager":</string>
 		<listitem>Encrypt notes created in "OI Notepad".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Avainsanat:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
 		<listitem>safe, encrpytion, password, protection</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Kansainvälinen versiot:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Etsintä jousille Markkinoiden:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -276,18 +277,18 @@
 		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
 		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Lähdekoodi tämän ilmaisen ja avoimen lähdekoodin sovellus on saatavilla osoitteessa:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Tämä sovellus on mainos ilmainen eikä vaadi internet lupaa.</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Täydellinen luettelo muutoksista ja luettelo usein kysyttyihin kysymyksiin osoitteessa:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Voit auttaa parantamaan käännös omalla kielelläsi Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
+		<string>Ominaisuudet:</string>
 		<listitem>Add, edit and delete lists.</listitem>
 		<listitem>Create, delete, and check items quickly and easily.</listitem>
 		<listitem>Variety of themes.</listitem>
@@ -306,11 +307,11 @@
 		<listitem>Backup lists with "My Backup Pro".</listitem>
 		<listitem>Import ingredients of recipes with "Bites".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Avainsanat:</string>
 		<listitem>Shopping, List, Shopping List, Checklist</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Kansainvälinen versiot:</string>
 		<international/>
 		<emptyline/>
 		<string>Extensions:</string>

@@ -612,9 +612,8 @@ msgid "Auto Backup Days"
 msgstr "Dñias de copia de seguridad automática"
 
 #: tmp_strings.xml:196(string)
-#, fuzzy
 msgid "Default backup path"
-msgstr "Días de copia de seguridad automática"
+msgstr ""
 
 #: tmp_strings.xml:197(string)
 msgid "Default export path"

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Madhu Sudan Saraogi <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,39 +21,44 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Madhu Sudan Saraogi https://launchpad.net/~madhusudansrg4"
+"  Madhu Sudan Saraogi https://launchpad.net/~madhusudansrg4\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Description of application
 #: tmp_strings.xml:12(string)
 msgid "OI About is a standalone about dialog that is shared between apps."
-msgstr ""
+msgstr "OI Tietoja on itsenäinen noin dialogi, joka on jaettu apps."
 
 #: tmp_strings.xml:13(string)
 msgid "This application is invoked through the menu of other OI applications."
-msgstr ""
+msgstr "Tämä sovellus on vedonnut kautta valikossa muiden OI sovelluksia."
 
 #: tmp_strings.xml:14(string)
 msgid ""
 "It allows you to view version information, links, credits, and license of an "
 "application."
 msgstr ""
+"Sen avulla voit katsella versiotiedot, linkkejä, hyvityksiä ja lupa "
+"hakemuksen."
 
 #: tmp_strings.xml:15(string)
 msgid "Credits include authors, documentation, translators, and artists."
 msgstr ""
+"Krediittiä sisältävät kirjailijat, dokumentointi, kääntäjiä, ja "
+"taiteilijoita."
 
 #: tmp_strings.xml:16(string)
 msgid ""
 "All of this functionality is brought together in a simplistic and efficient "
 "layout."
-msgstr ""
+msgstr "Kaikki tämä toiminnallisuus kootaan yksinkertainen ja tehokas layout."
 
 #: tmp_strings.xml:18(string) tmp_strings.xml:68(string)
 #: tmp_strings.xml:121(string) tmp_strings.xml:168(string)
 #: tmp_strings.xml:223(string) tmp_strings.xml:281(string)
 msgid ""
 "This application is ad free and does not require the internet permission."
-msgstr ""
+msgstr "Tämä sovellus on mainos ilmainen eikä vaadi internet lupaa."
 
 #: tmp_strings.xml:20(string) tmp_strings.xml:76(string)
 #: tmp_strings.xml:123(string) tmp_strings.xml:170(string)
@@ -61,6 +66,8 @@ msgstr ""
 msgid ""
 "The source code of this free and open source application is available at:"
 msgstr ""
+"Lähdekoodi tämän ilmaisen ja avoimen lähdekoodin sovellus on saatavilla "
+"osoitteessa:"
 
 #: tmp_strings.xml:23(string) tmp_strings.xml:70(string)
 #: tmp_strings.xml:126(string) tmp_strings.xml:173(string)
@@ -69,95 +76,98 @@ msgid ""
 "For the complete list of changes and a list of frequently asked questions, "
 "please visit:"
 msgstr ""
+"Täydellinen luettelo muutoksista ja luettelo usein kysyttyihin kysymyksiin "
+"osoitteessa:"
 
 #: tmp_strings.xml:26(string) tmp_strings.xml:73(string)
 #: tmp_strings.xml:129(string) tmp_strings.xml:176(string)
 #: tmp_strings.xml:228(string) tmp_strings.xml:286(string)
 msgid ""
 "You can help to improve the translation into your language at Launchpad:"
-msgstr ""
+msgstr "Voit auttaa parantamaan käännös omalla kielelläsi Launchpad:"
 
 #: tmp_strings.xml:29(string) tmp_strings.xml:79(string)
 #: tmp_strings.xml:132(string) tmp_strings.xml:179(string)
 #: tmp_strings.xml:234(string) tmp_strings.xml:289(string)
 msgid "Features:"
-msgstr ""
+msgstr "Ominaisuudet:"
 
 #: tmp_strings.xml:30(listitem)
 msgid "Shows general info, credits, and license tabs."
-msgstr ""
+msgstr "Näyttää yleinen info, hyvityksiä ja lisenssin välilehdet."
 
 #: tmp_strings.xml:31(listitem)
 msgid "Shows translators of all language versions."
-msgstr ""
+msgstr "Näyttää kääntäjien kaikki kieliversiot."
 
 #: tmp_strings.xml:32(listitem)
 msgid ""
 "Retrieves information from application manifest through default tags and "
 "metadata."
 msgstr ""
+"Hakee tietoa sovellusluettelo kautta oletuksena tunnisteet ja metatiedot."
 
 #: tmp_strings.xml:33(listitem)
 msgid "Optionally, all fields can be modified through intent extras."
-msgstr ""
+msgstr "Vaihtoehtoisesti kaikki kentät voidaan muuttaa aikomus extrat."
 
 #: tmp_strings.xml:35(string)
 msgid "Applications that work with \"OI About\":"
-msgstr ""
+msgstr "Sovellukset Parissa työskenteleviä \"OI About\":"
 
 #: tmp_strings.xml:36(listitem)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI Notepad"
 
 #: tmp_strings.xml:37(listitem)
 msgid "OI File manager"
-msgstr ""
+msgstr "OI Tiedostonhallinta"
 
 #: tmp_strings.xml:38(listitem)
 msgid "OI Shopping List"
-msgstr ""
+msgstr "OI ostoslista"
 
 #: tmp_strings.xml:39(listitem)
 msgid "OI Convert CSV"
-msgstr ""
+msgstr "OI Muunna CSV"
 
 #: tmp_strings.xml:40(listitem)
 msgid "OI Safe"
-msgstr ""
+msgstr "OI Safe"
 
 #: tmp_strings.xml:41(listitem)
 msgid "OI Countdown"
-msgstr ""
+msgstr "OI Countdown"
 
 #: tmp_strings.xml:42(listitem)
 msgid "OI Flashlight"
-msgstr ""
+msgstr "OI Taskulamppu"
 
 #: tmp_strings.xml:44(string) tmp_strings.xml:94(string)
 #: tmp_strings.xml:144(string) tmp_strings.xml:201(string)
 #: tmp_strings.xml:251(string) tmp_strings.xml:308(string)
 msgid "Keywords:"
-msgstr ""
+msgstr "Avainsanat:"
 
 #: tmp_strings.xml:45(listitem)
 msgid "About, Credits, Information."
-msgstr ""
+msgstr "Tietoja, Krediittiä, Information."
 
 #: tmp_strings.xml:46(listitem)
 msgid "OI, OpenIntents, Open Intents."
-msgstr ""
+msgstr "OI, OpenIntents, Open aikomukset."
 
 #: tmp_strings.xml:48(string) tmp_strings.xml:100(string)
 #: tmp_strings.xml:148(string) tmp_strings.xml:205(string)
 #: tmp_strings.xml:257(string) tmp_strings.xml:312(string)
 msgid "International versions:"
-msgstr ""
+msgstr "Kansainvälinen versiot:"
 
 #: tmp_strings.xml:51(string) tmp_strings.xml:103(string)
 #: tmp_strings.xml:151(string) tmp_strings.xml:208(string)
 #: tmp_strings.xml:260(string)
 msgid "Search strings for Market:"
-msgstr ""
+msgstr "Etsintä jousille Markkinoiden:"
 
 #. Description of application
 #: tmp_strings.xml:65(string)
@@ -165,12 +175,16 @@ msgid ""
 "OI File Manager allows you to browse your SD card, create directories, "
 "rename, copy, move, and delete files."
 msgstr ""
+"OI File Managerin avulla voit selata SD-kortti, luoda hakemistoja, nimetä "
+"uudelleen, kopioida, siirtää ja poistaa tiedostoja."
 
 #: tmp_strings.xml:66(string)
 msgid ""
 "It also acts as an extension to other applications to display \"Open\" and "
 "\"Save\" dialogs."
 msgstr ""
+"Se toimii myös laajentamista muihin sovelluksiin näyttämään \"Avaa\" ja "
+"\"Save\" valintaikkunoissa."
 
 #: tmp_strings.xml:80(listitem)
 msgid "Show list of files with thumbnails for images."

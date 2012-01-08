@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="oi_distribution_app_name">OI Distribution Library</string>
+    <string name="oi_distribution_app_name">OI ਵੰਡ ਲਾਇਬਰੇਰੀ</string>
     
 	<!-- ***************************
 	     About information
 	     *************************** -->
 	
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
+	<string name="about_translators">Launchpad Contributions:
+  Angad Singh  https://launchpad.net/~angad21-02-1996</string>
 	
 	<!-- ***************************
 	     Distribution

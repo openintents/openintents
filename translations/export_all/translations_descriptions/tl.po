@@ -22,14 +22,15 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Liezl https://launchpad.net/~liezl-200\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  abc https://launchpad.net/~abc-g"
 
 #. Description of application
 #: tmp_strings.xml:12(string)
 msgid "OI About is a standalone about dialog that is shared between apps."
 msgstr ""
-"OI Tungkol ay nakapag-iisang tungkol usapan na dyalogo sa pagitan ng mga "
-"apps."
+"OI Tungkol ay nakapag-iisang tungkol na dyalogo na ibinabahagi sa pagitan ng "
+"mga apps."
 
 #: tmp_strings.xml:13(string)
 msgid "This application is invoked through the menu of other OI applications."

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Matěj Konečný https://launchpad.net/~matejkon</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Výběr barev je rozšíření pro OI Baterku a jiné kompatibilní aplikace.</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Výběr barev</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">Výběr barev</string>
+    
+    <string name="recent_colors_condensed">Nedávné</string>
+    <string name="recent_colors">Nedávno vybrané barvy</string>
+    <string name="recent_colors_expanded">Barvy vybrané v poslední době</string>
+    <string name="recent_colors_clear_history">Vyčistit</string>
+    <string name="recent_colors_empty">V poslední době nebyly vybrány žádné barvy.</string>
+    
+    <string name="confirm_color_title">Použít barvu?</string>
+    <string name="confirm_color_message">Použít tuto novou barvu? Této zprávě se můžete vyhnout kliknutím na prostřední kruh.</string>
+    
+    
+	<!-- About -->
+	<string name="about">O aplikaci</string>
+	<string name="aboutapp_not_available">Verze %s\n\nŽádné kompatibilní rozšíření pro zobrazení kompletních informací (kontakt, autoři, lincence).</string>
+	<string name="aboutapp_get">Získat OI Info</string>
+
+
+	<!-- Update -->
+	<string name="update_error">Stahovaná aplikace nedostupná</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">Pro nastavení barvy v OI Baterce stiskněte menu &gt; Barva.</string>
+    <string name="title_app_flashlight">OI Baterka</string>
+    
+    <string name="info_app_spiral_wallpaper">Hypnotizující animovaná Živá tapeta - spirála.</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister Živá tapeta</string>
+    
+    <string name="info_app_bettr_flickr">Nativní Flickr rozhraní pro Android</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">Mixujte a spojujte výtvarná umělecká díla a vytvořte anime postavy</string>
+    <string name="title_app_character_gen">Anime Character Generator</string>
+    
+    
+	<string name="info_activity_text">Tato aplikace může být použita s následujícími aplikacemi:</string>
+    <string name="info_launch">Spustit %s</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">Tato aplikace vyžaduje %1$s %2$s nebo novější.</string>
+	<string name="info_get">Získat %s</string>
+</resources>

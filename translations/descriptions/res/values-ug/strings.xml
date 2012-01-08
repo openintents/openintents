@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
-	<translators>translator-credits</translators>
+	<translators>Launchpad Contributions:
+  Sahran https://launchpad.net/~sahran</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->
@@ -15,40 +16,40 @@
 		<string>Credits include authors, documentation, translators, and artists.</string>
 		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>بۇ ئەپتە ئېلان يوق، ئىنتېرنېت ھوقۇقى تەلەپ قىلمايدۇ.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>كودى ئوچۇق بۇ ئەپنىڭ ئەسلى كودى:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>ئۆزگىرىشنىڭ تەپسىلىي تىزىمىنى تۆۋەندىكى ئادرېستىن كۆرۈڭ:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>بۇ ئەپنى Launchpad تە ئۆز تىلىڭىزغا تەرجىمە قىلالايسىز:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Shows general info, credits, and license tabs.</listitem>
-		<listitem>Shows translators of all language versions.</listitem>
+		<string>ئىقتىدارلار:</string>
+		<listitem>ئادەتتىكى ئۇچۇر، تۆھپىكارلار ۋە ئىجازەت بەتكۈچىنى كۆرسىتىدۇ.</listitem>
+		<listitem>ھەممە تىللاردىكى نەشرىنىڭ تەرجىمانلىرىنى كۆرسىتىدۇ.</listitem>
 		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
 		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
 		<emptyline/>
 		<string>Applications that work with "OI About":</string>
-		<listitem>OI Notepad</listitem>
-		<listitem>OI File manager</listitem>
-		<listitem>OI Shopping List</listitem>
-		<listitem>OI Convert CSV</listitem>
-		<listitem>OI Safe</listitem>
-		<listitem>OI Countdown</listitem>
-		<listitem>OI Flashlight</listitem>
+		<listitem>OI خاتىرە دەپتەر</listitem>
+		<listitem>OI ھۆججەت باشقۇرغۇچ</listitem>
+		<listitem>OI سېتىۋېلىش تىزىمى</listitem>
+		<listitem>OI CSV ئايلاندۇر</listitem>
+		<listitem>OI بىخەتەرلىك</listitem>
+		<listitem>OI تەتۈر ۋاقىت خاتىرىلىگۈچ</listitem>
+		<listitem>OI قول چىراغ</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>About, Credits, Information.</listitem>
+		<string>ھالقىلىق سۆزلەر:</string>
+		<listitem>ھەققىدە، تۆھپىكارلار، ئۇچۇر.</listitem>
 		<listitem>OI, OpenIntents, Open Intents.</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>خەلقئارا نەشرى:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>بازاردا ئىزدەش ئۇچۇرى:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -62,45 +63,45 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
+		<string>OI ھۆججەت باشقۇرغۇچ SD كارتا زىيارەت قىلىش، مۇندەرىجە قۇرۇش، ھۆججەت ئاتىنى ئۆزگەرتىش، كۆچۈرۈش، يۆتكەش ۋە ئۆچۈرۈشكە يول قويىدۇ.</string>
 		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>بۇ ئەپتە ئېلان يوق، ئىنتېرنېت ھوقۇقى تەلەپ قىلمايدۇ.</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>ئۆزگىرىشنىڭ تەپسىلىي تىزىمىنى تۆۋەندىكى ئادرېستىن كۆرۈڭ:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>بۇ ئەپنى Launchpad تە ئۆز تىلىڭىزغا تەرجىمە قىلالايسىز:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>كودى ئوچۇق بۇ ئەپنىڭ ئەسلى كودى:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Show list of files with thumbnails for images.</listitem>
-		<listitem>Move, copy, rename, and delete files.</listitem>
-		<listitem>Create and delete directories (folders).</listitem>
-		<listitem>Send files by email.</listitem>
-		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
-		<listitem>Support for many file endings and mime types.</listitem>
-		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
+		<string>ئىقتىدارلار:</string>
+		<listitem>سۈرەتنىڭ كىچىك سۈرىتىنىڭ ھۆججەت تىزىمىنى كۆرسىتىدۇ.</listitem>
+		<listitem>ھۆججەت كۆچۈرۈش، يۆتكەش، ئات ئۆزگەرتىش ۋە ئۆچۈرۈش.</listitem>
+		<listitem>مۇندەرىجە (قىسقۇچ) قۇرۇش ۋە ئۆچۈرۈش .</listitem>
+		<listitem>ئېلخەتتە ھۆججەت يوللاش.</listitem>
+		<listitem>باشقا ئەپ ئىشلىتىشكىمۇ بولىدۇ، مەسىلەن GMail، قوشۇمچە ھۆججەت قوشۇش.</listitem>
+		<listitem>نۇرغۇن ھۆججەت ئاخىرلىشىشى ۋە mime تىپىنى قوللايدۇ.</listitem>
+		<listitem>PICK_FILE ۋەPICK_DIRECTORY قوللىغانلىقتىن باشقا ئەپلەر OI ھۆججەت باشقۇرغۇچنى ئىشلىتەلەيدۇ.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>«OI ھۆججەت باشقۇرغۇچ» نىڭ ئىشلەتكىلى بولىدىغان كەڭەيتىلمىلىرى:</string>
+		<listitem>«OI ھەققىدە» ئىجازەت ئۇچۇرىنى كۆرسىتىدۇ.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<string>«OI ھۆججەت باشقۇرغۇچ» تا ئىشلەيدىغان ئەپلەر:</string>
+		<listitem>تېكىست ھۆججەتلەرنى «OI خاتىرە دەپتەر»دە ئېچىپ ۋە ساقلايدۇ.</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>ھالقىلىق سۆزلەر:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>file manager, filemanager, file explorer</listitem>
+		<listitem>ھۆججەت باشقۇرغۇچ، ھۆججەت باشقۇرغۇچ، ھۆججەت كۆرگۈ</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>خەلقئارا نەشرى:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>بازاردا ئىزدەش ئۇچۇرى:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -118,37 +119,37 @@
 		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
 		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>بۇ ئەپتە ئېلان يوق، ئىنتېرنېت ھوقۇقى تەلەپ قىلمايدۇ.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>كودى ئوچۇق بۇ ئەپنىڭ ئەسلى كودى:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>ئۆزگىرىشنىڭ تەپسىلىي تىزىمىنى تۆۋەندىكى ئادرېستىن كۆرۈڭ:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>بۇ ئەپنى Launchpad تە ئۆز تىلىڭىزغا تەرجىمە قىلالايسىز:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Lock the display backlight on.</listitem>
-		<listitem>Lock camera flash on.</listitem>
-		<listitem>The color of backlight is customizable.</listitem>
+		<string>ئىقتىدارلار:</string>
+		<listitem>تەگلىك نۇرى كۆرسىتىشنى قۇلۇپلايدۇ.</listitem>
+		<listitem>كامېرا چىرىغىنى قۇلۇپلايدۇ.</listitem>
+		<listitem>تەگلىك نۇرىنىڭ رەڭگىنى ئۆزلەشتۈرگىلى بولىدۇ.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Flashlight":</string>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<string>«OI قول چىراغ»دا ئىشلەتكىلى بولىدىغان كەڭەيتىلمىلەر:</string>
+		<listitem>«OI ھەققىدە» ئىجازەت ئۇچۇرىنى كۆرسىتىدۇ.</listitem>
+		<listitem>«OI رەڭ تاللىغۇچ» تا تەگلىك نۇرىنىڭ رەڭگىنى ئۆزگەرتىدۇ.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Flashlight":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<string>«OI قول چىراغ»دا ئىشلەيدىغان ئەپلەر:</string>
+		<listitem>«OI يېڭىلاش»تا يېڭىلايدۇ.</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>Flashlight, light, Backlight</listitem>
+		<string>ھالقىلىق سۆزلەر:</string>
+		<listitem>قول چىراغ، چىراغ، تەگلىك نۇرى</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>خەلقئارا نەشرى:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>بازاردا ئىزدەش ئۇچۇرى:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -165,19 +166,19 @@
 		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
 		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>بۇ ئەپتە ئېلان يوق، ئىنتېرنېت ھوقۇقى تەلەپ قىلمايدۇ.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>كودى ئوچۇق بۇ ئەپنىڭ ئەسلى كودى:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>ئۆزگىرىشنىڭ تەپسىلىي تىزىمىنى تۆۋەندىكى ئادرېستىن كۆرۈڭ:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>بۇ ئەپنى Launchpad تە ئۆز تىلىڭىزغا تەرجىمە قىلالايسىز:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Add, edit and delete notes.</listitem>
+		<string>ئىقتىدارلار:</string>
+		<listitem>ئىزاھات قوشۇش، تەھرىرلەش، ئۆچۈرۈش.</listitem>
 		<listitem>Long-press on notes to add tags.</listitem>
 		<listitem>Change font size and sort order.</listitem>
 		<listitem>A clearly arranged layout with a variety of themes.</listitem>
@@ -187,7 +188,7 @@
 		<string>Available extensions for "OI Notepad":</string>
 		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
 		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>«OI ھەققىدە» ئىجازەت ئۇچۇرىنى كۆرسىتىدۇ.</listitem>
 		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
 		<listitem>Turn text upside down with "Upside Down".</listitem>
 		<emptyline/>
@@ -195,17 +196,17 @@
 		<listitem>Back up notes with "My Backup Pro".</listitem>
 		<listitem>Encrypt notes using "OI Safe".</listitem>
 		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
-		<listitem>Update with "OI Update".</listitem>
+		<listitem>«OI يېڭىلاش»تا يېڭىلايدۇ.</listitem>
 		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>ھالقىلىق سۆزلەر:</string>
 		<listitem>Note, Notepad, Note book, Notes</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>خەلقئارا نەشرى:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>بازاردا ئىزدەش ئۇچۇرى:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -220,44 +221,44 @@
 		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
 		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>بۇ ئەپتە ئېلان يوق، ئىنتېرنېت ھوقۇقى تەلەپ قىلمايدۇ.</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>ئۆزگىرىشنىڭ تەپسىلىي تىزىمىنى تۆۋەندىكى ئادرېستىن كۆرۈڭ:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>بۇ ئەپنى Launchpad تە ئۆز تىلىڭىزغا تەرجىمە قىلالايسىز:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>كودى ئوچۇق بۇ ئەپنىڭ ئەسلى كودى:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
+		<string>ئىقتىدارلار:</string>
 		<listitem>Securely protect data using AES encryption.</listitem>
 		<listitem>Freely move data entries between categories.</listitem>
-		<listitem>Import/Export data entries and databases.</listitem>
-		<listitem>Backup/Restore entries.</listitem>
+		<listitem>سانلىق مەلۇمات تۈرى ۋە ساندانلارنى ئەكىر/چىقار.</listitem>
+		<listitem>تۈرلەرنى زاپاسلا/ ئەسلىگە كەلتۈر.</listitem>
 		<listitem>Includes secure password generator.</listitem>
 		<listitem>Automatic timeout to protect encrypted documents.</listitem>
 		<listitem>Encrypt OI Notepad notes.</listitem>
 		<listitem>Support for Obscura picture safe.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>«OI ھۆججەت باشقۇرغۇچ» نىڭ ئىشلەتكىلى بولىدىغان كەڭەيتىلمىلىرى:</string>
+		<listitem>«OI ھەققىدە» ئىجازەت ئۇچۇرىنى كۆرسىتىدۇ.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
+		<string>«OI ھۆججەت باشقۇرغۇچ» تا ئىشلەيدىغان ئەپلەر:</string>
 		<listitem>Encrypt notes created in "OI Notepad".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>ھالقىلىق سۆزلەر:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
 		<listitem>safe, encrpytion, password, protection</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>خەلقئارا نەشرى:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>بازاردا ئىزدەش ئۇچۇرى:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -275,44 +276,44 @@
 		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
 		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>كودى ئوچۇق بۇ ئەپنىڭ ئەسلى كودى:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>بۇ ئەپتە ئېلان يوق، ئىنتېرنېت ھوقۇقى تەلەپ قىلمايدۇ.</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>ئۆزگىرىشنىڭ تەپسىلىي تىزىمىنى تۆۋەندىكى ئادرېستىن كۆرۈڭ:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>بۇ ئەپنى Launchpad تە ئۆز تىلىڭىزغا تەرجىمە قىلالايسىز:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Add, edit and delete lists.</listitem>
-		<listitem>Create, delete, and check items quickly and easily.</listitem>
-		<listitem>Variety of themes.</listitem>
-		<listitem>Customizable font size and sort order.</listitem>
+		<string>ئىقتىدارلار:</string>
+		<listitem>تىزىمنى قوشۇش، تەھرىرلەش ۋە ئۆچۈرۈش.</listitem>
+		<listitem>تۈر قورۇش، ئۆچۈرۈش ۋە تەكشۈرۈش تېز ۋە ئاسان.</listitem>
+		<listitem>ھەر خىل ئۆرنەكلەر.</listitem>
+		<listitem>ئۆزلەشتۈرگىلى بولىدىغان خەت نۇسخا چوڭلۇقى ۋە تەرتىپلەش تەرتىپى.</listitem>
 		<listitem>Keep track of separate prices for each store.</listitem>
-		<listitem>Customizable list columns.</listitem>
+		<listitem>ئۆزلەشتۈرگىلى بولىدىغان تىزىم ئىستونلىرى.</listitem>
 		<emptyline/>
 		<string>Available extensions for "OI Shopping List":</string>
 		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
 		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>«OI ھەققىدە» ئىجازەت ئۇچۇرىنى كۆرسىتىدۇ.</listitem>
 		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
 		<emptyline/>
 		<string>Applications that work with "OI Shopping List":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<listitem>«OI يېڭىلاش»تا يېڭىلايدۇ.</listitem>
 		<listitem>Backup lists with "My Backup Pro".</listitem>
 		<listitem>Import ingredients of recipes with "Bites".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>ھالقىلىق سۆزلەر:</string>
 		<listitem>Shopping, List, Shopping List, Checklist</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>خەلقئارا نەشرى:</string>
 		<international/>
 		<emptyline/>
-		<string>Extensions:</string>
+		<string>كەڭەيتىلمەلەر:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>

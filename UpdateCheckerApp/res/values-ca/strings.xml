@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Joan Creus https://launchpad.net/~joan-creus-c</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">Actualització d\'OI</string>
+    
+    <string name="update_available">Una nova versió de %s està disponible.\nVoldríeu actualitzar-la?</string>
+    <string name="update_available_3">Una nova versió de %1$s està disponible a %2$s.\n%3$s\n</string>
+    <string name="update_available_2">Una nova versió de %1$s està disponible.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">Una nova versió de %1$s està disponible a %2$s.</string>
+    <string name="update_available_no_comment">Una nova versió de %s està disponible</string>
+	<string name="market_not_available">El Mercat d\'Android no està disponible.</string>
+    <string name="market_search_term">Actualització d\'OI</string>
+	<string name="android_market">Mercat d\'Android</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">Versió %1$s\nTargeta SD %2$s\n\nOS\n%3$s</string>
+    <string name="free_space">espai lliure: %s</string>
+    <string name="os_info">Placa %1$s\nMarca %2$s\nDispositiu %3$s\nID %4$s\nModel %5$s</string>
+    
+    <string name="do_update">Actualitza ara!</string>
+    <string name="do_update_market">Prova l\'actualització del Mercat ara!</string>
+    <string name="do_update_andAppStore">Prova l\'actualització d\'AndAppStore ara!</string>
+    <string name="remind_me_later">Recorda-m\'ho més tard!</string>
+    <string name="ignore_this_update">Ignora aquesta actualització</string>
+    <string name="ignore_all_further_updates">Ignora totes les actualitzacions d\'ara endavant</string>
+    <string name="ok">D\'acord</string>
+    
+    <string name="update_not_started">No s\'ha pogut començar l\'actualització!\n\nSi us plau contacteu amb el desenvolupador de l\'aplicació!\n\n%s</string>
+    <string name="app_up_to_date">L\'aplicació està actualitzada</string>
+    <string name="checking">Comprovant si hi ha una nova versió disponible.</string>
+    <string name="building_app_list">Creant llista d\'aplicació</string>
+    <string name="check_andappstore">Comprova a AndAppStore.com</string>
+    <string name="check_versions">Comprova versions</string>
+    <string name="show_versions">Mostra-ho tot</string>
+    <string name="refresh">Actualitza</string>
+    <string name="checked_against_andappstore">S\'ha comprovat a AndAppStore</string>
+    <string name="current_version">Versió actual: %s</string>
+    <string name="current_version_code">Codi de versió actual: %s</string>
+    <string name="newer_version">Versió més nova: %s</string>
+    <string name="newer_version_comment">Versió més nova: %1$s - %2$s</string>
+    <string name="newer_version_available">Hi ha una nova versió disponible.</string>
+    <string name="no_update_info_found">No s\'ha trobat informació de l\'actualització.</string>
+    <string name="title_list_new_versions">Actualització d\'OI - Llista de versions noves</string>
+    <string name="title_list_new_versions_from_andappstore">Actualització d\'OI - Versions noves a AndAppStore</string>
+    <string name="title_list_all_versions">Actualització d\'OI - Llista d\'aplicacions controlades</string>
+    <string name="title_list_all_versions_from_andappstore">Actualització d\'OI - Llista d\'aplicacions controlades (comprova a AndAppStore)</string>
+    <string name="settings">Preferències</string>
+    <string name="auto_update">Comprova automàticament</string>
+    <string name="ignore_title">Ignorat</string>
+    <string name="ignore_text">Les actualitzacions ara mateix són ignorades. Voldríeu rebre actualitzacions de nou?</string>
+    <string name="unknown_title">Desconegut</string>
+    <string name="unknown_text">No hi ha informació de l\'actualització disponible. Si us plau comproveu-ho manualment i demaneu al desenvolupador que suporti OI Update en un futur.</string>
+    <string name="search_on_market">Cerca al Mercat</string>
+    <string name="search_on_andappstore">Cerca a AndAppStore</string>
+    <string name="processing">S\'està processant %s</string>
+    
+    <string name="warn">El procés d\'actualització d\'aquesta aplicació et dirigeix a un web diferent de l\'Android Market. Les aplicacions instal·lades de fonts desconegudes poden tenir riscos de seguretat.</string>
+    <string name="continue_anyway">Continua igualment</string>
+    <string name="abort">Atura</string>
+    
+    <string name="preference_auto_update">Actualitza automàticament</string>
+    <string name="preference_auto_update_summary">Si està seleccionat, la cerca d\'actualitzacions s\'efectua regularment</string>
+    <string name="title_update_interval">Interval d\'actualització</string>
+    <string name="summary_update_interval">Defineix l\'interval sobre cada quan s\'ha d\'efectuar la cerca d\'actualitzacions.</string>
+    <string name="dialog_title_update_interval">Selecciona interval</string>
+    <string name="default_update_interval">every_month</string>
+    <string name="preference_warning_title">Avís</string>
+    <string name="preference_warning_text">Si desactiveu aquest element, ja no podreu rebre notificacions d\'actualitzacions. Encara voleu desactivar l\'actualització automàtica?</string>
+    
+    <string name="preference_andappstore">Utilitza AndAppStore</string>
+    <string name="preference_andappstore_summary">Utilitza la informació de la versió aportada per AndAppStore.com</string>
+    
+    <string name="permission_read_update_info">Llegeix informació d\'actualització.</string>
+    <string name="permission_write_update_info">Escriu informació de l\'actualització</string>
+    <string name="permission_read_update_info_descr">Llegeix informació sobre les aplicacions instal·lades, localitzacions d\'actualització i peticions.</string>
+    <string name="permission_write_update_info_descr">Escriu informació sobre aplicacions instal·lades, localitzacions d\'actualització i peticions.</string>
+
+
+	<!-- About -->
+	<string name="about">Quant a</string>
+	<string name="about_title">Quant a %s</string>
+	<string name="about_text">Versió %s \n\n Actualització d\'OI et manté informat sobre noves versions d\'aplicacions.\n OpenIntents permet a diferents aplicacions d\'Android compartir dades emprant intents i interfícies obertes.\n\n Per a més informació i altres grans aplicacions visiteu OpenIntents a www.openintents.org</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">EULA d\'actualitzacions d\'OI</string>
+<string name="eula_description">"Copyright 2008 OpenIntents.org\n Llicenciat sota la Llicència Apache, Versió 2.0 (la \"Llicència\"); no podeu utilitzar aquest fitxer excepte d\'acord amb la Llicència. En podeu obtenri una còpia a \nhttp://www.apache.org/licenses/LICENSE-2.0\n A no ser que sigui obligatori segons la llei aplicable o acordat per escrit, el programari distribuït sota la Llicència està distribuït en una BASE "COM ÉS", SENSE GARANTIES O CONDICIONS DE QUALSEVOL TIPUS, tant expresses o implicades. Vegeu la Llicència per als permisos específics i limitacions sota la Llicència.\n \n"</string>
+	<string name="eula_accept">Accepto</string>
+	<string name="eula_refuse">Canceŀla</string>
+	
+</resources>

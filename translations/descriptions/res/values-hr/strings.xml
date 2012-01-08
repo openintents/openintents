@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
-  Nikola Miljkovic https://launchpad.net/~milja1337</translators>
+  Nikola Miljkovic https://launchpad.net/~milja1337
+  OpenIntents devs https://launchpad.net/~openintents-devs</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->

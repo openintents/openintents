@@ -22,7 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Anshuman Jaiswal https://launchpad.net/~good-anshuman\n"
+"  John Andre https://launchpad.net/~john-andre\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  happynawani https://launchpad.net/~happynawani"
 

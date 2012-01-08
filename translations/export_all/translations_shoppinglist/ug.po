@@ -181,7 +181,7 @@ msgstr "تۈرنى باشقا تىزىمغا يۆتكە"
 
 #: tmp_strings.xml:76(string)
 msgid "Copy item"
-msgstr ""
+msgstr "تۈر كۆچۈر"
 
 #. Button label to add an item to the list.
 #: tmp_strings.xml:79(string)
@@ -282,9 +282,8 @@ msgid "Priority 1-4: %s"
 msgstr "ئالدىنلىق 1-4: %s"
 
 #: tmp_strings.xml:116(string)
-#, fuzzy
 msgid "Are you sure you want to permanently delete this item?"
-msgstr "راستلا بۇ تۈرنى سېتىۋېلىش تىزىمىدىن مەڭگۈلۈك ئۆچۈرەمسىز؟"
+msgstr "بۇ تۈرنى مەڭگۈلۈككە ئۆچۈرەمسىز؟"
 
 #: tmp_strings.xml:117(string)
 msgid "Delete"
@@ -475,7 +474,7 @@ msgstr "ئېكران قۇلۇپنى چەكلە"
 
 #: tmp_strings.xml:179(string)
 msgid "Prevents the screen to be locked when checked."
-msgstr ""
+msgstr "تەكشۈرۈلۈۋاتقاندا ئېكران قۇلۇپلاشنىڭ ئالدىنى ئالىدۇ."
 
 #: tmp_strings.xml:180(string)
 msgid "Reset Quantity"
@@ -487,11 +486,13 @@ msgstr "تۈرلەرنى قايتا قوشقاندا سانىنى ئەسلىگە
 
 #: tmp_strings.xml:182(string)
 msgid "Barcode Scanner"
-msgstr ""
+msgstr "تاياقچە كود تاراغۇچ"
 
 #: tmp_strings.xml:183(string)
 msgid "Long press the Add button to start Barcode OI Plugin (if installed)."
 msgstr ""
+"قوش توپچىسى ئۇزۇن بېسىلسا تاياقچە كود OI قىستۇرمىسىنى قوزغىتىدۇ (ئورنىتىلغان "
+"بولسا)"
 
 #: tmp_strings.xml:184(string)
 msgid "Show tags"
@@ -632,29 +633,30 @@ msgstr "OpenIntents تورتۇرادىن ئۆرنەككە ئېرىشىدۇ."
 
 #: tmp_strings.xml:232(string)
 msgid "Quick Edit Mode"
-msgstr ""
+msgstr "تېز تەھرىرلەش ھالىتى"
 
 #: tmp_strings.xml:233(string)
 msgid "Touch Priority or Quantity values for a menu of common values."
 msgstr ""
+"ئادەتتىكى قىممەتبەۇ بىر تىزىملىكنىڭ چېكىش ئالدىنلىقى ياكى مىقدار قىممىتى."
 
 #: tmp_strings.xml:234(string)
 msgid "Touching Priority or Quantity values summons the Edit Item dialog."
 msgstr ""
 
 #: tmp_strings.xml:235(string)
-#, fuzzy
 msgid "Reset all settings"
-msgstr "ئۆرنەك تەڭشىكى"
+msgstr "ھەممە تەڭشەكلەرنى ئەسلىگە قايتۇر"
 
 #: tmp_strings.xml:236(string)
-#, fuzzy
 msgid "Do you really want to RESET ALL settings? This cannot be undone."
-msgstr "بۇ دۇكاننى راستلا ئۆچۈرەمسىز؟"
+msgstr ""
+"ھەممە تەڭشەكلەرنى راستىنلا ئەسلىگە قايتۇرامسىز؟ بۇ مەشغۇلاتنى كەينىگە "
+"ياندۇرغىلى بولمايدۇ."
 
 #: tmp_strings.xml:237(string)
 msgid "All settings have been reset"
-msgstr ""
+msgstr "ھەممە تەڭشەكلەر ئەسلىگە قايتۇرۇلىدۇ"
 
 #. Permission to read shopping lists
 #: tmp_strings.xml:245(string)
@@ -769,12 +771,12 @@ msgstr "چوڭ"
 #. Preference orientation: landscape
 #: tmp_strings.xml:302(item)
 msgid "Landscape"
-msgstr ""
+msgstr "توغرا يۆنىلىش"
 
 #. Preference orientation: portrait
 #: tmp_strings.xml:304(item)
 msgid "Portrait"
-msgstr ""
+msgstr "بوي يۆنىلىش"
 
 #. Preference capitalization: No capitalization
 #: tmp_strings.xml:309(item)
@@ -813,17 +815,16 @@ msgstr "تىزىم تاللاڭ:"
 
 #: tmp_strings.xml:340(string)
 msgid "Previous page"
-msgstr ""
+msgstr "ئالدىنقى بەت"
 
 #: tmp_strings.xml:341(string)
 msgid "Next page"
-msgstr ""
+msgstr "كېيىنكى بەت"
 
 #: tmp_strings.xml:342(string)
-#, fuzzy
 msgid "Choose a list"
-msgstr "چوڭ يېزىلىش تاللاڭ"
+msgstr "بىر تىزىم تاللاڭ"
 
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
-msgstr ""
+msgstr "%d بەتتە تۈر يوق"

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Kras4ooo https://launchpad.net/~kkrassi1984</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents منتقي الألوان ملحق عن OI مصباح يدوي، وغيرها من التطبيقات المتوافقة.</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">منتقي الألوان OI</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">منتقي الألوان</string>
+    
+    <string name="recent_colors_condensed">الأخيرة</string>
+    <string name="recent_colors">الألوان المستخدمة مؤخرا</string>
+    <string name="recent_colors_expanded">مؤخرا من الألوان المختارة</string>
+    <string name="recent_colors_clear_history">واضحة</string>
+    <string name="recent_colors_empty">هناك لا الألوان المختارة مؤخرا.</string>
+    
+    <string name="confirm_color_title">استخدام الألوان؟</string>
+    <string name="confirm_color_message">استخدام هذا اللون الجديد؟ يمكنك تجنب هذه الرسالة بالنقر فوق الدائرة المركزية.</string>
+    
+    
+	<!-- About -->
+	<string name="about">حول</string>
+	<string name="aboutapp_not_available">إصدار s\n\n% أي ملحق متوافقة لعرض معلومات كاملة (جهة الاتصال، والقروض، والترخيص).</string>
+	<string name="aboutapp_get">الحصول على OI أنا حول</string>
+
+
+	<!-- Update -->
+	<string name="update_error">قم بتحميل التطبيق غير متوفر.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">لتحديد لون في OI مصباح يدوي، القائمة الصحافة ;gt </string>
+    <string name="title_app_flashlight">مصباح يدوي OI</string>
+    
+    <string name="info_app_spiral_wallpaper">دوامة المنوم، المتحركة خلفية حية.</string>
+    <string name="title_app_spiral_wallpaper">ورق جدار ناري HypnoTwister</string>
+    
+    <string name="info_app_bettr_flickr">واجهة فليكر الأصلي للروبوت</string>
+    <string name="title_app_bettr_flickr">بيترفليكر</string>
+    
+    <string name="info_app_character_gen">خلط وتتطابق مع العمل الفني لإنشاء أحرف انيم</string>
+    <string name="title_app_character_gen">مولد الحرف انيم</string>
+    
+    
+	<string name="info_activity_text">يمكن استخدام هذا التطبيق مع التطبيقات التالية:</string>
+    <string name="info_launch">إطلاق s%</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">%1$s %2$s هذا يتطلب التطبيق أو أعلى.</string>
+	<string name="info_get">الحصول على s%</string>
+</resources>

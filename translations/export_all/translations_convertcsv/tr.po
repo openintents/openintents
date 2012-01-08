@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: ariza95 <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -334,7 +334,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "KOPYALA - Kayıtları kopyalamanıza izin verir"
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-msgid "\"KEEP - Don't overwrite existing records.\""
+#, fuzzy
+msgid "KEEP - Don't overwrite existing records."
 msgstr "\"SAKLA - Var olan kayıtların üstüne yazma. \""
 
 #: tmp_strings.xml:138(item)
@@ -350,9 +351,9 @@ msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr "KOPYALA - Eğer kayıt mevcutsa ikinci bir koptasını oluştur."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+#, fuzzy
 msgid ""
-"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-"\""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
 "\"SAKLA - Var olan kayıtların üstüne yazma, CSV dosyasındakini hariç tut. \""
 

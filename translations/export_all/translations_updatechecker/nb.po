@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Arne Tobias Malkenes Ødegaard <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,201 +21,208 @@ msgstr ""
 #: tmp_strings.xml:8(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias"
 
 #. ***************************
 #. 	     Applicatio-specific strings
 #. 	     ***************************
 #: tmp_strings.xml:13(string) tmp_strings.xml:21(string)
 msgid "OI Update"
-msgstr ""
+msgstr "OI Oppdater"
 
 #: tmp_strings.xml:15(string)
 msgid "A new version of %s is available.\\nWould you like to upgrade?"
-msgstr ""
+msgstr "En ny versjon av %s er tilgjengelig.\\nVil du oppgradere?"
 
 #: tmp_strings.xml:16(string)
 msgid "A new version of %1$s is available at %2$s.\\n%3$s\\n"
-msgstr ""
+msgstr "En ny versjon av %1$s er tilgjengelig på %2$s.\\n%3$s\\n"
 
 #: tmp_strings.xml:17(string)
 msgid "A new version of %1$s is available.\\n%2$s\\n"
-msgstr ""
+msgstr "En ny versjon av %1$s er tilgjengelig.\\n%2$s\\n"
 
 #: tmp_strings.xml:18(string)
 msgid "A new version of %1$s is available at %2$s."
-msgstr ""
+msgstr "En ny versjon av %1$s er tilgjengelig på %2$s."
 
 #: tmp_strings.xml:19(string)
 msgid "A new version of %s is available."
-msgstr ""
+msgstr "En ny versjon av %s er tilgjengelig."
 
 #: tmp_strings.xml:20(string)
 msgid "Android Market not available."
-msgstr ""
+msgstr "Android Marked ikke tilgjengelig."
 
 #: tmp_strings.xml:22(string)
 msgid "Android Market"
-msgstr ""
+msgstr "Android Marked"
 
 #: tmp_strings.xml:23(string)
 msgid "AndAppStore.com"
-msgstr ""
+msgstr "AndAppStore.com"
 
 #: tmp_strings.xml:25(string)
 msgid "Version %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
-msgstr ""
+msgstr "Versjon %1$s\\nSD-kort %2$s\\n\\nOS\\n%3$s"
 
 #: tmp_strings.xml:26(string)
 msgid "free space: %s"
-msgstr ""
+msgstr "tilgjengelig plass: %s"
 
 #: tmp_strings.xml:27(string)
 msgid "Board %1$s\\nBrand %2$s\\nDevice %3$s\\nID %4$s\\nModel %5$s"
-msgstr ""
+msgstr "Brett %1$s\\nMerke %2$s\\nEnhet %3$s\\nID %4$s\\nModell %5$s"
 
 #: tmp_strings.xml:29(string)
 msgid "Perform update now!"
-msgstr ""
+msgstr "Utfører oppdatering nå!"
 
 #: tmp_strings.xml:30(string)
 msgid "Try update from Market now!"
-msgstr ""
+msgstr "Prøv oppdatering fra Marked nå!"
 
 #: tmp_strings.xml:31(string)
 msgid "Try update from AndAppStore now!"
-msgstr ""
+msgstr "Prøv oppdatering fra AndAppStore nå!"
 
 #: tmp_strings.xml:32(string)
 msgid "Remind me later!"
-msgstr ""
+msgstr "Minn meg på senere!"
 
 #: tmp_strings.xml:33(string)
 msgid "Ignore this update"
-msgstr ""
+msgstr "Ignorer denne oppdateringen"
 
 #: tmp_strings.xml:34(string)
 msgid "Ignore all further updates"
-msgstr ""
+msgstr "Ignorer alle fremtidige oppdateringer"
 
 #: tmp_strings.xml:35(string)
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: tmp_strings.xml:37(string)
 msgid ""
 "Update could not be started!\\n\\nPlease contact application developer!\\n\\n"
 "%s"
 msgstr ""
+"Oppdatering kunne ikke startes!\\n\\nVennligst kontakt utvikleren av "
+"applikasjonen!\\n\\n%s"
 
 #: tmp_strings.xml:38(string)
 msgid "Application is up-to-date."
-msgstr ""
+msgstr "Applikasjon er oppdatert."
 
 #: tmp_strings.xml:39(string)
 msgid "Checking for new version."
-msgstr ""
+msgstr "Sjekker etter ny versjon."
 
 #: tmp_strings.xml:40(string)
 msgid "Building list of applications."
-msgstr ""
+msgstr "Bygger liste med applikasjoner."
 
 #: tmp_strings.xml:41(string)
 msgid "Check AndAppStore.com"
-msgstr ""
+msgstr "Sjekk AndAppStore.com"
 
 #: tmp_strings.xml:42(string)
 msgid "Check versions"
-msgstr ""
+msgstr "Sjekk versjoner"
 
 #: tmp_strings.xml:43(string)
 msgid "Show all"
-msgstr ""
+msgstr "Vis alle"
 
 #: tmp_strings.xml:44(string)
 msgid "Refresh"
-msgstr ""
+msgstr "Last på nytt"
 
 #: tmp_strings.xml:45(string)
 msgid "Checked AndAppStore"
-msgstr ""
+msgstr "Sjekket AndAppStore"
 
 #: tmp_strings.xml:46(string)
 msgid "Current version: %s"
-msgstr ""
+msgstr "Nåværende versjon: %s"
 
 #: tmp_strings.xml:47(string)
 msgid "Current version code: %s"
-msgstr ""
+msgstr "Nåværende versjonkode: %s"
 
 #: tmp_strings.xml:48(string)
 msgid "Newer version: %s"
-msgstr ""
+msgstr "Nyere versjon: %s"
 
 #: tmp_strings.xml:49(string)
 msgid "Newer version: %1$s - %2$s"
-msgstr ""
+msgstr "Nyere versjon: %1$s - %2$s"
 
 #: tmp_strings.xml:50(string)
 msgid "Newer version available."
-msgstr ""
+msgstr "Nyere versjon tilgjengelig."
 
 #: tmp_strings.xml:51(string)
 msgid "No update information found."
-msgstr ""
+msgstr "Ingen oppdateringsinformasjon tilgjengelig."
 
 #: tmp_strings.xml:52(string)
 msgid "OI Update - List of new versions"
-msgstr ""
+msgstr "OI Oppdater - Liste over nye versjoner"
 
 #: tmp_strings.xml:53(string)
 msgid "OI Update - New versions at AndAppStore"
-msgstr ""
+msgstr "OI Oppdater - Nye versjoner på AndAppStore"
 
 #: tmp_strings.xml:54(string)
 msgid "OI Update - List of managed applications"
-msgstr ""
+msgstr "OI Oppdater - Liste over administrerte applikasjoner"
 
 #: tmp_strings.xml:55(string)
 msgid "OI Update - List of managed applications (check at AndAppStore)"
 msgstr ""
+"OI Oppdater - Liste over administrerte applikasjoner (sjekk på AndAppStore)"
 
 #: tmp_strings.xml:56(string)
 msgid "Settings"
-msgstr ""
+msgstr "Innstillinger"
 
 #: tmp_strings.xml:57(string)
 msgid "Auto check"
-msgstr ""
+msgstr "Sjekk automatisk"
 
 #: tmp_strings.xml:58(string)
 msgid "Ignored"
-msgstr ""
+msgstr "Ignorert"
 
 #: tmp_strings.xml:59(string)
 msgid "Updates are currently ignored. Would you like to receive updates again?"
-msgstr ""
+msgstr "Oppdateringer blir nå ignorert. Ønsker du å motta oppdateringer igjen?"
 
 #: tmp_strings.xml:60(string)
 msgid "Unknown"
-msgstr ""
+msgstr "Ukjent"
 
 #: tmp_strings.xml:61(string)
 msgid ""
 "No update information available. Please check manually and ask the developer "
 "to support OI Update in the future."
 msgstr ""
+"Ingen oppdateringsinformasjon tilgjengelig. Vennligst sjekk manuelt og spør "
+"utvikleren å støtte OI Oppdater i fremtiden."
 
 #: tmp_strings.xml:62(string)
 msgid "Search on Market"
-msgstr ""
+msgstr "Søk på Marked"
 
 #: tmp_strings.xml:63(string)
 msgid "Search on AndAppStore"
-msgstr ""
+msgstr "Søk på AndAppStore"
 
 #: tmp_strings.xml:64(string)
 msgid "Processing %s"
-msgstr ""
+msgstr "Prosesserer %s"
 
 #: tmp_strings.xml:66(string)
 msgid ""
@@ -223,84 +230,95 @@ msgid ""
 "Android Market. Applications installed from unknown sources might exhibit a "
 "security risk."
 msgstr ""
+"Oppdateringsprosessen for denne applikasjonen viser til en annen side en "
+"Android Marked. Applikasjoner installert fra ukjente kilder er kanskje en "
+"sikkerhetsrisiko."
 
 #: tmp_strings.xml:70(string)
 msgid "Continue anyway"
-msgstr ""
+msgstr "Fortsett uansett"
 
 #: tmp_strings.xml:71(string)
 msgid "Abort"
-msgstr ""
+msgstr "Avbryt"
 
 #: tmp_strings.xml:73(string)
 msgid "Auto update"
-msgstr ""
+msgstr "Automatisk oppdatering"
 
 #: tmp_strings.xml:74(string)
 msgid "If checked, search for updates is performed regularly"
-msgstr ""
+msgstr "Hvis markert, søk etter oppdateringer blir utført jevnlig"
 
 #: tmp_strings.xml:75(string)
 msgid "Update interval"
-msgstr ""
+msgstr "Oppdateringsintervall"
 
 #: tmp_strings.xml:76(string)
 msgid "Set the interval how often the update search should be performed."
 msgstr ""
+"Sett intervallen for hvor ofte søk etter oppdateringer skal være utført."
 
 #: tmp_strings.xml:77(string)
 msgid "Select interval"
-msgstr ""
+msgstr "Velg intervall"
 
 #: tmp_strings.xml:78(string)
 msgid "every_month"
-msgstr ""
+msgstr "hver_måned"
 
 #: tmp_strings.xml:79(string)
 msgid "Warning"
-msgstr ""
+msgstr "Advarsel"
 
 #: tmp_strings.xml:80(string)
 msgid ""
 "If you uncheck this item, you will no longer receive notifications for "
 "updates. Do you still want to uncheck auto update?"
 msgstr ""
+"Fjerner du markeringen for dette punktet, vil du ikke lenger motta varsler "
+"for oppdateringer. Vil du fortsatt fjerne markeringen for automatisk "
+"oppdatering?"
 
 #: tmp_strings.xml:82(string)
 msgid "Use AndAppStore"
-msgstr ""
+msgstr "Bruk AndAppStore"
 
 #: tmp_strings.xml:83(string)
 msgid "Use version information provided by AndAppStore.com"
-msgstr ""
+msgstr "Bruk versjonsinformasjon levert av AndAppStore.com"
 
 #: tmp_strings.xml:85(string)
 msgid "Read update information"
-msgstr ""
+msgstr "Les oppdateringsinformasjon"
 
 #: tmp_strings.xml:86(string)
 msgid "Write update information"
-msgstr ""
+msgstr "Skriv oppdateringsinformasjon"
 
 #: tmp_strings.xml:87(string)
 msgid ""
 "Read information about installed applications, update locations and requests."
 msgstr ""
+"Les informasjon om installerte applikasjoner, oppdateringsplasseringer og "
+"forespørsler."
 
 #: tmp_strings.xml:88(string)
 msgid ""
 "Write information about installed applications, update locations and "
 "requests."
 msgstr ""
+"Skriv informasjon om installerte applikasjoner, oppdateringsplasseringer og "
+"forespørsler."
 
 #. About
 #: tmp_strings.xml:92(string)
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 #: tmp_strings.xml:93(string)
 msgid "About %s"
-msgstr ""
+msgstr "Om %s"
 
 #: tmp_strings.xml:94(string)
 msgid ""
@@ -309,11 +327,15 @@ msgid ""
 "intents and open interfaces.\\n\\n For more information and other great "
 "applications visit OpenIntents at www.openintents.org"
 msgstr ""
+"Versjon %s \\n\\nOI Oppdatering holder deg informert om nye "
+"applikasjonversjoner.\\nOpenIntents lar ulike applikasjoner for Android dele "
+"data ved bruk av intensjoner og åpne grensesnitt.\\nFor mer informasjon og "
+"andre flotte applikasjoner besøk OpenIntents på www.openintents.org"
 
 #. EULA
 #: tmp_strings.xml:102(string)
 msgid "OI Update EULA"
-msgstr ""
+msgstr "Lisensavtale for OI Oppdater"
 
 #: tmp_strings.xml:103(string)
 msgid ""
@@ -326,11 +348,19 @@ msgid ""
 "KIND, either express or implied. See the License for the specific language "
 "governing permissions and limitations under the License.\\n \\n\""
 msgstr ""
+"\"Opphavsrett 2008 OpenIntents.org\\nLisensert under Apache-lisensen, "
+"versjon 2.0 (\\\"Lisensen\\\"); du får ikke lov til å bruke denne filen "
+"bortsett fra i overholdelse med Lisensen. Du kan få tak i en kopi av "
+"Lisensen på\\nhttp://www.apache.org/licenses/LICENSE-2.0\\nHvis ikke påkrevd "
+"av gjeldende lov eller blitt enig om skriftlig, programvare utgitt under "
+"Lisensen er utgitt på et \"SOM ER\" GRUNNLAG, UTEN GARANTIER ELLER FORHOLD "
+"AV NOEN FORM, enten uttrykk eller antydet. Se Lisensen for det aktuelle "
+"språket som styrer tillatelser og begrensninger under Lisensen.\\n\\n\""
 
 #: tmp_strings.xml:110(string)
 msgid "Accept"
-msgstr ""
+msgstr "Aksepter"
 
 #: tmp_strings.xml:111(string)
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"

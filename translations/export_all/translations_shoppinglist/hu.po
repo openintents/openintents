@@ -281,9 +281,8 @@ msgid "Priority 1-4: %s"
 msgstr ""
 
 #: tmp_strings.xml:116(string)
-#, fuzzy
 msgid "Are you sure you want to permanently delete this item?"
-msgstr "Biztosan törölni kívánja ezt a bevásárlási listát?"
+msgstr ""
 
 #: tmp_strings.xml:117(string)
 msgid "Delete"
@@ -641,9 +640,8 @@ msgid "Touching Priority or Quantity values summons the Edit Item dialog."
 msgstr ""
 
 #: tmp_strings.xml:235(string)
-#, fuzzy
 msgid "Reset all settings"
-msgstr "Téma beállítások"
+msgstr ""
 
 #: tmp_strings.xml:236(string)
 msgid "Do you really want to RESET ALL settings? This cannot be undone."
@@ -818,9 +816,8 @@ msgid "Next page"
 msgstr ""
 
 #: tmp_strings.xml:342(string)
-#, fuzzy
 msgid "Choose a list"
-msgstr "Nagybetűsítés kiválasztása"
+msgstr ""
 
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"

@@ -1,0 +1,144 @@
+# Sindhi translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: happynawani <Unknown>\n"
+"Language-Team: Sindhi <sd@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  happynawani https://launchpad.net/~happynawani"
+
+#. Strings for OI About
+#: tmp_strings.xml:11(string)
+msgid ""
+"OpenIntents Color Picker is an extension for OI Flashlight and other "
+"compatible applications."
+msgstr "OpenIntents रंगचयनक OI टॉर्च अऊँ अन्य संगत पूर्ण अनुप्रयोगन लाये हिक्क एक्सटेंशन आ"
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:17(string)
+msgid "OI Color Picker"
+msgstr "OI रंगचयनक"
+
+#. Title of the color picker activity.
+#: tmp_strings.xml:20(string)
+msgid "Color picker"
+msgstr "रंगचयनक"
+
+#: tmp_strings.xml:22(string)
+msgid "Recent"
+msgstr "हाल ही में"
+
+#: tmp_strings.xml:23(string)
+msgid "Recent colors"
+msgstr "हाल ही जा रंग"
+
+#: tmp_strings.xml:24(string)
+msgid "Recently chosen colors"
+msgstr "हाल ही जा चुन्द्यल रंग"
+
+#: tmp_strings.xml:25(string)
+msgid "Clear"
+msgstr "खाली कयो"
+
+#: tmp_strings.xml:26(string)
+msgid "There are no recently chosen colors."
+msgstr "हाल ही में चुन्द्यल रंग कानन"
+
+#: tmp_strings.xml:28(string)
+msgid "Use color?"
+msgstr "?रंग जो प्रयोग कयो"
+
+#: tmp_strings.xml:29(string)
+msgid ""
+"Use this new color? You can avoid this message by clicking on the center "
+"circle."
+msgstr "इन्ह नए रंग जो उपयोग कयो? तहां केंद्र जे चक्र ते क्लिक करे इन्ह संदेश सां  बची ता सगो"
+
+#. About
+#: tmp_strings.xml:33(string)
+msgid "About"
+msgstr "जे बारे में"
+
+#: tmp_strings.xml:34(string)
+msgid ""
+"Version %s\\n\\nNo compatible extension available to display full info "
+"(contact, credits, license)."
+msgstr ""
+"|संस्करण%s\\n\\nपूरी जानकारी (संपर्क, श्रेय, लाइसेंस) प्रदर्शित करण लाये कोई संगत पुर्ण "
+"एक्सटेंशन उपलब्ध काने"
+
+#: tmp_strings.xml:35(string)
+msgid "Get OI About"
+msgstr "OI 'जे बारें में' प्राप्त कयो"
+
+#. Update
+#: tmp_strings.xml:39(string)
+msgid "Download application not available."
+msgstr "|डाउनलोड अनुप्रयोग मौजूद काने"
+
+#. Message how to use OI Color Picker from within OI Flashlight.
+#: tmp_strings.xml:45(string)
+msgid "To select a color in OI Flashlight, press menu &gt; Color."
+msgstr "OI टॉर्च में रंगचुन्दाना लाये  ,मेनू दबाएँ &gt; रंग|"
+
+#: tmp_strings.xml:46(string)
+msgid "OI Flashlight"
+msgstr "OI टॉर्च"
+
+#: tmp_strings.xml:48(string)
+msgid "Hypnotic, animated spiral Live Wallpaper."
+msgstr "कृत्रिम निद्रावस्था, एनिमेटेड सर्पिल के लाइव वॉलपेपर|"
+
+#: tmp_strings.xml:49(string)
+msgid "HypnoTwister Live Wallpaper"
+msgstr "कृत्रिम निद्रावस्था भांजनेवाला लाइव वॉलपेपर"
+
+#: tmp_strings.xml:51(string)
+msgid "Native Flickr interface for Android"
+msgstr "Android जे लाये  मूल Flickr इंटरफ़ेस"
+
+#: tmp_strings.xml:52(string)
+msgid "BettrFlickr"
+msgstr "BettrFlickr"
+
+#: tmp_strings.xml:54(string)
+msgid "Mix and match artwork to generate anime characters"
+msgstr "anime पात्र उत्पन्न करण लाये कलाकृति खे मिलायो अऊँ मेल खिलायो|"
+
+#: tmp_strings.xml:55(string)
+msgid "Anime Character Generator"
+msgstr "Anime पात्र उत्पन्नकर्ता"
+
+#: tmp_strings.xml:58(string)
+msgid "This app can be used with the following applications:"
+msgstr "ईयो अनुप्रयोग निम्नलिखित अनुप्रयोगन सां गड़ इस्तेमालकरे ता सागऊँ   :"
+
+#: tmp_strings.xml:59(string)
+msgid "Launch %s"
+msgstr "s लॉन्च कयो%"
+
+#. %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher").
+#: tmp_strings.xml:61(string)
+msgid "This app requires %1$s %2$s or higher."
+msgstr "खे आवश्यकता तस %1$s %2$s या अधिक जी|"
+
+#: tmp_strings.xml:62(string)
+msgid "Get %s"
+msgstr "s प्राप्त कयो%"

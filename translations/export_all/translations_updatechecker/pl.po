@@ -18,6 +18,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Damian Skrodzki https://launchpad.net/~damienix\n"
+"  Karolina Kowal https://launchpad.net/~gwiazdeczka11\n"
 "  Tomasz 'Zen' Napierala https://launchpad.net/~tzn"
 
 #. ***************************

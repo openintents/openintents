@@ -138,9 +138,8 @@ msgstr ""
 
 #. Dialog message.
 #: tmp_strings.xml:71(string)
-#, fuzzy
 msgid "No compatible barcode scanner is available."
-msgstr "Совместимый файловый менеджер не доступен"
+msgstr ""
 
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:74(string)
@@ -168,6 +167,9 @@ msgid ""
 "to restore the master key from a backup file in order to access previously "
 "encrypted data."
 msgstr ""
+"Нет совместимого приложения для расшифровки.\\n\\nПримечание: Необходимо "
+"восстановить главный ключ из файла резервной копии, чтобы получить доступ к "
+"ранее зашифрованным данным."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:86(string)

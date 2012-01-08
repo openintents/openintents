@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Fitoschido https://launchpad.net/~fitoschido\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm\n"
 "  dcb116 https://launchpad.net/~dcb116"
@@ -38,12 +39,12 @@ msgstr ""
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
 msgid "OI Shopping List"
-msgstr "OI Lista de Compras"
+msgstr "Lista de compras OI"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:36(string) tmp_strings.xml:96(string)
 msgid "OI Notepad"
-msgstr "Bloc de Notas OI"
+msgstr "Bloc de notas OI"
 
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:39(string)
@@ -151,7 +152,7 @@ msgstr "No preguntar de nuevo. Reescribir siempre"
 
 #: tmp_strings.xml:73(string)
 msgid "Import policy set to RESTORE"
-msgstr ""
+msgstr "Política de importación establecido en RESTAURAR"
 
 #: tmp_strings.xml:74(string)
 msgid ""
@@ -251,7 +252,7 @@ msgstr "Importar tiendas"
 
 #: tmp_strings.xml:105(string)
 msgid "Import HandyShopper store names only as item tags."
-msgstr ""
+msgstr "Importar nombres de tiendas de HandyShopper solo como etiquetas."
 
 #: tmp_strings.xml:106(string)
 msgid "Import HandyShopper stores and per-store price and aisle information."
@@ -331,7 +332,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "DUPLICAR - Permitir duplicacion de registros."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-msgid "\"KEEP - Don't overwrite existing records.\""
+#, fuzzy
+msgid "KEEP - Don't overwrite existing records."
 msgstr "\"CONSERVAR - No re-escribir registros existentes.\""
 
 #: tmp_strings.xml:138(item)
@@ -347,9 +349,9 @@ msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr "DUPLICAR - Agregar una segunda copia del registro si ya existe."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+#, fuzzy
 msgid ""
-"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-"\""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
 "\"Conservar - No re-escribir un registro existente, ignorar el del archivo "
 "CSV.\""

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  happynawani https://launchpad.net/~happynawani</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">OpenIntents टॉर्च तहान्खे  अंधेरे में तहान्जो रास्तो खोजन में मदद कंदों तव |पूर्णता जी  प्रदर्शन लाईट चालू रहन्दी तव जेमल हे अनुप्रयोग चालु हून्दो आ</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI टॉर्च</string>
+    
+    <string name="backlight_info">पूर्णता जी लाईट चालू रहन्दी आ</string>
+    
+    <string name="color">रंग</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">OI रंगचयनक</string>
+    
+    <string name="preferences">प्राथमिकताएं</string>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<!-- Title for preferences or settings -->
+	<string name="settings_titlebar">प्राथमिकताएं</string>
+	<string name="settings_title_keep_color">रंग रख्यो</string>
+	<string name="settings_summary_keep_color">इन ही  रंग खे  अगली बार टॉर्च अनुप्रयोग में प्रोयग करण जे लाये रंग सुरक्षित करे वठो</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
+		user tries to access it. -->
+    <string name="color_picker_modularization_explanation">रंगचयनक खे अन्य डेवलपर्स जे लाये अन्ना उपयोगी ठायण लाये,असां इन्न्खे स्वयं जे अनुप्रोयोग में विभाजित करे छादयो आ |</string>
+    <string name="setting_use_camera_flash">कैमरा फ्लैश जो  प्रयोग कयो</string>
+    <string name="setting_use_camera_flash_summary">स्क्रीन बेकलाइट जे बजाय कैमरा फ्लैश जो प्रयोग कयो |</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <!-- Information to enable the camera flash as flashlight. -->
+    <string name="cameralight_info">कैमरे जे प्रकाश खे सक्षम करण लाये दबायो  (थोडा वक्त ले सकता है)|</string>
+    <string name="cameralight_stop_info">कैमरे जे प्रकाश खे अक्षम करण लाये दबायो</string>
+    
+</resources>

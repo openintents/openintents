@@ -14,10 +14,10 @@
 		<!--  -->
 		<!--  Description of application -->
 		<string>OI About это отдельный информационный диалог используемый в различных приложениях.</string>
-		<string>This application is invoked through the menu of other OI applications.</string>
+		<string>Это приложение запускается через меню других OI приложений.</string>
 		<string>Это позволяет вам просматривать информацию о версии, разработчиках и лицензии приложения</string>
-		<string>Credits include authors, documentation, translators, and artists.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<string>Информация об авторах, переводчиках, художниках, а также документация</string>
+		<string>Все эти функции объединены в простом и эффективном интерфейсе.</string>
 		<emptyline/>
 		<string>Это приложение является бесплатным и не требует постоянного подключения к Интернет.</string>
 		<emptyline/>
@@ -32,11 +32,11 @@
 		<emptyline/>
 		<string>Возможности:</string>
 		<listitem>Shows general info, credits, and license tabs.</listitem>
-		<listitem>Shows translators of all language versions.</listitem>
+		<listitem>Показывает переводчиков для всех языковых версий</listitem>
 		<listitem>Получает информацию из манифеста приложения через стандартные теги и метаданные</listitem>
 		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI About":</string>
+		<string>Приложения, которые работают с "OI About":</string>
 		<listitem>OI Notepad</listitem>
 		<listitem>OI File manager</listitem>
 		<listitem>OI Shopping List</listitem>
@@ -46,7 +46,7 @@
 		<listitem>OI Flashlight</listitem>
 		<emptyline/>
 		<string>Ключевые слова:</string>
-		<listitem>About, Credits, Information.</listitem>
+		<listitem>О программе, благодарности, информация.</listitem>
 		<listitem>OI, OpenIntents, Open Intents.</listitem>
 		<emptyline/>
 		<string>Переведенные версии:</string>
@@ -66,8 +66,8 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
-		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
+		<string>OI File Manager позволяет работать с SD-картой, создавать каталоги, переименовывать, копировать, перемещать, и удалять файлы</string>
+		<string>Также выступает в качестве дополнения к другим приложениям для отображения диалогов "Открыть" и "Сохранить"</string>
 		<emptyline/>
 		<string>Это приложение является бесплатным и не требует постоянного подключения к Интернет.</string>
 		<emptyline/>
@@ -85,15 +85,15 @@
 		<listitem>Переместить, копировать, переименовывать и удалять файлы.</listitem>
 		<listitem>￼  Создание и удаление директорий (папок).</listitem>
 		<listitem>Отправить файлы по электронной почте.</listitem>
-		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
-		<listitem>Support for many file endings and mime types.</listitem>
+		<listitem>Выступает в качестве дополнения к другим приложениям, таким как GMail, для прикрепления файлов</listitem>
+		<listitem>Поддержка многих файловых расширений и MIME-типов</listitem>
 		<listitem>Поддерживает PICK_FILE и PICK_DIRECTORY, так что другие приложения могут использовать OI File Manager</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>Доступные дополнения для "OI File Manager":</string>
+		<listitem>Показать информацию о лицензии с помощью "OI About".</listitem>
 		<emptyline/>
 		<string>Приложения работающие с "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<listitem>Открытие и сохранение текстовых файлов в "OI Notepad".</listitem>
 		<emptyline/>
 		<string>Ключевые слова:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
@@ -117,10 +117,10 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
-		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
-		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
-		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<string>OI Flashlight это простое и эффективное приложение которое помогает найти дорогу в темноте.</string>
+		<string>OI Flashlight включает подсветку, освещает окрестности</string>
+		<string>Для устройств со вспышкой OI Flashlight можно использовать вспышку, как яркий факел, чтобы осветить комнату</string>
+		<string>Цвет подсветки настраивается с помощью OI Color Picker</string>
 		<emptyline/>
 		<string>Это приложение является бесплатным и не требует постоянного подключения к Интернет.</string>
 		<emptyline/>
@@ -134,19 +134,19 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Возможности:</string>
-		<listitem>Lock the display backlight on.</listitem>
-		<listitem>Lock camera flash on.</listitem>
-		<listitem>The color of backlight is customizable.</listitem>
+		<listitem>Включить подсветку экрана</listitem>
+		<listitem>Включить вспышку</listitem>
+		<listitem>Цвет подсветки настраивается</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Flashlight":</string>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<string>Доступные дополнения для "OI Flashlight":</string>
+		<listitem>Показать информацию о лицензии с помощью "OI About".</listitem>
+		<listitem>Изменить цвет подсветки с помощью OI Color Picker</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Flashlight":</string>
+		<string>Приложения работающие с "OI Flashlight":</string>
 		<listitem>Обновить с помощью "OI Update".</listitem>
 		<emptyline/>
 		<string>Ключевые слова:</string>
-		<listitem>Flashlight, light, Backlight</listitem>
+		<listitem>Фонарик, свет, подсветка</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Переведенные версии:</string>
@@ -164,10 +164,10 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Notepad is a full-featured open source note taking application.</string>
-		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
-		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<string>OI Notepad это полнофункциональный  менеджер заметок с открытым исходным кодом.</string>
+		<string>С его помощью можно помечать, искать, а также отправлять заметки, в дополнение к базовым функциям, таким как создание, удаление и редактирование заметок.</string>
+		<string>Дополнительные функции, такие как шифрование, импорт / экспорт, а также голосовые заметки все это доступно с помощью расширений.</string>
+		<string>Все эти функции объединены в упрощенный и эффективный интерфейс, настраиваемый с помощью различных тем.</string>
 		<emptyline/>
 		<string>Это приложение является бесплатным и не требует постоянного подключения к Интернет.</string>
 		<emptyline/>
@@ -181,26 +181,26 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Возможности:</string>
-		<listitem>Add, edit and delete notes.</listitem>
+		<listitem>Добавление, изменение и удаление заметок.</listitem>
 		<listitem>Долгое нажатия на записи чтобы добавить метку.</listitem>
-		<listitem>Change font size and sort order.</listitem>
+		<listitem>Изменить размер шрифта и порядок сортировки.</listitem>
 		<listitem>A clearly arranged layout with a variety of themes.</listitem>
-		<listitem>Quickly search through notes.</listitem>
-		<listitem>Send notes as MMS or SMS.</listitem>
+		<listitem>Быстрый поиск записок.</listitem>
+		<listitem>Отправка заметок как MMS или SMS.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Notepad":</string>
+		<string>Доступные расширения для "OI Notepad":</string>
 		<listitem>Запись и прикрепление голосовых сообщений к заметке с помощью "OI Voice Notes".</listitem>
-		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Импорт/экспорт заметок из SD-карты с помощью "OI Convert CSV".</listitem>
+		<listitem>Показать информацию о лицензии с помощью "OI About".</listitem>
 		<listitem>Добавить дату и время в заметки с помощью "OI Insert Date".</listitem>
-		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<listitem>Перевернуть текст с помощью "Upside Down".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Notepad":</string>
-		<listitem>Back up notes with "My Backup Pro".</listitem>
-		<listitem>Encrypt notes using "OI Safe".</listitem>
-		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
+		<string>Приложения, которые работают с "OI Notepad":</string>
+		<listitem>Резервное копирование заметок с помощью "My Backup Pro".</listitem>
+		<listitem>Шифрование заметки с помощью "OI Safe".</listitem>
+		<listitem>Управление заметками на вашей SD-карте с помощью "OI File Manager".</listitem>
 		<listitem>Обновить с помощью "OI Update".</listitem>
-		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<listitem>Поделиться заметками через "Facebook", "Gmail", "Google +", "Twitter", и многие другие приложения.</listitem>
 		<emptyline/>
 		<string>Ключевые слова:</string>
 		<listitem>Note, Notepad, Note book, Notes</listitem>
@@ -221,8 +221,8 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
-		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<string>OI Safe надежно защищает все ваши пароли и другие личные данные при помощи AES шифрования.</string>
+		<string>Он также выступает в качестве дополнения к OI Notepad для шифрования заметок созданных в там.</string>
 		<emptyline/>
 		<string>Это приложение является бесплатным и не требует постоянного подключения к Интернет.</string>
 		<emptyline/>
@@ -236,25 +236,25 @@
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Возможности:</string>
-		<listitem>Securely protect data using AES encryption.</listitem>
-		<listitem>Freely move data entries between categories.</listitem>
+		<listitem>Надежная защита данных с помощью AES шифрования.</listitem>
+		<listitem>Свободно перемещение данных записей между категориями.</listitem>
 		<listitem>Импорт / экспорт данных записей и баз данных</listitem>
-		<listitem>Backup/Restore entries.</listitem>
-		<listitem>Includes secure password generator.</listitem>
-		<listitem>Automatic timeout to protect encrypted documents.</listitem>
-		<listitem>Encrypt OI Notepad notes.</listitem>
+		<listitem>Резервное копирование / восстановление записей.</listitem>
+		<listitem>Включает в себя безопасный генератор паролей.</listitem>
+		<listitem>Автоматический тайм-аут для защиты зашифрованных документов.</listitem>
+		<listitem>Шифрование заметок OI Notepad</listitem>
 		<listitem>Support for Obscura picture safe.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>Доступные дополнения для "OI File Manager":</string>
+		<listitem>Показать информацию о лицензии с помощью "OI About".</listitem>
 		<emptyline/>
 		<string>Приложения работающие с "OI File Manager":</string>
-		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<listitem>Шифрование заметок созданных в "OI Notepad".</listitem>
 		<emptyline/>
 		<string>Ключевые слова:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>safe, encrpytion, password, protection</listitem>
+		<listitem>сейф, шифрование, пароль, защита</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>Copy text 	 OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
@@ -273,11 +273,11 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
-		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
-		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
-		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
-		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<string>OI Shopping List это мощное приложение позволяющее легко создавать и управлять списками.</string>
+		<string>OI Shopping List позволяет легко добавлять элементы в список, отмечать их выполненными, и удалять их из списка.</string>
+		<string>Приложение может отслеживать расценки для каждого магазина, который вы используете, и имеет высокий уровень настройки.</string>
+		<string>Размер шрифта, порядок сортировки списка столбцов, и порядок очистки списка - это все параметры контролируемые пользователем.</string>
+		<string>Все эти функции объединяются в четкий интерфейс, который настраивается с помощью различных тем.</string>
 		<emptyline/>
 		<string>Исходный код этой программы является свободным и открытым. Доступен по адресу:</string>
 		<link href="http://code.google.com/p/openintents"/>
@@ -291,23 +291,23 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Возможности:</string>
-		<listitem>Add, edit and delete lists.</listitem>
-		<listitem>Create, delete, and check items quickly and easily.</listitem>
-		<listitem>Variety of themes.</listitem>
-		<listitem>Customizable font size and sort order.</listitem>
-		<listitem>Keep track of separate prices for each store.</listitem>
-		<listitem>Customizable list columns.</listitem>
+		<listitem>Добавление, изменение и удаление списков.</listitem>
+		<listitem>Создание, удаление и отметка элементов быстро и легко.</listitem>
+		<listitem>Множество тем</listitem>
+		<listitem>Настраиваемый размер шрифта и порядок сортировки.</listitem>
+		<listitem>Следите за отдельными ценами для каждого магазина.</listitem>
+		<listitem>Настраиваемые столбцы списка.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Shopping List":</string>
-		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
-		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<string>Доступные дополнения для "OI Shopping List":</string>
+		<listitem>Добавить записанное сообщение к заметке с помощью "OI Voice Notes".</listitem>
+		<listitem>Импорт / экспорт списков покупок с помощью "OI Convert CSV".</listitem>
+		<listitem>Показать информацию о лицензии с помощью "OI About".</listitem>
+		<listitem>Ввод / проверка элементов с помощью "Barcode OI Plugin".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Shopping List":</string>
+		<string>Приложения работающие с "OI Shopping List":</string>
 		<listitem>Обновить с помощью "OI Update".</listitem>
-		<listitem>Backup lists with "My Backup Pro".</listitem>
-		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<listitem>Резервное копирование списков с помощью "My Backup Pro".</listitem>
+		<listitem>Импорт ингредиентов рецептов с помощью "Bites".</listitem>
 		<emptyline/>
 		<string>Ключевые слова:</string>
 		<listitem>Shopping, List, Shopping List, Checklist</listitem>
@@ -316,7 +316,7 @@
 		<string>Переведенные версии:</string>
 		<international/>
 		<emptyline/>
-		<string>Extensions:</string>
+		<string>Дополнения:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>

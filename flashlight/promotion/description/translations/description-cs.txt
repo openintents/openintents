@@ -1,0 +1,44 @@
+# Application:
+OI Baterka
+
+# Promo text:
+OpenIntents Baterka pomáhá najít cestu ve tmě. Podsvícení displeje je zapnuté, dokud je zapnutá aplikace.
+
+# Description:
+OI Baterka je jednoduchá a efektivní aplikace, s níž najdete svou cestu tmou. OI Baterka zapne podsvícení displeje, jasně osvětlujíc okolní prostředí. Na zařízeních s bleskem fotoaparátu umí OI Baterka použít i ten jako svítilnu pro rozjasnění místnosti. Barva podsvícení je nastavitelná pomocí OI Výběru barev. 
+
+Tato aplikace je bez reklam a nevyžaduje přístup k internetu. 
+
+Zdrojové kód této open source aplikace je dostupný na stránkách: 
+http://code.google.com/p/openintents
+
+Pro úplný seznam změn a seznam často kladených dotazů navštivte prosím: 
+http://www.openintents.org
+
+Můžete také pomoci zlepšit překlad do Vašeho jazyka na Launchpadu: 
+https://translations.launchpad.net/openintents/trunk
+
+Vlastnosti: 
+* Nastaví podsvícení displeje na maximum a neumožní mu se vypnout.
+* Zapne blesk fotoaparátu.
+* Barva podsvícení je nastavitelná.
+
+Dostupná rozšíření pro OI Baterku: 
+* Zobrazit licenční infomace s OI Infem.
+* Změnit barvu podsvícení OI Výběrem barev.
+
+Aplikace, které pracují s OI Baterkou: 
+* Aktualizovat s OI Update.
+
+Klíčová slova: 
+* Baterka, světlo, podsvícení, svítilna, Flashlight, light, Backlight
+* OI, OpenIntents, Open Intents
+
+Mezinárodní verze: 
+Lanternă OI, Llanterna d'OI, OI Baterka, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+
+
+Prohledat řetězce pro Market: 
+* uses OI About
+* uses OI Color Picker
+* uses OI Update

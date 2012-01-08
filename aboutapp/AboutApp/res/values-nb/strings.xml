@@ -27,84 +27,85 @@
 	     *************************** -->
 	
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
+	<string name="about_translators">Launchpad Contributions:
+  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
-	<string name="about_comments">A standalone about dialog that is shared between apps.</string>
+	<string name="about_comments">En enkeltstående informasjonsdialog som er delt mellom applikasjoner.</string>
 	
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
+	<string name="info_app_filemanager">OI Filbehandler</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI Handleliste</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">OI Notatblokk</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_safe">OI Safe</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	<string name="info_instructions">Start %s og velg meny &gt; Om.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
 	   This is an extension that shows an about dialog or info dialog.  -->
-    <string name="app_name">OI About</string>
+    <string name="app_name">OI Info</string>
 	
-    <string name="menu_about">About OI About itself</string>
+    <string name="menu_about">Om OI Info</string>
     
     <!-- About some application, where "%s" is the name of another application. -->
-    <string name="about_activity_name_extended">About %s</string>
+    <string name="about_activity_name_extended">Om %s</string>
     
-	<string name="l_authors">Written by</string>
-	<string name="l_documenters">Documented by</string>
-	<string name="l_translators">Translated by</string>
-	<string name="l_artists">Artwork by</string>
-	<string name="l_international_translators">International translations by</string>
-	<string name="l_credits">Credits</string>
-	<string name="l_license">License</string>
-	<string name="l_info">General Info</string>
-	<string name="l_recent_changes">Recent changes</string>
+	<string name="l_authors">Skrevet av</string>
+	<string name="l_documenters">Dokumentert av</string>
+	<string name="l_translators">Oversatt av</string>
+	<string name="l_artists">Kunstverk av</string>
+	<string name="l_international_translators">Internasjonale oversettelser av</string>
+	<string name="l_credits">Krediteringer</string>
+	<string name="l_license">Lisens</string>
+	<string name="l_info">Generell informasjon</string>
+	<string name="l_recent_changes">Nylige endringer</string>
 	
-	<string name="no_information_available">No information available.</string>
+	<string name="no_information_available">Ingen informasjon tilgjengelig.</string>
 	
 	<!-- ***************************
 	     International languages
 	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
-		<item>Arabic</item>
-		<item>Czech</item>
-		<item>Danish</item>
-		<item>German</item>
-		<item>English</item>
-		<item>Greek</item>
-		<item>Spanish</item>
-		<item>Persian</item>
-		<item>Finnish</item>
-		<item>Faroese</item>
-		<item>French</item>
-		<item>Croatian</item>
-		<item>Hungarian</item>
-		<item>Italian</item>
-		<item>Japanese</item>
-		<item>Korean</item>
-		<item>Lao</item>
-		<item>Dutch</item>
-		<item>Occitan (post 1500)</item>
-		<item>Polish</item>
-		<item>Portuguese</item>
-		<item>Brazilian Portuguese</item>
-		<item>Romanian</item>
-		<item>Russian</item>
-		<item>Sardinian</item>
-		<item>Slovak</item>
-		<item>Swedish</item>
-		<item>Turkish</item>
-		<item>Chinese (Simplified)</item>
-		<item>Chinese (Traditional)</item>
+		<item>Arabisk</item>
+		<item>Tsjekkisk</item>
+		<item>Dansk</item>
+		<item>Tysk</item>
+		<item>Engelsk</item>
+		<item>Gresk</item>
+		<item>Spansk</item>
+		<item>Persisk</item>
+		<item>Finsk</item>
+		<item>Færøysk</item>
+		<item>Fransk</item>
+		<item>Kroatisk</item>
+		<item>Ungarsk</item>
+		<item>Italiensk</item>
+		<item>Japansk</item>
+		<item>Koreansk</item>
+		<item>Laotisk</item>
+		<item>Nederlandsk</item>
+		<item>Oksitansk (etter 1500)</item>
+		<item>Polsk</item>
+		<item>Portugisisk</item>
+		<item>Brasiliansk Portugisisk</item>
+		<item>Rumensk</item>
+		<item>Russisk</item>
+		<item>Sardinske</item>
+		<item>Slovakisk</item>
+		<item>Svensk</item>
+		<item>Tyrkisk</item>
+		<item>Kinesisk (Forenklet)</item>
+		<item>Kinesisk (Tradisjonelt)</item>
 	</string-array>
 </resources>

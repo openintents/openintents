@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  Kras4ooo https://launchpad.net/~kkrassi1984</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>هو  OI حول مستقل حول حوار مشترك بين التطبيقات.</string>
+		<string>يتم استدعاء هذا التطبيق من خلال القائمة تطبيقات أخرى OI.</string>
+		<string>تطبيقات فإنه يسمح لك بعرض معلومات الإصدار وصلات وائتمانات والترخيص.</string>
+		<string>وتشمل أرصدة الوثائق والمترجمين التحريريين، المؤلفين والفنانين.</string>
+		<string>كل من هذه الوظيفة جمعت في التبسيط وكفاءة تخطيط.</string>
+		<emptyline/>
+		<string>هذا التطبيق هو خالية من الإعلانات ولا يحتاج إذن الإنترنت.</string>
+		<emptyline/>
+		<string>شفرة المصدر لهذا التطبيق الحرة والمفتوحة المصدر متاحة في:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>لقائمة كاملة من التغييرات وقائمة بالأسئلة المطروحة بشكل متكرر، يرجى زيارة:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>يمكنك المساعدة على تحسين ترجمة إلى اللغة الخاصة بك في Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>الميزات:</string>
+		<listitem>تظهر معلومات عامة، وائتمانات، وعلامات التبويب الترخيص.</listitem>
+		<listitem>ويبين مترجمين من جميع اللغات.</listitem>
+		<listitem>يقوم باسترداد معلومات من بيان التطبيق عن طريق العلامات الافتراضية و metadata.</listitem>
+		<listitem>بشكل اختياري، يمكن تعديل كافة الحقول من خلال إضافات النية.</listitem>
+		<emptyline/>
+		<string>التطبيقات التي تعمل مع "OI حوالي":</string>
+		<listitem>المفكرة OI</listitem>
+		<listitem>إدارة الملفات OI</listitem>
+		<listitem>قائمة التسوق OI</listitem>
+		<listitem>CSV تحويل OI</listitem>
+		<listitem>آمنة OI</listitem>
+		<listitem>العد التنازلي OI</listitem>
+		<listitem>مصباح يدوي OI</listitem>
+		<emptyline/>
+		<string>الكلمات الأساسية:</string>
+		<listitem>حول القروض، المعلومات.</listitem>
+		<listitem>المقاصد مفتوحة OI, OpenIntents</listitem>
+		<emptyline/>
+		<string>الإصدارات الدولية:</string>
+		<international/>
+		<emptyline/>
+		<string>سلاسل البحث للسوق:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI إدارة الملفات يسمح لك باستعراض بطاقة SD الخاصة بك وإنشاء الدلائل، إعادة تسمية، ونسخ، ونقل وحذف الملفات.</string>
+		<string>وهي أيضا بمثابة ملحق إلى تطبيقات أخرى عرض "فتح" ومربعات الحوار "حفظ".</string>
+		<emptyline/>
+		<string>هذا التطبيق هو خالية من الإعلانات ولا يحتاج إذن الإنترنت.</string>
+		<emptyline/>
+		<string>لقائمة كاملة من التغييرات وقائمة بالأسئلة المطروحة بشكل متكرر، يرجى زيارة:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>يمكنك المساعدة على تحسين ترجمة إلى اللغة الخاصة بك في Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>شفرة المصدر لهذا التطبيق الحرة والمفتوحة المصدر متاحة في:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>الميزات:</string>
+		<listitem>إظهار قائمة بملفات مع مصغرات للصور.</listitem>
+		<listitem>نقل ونسخ وإعادة تسمية وحذف الملفات.</listitem>
+		<listitem>إنشاء وحذف الدلائل (المجلدات).</listitem>
+		<listitem>إرسال الملفات عن طريق البريد الإلكتروني.</listitem>
+		<listitem>يعمل كملحق للتطبيقات الأخرى، مثل GMail، بإرفاق الملفات.</listitem>
+		<listitem>دعم للعديد من نهايات الملف وأنواع mime.</listitem>
+		<listitem>يدعم اختيار_الملف واختيار_وجهات الدليل كي تستخدم تطبيقات أخرى OI إدارة الملفات.</listitem>
+		<emptyline/>
+		<string>الملحقات المتوفرة ل "OIإدارة الملفات":</string>
+		<listitem>إظهار معلومات الترخيص مع " OI حول".</listitem>
+		<emptyline/>
+		<string>التطبيقات التي تعمل مع "OI إدارة الملفات":</string>
+		<listitem>فتح وحفظ الملفات النص في "OI المفكرة".</listitem>
+		<emptyline/>
+		<string>الكلمات الأساسية:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>إدارة الملفات، إدارة الملفات، مستكشف ملف</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>المقاصد مفتوحة OI, IO, OpenIntents</listitem>
+		<emptyline/>
+		<string>الإصدارات الدولية:</string>
+		<international/>
+		<emptyline/>
+		<string>سلاسل البحث للسوق:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI  هو مصباح كهربائي تطبيق بسيطة وفعالة تساعدك على إيجاد طريقة في الظلام.</string>
+		<string>بتأمين OI مصباح الضوء الخلفي العرض على، وضوح إضاءة المنطقة المحيطة بها.</string>
+		<string>للأجهزة مع فلاش كاميرا، OI مصباح يدوي أيضا استخدام الفلاش كشعلة ساطعة لإضاءة الغرفة.</string>
+		<string>لون الخلفية تماما للتخصيص مع OI منتقي الألوان.</string>
+		<emptyline/>
+		<string>هذا التطبيق هو خالية من الإعلانات ولا يحتاج إذن الإنترنت.</string>
+		<emptyline/>
+		<string>شفرة المصدر لهذا التطبيق الحرة والمفتوحة المصدر متاحة في:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>لقائمة كاملة من التغييرات وقائمة بالأسئلة المطروحة بشكل متكرر، يرجى زيارة:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>يمكنك المساعدة على تحسين ترجمة إلى اللغة الخاصة بك في Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>الميزات:</string>
+		<listitem>تأمين الخفيفة إلى الوراء على العرض.</listitem>
+		<listitem>تأمين الكاميرا فلاش على.</listitem>
+		<listitem>لون الخفيفة إلى الوراء للتخصيص.</listitem>
+		<emptyline/>
+		<string>الملحقات المتوفرة ل "OI مصباح":</string>
+		<listitem>إظهار معلومات الترخيص مع " OI حول".</listitem>
+		<listitem>تغيير لون الخلفية مع "OI منتقي الألوان".</listitem>
+		<emptyline/>
+		<string>التطبيقات التي تعمل مع "OI مصباح":</string>
+		<listitem>التحديث مع "OI التحديث".</listitem>
+		<emptyline/>
+		<string>الكلمات الأساسية:</string>
+		<listitem>مصباح يدوي، الضوء الخلفي الخفيفة،</listitem>
+		<listitem>المقاصد مفتوحة OI, OpenIntents</listitem>
+		<emptyline/>
+		<string>الإصدارات الدولية:</string>
+		<international/>
+		<emptyline/>
+		<string>سلاسل البحث للسوق:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI "المفكرة" مذكرة كاملة الميزات مصدر مفتوح مع التطبيق.</string>
+		<string>مع أنه يمكنك الوسم، البحث، وإرسال الملاحظات الخاصة بك، بالإضافة إلى الوظائف الأساسية مثل إنشاء، وحذف، وتحرير المذكرات.</string>
+		<string>ميزات متقدمة مثل التشفير، الاستيراد والتصدير، والمذكرات الصوتية كل ما هو متاح من خلال ملحقات.</string>
+		<string>كل من هذه الوظيفة جمعت في التبسيط وكفاءة تخطيط، قابلة لتخصيص من خلال مجموعة متنوعة من المواضيع.</string>
+		<emptyline/>
+		<string>هذا التطبيق هو خالية من الإعلانات ولا يحتاج إذن الإنترنت.</string>
+		<emptyline/>
+		<string>شفرة المصدر لهذا التطبيق الحرة والمفتوحة المصدر متاحة في:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>لقائمة كاملة من التغييرات وقائمة بالأسئلة المطروحة بشكل متكرر، يرجى زيارة:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>يمكنك المساعدة على تحسين ترجمة إلى اللغة الخاصة بك في Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>الميزات:</string>
+		<listitem>إضافة وتحرير وحذف الملاحظات.</listitem>
+		<listitem>طويلة-الصحافة على المذكرات لإضافة العلامات.</listitem>
+		<listitem>تغيير الخط حجم وترتيب الفرز.</listitem>
+		<listitem>تخطيط مرتبة وضوح مع مجموعة متنوعة من المواضيع.</listitem>
+		<listitem>البحث بسرعة عن طريق الملاحظات.</listitem>
+		<listitem>إرسال الملاحظات ك MMS أو SMS.</listitem>
+		<emptyline/>
+		<string>الملحقات المتوفرة ل "OI المفكرة":</string>
+		<listitem>تسجيل وإرفاق المذكرات الصوتية إلى الملاحظات مع "الملاحظات الصوتية OI".</listitem>
+		<listitem>مع "OI  CSV بتحويل" الاستيراد/التصدير وتلاحظ من بطاقة SD.</listitem>
+		<listitem>إظهار معلومات الترخيص مع " OI حول".</listitem>
+		<listitem>إدراج التاريخ والوقت إلى الملاحظات مع "OI إدراج التاريخ".</listitem>
+		<listitem>تشغيل نص رأسا على عقب مع "الاتجاه الصعودي لأسفل".</listitem>
+		<emptyline/>
+		<string>التطبيقات التي تعمل مع "OI المفكرة":</string>
+		<listitem>إجراء نسخ احتياطي وتلاحظ مع "بي احتياطية مناصر".</listitem>
+		<listitem>تشفير الملاحظات باستخدام "OI آمنة".</listitem>
+		<listitem>إدارة الملاحظات على الخاص بك SD بطاقة مع "OI إدارة الملفات"</listitem>
+		<listitem>التحديث مع "OI التحديث".</listitem>
+		<listitem>مشاركة الملاحظات عن طريق "Facebook"، Gmail" "Google+", "Twitter" والعديد من التطبيقات الأخرى.</listitem>
+		<emptyline/>
+		<string>الكلمات الأساسية:</string>
+		<listitem>ملاحظة، المفكرة، ملاحظة الكتاب، وتلاحظ</listitem>
+		<listitem>المقاصد مفتوحة OI, OpenIntents</listitem>
+		<emptyline/>
+		<string>الإصدارات الدولية:</string>
+		<international/>
+		<emptyline/>
+		<string>سلاسل البحث للسوق:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI  آمنة بأمان يحمي جميع كلمات المرور والبيانات الخاصة الأخرى استخدام الصناعة القياسية  AES  تشفير.</string>
+		<string>وهي أيضا بمثابة ملحق إلى OI المفكرة لتشفير الملاحظات التي تم إنشاؤها في OI برنامج "المفكرة".</string>
+		<emptyline/>
+		<string>هذا التطبيق هو خالية من الإعلانات ولا يحتاج إذن الإنترنت.</string>
+		<emptyline/>
+		<string>لقائمة كاملة من التغييرات وقائمة بالأسئلة المطروحة بشكل متكرر، يرجى زيارة:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>يمكنك المساعدة على تحسين ترجمة إلى اللغة الخاصة بك في Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>شفرة المصدر لهذا التطبيق الحرة والمفتوحة المصدر متاحة في:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>الميزات:</string>
+		<listitem>حماية البيانات باستخدام التشفير AES  بشكل اﻷمن.</listitem>
+		<listitem>بحرية نقل إدخالات البيانات بين الفئتين.</listitem>
+		<listitem>استيراد/تصدير إدخالات البيانات وقواعد البيانات.</listitem>
+		<listitem>نسخ احتياطي/استعادة الإدخالات.</listitem>
+		<listitem>يتضمن كلمة مرور آمنة للمولدات.</listitem>
+		<listitem>مهلة التلقائي لحماية المستندات المشفرة.</listitem>
+		<listitem>تشفير OI الملاحظات "المفكرة".</listitem>
+		<listitem>الدعم للصورة Obscura آمنة.</listitem>
+		<listitem>النسخ الاحتياطي بلدي برو.</listitem>
+		<emptyline/>
+		<string>الملحقات المتوفرة ل "OIإدارة الملفات":</string>
+		<listitem>إظهار معلومات الترخيص مع " OI حول".</listitem>
+		<emptyline/>
+		<string>التطبيقات التي تعمل مع "OI إدارة الملفات":</string>
+		<listitem>تشفير الملاحظات التي تم إنشاؤها في " OI المفكرة".</listitem>
+		<emptyline/>
+		<string>الكلمات الأساسية:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>آمنة، تشفير، حماية كلمة المرور</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>المقاصد مفتوحة OI, IO, OpenIntents</listitem>
+		<emptyline/>
+		<string>الإصدارات الدولية:</string>
+		<international/>
+		<emptyline/>
+		<string>سلاسل البحث للسوق:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI هو تطبيق قوية مما يجعل من السهل إنشاء وإدارة قوائم الاختيار من "قائمة التسوق".</string>
+		<string>OI قائمة التسوق يجعل من السهل إضافة عناصر إلى قائمة، والتحقق من هذا البند، وإزالته من القائمة.</string>
+		<string>يمكنك تعقب التطبيق أسعار منفصلة لكل مخزن التي تستخدمها، وميزات مستوى عال من مخصص.</string>
+		<string>ترتيب الفرز وأعمدة القائمة، حجم الخط والسلوك "تنظيف" قائمة بكافة إعدادات التحكم من قبل المستخدم.</string>
+		<string>كافة هذه الميزات جمعت في تخطيط هش قابل للتخصيص من خلال مجموعة متنوعة من المواضيع.</string>
+		<emptyline/>
+		<string>شفرة المصدر لهذا التطبيق الحرة والمفتوحة المصدر متاحة في:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>هذا التطبيق هو خالية من الإعلانات ولا يحتاج إذن الإنترنت.</string>
+		<emptyline/>
+		<string>لقائمة كاملة من التغييرات وقائمة بالأسئلة المطروحة بشكل متكرر، يرجى زيارة:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>يمكنك المساعدة على تحسين ترجمة إلى اللغة الخاصة بك في Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>الميزات:</string>
+		<listitem>إضافة وتحرير وحذف قوائم.</listitem>
+		<listitem>إنشاء، وحذف، وتحقق من العناصر بسرعة وسهولة.</listitem>
+		<listitem>مجموعة متنوعة من المواضيع.</listitem>
+		<listitem>ترتيب حجم ونوع الخط للتخصيص.</listitem>
+		<listitem>من تعقب أسعار منفصلة لكل مخزن.</listitem>
+		<listitem>أعمدة قائمة مخصصة.</listitem>
+		<emptyline/>
+		<string>الملحقات المتوفرة ل "قائمة تسوق OI":</string>
+		<listitem>إضافة رسالة مسجلة إلى مذكرة مع "الملاحظات الصوتية OI".</listitem>
+		<listitem>استيراد/تصدير قوائم مع التسوق " OI تحويل CSV".</listitem>
+		<listitem>إظهار معلومات الترخيص مع " OI حول".</listitem>
+		<listitem>أدخل الاختيار العناصر مع "الباركود OI  البرنامج المساعد".</listitem>
+		<emptyline/>
+		<string>التطبيقات التي تعمل مع "قائمة تسوق OI":</string>
+		<listitem>التحديث مع "OI التحديث".</listitem>
+		<listitem>الحصول على قوائم احتياطية مع "برو النسخ الاحتياطي الخاص بي"</listitem>
+		<listitem>استيراد مكونات وصفات مع "لدغ".</listitem>
+		<emptyline/>
+		<string>الكلمات الأساسية:</string>
+		<listitem>التسوق، قائمة، "قائمة التسوق"، قائمة الاختيار</listitem>
+		<listitem>المقاصد مفتوحة OI, OpenIntents</listitem>
+		<emptyline/>
+		<string>الإصدارات الدولية:</string>
+		<international/>
+		<emptyline/>
+		<string>ملحقات:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+</main>

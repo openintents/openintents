@@ -1,0 +1,95 @@
+# Filipino translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Liezl <Unknown>\n"
+"Language-Team: Filipino <fil@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Liezl https://launchpad.net/~liezl-200"
+
+#. Short explanation of the application
+#: tmp_strings.xml:11(string)
+msgid ""
+"OpenIntents Flashlight helps you find your way in the dark. The display "
+"backlight is kept turned on while this application is running."
+msgstr ""
+"Ang OpenIntent plaslayt ay tumutulong sa iyo na hanapin ang daan sa dilim. "
+"Ang ilaw sa likod ng display ay pinanatiling naka bukas habang ang "
+"aplikasyon na ito ay tumatakbo"
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:17(string)
+msgid "OI Flashlight"
+msgstr "OI Plaslayt"
+
+#: tmp_strings.xml:19(string)
+msgid "The backlight stays turned on."
+msgstr "Ang ilaw sa likod ay pinanatiling naka bukas."
+
+#: tmp_strings.xml:21(string)
+msgid "Color"
+msgstr "Kulay"
+
+#. Application name should be consistent across translations.
+#: tmp_strings.xml:24(string)
+msgid "OI Color Picker"
+msgstr "OI Tagapili ng Kulay"
+
+#. Title for preferences or settings
+#: tmp_strings.xml:26(string) tmp_strings.xml:33(string)
+msgid "Preferences"
+msgstr "Mga Kagustuhan"
+
+#: tmp_strings.xml:34(string)
+msgid "Keep color"
+msgstr "Panatilihin ang kulay"
+
+#: tmp_strings.xml:35(string)
+msgid "Save color for next time Flashlight app is started"
+msgstr "I-save ang kulay para sa susunod na patakbuhin ang plaslayt"
+
+#. Explanation that is displayed if Color Picker has not been installed yet, but 
+#. 		user tries to access it.
+#: tmp_strings.xml:43(string)
+msgid ""
+"To make the Color Picker more useful to other developers, we have split it "
+"into its own app."
+msgstr ""
+"Para mas maging kapaki-pakinabang sa ibang mga developer ang Tagapili ng "
+"Kulay, hiniwalay namin ito sa kanyang sariling app."
+
+#: tmp_strings.xml:44(string)
+msgid "Use camera flash"
+msgstr "Gamitin ang flash ng kamera"
+
+#: tmp_strings.xml:45(string)
+msgid "Use the camera flash instead of the screen backlight."
+msgstr "Gamitin ang flash ng kamera sa halip ng ilaw sa likod ng screen."
+
+#. Information to enable the camera flash as flashlight.
+#: tmp_strings.xml:47(string)
+msgid "Press to enable camera light (May take a second)."
+msgstr ""
+"Pindutin para paganahin ang ilaw ng kamera (maaaring tumagal ng isang "
+"segundo)."
+
+#: tmp_strings.xml:48(string)
+msgid "Press to disable camera light."
+msgstr "Pindutin para huwag paganahin ang ilaw ng kamera."

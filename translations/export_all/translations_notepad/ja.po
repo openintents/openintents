@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: thebowseat <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,18 +23,19 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Peli https://launchpad.net/~peli0101\n"
-"  bkiw https://launchpad.net/~bkiw"
+"  bkiw https://launchpad.net/~bkiw\n"
+"  thebowseat https://launchpad.net/~takeshimochida"
 
 #. Short explanation of the application
 #: tmp_strings.xml:33(string)
 msgid "OI Notepad allows to create, edit, and delete notes."
-msgstr "OI Notepadはノートを作成、編集、削除できます。"
+msgstr "OI メモ帳 を使ってノートを作成、編集、削除できます。"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
 #: tmp_strings.xml:117(string)
 msgid "OI Notepad"
-msgstr "OI Notepad"
+msgstr "OI メモ帳"
 
 #: tmp_strings.xml:42(string)
 msgid "Delete"
@@ -42,7 +43,7 @@ msgstr "削除"
 
 #: tmp_strings.xml:43(string)
 msgid "Add note"
-msgstr "新規ノート"
+msgstr "ノートを追加する"
 
 #: tmp_strings.xml:44(string)
 msgid "Revert"
@@ -50,7 +51,7 @@ msgstr "元に戻す"
 
 #: tmp_strings.xml:45(string)
 msgid "Discard"
-msgstr "破棄"
+msgstr "破棄する"
 
 #: tmp_strings.xml:47(string)
 msgid "Use menu to add new notes."
@@ -58,15 +59,15 @@ msgstr "新しいノートの追加にメニューを使う。"
 
 #: tmp_strings.xml:49(string) tmp_strings.xml:53(string)
 msgid "Edit note"
-msgstr "ノートの編集"
+msgstr "ノートを編集する"
 
 #: tmp_strings.xml:50(string)
 msgid "Edit title"
-msgstr "タイトルの編集"
+msgstr "タイトルを編集する"
 
 #: tmp_strings.xml:52(string)
 msgid "Create note"
-msgstr "ノートの新規作成"
+msgstr "ノートを作成する"
 
 #: tmp_strings.xml:55(string)
 msgid "Note"
@@ -87,7 +88,7 @@ msgstr "%s (ノートの編集)"
 #. Title: Pick note for shortcut (to be placed on the home screen)
 #: tmp_strings.xml:61(string)
 msgid "Pick note for shortcut"
-msgstr ""
+msgstr "ショートカット用のノートを選択する"
 
 #. Dialog box
 #: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
@@ -100,12 +101,12 @@ msgstr "エラー"
 
 #: tmp_strings.xml:66(string)
 msgid "Error loading note"
-msgstr "エラー(ノートのロード)"
+msgstr "ノートのロード中にエラー"
 
 #. <string name="no_notes">Note list is empty.</string>
 #: tmp_strings.xml:69(string)
 msgid "Share"
-msgstr ""
+msgstr "共有"
 
 #: tmp_strings.xml:70(string)
 msgid "Empty note"
@@ -113,7 +114,7 @@ msgstr "空のノート"
 
 #: tmp_strings.xml:71(string)
 msgid "No application available for sharing."
-msgstr ""
+msgstr "共有できるアプリケーションがありません。"
 
 #: tmp_strings.xml:73(string)
 msgid "Encrypting note"
@@ -161,7 +162,7 @@ msgstr "タグの編集"
 
 #: tmp_strings.xml:85(string)
 msgid "Touch to see list"
-msgstr ""
+msgstr "リストを見るにはタッチしてください。"
 
 #: tmp_strings.xml:86(string)
 msgid "Enter tags, separated by comma"
@@ -231,7 +232,7 @@ msgstr "変更を保存しますか？"
 
 #: tmp_strings.xml:107(string)
 msgid "Don't save"
-msgstr ""
+msgstr "保存しない"
 
 #: tmp_strings.xml:109(string)
 msgid "Theme"
@@ -262,11 +263,11 @@ msgstr "検索"
 #. %s is the search string
 #: tmp_strings.xml:119(string)
 msgid "No results found for %s."
-msgstr ""
+msgstr "%s の結果は見つかりませんでした。"
 
 #: tmp_strings.xml:120(string)
 msgid "OI Notepad search"
-msgstr ""
+msgstr "OI メモ帳検索"
 
 #. The description that will show up in the search settings for this source.
 #: tmp_strings.xml:124(string)
@@ -300,19 +301,19 @@ msgstr "一覧のソート順"
 
 #: tmp_strings.xml:139(string)
 msgid "The order in which notes are shown in the notes list"
-msgstr ""
+msgstr "ノートがノートリストに表示される順序"
 
 #: tmp_strings.xml:140(string)
 msgid "Marquee note titles."
-msgstr ""
+msgstr "ノートのタイトルをマーキー"
 
 #: tmp_strings.xml:141(string)
 msgid "Continuously scroll note titles that are too long."
-msgstr ""
+msgstr "長すぎるノートタイトルを連続でスクロール"
 
 #: tmp_strings.xml:143(string)
 msgid "Note Editor"
-msgstr ""
+msgstr "メモ編集ツール"
 
 #: tmp_strings.xml:144(string)
 msgid "Font size"
@@ -414,11 +415,11 @@ msgstr "逆アルファベット順"
 
 #: tmp_strings.xml:188(item)
 msgid "Last Modified"
-msgstr ""
+msgstr "最終更新日時"
 
 #: tmp_strings.xml:189(item)
 msgid "First Modified"
-msgstr ""
+msgstr "最初に更新された日時"
 
 #: tmp_strings.xml:190(item)
 msgid "Newest to Oldest"
@@ -489,12 +490,12 @@ msgstr "テーマをOpenIntentsから取得"
 
 #: tmp_strings.xml:216(string)
 msgid "Deletion Confirmation"
-msgstr ""
+msgstr "削除の確認"
 
 #: tmp_strings.xml:217(string)
 msgid "Are you sure you want to delete this note?"
-msgstr ""
+msgstr "このノートを削除してよろしいですか?"
 
 #: tmp_strings.xml:219(string)
 msgid "New note"
-msgstr ""
+msgstr "新規ノート"

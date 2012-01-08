@@ -1,0 +1,148 @@
+# Slovak translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Marek Matejka <Unknown>\n"
+"Language-Team: Slovak <sk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Marek Matejka https://launchpad.net/~marek-matejka"
+
+#. Strings for OI About
+#: tmp_strings.xml:11(string)
+msgid ""
+"OpenIntents Color Picker is an extension for OI Flashlight and other "
+"compatible applications."
+msgstr ""
+"OI Vyberač Farieb je rozšírenie pre OI Baterka a iné kompatibilné aplikácie."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:17(string)
+msgid "OI Color Picker"
+msgstr "OI Vyberač Farieb"
+
+#. Title of the color picker activity.
+#: tmp_strings.xml:20(string)
+msgid "Color picker"
+msgstr "Vyberač farieb"
+
+#: tmp_strings.xml:22(string)
+msgid "Recent"
+msgstr "Nedávne"
+
+#: tmp_strings.xml:23(string)
+msgid "Recent colors"
+msgstr "Súčasné farby"
+
+#: tmp_strings.xml:24(string)
+msgid "Recently chosen colors"
+msgstr "Nedávno vybraté farby"
+
+#: tmp_strings.xml:25(string)
+msgid "Clear"
+msgstr "Zmazať"
+
+#: tmp_strings.xml:26(string)
+msgid "There are no recently chosen colors."
+msgstr "Práve nie sú vybraté žiadne farby."
+
+#: tmp_strings.xml:28(string)
+msgid "Use color?"
+msgstr "Použiť farbu?"
+
+#: tmp_strings.xml:29(string)
+msgid ""
+"Use this new color? You can avoid this message by clicking on the center "
+"circle."
+msgstr ""
+"Použiť túto novú farbu? Môžete sa vyhnúť tejto správe kliknutím na stredový "
+"kruh."
+
+#. About
+#: tmp_strings.xml:33(string)
+msgid "About"
+msgstr "O programe"
+
+#: tmp_strings.xml:34(string)
+msgid ""
+"Version %s\\n\\nNo compatible extension available to display full info "
+"(contact, credits, license)."
+msgstr ""
+"Verzia %s\\n\\nŽiadne dostupné kompatibilné rozšírenie na zobrazenie "
+"všetkých informácií (kontakt, zoznam účastníkov projektu, licencia)."
+
+#: tmp_strings.xml:35(string)
+msgid "Get OI About"
+msgstr "Získať OI About"
+
+#. Update
+#: tmp_strings.xml:39(string)
+msgid "Download application not available."
+msgstr "Stiahnutie aplikácie nie je dostupné."
+
+#. Message how to use OI Color Picker from within OI Flashlight.
+#: tmp_strings.xml:45(string)
+msgid "To select a color in OI Flashlight, press menu &gt; Color."
+msgstr "Pre výber farby v OI Baterka stlačte menu &gt; Farba."
+
+#: tmp_strings.xml:46(string)
+msgid "OI Flashlight"
+msgstr "OI Baterka"
+
+#: tmp_strings.xml:48(string)
+msgid "Hypnotic, animated spiral Live Wallpaper."
+msgstr "Hypnotická, animovaná špirála ako žívá tapeta."
+
+#: tmp_strings.xml:49(string)
+msgid "HypnoTwister Live Wallpaper"
+msgstr "HypnoTwister Živá Tapeta."
+
+#: tmp_strings.xml:51(string)
+msgid "Native Flickr interface for Android"
+msgstr "Prirodzené Flickr rozhranie pre Android"
+
+#: tmp_strings.xml:52(string)
+msgid "BettrFlickr"
+msgstr "BettrFlickr"
+
+#: tmp_strings.xml:54(string)
+msgid "Mix and match artwork to generate anime characters"
+msgstr ""
+"Zmiešajte a spojte umelecké diela pre vygenerovanie animovaných postavičiek."
+
+#: tmp_strings.xml:55(string)
+msgid "Anime Character Generator"
+msgstr "Generátor Animovaných Postavičiek"
+
+#: tmp_strings.xml:58(string)
+msgid "This app can be used with the following applications:"
+msgstr "Táto aplikácia môže byť použitá s následujúcimi aplikáciami:"
+
+#: tmp_strings.xml:59(string)
+msgid "Launch %s"
+msgstr "Spustiť %s"
+
+#. %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher").
+#: tmp_strings.xml:61(string)
+msgid "This app requires %1$s %2$s or higher."
+msgstr "Táto aplikácia vyžaduje %1$s %2$s alebo vyššie."
+
+#: tmp_strings.xml:62(string)
+msgid "Get %s"
+msgstr "Získať %s"

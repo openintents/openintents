@@ -579,9 +579,8 @@ msgid "Auto Backup Days"
 msgstr "自动备份的天数"
 
 #: tmp_strings.xml:196(string)
-#, fuzzy
 msgid "Default backup path"
-msgstr "自动提示备份天数"
+msgstr ""
 
 #: tmp_strings.xml:197(string)
 msgid "Default export path"

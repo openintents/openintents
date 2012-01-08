@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Sahran <Unknown>\n"
 "Language-Team: Uyghur <ug@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,201 +21,206 @@ msgstr ""
 #: tmp_strings.xml:8(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Sahran https://launchpad.net/~sahran"
 
 #. ***************************
 #. 	     Applicatio-specific strings
 #. 	     ***************************
 #: tmp_strings.xml:13(string) tmp_strings.xml:21(string)
 msgid "OI Update"
-msgstr ""
+msgstr "OI يېڭىلا"
 
 #: tmp_strings.xml:15(string)
 msgid "A new version of %s is available.\\nWould you like to upgrade?"
-msgstr ""
+msgstr "%s نىڭ يېڭى نەشرى بار.\\nدەرىجە ئۆستۈرەمسىز؟"
 
 #: tmp_strings.xml:16(string)
 msgid "A new version of %1$s is available at %2$s.\\n%3$s\\n"
-msgstr ""
+msgstr "%2$s دا %1$s نىڭ يېڭى نەشرى بار.\\n%3$s\\n"
 
 #: tmp_strings.xml:17(string)
 msgid "A new version of %1$s is available.\\n%2$s\\n"
-msgstr ""
+msgstr "%1$s  نىڭ يېڭى نەشرى بار.\\n%2$s\\n"
 
 #: tmp_strings.xml:18(string)
 msgid "A new version of %1$s is available at %2$s."
-msgstr ""
+msgstr "%2$s دا %1$s نىڭ يېڭى نەشرى بار."
 
 #: tmp_strings.xml:19(string)
 msgid "A new version of %s is available."
-msgstr ""
+msgstr "%s نىڭ يېڭى نەشرى بار."
 
 #: tmp_strings.xml:20(string)
 msgid "Android Market not available."
-msgstr ""
+msgstr "ئاندىرويىد بازارنى ئىشلەتكىلى بولمايدۇ."
 
 #: tmp_strings.xml:22(string)
 msgid "Android Market"
-msgstr ""
+msgstr "ئاندىرويىد بازار"
 
 #: tmp_strings.xml:23(string)
 msgid "AndAppStore.com"
-msgstr ""
+msgstr "AndAppStore.com"
 
 #: tmp_strings.xml:25(string)
 msgid "Version %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
-msgstr ""
+msgstr "نەشرى%1$s\\nSD كارتا%2$s\\n\\nOS\\n%3$s"
 
 #: tmp_strings.xml:26(string)
 msgid "free space: %s"
-msgstr ""
+msgstr "ئەركىن بوشلۇق: %s"
 
 #: tmp_strings.xml:27(string)
 msgid "Board %1$s\\nBrand %2$s\\nDevice %3$s\\nID %4$s\\nModel %5$s"
-msgstr ""
+msgstr "تاختا%1$s\\nماركا %2$s\\nئۈسكۈنە %3$s\\nID %4$s\\nتىپى %5$s"
 
 #: tmp_strings.xml:29(string)
 msgid "Perform update now!"
-msgstr ""
+msgstr "ھازىر يېڭىلاڭ!"
 
 #: tmp_strings.xml:30(string)
 msgid "Try update from Market now!"
-msgstr ""
+msgstr "ھازىر بازاردىن يېڭىلاشنى سىنا!"
 
 #: tmp_strings.xml:31(string)
 msgid "Try update from AndAppStore now!"
-msgstr ""
+msgstr "ھازىر AndAppStore دىن يېڭىلاشنى سىنا!"
 
 #: tmp_strings.xml:32(string)
 msgid "Remind me later!"
-msgstr ""
+msgstr "مېنى كېيىن ئەسكەرت!"
 
 #: tmp_strings.xml:33(string)
 msgid "Ignore this update"
-msgstr ""
+msgstr "بۇ يېڭىلاشقا پەرۋا قىلما"
 
 #: tmp_strings.xml:34(string)
 msgid "Ignore all further updates"
-msgstr ""
+msgstr "كېيىنكى يېڭىلاشقا پەرۋا قىلما"
 
 #: tmp_strings.xml:35(string)
 msgid "Ok"
-msgstr ""
+msgstr "جەزملە"
 
 #: tmp_strings.xml:37(string)
 msgid ""
 "Update could not be started!\\n\\nPlease contact application developer!\\n\\n"
 "%s"
 msgstr ""
+"يېڭىلاشنى باشلىيالمايدۇ!\\n\\nئەپ ئىجادكارى بىلەن ئالاقە قىلىڭ!\\n\\n%s"
 
 #: tmp_strings.xml:38(string)
 msgid "Application is up-to-date."
-msgstr ""
+msgstr "ئەپنىڭ ۋاقتى ئۆتتى."
 
 #: tmp_strings.xml:39(string)
 msgid "Checking for new version."
-msgstr ""
+msgstr "يېڭى نەشرىنى تەكشۈرۈۋاتىدۇ."
 
 #: tmp_strings.xml:40(string)
 msgid "Building list of applications."
-msgstr ""
+msgstr "ئەپ تىزىمى قۇرۇۋاتىدۇ."
 
 #: tmp_strings.xml:41(string)
 msgid "Check AndAppStore.com"
-msgstr ""
+msgstr "AndAppStore.com نى تەكشۈر"
 
 #: tmp_strings.xml:42(string)
 msgid "Check versions"
-msgstr ""
+msgstr "نەشرىنى تەكشۈر"
 
 #: tmp_strings.xml:43(string)
 msgid "Show all"
-msgstr ""
+msgstr "ھەممىنى كۆرسەت"
 
 #: tmp_strings.xml:44(string)
 msgid "Refresh"
-msgstr ""
+msgstr "يېڭىلا"
 
 #: tmp_strings.xml:45(string)
 msgid "Checked AndAppStore"
-msgstr ""
+msgstr "AndAppStore تەكشۈرۈلدى"
 
 #: tmp_strings.xml:46(string)
 msgid "Current version: %s"
-msgstr ""
+msgstr "نۆۋەتتىكى نەشرى: %s"
 
 #: tmp_strings.xml:47(string)
 msgid "Current version code: %s"
-msgstr ""
+msgstr "نۆۋەتتىكى نەشر كودى: %s"
 
 #: tmp_strings.xml:48(string)
 msgid "Newer version: %s"
-msgstr ""
+msgstr "يېڭىراق نەشرى: %s"
 
 #: tmp_strings.xml:49(string)
 msgid "Newer version: %1$s - %2$s"
-msgstr ""
+msgstr "يېڭىراق نەشرى: %1$s - %2$s"
 
 #: tmp_strings.xml:50(string)
 msgid "Newer version available."
-msgstr ""
+msgstr "يېڭى نەشرى بار."
 
 #: tmp_strings.xml:51(string)
 msgid "No update information found."
-msgstr ""
+msgstr "يېڭىلاش ئۇچۇرىنى تاپالمىدى."
 
 #: tmp_strings.xml:52(string)
 msgid "OI Update - List of new versions"
-msgstr ""
+msgstr "OI يېڭىلاش - يېڭى نەشرىنىڭ تىزىمى"
 
 #: tmp_strings.xml:53(string)
 msgid "OI Update - New versions at AndAppStore"
-msgstr ""
+msgstr "OI يېڭىلاش - AndAppStore دىكى يېڭى نەشرىنىڭ تىزىمى"
 
 #: tmp_strings.xml:54(string)
 msgid "OI Update - List of managed applications"
-msgstr ""
+msgstr "OI يېڭىلاش - باشقۇرىدىغان ئەپ تىزىمى"
 
 #: tmp_strings.xml:55(string)
 msgid "OI Update - List of managed applications (check at AndAppStore)"
-msgstr ""
+msgstr "OI يېڭىلاش - باشقۇرىدىغان ئەپ تىزىمى (AndAppStore دىن تەكشۈر)"
 
 #: tmp_strings.xml:56(string)
 msgid "Settings"
-msgstr ""
+msgstr "تەڭشەكلەر"
 
 #: tmp_strings.xml:57(string)
 msgid "Auto check"
-msgstr ""
+msgstr "ئۆزلۈكىدىن تەكشۈر"
 
 #: tmp_strings.xml:58(string)
 msgid "Ignored"
-msgstr ""
+msgstr "پەرۋا قىلمىدى"
 
 #: tmp_strings.xml:59(string)
 msgid "Updates are currently ignored. Would you like to receive updates again?"
-msgstr ""
+msgstr "نۆۋەتتىكى يېڭىلاشقا پەرۋا قىلما. قايتا يېڭىلاشنى قوبۇل قىلامسىز؟"
 
 #: tmp_strings.xml:60(string)
 msgid "Unknown"
-msgstr ""
+msgstr "يوچۇن"
 
 #: tmp_strings.xml:61(string)
 msgid ""
 "No update information available. Please check manually and ask the developer "
 "to support OI Update in the future."
 msgstr ""
+"يېڭىلاش ئۇچۇرى يوق، قولدا تەكشۈرۈپ، ئىجادكارلاردىن OI نىڭ كەلگۈسىدىكى "
+"يېڭىلىنىدىغان نەشرىنى سوراڭ."
 
 #: tmp_strings.xml:62(string)
 msgid "Search on Market"
-msgstr ""
+msgstr "بازاردىن ئىزدە"
 
 #: tmp_strings.xml:63(string)
 msgid "Search on AndAppStore"
-msgstr ""
+msgstr "AndAppStore دىن ئىزدە"
 
 #: tmp_strings.xml:64(string)
 msgid "Processing %s"
-msgstr ""
+msgstr "%s بىر تەرەپ قىلىۋاتىدۇ"
 
 #: tmp_strings.xml:66(string)
 msgid ""
@@ -223,84 +228,88 @@ msgid ""
 "Android Market. Applications installed from unknown sources might exhibit a "
 "security risk."
 msgstr ""
+"ئەپ يېڭىلايدىغان ئوخشاش بولمىغان بازار بار، يوچۇن مەنبەدىن ئەپ ئورنىتىشنىڭ "
+"بىخەتەرلىك خەۋپى بولۇشى مۇمكىن."
 
 #: tmp_strings.xml:70(string)
 msgid "Continue anyway"
-msgstr ""
+msgstr "داۋاملاشتۇرۇۋەر"
 
 #: tmp_strings.xml:71(string)
 msgid "Abort"
-msgstr ""
+msgstr "توختات"
 
 #: tmp_strings.xml:73(string)
 msgid "Auto update"
-msgstr ""
+msgstr "ئۆزلۈكىدىن يېڭىلا"
 
 #: tmp_strings.xml:74(string)
 msgid "If checked, search for updates is performed regularly"
-msgstr ""
+msgstr "تاللانسا مەلۇم مۇددەتتە يېڭىلاشنى تەكشۈرىدۇ"
 
 #: tmp_strings.xml:75(string)
 msgid "Update interval"
-msgstr ""
+msgstr "يېڭىلاش ئارىلىقى"
 
 #: tmp_strings.xml:76(string)
 msgid "Set the interval how often the update search should be performed."
-msgstr ""
+msgstr "يېڭىلاش ۋاقىت ئارىلىقىنىڭ قانچىلىك بولىدىغانلىقى تەڭشىلىدۇ."
 
 #: tmp_strings.xml:77(string)
 msgid "Select interval"
-msgstr ""
+msgstr "ۋاقىت ئارىلىقىنى تاللاڭ"
 
 #: tmp_strings.xml:78(string)
 msgid "every_month"
-msgstr ""
+msgstr "ھەر ئاي"
 
 #: tmp_strings.xml:79(string)
 msgid "Warning"
-msgstr ""
+msgstr "ئاگاھلاندۇرۇش"
 
 #: tmp_strings.xml:80(string)
 msgid ""
 "If you uncheck this item, you will no longer receive notifications for "
 "updates. Do you still want to uncheck auto update?"
 msgstr ""
+"بۇ تۈر تاللانمىسا، يېڭىلاش ئۇقتۇرۇشى تاپشۇرۇۋالمايسىز. ئۆزلۈكىدىن يېڭىلاشنى "
+"بىكار قىلامسىز؟"
 
 #: tmp_strings.xml:82(string)
 msgid "Use AndAppStore"
-msgstr ""
+msgstr "AndAppStore نى ئىشلەت"
 
 #: tmp_strings.xml:83(string)
 msgid "Use version information provided by AndAppStore.com"
-msgstr ""
+msgstr "AndAppStore.com نىڭ نەشر ئۇچۇرىنى ئىشلەت"
 
 #: tmp_strings.xml:85(string)
 msgid "Read update information"
-msgstr ""
+msgstr "يېڭىلاش ئۇچۇرىنى ئوقۇ"
 
 #: tmp_strings.xml:86(string)
 msgid "Write update information"
-msgstr ""
+msgstr "يېڭىلاش ئۇچۇرىنى ياز"
 
 #: tmp_strings.xml:87(string)
 msgid ""
 "Read information about installed applications, update locations and requests."
-msgstr ""
+msgstr "ئەپنىڭ ئورنىتىش، يېڭىلاش ئورنى ۋە ئېھتىياج ئۇچۇرىنى ئوقۇڭ."
 
 #: tmp_strings.xml:88(string)
 msgid ""
 "Write information about installed applications, update locations and "
 "requests."
-msgstr ""
+msgstr "ئەپنىڭ ئورنىتىش، يېڭىلاش ئورنى ۋە ئېھتىياج ئۇچۇرىنى يېزىڭ."
 
 #. About
 #: tmp_strings.xml:92(string)
 msgid "About"
-msgstr ""
+msgstr "ھەققىدە"
 
 #: tmp_strings.xml:93(string)
 msgid "About %s"
-msgstr ""
+msgstr "%s ھەققىدە"
 
 #: tmp_strings.xml:94(string)
 msgid ""
@@ -309,11 +318,15 @@ msgid ""
 "intents and open interfaces.\\n\\n For more information and other great "
 "applications visit OpenIntents at www.openintents.org"
 msgstr ""
+"نەشرى%s \\n\\n OIيېڭىلاش سىزنى يېڭى نەشرى ئۇچۇرىدىن خەۋەردار قىلىدۇ.\\n "
+"OpenIntents ئوخشاش بولمىغان ئاندىرويىد ئەپلىرىنىڭ سانلىق مەلۇماتنى "
+"ھەمبەھىرلەشكە يول قويىدۇ.\\n\\nتېخىمۇ كۆپ ئۇچۇرغا ئېرىشىش ئۈچۈن www."
+"openintents.org نى زىيارەت قىلىڭ."
 
 #. EULA
 #: tmp_strings.xml:102(string)
 msgid "OI Update EULA"
-msgstr ""
+msgstr "OI يېڭىلاش ئاخىرقى ئىشلەتكۈچى ئىجازەتنامىسى"
 
 #: tmp_strings.xml:103(string)
 msgid ""
@@ -329,8 +342,8 @@ msgstr ""
 
 #: tmp_strings.xml:110(string)
 msgid "Accept"
-msgstr ""
+msgstr "قوشۇل"
 
 #: tmp_strings.xml:111(string)
 msgid "Cancel"
-msgstr ""
+msgstr "ۋاز كەچ"

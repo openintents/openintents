@@ -1,0 +1,362 @@
+# Czech translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Matěj Konečný <Unknown>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:25(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Matěj Konečný https://launchpad.net/~matejkon"
+
+#. Explanation what this application does.
+#: tmp_strings.xml:28(string)
+msgid ""
+"This extension to OI Shopping list and OI Notepad lets you import and export "
+"lists and notes in the CSV file format."
+msgstr ""
+"Toto rozšíření do OI Nákupního seznamu a OI Poznámkového bloku vám umožňuje "
+"importovat a exportovat seznamy a poznámky ve formátu CSV."
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:34(string)
+msgid "OI Shopping List"
+msgstr "OI Nákupní seznam"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:36(string) tmp_strings.xml:96(string)
+msgid "OI Notepad"
+msgstr "OI Poznámkový blok"
+
+#. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
+#: tmp_strings.xml:39(string)
+msgid "Launch %s and select menu &gt; Convert CSV."
+msgstr "Spusťte %s a zvolte menu &gt; Převést do CSV"
+
+#. Application name. Can be localized.
+#. 	  "CSV" is a common file extension meaning "comma separated values".
+#. 	  "OI" and "CSV" should not be changed.
+#: tmp_strings.xml:47(string)
+msgid "OI Convert CSV"
+msgstr "OI Převést do CSV"
+
+#: tmp_strings.xml:48(string)
+msgid "Convert CSV"
+msgstr "Převést do CSV"
+
+#: tmp_strings.xml:49(string)
+msgid "Convert CSV to Notepad"
+msgstr "Převést CSV do Poznámkového bloku"
+
+#: tmp_strings.xml:50(string)
+msgid "Convert CSV to Shopping list"
+msgstr "Převést CSV do Nákupního seznamu"
+
+#: tmp_strings.xml:51(string)
+msgid "Convert all notes"
+msgstr "Převést všechny poznámky"
+
+#: tmp_strings.xml:52(string)
+msgid "Convert all shopping lists"
+msgstr "Převést všechny nákupní seznamy"
+
+#: tmp_strings.xml:53(string)
+msgid "Convert list '%s'"
+msgstr "Převést seznam '%s'"
+
+#: tmp_strings.xml:54(string)
+msgid "File path"
+msgstr "Cesta k soubotu"
+
+#: tmp_strings.xml:55(string)
+msgid "Import"
+msgstr "Importovat"
+
+#: tmp_strings.xml:56(string)
+msgid "Export"
+msgstr "Exportovat"
+
+#: tmp_strings.xml:57(string)
+msgid "Error writing to file"
+msgstr "Chyba během zapisování do souboru"
+
+#: tmp_strings.xml:58(string)
+msgid "Error reading from file"
+msgstr "Chyba během čtení souboru"
+
+#: tmp_strings.xml:59(string)
+msgid "Wrong CSV format"
+msgstr "Špatný CSV formát"
+
+#: tmp_strings.xml:60(string)
+msgid "File not found"
+msgstr "Soubor nebyl nalezen"
+
+#: tmp_strings.xml:61(string)
+msgid "Not yet implemented, please choose different option."
+msgstr "Ještě není implementováno, zvolte prosím jinou možnost."
+
+#: tmp_strings.xml:62(string)
+msgid "Import finished"
+msgstr "Import dokončen"
+
+#: tmp_strings.xml:63(string)
+msgid "Export finished"
+msgstr "Export dokončen"
+
+#: tmp_strings.xml:64(string)
+msgid "Select notepad CSV file"
+msgstr "Zvolte CSV soubor pro poznámkový blok"
+
+#: tmp_strings.xml:65(string)
+msgid "Select shopping list CSV file"
+msgstr "Zvolte CSV soubor pro nákupní seznam"
+
+#: tmp_strings.xml:66(string)
+msgid "Current Import Policy:"
+msgstr "Současná importovací taktika"
+
+#: tmp_strings.xml:67(string)
+msgid "Import Policy"
+msgstr "Importovací taktika"
+
+#: tmp_strings.xml:68(string) tmp_strings.xml:83(string)
+msgid "Select the import policy to use"
+msgstr "Vyberte importovací taktiku"
+
+#: tmp_strings.xml:70(string)
+msgid "The file exists. Do you want to overwrite?"
+msgstr "Takový soubor existuje. Chcete ho přepsat?"
+
+#: tmp_strings.xml:71(string)
+msgid "Don't ask again. Always overwrite!"
+msgstr "Už se mě neptej. Vždycky to přepiš!"
+
+#: tmp_strings.xml:73(string)
+msgid "Import policy set to RESTORE"
+msgstr "Importovací taktika nastavena na OBNOVIT"
+
+#: tmp_strings.xml:74(string)
+msgid ""
+"Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE "
+"them with the contents of the CSV file. Are you sure?"
+msgstr ""
+"Vaše současná importovací taktika je nastavena na SMAZAT VŠECHNY SOUČASNÉ "
+"ZÁZNAMY a PŘEPSAT je obsahem CSV souboru. Jste si jist/a?"
+
+#: tmp_strings.xml:76(string)
+msgid "Settings"
+msgstr "Nastavení"
+
+#: tmp_strings.xml:77(string)
+msgid "CSV file format"
+msgstr "Formát CSV souboru"
+
+#: tmp_strings.xml:78(string)
+msgid "Select CSV file format"
+msgstr "Zvolte formát CSV souboru"
+
+#: tmp_strings.xml:79(string)
+msgid "Select encoding"
+msgstr "Vyberte kódování"
+
+#: tmp_strings.xml:80(string)
+msgid "Default"
+msgstr "Výchozí"
+
+#: tmp_strings.xml:81(string)
+msgid "Use custom encoding (advanced users)"
+msgstr "Použít vlastní kódování (pokročilí uživatelé)"
+
+#: tmp_strings.xml:82(string)
+msgid "Select a CSV file format"
+msgstr "Zvolte formát CSV souboru"
+
+#. Preference category title
+#: tmp_strings.xml:87(string)
+msgid "Common settings"
+msgstr "Obecná nastavení"
+
+#: tmp_strings.xml:88(string)
+msgid "Import/export settings that apply to Notepad and Shopping list."
+msgstr ""
+"Importovací/exportovací nastavení, která platí pro Poznámkový blok i Nákupní "
+"seznam."
+
+#: tmp_strings.xml:89(string)
+msgid "Ask if file exists"
+msgstr "Zeptat se když soubor existuje"
+
+#: tmp_strings.xml:90(string)
+msgid ""
+"If checked a dialog appears to confirm overwriting if the export file "
+"already exists."
+msgstr ""
+"Pokud zaškrtnuto, objeví se dialog pro potvrzení přepsání, pokud exportovaný "
+"soubor již existuje."
+
+#: tmp_strings.xml:92(string)
+msgid "Application specific settings"
+msgstr "Nastavení specifická pro jednotlivé aplikace"
+
+#: tmp_strings.xml:93(string)
+msgid "Filename"
+msgstr "Název souboru"
+
+#: tmp_strings.xml:94(string)
+msgid "Full path for file."
+msgstr "Celá cesta k souboru."
+
+#: tmp_strings.xml:97(string)
+msgid "Import/export settings for OI Notepad."
+msgstr "Importovací/exportovací nastavení pro OI Poznámkový blok"
+
+#: tmp_strings.xml:99(string)
+msgid "OI Shopping list"
+msgstr "OI Nákupní seznam"
+
+#: tmp_strings.xml:100(string)
+msgid "Import/export settings for OI Shopping list."
+msgstr "Importovací/exportovací nastavení pro OI Nákupní seznam"
+
+#: tmp_strings.xml:102(string)
+msgid "Converting..."
+msgstr "Převádím..."
+
+#: tmp_strings.xml:103(string)
+msgid "Ok"
+msgstr "OK"
+
+#: tmp_strings.xml:104(string)
+msgid "Import stores"
+msgstr "Importovat obchody"
+
+#: tmp_strings.xml:105(string)
+msgid "Import HandyShopper store names only as item tags."
+msgstr "Importovat názvy HandyShopper obchodů  jen jako tagy položek."
+
+#: tmp_strings.xml:106(string)
+msgid "Import HandyShopper stores and per-store price and aisle information."
+msgstr ""
+"Importovat HandyShopper obchody, ceny pro jednotlivé obchody a informace o "
+"uličkách."
+
+#. Permission
+#: tmp_strings.xml:110(string)
+msgid "read notes"
+msgstr "číst poznámky"
+
+#: tmp_strings.xml:111(string)
+msgid ""
+"Allows an application to read notes. Note that encrypted notes are provided "
+"in the encrypted format."
+msgstr ""
+"Povoluje aplikaci číst poznámky. Zašifrované poznámky jsou poskytovány v "
+"zašifrovaném formátu."
+
+#. Permission
+#: tmp_strings.xml:113(string)
+msgid "write notes"
+msgstr "psát poznámky"
+
+#: tmp_strings.xml:114(string)
+msgid "Allows an application to create new notes or modify existing notes."
+msgstr "Povoluje aplikaci vytvářet nové poznámky nebo upravovat stávající."
+
+#. Permission
+#: tmp_strings.xml:118(string)
+msgid "read shopping lists"
+msgstr "číst nákupní seznamy"
+
+#: tmp_strings.xml:119(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+"Povoluje aplikaci číst nákupní seznamy. Zašifrované seznamy a položky jsou "
+"poskytovány v zašifrovaném formátu."
+
+#. Permission
+#: tmp_strings.xml:121(string)
+msgid "write shopping lists"
+msgstr "psát nákupní seznamy"
+
+#: tmp_strings.xml:122(string)
+msgid ""
+"Allows an application to create new lists and items or modify existing ones."
+msgstr ""
+"Povoluje aplikaci vytvářet nové seznamy a položky nebo upravovat stávající."
+
+#: tmp_strings.xml:125(item)
+msgid "MS Outlook Notes"
+msgstr "MS Outlook poznámky"
+
+#: tmp_strings.xml:126(item)
+msgid "Palm CSV"
+msgstr "Palm CSV"
+
+#: tmp_strings.xml:127(item)
+msgid "JPilot Memo"
+msgstr "JPilot Memo"
+
+#: tmp_strings.xml:131(item)
+msgid "MS Outlook Tasks"
+msgstr "MS Outlook úkoly"
+
+#: tmp_strings.xml:132(item)
+msgid "HandyShopper"
+msgstr "HandyShopper"
+
+#: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
+msgid "DUPLICATE - Allow duplicates of records."
+msgstr "DUPLIKOVAT - Povolit duplikáty záznamů."
+
+#: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
+#, fuzzy
+msgid "KEEP - Don't overwrite existing records."
+msgstr "\"ZACHOVAT - Nepřepisovat existující záznamy.\""
+
+#: tmp_strings.xml:138(item)
+msgid "Overwrite - Overwrite existing records."
+msgstr "Přepsat - Přepsat existující záznamy."
+
+#: tmp_strings.xml:139(item)
+msgid "Restore - DELETE ALL, then import."
+msgstr "Obnovit - SMAZAT VŠE, potom importovat."
+
+#: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
+msgid "DUPLICATE - Add a second copy of a record if it already exists."
+msgstr "DUPLIKOVAT - Přidat druhou kopii záznamu když záznam již existuje."
+
+#: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+#, fuzzy
+msgid ""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
+msgstr ""
+"\"ZACHOVAT - Nepřepisovat existující záznam, ignorovat ten v CSV souboru.\""
+
+#: tmp_strings.xml:145(item)
+msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
+msgstr "Přepsat - Záznam v CSV souboru PŘEPÍŠE existující záznam."
+
+#: tmp_strings.xml:146(item)
+msgid ""
+"Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
+msgstr ""
+"Obnovit ze zálohy - SMAŽE VŠECHNY VAŠE EXISTUJÍCÍ ZÁZNAMY, potom importuje "
+"CSV soubor."

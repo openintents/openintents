@@ -1,0 +1,231 @@
+# Filipino translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: abc <Unknown>\n"
+"Language-Team: Filipino <fil@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:30(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  abc https://launchpad.net/~abc-g"
+
+#. Explanation what this application does. It is a menu extension for other applications.
+#: tmp_strings.xml:33(string)
+msgid "A standalone about dialog that is shared between apps."
+msgstr ""
+"Isang nakapag-iisang tungkol na dyalogo na ibinabahagi sa pagitan ng mga app."
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:39(string)
+msgid "OI File Manager"
+msgstr "OI File Manedyer"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:41(string)
+msgid "OI Shopping List"
+msgstr "OI Listahan ng Bilihin"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:43(string)
+msgid "OI Notepad"
+msgstr "OI Talaan"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:45(string)
+msgid "OI Safe"
+msgstr "OI Kaha"
+
+#. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
+#: tmp_strings.xml:48(string)
+msgid "Launch %s and select menu &gt; About."
+msgstr "Ilunsad ang %s at piliin ang menu &gt; Tungkol."
+
+#. Application name. Can be localized, like "OI About", or "OI Info". 
+#. 	   This is an extension that shows an about dialog or info dialog.
+#: tmp_strings.xml:55(string)
+msgid "OI About"
+msgstr "OI Tungkol"
+
+#: tmp_strings.xml:57(string)
+msgid "About OI About itself"
+msgstr "Tungkol OI Tungkol sa sarili"
+
+#. About some application, where "%s" is the name of another application.
+#: tmp_strings.xml:60(string)
+msgid "About %s"
+msgstr "Tungkol %s"
+
+#: tmp_strings.xml:62(string)
+msgid "Written by"
+msgstr "Isinulat ni"
+
+#: tmp_strings.xml:63(string)
+msgid "Documented by"
+msgstr "Dokumentado ni"
+
+#: tmp_strings.xml:64(string)
+msgid "Translated by"
+msgstr "Isinalin ng"
+
+#: tmp_strings.xml:65(string)
+msgid "Artwork by"
+msgstr "Likhang sining ni"
+
+#: tmp_strings.xml:66(string)
+msgid "International translations by"
+msgstr "Internasyonal na pagsasalin ni"
+
+#: tmp_strings.xml:67(string)
+msgid "Credits"
+msgstr "Mga Kredito"
+
+#: tmp_strings.xml:68(string)
+msgid "License"
+msgstr "Lisensya"
+
+#: tmp_strings.xml:69(string)
+msgid "General Info"
+msgstr "Pangkalahatang Impormasyon"
+
+#: tmp_strings.xml:70(string)
+msgid "Recent changes"
+msgstr "Kamakailang mga pagbabago"
+
+#: tmp_strings.xml:72(string)
+msgid "No information available."
+msgstr "Walang magagamit na impormasyon."
+
+#: tmp_strings.xml:79(item)
+msgid "Arabic"
+msgstr "Arabo"
+
+#: tmp_strings.xml:80(item)
+msgid "Czech"
+msgstr "Tsek"
+
+#: tmp_strings.xml:81(item)
+msgid "Danish"
+msgstr "Danish"
+
+#: tmp_strings.xml:82(item)
+msgid "German"
+msgstr "Aleman"
+
+#: tmp_strings.xml:83(item)
+msgid "English"
+msgstr "Ingles"
+
+#: tmp_strings.xml:84(item)
+msgid "Greek"
+msgstr "Griyego"
+
+#: tmp_strings.xml:85(item)
+msgid "Spanish"
+msgstr "Kastila"
+
+#: tmp_strings.xml:86(item)
+msgid "Persian"
+msgstr "Persyano"
+
+#: tmp_strings.xml:87(item)
+msgid "Finnish"
+msgstr "Finnish"
+
+#: tmp_strings.xml:88(item)
+msgid "Faroese"
+msgstr "Faroese"
+
+#: tmp_strings.xml:89(item)
+msgid "French"
+msgstr "Pranses"
+
+#: tmp_strings.xml:90(item)
+msgid "Croatian"
+msgstr "Kroatyano"
+
+#: tmp_strings.xml:91(item)
+msgid "Hungarian"
+msgstr "Hanggaryan"
+
+#: tmp_strings.xml:92(item)
+msgid "Italian"
+msgstr "Italiyano"
+
+#: tmp_strings.xml:93(item)
+msgid "Japanese"
+msgstr "Hapon"
+
+#: tmp_strings.xml:94(item)
+msgid "Korean"
+msgstr "Koreano"
+
+#: tmp_strings.xml:95(item)
+msgid "Lao"
+msgstr "Lao"
+
+#: tmp_strings.xml:96(item)
+msgid "Dutch"
+msgstr "Olandes"
+
+#: tmp_strings.xml:97(item)
+msgid "Occitan (post 1500)"
+msgstr "Occitan (paskil 1500)"
+
+#: tmp_strings.xml:98(item)
+msgid "Polish"
+msgstr "Polish"
+
+#: tmp_strings.xml:99(item)
+msgid "Portuguese"
+msgstr "Portuges"
+
+#: tmp_strings.xml:100(item)
+msgid "Brazilian Portuguese"
+msgstr "Portuges ng Brasil"
+
+#: tmp_strings.xml:101(item)
+msgid "Romanian"
+msgstr "Romano"
+
+#: tmp_strings.xml:102(item)
+msgid "Russian"
+msgstr "Ruso"
+
+#: tmp_strings.xml:103(item)
+msgid "Sardinian"
+msgstr "Sardiniyan"
+
+#: tmp_strings.xml:104(item)
+msgid "Slovak"
+msgstr "Eslobako"
+
+#: tmp_strings.xml:105(item)
+msgid "Swedish"
+msgstr "Suweko"
+
+#: tmp_strings.xml:106(item)
+msgid "Turkish"
+msgstr "Turko"
+
+#: tmp_strings.xml:107(item)
+msgid "Chinese (Simplified)"
+msgstr "Tsino (Pinasimple)"
+
+#: tmp_strings.xml:108(item)
+msgid "Chinese (Traditional)"
+msgstr "Tsino (Tradisyonal)"

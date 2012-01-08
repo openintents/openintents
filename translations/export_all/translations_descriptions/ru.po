@@ -35,7 +35,7 @@ msgstr ""
 
 #: tmp_strings.xml:13(string)
 msgid "This application is invoked through the menu of other OI applications."
-msgstr ""
+msgstr "Это приложение запускается через меню других OI приложений."
 
 #: tmp_strings.xml:14(string)
 msgid ""
@@ -47,13 +47,13 @@ msgstr ""
 
 #: tmp_strings.xml:15(string)
 msgid "Credits include authors, documentation, translators, and artists."
-msgstr ""
+msgstr "Информация об авторах, переводчиках, художниках, а также документация"
 
 #: tmp_strings.xml:16(string)
 msgid ""
 "All of this functionality is brought together in a simplistic and efficient "
 "layout."
-msgstr ""
+msgstr "Все эти функции объединены в простом и эффективном интерфейсе."
 
 #: tmp_strings.xml:18(string) tmp_strings.xml:68(string)
 #: tmp_strings.xml:121(string) tmp_strings.xml:168(string)
@@ -103,7 +103,7 @@ msgstr ""
 
 #: tmp_strings.xml:31(listitem)
 msgid "Shows translators of all language versions."
-msgstr ""
+msgstr "Показывает переводчиков для всех языковых версий"
 
 #: tmp_strings.xml:32(listitem)
 msgid ""
@@ -119,7 +119,7 @@ msgstr ""
 
 #: tmp_strings.xml:35(string)
 msgid "Applications that work with \"OI About\":"
-msgstr ""
+msgstr "Приложения, которые работают с \"OI About\":"
 
 #: tmp_strings.xml:36(listitem)
 msgid "OI Notepad"
@@ -157,7 +157,7 @@ msgstr "Ключевые слова:"
 
 #: tmp_strings.xml:45(listitem)
 msgid "About, Credits, Information."
-msgstr ""
+msgstr "О программе, благодарности, информация."
 
 #: tmp_strings.xml:46(listitem)
 msgid "OI, OpenIntents, Open Intents."
@@ -181,12 +181,16 @@ msgid ""
 "OI File Manager allows you to browse your SD card, create directories, "
 "rename, copy, move, and delete files."
 msgstr ""
+"OI File Manager позволяет работать с SD-картой, создавать каталоги, "
+"переименовывать, копировать, перемещать, и удалять файлы"
 
 #: tmp_strings.xml:66(string)
 msgid ""
 "It also acts as an extension to other applications to display \"Open\" and "
 "\"Save\" dialogs."
 msgstr ""
+"Также выступает в качестве дополнения к другим приложениям для отображения "
+"диалогов \"Открыть\" и \"Сохранить\""
 
 #: tmp_strings.xml:80(listitem)
 msgid "Show list of files with thumbnails for images."
@@ -208,10 +212,12 @@ msgstr "Отправить файлы по электронной почте."
 msgid ""
 "Acts as an extension to other applications, like GMail, to attach files."
 msgstr ""
+"Выступает в качестве дополнения к другим приложениям, таким как GMail, для "
+"прикрепления файлов"
 
 #: tmp_strings.xml:85(listitem)
 msgid "Support for many file endings and mime types."
-msgstr ""
+msgstr "Поддержка многих файловых расширений и MIME-типов"
 
 #: tmp_strings.xml:86(listitem)
 msgid ""
@@ -223,13 +229,13 @@ msgstr ""
 
 #: tmp_strings.xml:88(string) tmp_strings.xml:245(string)
 msgid "Available extensions for \"OI File Manager\":"
-msgstr ""
+msgstr "Доступные дополнения для \"OI File Manager\":"
 
 #: tmp_strings.xml:89(listitem) tmp_strings.xml:138(listitem)
 #: tmp_strings.xml:190(listitem) tmp_strings.xml:246(listitem)
 #: tmp_strings.xml:300(listitem)
 msgid "Show the license information with \"OI About\"."
-msgstr ""
+msgstr "Показать информацию о лицензии с помощью \"OI About\"."
 
 #: tmp_strings.xml:91(string) tmp_strings.xml:248(string)
 msgid "Applications that work with \"OI File Manager\":"
@@ -237,7 +243,7 @@ msgstr "Приложения работающие с \"OI File Manager\":"
 
 #: tmp_strings.xml:92(listitem)
 msgid "Open and save text files in \"OI Notepad\"."
-msgstr ""
+msgstr "Открытие и сохранение текстовых файлов в \"OI Notepad\"."
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:96(listitem)
@@ -255,47 +261,51 @@ msgid ""
 "OI Flashlight is a simple and effective application that helps you find a "
 "way in the dark."
 msgstr ""
+"OI Flashlight это простое и эффективное приложение которое помогает найти "
+"дорогу в темноте."
 
 #: tmp_strings.xml:117(string)
 msgid ""
 "OI Flashlight locks the display backlight on, clearly illuminating the "
 "surrounding area."
-msgstr ""
+msgstr "OI Flashlight включает подсветку, освещает окрестности"
 
 #: tmp_strings.xml:118(string)
 msgid ""
 "For devices with a camera flash, OI Flashlight can also use the flash as a "
 "bright torch to brighten the room."
 msgstr ""
+"Для устройств со вспышкой OI Flashlight можно использовать вспышку, как "
+"яркий факел, чтобы осветить комнату"
 
 #: tmp_strings.xml:119(string)
 msgid ""
 "The color of the backlight is completely customizable with OI Color Picker."
-msgstr ""
+msgstr "Цвет подсветки настраивается с помощью OI Color Picker"
 
 #: tmp_strings.xml:133(listitem)
 msgid "Lock the display backlight on."
-msgstr ""
+msgstr "Включить подсветку экрана"
 
 #: tmp_strings.xml:134(listitem)
 msgid "Lock camera flash on."
-msgstr ""
+msgstr "Включить вспышку"
 
 #: tmp_strings.xml:135(listitem)
 msgid "The color of backlight is customizable."
-msgstr ""
+msgstr "Цвет подсветки настраивается"
 
 #: tmp_strings.xml:137(string)
 msgid "Available extensions for \"OI Flashlight\":"
-msgstr ""
+msgstr "Доступные дополнения для \"OI Flashlight\":"
 
 #: tmp_strings.xml:139(listitem)
 msgid "Change the color of the backlight with \"OI Color Picker\"."
-msgstr ""
+msgstr "Изменить цвет подсветки с помощью OI Color Picker"
 
 #: tmp_strings.xml:141(string)
 msgid "Applications that work with \"OI Flashlight\":"
-msgstr ""
+msgstr "Приложения работающие с \"OI Flashlight\":"
 
 #: tmp_strings.xml:142(listitem) tmp_strings.xml:198(listitem)
 #: tmp_strings.xml:304(listitem)
@@ -304,39 +314,48 @@ msgstr "Обновить с помощью \"OI Update\"."
 
 #: tmp_strings.xml:145(listitem)
 msgid "Flashlight, light, Backlight"
-msgstr ""
+msgstr "Фонарик, свет, подсветка"
 
 #: tmp_strings.xml:146(listitem) tmp_strings.xml:203(listitem)
 #: tmp_strings.xml:310(listitem)
 msgid "OI, OpenIntents, Open Intents"
-msgstr ""
+msgstr "OI, OpenIntents, Open Intents"
 
 #. Description of application
 #: tmp_strings.xml:163(string)
 msgid "OI Notepad is a full-featured open source note taking application."
 msgstr ""
+"OI Notepad это полнофункциональный  менеджер заметок с открытым исходным "
+"кодом."
 
 #: tmp_strings.xml:164(string)
 msgid ""
 "With it you can tag, search, and send your notes, in addition to basic "
 "functionality such as creating, deleting, and editing notes."
 msgstr ""
+"С его помощью можно помечать, искать, а также отправлять заметки, в "
+"дополнение к базовым функциям, таким как создание, удаление и редактирование "
+"заметок."
 
 #: tmp_strings.xml:165(string)
 msgid ""
 "Advanced features like encryption, import/export, and voice memos are all "
 "available through extensions."
 msgstr ""
+"Дополнительные функции, такие как шифрование, импорт / экспорт, а также "
+"голосовые заметки все это доступно с помощью расширений."
 
 #: tmp_strings.xml:166(string)
 msgid ""
 "All of this functionality is brought together in a simplistic and efficient "
 "layout, customizable through a variety of themes."
 msgstr ""
+"Все эти функции объединены в упрощенный и эффективный интерфейс, "
+"настраиваемый с помощью различных тем."
 
 #: tmp_strings.xml:180(listitem)
 msgid "Add, edit and delete notes."
-msgstr ""
+msgstr "Добавление, изменение и удаление заметок."
 
 #: tmp_strings.xml:181(listitem)
 msgid "Long-press on notes to add tags."
@@ -344,7 +363,7 @@ msgstr "Долгое нажатия на записи чтобы добавит�
 
 #: tmp_strings.xml:182(listitem)
 msgid "Change font size and sort order."
-msgstr ""
+msgstr "Изменить размер шрифта и порядок сортировки."
 
 #: tmp_strings.xml:183(listitem)
 msgid "A clearly arranged layout with a variety of themes."
@@ -352,15 +371,15 @@ msgstr ""
 
 #: tmp_strings.xml:184(listitem)
 msgid "Quickly search through notes."
-msgstr ""
+msgstr "Быстрый поиск записок."
 
 #: tmp_strings.xml:185(listitem)
 msgid "Send notes as MMS or SMS."
-msgstr ""
+msgstr "Отправка заметок как MMS или SMS."
 
 #: tmp_strings.xml:187(string)
 msgid "Available extensions for \"OI Notepad\":"
-msgstr ""
+msgstr "Доступные расширения для \"OI Notepad\":"
 
 #: tmp_strings.xml:188(listitem)
 msgid "Record and attach voice memos to notes with \"OI Voice Notes\"."
@@ -370,7 +389,7 @@ msgstr ""
 
 #: tmp_strings.xml:189(listitem)
 msgid "With \"OI Convert CSV\" import/export notes from the SD card."
-msgstr ""
+msgstr "Импорт/экспорт заметок из SD-карты с помощью \"OI Convert CSV\"."
 
 #: tmp_strings.xml:191(listitem)
 msgid "Insert the date and time into notes with \"OI Insert Date\"."
@@ -378,29 +397,31 @@ msgstr "Добавить дату и время в заметки с помощ�
 
 #: tmp_strings.xml:192(listitem)
 msgid "Turn text upside down with \"Upside Down\"."
-msgstr ""
+msgstr "Перевернуть текст с помощью \"Upside Down\"."
 
 #: tmp_strings.xml:194(string)
 msgid "Applications that work with \"OI Notepad\":"
-msgstr ""
+msgstr "Приложения, которые работают с \"OI Notepad\":"
 
 #: tmp_strings.xml:195(listitem)
 msgid "Back up notes with \"My Backup Pro\"."
-msgstr ""
+msgstr "Резервное копирование заметок с помощью \"My Backup Pro\"."
 
 #: tmp_strings.xml:196(listitem)
 msgid "Encrypt notes using \"OI Safe\"."
-msgstr ""
+msgstr "Шифрование заметки с помощью \"OI Safe\"."
 
 #: tmp_strings.xml:197(listitem)
 msgid "Manage notes on your SD Card with \"OI File Manager\"."
-msgstr ""
+msgstr "Управление заметками на вашей SD-карте с помощью \"OI File Manager\"."
 
 #: tmp_strings.xml:199(listitem)
 msgid ""
 "Share notes through \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", and "
 "many other applications."
 msgstr ""
+"Поделиться заметками через \"Facebook\", \"Gmail\", \"Google +\", \"Twitter"
+"\", и многие другие приложения."
 
 #: tmp_strings.xml:202(listitem)
 msgid "Note, Notepad, Note book, Notes"
@@ -412,20 +433,24 @@ msgid ""
 "OI Safe safely protects all of your passwords and other private data using "
 "industry standard AES encryption."
 msgstr ""
+"OI Safe надежно защищает все ваши пароли и другие личные данные при помощи "
+"AES шифрования."
 
 #: tmp_strings.xml:221(string)
 msgid ""
 "It also acts as an extension to OI Notepad to encrypt notes created in OI "
 "Notepad."
 msgstr ""
+"Он также выступает в качестве дополнения к OI Notepad для шифрования заметок "
+"созданных в там."
 
 #: tmp_strings.xml:235(listitem)
 msgid "Securely protect data using AES encryption."
-msgstr ""
+msgstr "Надежная защита данных с помощью AES шифрования."
 
 #: tmp_strings.xml:236(listitem)
 msgid "Freely move data entries between categories."
-msgstr ""
+msgstr "Свободно перемещение данных записей между категориями."
 
 #: tmp_strings.xml:237(listitem)
 msgid "Import/Export data entries and databases."
@@ -433,19 +458,19 @@ msgstr "Импорт / экспорт данных записей и баз да
 
 #: tmp_strings.xml:238(listitem)
 msgid "Backup/Restore entries."
-msgstr ""
+msgstr "Резервное копирование / восстановление записей."
 
 #: tmp_strings.xml:239(listitem)
 msgid "Includes secure password generator."
-msgstr ""
+msgstr "Включает в себя безопасный генератор паролей."
 
 #: tmp_strings.xml:240(listitem)
 msgid "Automatic timeout to protect encrypted documents."
-msgstr ""
+msgstr "Автоматический тайм-аут для защиты зашифрованных документов."
 
 #: tmp_strings.xml:241(listitem)
 msgid "Encrypt OI Notepad notes."
-msgstr ""
+msgstr "Шифрование заметок OI Notepad"
 
 #: tmp_strings.xml:242(listitem)
 msgid "Support for Obscura picture safe."
@@ -453,16 +478,16 @@ msgstr ""
 
 #: tmp_strings.xml:243(listitem)
 msgid "MyBackup Pro."
-msgstr ""
+msgstr "MyBackup Pro."
 
 #: tmp_strings.xml:249(listitem)
 msgid "Encrypt notes created in \"OI Notepad\"."
-msgstr ""
+msgstr "Шифрование заметок созданных в \"OI Notepad\"."
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:253(listitem)
 msgid "safe, encrpytion, password, protection"
-msgstr ""
+msgstr "сейф, шифрование, пароль, защита"
 
 #. Description of application
 #: tmp_strings.xml:272(string)
@@ -470,82 +495,92 @@ msgid ""
 "OI Shopping List is a powerful application which makes it easy to create and "
 "manage checklists."
 msgstr ""
+"OI Shopping List это мощное приложение позволяющее легко создавать и "
+"управлять списками."
 
 #: tmp_strings.xml:273(string)
 msgid ""
 "OI Shopping List makes it easy to add items to a list, check the item off, "
 "and remove it from the list."
 msgstr ""
+"OI Shopping List позволяет легко добавлять элементы в список, отмечать их "
+"выполненными, и удалять их из списка."
 
 #: tmp_strings.xml:274(string)
 msgid ""
 "The application can track separate prices for each store that you use, and "
 "features a high level of customization."
 msgstr ""
+"Приложение может отслеживать расценки для каждого магазина, который вы "
+"используете, и имеет высокий уровень настройки."
 
 #: tmp_strings.xml:275(string)
 msgid ""
 "Font size, sort order, list columns, and list cleanup behavior are all "
 "settings controlled by the user."
 msgstr ""
+"Размер шрифта, порядок сортировки списка столбцов, и порядок очистки списка "
+"- это все параметры контролируемые пользователем."
 
 #: tmp_strings.xml:276(string)
 msgid ""
 "All of these features are brought together in a crisp layout that is "
 "customizable through a variety of themes."
 msgstr ""
+"Все эти функции объединяются в четкий интерфейс, который настраивается с "
+"помощью различных тем."
 
 #: tmp_strings.xml:290(listitem)
 msgid "Add, edit and delete lists."
-msgstr ""
+msgstr "Добавление, изменение и удаление списков."
 
 #: tmp_strings.xml:291(listitem)
 msgid "Create, delete, and check items quickly and easily."
-msgstr ""
+msgstr "Создание, удаление и отметка элементов быстро и легко."
 
 #: tmp_strings.xml:292(listitem)
 msgid "Variety of themes."
-msgstr ""
+msgstr "Множество тем"
 
 #: tmp_strings.xml:293(listitem)
 msgid "Customizable font size and sort order."
-msgstr ""
+msgstr "Настраиваемый размер шрифта и порядок сортировки."
 
 #: tmp_strings.xml:294(listitem)
 msgid "Keep track of separate prices for each store."
-msgstr ""
+msgstr "Следите за отдельными ценами для каждого магазина."
 
 #: tmp_strings.xml:295(listitem)
 msgid "Customizable list columns."
-msgstr ""
+msgstr "Настраиваемые столбцы списка."
 
 #: tmp_strings.xml:297(string)
 msgid "Available extensions for \"OI Shopping List\":"
-msgstr ""
+msgstr "Доступные дополнения для \"OI Shopping List\":"
 
 #: tmp_strings.xml:298(listitem)
 msgid "Add a recorded message to a note with \"OI Voice Notes\"."
-msgstr ""
+msgstr "Добавить записанное сообщение к заметке с помощью \"OI Voice Notes\"."
 
 #: tmp_strings.xml:299(listitem)
 msgid "Import/export shopping lists with \"OI Convert CSV\"."
-msgstr ""
+msgstr "Импорт / экспорт списков покупок с помощью \"OI Convert CSV\"."
 
 #: tmp_strings.xml:301(listitem)
 msgid "Enter/check items with \"Barcode OI Plugin\"."
-msgstr ""
+msgstr "Ввод / проверка элементов с помощью \"Barcode OI Plugin\"."
 
 #: tmp_strings.xml:303(string)
 msgid "Applications that work with \"OI Shopping List\":"
-msgstr ""
+msgstr "Приложения работающие с \"OI Shopping List\":"
 
 #: tmp_strings.xml:305(listitem)
 msgid "Backup lists with \"My Backup Pro\"."
-msgstr ""
+msgstr "Резервное копирование списков с помощью \"My Backup Pro\"."
 
 #: tmp_strings.xml:306(listitem)
 msgid "Import ingredients of recipes with \"Bites\"."
-msgstr ""
+msgstr "Импорт ингредиентов рецептов с помощью \"Bites\"."
 
 #: tmp_strings.xml:309(listitem)
 msgid "Shopping, List, Shopping List, Checklist"
@@ -553,4 +588,4 @@ msgstr ""
 
 #: tmp_strings.xml:315(string)
 msgid "Extensions:"
-msgstr ""
+msgstr "Дополнения:"
