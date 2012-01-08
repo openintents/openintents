@@ -1,0 +1,7 @@
+# Application:
+OI Countdown
+
+# Promo text:
+Set multiple countdowns with OI Countdown.
+
+# Description:

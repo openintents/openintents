@@ -11,8 +11,8 @@
   Peli https://launchpad.net/~peli0101
   Thibault Févry https://launchpad.net/~thibaultfevry</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents Flashlight vous aide à trouver votre chemin dans le noir. La lumière d\'affichage arrière reste allumée tant que l\'application est en marche.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

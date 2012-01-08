@@ -27,8 +27,8 @@
   ariza95 https://launchpad.net/~alirizanazli95
   zeugma https://launchpad.net/~sunder67</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">Bu OI Alışveriş listesi ve OI Not defteri eklentisi CSV dosya formatında listeleri ve notları yüklemenizi ve CSV formatında çıktı almanızı sağlar.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

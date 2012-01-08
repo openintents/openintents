@@ -78,33 +78,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabic</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Czech</item>
 		<item>Danish</item>
 		<item>German</item>
-		<item>English</item>
 		<item>Greek</item>
+		<item>English</item>
+		<item>English (United Kingdom)</item>
 		<item>Spanish</item>
 		<item>Persian</item>
 		<item>Finnish</item>
 		<item>Faroese</item>
 		<item>French</item>
+		<item>Hindi</item>
 		<item>Croatian</item>
 		<item>Hungarian</item>
 		<item>Italian</item>
+		<item>Hebrew</item>
 		<item>Japanese</item>
 		<item>Korean</item>
 		<item>Lao</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Dutch</item>
 		<item>Occitan (post 1500)</item>
+		<item>Punjabi</item>
 		<item>Polish</item>
 		<item>Portuguese</item>
 		<item>Brazilian Portuguese</item>
 		<item>Romanian</item>
 		<item>Russian</item>
 		<item>Sardinian</item>
+		<item>Sindhi</item>
 		<item>Slovak</item>
+		<item>Slovenian</item>
 		<item>Swedish</item>
+		<item>Tagalog</item>
 		<item>Turkish</item>
+		<item>Uyghur</item>
 		<item>Chinese (Simplified)</item>
 		<item>Chinese (Traditional)</item>
 	</string-array>

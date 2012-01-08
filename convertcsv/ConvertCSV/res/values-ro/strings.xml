@@ -27,8 +27,8 @@
   Stelescu Raul https://launchpad.net/~stelescuraul
   iulargsb https://launchpad.net/~iulargsb</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">Această extensie pentru Lista de cumpărături OI și Carnețel OI vă permite să importați și să exportați listele și notițele în formatul CSV.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

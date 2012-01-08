@@ -79,33 +79,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabisch</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Tschechisch</item>
 		<item>Dänisch</item>
 		<item>Deutsch</item>
-		<item>Englisch</item>
 		<item>Griechisch</item>
+		<item>Englisch</item>
+		<item>English (United Kingdom)</item>
 		<item>Spanisch</item>
 		<item>Persisch</item>
 		<item>Finnisch</item>
 		<item>Färöisch</item>
 		<item>Französisch</item>
+		<item>Hindi</item>
 		<item>Kroatisch</item>
 		<item>Ungarisch</item>
 		<item>Italienisch</item>
+		<item>Hebrew</item>
 		<item>Japanisch</item>
 		<item>Koreanisch</item>
 		<item>Laotisch</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Niederländisch</item>
 		<item>Okzitanisch (nach 1500)</item>
+		<item>Punjabi</item>
 		<item>Polnisch</item>
 		<item>Portugiesisch</item>
 		<item>Brasilianisches Portugiesisch</item>
 		<item>Rumänisch</item>
 		<item>Russisch</item>
 		<item>Sardinisch</item>
+		<item>Sindhi</item>
 		<item>Slowakisch</item>
+		<item>Slovenian</item>
 		<item>Schwedisch</item>
+		<item>Tagalog</item>
 		<item>Türkisch</item>
+		<item>Uyghur</item>
 		<item>Chinesisch (Kurzzeichen)</item>
 		<item>Chinesisch (Langzeichen)</item>
 	</string-array>

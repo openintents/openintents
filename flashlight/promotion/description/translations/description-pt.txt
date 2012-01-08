@@ -2,6 +2,6 @@
 OI Flashlight
 
 # Promo text:
-OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:

@@ -28,14 +28,10 @@ msgstr ""
 "  Evgrafov Vladimir https://launchpad.net/~evgrafov-vladimir\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
-#. Explanation what this application does.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid ""
-"This extension to OI Shopping list and OI Notepad lets you import and export "
-"lists and notes in the CSV file format."
+msgid "Import and export lists and notes with OI Convert CSV."
 msgstr ""
-"Эти расширения для OI Shopping и OI Notepad позволят Вам производить импорт "
-"и экспорт Ваших списков и заметок в формат CSV."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -331,9 +327,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "ДУБЛИРОВАТЬ - возможность дублирования записей"
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-#, fuzzy
 msgid "KEEP - Don't overwrite existing records."
-msgstr "ОСТАВИТЬ - Не перезаписывать имеющиеся записи"
+msgstr ""
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -348,10 +343,9 @@ msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr "ДУБЛИРОВАТЬ - Если запись существует, добавить копию."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
-#, fuzzy
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-msgstr "ОСТАВИТЬ - Не перезаписывать имеющиеся записи"
+msgstr ""
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
@@ -364,3 +358,13 @@ msgid ""
 msgstr ""
 "Восстановить - УДАЛИТЬ ВСЕ СУЩЕСТВУЮЩИЕ ЗАПИСИ, а затем импортировать файл "
 "CSV."
+
+
+
+
+
+
+
+
+
+

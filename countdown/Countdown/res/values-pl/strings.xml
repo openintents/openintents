@@ -11,8 +11,8 @@ Launchpad Contributions:
   Damian Skrodzki https://launchpad.net/~damienix
   Tomasz \'Zen\' Napierala https://launchpad.net/~tzn</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI Odliczanie informuje cię po upłynięciu określonego czasu.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

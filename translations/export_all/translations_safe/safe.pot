@@ -14,9 +14,9 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string) 
-msgid "OI Safe keeps all your private data encrypted."
+msgid "Store your private data with OI Safe."
 msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.

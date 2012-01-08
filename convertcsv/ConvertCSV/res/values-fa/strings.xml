@@ -22,10 +22,11 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
-  Ben Jordan https://launchpad.net/~ben-jordan86</string>
+  Ben Jordan https://launchpad.net/~ben-jordan86
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">این افزونه بهOI  لیست خرید و  دفترچه یادداشت به شما اجازه می OIدهد تا شما واردات و لیست صادرات و یادداشت هاCSV در قالب فایل .</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

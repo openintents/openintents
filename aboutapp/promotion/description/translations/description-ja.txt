@@ -21,7 +21,7 @@ https://translations.launchpad.net/openintents/trunk
 機能： 
 * 一般情報、クレジットとライセンスタブを表示します。
 * すべての言語の翻訳者を表示します。
-* Retrieves information from application manifest through default tags and metadata.
+* アプリケーションマニフェストから、デフォルトタグやメタデータを通して情報を入手します。
 * すべてのフィールドはインテント エクストラ から任意で変更することができます。
 
 "OI 情報" と動作するアプリケーション： 

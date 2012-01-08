@@ -81,33 +81,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>阿拉伯语</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>捷克语</item>
 		<item>丹麦语</item>
 		<item>德语</item>
-		<item>英语</item>
 		<item>希腊语</item>
+		<item>英语</item>
+		<item>English (United Kingdom)</item>
 		<item>西班牙语</item>
 		<item>波斯语</item>
 		<item>芬兰语</item>
 		<item>法罗语</item>
 		<item>法语</item>
+		<item>Hindi</item>
 		<item>克罗地亚语</item>
 		<item>匈牙利语</item>
 		<item>意大利语</item>
+		<item>Hebrew</item>
 		<item>日语</item>
 		<item>韩语</item>
 		<item>老挝语</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>荷兰语</item>
 		<item>奥克语</item>
+		<item>Punjabi</item>
 		<item>波兰语</item>
 		<item>葡萄牙语</item>
 		<item>巴西葡萄牙语</item>
 		<item>罗马尼亚语</item>
 		<item>俄语</item>
 		<item>撒丁语</item>
+		<item>Sindhi</item>
 		<item>斯洛伐克语</item>
+		<item>Slovenian</item>
 		<item>瑞典语</item>
+		<item>Tagalog</item>
 		<item>土耳其语</item>
+		<item>Uyghur</item>
 		<item>中文(简体)</item>
 		<item>中文 (繁体)</item>
 	</string-array>

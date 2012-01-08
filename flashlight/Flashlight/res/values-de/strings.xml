@@ -13,8 +13,8 @@
   Peli https://launchpad.net/~peli0101
   appricoo https://launchpad.net/~appricoo</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents Flashlight hilft dir den Weg durch die Dunkelheit zu finden. Die Hintergrundbeleuchtung des Displays bleibt angeschaltet, solange diese Anwendung läuft.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

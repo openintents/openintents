@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Evgrafov Vladimir <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,10 +29,11 @@ msgstr ""
 "  Peli https://launchpad.net/~peli0101\n"
 "  Sergey Popov https://launchpad.net/~fil0soff"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid "OI Safe keeps all your private data encrypted."
-msgstr "OI Safe хранит ваши личные данные зашифрованными."
+#, fuzzy
+msgid "Store your private data with OI Safe."
+msgstr "Разрешить другим приложениям шифровать ваши данные с помощью OI Safe."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:34(string)
@@ -851,3 +852,6 @@ msgstr "30 дней"
 #: tmp_strings.xml:275(item)
 msgid "60 days"
 msgstr "60 дней"
+
+
+

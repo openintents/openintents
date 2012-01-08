@@ -26,8 +26,8 @@
   OpenIntents devs https://launchpad.net/~openintents-devs
   Tomasz Zieliński https://launchpad.net/~tomek0517</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">To rozszerzenie do OI Listy zakupów i OI Notatnika pozwala Ci importować i eksportować listy i notatki z/do plików formatu CSV</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

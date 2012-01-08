@@ -26,14 +26,10 @@ msgstr ""
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Tomasz Zieliński https://launchpad.net/~tomek0517"
 
-#. Explanation what this application does.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid ""
-"This extension to OI Shopping list and OI Notepad lets you import and export "
-"lists and notes in the CSV file format."
+msgid "Import and export lists and notes with OI Convert CSV."
 msgstr ""
-"To rozszerzenie do OI Listy zakupów i OI Notatnika pozwala Ci importować i "
-"eksportować listy i notatki z/do plików formatu CSV"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -327,9 +323,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "POWIELAJ - pozwala powielać zapisy."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-#, fuzzy
 msgid "KEEP - Don't overwrite existing records."
-msgstr "\"ZATRZYMAJ - nie nadpisuj istniejących zapisów.\""
+msgstr ""
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -344,12 +339,9 @@ msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr "POWIEL - dodaj drugą kopię zapisu jeśli już istnieje."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
-#, fuzzy
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
-"\"ZATRZYMAJ - nie nadpisuj istniejącego zapisu, ignoruj umieszczony w pliku "
-"CSV.\""
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
@@ -361,3 +353,20 @@ msgid ""
 msgstr ""
 "Przywróć kopię zapasową - USUŃ WSZYSTKIE ISTNIEJĄCE ZAPISY, potem importuj "
 "plik CSV."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

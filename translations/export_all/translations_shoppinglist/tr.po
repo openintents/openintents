@@ -30,20 +30,15 @@ msgstr ""
 "  ariza95 https://launchpad.net/~alirizanazli95\n"
 "  zeugma https://launchpad.net/~sunder67"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:27(string)
-msgid ""
-"OI Shopping list lets you keep track of your shopping items. You can also "
-"use it for other kinds of check lists, for example for ToDo lists or party "
-"guest lists."
+msgid "Keep track of your shopping items with OI Shopping List."
 msgstr ""
-"OI Alışveriş listesi sizin alışveriş öğelerinizi izlemenize olanak tanır. "
-"Ayrıca yapılacaklar listeleri , konuk listeleri, kontrol listeleri veya "
-"diğer türler için de kullanabilirsiniz. Örneğin parti konuk listeleri."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-msgid "OI Shopping list"
+#, fuzzy
+msgid "OI Shopping List"
 msgstr "OI Alışveriş listesi"
 
 #: tmp_strings.xml:35(string)
@@ -75,7 +70,8 @@ msgid "My shopping list"
 msgstr "Alışveriş listem"
 
 #: tmp_strings.xml:42(string)
-msgid "i.e. wishlist, family list"
+#, fuzzy
+msgid "e.g. wishlist, family list"
 msgstr "istekler, aile listesi gibi"
 
 #. Automation action to clean up a list.
@@ -786,12 +782,14 @@ msgstr "Hiçbiri"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
-msgid "Per Sentence"
+#, fuzzy
+msgid "Per sentence"
 msgstr "Cümle Başlarını"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
-msgid "Per Word"
+#, fuzzy
+msgid "Per word"
 msgstr "Kelime Başlarını"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
@@ -829,3 +827,12 @@ msgstr ""
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
 msgstr ""
+
+
+
+
+
+
+
+
+

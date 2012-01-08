@@ -27,20 +27,15 @@ msgstr ""
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Yuval Yogev https://launchpad.net/~yogevyuval"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:27(string)
-msgid ""
-"OI Shopping list lets you keep track of your shopping items. You can also "
-"use it for other kinds of check lists, for example for ToDo lists or party "
-"guest lists."
+msgid "Keep track of your shopping items with OI Shopping List."
 msgstr ""
-"רשימת קניות OI מאפשרת לך לעקוב אחרי הפריטים שברשימתך. אתה גם יכול להתשמש בזה "
-"בשביל סוגים אחרים של \r\n"
-"רשימות, לדוגמא משימות של דברים לעשות או רשימת הזמנת אורחים למסיבה"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-msgid "OI Shopping list"
+#, fuzzy
+msgid "OI Shopping List"
 msgstr "רשימת קניות OI"
 
 #: tmp_strings.xml:35(string)
@@ -72,7 +67,8 @@ msgid "My shopping list"
 msgstr "רשימת הקניות שלי"
 
 #: tmp_strings.xml:42(string)
-msgid "i.e. wishlist, family list"
+#, fuzzy
+msgid "e.g. wishlist, family list"
 msgstr "i.e. רשימת בקשות, רשימת משפחה"
 
 #. Automation action to clean up a list.
@@ -779,12 +775,14 @@ msgstr "כלום"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
-msgid "Per Sentence"
+#, fuzzy
+msgid "Per sentence"
 msgstr "עבור כל משפט"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
-msgid "Per Word"
+#, fuzzy
+msgid "Per word"
 msgstr "עבור כל מילה"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
@@ -822,3 +820,12 @@ msgstr ""
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
 msgstr ""
+
+
+
+
+
+
+
+
+

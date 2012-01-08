@@ -7,10 +7,11 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   CSro https://launchpad.net/~choongsan
-  Jihyeok Seo https://launchpad.net/~limeburst</string>
+  Jihyeok Seo https://launchpad.net/~limeburst
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI 카운트다운은 정해둔 시간이 다 되면 알려줍니다.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

@@ -83,33 +83,47 @@ Launchpad Contributions:
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arapça</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Çekçe</item>
 		<item>Danimarkaca</item>
 		<item>Almanca</item>
-		<item>İngilizce</item>
 		<item>Yunanca</item>
+		<item>İngilizce</item>
+		<item>English (United Kingdom)</item>
 		<item>İspanyolca</item>
 		<item>Farsça</item>
 		<item>Fince</item>
 		<item>Faroe Dili</item>
 		<item>Fransızca</item>
+		<item>Hindi</item>
 		<item>Hırvatça</item>
 		<item>Macarca</item>
 		<item>İtalyanca</item>
+		<item>Hebrew</item>
 		<item>Japonca</item>
 		<item>Korece</item>
 		<item>Lao Dili</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Flemenkçe</item>
 		<item>Eski Katalanca (1500 yılından sonra)</item>
+		<item>Punjabi</item>
 		<item>Lehçe</item>
 		<item>Portekizce</item>
 		<item>Brezilya Portekizcesi</item>
 		<item>Romence</item>
 		<item>Rusça</item>
 		<item>Sardunyaca</item>
+		<item>Sindhi</item>
 		<item>Slovakça</item>
+		<item>Slovenian</item>
 		<item>İsveççe</item>
+		<item>Tagalog</item>
 		<item>Türkçe</item>
+		<item>Uyghur</item>
 		<item>Çince (Basitleştirilmiş)</item>
 		<item>Çince (Geleneksel)</item>
 	</string-array>

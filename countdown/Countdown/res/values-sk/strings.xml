@@ -9,8 +9,8 @@
   Lacko545 https://launchpad.net/~lackorauch
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI Odpočítavanie vás upozorní po uplynutí určeného času.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

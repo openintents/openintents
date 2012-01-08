@@ -10,8 +10,8 @@
   PresuntoRJ https://launchpad.net/~fabio-tleitao
   Tiago Silva https://launchpad.net/~tiagosilva</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

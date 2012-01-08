@@ -24,9 +24,9 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Cédric VALMARY (Tot en òc) https://launchpad.net/~cvalmary"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
-msgid "OI Countdown notifies you after a specified amount of time."
+msgid "Set multiple countdowns with OI Countdown."
 msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.

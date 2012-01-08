@@ -2,10 +2,10 @@
 OI フラッシュライト
 
 # Promo text:
-OpenIntents フラッシュライトは暗闇の中であなたを助けます。このアプリケーションが動作している間、ディスプレーのバックライトはオンのままになります。
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
-OI フラッシュライトは暗闇の中であなたを助けるシンプルで効果的なアプリケーションです。 OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+OI フラッシュライトは暗闇の中であなたを助けるシンプルで効果的なアプリケーションです。 OI フラッシュライトはディスプレーバックライトをオンの状態にロックし、周囲を明るく照らします。 OI フラッシュライト、カメラフラッシュがついているデバイスではフラッシュを使って部屋を明るくするトーチになることができます。 バックライトのカラーは OI カラーピッカー で完全にカスタマイズすることができます。 
 
 このアプリケーションは広告を含まず、インターネット許可を必要としません。 
 

@@ -79,33 +79,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabe</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Czech</item>
 		<item>Danoises</item>
 		<item>Allemande</item>
-		<item>Anglaise</item>
 		<item>Grecs</item>
+		<item>Anglaise</item>
+		<item>English (United Kingdom)</item>
 		<item>Espagnole</item>
 		<item>Persique</item>
 		<item>Finlandaise</item>
 		<item>îles FéroéChinois (Traditionnel)</item>
 		<item>Française</item>
+		<item>Hindi</item>
 		<item>Croate</item>
 		<item>Hongroises</item>
 		<item>Italienne</item>
+		<item>Hebrew</item>
 		<item>Japonaiseturque</item>
 		<item>Coréenne</item>
 		<item>laoSuède</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Hollandaise</item>
 		<item>Occitan (post 1500)</item>
+		<item>Punjabi</item>
 		<item>Polonaise</item>
 		<item>Portugaise</item>
 		<item>Portugais Brésilien</item>
 		<item>Roumaine</item>
 		<item>Russes</item>
 		<item>Sardaigne</item>
+		<item>Sindhi</item>
 		<item>Slovaques</item>
+		<item>Slovenian</item>
 		<item>Suède</item>
+		<item>Tagalog</item>
 		<item>Turque</item>
+		<item>Uyghur</item>
 		<item>Chinois (simplifié)</item>
 		<item>Chinois (Traditionnel)</item>
 	</string-array>

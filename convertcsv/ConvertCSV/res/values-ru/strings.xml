@@ -28,8 +28,8 @@
   Evgrafov Vladimir https://launchpad.net/~evgrafov-vladimir
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">Эти расширения для OI Shopping и OI Notepad позволят Вам производить импорт и экспорт Ваших списков и заметок в формат CSV.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

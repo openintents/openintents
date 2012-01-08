@@ -29,7 +29,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   CSro https://launchpad.net/~choongsan
-  Jihyeok Seo https://launchpad.net/~limeburst</string>
+  Jihyeok Seo https://launchpad.net/~limeburst
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">앱 간 공유되는 스탠드얼론 설명 대화 상자입미다.</string>
@@ -79,33 +80,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>아랍어</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>체코어</item>
 		<item>덴마크어</item>
 		<item>독일어</item>
-		<item>영어</item>
 		<item>그리스어</item>
+		<item>영어</item>
+		<item>English (United Kingdom)</item>
 		<item>스페인어</item>
 		<item>페르시아어</item>
 		<item>핀란드어</item>
 		<item>페로스어</item>
 		<item>프랑스어</item>
+		<item>Hindi</item>
 		<item>크로아티아어</item>
 		<item>헝가리어</item>
 		<item>이탈리아어</item>
+		<item>Hebrew</item>
 		<item>일본어</item>
 		<item>한국어</item>
 		<item>라오어</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>네덜란드어</item>
 		<item>오크어 (1500년 이후)</item>
+		<item>Punjabi</item>
 		<item>폴란드어</item>
 		<item>포르투갈어</item>
 		<item>브라질식 포르투갈어</item>
 		<item>루마니아어</item>
 		<item>러시아어</item>
 		<item>사르데냐어</item>
+		<item>Sindhi</item>
 		<item>슬로바키아어</item>
+		<item>Slovenian</item>
 		<item>스웨덴어</item>
+		<item>Tagalog</item>
 		<item>터키어</item>
+		<item>Uyghur</item>
 		<item>중국어 (간체)</item>
 		<item>중국어 (번체)</item>
 	</string-array>

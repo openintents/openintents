@@ -25,12 +25,10 @@ msgstr ""
 "  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:33(string)
-msgid "OI Notepad allows to create, edit, and delete notes."
+msgid "Create and share your notes with OI Notepad."
 msgstr ""
-"Το OI Notepad σας επιτρέπει να δημιουργήσετε, να επεξεργαστείτε και να "
-"διαγράψετε σημειώσεις."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
@@ -506,3 +504,8 @@ msgstr "Είστε σίγουρος οτι θέλετε να διαγράψετ�
 #: tmp_strings.xml:219(string)
 msgid "New note"
 msgstr "Νέα σημείωση"
+
+
+
+
+

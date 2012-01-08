@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Jihyeok Seo <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,8 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  CSro https://launchpad.net/~choongsan\n"
-"  Jihyeok Seo https://launchpad.net/~limeburst"
+"  Jihyeok Seo https://launchpad.net/~limeburst\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Explanation what this application does. It is a menu extension for other applications.
 #: tmp_strings.xml:33(string)
@@ -115,117 +116,179 @@ msgid "Arabic"
 msgstr "아랍어"
 
 #: tmp_strings.xml:80(item)
+#, fuzzy
+msgid "Belarusian"
+msgstr "페르시아어"
+
+#: tmp_strings.xml:81(item)
+#, fuzzy
+msgid "Bulgarian"
+msgstr "헝가리어"
+
+#: tmp_strings.xml:82(item)
+#, fuzzy
+msgid "Catalan"
+msgstr "이탈리아어"
+
+#: tmp_strings.xml:83(item)
 msgid "Czech"
 msgstr "체코어"
 
-#: tmp_strings.xml:81(item)
+#: tmp_strings.xml:84(item)
 msgid "Danish"
 msgstr "덴마크어"
 
-#: tmp_strings.xml:82(item)
+#: tmp_strings.xml:85(item)
 msgid "German"
 msgstr "독일어"
 
-#: tmp_strings.xml:83(item)
-msgid "English"
-msgstr "영어"
-
-#: tmp_strings.xml:84(item)
+#: tmp_strings.xml:86(item)
 msgid "Greek"
 msgstr "그리스어"
 
-#: tmp_strings.xml:85(item)
+#: tmp_strings.xml:87(item)
+msgid "English"
+msgstr "영어"
+
+#: tmp_strings.xml:88(item)
+msgid "English (United Kingdom)"
+msgstr ""
+
+#: tmp_strings.xml:89(item)
 msgid "Spanish"
 msgstr "스페인어"
 
-#: tmp_strings.xml:86(item)
+#: tmp_strings.xml:90(item)
 msgid "Persian"
 msgstr "페르시아어"
 
-#: tmp_strings.xml:87(item)
+#: tmp_strings.xml:91(item)
 msgid "Finnish"
 msgstr "핀란드어"
 
-#: tmp_strings.xml:88(item)
+#: tmp_strings.xml:92(item)
 msgid "Faroese"
 msgstr "페로스어"
 
-#: tmp_strings.xml:89(item)
+#: tmp_strings.xml:93(item)
 msgid "French"
 msgstr "프랑스어"
 
-#: tmp_strings.xml:90(item)
+#: tmp_strings.xml:94(item)
+msgid "Hindi"
+msgstr ""
+
+#: tmp_strings.xml:95(item)
 msgid "Croatian"
 msgstr "크로아티아어"
 
-#: tmp_strings.xml:91(item)
+#: tmp_strings.xml:96(item)
 msgid "Hungarian"
 msgstr "헝가리어"
 
-#: tmp_strings.xml:92(item)
+#: tmp_strings.xml:97(item)
 msgid "Italian"
 msgstr "이탈리아어"
 
-#: tmp_strings.xml:93(item)
+#: tmp_strings.xml:98(item)
+msgid "Hebrew"
+msgstr ""
+
+#: tmp_strings.xml:99(item)
 msgid "Japanese"
 msgstr "일본어"
 
-#: tmp_strings.xml:94(item)
+#: tmp_strings.xml:100(item)
 msgid "Korean"
 msgstr "한국어"
 
-#: tmp_strings.xml:95(item)
+#: tmp_strings.xml:101(item)
 msgid "Lao"
 msgstr "라오어"
 
-#: tmp_strings.xml:96(item)
-msgid "Dutch"
-msgstr "네덜란드어"
-
-#: tmp_strings.xml:97(item)
-msgid "Occitan (post 1500)"
-msgstr "오크어 (1500년 이후)"
-
-#: tmp_strings.xml:98(item)
-msgid "Polish"
-msgstr "폴란드어"
-
-#: tmp_strings.xml:99(item)
-msgid "Portuguese"
-msgstr "포르투갈어"
-
-#: tmp_strings.xml:100(item)
-msgid "Brazilian Portuguese"
-msgstr "브라질식 포르투갈어"
-
-#: tmp_strings.xml:101(item)
-msgid "Romanian"
-msgstr "루마니아어"
-
 #: tmp_strings.xml:102(item)
-msgid "Russian"
-msgstr "러시아어"
+#, fuzzy
+msgid "Latvian"
+msgstr "크로아티아어"
 
 #: tmp_strings.xml:103(item)
-msgid "Sardinian"
+#, fuzzy
+msgid "Macedonian"
 msgstr "사르데냐어"
 
 #: tmp_strings.xml:104(item)
+msgid "Norwegian Bokmal"
+msgstr ""
+
+#: tmp_strings.xml:105(item)
+msgid "Dutch"
+msgstr "네덜란드어"
+
+#: tmp_strings.xml:106(item)
+msgid "Occitan (post 1500)"
+msgstr "오크어 (1500년 이후)"
+
+#: tmp_strings.xml:107(item)
+msgid "Punjabi"
+msgstr ""
+
+#: tmp_strings.xml:108(item)
+msgid "Polish"
+msgstr "폴란드어"
+
+#: tmp_strings.xml:109(item)
+msgid "Portuguese"
+msgstr "포르투갈어"
+
+#: tmp_strings.xml:110(item)
+msgid "Brazilian Portuguese"
+msgstr "브라질식 포르투갈어"
+
+#: tmp_strings.xml:111(item)
+msgid "Romanian"
+msgstr "루마니아어"
+
+#: tmp_strings.xml:112(item)
+msgid "Russian"
+msgstr "러시아어"
+
+#: tmp_strings.xml:113(item)
+msgid "Sardinian"
+msgstr "사르데냐어"
+
+#: tmp_strings.xml:114(item)
+msgid "Sindhi"
+msgstr ""
+
+#: tmp_strings.xml:115(item)
 msgid "Slovak"
 msgstr "슬로바키아어"
 
-#: tmp_strings.xml:105(item)
+#: tmp_strings.xml:116(item)
+#, fuzzy
+msgid "Slovenian"
+msgstr "슬로바키아어"
+
+#: tmp_strings.xml:117(item)
 msgid "Swedish"
 msgstr "스웨덴어"
 
-#: tmp_strings.xml:106(item)
+#: tmp_strings.xml:118(item)
+msgid "Tagalog"
+msgstr ""
+
+#: tmp_strings.xml:119(item)
 msgid "Turkish"
 msgstr "터키어"
 
-#: tmp_strings.xml:107(item)
+#: tmp_strings.xml:120(item)
+msgid "Uyghur"
+msgstr ""
+
+#: tmp_strings.xml:121(item)
 msgid "Chinese (Simplified)"
 msgstr "중국어 (간체)"
 
-#: tmp_strings.xml:108(item)
+#: tmp_strings.xml:122(item)
 msgid "Chinese (Traditional)"
 msgstr "중국어 (번체)"

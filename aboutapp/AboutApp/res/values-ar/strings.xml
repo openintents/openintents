@@ -79,33 +79,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>العربية</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>التشيكية</item>
 		<item>الدنماركية</item>
 		<item>الألمانية</item>
-		<item>الانجليزية</item>
 		<item>اليونانية</item>
+		<item>الانجليزية</item>
+		<item>English (United Kingdom)</item>
 		<item>الاسبانية</item>
 		<item>الفارسية</item>
 		<item>الفنلندية</item>
 		<item>الفرنسية</item>
 		<item>الفرنسية</item>
+		<item>Hindi</item>
 		<item>الكرواتية</item>
 		<item>الهنغارية</item>
 		<item>الإيطالية</item>
+		<item>Hebrew</item>
 		<item>اليابانية</item>
 		<item>الكورية</item>
 		<item>Lao</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>الهولندية</item>
 		<item>Occitan (post 1500)</item>
+		<item>Punjabi</item>
 		<item>البولندية</item>
 		<item>البرتغالية</item>
 		<item>البرتغالية البرازيلية</item>
 		<item>الرومانية</item>
 		<item>الروسية</item>
 		<item>الساردينية</item>
+		<item>Sindhi</item>
 		<item>السلوفاكية</item>
+		<item>Slovenian</item>
 		<item>السويدية</item>
+		<item>Tagalog</item>
 		<item>التركية</item>
+		<item>Uyghur</item>
 		<item>الصينية (البسيطة)</item>
 		<item>الصينية (القديمة)</item>
 	</string-array>

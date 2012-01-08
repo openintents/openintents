@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
-  Kras4ooo https://launchpad.net/~kkrassi1984</translators>
+  Kras4ooo https://launchpad.net/~kkrassi1984
+  OpenIntents devs https://launchpad.net/~openintents-devs</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->
@@ -54,6 +55,57 @@
 		<include file="description_extensions.txt"/>
 		<emptyline/>
 		<emptyline/>
+	</description>
+	<description application="countdown/Countdown">
+		<!--  OI Countdown -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<emptyline/>
+		<string>OI Countdown is a helpful timer to increase your productivity and plan your day. </string>
+		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
+		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
+		<emptyline/>
+		<string>هذا التطبيق هو خالية من الإعلانات ولا يحتاج إذن الإنترنت.</string>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+		<string>شفرة المصدر لهذا التطبيق الحرة والمفتوحة المصدر متاحة في:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>لقائمة كاملة من التغييرات وقائمة بالأسئلة المطروحة بشكل متكرر، يرجى زيارة:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<emptyline/>
+		<string>يمكنك المساعدة على تحسين ترجمة إلى اللغة الخاصة بك في Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>الميزات:</string>
+		<listitem>Set a countdown by choosing a duration or a date.</listitem>
+		<listitem>Be notified by vibration or any sound of your choice. </listitem>
+		<listitem>Have an unlimited number of timers running at the same time. </listitem>
+		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
+		<listitem>Modify countdowns, even while they are still running</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI Countdown": </string>
+		<listitem>Launch applications through Android shortcuts</listitem>
+		<listitem>Use OI About to show license information</listitem>
+		<emptyline/>
+		<string>الكلمات الأساسية:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>countdown, timer, alert</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>المقاصد مفتوحة OI, OpenIntents</listitem>
+		<emptyline/>
+		<string>الإصدارات الدولية:</string>
+		<international/>
+		<emptyline/>
+		<string>سلاسل البحث للسوق:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt "/>
 	</description>
 	<description application="filemanager/FileManager">
 		<!--  OI File Manager -->

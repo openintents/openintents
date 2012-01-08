@@ -2,7 +2,7 @@
 OI Flashlight
 
 # Promo text:
-OpenIntents Flashlight vous aide à trouver votre chemin dans le noir. La lumière d'affichage arrière reste allumée tant que l'application est en marche.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
 OI Flashlight est une application simple et efficace qui vous aide à trouver un chemin dans le noir. OI Flashlight verrouille le rétroéclairage de l'écran sur le, clairement éclairant la zone environnante. Pour les appareils avec un flash d'appareil photo, lampe de poche OI peut aussi utiliser le flash comme une torche lumineuse pour égayer la pièce. La couleur du rétroéclairage est entièrement personnalisable avec Color Picker OI. 

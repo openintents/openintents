@@ -9,8 +9,8 @@
   OpenIntents devs https://launchpad.net/~openintents-devs
   Sahran https://launchpad.net/~sahran</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents قول چىراغ قاراڭغۇدا يولنى تېپىشىڭىزغا ياردەم قىلىدۇ. بۇ پىروگرامما قوزغىلىش بىلەن بىللە تەگلىك چىراغ يېنىپ تۇرىدۇ.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

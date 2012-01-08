@@ -2,7 +2,7 @@
 OI Flashlight
 
 # Promo text:
-OpenIntents FlashLight te ayuda a encontrar tu camino en la oscuridad. La luz de fondo de la pantalla permanece encendida mientras la aplicación esté arrancada.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
 OI Flashlight es una aplicación sencilla y eficaz que le ayuda a encontrar el camino en la oscuridad. OI Lightflash enciende la retroiluminación de la pantalla, iluminando el área circundante. Para los dispositivos con flash de cámara, OI Flashlight puede emplearlo como linterna para iluminar la habitación. El color de fondo es completamente personalizable con OI Color Picker. 

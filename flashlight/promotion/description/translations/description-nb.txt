@@ -2,7 +2,7 @@
 OI Lykt
 
 # Promo text:
-OpenIntents Lykt hjelper deg med å finne fram i mørket. Baklyset til skjermen blir værende på når denne applikasjonen kjører.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
 OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 

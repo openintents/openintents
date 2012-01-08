@@ -25,12 +25,10 @@ msgstr ""
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  zhangchun https://launchpad.net/~zhangchun"
 
-#. Explanation what this application does.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid ""
-"This extension to OI Shopping list and OI Notepad lets you import and export "
-"lists and notes in the CSV file format."
-msgstr "OI购物清单和OI记事本可以导入CSV格式的文件。"
+msgid "Import and export lists and notes with OI Convert CSV."
+msgstr ""
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -313,9 +311,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "复制 - 允许重复记录。"
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-#, fuzzy
 msgid "KEEP - Don't overwrite existing records."
-msgstr "“继续 - 不要覆盖现有的记录。”"
+msgstr ""
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -330,10 +327,9 @@ msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr "复制- 添加一个纪录两个副本，如果它已经存在。"
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
-#, fuzzy
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-msgstr "“保持 - 不覆盖现有的记录，忽略一个CSV文件。”"
+msgstr ""
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
@@ -343,3 +339,16 @@ msgstr "覆盖 - 用CSV的记录将覆盖现有的记录。"
 msgid ""
 "Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
 msgstr "恢复备份 - 删除所有现有的记录，然后导入CSV文件。"
+
+
+
+
+
+
+
+
+
+
+
+
+

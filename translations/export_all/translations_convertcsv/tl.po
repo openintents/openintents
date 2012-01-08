@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: abc <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Filipino <fil@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,16 +22,13 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  abc https://launchpad.net/~abc-g"
 
-#. Explanation what this application does.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid ""
-"This extension to OI Shopping list and OI Notepad lets you import and export "
-"lists and notes in the CSV file format."
+msgid "Import and export lists and notes with OI Convert CSV."
 msgstr ""
-"Itong ekstensyon sa OI Listahan ng Bilihin at OI Talaan ay magagamit mo sa "
-"pag-import at pag-export ng mga listahan at mga tala ng file na CSV ang ayos."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -330,9 +327,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "NAULIT - Payagan ang mga naulit na mga record."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-#, fuzzy
 msgid "KEEP - Don't overwrite existing records."
-msgstr "\"PANATILIIN - Huwag patungan ang dati ng mga record.\""
+msgstr ""
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -348,12 +344,9 @@ msgstr ""
 "NAULIT - Dagdagan ng pangalawang kopya ng record kung ito ay nandito na."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
-#, fuzzy
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
-"\"PANATILIHIN - Huwag patungan ang nandito ng record, huwag pansinin ang "
-"nasa CSV file.\""
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
@@ -365,3 +358,21 @@ msgid ""
 msgstr ""
 "Ibalik Backup - ALISIN ANG LAHAT NG IYONG MGA RECORD NA NANDITO NA, tapos i-"
 "import sa CSV file."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,7 +2,7 @@
 Llanterna d'OI
 
 # Promo text:
-La llanterna d'OpenIntents t'ajuda a trobar el teu camí per les fosques. La llum de fons de la pantalla es manté oberta mentre l'aplicació està engegada.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
 OI Flashlight és una aplicació simple i efectiva que et permet trobar un camí entre la foscor. OI Flashlight bloqueja la llum de fons, il·luminant clarament l'àrea al voltant. Per a dispositius amb càmera amb flaix OI Flashlight també pot utilitzar el flaix com a llanterna per il·luminar l'habitació. El color de la llum de fons és completament personalitzable amb el capturador de colors d'OI. 

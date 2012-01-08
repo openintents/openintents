@@ -27,19 +27,15 @@ msgstr ""
 "  friedger https://launchpad.net/~friedger\n"
 "  zhangchun https://launchpad.net/~zhangchun"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:27(string)
-msgid ""
-"OI Shopping list lets you keep track of your shopping items. You can also "
-"use it for other kinds of check lists, for example for ToDo lists or party "
-"guest lists."
+msgid "Keep track of your shopping items with OI Shopping List."
 msgstr ""
-"OI 购物列表自动记录您所选购的物品。您也可以将它用作其他方面的核对清单，如未完"
-"成列表或者派对客人列表。"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-msgid "OI Shopping list"
+#, fuzzy
+msgid "OI Shopping List"
 msgstr "OI 购物列表"
 
 #: tmp_strings.xml:35(string)
@@ -71,7 +67,8 @@ msgid "My shopping list"
 msgstr "我的购物列表"
 
 #: tmp_strings.xml:42(string)
-msgid "i.e. wishlist, family list"
+#, fuzzy
+msgid "e.g. wishlist, family list"
 msgstr "例如 愿望表, 家庭表"
 
 #. Automation action to clean up a list.
@@ -776,12 +773,14 @@ msgstr "无"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
-msgid "Per Sentence"
+#, fuzzy
+msgid "Per sentence"
 msgstr "句首字母大写"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
-msgid "Per Word"
+#, fuzzy
+msgid "Per word"
 msgstr "单词首字母大写"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
@@ -819,3 +818,11 @@ msgstr ""
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
 msgstr ""
+
+
+
+
+
+
+
+

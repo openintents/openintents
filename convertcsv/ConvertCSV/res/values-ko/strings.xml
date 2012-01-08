@@ -22,10 +22,11 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
-  Jihyeok Seo https://launchpad.net/~limeburst</string>
+  Jihyeok Seo https://launchpad.net/~limeburst
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">이 확장은 OI 쇼핑 목록과 OI 메모장에서 목록과 메모를 CSV 형식으로 불러오거나 내보낼 수 있습니다.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

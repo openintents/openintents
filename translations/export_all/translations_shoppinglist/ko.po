@@ -26,19 +26,15 @@ msgstr ""
 "  Jihyeok Seo https://launchpad.net/~limeburst\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:27(string)
-msgid ""
-"OI Shopping list lets you keep track of your shopping items. You can also "
-"use it for other kinds of check lists, for example for ToDo lists or party "
-"guest lists."
+msgid "Keep track of your shopping items with OI Shopping List."
 msgstr ""
-"OI 쇼핑 목록은 쇼핑 항목을 관리할 수 있게 해 드립니다. 할 일 목록이나 파티 게"
-"스트 목록 같은 다른 종류의 목록으로도 사용할 수 있습니다."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-msgid "OI Shopping list"
+#, fuzzy
+msgid "OI Shopping List"
 msgstr "OI 쇼핑 목록"
 
 #: tmp_strings.xml:35(string)
@@ -70,7 +66,8 @@ msgid "My shopping list"
 msgstr "나의 쇼핑 목록"
 
 #: tmp_strings.xml:42(string)
-msgid "i.e. wishlist, family list"
+#, fuzzy
+msgid "e.g. wishlist, family list"
 msgstr "i.e. 가지고 싶은 것 목록, 가족 목록"
 
 #. Automation action to clean up a list.
@@ -780,12 +777,14 @@ msgstr "없음"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
-msgid "Per Sentence"
+#, fuzzy
+msgid "Per sentence"
 msgstr "문장 첫 글자 대문자로"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
-msgid "Per Word"
+#, fuzzy
+msgid "Per word"
 msgstr "단어 첫 글자 대문자로"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
@@ -823,3 +822,11 @@ msgstr ""
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
 msgstr ""
+
+
+
+
+
+
+
+

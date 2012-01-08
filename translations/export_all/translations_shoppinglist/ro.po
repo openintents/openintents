@@ -28,20 +28,15 @@ msgstr ""
 "  Stelescu Raul https://launchpad.net/~stelescuraul\n"
 "  iulargsb https://launchpad.net/~iulargsb"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:27(string)
-msgid ""
-"OI Shopping list lets you keep track of your shopping items. You can also "
-"use it for other kinds of check lists, for example for ToDo lists or party "
-"guest lists."
+msgid "Keep track of your shopping items with OI Shopping List."
 msgstr ""
-"Lista de cumpărături OI vă permite să urmăriți cumpărăturile. Puteți de "
-"asemenea să o utilizați pentru alte tipuri de liste de control, de exemplu "
-"pentru liste De făcut sau liste de musafiri pentru petreceri."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-msgid "OI Shopping list"
+#, fuzzy
+msgid "OI Shopping List"
 msgstr "Lista de cumpărături OI"
 
 #: tmp_strings.xml:35(string)
@@ -73,7 +68,8 @@ msgid "My shopping list"
 msgstr "Lista mea de cumpărături"
 
 #: tmp_strings.xml:42(string)
-msgid "i.e. wishlist, family list"
+#, fuzzy
+msgid "e.g. wishlist, family list"
 msgstr "adică listă de dorințe, listă de familie"
 
 #. Automation action to clean up a list.
@@ -796,12 +792,14 @@ msgstr "Nimic"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
-msgid "Per Sentence"
+#, fuzzy
+msgid "Per sentence"
 msgstr "Per propoziție"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
-msgid "Per Word"
+#, fuzzy
+msgid "Per word"
 msgstr "Per cuvânt"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
@@ -839,3 +837,12 @@ msgstr ""
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
 msgstr ""
+
+
+
+
+
+
+
+
+

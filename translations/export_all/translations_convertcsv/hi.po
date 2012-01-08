@@ -25,14 +25,10 @@ msgstr ""
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  happynawani https://launchpad.net/~happynawani"
 
-#. Explanation what this application does.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid ""
-"This extension to OI Shopping list and OI Notepad lets you import and export "
-"lists and notes in the CSV file format."
+msgid "Import and export lists and notes with OI Convert CSV."
 msgstr ""
-"OI खरीदारी सूची और OI नोटपैड का यह एक्सटेंशन आपको सूचियाँ और नोट्स आयत और नियत CSV "
-"फ़ाइल स्वरूप में करने में मदद करता है|"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -327,9 +323,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "डुप्लीकेट - रिकॉर्ड को डुप्लिकेट करने की अनुमति देता है|"
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-#, fuzzy
 msgid "KEEP - Don't overwrite existing records."
-msgstr "\\\"KEEP - Don't overwrite existing records.\\\""
+msgstr ""
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -344,12 +339,9 @@ msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr "डुप्लीकेट - एक रिकॉर्ड की एक दूसरे नकल जोड़ता है अगर यह पहले से ही मौजूद है|"
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
-#, fuzzy
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
-"\\\"KEEP -एक  मौजूदा  रिकॉर्ड  को  अधिलेखित  न  करें , CSV फाईल  में मौजूद रिकॉर्ड को "
-"अनदेखा करें |\\\""
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
@@ -360,3 +352,20 @@ msgid ""
 "Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
 msgstr ""
 "बैकअप पुनर्स्थापित करना - अपने मौजूदा सभी रिकॉर्ड मिटायें, फिर CSV फ़ाइल आयात करते हैं|"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

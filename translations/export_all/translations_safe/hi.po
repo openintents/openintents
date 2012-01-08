@@ -26,10 +26,11 @@ msgstr ""
 "  Shitiz Garg https://launchpad.net/~l95s\n"
 "  happynawani https://launchpad.net/~happynawani"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid "OI Safe keeps all your private data encrypted."
-msgstr "ओआई सेफ आपके सारे व्यक्तिगत डाटा को गोपनीय रखता है"
+#, fuzzy
+msgid "Store your private data with OI Safe."
+msgstr "दूसरी अनुप्रयोग को आपका डाटा सुरक्षित करने कि अनुमति दें"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:34(string)
@@ -839,3 +840,6 @@ msgstr "३० दिन"
 #: tmp_strings.xml:275(item)
 msgid "60 days"
 msgstr "६० दिन"
+
+
+

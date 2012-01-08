@@ -32,10 +32,11 @@ msgstr ""
 "  Valery Poliakov https://launchpad.net/~lumnatiq\n"
 "  ivaylo https://launchpad.net/~d-c-"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid "OI Safe keeps all your private data encrypted."
-msgstr "OI Safe съхранява вашата лична информация криптирана."
+#, fuzzy
+msgid "Store your private data with OI Safe."
+msgstr "Позволете на други приложения да защитят данните ви с OI Safe."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:34(string)
@@ -855,3 +856,6 @@ msgstr "30 дни"
 #: tmp_strings.xml:275(item)
 msgid "60 days"
 msgstr "60 дни"
+
+
+

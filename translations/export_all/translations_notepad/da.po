@@ -26,10 +26,10 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Mad_Viking https://launchpad.net/~black-assamite"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:33(string)
-msgid "OI Notepad allows to create, edit, and delete notes."
-msgstr "OI Notesblok tillader at man kan oprettet, ændre og slette notater"
+msgid "Create and share your notes with OI Notepad."
+msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
@@ -493,3 +493,6 @@ msgstr ""
 #: tmp_strings.xml:219(string)
 msgid "New note"
 msgstr ""
+
+
+

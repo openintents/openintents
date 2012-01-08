@@ -2,6 +2,6 @@
 OI Luche
 
 # Promo text:
-OpenIntents Flashlight t'azzudata ad accattare su caminu a denotte. Su monitoreddu este posto in massima luminosidade in su tantu chi s'applicatzione este fachende.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:

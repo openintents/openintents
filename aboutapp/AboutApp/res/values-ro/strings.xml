@@ -80,33 +80,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabă</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Cehă</item>
 		<item>Daneză</item>
 		<item>Germană</item>
-		<item>Engleză</item>
 		<item>Greacă</item>
+		<item>Engleză</item>
+		<item>English (United Kingdom)</item>
 		<item>Spaniolă</item>
 		<item>Persană</item>
 		<item>Finlandeză</item>
 		<item>Feroeză</item>
 		<item>Franceză</item>
+		<item>Hindi</item>
 		<item>Croată</item>
 		<item>Maghiară</item>
 		<item>Italiană</item>
+		<item>Hebrew</item>
 		<item>Japoneză</item>
 		<item>Coreană</item>
 		<item>Lao</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Olandeză</item>
 		<item>Occitană (post 1500)</item>
+		<item>Punjabi</item>
 		<item>Poloneză</item>
 		<item>Portugheză</item>
 		<item>Portugheză braziliană</item>
 		<item>Română</item>
 		<item>Rusă</item>
 		<item>Sardiniană</item>
+		<item>Sindhi</item>
 		<item>Slovacă</item>
+		<item>Slovenian</item>
 		<item>Suedeză</item>
+		<item>Tagalog</item>
 		<item>Turcă</item>
+		<item>Uyghur</item>
 		<item>Chineză (Simplificată)</item>
 		<item>Chineză (Tradiţională)</item>
 	</string-array>

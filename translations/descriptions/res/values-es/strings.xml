@@ -58,6 +58,57 @@
 		<emptyline/>
 		<emptyline/>
 	</description>
+	<description application="countdown/Countdown">
+		<!--  OI Countdown -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<emptyline/>
+		<string>OI Countdown is a helpful timer to increase your productivity and plan your day. </string>
+		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
+		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
+		<emptyline/>
+		<string>Esta aplicación no tiene anuncios y no requiere permisos de internet.</string>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+		<string>El código fuente de esta aplicación libre y de código abierto está disponible en:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Para la lista completa de cambios y la lista de preguntas frecuentes, por favor visite:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<emptyline/>
+		<string>Usted puede ayudar a mejorar la traducción de su idioma en Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Características:</string>
+		<listitem>Set a countdown by choosing a duration or a date.</listitem>
+		<listitem>Be notified by vibration or any sound of your choice. </listitem>
+		<listitem>Have an unlimited number of timers running at the same time. </listitem>
+		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
+		<listitem>Modify countdowns, even while they are still running</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI Countdown": </string>
+		<listitem>Launch applications through Android shortcuts</listitem>
+		<listitem>Use OI About to show license information</listitem>
+		<emptyline/>
+		<string>Palabras clave:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>countdown, timer, alert</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Versiones internacionales:</string>
+		<international/>
+		<emptyline/>
+		<string>Buscar en el Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt "/>
+	</description>
 	<description application="filemanager/FileManager">
 		<!--  OI File Manager -->
 		<!--  -->

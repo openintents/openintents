@@ -28,7 +28,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias</string>
+  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">En enkeltstående informasjonsdialog som er delt mellom applikasjoner.</string>
@@ -78,33 +79,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabisk</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Tsjekkisk</item>
 		<item>Dansk</item>
 		<item>Tysk</item>
-		<item>Engelsk</item>
 		<item>Gresk</item>
+		<item>Engelsk</item>
+		<item>English (United Kingdom)</item>
 		<item>Spansk</item>
 		<item>Persisk</item>
 		<item>Finsk</item>
 		<item>Færøysk</item>
 		<item>Fransk</item>
+		<item>Hindi</item>
 		<item>Kroatisk</item>
 		<item>Ungarsk</item>
 		<item>Italiensk</item>
+		<item>Hebrew</item>
 		<item>Japansk</item>
 		<item>Koreansk</item>
 		<item>Laotisk</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Nederlandsk</item>
 		<item>Oksitansk (etter 1500)</item>
+		<item>Punjabi</item>
 		<item>Polsk</item>
 		<item>Portugisisk</item>
 		<item>Brasiliansk Portugisisk</item>
 		<item>Rumensk</item>
 		<item>Russisk</item>
 		<item>Sardinske</item>
+		<item>Sindhi</item>
 		<item>Slovakisk</item>
+		<item>Slovenian</item>
 		<item>Svensk</item>
+		<item>Tagalog</item>
 		<item>Tyrkisk</item>
+		<item>Uyghur</item>
 		<item>Kinesisk (Forenklet)</item>
 		<item>Kinesisk (Tradisjonelt)</item>
 	</string-array>

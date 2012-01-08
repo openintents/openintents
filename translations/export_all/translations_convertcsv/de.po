@@ -26,14 +26,10 @@ msgstr ""
 "  Vincent Schüßler https://launchpad.net/~tq-vincent\n"
 "  appricoo https://launchpad.net/~appricoo"
 
-#. Explanation what this application does.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid ""
-"This extension to OI Shopping list and OI Notepad lets you import and export "
-"lists and notes in the CSV file format."
+msgid "Import and export lists and notes with OI Convert CSV."
 msgstr ""
-"Diese Erweiterung für OI Einkaufsliste und OI Notizblock ermöglicht das Im- "
-"und Exportieren von Listen und Notizen im CSV Dateiformat."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -330,9 +326,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "DOPPELT - Erlaubt doppelte Einträge."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-#, fuzzy
 msgid "KEEP - Don't overwrite existing records."
-msgstr "\"BEHALTEN - Bestehende Einträge nicht überschreiben.\""
+msgstr ""
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -349,12 +344,9 @@ msgstr ""
 "besteht."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
-#, fuzzy
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
-"\"BEHALTEN - Bestehende Einträge nicht überschreiben, Einträge aus der CSV-"
-"Datei ignorieren.\""
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
@@ -368,3 +360,20 @@ msgid ""
 msgstr ""
 "Backup wiederherstellen - LÖSCHT ALLE BESTEHENDEN EINTRÄGE und importiert "
 "danach die CSV Datei."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -25,9 +25,9 @@ msgstr ""
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Rex Sanna https://launchpad.net/~rex-sanna"
 
-#. Short explanation of the application. Max. 80 characters.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:26(string)
-msgid "Manage files on the SD card."
+msgid "Manage files on the SD card with OI File Manager."
 msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
@@ -430,9 +430,8 @@ msgid "Item compressed successfully"
 msgstr ""
 
 #: tmp_strings.xml:178(string)
-#, fuzzy
 msgid "Could not compress the item"
-msgstr "Non che lu potto copiare"
+msgstr ""
 
 #: tmp_strings.xml:179(string)
 msgid "Compress into archive:"
@@ -443,19 +442,16 @@ msgid "Item extracted successfully"
 msgstr ""
 
 #: tmp_strings.xml:181(string)
-#, fuzzy
 msgid "Could not extract the item"
-msgstr "Non potto dogare su file"
+msgstr ""
 
 #: tmp_strings.xml:182(string)
-#, fuzzy
 msgid "Extract into folder:"
-msgstr "Crea un'attera cartelledda"
+msgstr ""
 
 #: tmp_strings.xml:183(string)
-#, fuzzy
 msgid "Select folder to extract into"
-msgstr "Issepera sa cartelledda auve lu ponnere"
+msgstr ""
 
 #: tmp_strings.xml:184(string)
 msgid "Extract here"
@@ -474,6 +470,5 @@ msgid "File %s exists. Do you want to overwrite it?"
 msgstr ""
 
 #: tmp_strings.xml:189(string)
-#, fuzzy
 msgid "Do you want to change the file extension?"
-msgstr "Cherese abberu dogare %s?"
+msgstr ""

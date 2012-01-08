@@ -6,10 +6,12 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Jihyeok Seo https://launchpad.net/~limeburst</string>
+  CSro https://launchpad.net/~choongsan
+  Jihyeok Seo https://launchpad.net/~limeburst
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents 전등은 어두운 주변을 밝힐 수 있도록 도와줍니다. 앱이 실행되고 있는 중이라면 화면 백라이트를 켜 두어 주변을 밝혀줍니다.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

@@ -2,7 +2,7 @@
 OI Plaslayt
 
 # Promo text:
-Ang OpenIntent plaslayt ay tumutulong sa iyo na hanapin ang daan sa dilim. Ang ilaw sa likod ng display ay pinanatiling naka bukas habang ang aplikasyon na ito ay tumatakbo
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
 Ang OI plasleyt  ay isang simple at epektibong applikasyon na tumutulong sa iyo na makahanap ng daan sa dilim. Ang OI plasleyt ay nagpapanatili na bukas ang ilaw sa likod ng display, malinaw na nag-iilaw sa paligid na lugar. Para sa mga aparato na may camera flash, ang OI plaslayt ay maaari ring gamitin ang flash na ito bilang isang maliwanag na tanglaw para lumiwanag ang kuwarto. Ang kulay ng ilaw sa likod ay lubos na napapasadya sa OI Tagapili ng Kulay. 

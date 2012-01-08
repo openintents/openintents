@@ -9,8 +9,8 @@
   OpenIntents devs https://launchpad.net/~openintents-devs
   zhangchun https://launchpad.net/~zhangchun</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI倒计时，会在特定的时间通知你。</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

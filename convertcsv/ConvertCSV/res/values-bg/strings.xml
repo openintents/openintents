@@ -26,8 +26,8 @@
   OpenIntents devs https://launchpad.net/~openintents-devs
   Stefani Soyanova https://launchpad.net/~stefi-stoyanova95</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">Тази приставка за списък за пазаруване на OI и бележник на OI ви позволява да вмъквате и извличате списъци и бележки във файлов формат CSV.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

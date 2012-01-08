@@ -25,10 +25,10 @@ msgstr ""
 "  Alexander Geroimenko https://launchpad.net/~geroimenko\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
-msgid "OI Countdown notifies you after a specified amount of time."
-msgstr "OI Countdown паведамляе вас праз пэўны прамежак часу."
+msgid "Set multiple countdowns with OI Countdown."
+msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string) tmp_strings.xml:56(string)
@@ -308,3 +308,6 @@ msgstr "5 хвілін"
 #: tmp_strings.xml:166(item)
 msgid "10 minutes"
 msgstr "10 хвілін"
+
+
+

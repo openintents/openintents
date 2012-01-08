@@ -6,12 +6,13 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   Peli https://launchpad.net/~peli0101
   bkiw https://launchpad.net/~bkiw
   thebowseat https://launchpad.net/~takeshimochida</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI Countdownは指定した時間が経った事を通知します。</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

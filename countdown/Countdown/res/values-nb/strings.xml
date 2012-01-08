@@ -6,10 +6,11 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias</string>
+  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI Nedtelling varsler deg etter en spesifisert mengde tid.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

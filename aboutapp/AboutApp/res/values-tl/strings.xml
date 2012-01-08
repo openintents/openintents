@@ -28,6 +28,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   abc https://launchpad.net/~abc-g</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
@@ -78,33 +79,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabo</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Tsek</item>
 		<item>Danish</item>
 		<item>Aleman</item>
-		<item>Ingles</item>
 		<item>Griyego</item>
+		<item>Ingles</item>
+		<item>English (United Kingdom)</item>
 		<item>Kastila</item>
 		<item>Persyano</item>
 		<item>Finnish</item>
 		<item>Faroese</item>
 		<item>Pranses</item>
+		<item>Hindi</item>
 		<item>Kroatyano</item>
 		<item>Hanggaryan</item>
 		<item>Italiyano</item>
+		<item>Hebrew</item>
 		<item>Hapon</item>
 		<item>Koreano</item>
 		<item>Lao</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Olandes</item>
 		<item>Occitan (paskil 1500)</item>
+		<item>Punjabi</item>
 		<item>Polish</item>
 		<item>Portuges</item>
 		<item>Portuges ng Brasil</item>
 		<item>Romano</item>
 		<item>Ruso</item>
 		<item>Sardiniyan</item>
+		<item>Sindhi</item>
 		<item>Eslobako</item>
+		<item>Slovenian</item>
 		<item>Suweko</item>
+		<item>Tagalog</item>
 		<item>Turko</item>
+		<item>Uyghur</item>
 		<item>Tsino (Pinasimple)</item>
 		<item>Tsino (Tradisyonal)</item>
 	</string-array>

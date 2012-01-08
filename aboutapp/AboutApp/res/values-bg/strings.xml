@@ -80,33 +80,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Арабски</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Чешки</item>
 		<item>Датски</item>
 		<item>Немски</item>
-		<item>Английски</item>
 		<item>Гръцки</item>
+		<item>Английски</item>
+		<item>English (United Kingdom)</item>
 		<item>Испански</item>
 		<item>Персийски</item>
 		<item>Фински</item>
 		<item>Фарьорски</item>
 		<item>Френски</item>
+		<item>Hindi</item>
 		<item>Хърватски</item>
 		<item>Унгарски</item>
 		<item>Италиански</item>
+		<item>Hebrew</item>
 		<item>Японски</item>
 		<item>Корейски</item>
 		<item>Лаоски</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Холандси</item>
 		<item>Окситански (след 1500)</item>
+		<item>Punjabi</item>
 		<item>Полски</item>
 		<item>Португалски</item>
 		<item>Бразилски португалски</item>
 		<item>Румънски</item>
 		<item>Руски</item>
 		<item>Сардински</item>
+		<item>Sindhi</item>
 		<item>Словашки</item>
+		<item>Slovenian</item>
 		<item>Шведски</item>
+		<item>Tagalog</item>
 		<item>Турски</item>
+		<item>Uyghur</item>
 		<item>Китайски (опростен)</item>
 		<item>Китайски (традиционен)</item>
 	</string-array>

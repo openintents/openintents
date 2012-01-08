@@ -2,7 +2,7 @@
 Lanternă OI
 
 # Promo text:
-Lanterna OpenIntents vă ajută să găsiți calea în întuneric. Lumina din spatele ecranului este menținută aprinsă în timp ce rulează această aplicație.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
 OI Lanternă este o aplicaţie simplă şi eficientă, care vă ajută să găsiţi o cale în întuneric. OI Lanternă pastrează iluminarea din spate a ecranului pornită, iluminând în mod clar zona înconjurătoare. Pentru dispozitivele cu bliţ, lanterna OI poate utiliza de asemenea blițul ca o torță luminoasă pentru a lumina camera. Culoarea iluminării din spate este personalizabilă cu OI Color Picker. 

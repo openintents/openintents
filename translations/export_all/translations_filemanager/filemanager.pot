@@ -14,9 +14,9 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#. Short explanation of the application. Max. 80 characters.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:26(string) 
-msgid "Manage files on the SD card."
+msgid "Manage files on the SD card with OI File Manager."
 msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.

@@ -79,33 +79,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Арабская</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Чэшская</item>
 		<item>Дацкая</item>
 		<item>Нямецкая</item>
-		<item>Ангельская</item>
 		<item>Грэцкая</item>
+		<item>Ангельская</item>
+		<item>English (United Kingdom)</item>
 		<item>Іспанская</item>
 		<item>Персідская</item>
 		<item>Фінская</item>
 		<item>Фарэрская</item>
 		<item>Французская</item>
+		<item>Hindi</item>
 		<item>Харвацкая</item>
 		<item>Венгерская</item>
 		<item>Італьянская</item>
+		<item>Hebrew</item>
 		<item>Японская</item>
 		<item>Карэйская</item>
 		<item>Лаоская</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Галандская</item>
 		<item>Аксітанская (пасля 1500)</item>
+		<item>Punjabi</item>
 		<item>Польская</item>
 		<item>Партугальская</item>
 		<item>Партугальская (Бразілія)</item>
 		<item>Румынская</item>
 		<item>Руская</item>
 		<item>Сардынская</item>
+		<item>Sindhi</item>
 		<item>Славацкая</item>
+		<item>Slovenian</item>
 		<item>Шведская</item>
+		<item>Tagalog</item>
 		<item>Турэцкая</item>
+		<item>Uyghur</item>
 		<item>Кітайская (Спрошчаная)</item>
 		<item>Кітайская (Традыцыйная)</item>
 	</string-array>

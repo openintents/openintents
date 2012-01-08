@@ -22,10 +22,11 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
-  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias</string>
+  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">Denne utvidelsen til OI Handleliste og OI Notatblokk lar deg importere og eksportere lister og notater i filformatet CSV.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

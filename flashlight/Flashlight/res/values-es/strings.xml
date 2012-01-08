@@ -13,8 +13,8 @@
   Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm
   enrigp https://launchpad.net/~enrgarc</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents FlashLight te ayuda a encontrar tu camino en la oscuridad. La luz de fondo de la pantalla permanece encendida mientras la aplicación esté arrancada.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

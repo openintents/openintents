@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Joan Creus <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,16 +22,15 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Joan Creus https://launchpad.net/~joan-creus-c"
+"  Joan Creus https://launchpad.net/~joan-creus-c\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
-msgid ""
-"OpenIntents Flashlight helps you find your way in the dark. The display "
-"backlight is kept turned on while this application is running."
+#, fuzzy
+msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
 msgstr ""
-"La llanterna d'OpenIntents t'ajuda a trobar el teu camí per les fosques. La "
-"llum de fons de la pantalla es manté oberta mentre l'aplicació està engegada."
+"Utilitzar el flaix de la càmera en lloc de la fons de llum de la pantalla."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
@@ -91,3 +90,11 @@ msgstr "Prem per activar la llum de la càmera (Pot tardar un segon)."
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
 msgstr "Prem per desactivar la llum de la càmera."
+
+
+
+
+
+
+
+

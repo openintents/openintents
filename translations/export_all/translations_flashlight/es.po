@@ -29,15 +29,13 @@ msgstr ""
 "  Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm\n"
 "  enrigp https://launchpad.net/~enrgarc"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
-msgid ""
-"OpenIntents Flashlight helps you find your way in the dark. The display "
-"backlight is kept turned on while this application is running."
+#, fuzzy
+msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
 msgstr ""
-"OpenIntents FlashLight te ayuda a encontrar tu camino en la oscuridad. La "
-"luz de fondo de la pantalla permanece encendida mientras la aplicación esté "
-"arrancada."
+"Utilizar el flash de la cámara en lugar de la retroiluminación de la "
+"pantalla."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
@@ -98,3 +96,11 @@ msgstr "Pulse para activar la luz de la cámara (puede tardar unos segundos)."
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
 msgstr "Pulse para desactivar la luz de la cámara."
+
+
+
+
+
+
+
+

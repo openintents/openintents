@@ -9,8 +9,8 @@
   OpenIntents devs https://launchpad.net/~openintents-devs
   happynawani https://launchpad.net/~happynawani</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI काउंटडाउन एक निर्धारित समय के बाद आपको सूचित करती है|</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

@@ -6,7 +6,8 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Liezl https://launchpad.net/~liezl-200</string>
+  Liezl https://launchpad.net/~liezl-200
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">Ang OpenIntents Tagapili ng Kulay ay isang ekstensyon para sa OI plaslayt at iba pang mga magkakatugmang aplikasyon.</string>

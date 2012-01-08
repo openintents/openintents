@@ -2,7 +2,7 @@
 OI Taschenlampe
 
 # Promo text:
-OpenIntents Flashlight hilft dir den Weg durch die Dunkelheit zu finden. Die Hintergrundbeleuchtung des Displays bleibt angeschaltet, solange diese Anwendung läuft.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
 OI Flashlight ist eine einfache und effektive Anwendung, die Ihnen hilft, den Weg im Dunkeln zu finden. OI Flashlight schaltet die Hintergrundbeleuchtung an, die die nähere Umgebung gut beleuchtet. Für Geräte mit einem Kamerablitz kann OI Flashlight auch den Blitz als Lichtquelle benutzen, um den Raum zu beleuchten. Mithilfe von OI Color Picker, ist die Farbe der Hintergrundbeleuchtung komplett einstellbar. 

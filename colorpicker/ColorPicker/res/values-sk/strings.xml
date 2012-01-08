@@ -6,7 +6,8 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Marek Matejka https://launchpad.net/~marek-matejka</string>
+  Marek Matejka https://launchpad.net/~marek-matejka
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">OI Vyberač Farieb je rozšírenie pre OI Baterka a iné kompatibilné aplikácie.</string>

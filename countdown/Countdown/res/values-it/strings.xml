@@ -9,8 +9,8 @@
   Diego Pierotto https://launchpad.net/~gringo
   Peli https://launchpad.net/~peli0101</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI Countdown mostra notifiche dopo uno specificato periodo di tempo.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

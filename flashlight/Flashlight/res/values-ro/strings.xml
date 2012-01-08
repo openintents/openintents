@@ -12,8 +12,8 @@
   Stelescu Raul https://launchpad.net/~stelescuraul
   iulargsb https://launchpad.net/~iulargsb</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">Lanterna OpenIntents vă ajută să găsiți calea în întuneric. Lumina din spatele ecranului este menținută aprinsă în timp ce rulează această aplicație.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

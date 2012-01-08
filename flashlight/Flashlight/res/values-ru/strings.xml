@@ -10,8 +10,8 @@
   Artur https://launchpad.net/~arturyak
   Peli https://launchpad.net/~peli0101</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents Flashlight поможет Вам найти дорогу в темноте. Пока запущено приложение - подсветка экрана остается включенной.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

@@ -25,10 +25,11 @@ msgstr ""
 "  Jihyeok Seo https://launchpad.net/~limeburst\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid "OI Safe keeps all your private data encrypted."
-msgstr "OI 금고는 당신의 모든 비밀 정보를 암호화하여 보관합니다."
+#, fuzzy
+msgid "Store your private data with OI Safe."
+msgstr "다른 앱들이 데이터를 OI 금고에 안전하게 저장할 수 있게 합니다."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:34(string)
@@ -844,3 +845,6 @@ msgstr "30일"
 #: tmp_strings.xml:275(item)
 msgid "60 days"
 msgstr "60일"
+
+
+

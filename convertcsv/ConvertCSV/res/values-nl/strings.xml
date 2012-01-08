@@ -26,8 +26,8 @@
   OpenIntents devs https://launchpad.net/~openintents-devs
   Sjoerd Hiemstra https://launchpad.net/~sjohie</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">Deze extentie voor OI Boodschappenlijst en OI Notitieblok laat u lijsten en notities in het CSV bestandsformaat importeren en exporteren.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

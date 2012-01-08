@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: abc <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Filipino <fil@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,23 +22,18 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  abc https://launchpad.net/~abc-g"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:27(string)
-msgid ""
-"OI Shopping list lets you keep track of your shopping items. You can also "
-"use it for other kinds of check lists, for example for ToDo lists or party "
-"guest lists."
+msgid "Keep track of your shopping items with OI Shopping List."
 msgstr ""
-"Ang OI Listahan ng Bilihin ay nagbibigay-daan para masubaybayan mo ang iyong "
-"mga bilihin. Maaari mo ring gamitin ito para sa iba pang mga uri ng mga "
-"tseklist, halimbawa para sa mga ToDo listahan o mga listahan ng bisita ng "
-"parti."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-msgid "OI Shopping list"
+#, fuzzy
+msgid "OI Shopping List"
 msgstr "OI Listahan ng Bilihin"
 
 #: tmp_strings.xml:35(string)
@@ -70,7 +65,8 @@ msgid "My shopping list"
 msgstr "Ang aking listahan ng bilihin"
 
 #: tmp_strings.xml:42(string)
-msgid "i.e. wishlist, family list"
+#, fuzzy
+msgid "e.g. wishlist, family list"
 msgstr "ibig sabihin wishlist, listahan ng pamilya"
 
 #. Automation action to clean up a list.
@@ -793,12 +789,14 @@ msgstr "Wala"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
-msgid "Per Sentence"
+#, fuzzy
+msgid "Per sentence"
 msgstr "Bawat Pangungusap"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
-msgid "Per Word"
+#, fuzzy
+msgid "Per word"
 msgstr "Bawat Salita"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
@@ -836,3 +834,13 @@ msgstr "Pumili ng listahan"
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
 msgstr "Walang mga bagay sa pahina %d"
+
+
+
+
+
+
+
+
+
+

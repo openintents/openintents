@@ -22,11 +22,14 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
+"  Peli https://launchpad.net/~peli0101\n"
 "  happynawani https://launchpad.net/~happynawani"
 
-#. Short explanation of the application. Max. 80 characters.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:26(string)
-msgid "Manage files on the SD card."
+#, fuzzy
+msgid "Manage files on the SD card with OI File Manager."
 msgstr "SD कार्ड ते फाईल्युन खे प्रबंधित कयो|"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
@@ -429,9 +432,8 @@ msgid "Item compressed successfully"
 msgstr ""
 
 #: tmp_strings.xml:178(string)
-#, fuzzy
 msgid "Could not compress the item"
-msgstr "फाईल खे कॉपी न  करे सग्यास"
+msgstr ""
 
 #: tmp_strings.xml:179(string)
 msgid "Compress into archive:"
@@ -442,19 +444,16 @@ msgid "Item extracted successfully"
 msgstr ""
 
 #: tmp_strings.xml:181(string)
-#, fuzzy
 msgid "Could not extract the item"
-msgstr "फाईल मिटाए न सग्यास"
+msgstr ""
 
 #: tmp_strings.xml:182(string)
-#, fuzzy
 msgid "Extract into folder:"
-msgstr "नयो फ़ोल्डर ठायो"
+msgstr ""
 
 #: tmp_strings.xml:183(string)
-#, fuzzy
 msgid "Select folder to extract into"
-msgstr "जगह बदलन लाये फोल्डर खे चुन्द्यो"
+msgstr ""
 
 #: tmp_strings.xml:184(string)
 msgid "Extract here"
@@ -473,6 +472,5 @@ msgid "File %s exists. Do you want to overwrite it?"
 msgstr ""
 
 #: tmp_strings.xml:189(string)
-#, fuzzy
 msgid "Do you want to change the file extension?"
-msgstr "?शा  तहां खे  सहिया में% d फईल्यूं  मिटायनी तव"
+msgstr ""

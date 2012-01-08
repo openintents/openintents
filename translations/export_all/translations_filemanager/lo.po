@@ -24,9 +24,9 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Anousak https://launchpad.net/~anousak"
 
-#. Short explanation of the application. Max. 80 characters.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:26(string)
-msgid "Manage files on the SD card."
+msgid "Manage files on the SD card with OI File Manager."
 msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
@@ -445,9 +445,8 @@ msgid "Could not extract the item"
 msgstr ""
 
 #: tmp_strings.xml:182(string)
-#, fuzzy
 msgid "Extract into folder:"
-msgstr "ສ້າງໂຟເດີໃຫມ່"
+msgstr ""
 
 #: tmp_strings.xml:183(string)
 msgid "Select folder to extract into"

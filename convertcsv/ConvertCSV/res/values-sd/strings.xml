@@ -22,10 +22,11 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   happynawani https://launchpad.net/~happynawani</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">OI खरीदारी सूची अऊँ OI नोटपैड जो ईयो एक्सटेंशन तहान्खे सूचियाँ अऊँ नोट्स आयत अऊँ नियत CSV फ़ाइल स्वरूप में करण में मदद कंदों आ</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

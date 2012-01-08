@@ -81,33 +81,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabisch</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Tsjechisch</item>
 		<item>Deens</item>
 		<item>Duits</item>
-		<item>Engels</item>
 		<item>Grieks</item>
+		<item>Engels</item>
+		<item>English (United Kingdom)</item>
 		<item>Spaans</item>
 		<item>Perzisch</item>
 		<item>Fins</item>
 		<item>Faeröers</item>
 		<item>Frans</item>
+		<item>Hindi</item>
 		<item>Kroatisch</item>
 		<item>Hongaars</item>
 		<item>Italiaans</item>
+		<item>Hebrew</item>
 		<item>Japans</item>
 		<item>Koreaans</item>
 		<item>Laotiaans</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Nederlands</item>
 		<item>Occitaans (na 1500)</item>
+		<item>Punjabi</item>
 		<item>Pools</item>
 		<item>Portugees</item>
 		<item>Braziliaans Portugees</item>
 		<item>Roemeens</item>
 		<item>Russisch</item>
 		<item>Sardisch</item>
+		<item>Sindhi</item>
 		<item>Slowaaks</item>
+		<item>Slovenian</item>
 		<item>Zweeds</item>
+		<item>Tagalog</item>
 		<item>Turks</item>
+		<item>Uyghur</item>
 		<item>Chinees (vereenvoudigd)</item>
 		<item>Chinees (Traditioneel)</item>
 	</string-array>

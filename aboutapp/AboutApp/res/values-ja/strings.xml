@@ -28,6 +28,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
+  maimuzo https://launchpad.net/~maimuzo
   thebowseat https://launchpad.net/~takeshimochida</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
@@ -78,33 +80,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>アラビア語</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>チェコ語</item>
 		<item>デンマーク語</item>
 		<item>ドイツ語</item>
-		<item>英語</item>
 		<item>ギリシャ語</item>
+		<item>英語</item>
+		<item>English (United Kingdom)</item>
 		<item>スペイン語</item>
 		<item>ペルシア語</item>
 		<item>フィンランド語</item>
 		<item>フェロー語</item>
 		<item>フランス語</item>
+		<item>Hindi</item>
 		<item>クロアチア語</item>
 		<item>ハンガリー語</item>
 		<item>イタリア語</item>
+		<item>Hebrew</item>
 		<item>日本語</item>
 		<item>韓国語</item>
 		<item>ラオ語</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>オランダ語</item>
 		<item>オック語(1500年以降)</item>
+		<item>Punjabi</item>
 		<item>ポーランド語</item>
 		<item>ポルトガル語</item>
 		<item>ポルトガル語 (ブラジル)</item>
 		<item>ルーマニア語</item>
 		<item>ロシア語</item>
 		<item>サルデーニャ語</item>
+		<item>Sindhi</item>
 		<item>スロバキア語</item>
+		<item>Slovenian</item>
 		<item>スウェーデン語</item>
+		<item>Tagalog</item>
 		<item>トルコ語</item>
+		<item>Uyghur</item>
 		<item>中国語（簡体字）</item>
 		<item>中国語（繁体字）</item>
 	</string-array>

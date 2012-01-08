@@ -13,8 +13,8 @@ Launchpad Contributions:
   Peli https://launchpad.net/~peli0101
   zeugma https://launchpad.net/~sunder67</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI Geri sayım zamanın belirli bir süre sonrası sizi uyarır</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

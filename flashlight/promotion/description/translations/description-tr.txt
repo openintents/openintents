@@ -2,7 +2,7 @@
 OI El feneri
 
 # Promo text:
-OpenIntents Fener karanlıkta yolunuzu bulmanıza yardımcı olur.Uygulama çalışırken ekran arka ışığı açık tutulur.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
 OI Flashlight karanlıkta size yolunuzu bulmakta yardımcı olan basit ve etkili bir uygulamadır. OI Flashlight arka ışık süresini açık olarak kilitler, çevresini açıkça aydınlatır. Kamera flaşı olan aygıtlar için,  OI Flashlight ayrıca karanlıkta odayı fener ile aydınlatmanızı sağlar. OI Color Picker ile fener ışığının renkleri tamamiyle özelleştirilebilir. 

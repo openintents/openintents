@@ -80,33 +80,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabo</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Ceco</item>
 		<item>Danese</item>
 		<item>Tedesco</item>
-		<item>Inglese</item>
 		<item>Greek</item>
+		<item>Inglese</item>
+		<item>English (United Kingdom)</item>
 		<item>Spagnolo</item>
 		<item>Persian</item>
 		<item>Finlandese</item>
 		<item>Faroese</item>
 		<item>Francese</item>
+		<item>Hindi</item>
 		<item>Croatian</item>
 		<item>Hungarian</item>
 		<item>Italiano</item>
+		<item>Hebrew</item>
 		<item>Giapponese</item>
 		<item>Coreano</item>
 		<item>Lao</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Olandese</item>
 		<item>Occitano (posteriore 1500)</item>
+		<item>Punjabi</item>
 		<item>Polacco</item>
 		<item>Portoghese</item>
 		<item>Portoghese Brasiliano</item>
 		<item>Rumeno</item>
 		<item>Russo</item>
 		<item>Sardo</item>
+		<item>Sindhi</item>
 		<item>Slovacco</item>
+		<item>Slovenian</item>
 		<item>Svedese</item>
+		<item>Tagalog</item>
 		<item>Turco</item>
+		<item>Uyghur</item>
 		<item>Cinese (Semplificato)</item>
 		<item>Cinese (Tradizionale)</item>
 	</string-array>

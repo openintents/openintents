@@ -9,8 +9,8 @@
   Henk van der Velden https://launchpad.net/~henkvandervelden86
   Peli https://launchpad.net/~peli0101</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents Flashlight helpt u uw weg te vinden in het donker. Het schermlicht blijft aan tijdens het uitvoeren van deze toepassing.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

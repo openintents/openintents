@@ -8,8 +8,8 @@
 	<string name="about_translators">Launchpad Contributions:
   Abdessamad Derraz https://launchpad.net/~derraz</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI Countdown vous informe après un nombre d\'heures spécifique.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

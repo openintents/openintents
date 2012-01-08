@@ -52,38 +52,43 @@ msgid ""
 "layout."
 msgstr "इस कार्यशीलता को एक साथ एक सरलीकृत और कुशल लेआउट में लाया गया है|"
 
-#: tmp_strings.xml:18(string) tmp_strings.xml:68(string)
-#: tmp_strings.xml:121(string) tmp_strings.xml:168(string)
-#: tmp_strings.xml:223(string) tmp_strings.xml:281(string)
+#: tmp_strings.xml:18(string) tmp_strings.xml:70(string)
+#: tmp_strings.xml:119(string) tmp_strings.xml:172(string)
+#: tmp_strings.xml:219(string) tmp_strings.xml:274(string)
+#: tmp_strings.xml:332(string)
 msgid ""
 "This application is ad free and does not require the internet permission."
 msgstr "यह अनुप्रयोग विज्ञापन मुक्त है और  इसे  इंटरनेट की अनुमति की आवश्यकता नहीं है|"
 
-#: tmp_strings.xml:20(string) tmp_strings.xml:76(string)
-#: tmp_strings.xml:123(string) tmp_strings.xml:170(string)
-#: tmp_strings.xml:231(string) tmp_strings.xml:278(string)
+#: tmp_strings.xml:20(string) tmp_strings.xml:74(string)
+#: tmp_strings.xml:127(string) tmp_strings.xml:174(string)
+#: tmp_strings.xml:221(string) tmp_strings.xml:282(string)
+#: tmp_strings.xml:329(string)
 msgid ""
 "The source code of this free and open source application is available at:"
 msgstr "इस स्वतंत्र और खुला स्रोत अनुप्रयोग का स्रोत कोड यहाँ पर उपलब्ध है:"
 
-#: tmp_strings.xml:23(string) tmp_strings.xml:70(string)
-#: tmp_strings.xml:126(string) tmp_strings.xml:173(string)
-#: tmp_strings.xml:225(string) tmp_strings.xml:283(string)
+#: tmp_strings.xml:23(string) tmp_strings.xml:77(string)
+#: tmp_strings.xml:121(string) tmp_strings.xml:177(string)
+#: tmp_strings.xml:224(string) tmp_strings.xml:276(string)
+#: tmp_strings.xml:334(string)
 msgid ""
 "For the complete list of changes and a list of frequently asked questions, "
 "please visit:"
 msgstr "परिवर्तन और अक्सर पूछे जाने वाले प्रश्नों की पूरी सूची के लिए, कृपया यहाँ पर जाएँ:"
 
-#: tmp_strings.xml:26(string) tmp_strings.xml:73(string)
-#: tmp_strings.xml:129(string) tmp_strings.xml:176(string)
-#: tmp_strings.xml:228(string) tmp_strings.xml:286(string)
+#: tmp_strings.xml:26(string) tmp_strings.xml:81(string)
+#: tmp_strings.xml:124(string) tmp_strings.xml:180(string)
+#: tmp_strings.xml:227(string) tmp_strings.xml:279(string)
+#: tmp_strings.xml:337(string)
 msgid ""
 "You can help to improve the translation into your language at Launchpad:"
 msgstr "आप Launchpad पर अपनी भाषा के अनुवाद को बेहतर बनाने में मदद कर सकते हैं:"
 
-#: tmp_strings.xml:29(string) tmp_strings.xml:79(string)
-#: tmp_strings.xml:132(string) tmp_strings.xml:179(string)
-#: tmp_strings.xml:234(string) tmp_strings.xml:289(string)
+#: tmp_strings.xml:29(string) tmp_strings.xml:84(string)
+#: tmp_strings.xml:130(string) tmp_strings.xml:183(string)
+#: tmp_strings.xml:230(string) tmp_strings.xml:285(string)
+#: tmp_strings.xml:340(string)
 msgid "Features:"
 msgstr "सुविधाएँ:"
 
@@ -137,9 +142,10 @@ msgstr "OI काउंटडाउन"
 msgid "OI Flashlight"
 msgstr "OI टॉर्च"
 
-#: tmp_strings.xml:44(string) tmp_strings.xml:94(string)
-#: tmp_strings.xml:144(string) tmp_strings.xml:201(string)
-#: tmp_strings.xml:251(string) tmp_strings.xml:308(string)
+#: tmp_strings.xml:44(string) tmp_strings.xml:95(string)
+#: tmp_strings.xml:145(string) tmp_strings.xml:195(string)
+#: tmp_strings.xml:252(string) tmp_strings.xml:302(string)
+#: tmp_strings.xml:359(string)
 msgid "Keywords:"
 msgstr "कीवर्ड:"
 
@@ -151,20 +157,83 @@ msgstr "के बारे में, क्रेडिट, सूचना."
 msgid "OI, OpenIntents, Open Intents."
 msgstr "OI, OpenIntents, Open Intents.."
 
-#: tmp_strings.xml:48(string) tmp_strings.xml:100(string)
-#: tmp_strings.xml:148(string) tmp_strings.xml:205(string)
-#: tmp_strings.xml:257(string) tmp_strings.xml:312(string)
+#: tmp_strings.xml:48(string) tmp_strings.xml:101(string)
+#: tmp_strings.xml:151(string) tmp_strings.xml:199(string)
+#: tmp_strings.xml:256(string) tmp_strings.xml:308(string)
+#: tmp_strings.xml:363(string)
 msgid "International versions:"
 msgstr "अंतर्राष्ट्रीय संस्करण:"
 
-#: tmp_strings.xml:51(string) tmp_strings.xml:103(string)
-#: tmp_strings.xml:151(string) tmp_strings.xml:208(string)
-#: tmp_strings.xml:260(string)
+#: tmp_strings.xml:51(string) tmp_strings.xml:104(string)
+#: tmp_strings.xml:154(string) tmp_strings.xml:202(string)
+#: tmp_strings.xml:259(string) tmp_strings.xml:311(string)
 msgid "Search strings for Market:"
 msgstr "बाजार के लिए स्ट्रिंग्स को  खोजें :"
 
+#: tmp_strings.xml:66(string)
+msgid ""
+"OI Countdown is a helpful timer to increase your productivity and plan your "
+"day."
+msgstr ""
+
+#: tmp_strings.xml:67(string)
+msgid ""
+"It allows you to set a variety of different actions to notify you at the end "
+"of a timer."
+msgstr ""
+
+#: tmp_strings.xml:68(string)
+msgid ""
+"Fully customize all your timers, with no limit on how many you can have "
+"running or saved."
+msgstr ""
+
+#: tmp_strings.xml:85(listitem)
+msgid "Set a countdown by choosing a duration or a date."
+msgstr ""
+
+#: tmp_strings.xml:86(listitem)
+msgid "Be notified by vibration or any sound of your choice."
+msgstr ""
+
+#: tmp_strings.xml:87(listitem)
+msgid "Have an unlimited number of timers running at the same time."
+msgstr ""
+
+#: tmp_strings.xml:88(listitem)
+msgid "Save your countdowns and give them names to reuse at later times."
+msgstr ""
+
+#: tmp_strings.xml:89(listitem)
+msgid "Modify countdowns, even while they are still running"
+msgstr ""
+
+#: tmp_strings.xml:91(string)
+#, fuzzy
+msgid "Available extensions for \"OI Countdown\":"
+msgstr "\\\"OI Notepad\\\" के लिए उपलब्ध एक्सटेंशन:"
+
+#: tmp_strings.xml:92(listitem)
+msgid "Launch applications through Android shortcuts"
+msgstr ""
+
+#: tmp_strings.xml:93(listitem)
+msgid "Use OI About to show license information"
+msgstr ""
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:97(listitem)
+msgid "countdown, timer, alert"
+msgstr ""
+
+#. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
+#: tmp_strings.xml:99(listitem) tmp_strings.xml:197(listitem)
+#: tmp_strings.xml:254(listitem) tmp_strings.xml:361(listitem)
+msgid "OI, OpenIntents, Open Intents"
+msgstr "OI, OpenIntents, Open Intents"
+
 #. Description of application
-#: tmp_strings.xml:65(string)
+#: tmp_strings.xml:116(string)
 msgid ""
 "OI File Manager allows you to browse your SD card, create directories, "
 "rename, copy, move, and delete files."
@@ -172,7 +241,7 @@ msgstr ""
 "OI फाईल प्रबंधक आपको अपने एसडी कार्ड ब्राउज़ करने,निर्देशिका बनाने,नाम बदलने,प्रतिलिपि "
 "बनाने,फाइल और कहीं भेजने और फाईल  मिटने की अनुमति देता है |"
 
-#: tmp_strings.xml:66(string)
+#: tmp_strings.xml:117(string)
 msgid ""
 "It also acts as an extension to other applications to display \"Open\" and "
 "\"Save\" dialogs."
@@ -180,34 +249,34 @@ msgstr ""
 "यह अन्य अनुप्रयोगों के लिए एक एक्सटेंशन के रूप में कार्य करता है \"Open\" और \"Save\"  "
 "संवाद  प्रदर्शित करने के लिए|"
 
-#: tmp_strings.xml:80(listitem)
+#: tmp_strings.xml:131(listitem)
 msgid "Show list of files with thumbnails for images."
 msgstr "छवियों के लिए थंबनेल के साथ फ़ाइलों की सूची दिखाएँ|"
 
-#: tmp_strings.xml:81(listitem)
+#: tmp_strings.xml:132(listitem)
 msgid "Move, copy, rename, and delete files."
 msgstr "भेजें,प्रतिलिपि बनाएँ,नाम बदलें और फाईल मिटाएँ|"
 
-#: tmp_strings.xml:82(listitem)
+#: tmp_strings.xml:133(listitem)
 msgid "Create and delete directories (folders)."
 msgstr "निर्देशिका (फ़ोल्डर्स) बनाएँ और मिटाएँ|"
 
-#: tmp_strings.xml:83(listitem)
+#: tmp_strings.xml:134(listitem)
 msgid "Send files by email."
 msgstr "ईमेल द्वारा फ़ाइलें भेजें|"
 
-#: tmp_strings.xml:84(listitem)
+#: tmp_strings.xml:135(listitem)
 msgid ""
 "Acts as an extension to other applications, like GMail, to attach files."
 msgstr ""
 "GMail की तरह अन्य अनुप्रयोगों के लिए एक्सटेंशन के रूप में कार्य करता है,फाईलों को संलग्न करने "
 "के लिए|"
 
-#: tmp_strings.xml:85(listitem)
+#: tmp_strings.xml:136(listitem)
 msgid "Support for many file endings and mime types."
 msgstr "कई फाईलों के अंत और MIME प्रकार के लिए समर्थन है|"
 
-#: tmp_strings.xml:86(listitem)
+#: tmp_strings.xml:137(listitem)
 msgid ""
 "Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can "
 "use OI File Manager."
@@ -215,50 +284,50 @@ msgstr ""
 "PICK_FILE और PICK_DIRECTORY intents का समर्थन करता है जैसे कि अन्य अनुप्रयोग OI "
 "फ़ाइल प्रबंधक का उपयोग कर सकते हैं|"
 
-#: tmp_strings.xml:88(string) tmp_strings.xml:245(string)
+#: tmp_strings.xml:139(string) tmp_strings.xml:296(string)
 msgid "Available extensions for \"OI File Manager\":"
 msgstr "\"OI File Manager\" के लिए उपलब्ध एक्सटेंशन:"
 
-#: tmp_strings.xml:89(listitem) tmp_strings.xml:138(listitem)
-#: tmp_strings.xml:190(listitem) tmp_strings.xml:246(listitem)
-#: tmp_strings.xml:300(listitem)
+#: tmp_strings.xml:140(listitem) tmp_strings.xml:189(listitem)
+#: tmp_strings.xml:241(listitem) tmp_strings.xml:297(listitem)
+#: tmp_strings.xml:351(listitem)
 msgid "Show the license information with \"OI About\"."
 msgstr "\"OI About\" के साथ लाइसेंस जानकारी दिखाएँ ."
 
-#: tmp_strings.xml:91(string) tmp_strings.xml:248(string)
+#: tmp_strings.xml:142(string) tmp_strings.xml:299(string)
 msgid "Applications that work with \"OI File Manager\":"
 msgstr "आवेदन \"\"OI File Manager\" के साथ काम करता है:"
 
-#: tmp_strings.xml:92(listitem)
+#: tmp_strings.xml:143(listitem)
 msgid "Open and save text files in \"OI Notepad\"."
 msgstr "\\\"OI Notepad\\\" में पाठ फ़ाइलों को खोलें और सुरक्षित करें|"
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
-#: tmp_strings.xml:96(listitem)
+#: tmp_strings.xml:147(listitem)
 msgid "file manager, filemanager, file explorer"
 msgstr "फ़ाइल प्रबंधक, filemanager, फ़ाइल अन्वेषक"
 
 #. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
-#: tmp_strings.xml:98(listitem) tmp_strings.xml:255(listitem)
+#: tmp_strings.xml:149(listitem) tmp_strings.xml:306(listitem)
 msgid "OI, IO, OpenIntents, Open Intents"
 msgstr "OI, IO, OpenIntents, Open Intents"
 
 #. Description of application
-#: tmp_strings.xml:116(string)
+#: tmp_strings.xml:167(string)
 msgid ""
 "OI Flashlight is a simple and effective application that helps you find a "
 "way in the dark."
 msgstr ""
 "OI टॉर्च एक सरल और प्रभावी अनुप्रयोग है जो आपको अंधेरे में रास्ता खोजने में मदद करता है|"
 
-#: tmp_strings.xml:117(string)
+#: tmp_strings.xml:168(string)
 msgid ""
 "OI Flashlight locks the display backlight on, clearly illuminating the "
 "surrounding area."
 msgstr ""
 "OI टॉर्च प्रदर्शन बैकलाइट को चालु छोड़ देता है,स्पष्ट रूप से आसपास के क्षेत्र रोशन करते हुए|"
 
-#: tmp_strings.xml:118(string)
+#: tmp_strings.xml:169(string)
 msgid ""
 "For devices with a camera flash, OI Flashlight can also use the flash as a "
 "bright torch to brighten the room."
@@ -266,55 +335,50 @@ msgstr ""
 "कैमरा फ्लैश युक्त उपकरणों के लिए, OI टॉर्च कमरे को रोशन करने के लिए एक उज्ज्वल टॉर्च के रूप "
 "में फ्लैश का भी प्रयोग कर सकता है|"
 
-#: tmp_strings.xml:119(string)
+#: tmp_strings.xml:170(string)
 msgid ""
 "The color of the backlight is completely customizable with OI Color Picker."
 msgstr "बैकलाइट के रंग पूरी तरह से OI रंगचयनक के अनुकूलन योग्य है|"
 
-#: tmp_strings.xml:133(listitem)
+#: tmp_strings.xml:184(listitem)
 msgid "Lock the display backlight on."
 msgstr "प्रदर्शन बैकलाइट को चालू रखें|"
 
-#: tmp_strings.xml:134(listitem)
+#: tmp_strings.xml:185(listitem)
 msgid "Lock camera flash on."
 msgstr "कैमरा फ्लैश चलूँ रखें|"
 
-#: tmp_strings.xml:135(listitem)
+#: tmp_strings.xml:186(listitem)
 msgid "The color of backlight is customizable."
 msgstr "बैकलाइट के रंग अनुकूलन योग्य हैं|"
 
-#: tmp_strings.xml:137(string)
+#: tmp_strings.xml:188(string)
 msgid "Available extensions for \"OI Flashlight\":"
 msgstr "\\\"OI Flashlight\\\" के लिए उपलब्ध एक्सटेंशन:"
 
-#: tmp_strings.xml:139(listitem)
+#: tmp_strings.xml:190(listitem)
 msgid "Change the color of the backlight with \"OI Color Picker\"."
 msgstr "\\\"OI Color Picker\\\" से बैकलाइट  का रंग बदलें|"
 
-#: tmp_strings.xml:141(string)
+#: tmp_strings.xml:192(string)
 msgid "Applications that work with \"OI Flashlight\":"
 msgstr "\\\"OI Flashlight\\\" से जो अनुप्रयोग काम करते हैं:"
 
-#: tmp_strings.xml:142(listitem) tmp_strings.xml:198(listitem)
-#: tmp_strings.xml:304(listitem)
+#: tmp_strings.xml:193(listitem) tmp_strings.xml:249(listitem)
+#: tmp_strings.xml:355(listitem)
 msgid "Update with \"OI Update\"."
 msgstr "\\\"OI Update\\\" से अद्यतन करें|"
 
-#: tmp_strings.xml:145(listitem)
+#: tmp_strings.xml:196(listitem)
 msgid "Flashlight, light, Backlight"
 msgstr "टॉर्च, प्रकाश, बैकलाइट"
 
-#: tmp_strings.xml:146(listitem) tmp_strings.xml:203(listitem)
-#: tmp_strings.xml:310(listitem)
-msgid "OI, OpenIntents, Open Intents"
-msgstr "OI, OpenIntents, Open Intents"
-
 #. Description of application
-#: tmp_strings.xml:163(string)
+#: tmp_strings.xml:214(string)
 msgid "OI Notepad is a full-featured open source note taking application."
 msgstr "OI नोटपैड एक पूर्ण विशेषताओं से युक्त खुला स्रोत अनुप्रयोग है नोट लेने के लिए|"
 
-#: tmp_strings.xml:164(string)
+#: tmp_strings.xml:215(string)
 msgid ""
 "With it you can tag, search, and send your notes, in addition to basic "
 "functionality such as creating, deleting, and editing notes."
@@ -322,7 +386,7 @@ msgstr ""
 "आप इससे टैग कर सकते हैं,खोज  सकते हैं और अपने नोट्स भेज सकते हैं,बनाने,मिटने और संपादन  करने "
 "जैसी बुनियादी सुविधाओं के अलावा|"
 
-#: tmp_strings.xml:165(string)
+#: tmp_strings.xml:216(string)
 msgid ""
 "Advanced features like encryption, import/export, and voice memos are all "
 "available through extensions."
@@ -330,7 +394,7 @@ msgstr ""
 "एन्क्रिप्शन, आयात / निर्यात, और आवाज मेमो जैसी उन्नत सुविधाएँ उपलब्ध हैं एक्सटेंशन के माध्यम "
 "से|"
 
-#: tmp_strings.xml:166(string)
+#: tmp_strings.xml:217(string)
 msgid ""
 "All of this functionality is brought together in a simplistic and efficient "
 "layout, customizable through a variety of themes."
@@ -338,67 +402,67 @@ msgstr ""
 "यह सारी कार्यशीलता एक साथ एक सरलीकृत और कुशल लेआउट में लाई गयी है,जो अनुकूलन योग्य है "
 "अलग किस्म की थीम्स के द्वारा|"
 
-#: tmp_strings.xml:180(listitem)
+#: tmp_strings.xml:231(listitem)
 msgid "Add, edit and delete notes."
 msgstr "जोड़ें, संपादित करें और नोट्स मिटाएँ |"
 
-#: tmp_strings.xml:181(listitem)
+#: tmp_strings.xml:232(listitem)
 msgid "Long-press on notes to add tags."
 msgstr "नोट्स पर टैग जोड़ने के लिए लम्बे समय तक दबाएँ|"
 
-#: tmp_strings.xml:182(listitem)
+#: tmp_strings.xml:233(listitem)
 msgid "Change font size and sort order."
 msgstr "फ़ॉन्ट आकार और सॉर्ट क्रम बदलें|"
 
-#: tmp_strings.xml:183(listitem)
+#: tmp_strings.xml:234(listitem)
 msgid "A clearly arranged layout with a variety of themes."
 msgstr "अलग  अलग किस्म की  थीम्स  के साथ एक स्पष्ट रूप से व्यवस्थित लेआउट|"
 
-#: tmp_strings.xml:184(listitem)
+#: tmp_strings.xml:235(listitem)
 msgid "Quickly search through notes."
 msgstr "जल्दी नोट्स के माध्यम से खोजें|"
 
-#: tmp_strings.xml:185(listitem)
+#: tmp_strings.xml:236(listitem)
 msgid "Send notes as MMS or SMS."
 msgstr "MMS या SMS के के रूप में नोट्स भेजें|"
 
-#: tmp_strings.xml:187(string)
+#: tmp_strings.xml:238(string)
 msgid "Available extensions for \"OI Notepad\":"
 msgstr "\\\"OI Notepad\\\" के लिए उपलब्ध एक्सटेंशन:"
 
-#: tmp_strings.xml:188(listitem)
+#: tmp_strings.xml:239(listitem)
 msgid "Record and attach voice memos to notes with \"OI Voice Notes\"."
 msgstr "\\\"OI Voice Notes\\\"के साथ नोट्स में रिकॉर्ड करके आवाज़ वाले मेमो जोड़ें |"
 
-#: tmp_strings.xml:189(listitem)
+#: tmp_strings.xml:240(listitem)
 msgid "With \"OI Convert CSV\" import/export notes from the SD card."
 msgstr "\\\"OI Convert CSV\\\"  के साथ एसडी कार्ड से नोट्स आयात / निर्यात|"
 
-#: tmp_strings.xml:191(listitem)
+#: tmp_strings.xml:242(listitem)
 msgid "Insert the date and time into notes with \"OI Insert Date\"."
 msgstr "\\\"OI Insert Date\\\" के साथ नोट्स में दिनांक और समय सम्मिलित करें|"
 
-#: tmp_strings.xml:192(listitem)
+#: tmp_strings.xml:243(listitem)
 msgid "Turn text upside down with \"Upside Down\"."
 msgstr "\\\"Upside Down\\\" के साथ पाठ को उल्टा मोड़ें|"
 
-#: tmp_strings.xml:194(string)
+#: tmp_strings.xml:245(string)
 msgid "Applications that work with \"OI Notepad\":"
 msgstr "अनुप्रयोग जो \\\"OI Notepad\\\" के साथ काम करते हैं:"
 
-#: tmp_strings.xml:195(listitem)
+#: tmp_strings.xml:246(listitem)
 msgid "Back up notes with \"My Backup Pro\"."
 msgstr "नोट्स को वापस लायें \\\"My Backup Pro\\\" के साथ|"
 
-#: tmp_strings.xml:196(listitem)
+#: tmp_strings.xml:247(listitem)
 msgid "Encrypt notes using \"OI Safe\"."
 msgstr "\\\"OI Safe\\\" का उपयोग करके  नोट्स एन्क्रिप्ट करें|"
 
-#: tmp_strings.xml:197(listitem)
+#: tmp_strings.xml:248(listitem)
 msgid "Manage notes on your SD Card with \"OI File Manager\"."
 msgstr "\\\"OI File Manager\\\" के साथ अपने एसडी कार्ड पर नोट्स प्रबंधित करें|"
 
-#: tmp_strings.xml:199(listitem)
+#: tmp_strings.xml:250(listitem)
 msgid ""
 "Share notes through \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", and "
 "many other applications."
@@ -406,70 +470,70 @@ msgstr ""
 "\\\"Facebook\\\", \\\"Gmail\\\", \\\"Google+\\\", \\\"Twitter\\\",  और कई "
 "अन्य अनुप्रयोगों के माध्यम से  नोट्स  शेयर करें|"
 
-#: tmp_strings.xml:202(listitem)
+#: tmp_strings.xml:253(listitem)
 msgid "Note, Notepad, Note book, Notes"
 msgstr "नोट, नोटपैड, नोट बुक, नोट्स"
 
 #. Description of application
-#: tmp_strings.xml:220(string)
+#: tmp_strings.xml:271(string)
 msgid ""
 "OI Safe safely protects all of your passwords and other private data using "
 "industry standard AES encryption."
 msgstr ""
 
-#: tmp_strings.xml:221(string)
+#: tmp_strings.xml:272(string)
 msgid ""
 "It also acts as an extension to OI Notepad to encrypt notes created in OI "
 "Notepad."
 msgstr ""
 
-#: tmp_strings.xml:235(listitem)
+#: tmp_strings.xml:286(listitem)
 msgid "Securely protect data using AES encryption."
 msgstr ""
 
-#: tmp_strings.xml:236(listitem)
+#: tmp_strings.xml:287(listitem)
 msgid "Freely move data entries between categories."
 msgstr ""
 
-#: tmp_strings.xml:237(listitem)
+#: tmp_strings.xml:288(listitem)
 msgid "Import/Export data entries and databases."
 msgstr ""
 
-#: tmp_strings.xml:238(listitem)
+#: tmp_strings.xml:289(listitem)
 msgid "Backup/Restore entries."
 msgstr ""
 
-#: tmp_strings.xml:239(listitem)
+#: tmp_strings.xml:290(listitem)
 msgid "Includes secure password generator."
 msgstr ""
 
-#: tmp_strings.xml:240(listitem)
+#: tmp_strings.xml:291(listitem)
 msgid "Automatic timeout to protect encrypted documents."
 msgstr ""
 
-#: tmp_strings.xml:241(listitem)
+#: tmp_strings.xml:292(listitem)
 msgid "Encrypt OI Notepad notes."
 msgstr ""
 
-#: tmp_strings.xml:242(listitem)
+#: tmp_strings.xml:293(listitem)
 msgid "Support for Obscura picture safe."
 msgstr ""
 
-#: tmp_strings.xml:243(listitem)
+#: tmp_strings.xml:294(listitem)
 msgid "MyBackup Pro."
 msgstr ""
 
-#: tmp_strings.xml:249(listitem)
+#: tmp_strings.xml:300(listitem)
 msgid "Encrypt notes created in \"OI Notepad\"."
 msgstr ""
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
-#: tmp_strings.xml:253(listitem)
+#: tmp_strings.xml:304(listitem)
 msgid "safe, encrpytion, password, protection"
 msgstr ""
 
 #. Description of application
-#: tmp_strings.xml:272(string)
+#: tmp_strings.xml:323(string)
 msgid ""
 "OI Shopping List is a powerful application which makes it easy to create and "
 "manage checklists."
@@ -477,7 +541,7 @@ msgstr ""
 "OI खरीददारी सूची एक शक्तिशाली अनुप्रयोग है जो जाँच सूची बनाने के लिए और उसका प्रबंधन "
 "करना आसान बनाता है|"
 
-#: tmp_strings.xml:273(string)
+#: tmp_strings.xml:324(string)
 msgid ""
 "OI Shopping List makes it easy to add items to a list, check the item off, "
 "and remove it from the list."
@@ -485,7 +549,7 @@ msgstr ""
 "OI खरीददारी सूची एक सूची के लिए आईटम जोड़ना,उस आईटम को बंद करना और उसे सूची से हटाना "
 "आसन बनाती है|"
 
-#: tmp_strings.xml:274(string)
+#: tmp_strings.xml:325(string)
 msgid ""
 "The application can track separate prices for each store that you use, and "
 "features a high level of customization."
@@ -493,7 +557,7 @@ msgstr ""
 "यह अनुप्रयोग प्रत्येक दुकान की कीमतों की जानकारी रख सकता है जिसका आप उपयोग करते हैं,और "
 "उच्च स्तरीय अनुकूलता दिखता है|"
 
-#: tmp_strings.xml:275(string)
+#: tmp_strings.xml:326(string)
 msgid ""
 "Font size, sort order, list columns, and list cleanup behavior are all "
 "settings controlled by the user."
@@ -501,7 +565,7 @@ msgstr ""
 "फ़ॉन्ट आकार, सॉर्ट क्रम, सूची स्तंभ, और सूची सफाई व्यवहार सभी सेटिंग्स उपयोगकर्ता द्वारा "
 "नियंत्रित की जाती हैं|"
 
-#: tmp_strings.xml:276(string)
+#: tmp_strings.xml:327(string)
 msgid ""
 "All of these features are brought together in a crisp layout that is "
 "customizable through a variety of themes."
@@ -509,62 +573,62 @@ msgstr ""
 "यह सारी सुविधाएँ एक साथ कुरकुरे लेआउट में लाई गयी हैं जो अनुकूलन योग्य है अलग किस्म की थीम्स "
 "के द्वारा|"
 
-#: tmp_strings.xml:290(listitem)
+#: tmp_strings.xml:341(listitem)
 msgid "Add, edit and delete lists."
 msgstr "जोड़ें, सूचियों को संपादित करें और मिटाएँ|"
 
-#: tmp_strings.xml:291(listitem)
+#: tmp_strings.xml:342(listitem)
 msgid "Create, delete, and check items quickly and easily."
 msgstr "बनाएँ, हटाएँ, और वस्तुओं की जाँच करें जल्दी और आसानी से|"
 
-#: tmp_strings.xml:292(listitem)
+#: tmp_strings.xml:343(listitem)
 msgid "Variety of themes."
 msgstr "थीम्स में विविधता|"
 
-#: tmp_strings.xml:293(listitem)
+#: tmp_strings.xml:344(listitem)
 msgid "Customizable font size and sort order."
 msgstr "अनुकूलन फ़ॉन्ट आकार और सॉर्ट क्रम|"
 
-#: tmp_strings.xml:294(listitem)
+#: tmp_strings.xml:345(listitem)
 msgid "Keep track of separate prices for each store."
 msgstr "प्रत्येक दुकान के लिए अलग कीमतों की जानकारी रखें|"
 
-#: tmp_strings.xml:295(listitem)
+#: tmp_strings.xml:346(listitem)
 msgid "Customizable list columns."
 msgstr "अनुकूलन सूची स्तंभों|"
 
-#: tmp_strings.xml:297(string)
+#: tmp_strings.xml:348(string)
 msgid "Available extensions for \"OI Shopping List\":"
 msgstr "\\\"OI Shopping List\\\" के लिए उपलब्ध एक्सटेंशन:"
 
-#: tmp_strings.xml:298(listitem)
+#: tmp_strings.xml:349(listitem)
 msgid "Add a recorded message to a note with \"OI Voice Notes\"."
 msgstr "\\\"OI Voice Notes\\\" के साथ नोट में रिकॉर्ड  किया गया संदेश जोड़ें|"
 
-#: tmp_strings.xml:299(listitem)
+#: tmp_strings.xml:350(listitem)
 msgid "Import/export shopping lists with \"OI Convert CSV\"."
 msgstr "\\\"OI Convert CSV\\\" के साथ खरीदारी सूचियों को निर्यात/आयात करें|"
 
-#: tmp_strings.xml:301(listitem)
+#: tmp_strings.xml:352(listitem)
 msgid "Enter/check items with \"Barcode OI Plugin\"."
 msgstr "\\\"Barcode OI Plugin\\\" के साथ वस्तुओं को दर्ज/जाँच करें|"
 
-#: tmp_strings.xml:303(string)
+#: tmp_strings.xml:354(string)
 msgid "Applications that work with \"OI Shopping List\":"
 msgstr "जो अनुप्रयोग \\\"OI Shopping List\\\" के साथ काम करते है:"
 
-#: tmp_strings.xml:305(listitem)
+#: tmp_strings.xml:356(listitem)
 msgid "Backup lists with \"My Backup Pro\"."
 msgstr "सूचियों  को वापस लायें \\\"My Backup Pro\\\" के साथ|"
 
-#: tmp_strings.xml:306(listitem)
+#: tmp_strings.xml:357(listitem)
 msgid "Import ingredients of recipes with \"Bites\"."
 msgstr "\\\"Bites\\\" के साथ व्यंजानो की सामग्री आयात करे|"
 
-#: tmp_strings.xml:309(listitem)
+#: tmp_strings.xml:360(listitem)
 msgid "Shopping, List, Shopping List, Checklist"
 msgstr "खरीदारी, सूची, खरीदारी सूची,जांचसूची"
 
-#: tmp_strings.xml:315(string)
+#: tmp_strings.xml:366(string)
 msgid "Extensions:"
 msgstr "एक्सटेंशन:"

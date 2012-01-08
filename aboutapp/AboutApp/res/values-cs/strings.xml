@@ -29,6 +29,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Matěj Konečný https://launchpad.net/~matejkon
+  OpenIntents devs https://launchpad.net/~openintents-devs
   slavino https://launchpad.net/~slavomir-hustaty</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
@@ -79,33 +80,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabština</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Čeština</item>
 		<item>Dánština</item>
 		<item>Němčina</item>
-		<item>Angličtina</item>
 		<item>Řečtina</item>
+		<item>Angličtina</item>
+		<item>English (United Kingdom)</item>
 		<item>Španělština</item>
 		<item>Perština</item>
 		<item>Finština</item>
 		<item>Faerština</item>
 		<item>Francouzština</item>
+		<item>Hindi</item>
 		<item>Chorvatština</item>
 		<item>Maďarština</item>
 		<item>Italština</item>
+		<item>Hebrew</item>
 		<item>Japonština</item>
 		<item>Korejština</item>
 		<item>Laoština</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Holandština</item>
 		<item>Okcitánština (po 1500)</item>
+		<item>Punjabi</item>
 		<item>Polština</item>
 		<item>Portugalština</item>
 		<item>Brazilská portugalština</item>
 		<item>Rumunština</item>
 		<item>Ruština</item>
 		<item>Sardinština</item>
+		<item>Sindhi</item>
 		<item>Slovenština</item>
+		<item>Slovenian</item>
 		<item>Švédština</item>
+		<item>Tagalog</item>
 		<item>Turečtina</item>
+		<item>Uyghur</item>
 		<item>Čínština (zjednodušená)</item>
 		<item>Čínština (klasická)</item>
 	</string-array>

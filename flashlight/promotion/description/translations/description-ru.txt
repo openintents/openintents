@@ -2,7 +2,7 @@
 OI Flashlight
 
 # Promo text:
-OpenIntents Flashlight поможет Вам найти дорогу в темноте. Пока запущено приложение - подсветка экрана остается включенной.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
 OI Flashlight это простое и эффективное приложение которое помогает найти дорогу в темноте. OI Flashlight включает подсветку, освещает окрестности Для устройств со вспышкой OI Flashlight можно использовать вспышку, как яркий факел, чтобы осветить комнату Цвет подсветки настраивается с помощью OI Color Picker 

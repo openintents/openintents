@@ -14,8 +14,8 @@ Launchpad Contributions:
   Tomasz \'Zen\' Napierala https://launchpad.net/~tzn
   Tomasz Zieliński https://launchpad.net/~tomek0517</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">Latarka OpenIntents pomaga ci znaleźć drogę w ciemnościach. Aplikacja ta włącza podświetlanie ekranu podczas działania.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

@@ -2,7 +2,7 @@
 مصباح يدوي OI
 
 # Promo text:
-OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
 OI  هو مصباح كهربائي تطبيق بسيطة وفعالة تساعدك على إيجاد طريقة في الظلام. بتأمين OI مصباح الضوء الخلفي العرض على، وضوح إضاءة المنطقة المحيطة بها. للأجهزة مع فلاش كاميرا، OI مصباح يدوي أيضا استخدام الفلاش كشعلة ساطعة لإضاءة الغرفة. لون الخلفية تماما للتخصيص مع OI منتقي الألوان. 

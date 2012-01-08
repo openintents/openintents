@@ -26,14 +26,11 @@ msgstr ""
 "  Kras4ooo https://launchpad.net/~kkrassi1984\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
-msgid ""
-"OpenIntents Flashlight helps you find your way in the dark. The display "
-"backlight is kept turned on while this application is running."
-msgstr ""
-"OpenIntents фенерче ще ви помага да намерите пътя в тъмнината. Дисплеят е "
-"включен, докато това приложение работи."
+#, fuzzy
+msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
+msgstr "Използвай светкавицата на камерата вместо осветяването на дисплея."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
@@ -94,3 +91,10 @@ msgstr ""
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
 msgstr "Натисни за да деактивираш светлина от камерата."
+
+
+
+
+
+
+

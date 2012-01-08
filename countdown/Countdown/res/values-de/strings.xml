@@ -8,8 +8,8 @@
 	<string name="about_translators">Launchpad Contributions:
   Peli https://launchpad.net/~peli0101</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI Countdown benachrichtigt Sie nach einer vorgegebenen Zeit.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

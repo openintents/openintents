@@ -79,33 +79,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>अरबी भाषा</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>चेकोस्लोवाकिया की भाषा</item>
 		<item>डेनिश भाषा</item>
 		<item>जर्मन भाषा</item>
-		<item>अंग्रेज़ी भाषा</item>
 		<item>यूनानी/ग्रीक भाषा</item>
+		<item>अंग्रेज़ी भाषा</item>
+		<item>English (United Kingdom)</item>
 		<item>स्पेनिश भाषा</item>
 		<item>फ़ारसी भाषा</item>
 		<item>फ़िन भाषा</item>
 		<item>फिरोज़ी भाषा</item>
 		<item>फ्रांसीसी भाषा</item>
+		<item>Hindi</item>
 		<item>क्रोएशियाई भाषा</item>
 		<item>हंगेरी भाषा</item>
 		<item>इतालवी भाषा</item>
+		<item>Hebrew</item>
 		<item>जापानी भाषा</item>
 		<item>कोरियाई भाषा</item>
 		<item>लाओथियाई भाषा</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>डच भाषा</item>
 		<item>ओसीटान ( पद 1500)</item>
+		<item>Punjabi</item>
 		<item>पोलिश भाषा</item>
 		<item>पुर्तगाली भाषा</item>
 		<item>ब्राज़ीली पुर्तगाली भाषा</item>
 		<item>रोमानियाई भाषा</item>
 		<item>रूसी भाषा</item>
 		<item>सार्दीनीअन भाषा</item>
+		<item>Sindhi</item>
 		<item>स्लोवाक भाषा</item>
+		<item>Slovenian</item>
 		<item>स्वीडिश भाषा</item>
+		<item>Tagalog</item>
 		<item>तुर्की</item>
+		<item>Uyghur</item>
 		<item>चीनी भाषा (सरलीकृत)</item>
 		<item>चीनी भाषा (पारंपरिक)</item>
 	</string-array>

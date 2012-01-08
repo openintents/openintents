@@ -13,8 +13,8 @@
   miwie https://launchpad.net/~mw-miwie
   tamalet https://launchpad.net/~tamalet</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI Countdown le notifica después de un determinado tiempo.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

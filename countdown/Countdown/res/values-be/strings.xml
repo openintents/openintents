@@ -9,8 +9,8 @@
   Alexander Geroimenko https://launchpad.net/~geroimenko
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI Countdown паведамляе вас праз пэўны прамежак часу.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

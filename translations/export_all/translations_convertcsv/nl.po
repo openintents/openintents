@@ -26,14 +26,10 @@ msgstr ""
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Sjoerd Hiemstra https://launchpad.net/~sjohie"
 
-#. Explanation what this application does.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid ""
-"This extension to OI Shopping list and OI Notepad lets you import and export "
-"lists and notes in the CSV file format."
+msgid "Import and export lists and notes with OI Convert CSV."
 msgstr ""
-"Deze extentie voor OI Boodschappenlijst en OI Notitieblok laat u lijsten en "
-"notities in het CSV bestandsformaat importeren en exporteren."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -331,9 +327,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "DUPLICEREN - sta duplicaties van gegevens toe."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-#, fuzzy
 msgid "KEEP - Don't overwrite existing records."
-msgstr "\"HOUDEN - Overschrijf geen bestaande gegevens.\""
+msgstr ""
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -349,12 +344,9 @@ msgstr ""
 "DUPLICEREN - Voeg een tweede kopie toe van een document als het al bestaat."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
-#, fuzzy
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
-"\"BEHOUDEN - Overschrijf geen bestaande gegevens, negeer degene in het CSV "
-"bestand.\""
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
@@ -368,3 +360,20 @@ msgid ""
 msgstr ""
 "Herstel reservekopie - VERWIJDER AL UW BESTAANDE GEGEVENS, importeer dan het "
 "CSV bestand."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

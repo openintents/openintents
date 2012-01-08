@@ -79,33 +79,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>ערבית</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>צ\'כית</item>
 		<item>דנית</item>
 		<item>גמרנית</item>
-		<item>אנגלית</item>
 		<item>יוונית</item>
+		<item>אנגלית</item>
+		<item>English (United Kingdom)</item>
 		<item>ספרדית</item>
 		<item>פרסית</item>
 		<item>פינית</item>
 		<item>פארואזית</item>
 		<item>צרפתית</item>
+		<item>Hindi</item>
 		<item>קרואטית</item>
 		<item>הונגרית</item>
 		<item>איטלקית</item>
+		<item>Hebrew</item>
 		<item>יפנית</item>
 		<item>קוריאנית</item>
 		<item>לאו</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>הולנדית</item>
 		<item>אוסיטן (אחרי 1500)</item>
+		<item>Punjabi</item>
 		<item>פולנית</item>
 		<item>פורטוגזית</item>
 		<item>פורטוגזית ברזילאית</item>
 		<item>רומנית</item>
 		<item>רוסית</item>
 		<item>סרדינית</item>
+		<item>Sindhi</item>
 		<item>סלובקית</item>
+		<item>Slovenian</item>
 		<item>שוודית</item>
+		<item>Tagalog</item>
 		<item>טורקית</item>
+		<item>Uyghur</item>
 		<item>סינית מפושטת</item>
 		<item>סינית (מסורתית)</item>
 	</string-array>

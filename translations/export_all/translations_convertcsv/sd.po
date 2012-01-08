@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: happynawani <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Sindhi <sd@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,16 +22,13 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  happynawani https://launchpad.net/~happynawani"
 
-#. Explanation what this application does.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid ""
-"This extension to OI Shopping list and OI Notepad lets you import and export "
-"lists and notes in the CSV file format."
+msgid "Import and export lists and notes with OI Convert CSV."
 msgstr ""
-"OI खरीदारी सूची अऊँ OI नोटपैड जो ईयो एक्सटेंशन तहान्खे सूचियाँ अऊँ नोट्स आयत अऊँ नियत CSV "
-"फ़ाइल स्वरूप में करण में मदद कंदों आ"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -322,9 +319,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "डुप्लीकेट - रिकॉर्ड खे डुप्लिकेट करण जी अनुमति दीन्दो आ"
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-#, fuzzy
 msgid "KEEP - Don't overwrite existing records."
-msgstr "\"राख्यो- मौजूदा रेकॉर्ड्स खे अधिलेखित न कयो |\""
+msgstr ""
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -340,12 +336,9 @@ msgstr ""
 "डुप्लीकेट - हिक्क रिकॉर्ड जी  खे कॉपी कंदों आ अगर ऊओ पहरों  खान ही मौजूद हून्दो आ |"
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
-#, fuzzy
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
-"\"KEEP -हिक्क मौजूदा रिकॉर्ड खे अधिलेखित न कयो , CSV फाईल में मौजूद रिकॉर्ड खे अनदेखा "
-"कयो |\""
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
@@ -355,3 +348,20 @@ msgstr "अधिलेखित - CSV में हिक्क मौजूद
 msgid ""
 "Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
 msgstr "बैकअप रेस्टोर कयो - पेंजे मौजूदा सादे रिकॉर्डन खे मिटायो, पो CSV फ़ाइल आयात कयो"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

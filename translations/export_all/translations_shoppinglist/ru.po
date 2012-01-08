@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Evgrafov Vladimir <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,20 +31,15 @@ msgstr ""
 "  ZipUltra https://launchpad.net/~zipultra\n"
 "  friedger https://launchpad.net/~friedger"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:27(string)
-msgid ""
-"OI Shopping list lets you keep track of your shopping items. You can also "
-"use it for other kinds of check lists, for example for ToDo lists or party "
-"guest lists."
+msgid "Keep track of your shopping items with OI Shopping List."
 msgstr ""
-"\"OI Shopping list\" предназначен для создания и хранения списков покупок. "
-"Вы так же можете использовать программу для других целей, например как "
-"список задач."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-msgid "OI Shopping list"
+#, fuzzy
+msgid "OI Shopping List"
 msgstr "OI Список покупок"
 
 #: tmp_strings.xml:35(string)
@@ -76,7 +71,8 @@ msgid "My shopping list"
 msgstr "Мой список покупок"
 
 #: tmp_strings.xml:42(string)
-msgid "i.e. wishlist, family list"
+#, fuzzy
+msgid "e.g. wishlist, family list"
 msgstr "пример: продукты, запчасти, стойматериалы и т.д."
 
 #. Automation action to clean up a list.
@@ -792,12 +788,14 @@ msgstr "Нет"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
-msgid "Per Sentence"
+#, fuzzy
+msgid "Per sentence"
 msgstr "Первое слово"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
-msgid "Per Word"
+#, fuzzy
+msgid "Per word"
 msgstr "Все слова"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
@@ -835,3 +833,12 @@ msgstr "Выбрать список"
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
 msgstr "Нет элементов на странице %d"
+
+
+
+
+
+
+
+
+

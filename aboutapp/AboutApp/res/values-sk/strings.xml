@@ -80,33 +80,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabčina</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Čeština</item>
 		<item>Dánčina</item>
 		<item>Nemčina</item>
-		<item>Angličtina</item>
 		<item>Gréčtina</item>
+		<item>Angličtina</item>
+		<item>English (United Kingdom)</item>
 		<item>Španielčina</item>
 		<item>Perzština</item>
 		<item>Fínčina</item>
 		<item>Faerčina</item>
 		<item>Francúzština</item>
+		<item>Hindi</item>
 		<item>Chorvátčina</item>
 		<item>Maďarčina</item>
 		<item>Taliančina</item>
+		<item>Hebrew</item>
 		<item>Japončina</item>
 		<item>Korejčina</item>
 		<item>Lao</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Holandština</item>
 		<item>Okcitánčina (po 1500)</item>
+		<item>Punjabi</item>
 		<item>Poľština</item>
 		<item>Portugalčina</item>
 		<item>Brazílska Portugalčina</item>
 		<item>Rumunčina</item>
 		<item>Ruština</item>
 		<item>Sardínčina</item>
+		<item>Sindhi</item>
 		<item>Slovenčina</item>
+		<item>Slovenian</item>
 		<item>Švédčina</item>
+		<item>Tagalog</item>
 		<item>Turecké</item>
+		<item>Uyghur</item>
 		<item>Čínština (zjednodušená)</item>
 		<item>Čínština (tradičná)</item>
 	</string-array>

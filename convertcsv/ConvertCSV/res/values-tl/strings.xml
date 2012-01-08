@@ -22,10 +22,11 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   abc https://launchpad.net/~abc-g</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">Itong ekstensyon sa OI Listahan ng Bilihin at OI Talaan ay magagamit mo sa pag-import at pag-export ng mga listahan at mga tala ng file na CSV ang ayos.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

@@ -27,8 +27,8 @@
   Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm
   dcb116 https://launchpad.net/~dcb116</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">Esta extensión para OI  Lista de Compras y OI Bloc de Notas le permite importar y exportar listas y notas en el formato CSV</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

@@ -25,9 +25,9 @@ msgstr ""
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  hawksters https://launchpad.net/~hawksters-ay"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:33(string)
-msgid "OI Notepad allows to create, edit, and delete notes."
+msgid "Create and share your notes with OI Notepad."
 msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.

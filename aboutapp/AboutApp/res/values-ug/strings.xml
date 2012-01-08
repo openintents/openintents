@@ -79,33 +79,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>ئەرەبچە</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>چېخچە</item>
 		<item>دانىشچە</item>
 		<item>گېرمانچە</item>
-		<item>ئىنگلىزچە</item>
 		<item>گرېكچە</item>
+		<item>ئىنگلىزچە</item>
+		<item>English (United Kingdom)</item>
 		<item>ئىسپانچە</item>
 		<item>پارسچە</item>
 		<item>فىنچە</item>
 		<item>فائېروچە</item>
 		<item>فىرانسۇزچە</item>
+		<item>Hindi</item>
 		<item>خورۋاتچە</item>
 		<item>ھۇنگىرچە</item>
 		<item>ئىتالىيانچە</item>
+		<item>Hebrew</item>
 		<item>ياپونچە</item>
 		<item>كورىيەچە</item>
 		<item>لائوسچە</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>گوللاندىيەچە</item>
 		<item>ئاۋكچە (post 1500)</item>
+		<item>Punjabi</item>
 		<item>پولەكچە</item>
 		<item>پورتۇگالچە</item>
 		<item>بىرازىليە پورتۇگالچە</item>
 		<item>رۇمىنىيەچە</item>
 		<item>رۇسچە</item>
 		<item>ساردىنىيەچە</item>
+		<item>Sindhi</item>
 		<item>سىلوۋاكچە</item>
+		<item>Slovenian</item>
 		<item>شۋېدچە</item>
+		<item>Tagalog</item>
 		<item>تۈركچە</item>
+		<item>Uyghur</item>
 		<item>خەنزۇچە (ئاددىي)</item>
 		<item>خەنزۇچە (مۇرەككەپ)</item>
 	</string-array>

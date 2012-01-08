@@ -6,10 +6,11 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Marek Dobransky https://launchpad.net/~marekdobr</string>
+  Marek Dobransky https://launchpad.net/~marekdobr
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents Baterka pomáha nájsť cestu v tme. Podsvietenie displeja  ostáva zapnuté kým beží táto aplikácia.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

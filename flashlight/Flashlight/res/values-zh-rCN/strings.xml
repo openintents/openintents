@@ -9,8 +9,8 @@
   OpenIntents devs https://launchpad.net/~openintents-devs
   zhangchun https://launchpad.net/~zhangchun</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents手电筒帮助你在黑暗中寻找光明。运行开启屏背光。</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

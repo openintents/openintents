@@ -28,15 +28,11 @@ msgstr ""
 "  Stelescu Raul https://launchpad.net/~stelescuraul\n"
 "  iulargsb https://launchpad.net/~iulargsb"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
-msgid ""
-"OpenIntents Flashlight helps you find your way in the dark. The display "
-"backlight is kept turned on while this application is running."
-msgstr ""
-"Lanterna OpenIntents vă ajută să găsiți calea în întuneric. Lumina din "
-"spatele ecranului este menținută aprinsă în timp ce rulează această "
-"aplicație."
+#, fuzzy
+msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
+msgstr "Folosește blițul în locul luminii din spatele ecranului."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
@@ -97,3 +93,11 @@ msgstr "Apăsați pentru a activa lumina camerei (Poate dura o secundă)."
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
 msgstr "Apăsați pentru a dezactiva lumina camerei."
+
+
+
+
+
+
+
+

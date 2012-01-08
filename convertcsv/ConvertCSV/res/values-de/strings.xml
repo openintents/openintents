@@ -26,8 +26,8 @@
   Vincent Schüßler https://launchpad.net/~tq-vincent
   appricoo https://launchpad.net/~appricoo</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">Diese Erweiterung für OI Einkaufsliste und OI Notizblock ermöglicht das Im- und Exportieren von Listen und Notizen im CSV Dateiformat.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

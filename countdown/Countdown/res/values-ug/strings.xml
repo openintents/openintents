@@ -6,10 +6,11 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   Sahran https://launchpad.net/~sahran</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OI تەتۈر ۋاقىت خاتىرىلىگۈچ مۇئەييەن ۋاقىتتا سىزنى ئەسكەرتىدۇ.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

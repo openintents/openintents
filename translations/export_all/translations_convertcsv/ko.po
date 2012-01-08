@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Jihyeok Seo <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,16 +22,13 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Jihyeok Seo https://launchpad.net/~limeburst"
+"  Jihyeok Seo https://launchpad.net/~limeburst\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs"
 
-#. Explanation what this application does.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-msgid ""
-"This extension to OI Shopping list and OI Notepad lets you import and export "
-"lists and notes in the CSV file format."
+msgid "Import and export lists and notes with OI Convert CSV."
 msgstr ""
-"이 확장은 OI 쇼핑 목록과 OI 메모장에서 목록과 메모를 CSV 형식으로 불러오거나 "
-"내보낼 수 있습니다."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -320,9 +317,8 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "사본 - 중복 항목 허용하기."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-#, fuzzy
 msgid "KEEP - Don't overwrite existing records."
-msgstr "\"보존 - 항목 덮어쓰지 않기.\""
+msgstr ""
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -337,10 +333,9 @@ msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr "사본 - 이미 항목이 존재할 경우에도 사본을 만듭니다."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
-#, fuzzy
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-msgstr "\"보존 - CSV 파일에 있는 내용을 무시하고 덮어쓰지 않습니다.\""
+msgstr ""
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
@@ -350,3 +345,18 @@ msgstr "덮어쓰기 - CSV 파일에 있는 내용을 지금 존재하는 항목
 msgid ""
 "Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
 msgstr "백업 복원 - 지금 있는 모든 항목을 삭제한 후, CSV 파일을 불러옵니다."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

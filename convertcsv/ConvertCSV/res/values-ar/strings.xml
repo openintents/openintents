@@ -22,10 +22,11 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
-  Kras4ooo https://launchpad.net/~kkrassi1984</string>
+  Kras4ooo https://launchpad.net/~kkrassi1984
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">"هذا التمديد إلى OI قائمة التسوق و OI المفكرة يتيح لك استيراد وتصديرقوائم وتلاحظ في تنسيق ملفCSV.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

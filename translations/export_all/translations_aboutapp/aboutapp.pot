@@ -104,118 +104,174 @@ msgid "Arabic"
 msgstr ""
 
 #: tmp_strings.xml:80(item) 
-msgid "Czech"
+msgid "Belarusian"
 msgstr ""
 
 #: tmp_strings.xml:81(item) 
-msgid "Danish"
+msgid "Bulgarian"
 msgstr ""
 
 #: tmp_strings.xml:82(item) 
-msgid "German"
+msgid "Catalan"
 msgstr ""
 
 #: tmp_strings.xml:83(item) 
-msgid "English"
+msgid "Czech"
 msgstr ""
 
 #: tmp_strings.xml:84(item) 
-msgid "Greek"
+msgid "Danish"
 msgstr ""
 
 #: tmp_strings.xml:85(item) 
-msgid "Spanish"
+msgid "German"
 msgstr ""
 
 #: tmp_strings.xml:86(item) 
-msgid "Persian"
+msgid "Greek"
 msgstr ""
 
 #: tmp_strings.xml:87(item) 
-msgid "Finnish"
+msgid "English"
 msgstr ""
 
 #: tmp_strings.xml:88(item) 
-msgid "Faroese"
+msgid "English (United Kingdom)"
 msgstr ""
 
 #: tmp_strings.xml:89(item) 
-msgid "French"
+msgid "Spanish"
 msgstr ""
 
 #: tmp_strings.xml:90(item) 
-msgid "Croatian"
+msgid "Persian"
 msgstr ""
 
 #: tmp_strings.xml:91(item) 
-msgid "Hungarian"
+msgid "Finnish"
 msgstr ""
 
 #: tmp_strings.xml:92(item) 
-msgid "Italian"
+msgid "Faroese"
 msgstr ""
 
 #: tmp_strings.xml:93(item) 
-msgid "Japanese"
+msgid "French"
 msgstr ""
 
 #: tmp_strings.xml:94(item) 
-msgid "Korean"
+msgid "Hindi"
 msgstr ""
 
 #: tmp_strings.xml:95(item) 
-msgid "Lao"
+msgid "Croatian"
 msgstr ""
 
 #: tmp_strings.xml:96(item) 
-msgid "Dutch"
+msgid "Hungarian"
 msgstr ""
 
 #: tmp_strings.xml:97(item) 
-msgid "Occitan (post 1500)"
+msgid "Italian"
 msgstr ""
 
 #: tmp_strings.xml:98(item) 
-msgid "Polish"
+msgid "Hebrew"
 msgstr ""
 
 #: tmp_strings.xml:99(item) 
-msgid "Portuguese"
+msgid "Japanese"
 msgstr ""
 
 #: tmp_strings.xml:100(item) 
-msgid "Brazilian Portuguese"
+msgid "Korean"
 msgstr ""
 
 #: tmp_strings.xml:101(item) 
-msgid "Romanian"
+msgid "Lao"
 msgstr ""
 
 #: tmp_strings.xml:102(item) 
-msgid "Russian"
+msgid "Latvian"
 msgstr ""
 
 #: tmp_strings.xml:103(item) 
-msgid "Sardinian"
+msgid "Macedonian"
 msgstr ""
 
 #: tmp_strings.xml:104(item) 
-msgid "Slovak"
+msgid "Norwegian Bokmal"
 msgstr ""
 
 #: tmp_strings.xml:105(item) 
-msgid "Swedish"
+msgid "Dutch"
 msgstr ""
 
 #: tmp_strings.xml:106(item) 
-msgid "Turkish"
+msgid "Occitan (post 1500)"
 msgstr ""
 
 #: tmp_strings.xml:107(item) 
-msgid "Chinese (Simplified)"
+msgid "Punjabi"
 msgstr ""
 
 #: tmp_strings.xml:108(item) 
+msgid "Polish"
+msgstr ""
+
+#: tmp_strings.xml:109(item) 
+msgid "Portuguese"
+msgstr ""
+
+#: tmp_strings.xml:110(item) 
+msgid "Brazilian Portuguese"
+msgstr ""
+
+#: tmp_strings.xml:111(item) 
+msgid "Romanian"
+msgstr ""
+
+#: tmp_strings.xml:112(item) 
+msgid "Russian"
+msgstr ""
+
+#: tmp_strings.xml:113(item) 
+msgid "Sardinian"
+msgstr ""
+
+#: tmp_strings.xml:114(item) 
+msgid "Sindhi"
+msgstr ""
+
+#: tmp_strings.xml:115(item) 
+msgid "Slovak"
+msgstr ""
+
+#: tmp_strings.xml:116(item) 
+msgid "Slovenian"
+msgstr ""
+
+#: tmp_strings.xml:117(item) 
+msgid "Swedish"
+msgstr ""
+
+#: tmp_strings.xml:118(item) 
+msgid "Tagalog"
+msgstr ""
+
+#: tmp_strings.xml:119(item) 
+msgid "Turkish"
+msgstr ""
+
+#: tmp_strings.xml:120(item) 
+msgid "Uyghur"
+msgstr ""
+
+#: tmp_strings.xml:121(item) 
+msgid "Chinese (Simplified)"
+msgstr ""
+
+#: tmp_strings.xml:122(item) 
 msgid "Chinese (Traditional)"
 msgstr ""
 

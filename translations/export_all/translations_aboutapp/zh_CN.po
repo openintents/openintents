@@ -117,117 +117,179 @@ msgid "Arabic"
 msgstr "阿拉伯语"
 
 #: tmp_strings.xml:80(item)
+#, fuzzy
+msgid "Belarusian"
+msgstr "波斯语"
+
+#: tmp_strings.xml:81(item)
+#, fuzzy
+msgid "Bulgarian"
+msgstr "匈牙利语"
+
+#: tmp_strings.xml:82(item)
+#, fuzzy
+msgid "Catalan"
+msgstr "意大利语"
+
+#: tmp_strings.xml:83(item)
 msgid "Czech"
 msgstr "捷克语"
 
-#: tmp_strings.xml:81(item)
+#: tmp_strings.xml:84(item)
 msgid "Danish"
 msgstr "丹麦语"
 
-#: tmp_strings.xml:82(item)
+#: tmp_strings.xml:85(item)
 msgid "German"
 msgstr "德语"
 
-#: tmp_strings.xml:83(item)
-msgid "English"
-msgstr "英语"
-
-#: tmp_strings.xml:84(item)
+#: tmp_strings.xml:86(item)
 msgid "Greek"
 msgstr "希腊语"
 
-#: tmp_strings.xml:85(item)
+#: tmp_strings.xml:87(item)
+msgid "English"
+msgstr "英语"
+
+#: tmp_strings.xml:88(item)
+msgid "English (United Kingdom)"
+msgstr ""
+
+#: tmp_strings.xml:89(item)
 msgid "Spanish"
 msgstr "西班牙语"
 
-#: tmp_strings.xml:86(item)
+#: tmp_strings.xml:90(item)
 msgid "Persian"
 msgstr "波斯语"
 
-#: tmp_strings.xml:87(item)
+#: tmp_strings.xml:91(item)
 msgid "Finnish"
 msgstr "芬兰语"
 
-#: tmp_strings.xml:88(item)
+#: tmp_strings.xml:92(item)
 msgid "Faroese"
 msgstr "法罗语"
 
-#: tmp_strings.xml:89(item)
+#: tmp_strings.xml:93(item)
 msgid "French"
 msgstr "法语"
 
-#: tmp_strings.xml:90(item)
+#: tmp_strings.xml:94(item)
+msgid "Hindi"
+msgstr ""
+
+#: tmp_strings.xml:95(item)
 msgid "Croatian"
 msgstr "克罗地亚语"
 
-#: tmp_strings.xml:91(item)
+#: tmp_strings.xml:96(item)
 msgid "Hungarian"
 msgstr "匈牙利语"
 
-#: tmp_strings.xml:92(item)
+#: tmp_strings.xml:97(item)
 msgid "Italian"
 msgstr "意大利语"
 
-#: tmp_strings.xml:93(item)
+#: tmp_strings.xml:98(item)
+msgid "Hebrew"
+msgstr ""
+
+#: tmp_strings.xml:99(item)
 msgid "Japanese"
 msgstr "日语"
 
-#: tmp_strings.xml:94(item)
+#: tmp_strings.xml:100(item)
 msgid "Korean"
 msgstr "韩语"
 
-#: tmp_strings.xml:95(item)
+#: tmp_strings.xml:101(item)
 msgid "Lao"
 msgstr "老挝语"
 
-#: tmp_strings.xml:96(item)
-msgid "Dutch"
-msgstr "荷兰语"
-
-#: tmp_strings.xml:97(item)
-msgid "Occitan (post 1500)"
-msgstr "奥克语"
-
-#: tmp_strings.xml:98(item)
-msgid "Polish"
-msgstr "波兰语"
-
-#: tmp_strings.xml:99(item)
-msgid "Portuguese"
-msgstr "葡萄牙语"
-
-#: tmp_strings.xml:100(item)
-msgid "Brazilian Portuguese"
-msgstr "巴西葡萄牙语"
-
-#: tmp_strings.xml:101(item)
-msgid "Romanian"
-msgstr "罗马尼亚语"
-
 #: tmp_strings.xml:102(item)
-msgid "Russian"
-msgstr "俄语"
+#, fuzzy
+msgid "Latvian"
+msgstr "克罗地亚语"
 
 #: tmp_strings.xml:103(item)
-msgid "Sardinian"
+#, fuzzy
+msgid "Macedonian"
 msgstr "撒丁语"
 
 #: tmp_strings.xml:104(item)
+msgid "Norwegian Bokmal"
+msgstr ""
+
+#: tmp_strings.xml:105(item)
+msgid "Dutch"
+msgstr "荷兰语"
+
+#: tmp_strings.xml:106(item)
+msgid "Occitan (post 1500)"
+msgstr "奥克语"
+
+#: tmp_strings.xml:107(item)
+msgid "Punjabi"
+msgstr ""
+
+#: tmp_strings.xml:108(item)
+msgid "Polish"
+msgstr "波兰语"
+
+#: tmp_strings.xml:109(item)
+msgid "Portuguese"
+msgstr "葡萄牙语"
+
+#: tmp_strings.xml:110(item)
+msgid "Brazilian Portuguese"
+msgstr "巴西葡萄牙语"
+
+#: tmp_strings.xml:111(item)
+msgid "Romanian"
+msgstr "罗马尼亚语"
+
+#: tmp_strings.xml:112(item)
+msgid "Russian"
+msgstr "俄语"
+
+#: tmp_strings.xml:113(item)
+msgid "Sardinian"
+msgstr "撒丁语"
+
+#: tmp_strings.xml:114(item)
+msgid "Sindhi"
+msgstr ""
+
+#: tmp_strings.xml:115(item)
 msgid "Slovak"
 msgstr "斯洛伐克语"
 
-#: tmp_strings.xml:105(item)
+#: tmp_strings.xml:116(item)
+#, fuzzy
+msgid "Slovenian"
+msgstr "斯洛伐克语"
+
+#: tmp_strings.xml:117(item)
 msgid "Swedish"
 msgstr "瑞典语"
 
-#: tmp_strings.xml:106(item)
+#: tmp_strings.xml:118(item)
+msgid "Tagalog"
+msgstr ""
+
+#: tmp_strings.xml:119(item)
 msgid "Turkish"
 msgstr "土耳其语"
 
-#: tmp_strings.xml:107(item)
+#: tmp_strings.xml:120(item)
+msgid "Uyghur"
+msgstr ""
+
+#: tmp_strings.xml:121(item)
 msgid "Chinese (Simplified)"
 msgstr "中文(简体)"
 
-#: tmp_strings.xml:108(item)
+#: tmp_strings.xml:122(item)
 msgid "Chinese (Traditional)"
 msgstr "中文 (繁体)"

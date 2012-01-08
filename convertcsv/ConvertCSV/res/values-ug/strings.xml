@@ -22,10 +22,11 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   Sahran https://launchpad.net/~sahran</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">OI سېتىۋېلىش تىزىمى ۋە OI  خاتىرە دەپتەر CSV ھۆججەت پىچىمىنى ئەكىرەلەيدۇ.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

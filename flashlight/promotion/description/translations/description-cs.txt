@@ -2,7 +2,7 @@
 OI Baterka
 
 # Promo text:
-OpenIntents Baterka pomáhá najít cestu ve tmě. Podsvícení displeje je zapnuté, dokud je zapnutá aplikace.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
 OI Baterka je jednoduchá a efektivní aplikace, s níž najdete svou cestu tmou. OI Baterka zapne podsvícení displeje, jasně osvětlujíc okolní prostředí. Na zařízeních s bleskem fotoaparátu umí OI Baterka použít i ten jako svítilnu pro rozjasnění místnosti. Barva podsvícení je nastavitelná pomocí OI Výběru barev. 

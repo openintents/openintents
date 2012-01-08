@@ -2,7 +2,7 @@
 OI Latarka
 
 # Promo text:
-Latarka OpenIntents pomaga ci znaleźć drogę w ciemnościach. Aplikacja ta włącza podświetlanie ekranu podczas działania.
+Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
 OI Flashlight to prosta i skuteczna aplikacja, która pomaga znaleźć drogę w ciemnościach. OI Flashlight blokuje podświetlanie, jasno oświetla okolicę. Dla urządzeń z lampą błyskową aparatu, Ol Flashlight może również korzystać z lampy błyskowej jako jasna latarka, aby rozjaśnić pokój. Kolor podświetlenia jest w pełni konfigurowalny z OI Color Picker. 

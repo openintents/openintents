@@ -22,10 +22,11 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
-  Marek Matejka https://launchpad.net/~marek-matejka</string>
+  Marek Matejka https://launchpad.net/~marek-matejka
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">Toto rozšírenie pre OI Nákupný Zoznam a OI Poznámkový blok Vám umožnuje exportovať a importovať zoznamy a poznámky v CSV formáte súborov.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution

@@ -14,9 +14,9 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#. Explanation what this application does.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string) 
-msgid "This extension to OI Shopping list and OI Notepad lets you import and export lists and notes in the CSV file format."
+msgid "Import and export lists and notes with OI Convert CSV."
 msgstr ""
 
 #. Name of an application. Please make sure that translations are consistent.

@@ -82,33 +82,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Árabe</item>
+		<item>Belarusian</item>
+		<item>Bulgarian</item>
+		<item>Catalan</item>
 		<item>Checo</item>
 		<item>Danés</item>
 		<item>Alemán</item>
-		<item>Inglés</item>
 		<item>Griego</item>
+		<item>Inglés</item>
+		<item>English (United Kingdom)</item>
 		<item>Español</item>
 		<item>Persa</item>
 		<item>Finlandés</item>
 		<item>Feroés</item>
 		<item>Francés</item>
+		<item>Hindi</item>
 		<item>Croata</item>
 		<item>Húngaro</item>
 		<item>Italiano</item>
+		<item>Hebrew</item>
 		<item>Japonés</item>
 		<item>Coreano</item>
 		<item>Laosiano</item>
+		<item>Latvian</item>
+		<item>Macedonian</item>
+		<item>Norwegian Bokmal</item>
 		<item>Neerlandés</item>
 		<item>Occitano (después de 1500)</item>
+		<item>Punjabi</item>
 		<item>Polaco</item>
 		<item>Portugués</item>
 		<item>Portugués brasileño</item>
 		<item>Rumano</item>
 		<item>Ruso</item>
 		<item>Sardo</item>
+		<item>Sindhi</item>
 		<item>Eslovaco</item>
+		<item>Slovenian</item>
 		<item>Sueco</item>
+		<item>Tagalog</item>
 		<item>Turco</item>
+		<item>Uyghur</item>
 		<item>Chino (Simplificado)</item>
 		<item>Chino (Tradicional)</item>
 	</string-array>

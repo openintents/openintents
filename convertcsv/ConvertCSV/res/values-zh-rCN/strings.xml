@@ -25,8 +25,8 @@
   OpenIntents devs https://launchpad.net/~openintents-devs
   zhangchun https://launchpad.net/~zhangchun</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">OI购物清单和OI记事本可以导入CSV格式的文件。</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution
