@@ -7,8 +7,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">translator-credits</string>
 	
-    <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

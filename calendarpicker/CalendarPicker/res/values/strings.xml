@@ -24,8 +24,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">translator-credits</string>
 	
-	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Calendar Picker is a utility to pick dates and events and visualize timeline-based information.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Pick dates and events with OI Calendar Picker.</string>
 	<string name="about_website_label">OI Calendar Picker at OpenIntents</string>
 	
 	<!-- ***************************

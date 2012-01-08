@@ -24,8 +24,8 @@
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">translator-credits</string>
 	
-	<!-- Explanation what this application does. -->
-	<string name="about_comments">This extension to OI Shopping list and OI Notepad lets you import and export lists and notes in the CSV file format.</string>
+	<!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution
