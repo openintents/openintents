@@ -44,7 +44,7 @@ function import_description2xml
 	echo "$tab</description>" >> "$xmlfile"
 
 	# Remove DOS line endings:
-	sed -i "s///" "$xmlfile"
+	sed -i "s/\r//" "$xmlfile"
 	
 	# Convert "#$ international" into "<international />"
 	sed -i "s/^#\$[ ]*international[ ]*$/$tab$tab<international \/>/g" "$xmlfile"
@@ -81,7 +81,7 @@ function appendinternationalnames
 	appnames=`echo -n "$appnames" | sed "s/^\, \(.*\)$/\1/"`
 	
 	# Remove DOS line endings:
-	appnames=`echo -n "$appnames" | sed "s///g"`
+	appnames=`echo -n "$appnames" | sed "s/\r//g"`
 	
 	echo "$appnames" >> "$outfile"
 }

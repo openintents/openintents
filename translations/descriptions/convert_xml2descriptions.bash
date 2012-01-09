@@ -43,11 +43,11 @@ function execute2
 
 # Read all apps that should be translated.
 # sed:
-# - Convert DOS line ending to UNIX line ending using: sed 's///'
+# - Convert DOS line ending to UNIX line ending using: sed 's/\r//'
 # - Remove comment lines starting with "#"
 # - Remove empty lines
 # apps=( `cat "../applications_description.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
-apps=( `cat "../applications_description.txt" | sed -e "s///" -e "s/#.*$//" -e "/^$/d"`)
+apps=( `cat "../applications_description.txt" | sed -e "s/\r//" -e "s/#.*$//" -e "/^$/d"`)
 
 
 
