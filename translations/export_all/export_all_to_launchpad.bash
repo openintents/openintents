@@ -7,6 +7,7 @@
 # Feb 10, 2011: Peli: Omit creating tar file, as modifications are pulled 
 #                     directly from the trunk from Launchpad.
 # Feb 12, 2011: Peli: Implement "STOP" command.
+# Jan 9, 2012: Peli: Handle DOS file ending
 
 # Suppress generation of .po file:
 nopo=
@@ -36,8 +37,12 @@ function execute
 #rm -r translations_*/*.pot
 
 # Read all apps that should be translated.
-# sed: Remove comment lines starting with "#"
-apps=( `cat "../applications.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
+# sed:
+# - Convert DOS line ending to UNIX line ending using: sed 's///'
+# - Remove comment lines starting with "#"
+# - Remove empty lines
+# apps=( `cat "../applications.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
+apps=( `cat "../applications.txt" | sed -e "s///" -e "s/#.*$//" -e "/^$/d"`)
 
 for (( i = 0 ; i < ${#apps[@]} ; i+=2 ))
 do

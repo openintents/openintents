@@ -3,6 +3,8 @@
 # Convert descriptions 2 xml
 # Feb 13, 2011, Peli
 
+# Jan 9, 2012: Peli: Handle DOS file ending.
+
 # execute1: Extract application name and promo text from strings.xml
 #           of the respective application.
 # $1..translation file name
@@ -40,8 +42,14 @@ function execute2
 
 
 # Read all apps that should be translated.
-# sed: Remove comment lines starting with "#"
-apps=( `cat "../applications_description.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
+# sed:
+# - Convert DOS line ending to UNIX line ending using: sed 's///'
+# - Remove comment lines starting with "#"
+# - Remove empty lines
+# apps=( `cat "../applications_description.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
+apps=( `cat "../applications_description.txt" | sed -e "s///" -e "s/#.*$//" -e "/^$/d"`)
+
+
 
 # execute STEP 1 #######################
 echo "############## STEP 1 ################"

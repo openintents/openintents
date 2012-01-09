@@ -5,6 +5,7 @@
 
 # Jan 29, 2011: Peli: read list of apps from central place.
 # Feb 12, 2011: Peli: Implement "STOP" command.
+# Jan 9, 2012: Peli: Handle DOS file ending.
 
 # $1..translation file name
 # $2..main path
@@ -18,12 +19,16 @@ function execute
 }
 
 
-echo "Extracing translation files..."
-tar -xvvzf launchpad-export.tar.gz
+# echo "Extracing translation files..."
+# tar -xvvzf launchpad-export.tar.gz
 
 # Read all apps that should be translated.
-# sed: Remove comment lines starting with "#"
-apps=( `cat "../applications.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
+# sed:
+# - Convert DOS line ending to UNIX line ending using: sed 's///'
+# - Remove comment lines starting with "#"
+# - Remove empty lines
+# apps=( `cat "../applications.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
+apps=( `cat "../applications.txt" | sed -e "s///" -e "s/#.*$//" -e "/^$/d"`)
 
 for (( i = 0 ; i < ${#apps[@]} ; i+=2 ))
 do
@@ -32,3 +37,4 @@ do
 	fi
 	execute ${apps[$i]} ${apps[$i+1]}
 done
+

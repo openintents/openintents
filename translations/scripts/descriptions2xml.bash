@@ -2,6 +2,7 @@
 #Wrapper for xml2po for android and launchpad: Import .xml's from .po's, or export/update .po's from string.xml's. Run from the /res directory. Provide a string with value "translator-credits" for Launchpad.
 #Copyright 2011 by OpenIntents. Licensed under GPLv3.
 
+# Jan 9, 2012: Peli: Handle DOS file ending.
 
 #Change the dirs where the files are located.
 descriptionfile="description.txt"
@@ -41,6 +42,9 @@ function import_description2xml
 	cat "$descriptionfile" >> "$xmlfile"
 	echo "" >> "$xmlfile"
 	echo "$tab</description>" >> "$xmlfile"
+
+	# Remove DOS line endings:
+	sed -i "s///" "$xmlfile"
 	
 	# Convert "#$ international" into "<international />"
 	sed -i "s/^#\$[ ]*international[ ]*$/$tab$tab<international \/>/g" "$xmlfile"
@@ -75,6 +79,9 @@ function appendinternationalnames
 	
 	# Remove last comma:
 	appnames=`echo -n "$appnames" | sed "s/^\, \(.*\)$/\1/"`
+	
+	# Remove DOS line endings:
+	appnames=`echo -n "$appnames" | sed "s///g"`
 	
 	echo "$appnames" >> "$outfile"
 }
