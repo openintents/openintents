@@ -48,6 +48,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.ContentObserver;
@@ -72,6 +73,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 /**
  * A generic activity for editing a note in a database.  This can be used
@@ -1039,7 +1041,14 @@ public class CountdownEditorActivity extends Activity {
 					// start Test
 					Intent i = new Intent(cleanIntent);
 					AutomationUtils.clearInternalExtras(i);
-					startActivity(i);
+					ActivityInfo info = i.resolveActivityInfo(getPackageManager(), 0);
+					String permission = info.permission;
+					if(permission == null || checkCallingPermission(permission) ==
+							PackageManager.PERMISSION_GRANTED){
+						startActivity(i);
+					} else{
+						Toast.makeText(this, R.string.no_permission, Toast.LENGTH_LONG).show();
+					}
 				}
 			} catch (ActivityNotFoundException e) {
 				// TODO

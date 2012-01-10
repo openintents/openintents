@@ -1,5 +1,5 @@
- ****************************************************************************
- * Copyright (C) 2008-2011 OpenIntents.org                                  *
+﻿ ****************************************************************************
+ * Copyright (C) 2008-2012 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -25,7 +25,7 @@ To obtain the current release, visit
 ---------------------------------------------------------
 release: 1.2
 date: ?
-
+- Don't crash on denied permissions (issue 299, GCI task by Matěj Konečný)
 
 ---------------------------------------------------------
 release: 1.1.1
