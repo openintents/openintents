@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Tomasz Zieliński <Unknown>\n"
+"Last-Translator: zielmicha <michal@zielinscy.org.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,8 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Karolina Kowal https://launchpad.net/~gwiazdeczka11\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  Tomasz Zieliński https://launchpad.net/~tomek0517"
+"  Tomasz Zieliński https://launchpad.net/~tomek0517\n"
+"  zielmicha https://launchpad.net/~michal-zielinscy"
 
 #. Description of application
 #: tmp_strings.xml:12(string)
@@ -181,56 +182,62 @@ msgid ""
 "OI Countdown is a helpful timer to increase your productivity and plan your "
 "day."
 msgstr ""
+"OI Odliczanie to przydatny czasomierz, który zwiększa twoją efektowność i "
+"pozwala lepiej zaplanować dzień."
 
 #: tmp_strings.xml:67(string)
 msgid ""
 "It allows you to set a variety of different actions to notify you at the end "
 "of a timer."
 msgstr ""
+"Aplikacja pozwala na ustawienie różnych akcji, które zostaną wykonane aby "
+"powiadomić cię o zakończeniu odliczania."
 
 #: tmp_strings.xml:68(string)
 msgid ""
 "Fully customize all your timers, with no limit on how many you can have "
 "running or saved."
-msgstr ""
+msgstr "Możesz utworzyć tyle alarmów, ile tylko zechcesz."
 
 #: tmp_strings.xml:85(listitem)
 msgid "Set a countdown by choosing a duration or a date."
-msgstr ""
+msgstr "Ustaw odliczanie poprzez wybranie okresu lub daty."
 
 #: tmp_strings.xml:86(listitem)
 msgid "Be notified by vibration or any sound of your choice."
 msgstr ""
+"W zależności od twojego wyboru zostaniesz powiadomiony poprzez wibrację lub "
+"dowolny dzwięk."
 
 #: tmp_strings.xml:87(listitem)
 msgid "Have an unlimited number of timers running at the same time."
-msgstr ""
+msgstr "Możesz uruchomić dowolną liczbę alarmów."
 
 #: tmp_strings.xml:88(listitem)
 msgid "Save your countdowns and give them names to reuse at later times."
 msgstr ""
+"Możesz ponownie wykorzystać odliczania zapisując je i nadając im nazwy."
 
 #: tmp_strings.xml:89(listitem)
 msgid "Modify countdowns, even while they are still running"
-msgstr ""
+msgstr "Możesz zmieniać odliczania nawet gdy są uruchomione."
 
 #: tmp_strings.xml:91(string)
-#, fuzzy
 msgid "Available extensions for \"OI Countdown\":"
-msgstr "Dostępne rozszerzenia dla \"OI Notepad\":"
+msgstr "Dostępne rozszerzenia dla \"OI Odliczanie\":"
 
 #: tmp_strings.xml:92(listitem)
 msgid "Launch applications through Android shortcuts"
-msgstr ""
+msgstr "Uruchom aplikację przez skrót"
 
 #: tmp_strings.xml:93(listitem)
 msgid "Use OI About to show license information"
-msgstr ""
+msgstr "Użyj OI About aby pokazać informacje licencyjne"
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:97(listitem)
 msgid "countdown, timer, alert"
-msgstr ""
+msgstr "odliczanie, czasomierz, alarm"
 
 #. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
 #: tmp_strings.xml:99(listitem) tmp_strings.xml:197(listitem)

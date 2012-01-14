@@ -168,4 +168,7 @@
         <item>5 분</item>
         <item>10 분</item>
     </string-array>
+    
+    
+    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
 </resources>

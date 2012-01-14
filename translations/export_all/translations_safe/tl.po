@@ -29,11 +29,8 @@ msgstr ""
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-#, fuzzy
 msgid "Store your private data with OI Safe."
 msgstr ""
-"Payagan ang ibang mga applikasyon na mag-secure ng iyong mga datos sa OI "
-"Kaha."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:34(string)
@@ -863,8 +860,3 @@ msgstr "30 araw"
 #: tmp_strings.xml:275(item)
 msgid "60 days"
 msgstr "60 araw"
-
-
-
-
-

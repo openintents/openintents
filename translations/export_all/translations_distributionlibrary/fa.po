@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: oren <Unknown>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +27,8 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Ben Jordan https://launchpad.net/~ben-jordan86\n"
-"  OpenIntents devs https://launchpad.net/~openintents-devs"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
+"  oren https://launchpad.net/~ahujaaditya92"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
 #. 		Translation should be short, since this is a title.
@@ -99,54 +100,54 @@ msgstr "دانلود کاربرد نه در دسترس است."
 #. Name of the application "OI Update". Translations of the application name should be consistent.
 #: tmp_strings.xml:53(string)
 msgid "OI Update"
-msgstr ""
+msgstr "OI بروز رسانی OI بروز رسانی"
 
 #. Menu command to open the "about" or "info" dialog.
 #: tmp_strings.xml:57(string)
 msgid "About"
-msgstr ""
+msgstr "در مورد"
 
 #. %s is the version number (e.g. "1.2.1")
 #: tmp_strings.xml:59(string)
 msgid ""
 "No compatible extension available to display full info (contact, credits, "
 "license)."
-msgstr ""
+msgstr "هیچ فرمت سازگار در دسترس برای نمایش کامل اطلاعات (تماس، اعتبار، مجوز)."
 
 #. Button text: Get the application "OI About". Translations of the application name should be consistent.
 #: tmp_strings.xml:63(string)
 msgid "Get OI About"
-msgstr ""
+msgstr "هر چه زودتر OI در مورد"
 
 #. Name of the application "OI About". Translations of the application name should be consistent.
 #: tmp_strings.xml:66(string)
 msgid "OI About"
-msgstr ""
+msgstr "OI درباره"
 
 #. Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.
 #: tmp_strings.xml:69(string)
 msgid "Barcode OI Plugin"
-msgstr ""
+msgstr "بارکد پلاگین OI"
 
 #. Dialog message.
 #: tmp_strings.xml:71(string)
 msgid "No compatible barcode scanner is available."
-msgstr ""
+msgstr "هیچ اسکنر بارکد سازگار در دسترس است."
 
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:74(string)
 msgid "OI File Manager"
-msgstr ""
+msgstr "OI مدیر فایل"
 
 #. Dialog message.
 #: tmp_strings.xml:76(string)
 msgid "No compatible file manager is available."
-msgstr ""
+msgstr "هیچ مدیر فایل سازگار در دسترس است."
 
 #. Name of the application "OI Safe". Translations of the application name should be consistent.
 #: tmp_strings.xml:80(string)
 msgid "OI Safe"
-msgstr ""
+msgstr "OI امن"
 
 #. Dialog message.
 #: tmp_strings.xml:82(string)
@@ -183,7 +184,7 @@ msgstr ""
 #. Dialog title: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:94(string)
 msgid "Download %s"
-msgstr ""
+msgstr "دانلود s%"
 
 #. %s is an application name (e.g. "OI About can be used with the following applications:")
 #: tmp_strings.xml:97(string)
@@ -193,7 +194,7 @@ msgstr ""
 #. %s is an application name (e.g. "Launch OI Notepad")
 #: tmp_strings.xml:99(string)
 msgid "Launch %s"
-msgstr ""
+msgstr "پرت‌ كردن‌ s%"
 
 #. %1$s is the current application name. %2$s is another application name, and %3$s is the other application's version name
 #.     (e.g. "OI About requires OI Notepad 1.2.0 or higher.")

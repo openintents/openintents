@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Dariel Kremov <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,6 +23,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Boyan Penchev https://launchpad.net/~boyan-penchev\n"
+"  Dariel Kremov https://launchpad.net/~dkremov\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Stefani Soyanova https://launchpad.net/~stefi-stoyanova95"
 
@@ -116,19 +117,16 @@ msgid "Arabic"
 msgstr "Арабски"
 
 #: tmp_strings.xml:80(item)
-#, fuzzy
 msgid "Belarusian"
-msgstr "Персийски"
+msgstr "Беларуски"
 
 #: tmp_strings.xml:81(item)
-#, fuzzy
 msgid "Bulgarian"
-msgstr "Унгарски"
+msgstr "Български"
 
 #: tmp_strings.xml:82(item)
-#, fuzzy
 msgid "Catalan"
-msgstr "Италиански"
+msgstr "Каталонски"
 
 #: tmp_strings.xml:83(item)
 msgid "Czech"
@@ -152,7 +150,7 @@ msgstr "Английски"
 
 #: tmp_strings.xml:88(item)
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "Английски (Обединено Кралство)"
 
 #: tmp_strings.xml:89(item)
 msgid "Spanish"
@@ -176,7 +174,7 @@ msgstr "Френски"
 
 #: tmp_strings.xml:94(item)
 msgid "Hindi"
-msgstr ""
+msgstr "Хинди"
 
 #: tmp_strings.xml:95(item)
 msgid "Croatian"
@@ -192,7 +190,7 @@ msgstr "Италиански"
 
 #: tmp_strings.xml:98(item)
 msgid "Hebrew"
-msgstr ""
+msgstr "Иврит"
 
 #: tmp_strings.xml:99(item)
 msgid "Japanese"
@@ -207,18 +205,16 @@ msgid "Lao"
 msgstr "Лаоски"
 
 #: tmp_strings.xml:102(item)
-#, fuzzy
 msgid "Latvian"
-msgstr "Хърватски"
+msgstr "Латвийски"
 
 #: tmp_strings.xml:103(item)
-#, fuzzy
 msgid "Macedonian"
-msgstr "Сардински"
+msgstr "Македонски"
 
 #: tmp_strings.xml:104(item)
 msgid "Norwegian Bokmal"
-msgstr ""
+msgstr "Норвежки Букмол"
 
 #: tmp_strings.xml:105(item)
 msgid "Dutch"
@@ -230,7 +226,7 @@ msgstr "Окситански (след 1500)"
 
 #: tmp_strings.xml:107(item)
 msgid "Punjabi"
-msgstr ""
+msgstr "Пенджабски"
 
 #: tmp_strings.xml:108(item)
 msgid "Polish"
@@ -258,16 +254,15 @@ msgstr "Сардински"
 
 #: tmp_strings.xml:114(item)
 msgid "Sindhi"
-msgstr ""
+msgstr "Синдхи"
 
 #: tmp_strings.xml:115(item)
 msgid "Slovak"
 msgstr "Словашки"
 
 #: tmp_strings.xml:116(item)
-#, fuzzy
 msgid "Slovenian"
-msgstr "Словашки"
+msgstr "Словенски"
 
 #: tmp_strings.xml:117(item)
 msgid "Swedish"
@@ -275,7 +270,7 @@ msgstr "Шведски"
 
 #: tmp_strings.xml:118(item)
 msgid "Tagalog"
-msgstr ""
+msgstr "Тагалог"
 
 #: tmp_strings.xml:119(item)
 msgid "Turkish"
@@ -283,7 +278,7 @@ msgstr "Турски"
 
 #: tmp_strings.xml:120(item)
 msgid "Uyghur"
-msgstr ""
+msgstr "Уйгурски"
 
 #: tmp_strings.xml:121(item)
 msgid "Chinese (Simplified)"

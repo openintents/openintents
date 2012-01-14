@@ -22,11 +22,12 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
+  Marek Dobransky https://launchpad.net/~marekdobr
   Matěj Konečný https://launchpad.net/~matejkon
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
+	<string name="about_comments">Import a export seznamů a poznámek s OI Převést CSV.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -135,26 +136,26 @@
     
     <string-array name="import_policy">
         <item>DUPLIKOVAT - Povolit duplikáty záznamů.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>PONECHAT - Nepřepisovat existující záznamy.</item>
         <item>Přepsat - Přepsat existující záznamy.</item>
         <item>Obnovit - SMAZAT VŠE, potom importovat.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>DUPLIKOVAT - Přidat druhou kopii záznamu když záznam již existuje.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>PONECHAT - Nepřepisovat existující záznamy, ignorovat ten ve CSV souboru.</item>
         <item>Přepsat - Záznam v CSV souboru PŘEPÍŠE existující záznam.</item>
         <item>Obnovit ze zálohy - SMAŽE VŠECHNY VAŠE EXISTUJÍCÍ ZÁZNAMY, potom importuje CSV soubor.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>DUPLIKOVAT - Povolit duplikáty záznamů.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>PONECHAT - Nepřepisovat existující záznamy.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>DUPLIKOVAT - Přidat druhou kopii záznamu když záznam již existuje.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>PONECHAT - Nepřepisovat existující záznamy, ignorovat ten ve CSV souboru.</item>
     </string-array>
     
 </resources>

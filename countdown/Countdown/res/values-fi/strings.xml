@@ -16,11 +16,11 @@
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
-    <string name="app_name">OI Countdown</string>
+    <string name="app_name">OI Lähtölaskenta</string>
     
-    <string name="start">Start</string>
-    <string name="stop">Stop</string>
-    <string name="modify">Modify</string>
+    <string name="start">Alkaa</string>
+    <string name="stop">Pysäkki</string>
+    <string name="modify">Muokata</string>
     <string name="cont">Continue</string>
     
 	<string name="no_durations">Use menu to add new countdown.</string>
@@ -55,7 +55,7 @@
     <string name="title_pick">Pick countdown</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
-    <string name="title_setcountdown_action">OI Countdown</string>
+    <string name="title_setcountdown_action">OI Lähtölaskenta</string>
     
     <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
 	<string name="error_title">Error</string>
@@ -167,4 +167,7 @@
         <item>5 minutes</item>
         <item>10 minutes</item>
     </string-array>
+    
+    
+    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
 </resources>

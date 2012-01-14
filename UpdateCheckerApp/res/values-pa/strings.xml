@@ -7,6 +7,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Angad Singh  https://launchpad.net/~angad21-02-1996
+  Atharva Lath https://launchpad.net/~atharvalath96
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- ***************************
@@ -94,7 +95,7 @@
 	
 	<!-- EULA -->
 	<string name="eula_title">OI ਅਦਿਅਤਨ EULA</string>
-<string name="eula_description">ਕਾਪੀਰਾਇਟ ੨ , ੦੦੮ OpenIntents.org\n ਅਪਾਚੇ ਲਾਇਸੇਂਸ ,  ਸੰਸਕਰਣ 2.0  ਦੇ ਅਨੁਸਾਰ ਲਾਇਸੇਂਸ  (\" ਲਾਇਸੇਂਸ \");  ਤੁਸੀ ਲਾਇਸੇਂਸ  ਦੇ ਨਾਲ ਅਨੁਪਾਲਨ ਵਿੱਚ ਛੱਡਕੇ ਇਸ ਫਾਇਲ ਦਾ ਵਰਤੋ ਨਹੀਂ ਤੁਸੀ  \n http ਉੱਤੇ ਲਾਇਸੇਂਸ ਦੀ ਇੱਕ ਨਕਲ ਪ੍ਰਾਪਤ ਕਰ ਸੱਕਦੇ ਹੋ ਹੋ ਸਕਦਾ ਹੈ  www.apache.org/ licenses / LICENSE -2.0: //\n ਜਦੋਂ ਤੱਕ ਲਾਗੂ ਕਨੂੰਨ ਦੁਆਰਾ ਲੋੜ ਜਾਂ ਲਿਖਤੀ ਰੂਪ ਵਿੱਚ ਸਹਿਮਤ ਹੋਏ ,  ਲਾਇਸੇਂਸ  ਦੇ ਤਹਿਤ ਵੰਡਵਾਂ ਸਾਫਟਵੇਯਰ ਇੱਕ ਵਰਗਾ ਹੈ ਆਧਾਰ ਉੱਤੇ ਵੰਡਵਾਂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ,  ਕਿਸੇ ਵੀ ਪ੍ਰਕਾਰ ਦੀਆਂ ਵਾਰੰਟੀਆਂ ਜਾਂ ਸ਼ਰਤਾਂ  ਦੇ  ਦੇ ਬਿਨਾਂ , ਜਾਂ ਤਾਂ ਵਿਅਕਤ ਜਾਂ ਰਖਿਆ ਹੋਇਆ .  ਵਿਸ਼ੇਸ਼ ਭਾਸ਼ਾ ਲਈ ਲਾਇਸੇਂਸ  ਦੇ ਅਨੁਸਾਰ  \n\n ਅਨੁਮਤੀਯਾਂ ਅਤੇ ਸੀਮਾਵਾਂ ਦੀ ਗਵਰਨਿੰਗ ਲਾਇਸੇਂਸ ਵੇਖੋ</string>
+<string name="eula_description">ਕਾਪੀਰਾਇਟ ੨ ੦੦੮ OpenIntents.org\n ਅਪਾਚੇ ਲਾਇਸੇਂਸ ,  ਸੰਸਕਰਣ 2.0  ਦੇ ਅਨੁਸਾਰ ਲਾਇਸੇਂਸ  (\" ਲਾਇਸੇਂਸ \");  ਤੁਸੀ ਲਾਇਸੇਂਸ  ਦੇ ਨਾਲ ਅਨੁਪਾਲਨ ਵਿੱਚ ਛੱਡਕੇ ਇਸ ਫਾਇਲ ਦਾ ਵਰਤੋ ਨਹੀਂ ਤੁਸੀ  \n http ਉੱਤੇ ਲਾਇਸੇਂਸ ਦੀ ਇੱਕ ਨਕਲ ਪ੍ਰਾਪਤ ਕਰ ਸੱਕਦੇ ਹੋ ਹੋ ਸਕਦਾ ਹੈ  www.apache.org/licenses/LICENSE-2.0\n ਜਦੋਂ ਤੱਕ ਲਾਗੂ ਕਨੂੰਨ ਦੁਆਰਾ ਲੋੜ ਜਾਂ ਲਿਖਤੀ ਰੂਪ ਵਿੱਚ ਸਹਿਮਤ ਹੋਏ ,  ਲਾਇਸੇਂਸ  ਦੇ ਤਹਿਤ ਵੰਡਵਾਂ ਸਾਫਟਵੇਯਰ ਇੱਕ ਵਰਗਾ ਹੈ ਆਧਾਰ ਉੱਤੇ ਵੰਡਵਾਂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ,  ਕਿਸੇ ਵੀ ਪ੍ਰਕਾਰ ਦੀਆਂ ਵਾਰੰਟੀਆਂ ਜਾਂ ਸ਼ਰਤਾਂ  ਦੇ  ਦੇ ਬਿਨਾਂ , ਜਾਂ ਤਾਂ ਵਿਅਕਤ ਜਾਂ ਰਖਿਆ ਹੋਇਆ .  ਵਿਸ਼ੇਸ਼ ਭਾਸ਼ਾ ਲਈ ਲਾਇਸੇਂਸ  ਦੇ ਅਨੁਸਾਰ  \n\n ਅਨੁਮਤੀਯਾਂ ਅਤੇ ਸੀਮਾਵਾਂ ਦੀ ਗਵਰਨਿੰਗ ਲਾਇਸੇਂਸ ਵੇਖੋ</string>
 	<string name="eula_accept">ਮਨਜ਼ੂਰ</string>
 	<string name="eula_refuse">ਰੱਦ ਕਰੋ</string>
 	

@@ -10,7 +10,7 @@
   Sahran https://launchpad.net/~sahran</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
+	<string name="about_comments">OI تەتۈر ۋاقىت خاتىرىلىگۈچتە كۆپ تەتۈر ۋاقىت خاتىرىلىگۈچنى تەڭشەيدۇ.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -167,4 +167,7 @@
         <item>5 مىنۇت</item>
         <item>10 مىنۇت</item>
     </string-array>
+    
+    
+    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
 </resources>

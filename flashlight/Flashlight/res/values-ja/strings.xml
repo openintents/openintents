@@ -12,7 +12,7 @@
   thebowseat https://launchpad.net/~takeshimochida</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
+	<string name="about_comments">OI フラッシュライト でカメラフラッシュかバックライトを常に点灯させることができます。</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

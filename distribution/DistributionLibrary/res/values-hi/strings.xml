@@ -8,8 +8,10 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Atharva Lath https://launchpad.net/~atharvalath96
   OpenIntents devs https://launchpad.net/~openintents-devs
-  happynawani https://launchpad.net/~happynawani</string>
+  happynawani https://launchpad.net/~happynawani
+  vishal panjwani https://launchpad.net/~vishal-panjwani15</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -25,7 +27,7 @@
 	<string name="oi_distribution_eula_message">%s के लिए निम्नलिखित एंड यूज़र लायसेंस एग्रीमेंट (EULA) पढ़ें और स्वीकार करें|</string>
 	
 	<!-- Button: Accept terms of EULA. -->
-	<string name="oi_distribution_eula_accept">स्वीकार करें</string>
+	<string name="oi_distribution_eula_accept">स्वीकारें</string>
 	
 	<!-- Button: Refuse terms of EULA. -->
 	<string name="oi_distribution_eula_refuse">रद्द करें</string>
@@ -68,9 +70,9 @@
     <string name="oi_distribution_aboutapp">OI के बारें में</string>
     
     <!-- Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_barcodescanner">Barcode OI Plugin</string>
+    <string name="oi_distribution_barcodescanner">बारकोड प्लगइन</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_barcodescanner_not_available">No compatible barcode scanner is available.</string>
+    <string name="oi_distribution_barcodescanner_not_available">कोई संगत बारकोड स्केन्नर उपलब्ध नहीं है</string>
     
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_filemanager">OI फ़ाइल प्रबंधक</string>

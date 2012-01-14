@@ -29,6 +29,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Boyan Penchev https://launchpad.net/~boyan-penchev
+  Dariel Kremov https://launchpad.net/~dkremov
   OpenIntents devs https://launchpad.net/~openintents-devs
   Stefani Soyanova https://launchpad.net/~stefi-stoyanova95</string>
 	
@@ -80,47 +81,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Арабски</item>
-		<item>Belarusian</item>
-		<item>Bulgarian</item>
-		<item>Catalan</item>
+		<item>Беларуски</item>
+		<item>Български</item>
+		<item>Каталонски</item>
 		<item>Чешки</item>
 		<item>Датски</item>
 		<item>Немски</item>
 		<item>Гръцки</item>
 		<item>Английски</item>
-		<item>English (United Kingdom)</item>
+		<item>Английски (Обединено Кралство)</item>
 		<item>Испански</item>
 		<item>Персийски</item>
 		<item>Фински</item>
 		<item>Фарьорски</item>
 		<item>Френски</item>
-		<item>Hindi</item>
+		<item>Хинди</item>
 		<item>Хърватски</item>
 		<item>Унгарски</item>
 		<item>Италиански</item>
-		<item>Hebrew</item>
+		<item>Иврит</item>
 		<item>Японски</item>
 		<item>Корейски</item>
 		<item>Лаоски</item>
-		<item>Latvian</item>
-		<item>Macedonian</item>
-		<item>Norwegian Bokmal</item>
+		<item>Латвийски</item>
+		<item>Македонски</item>
+		<item>Норвежки Букмол</item>
 		<item>Холандси</item>
 		<item>Окситански (след 1500)</item>
-		<item>Punjabi</item>
+		<item>Пенджабски</item>
 		<item>Полски</item>
 		<item>Португалски</item>
 		<item>Бразилски португалски</item>
 		<item>Румънски</item>
 		<item>Руски</item>
 		<item>Сардински</item>
-		<item>Sindhi</item>
+		<item>Синдхи</item>
 		<item>Словашки</item>
-		<item>Slovenian</item>
+		<item>Словенски</item>
 		<item>Шведски</item>
-		<item>Tagalog</item>
+		<item>Тагалог</item>
 		<item>Турски</item>
-		<item>Uyghur</item>
+		<item>Уйгурски</item>
 		<item>Китайски (опростен)</item>
 		<item>Китайски (традиционен)</item>
 	</string-array>

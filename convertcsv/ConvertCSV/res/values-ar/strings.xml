@@ -23,10 +23,11 @@
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
   Kras4ooo https://launchpad.net/~kkrassi1984
-  OpenIntents devs https://launchpad.net/~openintents-devs</string>
+  OpenIntents devs https://launchpad.net/~openintents-devs
+  kenn dhia https://launchpad.net/~kendhia</string>
 	
 	<!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
+	<string name="about_comments">تصدير واستيراد القوائم والملاحظات مع محولCSV OI</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -135,26 +136,26 @@
     
     <string-array name="import_policy">
         <item>تكرار - يسمح بتكرارات سجلات</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>احتفظ -لا تكتب فوق التسجيلات الموجودة</item>
         <item>الكتابة فوق - الكتابة فوق السجلات الموجودة.</item>
         <item>استعادة-"حذف الكل"، ثم استيراد.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>تكرار - إضافة نسخة ثانية من سجل إذا كان موجوداً بالفعل.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>احتفظ -لا تكتب فوق التسجيلات الموجودة، تجاهل الموجودة في ملفات CSV.</item>
         <item>الكتابة فوق - رقماً قياسياً في CSV سيتم الكتابة فوق سجل موجود.</item>
         <item>استعادة النسخ الاحتياطي - حذف كافة الخاص بك السجلات الموجودة، ثم قم باستيراد ملف CSV.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>تكرار - يسمح بتكرارات سجلات</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>احتفظ -لا تكتب فوق التسجيلات الموجودة</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>تكرار - إضافة نسخة ثانية من سجل إذا كان موجوداً بالفعل.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>احتفظ -لا تكتب فوق التسجيلات الموجودة، تجاهل الموجودة في ملفات CSV.</item>
     </string-array>
     
 </resources>

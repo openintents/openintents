@@ -2,43 +2,43 @@
 OI Lykt
 
 # Promo text:
-Keep the camera flash or the backlight turned on with OI Flashlight.
+Hold kamerablitsen eller baklyset skrudd på med OI Lykt.
 
 # Description:
-OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+OI Lykt er en enkel og effektiv applikasjon som hjelper deg finne veien i mørket. OI Lykt låser skjermens baklys på, tydelig opplysende for det omkringliggende området. For enheter med en kamerablits, OI Lykt kan også bruke blitsen som en lys lykt for å lyse opp rommet. Fargen på baklyset er helt egendefinerbart med OI Fargevelger. 
 
-This application is ad free and does not require the internet permission. 
+Denne applikasjonen er reklamefri og trenger ikke inter 
 
-The source code of this free and open source application is available at: 
+Kildekoden til denne gratis applikasjonen med åpen kildekode er tilgjengelig hos: 
 http://code.google.com/p/openintents
 
-For the complete list of changes and a list of frequently asked questions, please visit: 
+For den komplette listen med endringer og en liste over vanlige spørsmål, vennligst besøk: 
 http://www.openintents.org
 
-You can help to improve the translation into your language at Launchpad: 
+Du kan hjelpe til med å forbedre oversettelsen 
 https://translations.launchpad.net/openintents/trunk
 
-Features: 
-* Lock the display backlight on.
-* Lock camera flash on.
-* The color of backlight is customizable.
+Funksjoner: 
+* Låser baklyset på.
+* Lås kamerablits på.
+* Fargen på baklyset er egendefinerbart.
 
-Available extensions for "OI Flashlight": 
-* Show the license information with "OI About".
-* Change the color of the backlight with "OI Color Picker".
+Tilgjengelige utvidelser for "OI Lykt": 
+* Vis lisensinformasjonen med "OI Info".
+* Endre fargen på baklyset med "OI Fargevelger".
 
-Applications that work with "OI Flashlight": 
-* Update with "OI Update".
+Applikasjoner som fungerer med "OI Lykt": 
+* Oppdater med "OI Oppdater".
 
-Keywords: 
-* Flashlight, light, Backlight
+Nøkkelord: 
+* Lykt, lys, Baklys
 * OI, OpenIntents, Open Intents
 
-International versions: 
-Lanternă OI, Llanterna d'OI, OI Baterka, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+Internasjonal versjoner: 
+Lanternă OI, Llanterna d'OI, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
 
 
-Search strings for Market: 
+Søkestrenger for Marked: 
 * uses OI About
 * uses OI Color Picker
 * uses OI Update

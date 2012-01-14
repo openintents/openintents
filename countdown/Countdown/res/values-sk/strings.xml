@@ -10,7 +10,7 @@
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
+	<string name="about_comments">Nastavte viaceré odpočítavania s OI Odpočítavanie.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -167,4 +167,7 @@
         <item>5 minút</item>
         <item>10 minút</item>
     </string-array>
+    
+    
+    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
 </resources>

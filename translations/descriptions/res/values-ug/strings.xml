@@ -34,7 +34,7 @@
 		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
 		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI About":</string>
+		<string>«OI ھەققىدە» بىلەن ئىشلەيدىغان ئەپلەر:</string>
 		<listitem>OI خاتىرە دەپتەر</listitem>
 		<listitem>OI ھۆججەت باشقۇرغۇچ</listitem>
 		<listitem>OI سېتىۋېلىش تىزىمى</listitem>
@@ -91,8 +91,8 @@
 		<listitem>Modify countdowns, even while they are still running</listitem>
 		<emptyline/>
 		<string>Available extensions for "OI Countdown": </string>
-		<listitem>Launch applications through Android shortcuts</listitem>
-		<listitem>Use OI About to show license information</listitem>
+		<listitem>ئاندىرويىد قىسقا يولى ئارقىلى ئەپلەرنى قوزغىتىدۇ</listitem>
+		<listitem>«OI ھەققىدە»نى ئىشلىتىپ ئىجازەت ئۇچۇرىنى كۆرسىتىدۇ</listitem>
 		<emptyline/>
 		<string>ھالقىلىق سۆزلەر:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
@@ -116,7 +116,7 @@
 		<!--  -->
 		<!--  Description of application -->
 		<string>OI ھۆججەت باشقۇرغۇچ SD كارتا زىيارەت قىلىش، مۇندەرىجە قۇرۇش، ھۆججەت ئاتىنى ئۆزگەرتىش، كۆچۈرۈش، يۆتكەش ۋە ئۆچۈرۈشكە يول قويىدۇ.</string>
-		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
+		<string>بىر كېڭەيتىلمە سۈپىتىدە باشقا ئەپلەردە ئىشلىتىپ، «ئاچ» ۋە «ساقلا» سۆزلەشكۈنى كۆرسىتىدۇ.</string>
 		<emptyline/>
 		<string>بۇ ئەپتە ئېلان يوق، ئىنتېرنېت ھوقۇقى تەلەپ قىلمايدۇ.</string>
 		<emptyline/>
@@ -231,25 +231,25 @@
 		<emptyline/>
 		<string>ئىقتىدارلار:</string>
 		<listitem>ئىزاھات قوشۇش، تەھرىرلەش، ئۆچۈرۈش.</listitem>
-		<listitem>Long-press on notes to add tags.</listitem>
-		<listitem>Change font size and sort order.</listitem>
+		<listitem>خاتىرە ئۇزۇن بېسىلسا بەلگە قوشىدۇ.</listitem>
+		<listitem>خەت چوڭلۇقى ۋە تەرتىپلەش تەرتىپىنى ئۆزگەرتىدۇ.</listitem>
 		<listitem>A clearly arranged layout with a variety of themes.</listitem>
-		<listitem>Quickly search through notes.</listitem>
-		<listitem>Send notes as MMS or SMS.</listitem>
+		<listitem>خاتىرە دەپتەر ئارقىلىق تېز سۈرئەتتە ئىزدەيدۇ.</listitem>
+		<listitem>خاتىرىنى قىسقا ئۇچۇر ياكى كۆپ ۋاستە ئۇچۇردا يوللايدۇ.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Notepad":</string>
+		<string>«OI خاتىرە دەپتەر»نىڭ ئىشلىتىلىشچان كېڭەيتىلمىسى:</string>
 		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
 		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
 		<listitem>«OI ھەققىدە» ئىجازەت ئۇچۇرىنى كۆرسىتىدۇ.</listitem>
-		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
+		<listitem>خاتىرە دەپتەرگە «OI چېسلا قىستۇر» ئارقىلىق چېسلا ۋە ۋاقىت قىستۇرىدۇ.</listitem>
 		<listitem>Turn text upside down with "Upside Down".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Notepad":</string>
+		<string>«OI خاتىرە دەپتەر» دە ئىشلەيدىغان ئەپلەر:</string>
 		<listitem>Back up notes with "My Backup Pro".</listitem>
-		<listitem>Encrypt notes using "OI Safe".</listitem>
-		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
+		<listitem>خاتىرىنى «OIبىخەتەرلىك» تە شىفىرلايدۇ.</listitem>
+		<listitem>SD كارتىڭىزدىكى خاتىرىلەرنى «OI ھۆججەت باشقۇرغۇچ» بىلەن باشقۇرىدۇ.</listitem>
 		<listitem>«OI يېڭىلاش»تا يېڭىلايدۇ.</listitem>
-		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<listitem>خاتىرىلەرنى «Facebook»، «Gmail»، «Google+»، «Twitter» ۋە باشقا نۇرغۇن ئەپلەردە ھەمبەھىرلەيدۇ.</listitem>
 		<emptyline/>
 		<string>ھالقىلىق سۆزلەر:</string>
 		<listitem>Note, Notepad, Note book, Notes</listitem>
@@ -286,12 +286,12 @@
 		<emptyline/>
 		<string>ئىقتىدارلار:</string>
 		<listitem>Securely protect data using AES encryption.</listitem>
-		<listitem>Freely move data entries between categories.</listitem>
+		<listitem>سانلىق مەلۇمات تۈرلىرىنى كاتېگورىيەلەر ئارىسىدا ئەركىن يۆتكەيدۇ.</listitem>
 		<listitem>سانلىق مەلۇمات تۈرى ۋە ساندانلارنى ئەكىر/چىقار.</listitem>
 		<listitem>تۈرلەرنى زاپاسلا/ ئەسلىگە كەلتۈر.</listitem>
-		<listitem>Includes secure password generator.</listitem>
+		<listitem>بىخەتەر ئىم ھاسىل قىلغۇچنى ئۆز ئىچىگە ئالىدۇ.</listitem>
 		<listitem>Automatic timeout to protect encrypted documents.</listitem>
-		<listitem>Encrypt OI Notepad notes.</listitem>
+		<listitem>OI خاتىرە دەپتەر خاتىرىلىرىنى شىفىرلايدۇ.</listitem>
 		<listitem>Support for Obscura picture safe.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
@@ -299,11 +299,11 @@
 		<listitem>«OI ھەققىدە» ئىجازەت ئۇچۇرىنى كۆرسىتىدۇ.</listitem>
 		<emptyline/>
 		<string>«OI ھۆججەت باشقۇرغۇچ» تا ئىشلەيدىغان ئەپلەر:</string>
-		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<listitem>«OI خاتىرە دەپتەر» دە قۇرۇلغان خاتىرىنى شىفىرلايدۇ.</listitem>
 		<emptyline/>
 		<string>ھالقىلىق سۆزلەر:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>safe, encrpytion, password, protection</listitem>
+		<listitem>بىخەتەرلىك، شىفىرلاش، ئىم، قوغداش</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
@@ -325,7 +325,7 @@
 		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
 		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
 		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
-		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
+		<string>خەت نۇسخا چوڭلۇقى، تەرتىپلەش تەرتىپى، تىزىم ئىستونى ۋە تىزىم تازىلاش مەشغۇلاتلىرىنىڭ ھەممە تەڭشەكلىرىنى ئىشلەتكۈچى تىزگىنلەيدۇ.</string>
 		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
 		<emptyline/>
 		<string>كودى ئوچۇق بۇ ئەپنىڭ ئەسلى كودى:</string>
@@ -347,19 +347,19 @@
 		<listitem>Keep track of separate prices for each store.</listitem>
 		<listitem>ئۆزلەشتۈرگىلى بولىدىغان تىزىم ئىستونلىرى.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Shopping List":</string>
+		<string>«OI سېتىۋېلىش تىزىمى» نىڭ ئىشلىتىلىشچان كېڭەيتىلمىلىرى:</string>
 		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
 		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
 		<listitem>«OI ھەققىدە» ئىجازەت ئۇچۇرىنى كۆرسىتىدۇ.</listitem>
 		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Shopping List":</string>
+		<string>«OI سېتىۋېلىش تىزىمى» دا ئىشلەيدىغان ئەپلەر:</string>
 		<listitem>«OI يېڭىلاش»تا يېڭىلايدۇ.</listitem>
 		<listitem>Backup lists with "My Backup Pro".</listitem>
 		<listitem>Import ingredients of recipes with "Bites".</listitem>
 		<emptyline/>
 		<string>ھالقىلىق سۆزلەر:</string>
-		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<listitem>سېتىۋېلىش، تىزىم، سېتىۋېلىش تىزىمى، تەكشۈرۈش تىزىمى</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>خەلقئارا نەشرى:</string>

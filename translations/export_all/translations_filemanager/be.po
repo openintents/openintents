@@ -1,0 +1,477 @@
+# Belarusian translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Alexander Geroimenko <Unknown>\n"
+"Language-Team: Belarusian <be@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:23(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Alexander Geroimenko https://launchpad.net/~geroimenko"
+
+#. Short explanation of the application (max. 80 characters)
+#: tmp_strings.xml:26(string)
+msgid "Manage files on the SD card with OI File Manager."
+msgstr "Кіруйце файламі на SD картцы пры дапамозе OI File Manager."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:32(string)
+msgid "OI File Manager"
+msgstr "OI File Manager"
+
+#: tmp_strings.xml:34(string)
+msgid "New Folder"
+msgstr "Новая папка"
+
+#. Multi select option menu
+#: tmp_strings.xml:37(string)
+msgid "Multi Select"
+msgstr "Множны выбар"
+
+#: tmp_strings.xml:39(string) tmp_strings.xml:81(string)
+#: tmp_strings.xml:166(string)
+msgid "Delete"
+msgstr "Выдаліць"
+
+#: tmp_strings.xml:40(string)
+msgid "Rename"
+msgstr "Перайменаваць"
+
+#: tmp_strings.xml:41(string)
+msgid "Send"
+msgstr "Даслаць"
+
+#: tmp_strings.xml:42(string)
+msgid "Open"
+msgstr "Адкрыць"
+
+#: tmp_strings.xml:43(string) tmp_strings.xml:79(string)
+msgid "Move"
+msgstr "Перамясціць"
+
+#: tmp_strings.xml:44(string) tmp_strings.xml:80(string)
+msgid "Copy"
+msgstr "Капіяваць"
+
+#: tmp_strings.xml:45(string)
+msgid "Details"
+msgstr "Падрабязнасці"
+
+#: tmp_strings.xml:46(string)
+msgid "More"
+msgstr "Падрабязная інфармацыя"
+
+#: tmp_strings.xml:47(string)
+msgid "Compress (ZIP)"
+msgstr "Кампрэсаваць (ZIP)"
+
+#: tmp_strings.xml:48(string)
+msgid "Extract (ZIP)"
+msgstr "Дэкампрэсаваць (ZIP)"
+
+#: tmp_strings.xml:49(string)
+msgid "Filter"
+msgstr "Фільтр"
+
+#: tmp_strings.xml:50(string)
+msgid "Include in media scan"
+msgstr "Улучыць у сканаванне"
+
+#: tmp_strings.xml:51(string) tmp_strings.xml:131(string)
+msgid "Exclude from media scan"
+msgstr "Вылучыць з сканавання"
+
+#: tmp_strings.xml:52(string)
+msgid "Add to bookmarks"
+msgstr "Дадаць у абранае"
+
+#: tmp_strings.xml:53(string)
+msgid "Refresh"
+msgstr ""
+
+#: tmp_strings.xml:55(string)
+msgid "Create new folder"
+msgstr "Стварыць новую папку"
+
+#: tmp_strings.xml:56(string) tmp_strings.xml:57(string)
+msgid "Folder name"
+msgstr "Назва папки"
+
+#: tmp_strings.xml:58(string)
+msgid "Extension (with '.')"
+msgstr "Пашырэнне (з '.')"
+
+#: tmp_strings.xml:59(string)
+msgid "This folder is empty."
+msgstr "Гэта папка пуста."
+
+#: tmp_strings.xml:60(string)
+msgid "Do you really want to delete %s?"
+msgstr "Вы ўпэўнены, што жадаеце выдаліць %s?"
+
+#: tmp_strings.xml:61(string)
+msgid "File deleted."
+msgstr "Файл выдалены."
+
+#: tmp_strings.xml:62(string)
+msgid "Folder deleted."
+msgstr "Папка выдалена."
+
+#: tmp_strings.xml:63(string)
+msgid "File renamed."
+msgstr "Файл перайменаваны."
+
+#: tmp_strings.xml:64(string)
+msgid "Folder renamed."
+msgstr "Папка перайменавана."
+
+#: tmp_strings.xml:65(string)
+msgid "File moved."
+msgstr "Файл перамешчаны."
+
+#: tmp_strings.xml:66(string)
+msgid "Folder moved."
+msgstr "Папка перамешчана."
+
+#: tmp_strings.xml:67(string)
+msgid "File copied."
+msgstr "Файл скапіраваны."
+
+#: tmp_strings.xml:68(string)
+msgid "Select folder to move to"
+msgstr "Абярыце папку для перамяшчэння"
+
+#: tmp_strings.xml:69(string)
+msgid "Move here"
+msgstr "Перамясціць сюды"
+
+#: tmp_strings.xml:70(string)
+msgid "Select folder to copy to"
+msgstr "Абярыце папку для капіравання"
+
+#: tmp_strings.xml:71(string)
+msgid "Copy here"
+msgstr "Капіраваць сюды"
+
+#: tmp_strings.xml:72(string)
+msgid "Deleting files..."
+msgstr "Выдаленне файлаў..."
+
+#: tmp_strings.xml:73(string)
+msgid "Warning"
+msgstr "Папярэджанне"
+
+#: tmp_strings.xml:74(string)
+msgid "Some of the following options may not work."
+msgstr "Некаторыя з наступных настроек могуць не працаваць."
+
+#: tmp_strings.xml:75(string)
+msgid "Show warning again"
+msgstr "Паказваць папярэджанне яшчэ раз"
+
+#. Strings for a multi select feature
+#: tmp_strings.xml:78(string)
+msgid "Do you really want to delete %d files?"
+msgstr "Вы ўпэўнены, што жадаеце выдаліць %d файлаў?"
+
+#: tmp_strings.xml:82(string)
+msgid "Select multiple files"
+msgstr "Абярыце некалькі файлаў"
+
+#: tmp_strings.xml:83(string)
+msgid "Please select one or more file(s)."
+msgstr "Калі ласка, абярыце адзін ці больш файлаў."
+
+#. Strings for details table
+#: tmp_strings.xml:86(string)
+msgid "Type"
+msgstr "Тып"
+
+#: tmp_strings.xml:87(string)
+msgid "Folder"
+msgstr "Папка"
+
+#: tmp_strings.xml:88(string)
+msgid "File"
+msgstr "Файл"
+
+#: tmp_strings.xml:89(string)
+msgid "Other"
+msgstr "Іншае"
+
+#: tmp_strings.xml:90(string) tmp_strings.xml:150(item)
+msgid "Size"
+msgstr "Памер"
+
+#: tmp_strings.xml:91(string)
+msgid "Permissions"
+msgstr "Правы"
+
+#: tmp_strings.xml:92(string)
+msgid "Hidden"
+msgstr "Схавана"
+
+#: tmp_strings.xml:93(string)
+msgid "Last Modified"
+msgstr "Апошняе змяненне"
+
+#: tmp_strings.xml:94(string)
+msgid "Yes"
+msgstr "Так"
+
+#: tmp_strings.xml:95(string)
+msgid "No"
+msgstr "Не"
+
+#. Construct a unique file name of a file called %s.
+#: tmp_strings.xml:98(string)
+msgid "Copy of %s"
+msgstr "Копія %s"
+
+#. Construct a unique file name with number %1$d of a file called %2$s.
+#: tmp_strings.xml:101(string)
+msgid "Copy %1$d of %2$s"
+msgstr "Скапіраваць %1$d як %2$s"
+
+#: tmp_strings.xml:103(string)
+msgid "This folder will be included in the next media scan."
+msgstr "Гэтая папка будзе прасканавана пры наступным сканаванні."
+
+#: tmp_strings.xml:104(string)
+msgid "This folder will be excluded during the next media scan."
+msgstr "Гэтая папка не будзе прасканавана пры наступным сканаванні."
+
+#: tmp_strings.xml:106(string)
+msgid "Could not create new folder."
+msgstr "Немагчыма стварыць папку."
+
+#: tmp_strings.xml:107(string)
+msgid "Could not delete file."
+msgstr "Немагчыма выдаліць файл."
+
+#: tmp_strings.xml:108(string)
+msgid "Could not delete folder '%s'."
+msgstr "Немагчыма выдаліць папку '%s'."
+
+#: tmp_strings.xml:109(string)
+msgid "Could not rename file."
+msgstr "Немагчыма перайменаваць файл."
+
+#: tmp_strings.xml:110(string)
+msgid "Could not rename folder."
+msgstr "Немагчыма перайменаваць папку."
+
+#: tmp_strings.xml:111(string)
+msgid "Could not move file."
+msgstr "Немагчыма перамесціць файл."
+
+#: tmp_strings.xml:112(string)
+msgid "Could not move folder."
+msgstr "Немагчыма перамесціць папку."
+
+#: tmp_strings.xml:113(string)
+msgid "Could not copy file."
+msgstr "Немагчыма скапіраваць файл."
+
+#: tmp_strings.xml:114(string)
+msgid "File does not exist."
+msgstr "Файл не існуе."
+
+#: tmp_strings.xml:115(string)
+msgid "Could not delete child file '%s'."
+msgstr "Немагчыма выдалиць дачэрни файл '%s'."
+
+#: tmp_strings.xml:116(string)
+msgid "An error occurred:"
+msgstr "Адбылася памылка:"
+
+#: tmp_strings.xml:117(string)
+msgid "Could not change media scan settings."
+msgstr "Немагчыма змяниць наладки сканавання."
+
+#: tmp_strings.xml:119(string)
+msgid "No application available for sending."
+msgstr "Няма даступнага прыкладання для адпраўкі."
+
+#: tmp_strings.xml:121(string)
+msgid "Application not available"
+msgstr "Прыкладанне недаступна"
+
+#. Menu item for Settings
+#: tmp_strings.xml:127(string)
+msgid "Settings"
+msgstr "Настройкі"
+
+#. Category for preferences.
+#: tmp_strings.xml:130(string)
+msgid "Advanced features"
+msgstr "Дадатковыя настройкі"
+
+#: tmp_strings.xml:132(string)
+msgid "Show menu item to exclude folders from media scan."
+msgstr "Паказаць меню для вылучэння папак з сканавання."
+
+#: tmp_strings.xml:133(string)
+msgid "Hide menu item to exclude folders from media scan."
+msgstr "Схаваць меню для вылучэння папак з сканавання."
+
+#: tmp_strings.xml:135(string)
+msgid "Show all warnings"
+msgstr "Паказаць усе папярэджанні"
+
+#: tmp_strings.xml:136(string)
+msgid "Show all warning messages"
+msgstr "Паказаць усе папярэджанні"
+
+#: tmp_strings.xml:137(string)
+msgid "Suppress warning messages"
+msgstr "Падавіць усе папярэджанні"
+
+#: tmp_strings.xml:139(string) tmp_strings.xml:140(string)
+msgid "Display hidden files"
+msgstr "Паказаць скрытыя файлы"
+
+#: tmp_strings.xml:141(string)
+msgid "Hide hidden files"
+msgstr "Схаваць скрытыя файлы"
+
+#: tmp_strings.xml:143(string)
+msgid "Sort settings"
+msgstr "Параметры сартавання"
+
+#: tmp_strings.xml:144(string)
+msgid "Sort by"
+msgstr "Сартаваць па"
+
+#: tmp_strings.xml:145(string)
+msgid "In ascending order"
+msgstr "Па ўзрастанні"
+
+#: tmp_strings.xml:146(string)
+msgid "Sort in ascending order"
+msgstr "Сартаваць па ўзрастанні"
+
+#: tmp_strings.xml:147(string)
+msgid "Sort in descending order"
+msgstr "Сартаваць па змяншэнні"
+
+#: tmp_strings.xml:149(item)
+msgid "Name"
+msgstr "Назва"
+
+#: tmp_strings.xml:151(item)
+msgid "Last modified"
+msgstr "Апошняе змяненне"
+
+#. ***************************
+#.    		 Strings for the 'Save as' feature
+#.     	 ***************************
+#: tmp_strings.xml:158(string)
+msgid "You haven't picked any file."
+msgstr "Вы не абралі файл."
+
+#: tmp_strings.xml:159(string)
+msgid "An error occured."
+msgstr "Адбылася памылка."
+
+#: tmp_strings.xml:160(string)
+msgid "File successfully saved!"
+msgstr "Файл паспяхова захаваны!"
+
+#: tmp_strings.xml:164(string)
+msgid "Bookmarks"
+msgstr "Закладкі"
+
+#: tmp_strings.xml:165(string)
+msgid "Cancel"
+msgstr "Адмяніць"
+
+#: tmp_strings.xml:167(string)
+msgid "Select bookmarks to delete"
+msgstr "Абярыце закладкі для выдалення"
+
+#: tmp_strings.xml:168(string)
+msgid "Manage bookmarks"
+msgstr "Кіраванне закладкамі"
+
+#: tmp_strings.xml:169(string)
+msgid "Bookmark added"
+msgstr "Закладка дададзена"
+
+#: tmp_strings.xml:170(string)
+msgid "Bookmarked destination not found."
+msgstr "Прызначэнне закладкі не знойдзена."
+
+#: tmp_strings.xml:171(string)
+msgid "Selected bookmarks deleted"
+msgstr "Абраныя закладкі выдалены"
+
+#: tmp_strings.xml:172(string)
+msgid "This file is already bookmarked"
+msgstr "Гэты файл ужо ў закладках"
+
+#. ***************************
+#.              Strings for the 'Compressing' and 'Extracting' feature
+#.           ***************************
+#: tmp_strings.xml:178(string)
+msgid "Item compressed successfully"
+msgstr "Скампрэсавана паспяхова"
+
+#: tmp_strings.xml:179(string)
+msgid "Could not compress the item"
+msgstr "Немагчыма скампрэсаваць"
+
+#: tmp_strings.xml:180(string)
+msgid "Compress into archive:"
+msgstr "Скампрэсаваць у архіў:"
+
+#: tmp_strings.xml:181(string)
+msgid "Item extracted successfully"
+msgstr "Дэкампрэсавана паспяхова"
+
+#: tmp_strings.xml:182(string)
+msgid "Could not extract the item"
+msgstr "Немагчыма дэкампрэсаваць"
+
+#: tmp_strings.xml:183(string)
+msgid "Extract into folder:"
+msgstr "Дэкампрэсаваць у папку:"
+
+#: tmp_strings.xml:184(string)
+msgid "Select folder to extract into"
+msgstr "Абярыце папку для дэкампрэсавання"
+
+#: tmp_strings.xml:185(string)
+msgid "Extract here"
+msgstr "Дэкампрэсаваць тут"
+
+#: tmp_strings.xml:186(string)
+msgid "Extracting..."
+msgstr "Ідзе дэкампрэсаванне..."
+
+#: tmp_strings.xml:187(string)
+msgid "Compressing..."
+msgstr "Ідзе кампрэсаванне..."
+
+#: tmp_strings.xml:188(string)
+msgid "File %s exists. Do you want to overwrite it?"
+msgstr "Файл %s існуе. Перазапісаць яго?"
+
+#: tmp_strings.xml:190(string)
+msgid "Do you want to change the file extension?"
+msgstr "Вы жадаеце змяніць пашырэнне файла?"

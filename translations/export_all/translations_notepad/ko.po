@@ -499,6 +499,3 @@ msgstr "이 메모를 삭제하시겠습니까?"
 #: tmp_strings.xml:219(string)
 msgid "New note"
 msgstr "새 메모"
-
-
-

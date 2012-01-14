@@ -360,20 +360,3 @@ msgid ""
 msgstr ""
 "Restaurează copia de rezervă - ȘTERGE TOATE ÎNREGISTRĂRILE EXISTENTE, apoi "
 "importă fișierul CSV."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

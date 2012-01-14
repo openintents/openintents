@@ -23,12 +23,13 @@
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
   Fitoschido https://launchpad.net/~fitoschido
+  Martín González https://launchpad.net/~mgonzlezgmz
   OpenIntents devs https://launchpad.net/~openintents-devs
   Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm
   dcb116 https://launchpad.net/~dcb116</string>
 	
 	<!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
+	<string name="about_comments">Importe y exporte listas y notas con OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -39,7 +40,7 @@
 	<string name="info_app_notepad">Bloc de notas OI</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; Convert CSV.</string>
+	<string name="info_instructions">Ejecute %s y seleccione el menú &gt; Convertir CSV.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -137,26 +138,26 @@
     
     <string-array name="import_policy">
         <item>DUPLICAR - Permitir duplicacion de registros.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>KEEP - No sobreescribir archivos existentes.</item>
         <item>Re-escribir - Re-escribir registros existentes</item>
         <item>Restaurar - BORRAR TODO, entonces importar.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>DUPLICAR - Agregar una segunda copia del registro si ya existe.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>KEEP - No sobreescribir el archivo existente, ignorarlo en el fichero CSV.</item>
         <item>Re-escribir - Un registro en el archivo CSV RE-ESCRIBIRA al registro existente.</item>
         <item>Restaurar Respaldo - BORRA TODO SUS REGISTROS EXISTENTES, entonces importa el archivo CSV.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>DUPLICAR - Permitir duplicacion de registros.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>KEEP - No sobreescribir archivos existentes.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>DUPLICAR - Agregar una segunda copia del registro si ya existe.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>KEEP - No sobreescribir el archivo existente, ignorarlo en el fichero CSV.</item>
     </string-array>
     
 </resources>

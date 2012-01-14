@@ -309,6 +309,6 @@ msgstr "5 minuti"
 msgid "10 minutes"
 msgstr "10 minuti"
 
-
-
-
+#: tmp_strings.xml:170(string)
+msgid "OI Countdown doesn't have the permission for this task."
+msgstr ""

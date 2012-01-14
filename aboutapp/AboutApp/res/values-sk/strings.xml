@@ -80,47 +80,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabčina</item>
-		<item>Belarusian</item>
-		<item>Bulgarian</item>
-		<item>Catalan</item>
+		<item>Bieloruština</item>
+		<item>Bulharčina</item>
+		<item>Katalánčina</item>
 		<item>Čeština</item>
 		<item>Dánčina</item>
 		<item>Nemčina</item>
 		<item>Gréčtina</item>
 		<item>Angličtina</item>
-		<item>English (United Kingdom)</item>
+		<item>Angličtina (Spojené kráľovstvo)</item>
 		<item>Španielčina</item>
 		<item>Perzština</item>
 		<item>Fínčina</item>
 		<item>Faerčina</item>
 		<item>Francúzština</item>
-		<item>Hindi</item>
+		<item>Hindština</item>
 		<item>Chorvátčina</item>
 		<item>Maďarčina</item>
 		<item>Taliančina</item>
-		<item>Hebrew</item>
+		<item>Hebrejčina</item>
 		<item>Japončina</item>
 		<item>Korejčina</item>
 		<item>Lao</item>
-		<item>Latvian</item>
-		<item>Macedonian</item>
-		<item>Norwegian Bokmal</item>
+		<item>Lotyština</item>
+		<item>Macedónčina</item>
+		<item>Nórčina Bokmal</item>
 		<item>Holandština</item>
 		<item>Okcitánčina (po 1500)</item>
-		<item>Punjabi</item>
+		<item>Pandžábsky</item>
 		<item>Poľština</item>
 		<item>Portugalčina</item>
 		<item>Brazílska Portugalčina</item>
 		<item>Rumunčina</item>
 		<item>Ruština</item>
 		<item>Sardínčina</item>
-		<item>Sindhi</item>
+		<item>Sindhčina</item>
 		<item>Slovenčina</item>
-		<item>Slovenian</item>
+		<item>Slovinčina</item>
 		<item>Švédčina</item>
 		<item>Tagalog</item>
 		<item>Turecké</item>
-		<item>Uyghur</item>
+		<item>Ujgurčina</item>
 		<item>Čínština (zjednodušená)</item>
 		<item>Čínština (tradičná)</item>
 	</string-array>

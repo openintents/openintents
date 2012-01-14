@@ -2,47 +2,47 @@
 OI Nedtelling
 
 # Promo text:
-Set multiple countdowns with OI Countdown.
+Sett flere nedtellinger med OI Nedtelling.
 
 # Description:
 
 
-OI Countdown is a helpful timer to increase your productivity and plan your day.  It allows you to set a variety of different actions to notify you at the end of a timer.  Fully customize all your timers, with no limit on how many you can have running or saved.  
+OI Nedtelling er en nyttig tidtaker for å øke produktivitet og planlegge dagen din. Den lar deg sette mange ulike handlinger for å varsle deg når tidtakeren er ferdig. Tilpass alle dine tidtakere, med ingen grense på hvor mange du kan ha kjørende eller lagret. 
 
-This application is ad free and does not require the internet permission.  
-
-
+Denne applikasjonen er reklamefri og trenger ikke inter 
 
 
 
-The source code of this free and open source application is available at: 
+
+
+Kildekoden til denne gratis applikasjonen med åpen kildekode er tilgjengelig hos: 
 http://code.google.com/p/openintents
 
-For the complete list of changes and a list of frequently asked questions, please visit: 
+For den komplette listen med endringer og en liste over vanlige spørsmål, vennligst besøk: 
 http://www.openintents.org
 
 
 
-You can help to improve the translation into your language at Launchpad: 
+Du kan hjelpe til med å forbedre oversettelsen 
 https://translations.launchpad.net/openintents/trunk
 
-Features:  
-* Set a countdown by choosing a duration or a date.
-* Be notified by vibration or any sound of your choice. 
-* Have an unlimited number of timers running at the same time. 
-* Save your countdowns and give them names to reuse at later times. 
-* Modify countdowns, even while they are still running
+Funksjoner: 
+* Sett en nedtelling ved å velge en varighet eller en dato.
+* Bli varslet av vibrasjon eller en lyd du velger.
+* Ha et ubegrenset antall tidtakere kjørende samtidig.
+* Lagre dine nedtellinger og gi dem navn for å bruke igjen senere.
+* Endre nedtellinger, selv når de kjører
 
-Available extensions for "OI Countdown":  
-* Launch applications through Android shortcuts
-* Use OI About to show license information
+Tilgjengelige utvidelser for "OI Nedtelling": 
+* Start applikasjoner gjennom snarveier i Android
+* Bruk OI Info for å vise lisensinformasjon
 
-Keywords:  
-* countdown, timer, alert
+Nøkkelord: 
+* nedtelling, tidtakere, varsel
 * OI, OpenIntents, Open Intents
 
-International versions: 
-Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI
+Internasjonal versjoner: 
+Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI, عد تنازلي OI
 
 
-Search strings for Market: 
+Søkestrenger for Marked: 

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: Mark van Kuijk <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,12 +24,13 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Henk van der Velden https://launchpad.net/~henkvandervelden86\n"
 "  Jaap-Willem Dooge https://launchpad.net/~japydooge\n"
+"  Mark van Kuijk https://launchpad.net/~markvankuyk\n"
 "  Peli https://launchpad.net/~peli0101"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
 msgid "Set multiple countdowns with OI Countdown."
-msgstr ""
+msgstr "Stel meerdere timers in met OI Countdown"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string) tmp_strings.xml:56(string)
@@ -310,5 +311,6 @@ msgstr "5 minuten"
 msgid "10 minutes"
 msgstr "10 minuten"
 
-
-
+#: tmp_strings.xml:170(string)
+msgid "OI Countdown doesn't have the permission for this task."
+msgstr ""

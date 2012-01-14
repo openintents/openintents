@@ -26,7 +26,7 @@
   thebowseat https://launchpad.net/~takeshimochida</string>
 	
 	<!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
+	<string name="about_comments">OI CSV 変換 でリストやノートをインポートしたりエクスポートしたりすることができます。</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -135,26 +135,26 @@
     
     <string-array name="import_policy">
         <item>重複- 記録の重複を許可する</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>キープ- 既に存在する記録を上書きしない。</item>
         <item>上書き- 存在する記録に上書き</item>
         <item>復元- すべてを削除し、インポートする。</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>重複- 存在する記録がある場合、二つ目のコピーを追加する。</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>キープ- 既に存在する記録を上書きせず、CSVファイル内の記録は無視する。</item>
         <item>上書き- CSV 内の記録は存在する記録を上書きします。</item>
         <item>バックアップを復元- すべての記録を削除し、CSV ファイルをインポートします。</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>重複- 記録の重複を許可する</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>キープ- 既に存在する記録を上書きしない。</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>重複- 存在する記録がある場合、二つ目のコピーを追加する。</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>キープ- 既に存在する記録を上書きせず、CSVファイル内の記録は無視する。</item>
     </string-array>
     
 </resources>

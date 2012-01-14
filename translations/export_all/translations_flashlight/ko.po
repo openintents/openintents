@@ -28,9 +28,8 @@ msgstr ""
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
-#, fuzzy
 msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
-msgstr "화면 백라이트 대신 카메라 플래시를 사용합니다."
+msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
@@ -87,10 +86,3 @@ msgstr "눌러서 카메라 플래시를 켜세요 (일 초 정도 걸립니다)
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
 msgstr "눌러서 카메라 플래시를 끄세요."
-
-
-
-
-
-
-

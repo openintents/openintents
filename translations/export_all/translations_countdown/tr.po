@@ -26,8 +26,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Halilpk https://launchpad.net/~halilpk\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  Peli https://launchpad.net/~peli0101\n"
-"  zeugma https://launchpad.net/~sunder67"
+"  Peli https://launchpad.net/~peli0101"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
@@ -313,5 +312,6 @@ msgstr "5 dakika"
 msgid "10 minutes"
 msgstr "10 dakika"
 
-
-
+#: tmp_strings.xml:170(string)
+msgid "OI Countdown doesn't have the permission for this task."
+msgstr ""

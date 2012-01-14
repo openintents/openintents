@@ -2,12 +2,12 @@
 OI Minutka
 
 # Promo text:
-Set multiple countdowns with OI Countdown.
+Nastavit vícenásobní minutky s OI Minutka
 
 # Description:
 
 
-OI Countdown is a helpful timer to increase your productivity and plan your day.  It allows you to set a variety of different actions to notify you at the end of a timer.  Fully customize all your timers, with no limit on how many you can have running or saved.  
+OI Minutka je užitečný časovač pro zvýšení produktivity a plánováni vašeho dne. Umožňuje nastavit různé akce, aby vás upozornili po skončení časovače. Plně přizpůsobit všechny časovače, bez omezení,  kolik jich můžete spustit nebo uložit. 
 
 Tato aplikace je bez reklam a nevyžaduje přístup k internetu. 
 
@@ -27,22 +27,22 @@ Můžete také pomoci zlepšit překlad do Vašeho jazyka na Launchpadu:
 https://translations.launchpad.net/openintents/trunk
 
 Vlastnosti: 
-* Set a countdown by choosing a duration or a date.
-* Be notified by vibration or any sound of your choice. 
-* Have an unlimited number of timers running at the same time. 
-* Save your countdowns and give them names to reuse at later times. 
-* Modify countdowns, even while they are still running
+* Nastavit odpočítávání výběrem trvání nebo dne.
+* Buďte upozornění vibrací nebo zvukem dle vašeho výběru.
+* Mějte neomezený počet časovačů běžících ve stejnou dobu.
+* Uložte odpočítávání a dejte jím jména pro opakované použití později.
+* Změňte odpočítávání, i když stále běží
 
-Available extensions for "OI Countdown":  
-* Launch applications through Android shortcuts
-* Use OI About to show license information
+Rozšíření pro "OI MInutka" k dispozici 
+* Spustit aplikaci pomocí zkratek Androidu
+* Použijte OI O programu pro zobrazení licenčních informací
 
 Klíčová slova: 
-* countdown, timer, alert
+* odpočítávání, stopky, upozornění
 * OI, OpenIntents, Open Intents
 
 Mezinárodní verze: 
-Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI
+Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI, عد تنازلي OI
 
 
 Prohledat řetězce pro Market: 

@@ -2,12 +2,12 @@
 OI काउंटडाउन
 
 # Promo text:
-Set multiple countdowns with OI Countdown.
+मल्टिपल काउटडाउन  को सेट करे OI काउंट डाउन के साथ.
 
 # Description:
 
 
-OI Countdown is a helpful timer to increase your productivity and plan your day.  It allows you to set a variety of different actions to notify you at the end of a timer.  Fully customize all your timers, with no limit on how many you can have running or saved.  
+OI काउंटडाउन एक मददगार तैमार हिया आपकी प्रोडक्टिविटी और प्लान को बढाने के लिए वो भी हर दिन. यह आप अलग अलग कार्यों की एक किस्म सेट करने के लिए आप एक टाइमर के अंत में सूचित करने की अनुमति देता है. पूरी तरह से आपके सभी टाइमर कितने आप या चल रहा हो सकता है बचाया पर कोई सीमा के साथ, अनुकूलित. 
 
 यह अनुप्रयोग विज्ञापन मुक्त है और  इसे  इंटरनेट की अनुमति की आवश्यकता नहीं है| 
 
@@ -27,22 +27,22 @@ http://www.openintents.org
 https://translations.launchpad.net/openintents/trunk
 
 सुविधाएँ: 
-* Set a countdown by choosing a duration or a date.
-* Be notified by vibration or any sound of your choice. 
-* Have an unlimited number of timers running at the same time. 
-* Save your countdowns and give them names to reuse at later times. 
-* Modify countdowns, even while they are still running
+* काउंटडाउन को सेट करें समय या फिर तरीक को चुन कर.
+* नोतिफैड रहें विब्रेशन या फर किसी भी तरह के साउंड जो आपकी मर्ज़ी का हो.
+* असीमित टाइमर नंबर चल रहे है एक ही समय पर.
+* काउंटडाउन को बचा कर रखें और उन्हें नाम दे जिससे हम इससे बाद मैं इस्तमाल कर सके.
+* काउंटडाउन को संशोधित करें, अगर वोह चल रहें हो तब भी
 
-Available extensions for "OI Countdown":  
-* Launch applications through Android shortcuts
-* Use OI About to show license information
+एक्स्तान्शन "OI काउंट डाउन" के लिए उपलब्ध है 
+* एप्प्लिकेशन को लॉन्च करें अन्द्रोइड शोर्टकट्से
+* OI अबाउट इस्तमाल करे लाइसेंस की जानकारी के लिए
 
 कीवर्ड: 
-* countdown, timer, alert
+* काउंटडाउन, टाइमर, अलर्ट
 * OI, OpenIntents, Open Intents
 
 अंतर्राष्ट्रीय संस्करण: 
-Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI
+Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI, عد تنازلي OI
 
 
 बाजार के लिए स्ट्रिंग्स को  खोजें : 

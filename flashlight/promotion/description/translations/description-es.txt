@@ -2,7 +2,7 @@
 OI Flashlight
 
 # Promo text:
-Keep the camera flash or the backlight turned on with OI Flashlight.
+Mantenga el flash de la cámara o la luz de la pantalla encendida con OI Flashlight.
 
 # Description:
 OI Flashlight es una aplicación sencilla y eficaz que le ayuda a encontrar el camino en la oscuridad. OI Lightflash enciende la retroiluminación de la pantalla, iluminando el área circundante. Para los dispositivos con flash de cámara, OI Flashlight puede emplearlo como linterna para iluminar la habitación. El color de fondo es completamente personalizable con OI Color Picker. 
@@ -35,7 +35,7 @@ Palabras clave:
 * OI, OpenIntents, Open Intents
 
 Versiones internacionales: 
-Lanternă OI, Llanterna d'OI, OI Baterka, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+Lanternă OI, Llanterna d'OI, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
 
 
 Buscar en el Market: 

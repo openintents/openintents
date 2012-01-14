@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Liezl <Unknown>\n"
 "Language-Team: Filipino <fil@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,15 +25,12 @@ msgstr ""
 "  Liezl https://launchpad.net/~liezl-200\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
-#. Short explanation of the application
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
-msgid ""
-"OpenIntents Flashlight helps you find your way in the dark. The display "
-"backlight is kept turned on while this application is running."
+msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
 msgstr ""
-"Ang OpenIntent plaslayt ay tumutulong sa iyo na hanapin ang daan sa dilim. "
-"Ang ilaw sa likod ng display ay pinanatiling naka bukas habang ang "
-"aplikasyon na ito ay tumatakbo"
+"Panatilihin ang kamera flash o ilaw sa likod na naka bukas sa  pamamagitan "
+"ng OI Plaslayt."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)

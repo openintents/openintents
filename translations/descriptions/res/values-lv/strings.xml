@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   Tomass https://launchpad.net/~txt1</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
@@ -13,7 +14,7 @@
 		<string>Ol About ir patstāvīgs paskaidrojošs dialogs, kurš ir sadalīts starp aplikācijām.</string>
 		<string>Šī aplikācija atsaucas uz citu OI aplikāciju izvēlnēm.</string>
 		<string>Tā ļauj skatīt versijas informāciju, saites, titrus un aplikācijas licenzi.</string>
-		<string>Titri iekļauj autorus, dokumentāciju, tulkotājus un māklsiniekus.</string>
+		<string>Titri iekļauj autorus, dokumentāciju, tulkotājus un māksliniekus.</string>
 		<string>Visa ši funkcionalitāte ir savesta kopā vienkāršā un efektīvā izkārtojumā.</string>
 		<emptyline/>
 		<string>Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju.</string>
@@ -24,16 +25,16 @@
 		<string>Lai skatītu pilnīgu izmaiņu sarakstu un sarakstu ar biežāk uzdotajiem jautājumiem, lūdzu apmeklējiet:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Lounchpad:</string>
+		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Shows general info, credits, and license tabs.</listitem>
-		<listitem>Shows translators of all language versions.</listitem>
-		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
-		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<string>Funkcijas:</string>
+		<listitem>Parāda vispārīgu informāciju, titrus un licenžu cilnes.</listitem>
+		<listitem>Parāda visu valodu tulkotāju versijas.</listitem>
+		<listitem>Atgūst informāciju no aplikācijas skaidrojuma caur noklusējuma iezīmēm un metadatiem.</listitem>
+		<listitem>Pēc izvēles, visi lauciņi var tikt izmaniīti caur nolūkotiem papildinājumiem.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI About":</string>
+		<string>Aplikācijas, kuras strādā ar "OI About":</string>
 		<listitem>OI Notepad</listitem>
 		<listitem>OI File manager</listitem>
 		<listitem>OI Shopping List</listitem>
@@ -42,14 +43,14 @@
 		<listitem>OI Countdown</listitem>
 		<listitem>OI Flashlight</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>About, Credits, Information.</listitem>
+		<string>Atslēgvārdi:</string>
+		<listitem>Paskaidrojums, titri, informācija.</listitem>
 		<listitem>OI, OpenIntents, Open Intents.</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Starptautiskās versijas:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Meklēt rindiņas tirgum:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -64,9 +65,9 @@
 		<!--  -->
 		<!--  Description of application -->
 		<emptyline/>
-		<string>OI Countdown is a helpful timer to increase your productivity and plan your day. </string>
-		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
-		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
+		<string>OI Countdown ir izpalīdzīgs taimeris produktivitātes paaugstināšanai un dienas plānošanai.</string>
+		<string>Tas ļauj Jums uzstādīt dažādas iespējas, lai ziņotu Jums laika atskaites beigās.</string>
+		<string>Pilnībā pielāgojiet visus taimerus, bez saglabāto vai darbojošos taimeru skaita ierobežojuma.</string>
 		<emptyline/>
 		<string>Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju.</string>
 		<emptyline/>
@@ -79,30 +80,30 @@
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
 		<emptyline/>
-		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Lounchpad:</string>
+		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features: </string>
-		<listitem>Set a countdown by choosing a duration or a date.</listitem>
-		<listitem>Be notified by vibration or any sound of your choice. </listitem>
-		<listitem>Have an unlimited number of timers running at the same time. </listitem>
-		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
-		<listitem>Modify countdowns, even while they are still running</listitem>
+		<string>Funkcijas:</string>
+		<listitem>Uzstādiet atskaiti izvēloties ilgumu vai datumu.</listitem>
+		<listitem>Jums tiks paziņots ar vibrāciju vai jebkādu skaņu pēc jūsu izvēles.</listitem>
+		<listitem>Jums tiek nodrošināts neierobežots vienlaikus darbojošos taimeru skaits.</listitem>
+		<listitem>Saglabājiet savas atskaites un dodiet tām vārdus, lai varētu tās izmantot vēlāk.</listitem>
+		<listitem>Izmainiet atskaites, kamēr tās joprojām darbojas.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Countdown": </string>
-		<listitem>Launch applications through Android shortcuts</listitem>
-		<listitem>Use OI About to show license information</listitem>
+		<string>Pieejamie paplašinājumi "OI Countdown":</string>
+		<listitem>Darbiniet aplikācijas izmantojot Android saīsnes</listitem>
+		<listitem>Izmantojiet OI About, lai parādītu licenžu informāciju</listitem>
 		<emptyline/>
-		<string>Keywords: </string>
+		<string>Atslēgvārdi:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>countdown, timer, alert</listitem>
+		<listitem>Laika atskaite, taimeris, brīdinājums, zvans, atgādinājums, modinātājs, countdown, timer, alert</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Starptautiskās versijas:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Meklēt rindiņas tirgum:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt "/>
 	</description>
@@ -114,45 +115,45 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
-		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
+		<string>OI File Manager ļauj pārlūkot Jūsu SD karti, izveidot failu katalogus, pārsaukt, kopēt, pārvietot un izdzēst failus.</string>
+		<string>Tas darbojas arī kā paplašinājums citām aplikācijām, lai parādītu "Open" un "Save" dialogus.</string>
 		<emptyline/>
 		<string>Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju.</string>
 		<emptyline/>
 		<string>Lai skatītu pilnīgu izmaiņu sarakstu un sarakstu ar biežāk uzdotajiem jautājumiem, lūdzu apmeklējiet:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Lounchpad:</string>
+		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Pirmkods ir bezmaksas un atvērtā pirmkoda aplikācija ir pieejama:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Show list of files with thumbnails for images.</listitem>
-		<listitem>Move, copy, rename, and delete files.</listitem>
-		<listitem>Create and delete directories (folders).</listitem>
-		<listitem>Send files by email.</listitem>
-		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
-		<listitem>Support for many file endings and mime types.</listitem>
-		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
+		<string>Funkcijas:</string>
+		<listitem>Parāda failu sarakstu ar sīktēliem kā attēliem.</listitem>
+		<listitem>Pārvietojiet, kopējiet, pārsauciet un izdzēšiet failus.</listitem>
+		<listitem>Izveidojiet un izdzēsiet failu katalogus (mapes).</listitem>
+		<listitem>Sūtiet failus ar e-pastu.</listitem>
+		<listitem>Darbojas kā paplašinājums citām aplikācijām kā GMail, lai pievienotu failus.</listitem>
+		<listitem>Atbalsta daudzus failu nobeigumus un mime veidus.</listitem>
+		<listitem>Atbalsta PICK_FILE un PICK_DIRECTORY darbības, tādējādi citas aplikācijas var izmantot OI File Manager.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>Pieejamie paplašinājumi "OI File Manager":</string>
+		<listitem>Parādīt licenzes informāciju ar "OI About".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<string>Aplikācijas, kuras strādā ar "OI File Manager":</string>
+		<listitem>Atveriet un saglabājiet teksta failus ar "OI Notepad".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Atslēgvārdi:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>file manager, filemanager, file explorer</listitem>
+		<listitem>failu pārvaldnieks, failu pārlūks, file manager, filemanager, file explorer</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Starptautiskās versijas:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Meklēt rindiņas tirgum:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -165,10 +166,10 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
-		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
-		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
-		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<string>OI Flashlight ir vienkārša un efektīva aplikācija, kura palīdz atrast ceļu tumsā.</string>
+		<string>OI Flashlight ieslēdz ekrāna apgaismojumu, skaidri izgaismojot apkārtesošo.</string>
+		<string>Ierīcēm ar fotoaparāta zibspuldzi, OI Flashlight var arī izmantot zibspuldzi, lai izgaismotu istabu.</string>
+		<string>Apgaismojuma krāsa ir pilnībā pielāgojama ar OI Color Picker.</string>
 		<emptyline/>
 		<string>Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju.</string>
 		<emptyline/>
@@ -178,29 +179,29 @@
 		<string>Lai skatītu pilnīgu izmaiņu sarakstu un sarakstu ar biežāk uzdotajiem jautājumiem, lūdzu apmeklējiet:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Lounchpad:</string>
+		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Lock the display backlight on.</listitem>
-		<listitem>Lock camera flash on.</listitem>
-		<listitem>The color of backlight is customizable.</listitem>
+		<string>Funkcijas:</string>
+		<listitem>Ieslēgt ekrāna apgaismojumu.</listitem>
+		<listitem>Ieslēgt fotoaparāta zibspuldzi.</listitem>
+		<listitem>Apgaismojuma krāsa ir pielāgojama.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Flashlight":</string>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<string>Pieejamie paplašinājumi "OI Flashlight":</string>
+		<listitem>Parādīt licenzes informāciju ar "OI About".</listitem>
+		<listitem>Izmainiet apgaismojuma krāsu ar "OI Color Picker".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Flashlight":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<string>Aplikācijas, kuras strādā ar "OI Flashlight":</string>
+		<listitem>Atjauniniet ar "OI Update".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>Flashlight, light, Backlight</listitem>
+		<string>Atslēgvārdi:</string>
+		<listitem>Zibspuldze, gaisma, apgaismojums</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Starptautiskās versijas:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Meklēt rindiņas tirgum:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -212,10 +213,10 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Notepad is a full-featured open source note taking application.</string>
-		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
-		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<string>OI Notepad ir pilnīgi iespējota atvērtā pirmkoda piezīmju veikšanas aplikācija.</string>
+		<string>Ar to var veidot iezīmes, meklēt un sūtīt piezīmes, papildus pamata funkcionalitātei kā piezīmju izveidošanai, izdzēšanai un labošanai.</string>
+		<string>Papildus iespējas kā šifrēšana, importēšana/eksportēšana un balss piezīmes ir pieejamas izmantojot paplašinājumus.</string>
+		<string>Visa ši funkcionalitāte ir apkopota vienkāršā un efektīvā izkārtojumā, pielāgojamā ar dažādām tēmām.</string>
 		<emptyline/>
 		<string>Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju.</string>
 		<emptyline/>
@@ -225,39 +226,39 @@
 		<string>Lai skatītu pilnīgu izmaiņu sarakstu un sarakstu ar biežāk uzdotajiem jautājumiem, lūdzu apmeklējiet:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Lounchpad:</string>
+		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Add, edit and delete notes.</listitem>
-		<listitem>Long-press on notes to add tags.</listitem>
-		<listitem>Change font size and sort order.</listitem>
-		<listitem>A clearly arranged layout with a variety of themes.</listitem>
-		<listitem>Quickly search through notes.</listitem>
-		<listitem>Send notes as MMS or SMS.</listitem>
+		<string>Funkcijas:</string>
+		<listitem>Pievienojiet, labojiet un izdzēsiet piezīmes.</listitem>
+		<listitem>Turiet nospiestu ilgi, lai pievienotu iezīmes.</listitem>
+		<listitem>Izmainiet fonta lielumu un šķirošanas kārtību.</listitem>
+		<listitem>Skaidri sakārtots izkārtojums ar tēmu dažādību.</listitem>
+		<listitem>Ātra meklēšana caur piezīmēm.</listitem>
+		<listitem>Sūtiet piezīmes kā MMS vai SMS.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Notepad":</string>
-		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
-		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
-		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<string>Pieejamie paplašinājumi "OI Notepad":</string>
+		<listitem>Ierakstiet un pievienojiet balss piezīmes savām piezīmēm ar "OI Voice Notes".</listitem>
+		<listitem>Ar "OI Convert CSV" importējiet/eksportējiet piezīmes no SD kartes.</listitem>
+		<listitem>Parādīt licenzes informāciju ar "OI About".</listitem>
+		<listitem>Ievietojiet datumu un laiku piezīmēs ar "OI Insert Date".</listitem>
+		<listitem>Pagrieziet tekstu kājām gaisā ar "Upside Down".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Notepad":</string>
-		<listitem>Back up notes with "My Backup Pro".</listitem>
-		<listitem>Encrypt notes using "OI Safe".</listitem>
-		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<string>Aplikācijas, kuras strādā ar "OI Notepad":</string>
+		<listitem>Dublējiet piezīmes ar "My Backup Pro".</listitem>
+		<listitem>Šifrējiet piezīmes izmantojot "OI Safe".</listitem>
+		<listitem>Pārvaldiet piezīmes SD kartē ar "OI File Manager".</listitem>
+		<listitem>Atjauniniet ar "OI Update".</listitem>
+		<listitem>Dalieties ar piezīmēm caur "Facebook", "Gmail", "Google+", "Twitter" un daudzām citām aplikācijām.</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<string>Atslēgvārdi:</string>
+		<listitem>Piezīme, piezīmju grāmata, piezīmes</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Starptautiskās versijas:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Meklēt rindiņas tirgum:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -269,47 +270,47 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
-		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<string>OI Safe droši aizsargā visas Jūsu paroles un citus privātos datus izmantojot nozares standartu AES šifrēšanu.</string>
+		<string>Tas arī darbojas kā paplašinājums OI Notepad, lai šifrētu piezīmes, kuras ir izveidotas ar OI Notepad.</string>
 		<emptyline/>
 		<string>Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju.</string>
 		<emptyline/>
 		<string>Lai skatītu pilnīgu izmaiņu sarakstu un sarakstu ar biežāk uzdotajiem jautājumiem, lūdzu apmeklējiet:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Lounchpad:</string>
+		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Pirmkods ir bezmaksas un atvērtā pirmkoda aplikācija ir pieejama:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Securely protect data using AES encryption.</listitem>
-		<listitem>Freely move data entries between categories.</listitem>
-		<listitem>Import/Export data entries and databases.</listitem>
-		<listitem>Backup/Restore entries.</listitem>
-		<listitem>Includes secure password generator.</listitem>
-		<listitem>Automatic timeout to protect encrypted documents.</listitem>
-		<listitem>Encrypt OI Notepad notes.</listitem>
-		<listitem>Support for Obscura picture safe.</listitem>
+		<string>Funkcijas:</string>
+		<listitem>Aizsargājiet datus droši izmantojot AES šifrēšanu.</listitem>
+		<listitem>Brīvi pārvietojiet datu ievades starp kategorijām</listitem>
+		<listitem>Importējiet/eksportējiet datu ievades un datubāzes.</listitem>
+		<listitem>Dublējiet/atjaunojiet ievades.</listitem>
+		<listitem>Iekļauj drošu paroļu ģeneratoru.</listitem>
+		<listitem>Automātisks noilgums, lai aizsargātu šifrētos dokumentus.</listitem>
+		<listitem>Šifrējiet OI Notepad piezīmes.</listitem>
+		<listitem>Atbalsts Obscura attēlu seifam.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>Pieejamie paplašinājumi "OI File Manager":</string>
+		<listitem>Parādīt licenzes informāciju ar "OI About".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
+		<string>Aplikācijas, kuras strādā ar "OI File Manager":</string>
 		<listitem>Encrypt notes created in "OI Notepad".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Atslēgvārdi:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
 		<listitem>safe, encrpytion, password, protection</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Starptautiskās versijas:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Meklēt rindiņas tirgum:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -335,10 +336,10 @@
 		<string>Lai skatītu pilnīgu izmaiņu sarakstu un sarakstu ar biežāk uzdotajiem jautājumiem, lūdzu apmeklējiet:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Lounchpad:</string>
+		<string>Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
+		<string>Funkcijas:</string>
 		<listitem>Add, edit and delete lists.</listitem>
 		<listitem>Create, delete, and check items quickly and easily.</listitem>
 		<listitem>Variety of themes.</listitem>
@@ -349,19 +350,19 @@
 		<string>Available extensions for "OI Shopping List":</string>
 		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
 		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Parādīt licenzes informāciju ar "OI About".</listitem>
 		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
 		<emptyline/>
 		<string>Applications that work with "OI Shopping List":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<listitem>Atjauniniet ar "OI Update".</listitem>
 		<listitem>Backup lists with "My Backup Pro".</listitem>
 		<listitem>Import ingredients of recipes with "Bites".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Atslēgvārdi:</string>
 		<listitem>Shopping, List, Shopping List, Checklist</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Starptautiskās versijas:</string>
 		<international/>
 		<emptyline/>
 		<string>Extensions:</string>

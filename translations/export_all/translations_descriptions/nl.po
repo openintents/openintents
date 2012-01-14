@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Mark van Kuijk <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,6 +21,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Mark van Kuijk https://launchpad.net/~markvankuyk\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Sjoerd Hiemstra https://launchpad.net/~sjohie"
 
@@ -206,11 +207,11 @@ msgstr ""
 
 #: tmp_strings.xml:89(listitem)
 msgid "Modify countdowns, even while they are still running"
-msgstr ""
+msgstr "Wijzig je timer, zelfs als ze nog aan het lopen zijn."
 
 #: tmp_strings.xml:91(string)
 msgid "Available extensions for \"OI Countdown\":"
-msgstr ""
+msgstr "Beschikbare extensies voor \"OI Countdown\""
 
 #: tmp_strings.xml:92(listitem)
 msgid "Launch applications through Android shortcuts"
@@ -286,7 +287,7 @@ msgstr ""
 
 #: tmp_strings.xml:139(string) tmp_strings.xml:296(string)
 msgid "Available extensions for \"OI File Manager\":"
-msgstr ""
+msgstr "Beschikbare extensies voor \"OI File Manager\""
 
 #: tmp_strings.xml:140(listitem) tmp_strings.xml:189(listitem)
 #: tmp_strings.xml:241(listitem) tmp_strings.xml:297(listitem)
@@ -296,11 +297,11 @@ msgstr ""
 
 #: tmp_strings.xml:142(string) tmp_strings.xml:299(string)
 msgid "Applications that work with \"OI File Manager\":"
-msgstr ""
+msgstr "Applicaties die werken met \"OI File Manager\""
 
 #: tmp_strings.xml:143(listitem)
 msgid "Open and save text files in \"OI Notepad\"."
-msgstr ""
+msgstr "Open en bewaar tekstbestanden in \"OI Notepad\""
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:147(listitem)
@@ -422,7 +423,7 @@ msgstr ""
 
 #: tmp_strings.xml:239(listitem)
 msgid "Record and attach voice memos to notes with \"OI Voice Notes\"."
-msgstr ""
+msgstr "Neem stem memos op en voeg ze toe met \"OI Voice Notes\""
 
 #: tmp_strings.xml:240(listitem)
 msgid "With \"OI Convert CSV\" import/export notes from the SD card."
@@ -430,15 +431,15 @@ msgstr ""
 
 #: tmp_strings.xml:242(listitem)
 msgid "Insert the date and time into notes with \"OI Insert Date\"."
-msgstr ""
+msgstr "Stel de datum en tijd in uw notities met \"OI Insert Date\""
 
 #: tmp_strings.xml:243(listitem)
 msgid "Turn text upside down with \"Upside Down\"."
-msgstr ""
+msgstr "Zet teksten ondersteboven met \"Upside Down\""
 
 #: tmp_strings.xml:245(string)
 msgid "Applications that work with \"OI Notepad\":"
-msgstr ""
+msgstr "Applicaties die werken met \"OI Notepad\""
 
 #: tmp_strings.xml:246(listitem)
 msgid "Back up notes with \"My Backup Pro\"."
@@ -446,7 +447,7 @@ msgstr ""
 
 #: tmp_strings.xml:247(listitem)
 msgid "Encrypt notes using \"OI Safe\"."
-msgstr ""
+msgstr "Beveilig notities met \"OI Safe\""
 
 #: tmp_strings.xml:248(listitem)
 msgid "Manage notes on your SD Card with \"OI File Manager\"."

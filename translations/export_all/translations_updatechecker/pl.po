@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Damian Skrodzki <damienix1@gmail.com>\n"
+"Last-Translator: Karolina Kowal <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,7 +70,7 @@ msgstr "wolne miejsce: %s"
 
 #: tmp_strings.xml:27(string)
 msgid "Board %1$s\\nBrand %2$s\\nDevice %3$s\\nID %4$s\\nModel %5$s"
-msgstr ""
+msgstr "Płyta %1$s\\nMarka %2$s\\nUrządzenie %3$s\\nID %4$s\\nModel %5$s"
 
 #: tmp_strings.xml:29(string)
 msgid "Perform update now!"

@@ -348,20 +348,3 @@ msgstr "अधिलेखित - CSV में हिक्क मौजूद
 msgid ""
 "Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
 msgstr "बैकअप रेस्टोर कयो - पेंजे मौजूदा सादे रिकॉर्डन खे मिटायो, पो CSV फ़ाइल आयात कयो"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

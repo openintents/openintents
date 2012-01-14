@@ -24,7 +24,7 @@ https://translations.launchpad.net/openintents/trunk
 * Retrieves information from application manifest through default tags and metadata.
 * Optionally, all fields can be modified through intent extras.
 
-Applications that work with "OI About": 
+«OI ھەققىدە» بىلەن ئىشلەيدىغان ئەپلەر: 
 * OI خاتىرە دەپتەر
 * OI ھۆججەت باشقۇرغۇچ
 * OI سېتىۋېلىش تىزىمى
@@ -38,7 +38,7 @@ Applications that work with "OI About":
 * OI, OpenIntents, Open Intents.
 
 خەلقئارا نەشرى: 
-OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI درباره, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
 
 
 بازاردا ئىزدەش ئۇچۇرى: 

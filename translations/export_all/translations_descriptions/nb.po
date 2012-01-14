@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Arne Tobias Malkenes Ødegaard <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,31 +20,39 @@ msgstr ""
 #: tmp_strings.xml:3(translators)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias"
 
 #. Description of application
 #: tmp_strings.xml:12(string)
 msgid "OI About is a standalone about dialog that is shared between apps."
 msgstr ""
+"OI Info er en frittstående informasjonsdialog som er delt mellom apper."
 
 #: tmp_strings.xml:13(string)
 msgid "This application is invoked through the menu of other OI applications."
 msgstr ""
+"Denne applikasjonen blir påkalt gjennom menyen til andre OI applikasjoner."
 
 #: tmp_strings.xml:14(string)
 msgid ""
 "It allows you to view version information, links, credits, and license of an "
 "application."
 msgstr ""
+"Den lar deg se på versjonsinformasjon, linker, krediteringer og lisensen til "
+"en applikasjon."
 
 #: tmp_strings.xml:15(string)
 msgid "Credits include authors, documentation, translators, and artists."
 msgstr ""
+"Krediteringer inkluderer forfattere, dokumentasjon, oversettere og kunstnere."
 
 #: tmp_strings.xml:16(string)
 msgid ""
 "All of this functionality is brought together in a simplistic and efficient "
 "layout."
 msgstr ""
+"All denne funksjonaliteten er ført sammen i en enkel og effektiv utforming."
 
 #: tmp_strings.xml:18(string) tmp_strings.xml:70(string)
 #: tmp_strings.xml:119(string) tmp_strings.xml:172(string)
@@ -52,7 +60,7 @@ msgstr ""
 #: tmp_strings.xml:332(string)
 msgid ""
 "This application is ad free and does not require the internet permission."
-msgstr ""
+msgstr "Denne applikasjonen er reklamefri og trenger ikke inter"
 
 #: tmp_strings.xml:20(string) tmp_strings.xml:74(string)
 #: tmp_strings.xml:127(string) tmp_strings.xml:174(string)
@@ -61,6 +69,8 @@ msgstr ""
 msgid ""
 "The source code of this free and open source application is available at:"
 msgstr ""
+"Kildekoden til denne gratis applikasjonen med åpen kildekode er tilgjengelig "
+"hos:"
 
 #: tmp_strings.xml:23(string) tmp_strings.xml:77(string)
 #: tmp_strings.xml:121(string) tmp_strings.xml:177(string)
@@ -70,6 +80,8 @@ msgid ""
 "For the complete list of changes and a list of frequently asked questions, "
 "please visit:"
 msgstr ""
+"For den komplette listen med endringer og en liste over vanlige spørsmål, "
+"vennligst besøk:"
 
 #: tmp_strings.xml:26(string) tmp_strings.xml:81(string)
 #: tmp_strings.xml:124(string) tmp_strings.xml:180(string)
@@ -77,225 +89,239 @@ msgstr ""
 #: tmp_strings.xml:337(string)
 msgid ""
 "You can help to improve the translation into your language at Launchpad:"
-msgstr ""
+msgstr "Du kan hjelpe til med å forbedre oversettelsen"
 
 #: tmp_strings.xml:29(string) tmp_strings.xml:84(string)
 #: tmp_strings.xml:130(string) tmp_strings.xml:183(string)
 #: tmp_strings.xml:230(string) tmp_strings.xml:285(string)
 #: tmp_strings.xml:340(string)
 msgid "Features:"
-msgstr ""
+msgstr "Funksjoner:"
 
 #: tmp_strings.xml:30(listitem)
 msgid "Shows general info, credits, and license tabs."
-msgstr ""
+msgstr "Viser generell informasjon, krediteringer og lisensfaner."
 
 #: tmp_strings.xml:31(listitem)
 msgid "Shows translators of all language versions."
-msgstr ""
+msgstr "Viser oversettere av alle språkversjoner."
 
 #: tmp_strings.xml:32(listitem)
 msgid ""
 "Retrieves information from application manifest through default tags and "
 "metadata."
 msgstr ""
+"Henter informasjon fra applikasjonsmanifest gjennom standardmerker og "
+"metadata."
 
 #: tmp_strings.xml:33(listitem)
 msgid "Optionally, all fields can be modified through intent extras."
-msgstr ""
+msgstr "Alternativt, alle felter kan bli endret gjennom ekstra hensikter."
 
 #: tmp_strings.xml:35(string)
 msgid "Applications that work with \"OI About\":"
-msgstr ""
+msgstr "Applikasjoner som fungerer med \"OI Info\":"
 
 #: tmp_strings.xml:36(listitem)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI Notatblokk"
 
 #: tmp_strings.xml:37(listitem)
 msgid "OI File manager"
-msgstr ""
+msgstr "OI Filbehandler"
 
 #: tmp_strings.xml:38(listitem)
 msgid "OI Shopping List"
-msgstr ""
+msgstr "OI Handleliste"
 
 #: tmp_strings.xml:39(listitem)
 msgid "OI Convert CSV"
-msgstr ""
+msgstr "OI Konverter CSV"
 
 #: tmp_strings.xml:40(listitem)
 msgid "OI Safe"
-msgstr ""
+msgstr "OI Safe"
 
 #: tmp_strings.xml:41(listitem)
 msgid "OI Countdown"
-msgstr ""
+msgstr "OI Nedtelling"
 
 #: tmp_strings.xml:42(listitem)
 msgid "OI Flashlight"
-msgstr ""
+msgstr "OI Lykt"
 
 #: tmp_strings.xml:44(string) tmp_strings.xml:95(string)
 #: tmp_strings.xml:145(string) tmp_strings.xml:195(string)
 #: tmp_strings.xml:252(string) tmp_strings.xml:302(string)
 #: tmp_strings.xml:359(string)
 msgid "Keywords:"
-msgstr ""
+msgstr "Nøkkelord:"
 
 #: tmp_strings.xml:45(listitem)
 msgid "About, Credits, Information."
-msgstr ""
+msgstr "Om, Krediteringer, Informasjon."
 
 #: tmp_strings.xml:46(listitem)
 msgid "OI, OpenIntents, Open Intents."
-msgstr ""
+msgstr "OI, OpenIntents, Open Intents."
 
 #: tmp_strings.xml:48(string) tmp_strings.xml:101(string)
 #: tmp_strings.xml:151(string) tmp_strings.xml:199(string)
 #: tmp_strings.xml:256(string) tmp_strings.xml:308(string)
 #: tmp_strings.xml:363(string)
 msgid "International versions:"
-msgstr ""
+msgstr "Internasjonal versjoner:"
 
 #: tmp_strings.xml:51(string) tmp_strings.xml:104(string)
 #: tmp_strings.xml:154(string) tmp_strings.xml:202(string)
 #: tmp_strings.xml:259(string) tmp_strings.xml:311(string)
 msgid "Search strings for Market:"
-msgstr ""
+msgstr "Søkestrenger for Marked:"
 
 #: tmp_strings.xml:66(string)
 msgid ""
 "OI Countdown is a helpful timer to increase your productivity and plan your "
 "day."
 msgstr ""
+"OI Nedtelling er en nyttig tidtaker for å øke produktivitet og planlegge "
+"dagen din."
 
 #: tmp_strings.xml:67(string)
 msgid ""
 "It allows you to set a variety of different actions to notify you at the end "
 "of a timer."
 msgstr ""
+"Den lar deg sette mange ulike handlinger for å varsle deg når tidtakeren er "
+"ferdig."
 
 #: tmp_strings.xml:68(string)
 msgid ""
 "Fully customize all your timers, with no limit on how many you can have "
 "running or saved."
 msgstr ""
+"Tilpass alle dine tidtakere, med ingen grense på hvor mange du kan ha "
+"kjørende eller lagret."
 
 #: tmp_strings.xml:85(listitem)
 msgid "Set a countdown by choosing a duration or a date."
-msgstr ""
+msgstr "Sett en nedtelling ved å velge en varighet eller en dato."
 
 #: tmp_strings.xml:86(listitem)
 msgid "Be notified by vibration or any sound of your choice."
-msgstr ""
+msgstr "Bli varslet av vibrasjon eller en lyd du velger."
 
 #: tmp_strings.xml:87(listitem)
 msgid "Have an unlimited number of timers running at the same time."
-msgstr ""
+msgstr "Ha et ubegrenset antall tidtakere kjørende samtidig."
 
 #: tmp_strings.xml:88(listitem)
 msgid "Save your countdowns and give them names to reuse at later times."
-msgstr ""
+msgstr "Lagre dine nedtellinger og gi dem navn for å bruke igjen senere."
 
 #: tmp_strings.xml:89(listitem)
 msgid "Modify countdowns, even while they are still running"
-msgstr ""
+msgstr "Endre nedtellinger, selv når de kjører"
 
 #: tmp_strings.xml:91(string)
 msgid "Available extensions for \"OI Countdown\":"
-msgstr ""
+msgstr "Tilgjengelige utvidelser for \"OI Nedtelling\":"
 
 #: tmp_strings.xml:92(listitem)
 msgid "Launch applications through Android shortcuts"
-msgstr ""
+msgstr "Start applikasjoner gjennom snarveier i Android"
 
 #: tmp_strings.xml:93(listitem)
 msgid "Use OI About to show license information"
-msgstr ""
+msgstr "Bruk OI Info for å vise lisensinformasjon"
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:97(listitem)
 msgid "countdown, timer, alert"
-msgstr ""
+msgstr "nedtelling, tidtakere, varsel"
 
 #. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
 #: tmp_strings.xml:99(listitem) tmp_strings.xml:197(listitem)
 #: tmp_strings.xml:254(listitem) tmp_strings.xml:361(listitem)
 msgid "OI, OpenIntents, Open Intents"
-msgstr ""
+msgstr "OI, OpenIntents, Open Intents"
 
 #. Description of application
 #: tmp_strings.xml:116(string)
 msgid ""
 "OI File Manager allows you to browse your SD card, create directories, "
 "rename, copy, move, and delete files."
-msgstr ""
+msgstr "OI Filbehandler lar deg"
 
 #: tmp_strings.xml:117(string)
 msgid ""
 "It also acts as an extension to other applications to display \"Open\" and "
 "\"Save\" dialogs."
 msgstr ""
+"Den fungerer også som en utvidelse til andre applikasjoner for å vise \"Åpne"
+"\" og \"Lagre\" dialoger."
 
 #: tmp_strings.xml:131(listitem)
 msgid "Show list of files with thumbnails for images."
-msgstr ""
+msgstr "Vis lister over filer med miniatyrbilder for fotografier."
 
 #: tmp_strings.xml:132(listitem)
 msgid "Move, copy, rename, and delete files."
-msgstr ""
+msgstr "Flytt, kopier, gi nytt navn til og slett filer."
 
 #: tmp_strings.xml:133(listitem)
 msgid "Create and delete directories (folders)."
-msgstr ""
+msgstr "Opprett og slett mapper."
 
 #: tmp_strings.xml:134(listitem)
 msgid "Send files by email."
-msgstr ""
+msgstr "Send filer via e-post."
 
 #: tmp_strings.xml:135(listitem)
 msgid ""
 "Acts as an extension to other applications, like GMail, to attach files."
 msgstr ""
+"Fungerer som en utvidelse til andre applikasjoner, som Gmail, for å legge "
+"ved filer."
 
 #: tmp_strings.xml:136(listitem)
 msgid "Support for many file endings and mime types."
-msgstr ""
+msgstr "Støtte for mange filendelser og mime-typer."
 
 #: tmp_strings.xml:137(listitem)
 msgid ""
 "Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can "
 "use OI File Manager."
 msgstr ""
+"Støtter PICK-FILE og PICK_DIRECTORY hensikter sånn at andre applikasjoner "
+"kan bruk OI Filbehandler."
 
 #: tmp_strings.xml:139(string) tmp_strings.xml:296(string)
 msgid "Available extensions for \"OI File Manager\":"
-msgstr ""
+msgstr "TIlgjengelige utvidelser for \"OI Filbehandler\":"
 
 #: tmp_strings.xml:140(listitem) tmp_strings.xml:189(listitem)
 #: tmp_strings.xml:241(listitem) tmp_strings.xml:297(listitem)
 #: tmp_strings.xml:351(listitem)
 msgid "Show the license information with \"OI About\"."
-msgstr ""
+msgstr "Vis lisensinformasjonen med \"OI Info\"."
 
 #: tmp_strings.xml:142(string) tmp_strings.xml:299(string)
 msgid "Applications that work with \"OI File Manager\":"
-msgstr ""
+msgstr "Applikasjoner som fungerer med \"OI Filbehandler\":"
 
 #: tmp_strings.xml:143(listitem)
 msgid "Open and save text files in \"OI Notepad\"."
-msgstr ""
+msgstr "Åpne og lagre tekstfiler i \"OI Notatblokk\"."
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:147(listitem)
 msgid "file manager, filemanager, file explorer"
-msgstr ""
+msgstr "filbehandler, filutforsker"
 
 #. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
 #: tmp_strings.xml:149(listitem) tmp_strings.xml:306(listitem)
 msgid "OI, IO, OpenIntents, Open Intents"
-msgstr ""
+msgstr "OI, IO, OpenIntents, Open Intents"
 
 #. Description of application
 #: tmp_strings.xml:167(string)
@@ -303,149 +329,165 @@ msgid ""
 "OI Flashlight is a simple and effective application that helps you find a "
 "way in the dark."
 msgstr ""
+"OI Lykt er en enkel og effektiv applikasjon som hjelper deg finne veien i "
+"mørket."
 
 #: tmp_strings.xml:168(string)
 msgid ""
 "OI Flashlight locks the display backlight on, clearly illuminating the "
 "surrounding area."
 msgstr ""
+"OI Lykt låser skjermens baklys på, tydelig opplysende for det "
+"omkringliggende området."
 
 #: tmp_strings.xml:169(string)
 msgid ""
 "For devices with a camera flash, OI Flashlight can also use the flash as a "
 "bright torch to brighten the room."
 msgstr ""
+"For enheter med en kamerablits, OI Lykt kan også bruke blitsen som en lys "
+"lykt for å lyse opp rommet."
 
 #: tmp_strings.xml:170(string)
 msgid ""
 "The color of the backlight is completely customizable with OI Color Picker."
-msgstr ""
+msgstr "Fargen på baklyset er helt egendefinerbart med OI Fargevelger."
 
 #: tmp_strings.xml:184(listitem)
 msgid "Lock the display backlight on."
-msgstr ""
+msgstr "Låser baklyset på."
 
 #: tmp_strings.xml:185(listitem)
 msgid "Lock camera flash on."
-msgstr ""
+msgstr "Lås kamerablits på."
 
 #: tmp_strings.xml:186(listitem)
 msgid "The color of backlight is customizable."
-msgstr ""
+msgstr "Fargen på baklyset er egendefinerbart."
 
 #: tmp_strings.xml:188(string)
 msgid "Available extensions for \"OI Flashlight\":"
-msgstr ""
+msgstr "Tilgjengelige utvidelser for \"OI Lykt\":"
 
 #: tmp_strings.xml:190(listitem)
 msgid "Change the color of the backlight with \"OI Color Picker\"."
-msgstr ""
+msgstr "Endre fargen på baklyset med \"OI Fargevelger\"."
 
 #: tmp_strings.xml:192(string)
 msgid "Applications that work with \"OI Flashlight\":"
-msgstr ""
+msgstr "Applikasjoner som fungerer med \"OI Lykt\":"
 
 #: tmp_strings.xml:193(listitem) tmp_strings.xml:249(listitem)
 #: tmp_strings.xml:355(listitem)
 msgid "Update with \"OI Update\"."
-msgstr ""
+msgstr "Oppdater med \"OI Oppdater\"."
 
 #: tmp_strings.xml:196(listitem)
 msgid "Flashlight, light, Backlight"
-msgstr ""
+msgstr "Lykt, lys, Baklys"
 
 #. Description of application
 #: tmp_strings.xml:214(string)
 msgid "OI Notepad is a full-featured open source note taking application."
 msgstr ""
+"OI Notatblokk er en fullt funksjonell applikasjon for å ta notater og har "
+"åpen kildekode."
 
 #: tmp_strings.xml:215(string)
 msgid ""
 "With it you can tag, search, and send your notes, in addition to basic "
 "functionality such as creating, deleting, and editing notes."
 msgstr ""
+"Med den kan du merke, søke og sende dine notater, i tillegg til "
+"grunnleggende funksjonalitet som å opprette, slette og redigere notater."
 
 #: tmp_strings.xml:216(string)
 msgid ""
 "Advanced features like encryption, import/export, and voice memos are all "
 "available through extensions."
 msgstr ""
+"Avanserte funksjoner som kryptering, import/eksport og talebeskjeder er alle "
+"tilgjengelige gjennom utvidelser."
 
 #: tmp_strings.xml:217(string)
 msgid ""
 "All of this functionality is brought together in a simplistic and efficient "
 "layout, customizable through a variety of themes."
 msgstr ""
+"All denne funksjonaliteten er ført sammen gjennom en enkel og effektiv "
+"utforming, egendefinerbar gjennom en variasjon av temaer."
 
 #: tmp_strings.xml:231(listitem)
 msgid "Add, edit and delete notes."
-msgstr ""
+msgstr "Legg til, rediger og slett notater."
 
 #: tmp_strings.xml:232(listitem)
 msgid "Long-press on notes to add tags."
-msgstr ""
+msgstr "Hold inne på notater for å legge til merker."
 
 #: tmp_strings.xml:233(listitem)
 msgid "Change font size and sort order."
-msgstr ""
+msgstr "Endre skriftstørrelse og sorteringsrekkefølge."
 
 #: tmp_strings.xml:234(listitem)
 msgid "A clearly arranged layout with a variety of themes."
-msgstr ""
+msgstr "En tydelig arrangert utforming med en variasjon i temaer."
 
 #: tmp_strings.xml:235(listitem)
 msgid "Quickly search through notes."
-msgstr ""
+msgstr "Søk raskt gjennom notater."
 
 #: tmp_strings.xml:236(listitem)
 msgid "Send notes as MMS or SMS."
-msgstr ""
+msgstr "Send notater som MMS eller SMS."
 
 #: tmp_strings.xml:238(string)
 msgid "Available extensions for \"OI Notepad\":"
-msgstr ""
+msgstr "Tilgjengelige utvidelser for \"OI Notatblokk\":"
 
 #: tmp_strings.xml:239(listitem)
 msgid "Record and attach voice memos to notes with \"OI Voice Notes\"."
-msgstr ""
+msgstr "Ta opp og legg ved stemmebeskjed til notater med \"OI Voice Notes\"."
 
 #: tmp_strings.xml:240(listitem)
 msgid "With \"OI Convert CSV\" import/export notes from the SD card."
-msgstr ""
+msgstr "Importer/eksporter notater fra SD-kortet med \"OI Konverter CSV\"."
 
 #: tmp_strings.xml:242(listitem)
 msgid "Insert the date and time into notes with \"OI Insert Date\"."
-msgstr ""
+msgstr "Sett inn dato og tid i notater med \"OI Insert Date\"."
 
 #: tmp_strings.xml:243(listitem)
 msgid "Turn text upside down with \"Upside Down\"."
-msgstr ""
+msgstr "Snu tekst opp-ned med \"Upside Down\"."
 
 #: tmp_strings.xml:245(string)
 msgid "Applications that work with \"OI Notepad\":"
-msgstr ""
+msgstr "Applikasjoner som fungerer med \"OI Notatblokk\":"
 
 #: tmp_strings.xml:246(listitem)
 msgid "Back up notes with \"My Backup Pro\"."
-msgstr ""
+msgstr "Sikkerhetskopier notater med \"My Backup Pro\"."
 
 #: tmp_strings.xml:247(listitem)
 msgid "Encrypt notes using \"OI Safe\"."
-msgstr ""
+msgstr "Enkrypt notater ved bruk av \"OI Safe\"."
 
 #: tmp_strings.xml:248(listitem)
 msgid "Manage notes on your SD Card with \"OI File Manager\"."
-msgstr ""
+msgstr "Administrer notater på ditt SD-kort med \"OI Filbehandler\"."
 
 #: tmp_strings.xml:250(listitem)
 msgid ""
 "Share notes through \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", and "
 "many other applications."
 msgstr ""
+"Del notater gjennom \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", og "
+"mange andre applikasjoner."
 
 #: tmp_strings.xml:253(listitem)
 msgid "Note, Notepad, Note book, Notes"
-msgstr ""
+msgstr "Notat, Notatblokk, Notatbok, Notater"
 
 #. Description of application
 #: tmp_strings.xml:271(string)
@@ -453,57 +495,61 @@ msgid ""
 "OI Safe safely protects all of your passwords and other private data using "
 "industry standard AES encryption."
 msgstr ""
+"OI Safe beskytter alle dine passord og andre private data ved bruk av AES-"
+"kryptering som er en industristandard."
 
 #: tmp_strings.xml:272(string)
 msgid ""
 "It also acts as an extension to OI Notepad to encrypt notes created in OI "
 "Notepad."
 msgstr ""
+"Den fungerer også som en utvidelse til OI Notatblokk for å kryptere notater "
+"opprettet i OI Notatblokk."
 
 #: tmp_strings.xml:286(listitem)
 msgid "Securely protect data using AES encryption."
-msgstr ""
+msgstr "Trygt beskytt data ved bruk av AES-kryptering."
 
 #: tmp_strings.xml:287(listitem)
 msgid "Freely move data entries between categories."
-msgstr ""
+msgstr "Fritt flytt dataoppføringer mellom kategorier."
 
 #: tmp_strings.xml:288(listitem)
 msgid "Import/Export data entries and databases."
-msgstr ""
+msgstr "Importer/Eksporter dataoppføringer og databaser."
 
 #: tmp_strings.xml:289(listitem)
 msgid "Backup/Restore entries."
-msgstr ""
+msgstr "Sikkerhetskopier/Gjenopprett oppføringer"
 
 #: tmp_strings.xml:290(listitem)
 msgid "Includes secure password generator."
-msgstr ""
+msgstr "Inkluderer sikker passordgenerator."
 
 #: tmp_strings.xml:291(listitem)
 msgid "Automatic timeout to protect encrypted documents."
-msgstr ""
+msgstr "Automatisk tidsavbrudd for å beskytte krypterte dokumenter."
 
 #: tmp_strings.xml:292(listitem)
 msgid "Encrypt OI Notepad notes."
-msgstr ""
+msgstr "Krypter OI Notatblokk notater."
 
 #: tmp_strings.xml:293(listitem)
 msgid "Support for Obscura picture safe."
-msgstr ""
+msgstr "Støtte for Obscura bildesafe."
 
 #: tmp_strings.xml:294(listitem)
 msgid "MyBackup Pro."
-msgstr ""
+msgstr "MyBackup Pro."
 
 #: tmp_strings.xml:300(listitem)
 msgid "Encrypt notes created in \"OI Notepad\"."
-msgstr ""
+msgstr "Krypterte notater opprettet i \"OI Notepad\"."
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:304(listitem)
 msgid "safe, encrpytion, password, protection"
-msgstr ""
+msgstr "safe, kryptering, passord, beskyttelse"
 
 #. Description of application
 #: tmp_strings.xml:323(string)
@@ -511,87 +557,97 @@ msgid ""
 "OI Shopping List is a powerful application which makes it easy to create and "
 "manage checklists."
 msgstr ""
+"OI Handleliste er en kraftig applikasjon som gjør det lett å opprette og "
+"administrere sjekklister."
 
 #: tmp_strings.xml:324(string)
 msgid ""
 "OI Shopping List makes it easy to add items to a list, check the item off, "
 "and remove it from the list."
 msgstr ""
+"OI Handleliste gjør det enkelt å legge til punkter til en liste, krysse "
+"punktet av, og fjerne det fra listen."
 
 #: tmp_strings.xml:325(string)
 msgid ""
 "The application can track separate prices for each store that you use, and "
 "features a high level of customization."
 msgstr ""
+"Applikasjonen kan spore seperate priser for hver butikk du bruker, og har en "
+"høy grad av tilpasning."
 
 #: tmp_strings.xml:326(string)
 msgid ""
 "Font size, sort order, list columns, and list cleanup behavior are all "
 "settings controlled by the user."
 msgstr ""
+"Skriftstørrelse, sorteringsrekkefølge, listekolonner og oppførsel for "
+"rydding er alle innstillinger kontrollert av brukeren."
 
 #: tmp_strings.xml:327(string)
 msgid ""
 "All of these features are brought together in a crisp layout that is "
 "customizable through a variety of themes."
 msgstr ""
+"Alle disse funksjonene blir ført sammen i en tydelig utforming som er "
+"egendefinerbar gjennom en variasjon med temaer."
 
 #: tmp_strings.xml:341(listitem)
 msgid "Add, edit and delete lists."
-msgstr ""
+msgstr "Legg til, rediger og slett lister."
 
 #: tmp_strings.xml:342(listitem)
 msgid "Create, delete, and check items quickly and easily."
-msgstr ""
+msgstr "Opprett, slett og kryss av oppføringer raskt og enkelt."
 
 #: tmp_strings.xml:343(listitem)
 msgid "Variety of themes."
-msgstr ""
+msgstr "Variasjon i temaer."
 
 #: tmp_strings.xml:344(listitem)
 msgid "Customizable font size and sort order."
-msgstr ""
+msgstr "Egendefinerbar skriftstørrelse og sorteringsrekkefølge."
 
 #: tmp_strings.xml:345(listitem)
 msgid "Keep track of separate prices for each store."
-msgstr ""
+msgstr "Hold styr på seperate priser for hver butikk."
 
 #: tmp_strings.xml:346(listitem)
 msgid "Customizable list columns."
-msgstr ""
+msgstr "Egendefinerbare listekolonner."
 
 #: tmp_strings.xml:348(string)
 msgid "Available extensions for \"OI Shopping List\":"
-msgstr ""
+msgstr "Tilgjengelige utvidelser for \"OI Handleliste\":"
 
 #: tmp_strings.xml:349(listitem)
 msgid "Add a recorded message to a note with \"OI Voice Notes\"."
-msgstr ""
+msgstr "Legg til en innspilt melding til et notat med \" OI Voice Notes\"."
 
 #: tmp_strings.xml:350(listitem)
 msgid "Import/export shopping lists with \"OI Convert CSV\"."
-msgstr ""
+msgstr "Importer/eksporter handlelister med \"OI Konverter CSV\"."
 
 #: tmp_strings.xml:352(listitem)
 msgid "Enter/check items with \"Barcode OI Plugin\"."
-msgstr ""
+msgstr "Skriv inn/kryss av punkter med \"Barcode OI Plugin\"."
 
 #: tmp_strings.xml:354(string)
 msgid "Applications that work with \"OI Shopping List\":"
-msgstr ""
+msgstr "Applikasjoner som fungerer med \"OI Handleliste\":"
 
 #: tmp_strings.xml:356(listitem)
 msgid "Backup lists with \"My Backup Pro\"."
-msgstr ""
+msgstr "Sikkerhetskopier lister med \"My Backup Pro\"."
 
 #: tmp_strings.xml:357(listitem)
 msgid "Import ingredients of recipes with \"Bites\"."
-msgstr ""
+msgstr "Importer ingredienser i oppskrifter med \"Bites\"."
 
 #: tmp_strings.xml:360(listitem)
 msgid "Shopping, List, Shopping List, Checklist"
-msgstr ""
+msgstr "Handling, Liste, Handleliste, Sjekkliste"
 
 #: tmp_strings.xml:366(string)
 msgid "Extensions:"
-msgstr ""
+msgstr "Utvidelser:"

@@ -8,13 +8,14 @@
 	<string name="about_translators">Launchpad Contributions:
   Fitoschido https://launchpad.net/~fitoschido
   Juan Eduardo Riva https://launchpad.net/~juaneduardoriva
+  Martín González https://launchpad.net/~mgonzlezgmz
   Paco Molinero https://launchpad.net/~franciscomol
   Peli https://launchpad.net/~peli0101
   miwie https://launchpad.net/~mw-miwie
   tamalet https://launchpad.net/~tamalet</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
+	<string name="about_comments">Establezca cuentas atrás con OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -171,4 +172,7 @@
         <item>5 minutos</item>
         <item>10 minutos</item>
     </string-array>
+    
+    
+    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
 </resources>

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: thebowseat <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -116,19 +116,16 @@ msgid "Arabic"
 msgstr "アラビア語"
 
 #: tmp_strings.xml:80(item)
-#, fuzzy
 msgid "Belarusian"
-msgstr "ペルシア語"
+msgstr "ベラルーシ語"
 
 #: tmp_strings.xml:81(item)
-#, fuzzy
 msgid "Bulgarian"
-msgstr "ハンガリー語"
+msgstr "ブルガリア語"
 
 #: tmp_strings.xml:82(item)
-#, fuzzy
 msgid "Catalan"
-msgstr "イタリア語"
+msgstr "カタルーニャ語"
 
 #: tmp_strings.xml:83(item)
 msgid "Czech"
@@ -152,7 +149,7 @@ msgstr "英語"
 
 #: tmp_strings.xml:88(item)
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "英語 (英国)"
 
 #: tmp_strings.xml:89(item)
 msgid "Spanish"
@@ -176,7 +173,7 @@ msgstr "フランス語"
 
 #: tmp_strings.xml:94(item)
 msgid "Hindi"
-msgstr ""
+msgstr "ヒンディー語"
 
 #: tmp_strings.xml:95(item)
 msgid "Croatian"
@@ -192,7 +189,7 @@ msgstr "イタリア語"
 
 #: tmp_strings.xml:98(item)
 msgid "Hebrew"
-msgstr ""
+msgstr "ヘブライ語"
 
 #: tmp_strings.xml:99(item)
 msgid "Japanese"
@@ -207,18 +204,16 @@ msgid "Lao"
 msgstr "ラオ語"
 
 #: tmp_strings.xml:102(item)
-#, fuzzy
 msgid "Latvian"
-msgstr "クロアチア語"
+msgstr "ラトビア語"
 
 #: tmp_strings.xml:103(item)
-#, fuzzy
 msgid "Macedonian"
-msgstr "サルデーニャ語"
+msgstr "マケドニア語"
 
 #: tmp_strings.xml:104(item)
 msgid "Norwegian Bokmal"
-msgstr ""
+msgstr "ノルウェー語 ブークモール"
 
 #: tmp_strings.xml:105(item)
 msgid "Dutch"
@@ -230,7 +225,7 @@ msgstr "オック語(1500年以降)"
 
 #: tmp_strings.xml:107(item)
 msgid "Punjabi"
-msgstr ""
+msgstr "パンジャーブ語"
 
 #: tmp_strings.xml:108(item)
 msgid "Polish"
@@ -258,16 +253,15 @@ msgstr "サルデーニャ語"
 
 #: tmp_strings.xml:114(item)
 msgid "Sindhi"
-msgstr ""
+msgstr "シンド語"
 
 #: tmp_strings.xml:115(item)
 msgid "Slovak"
 msgstr "スロバキア語"
 
 #: tmp_strings.xml:116(item)
-#, fuzzy
 msgid "Slovenian"
-msgstr "スロバキア語"
+msgstr "スロベニア語"
 
 #: tmp_strings.xml:117(item)
 msgid "Swedish"
@@ -275,7 +269,7 @@ msgstr "スウェーデン語"
 
 #: tmp_strings.xml:118(item)
 msgid "Tagalog"
-msgstr ""
+msgstr "タガログ語"
 
 #: tmp_strings.xml:119(item)
 msgid "Turkish"
@@ -283,7 +277,7 @@ msgstr "トルコ語"
 
 #: tmp_strings.xml:120(item)
 msgid "Uyghur"
-msgstr ""
+msgstr "ウイグル語"
 
 #: tmp_strings.xml:121(item)
 msgid "Chinese (Simplified)"

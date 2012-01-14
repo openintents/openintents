@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: happynawani <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Sindhi <sd@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,9 +28,8 @@ msgstr ""
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:26(string)
-#, fuzzy
 msgid "Manage files on the SD card with OI File Manager."
-msgstr "SD कार्ड ते फाईल्युन खे प्रबंधित कयो|"
+msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:32(string)
@@ -46,8 +45,8 @@ msgstr "नयो फ़ोल्डर"
 msgid "Multi Select"
 msgstr "बहु चयन"
 
-#: tmp_strings.xml:39(string) tmp_strings.xml:80(string)
-#: tmp_strings.xml:165(string)
+#: tmp_strings.xml:39(string) tmp_strings.xml:81(string)
+#: tmp_strings.xml:166(string)
 msgid "Delete"
 msgstr "मिटायो"
 
@@ -63,11 +62,11 @@ msgstr "मोक्ल्योस"
 msgid "Open"
 msgstr "खोल्यो"
 
-#: tmp_strings.xml:43(string) tmp_strings.xml:78(string)
+#: tmp_strings.xml:43(string) tmp_strings.xml:79(string)
 msgid "Move"
 msgstr "खिस्कयोस"
 
-#: tmp_strings.xml:44(string) tmp_strings.xml:79(string)
+#: tmp_strings.xml:44(string) tmp_strings.xml:80(string)
 msgid "Copy"
 msgstr "कापी कयो"
 
@@ -95,7 +94,7 @@ msgstr "फिल्टर कयो"
 msgid "Include in media scan"
 msgstr "मीडिया स्कैन में शामिल कयो"
 
-#: tmp_strings.xml:51(string) tmp_strings.xml:130(string)
+#: tmp_strings.xml:51(string) tmp_strings.xml:131(string)
 msgid "Exclude from media scan"
 msgstr "मीडिया स्कैन माँ अपवर्जित कयो"
 
@@ -103,374 +102,378 @@ msgstr "मीडिया स्कैन माँ अपवर्जित �
 msgid "Add to bookmarks"
 msgstr "बुकमार्क में जोड़यो"
 
-#: tmp_strings.xml:54(string)
+#: tmp_strings.xml:53(string)
+msgid "Refresh"
+msgstr ""
+
+#: tmp_strings.xml:55(string)
 msgid "Create new folder"
 msgstr "नयो फ़ोल्डर ठायो"
 
-#: tmp_strings.xml:55(string) tmp_strings.xml:56(string)
+#: tmp_strings.xml:56(string) tmp_strings.xml:57(string)
 msgid "Folder name"
 msgstr "फ़ोल्डर यो नाम"
 
-#: tmp_strings.xml:57(string)
+#: tmp_strings.xml:58(string)
 msgid "Extension (with '.')"
 msgstr "एक्सटेंशन ( '.' सां गड़)"
 
-#: tmp_strings.xml:58(string)
+#: tmp_strings.xml:59(string)
 msgid "This folder is empty."
 msgstr "|हे फ़ोल्डर खाली आ"
 
-#: tmp_strings.xml:59(string)
+#: tmp_strings.xml:60(string)
 msgid "Do you really want to delete %s?"
 msgstr "शा ताहाँ सहिय्में  में%sखे मितायण ता चाह्यो ?"
 
-#: tmp_strings.xml:60(string)
+#: tmp_strings.xml:61(string)
 msgid "File deleted."
 msgstr "फाईल मिटी वई"
 
-#: tmp_strings.xml:61(string)
+#: tmp_strings.xml:62(string)
 msgid "Folder deleted."
 msgstr "फोल्डर मिटी वयो"
 
-#: tmp_strings.xml:62(string)
+#: tmp_strings.xml:63(string)
 msgid "File renamed."
 msgstr "फाईल जो नाम बदल जी वयो"
 
-#: tmp_strings.xml:63(string)
+#: tmp_strings.xml:64(string)
 msgid "Folder renamed."
 msgstr "फ़ोल्डर जो नाम बदल जी वयो"
 
-#: tmp_strings.xml:64(string)
+#: tmp_strings.xml:65(string)
 msgid "File moved."
 msgstr "फाईल जी जगह बदल जी वई"
 
-#: tmp_strings.xml:65(string)
+#: tmp_strings.xml:66(string)
 msgid "Folder moved."
 msgstr "फोल्डर जी जगह बदल जी वई"
 
-#: tmp_strings.xml:66(string)
+#: tmp_strings.xml:67(string)
 msgid "File copied."
 msgstr "फाईल कॉपी थी वई"
 
-#: tmp_strings.xml:67(string)
+#: tmp_strings.xml:68(string)
 msgid "Select folder to move to"
 msgstr "जगह बदलन लाये फोल्डर खे चुन्द्यो"
 
-#: tmp_strings.xml:68(string)
+#: tmp_strings.xml:69(string)
 msgid "Move here"
 msgstr "हेदे जगह द्योस"
 
-#: tmp_strings.xml:69(string)
+#: tmp_strings.xml:70(string)
 msgid "Select folder to copy to"
 msgstr "कॉपी करण लाये  फ़ोल्डर खे चुन्द्यो"
 
-#: tmp_strings.xml:70(string)
+#: tmp_strings.xml:71(string)
 msgid "Copy here"
 msgstr "हेदे कॉपी कयो"
 
-#: tmp_strings.xml:71(string)
+#: tmp_strings.xml:72(string)
 msgid "Deleting files..."
 msgstr "फईल्यूं मिटन ती पयूं"
 
-#: tmp_strings.xml:72(string)
+#: tmp_strings.xml:73(string)
 msgid "Warning"
 msgstr "चेतावनी"
 
-#: tmp_strings.xml:73(string)
+#: tmp_strings.xml:74(string)
 msgid "Some of the following options may not work."
 msgstr "कोई कोई  विकल्प कम न कंदवा"
 
-#: tmp_strings.xml:74(string)
+#: tmp_strings.xml:75(string)
 msgid "Show warning again"
 msgstr "चेतवानी वारी सां दिखार्यो"
 
 #. Strings for a multi select feature
-#: tmp_strings.xml:77(string)
+#: tmp_strings.xml:78(string)
 msgid "Do you really want to delete %d files?"
 msgstr "?शा  तहां खे  सहिया में% d फईल्यूं  मिटायनी तव"
 
-#: tmp_strings.xml:81(string)
+#: tmp_strings.xml:82(string)
 msgid "Select multiple files"
 msgstr "हिक्क खान वधीक फईलोयूं चुन्द्यो"
 
-#: tmp_strings.xml:82(string)
+#: tmp_strings.xml:83(string)
 msgid "Please select one or more file(s)."
 msgstr "कृपा करे हिक्क या  वधीक फईल्यूं चुन्द्यो"
 
 #. Strings for details table
-#: tmp_strings.xml:85(string)
+#: tmp_strings.xml:86(string)
 msgid "Type"
 msgstr "प्ररूप"
 
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:87(string)
 msgid "Folder"
 msgstr "फोल्डर"
 
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:88(string)
 msgid "File"
 msgstr "फ़ाइल"
 
-#: tmp_strings.xml:88(string)
+#: tmp_strings.xml:89(string)
 msgid "Other"
 msgstr "अन्य"
 
-#: tmp_strings.xml:89(string) tmp_strings.xml:149(item)
+#: tmp_strings.xml:90(string) tmp_strings.xml:150(item)
 msgid "Size"
 msgstr "आकार"
 
-#: tmp_strings.xml:90(string)
+#: tmp_strings.xml:91(string)
 msgid "Permissions"
 msgstr "अनुमतियाँ"
 
-#: tmp_strings.xml:91(string)
+#: tmp_strings.xml:92(string)
 msgid "Hidden"
 msgstr "लिक्यल"
 
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:93(string)
 msgid "Last Modified"
 msgstr "आखरी बार संशोधित थ्यल"
 
-#: tmp_strings.xml:93(string)
+#: tmp_strings.xml:94(string)
 msgid "Yes"
 msgstr "हा"
 
-#: tmp_strings.xml:94(string)
+#: tmp_strings.xml:95(string)
 msgid "No"
 msgstr "न"
 
 #. Construct a unique file name of a file called %s.
-#: tmp_strings.xml:97(string)
+#: tmp_strings.xml:98(string)
 msgid "Copy of %s"
 msgstr "s जी कॉपी%"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
-#: tmp_strings.xml:100(string)
+#: tmp_strings.xml:101(string)
 msgid "Copy %1$d of %2$s"
 msgstr "%2$s जे%1$d जी कॉपी"
 
-#: tmp_strings.xml:102(string)
+#: tmp_strings.xml:103(string)
 msgid "This folder will be included in the next media scan."
 msgstr "ईयो फ़ोल्डर अगले मीडिया स्कैन में शामिल थीन्दो|"
 
-#: tmp_strings.xml:103(string)
+#: tmp_strings.xml:104(string)
 msgid "This folder will be excluded during the next media scan."
 msgstr "ईयो फ़ोल्डर अगले मीडिया स्कैन में शामिल न थीन्दो"
 
-#: tmp_strings.xml:105(string)
+#: tmp_strings.xml:106(string)
 msgid "Could not create new folder."
 msgstr "नयो फ़ोल्डर न ठाए सग्यास"
 
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:107(string)
 msgid "Could not delete file."
 msgstr "फाईल मिटाए न सग्यास"
 
-#: tmp_strings.xml:107(string)
+#: tmp_strings.xml:108(string)
 msgid "Could not delete folder '%s'."
 msgstr "फ़ोल्डर '%s' खे मिटाये न सग्यास"
 
-#: tmp_strings.xml:108(string)
+#: tmp_strings.xml:109(string)
 msgid "Could not rename file."
 msgstr "फाईल यो  नाम न बदले सग्यास"
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:110(string)
 msgid "Could not rename folder."
 msgstr "फोल्डर यो नाम न बदले सग्यास"
 
-#: tmp_strings.xml:110(string)
+#: tmp_strings.xml:111(string)
 msgid "Could not move file."
 msgstr "फाईल जी जगह न बदले सग्यास"
 
-#: tmp_strings.xml:111(string)
+#: tmp_strings.xml:112(string)
 msgid "Could not move folder."
 msgstr "फोल्डर जी जगह न बदले सग्यास"
 
-#: tmp_strings.xml:112(string)
+#: tmp_strings.xml:113(string)
 msgid "Could not copy file."
 msgstr "फाईल खे कॉपी न  करे सग्यास"
 
-#: tmp_strings.xml:113(string)
+#: tmp_strings.xml:114(string)
 msgid "File does not exist."
 msgstr "फाईल मौजूद काने"
 
-#: tmp_strings.xml:114(string)
+#: tmp_strings.xml:115(string)
 msgid "Could not delete child file '%s'."
 msgstr "बार फाईल '%s' खे न मिटाये सग्यास"
 
-#: tmp_strings.xml:115(string)
+#: tmp_strings.xml:116(string)
 msgid "An error occurred:"
 msgstr "हिक्क त्रुटी थी"
 
-#: tmp_strings.xml:116(string)
+#: tmp_strings.xml:117(string)
 msgid "Could not change media scan settings."
 msgstr "मीडिया स्कैन सेटिंग्स खे न बदले सग्यास"
 
-#: tmp_strings.xml:118(string)
+#: tmp_strings.xml:119(string)
 msgid "No application available for sending."
 msgstr "मोक्लाणा लाये  कोई अनुप्रयोग मौजूद  काने"
 
-#: tmp_strings.xml:120(string)
+#: tmp_strings.xml:121(string)
 msgid "Application not available"
 msgstr "अनुप्रयोग मौजूद काने"
 
 #. Menu item for Settings
-#: tmp_strings.xml:126(string)
+#: tmp_strings.xml:127(string)
 msgid "Settings"
 msgstr "सेटिंग्स"
 
 #. Category for preferences.
-#: tmp_strings.xml:129(string)
+#: tmp_strings.xml:130(string)
 msgid "Advanced features"
 msgstr "उन्नत सुविधाएँ"
 
-#: tmp_strings.xml:131(string)
+#: tmp_strings.xml:132(string)
 msgid "Show menu item to exclude folders from media scan."
 msgstr "मीडिया स्कैन माँ फ़ोल्डर्स खे अपवर्जित करण  लाये मेनू आइटम दिखार्यो|"
 
-#: tmp_strings.xml:132(string)
+#: tmp_strings.xml:133(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr "मीडिया स्कैन माँ फ़ोल्डर्स खे  अपवर्जित करण लाये  मेनू आइटम लिकायो|"
 
-#: tmp_strings.xml:134(string)
+#: tmp_strings.xml:135(string)
 msgid "Show all warnings"
 msgstr "सड्यूं चेतावनियूं दिखार्यो"
 
-#: tmp_strings.xml:135(string)
+#: tmp_strings.xml:136(string)
 msgid "Show all warning messages"
 msgstr "सडा चेतावनी सन्देश दिखार्यो"
 
-#: tmp_strings.xml:136(string)
+#: tmp_strings.xml:137(string)
 msgid "Suppress warning messages"
 msgstr "चेतावनी सदेशन खे दबायो"
 
-#: tmp_strings.xml:138(string) tmp_strings.xml:139(string)
+#: tmp_strings.xml:139(string) tmp_strings.xml:140(string)
 msgid "Display hidden files"
 msgstr "लिक्यल फईल्यूं दिखार्यो"
 
-#: tmp_strings.xml:140(string)
+#: tmp_strings.xml:141(string)
 msgid "Hide hidden files"
 msgstr "लिकयल फईल्युन खे लिकयो"
 
-#: tmp_strings.xml:142(string)
+#: tmp_strings.xml:143(string)
 msgid "Sort settings"
 msgstr "अलग करण ई  सेटिंग्स"
 
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:144(string)
 msgid "Sort by"
 msgstr "जे द्वारा अलग कयो"
 
-#: tmp_strings.xml:144(string)
+#: tmp_strings.xml:145(string)
 msgid "In ascending order"
 msgstr "आरोही  क्रम में"
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:146(string)
 msgid "Sort in ascending order"
 msgstr "आरोही क्रम सां अलग कयो"
 
-#: tmp_strings.xml:146(string)
+#: tmp_strings.xml:147(string)
 msgid "Sort in descending order"
 msgstr "अवरोही  क्रम सां अलग कयो"
 
-#: tmp_strings.xml:148(item)
+#: tmp_strings.xml:149(item)
 msgid "Name"
 msgstr "नाम"
 
-#: tmp_strings.xml:150(item)
+#: tmp_strings.xml:151(item)
 msgid "Last modified"
 msgstr "अंतिम बार संशोधित"
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
-#: tmp_strings.xml:157(string)
+#: tmp_strings.xml:158(string)
 msgid "You haven't picked any file."
 msgstr "तहां कोई भी फाईल न खईं तव"
 
-#: tmp_strings.xml:158(string)
+#: tmp_strings.xml:159(string)
 msgid "An error occured."
 msgstr "कोई त्रुटि अच्ची वई"
 
-#: tmp_strings.xml:159(string)
+#: tmp_strings.xml:160(string)
 msgid "File successfully saved!"
 msgstr "!फाईल सफलतापूवक सुरक्षित थी वई"
 
-#: tmp_strings.xml:163(string)
+#: tmp_strings.xml:164(string)
 msgid "Bookmarks"
 msgstr "बुकमार्क"
 
-#: tmp_strings.xml:164(string)
+#: tmp_strings.xml:165(string)
 msgid "Cancel"
 msgstr "|रद्द क्यो"
 
-#: tmp_strings.xml:166(string)
+#: tmp_strings.xml:167(string)
 msgid "Select bookmarks to delete"
 msgstr "बुकमार्क खे चुन्द्यो उन्खे मितायण लाये"
 
-#: tmp_strings.xml:167(string)
+#: tmp_strings.xml:168(string)
 msgid "Manage bookmarks"
 msgstr "बुकमार्क्स खे प्रबंधित कयो"
 
-#: tmp_strings.xml:168(string)
+#: tmp_strings.xml:169(string)
 msgid "Bookmark added"
 msgstr "बुकमार्क जोडयो"
 
-#: tmp_strings.xml:169(string)
+#: tmp_strings.xml:170(string)
 msgid "Bookmarked destination not found."
 msgstr "बुकमार्क जी जगह न मिली"
 
-#: tmp_strings.xml:170(string)
+#: tmp_strings.xml:171(string)
 msgid "Selected bookmarks deleted"
 msgstr "चुन्दयल बुकमार्क्स मिट जी वया"
 
-#: tmp_strings.xml:171(string)
+#: tmp_strings.xml:172(string)
 msgid "This file is already bookmarked"
 msgstr "ईया फाईल पहरों सां ही बुकमार्क थ्यल आ"
 
 #. ***************************
 #.              Strings for the 'Compressing' and 'Extracting' feature
 #.           ***************************
-#: tmp_strings.xml:177(string)
+#: tmp_strings.xml:178(string)
 msgid "Item compressed successfully"
 msgstr ""
 
-#: tmp_strings.xml:178(string)
+#: tmp_strings.xml:179(string)
 msgid "Could not compress the item"
 msgstr ""
 
-#: tmp_strings.xml:179(string)
+#: tmp_strings.xml:180(string)
 msgid "Compress into archive:"
 msgstr ""
 
-#: tmp_strings.xml:180(string)
+#: tmp_strings.xml:181(string)
 msgid "Item extracted successfully"
 msgstr ""
 
-#: tmp_strings.xml:181(string)
+#: tmp_strings.xml:182(string)
 msgid "Could not extract the item"
 msgstr ""
 
-#: tmp_strings.xml:182(string)
+#: tmp_strings.xml:183(string)
 msgid "Extract into folder:"
 msgstr ""
 
-#: tmp_strings.xml:183(string)
+#: tmp_strings.xml:184(string)
 msgid "Select folder to extract into"
 msgstr ""
 
-#: tmp_strings.xml:184(string)
+#: tmp_strings.xml:185(string)
 msgid "Extract here"
 msgstr ""
 
-#: tmp_strings.xml:185(string)
+#: tmp_strings.xml:186(string)
 msgid "Extracting..."
 msgstr ""
 
-#: tmp_strings.xml:186(string)
+#: tmp_strings.xml:187(string)
 msgid "Compressing..."
 msgstr ""
 
-#: tmp_strings.xml:187(string)
+#: tmp_strings.xml:188(string)
 msgid "File %s exists. Do you want to overwrite it?"
 msgstr ""
 
-#: tmp_strings.xml:189(string)
+#: tmp_strings.xml:190(string)
 msgid "Do you want to change the file extension?"
 msgstr ""

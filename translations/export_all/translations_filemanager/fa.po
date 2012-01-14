@@ -1,0 +1,481 @@
+# Persian translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Ben Jordan <Unknown>\n"
+"Language-Team: Persian <fa@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:23(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Ben Jordan https://launchpad.net/~ben-jordan86"
+
+#. Short explanation of the application (max. 80 characters)
+#: tmp_strings.xml:26(string)
+msgid "Manage files on the SD card with OI File Manager."
+msgstr ""
+"اداره دفتر ساحوي دارالانشاءقانون SD اساسي براندن بورگ در اين پرونده کارت "
+"مدير OI ميخواندند."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:32(string)
+msgid "OI File Manager"
+msgstr "OI مدير پرونده‌"
+
+#: tmp_strings.xml:34(string)
+msgid "New Folder"
+msgstr "لفاف‌ جديد"
+
+#. Multi select option menu
+#: tmp_strings.xml:37(string)
+msgid "Multi Select"
+msgstr "انتخاب چند مليتي"
+
+#: tmp_strings.xml:39(string) tmp_strings.xml:81(string)
+#: tmp_strings.xml:166(string)
+msgid "Delete"
+msgstr "انداختن‌"
+
+#: tmp_strings.xml:40(string)
+msgid "Rename"
+msgstr "محدودة رودهاي"
+
+#: tmp_strings.xml:41(string)
+msgid "Send"
+msgstr "فرستادن"
+
+#: tmp_strings.xml:42(string)
+msgid "Open"
+msgstr "باز"
+
+#: tmp_strings.xml:43(string) tmp_strings.xml:79(string)
+msgid "Move"
+msgstr "حرکت نکنید"
+
+#: tmp_strings.xml:44(string) tmp_strings.xml:80(string)
+msgid "Copy"
+msgstr "رونوشت‌"
+
+#: tmp_strings.xml:45(string)
+msgid "Details"
+msgstr "جزئيات"
+
+#: tmp_strings.xml:46(string)
+msgid "More"
+msgstr "بيشتر"
+
+#: tmp_strings.xml:47(string)
+msgid "Compress (ZIP)"
+msgstr "بهم‌ فشردن‌ (زور)"
+
+#: tmp_strings.xml:48(string)
+msgid "Extract (ZIP)"
+msgstr "اقتباس‌ كردن‌ (زور)"
+
+#: tmp_strings.xml:49(string)
+msgid "Filter"
+msgstr "صاف‌ كردن‌"
+
+#: tmp_strings.xml:50(string)
+msgid "Include in media scan"
+msgstr "در رسانه ها شامل یک اسکن بکنیم"
+
+#: tmp_strings.xml:51(string) tmp_strings.xml:131(string)
+msgid "Exclude from media scan"
+msgstr "محروم‌ كردن‌ از رسانه ها با وزن‌ خواندن‌"
+
+#: tmp_strings.xml:52(string)
+msgid "Add to bookmarks"
+msgstr "به اضافه بوک مارک ها"
+
+#: tmp_strings.xml:53(string)
+msgid "Refresh"
+msgstr ""
+
+#: tmp_strings.xml:55(string)
+msgid "Create new folder"
+msgstr "جديد ايجاد تاه‌ كن‌"
+
+#: tmp_strings.xml:56(string) tmp_strings.xml:57(string)
+msgid "Folder name"
+msgstr "لفاف‌ نام"
+
+#: tmp_strings.xml:58(string)
+msgid "Extension (with '.')"
+msgstr "اضافي‌ (با '. ')"
+
+#: tmp_strings.xml:59(string)
+msgid "This folder is empty."
+msgstr "اين پوشه خالی شده است."
+
+#: tmp_strings.xml:60(string)
+msgid "Do you really want to delete %s?"
+msgstr "آیا شما واقعا می خواهند انداختن‌ %s?"
+
+#: tmp_strings.xml:61(string)
+msgid "File deleted."
+msgstr "پرونده‌ ها حذف شد."
+
+#: tmp_strings.xml:62(string)
+msgid "Folder deleted."
+msgstr "لفاف‌ حذف."
+
+#: tmp_strings.xml:63(string)
+msgid "File renamed."
+msgstr "تغيير نام فايل."
+
+#: tmp_strings.xml:64(string)
+msgid "Folder renamed."
+msgstr "لفاف‌ نام نيوهارمني."
+
+#: tmp_strings.xml:65(string)
+msgid "File moved."
+msgstr "حركت پرونده."
+
+#: tmp_strings.xml:66(string)
+msgid "Folder moved."
+msgstr "لفاف‌ تحت تاثير."
+
+#: tmp_strings.xml:67(string)
+msgid "File copied."
+msgstr "پرونده‌ تقليد."
+
+#: tmp_strings.xml:68(string)
+msgid "Select folder to move to"
+msgstr "لفاف‌ انتخاب كه به"
+
+#: tmp_strings.xml:69(string)
+msgid "Move here"
+msgstr "اینجا تکان بدهید"
+
+#: tmp_strings.xml:70(string)
+msgid "Select folder to copy to"
+msgstr "لفاف‌ نسخه را انتخاب کنند"
+
+#: tmp_strings.xml:71(string)
+msgid "Copy here"
+msgstr "در اينجا نسخه"
+
+#: tmp_strings.xml:72(string)
+msgid "Deleting files..."
+msgstr "حذف پرونده..."
+
+#: tmp_strings.xml:73(string)
+msgid "Warning"
+msgstr "اشاره‌"
+
+#: tmp_strings.xml:74(string)
+msgid "Some of the following options may not work."
+msgstr "برخي از اين کار نه ممکن است به دنبال گزینه های دیگر."
+
+#: tmp_strings.xml:75(string)
+msgid "Show warning again"
+msgstr "بار ديگر هشدار نشان"
+
+#. Strings for a multi select feature
+#: tmp_strings.xml:78(string)
+msgid "Do you really want to delete %d files?"
+msgstr "آیا شما واقعا می خواهند انداختن‌ %d پرونده?"
+
+#: tmp_strings.xml:82(string)
+msgid "Select multiple files"
+msgstr "انتخاب چند پرونده"
+
+#: tmp_strings.xml:83(string)
+msgid "Please select one or more file(s)."
+msgstr "لطفا انتخاب‌ كردن‌ يكي از پرونده‌ يا بيشتر(s)."
+
+#. Strings for details table
+#: tmp_strings.xml:86(string)
+msgid "Type"
+msgstr "نوعی"
+
+#: tmp_strings.xml:87(string)
+msgid "Folder"
+msgstr "تاه‌ كن‌"
+
+#: tmp_strings.xml:88(string)
+msgid "File"
+msgstr "پرونده‌"
+
+#: tmp_strings.xml:89(string)
+msgid "Other"
+msgstr "ديگر"
+
+#: tmp_strings.xml:90(string) tmp_strings.xml:150(item)
+msgid "Size"
+msgstr "اندازه‌"
+
+#: tmp_strings.xml:91(string)
+msgid "Permissions"
+msgstr "براى سفرشان"
+
+#: tmp_strings.xml:92(string)
+msgid "Hidden"
+msgstr "پنهان"
+
+#: tmp_strings.xml:93(string)
+msgid "Last Modified"
+msgstr "تعديل گذشته"
+
+#: tmp_strings.xml:94(string)
+msgid "Yes"
+msgstr "بله"
+
+#: tmp_strings.xml:95(string)
+msgid "No"
+msgstr "نخیر"
+
+#. Construct a unique file name of a file called %s.
+#: tmp_strings.xml:98(string)
+msgid "Copy of %s"
+msgstr "نسخه اي از %s"
+
+#. Construct a unique file name with number %1$d of a file called %2$s.
+#: tmp_strings.xml:101(string)
+msgid "Copy %1$d of %2$s"
+msgstr "رونوشت‌ %1$d از %2$s"
+
+#: tmp_strings.xml:103(string)
+msgid "This folder will be included in the next media scan."
+msgstr ""
+"لفاف‌ اين منظور خواهد شد تا رسانه ها با وزن‌ خواندن‌............. .          .."
+
+#: tmp_strings.xml:104(string)
+msgid "This folder will be excluded during the next media scan."
+msgstr "لفاف‌ محروم خواهد شد این در رسانه های آينده کت اسکن انجام بدهیم."
+
+#: tmp_strings.xml:106(string)
+msgid "Could not create new folder."
+msgstr "لفاف‌ جديد ايجاد نمي كند."
+
+#: tmp_strings.xml:107(string)
+msgid "Could not delete file."
+msgstr "حذف نمي تواند پرونده كردند."
+
+#: tmp_strings.xml:108(string)
+msgid "Could not delete folder '%s'."
+msgstr "لفاف‌ حذف نمي توانست '%s'."
+
+#: tmp_strings.xml:109(string)
+msgid "Could not rename file."
+msgstr "نمي تواند پرونده محدودة ميان رودهاي."
+
+#: tmp_strings.xml:110(string)
+msgid "Could not rename folder."
+msgstr "لفاف‌ محدودة ميان رودهاي نمي توانست."
+
+#: tmp_strings.xml:111(string)
+msgid "Could not move file."
+msgstr "نمى توانست پرونده‌...."
+
+#: tmp_strings.xml:112(string)
+msgid "Could not move folder."
+msgstr "لفاف‌ نمى توانست."
+
+#: tmp_strings.xml:113(string)
+msgid "Could not copy file."
+msgstr "نمي تواند نسخه اي از پرونده."
+
+#: tmp_strings.xml:114(string)
+msgid "File does not exist."
+msgstr "پرونده وجود ندارد."
+
+#: tmp_strings.xml:115(string)
+msgid "Could not delete child file '%s'."
+msgstr "پرونده‌ بچه نمى توانست انداختن‌ '%s'."
+
+#: tmp_strings.xml:116(string)
+msgid "An error occurred:"
+msgstr "يك اشتباه رخ داد:"
+
+#: tmp_strings.xml:117(string)
+msgid "Could not change media scan settings."
+msgstr "تغيير نمي توانست رسانه های ما بدنبال یک اسکن بکنیم."
+
+#: tmp_strings.xml:119(string)
+msgid "No application available for sending."
+msgstr "نه درخواست برای فرستادن."
+
+#: tmp_strings.xml:121(string)
+msgid "Application not available"
+msgstr "پشتكار موجود نه"
+
+#. Menu item for Settings
+#: tmp_strings.xml:127(string)
+msgid "Settings"
+msgstr "مک کليلن"
+
+#. Category for preferences.
+#: tmp_strings.xml:130(string)
+msgid "Advanced features"
+msgstr "سيماي پیشرفته"
+
+#: tmp_strings.xml:132(string)
+msgid "Show menu item to exclude folders from media scan."
+msgstr ""
+"فهرست‌ انتخاب‌ محروم‌ كردن‌ ردیف نشان مي دهد انقلاب به یک اسکن بکنیم از رسانه ها."
+
+#: tmp_strings.xml:133(string)
+msgid "Hide menu item to exclude folders from media scan."
+msgstr "فهرست‌ انتخاب‌ محروم‌ كردن‌ پوست‌ کلان انقلاب از رسانه ها به یک اسکن بکنیم."
+
+#: tmp_strings.xml:135(string)
+msgid "Show all warnings"
+msgstr "نشان دادن همة هشدارها"
+
+#: tmp_strings.xml:136(string)
+msgid "Show all warning messages"
+msgstr "نشان دادن همة پيام تحذير"
+
+#: tmp_strings.xml:137(string)
+msgid "Suppress warning messages"
+msgstr "سركوب پيام تحذير"
+
+#: tmp_strings.xml:139(string) tmp_strings.xml:140(string)
+msgid "Display hidden files"
+msgstr "نمايش‌ پرونده پنهان"
+
+#: tmp_strings.xml:141(string)
+msgid "Hide hidden files"
+msgstr "پرونده هاي نهفته پنهان"
+
+#: tmp_strings.xml:143(string)
+msgid "Sort settings"
+msgstr "جور مک کليلن"
+
+#: tmp_strings.xml:144(string)
+msgid "Sort by"
+msgstr "نوعی با"
+
+#: tmp_strings.xml:145(string)
+msgid "In ascending order"
+msgstr "در ترتيب‌ صعودى"
+
+#: tmp_strings.xml:146(string)
+msgid "Sort in ascending order"
+msgstr "در فرازى تحت نوع"
+
+#: tmp_strings.xml:147(string)
+msgid "Sort in descending order"
+msgstr "نوعی در ترتيب‌ نزولي‌"
+
+#: tmp_strings.xml:149(item)
+msgid "Name"
+msgstr "نام"
+
+#: tmp_strings.xml:151(item)
+msgid "Last modified"
+msgstr "تعديل گذشته"
+
+#. ***************************
+#.    		 Strings for the 'Save as' feature
+#.     	 ***************************
+#: tmp_strings.xml:158(string)
+msgid "You haven't picked any file."
+msgstr "شما هر برداشت پرونده‌...."
+
+#: tmp_strings.xml:159(string)
+msgid "An error occured."
+msgstr "بهدخت رشديه خطا."
+
+#: tmp_strings.xml:160(string)
+msgid "File successfully saved!"
+msgstr "پرونده‌ نجات داد با موفقيت!"
+
+#: tmp_strings.xml:164(string)
+msgid "Bookmarks"
+msgstr "نشانکها"
+
+#: tmp_strings.xml:165(string)
+msgid "Cancel"
+msgstr "باطل‌ كردن‌"
+
+#: tmp_strings.xml:167(string)
+msgid "Select bookmarks to delete"
+msgstr "انتخاب نشانکها به برداشتن"
+
+#: tmp_strings.xml:168(string)
+msgid "Manage bookmarks"
+msgstr "اداره‌ كردن‌ نشانکها"
+
+#: tmp_strings.xml:169(string)
+msgid "Bookmark added"
+msgstr "نشانکها وی افزود"
+
+#: tmp_strings.xml:170(string)
+msgid "Bookmarked destination not found."
+msgstr "نشانه سرنوشت‌ نه يافت."
+
+#: tmp_strings.xml:171(string)
+msgid "Selected bookmarks deleted"
+msgstr "برگزيده شدن نشانکها  زيرزمينى"
+
+#: tmp_strings.xml:172(string)
+msgid "This file is already bookmarked"
+msgstr "اين پرونده هم اكنون نشانه"
+
+#. ***************************
+#.              Strings for the 'Compressing' and 'Extracting' feature
+#.           ***************************
+#: tmp_strings.xml:178(string)
+msgid "Item compressed successfully"
+msgstr "تكه‌ فشرده با موفقيت"
+
+#: tmp_strings.xml:179(string)
+msgid "Could not compress the item"
+msgstr "نمى توانست به یک کمپرس بگذارم ردیف"
+
+#: tmp_strings.xml:180(string)
+msgid "Compress into archive:"
+msgstr "فونت فارسی کمپرس بگذارم:"
+
+#: tmp_strings.xml:181(string)
+msgid "Item extracted successfully"
+msgstr "تكه‌ با موفقيت استخراج"
+
+#: tmp_strings.xml:182(string)
+msgid "Could not extract the item"
+msgstr "نمى توانست استخراج بخش‌"
+
+#: tmp_strings.xml:183(string)
+msgid "Extract into folder:"
+msgstr "لفاف‌ به استخراج:"
+
+#: tmp_strings.xml:184(string)
+msgid "Select folder to extract into"
+msgstr "لفاف‌ انتخاب را به عصاره"
+
+#: tmp_strings.xml:185(string)
+msgid "Extract here"
+msgstr "اقتباس‌ كردن‌ اینجا"
+
+#: tmp_strings.xml:186(string)
+msgid "Extracting..."
+msgstr "استخراج..."
+
+#: tmp_strings.xml:187(string)
+msgid "Compressing..."
+msgstr "بارگلولهء توپى..."
+
+#: tmp_strings.xml:188(string)
+msgid "File %s exists. Do you want to overwrite it?"
+msgstr "پرونده‌ %s هست.آیا شما می خواهم به آن زياد نوشتن‌?"
+
+#: tmp_strings.xml:190(string)
+msgid "Do you want to change the file extension?"
+msgstr "آیا شما می خواهم برای تغيير در تمديد پرونده‌?"

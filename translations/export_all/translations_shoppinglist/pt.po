@@ -25,8 +25,7 @@ msgstr ""
 "\n"
 "Launchpad Contributions:\n"
 "  Peli https://launchpad.net/~peli0101\n"
-"  Tiago Silva https://launchpad.net/~tiagosilva\n"
-"  friedger https://launchpad.net/~friedger"
+"  Tiago Silva https://launchpad.net/~tiagosilva"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:27(string)
@@ -35,9 +34,8 @@ msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-#, fuzzy
 msgid "OI Shopping List"
-msgstr "OI Shopping list"
+msgstr ""
 
 #: tmp_strings.xml:35(string)
 msgid "New item"

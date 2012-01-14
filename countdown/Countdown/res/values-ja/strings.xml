@@ -12,7 +12,7 @@
   thebowseat https://launchpad.net/~takeshimochida</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
+	<string name="about_comments">OI カウントダウン で複数のカウントダウンを設定できます。</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -169,4 +169,7 @@
         <item>5 分</item>
         <item>10 分</item>
     </string-array>
+    
+    
+    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
 </resources>

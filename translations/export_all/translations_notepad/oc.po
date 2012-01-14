@@ -497,6 +497,3 @@ msgstr ""
 #: tmp_strings.xml:219(string)
 msgid "New note"
 msgstr ""
-
-
-

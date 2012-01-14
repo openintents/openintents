@@ -6,6 +6,7 @@ OI O Programe
 OI Quant a
 OI Tungkol
 OI За
+OI درباره
 OI ھەققىدە
 OI के बारे में
 OI简介

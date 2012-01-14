@@ -115,19 +115,16 @@ msgid "Arabic"
 msgstr "Арабская"
 
 #: tmp_strings.xml:80(item)
-#, fuzzy
 msgid "Belarusian"
-msgstr "Персідская"
+msgstr ""
 
 #: tmp_strings.xml:81(item)
-#, fuzzy
 msgid "Bulgarian"
-msgstr "Венгерская"
+msgstr ""
 
 #: tmp_strings.xml:82(item)
-#, fuzzy
 msgid "Catalan"
-msgstr "Італьянская"
+msgstr ""
 
 #: tmp_strings.xml:83(item)
 msgid "Czech"
@@ -206,14 +203,12 @@ msgid "Lao"
 msgstr "Лаоская"
 
 #: tmp_strings.xml:102(item)
-#, fuzzy
 msgid "Latvian"
-msgstr "Харвацкая"
+msgstr ""
 
 #: tmp_strings.xml:103(item)
-#, fuzzy
 msgid "Macedonian"
-msgstr "Сардынская"
+msgstr ""
 
 #: tmp_strings.xml:104(item)
 msgid "Norwegian Bokmal"
@@ -264,9 +259,8 @@ msgid "Slovak"
 msgstr "Славацкая"
 
 #: tmp_strings.xml:116(item)
-#, fuzzy
 msgid "Slovenian"
-msgstr "Славацкая"
+msgstr ""
 
 #: tmp_strings.xml:117(item)
 msgid "Swedish"

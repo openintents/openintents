@@ -31,9 +31,8 @@ msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-#, fuzzy
 msgid "OI Shopping List"
-msgstr "OI шопинг листа"
+msgstr ""
 
 #: tmp_strings.xml:35(string)
 msgid "New item"
@@ -64,9 +63,8 @@ msgid "My shopping list"
 msgstr "Моја шопинг листа"
 
 #: tmp_strings.xml:42(string)
-#, fuzzy
 msgid "e.g. wishlist, family list"
-msgstr "односно, листа на желби, семејна листа"
+msgstr ""
 
 #. Automation action to clean up a list.
 #: tmp_strings.xml:43(string) tmp_strings.xml:337(item)
@@ -773,15 +771,13 @@ msgstr "Нема"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
-#, fuzzy
 msgid "Per sentence"
-msgstr "По реченица"
+msgstr ""
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
-#, fuzzy
 msgid "Per word"
-msgstr "По збор"
+msgstr ""
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
 #: tmp_strings.xml:320(string)
@@ -818,12 +814,3 @@ msgstr ""
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
 msgstr ""
-
-
-
-
-
-
-
-
-

@@ -9,6 +9,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   John Andre https://launchpad.net/~john-andre
+  Mark van Kuijk https://launchpad.net/~markvankuyk
   Menno Vogel https://launchpad.net/~mennovogel90
   OpenIntents devs https://launchpad.net/~openintents-devs
   Willem-Martijn Brink https://launchpad.net/~willem-brink</string>
@@ -49,9 +50,9 @@
 	<!-- Menu command to look for updates. -->
     <string name="oi_distribution_menu_update">Controleer updates</string>
 	<string name="oi_distribution_update_box_text">Controleer handmatig op updates of installeer OI Update voor automatische meldingen.</string>
-	<string name="oi_distribution_update_check_now">Check now</string>
+	<string name="oi_distribution_update_check_now">Nu controleren</string>
 	<string name="oi_distribution_update_get_updater">Get OI Updater</string>
-	<string name="oi_distribution_update_error">Download application not available.</string>
+	<string name="oi_distribution_update_error">Het downloaden van de applicatie is niet beschikbaar</string>
 	
     <!-- Name of the application "OI Update". Translations of the application name should be consistent. -->
     <string name="oi_distribution_update_app">OI Update</string>
@@ -60,7 +61,7 @@
     <!-- Menu command to open the "about" or "info" dialog. -->
     <string name="oi_distribution_about">About</string>
     <!-- %s is the version number (e.g. "1.2.1") -->
-	<string name="oi_distribution_aboutapp_not_available">No compatible extension available to display full info (contact, credits, license).</string>
+	<string name="oi_distribution_aboutapp_not_available">Het bijbehorende uitbreidingsscherm is niet beschikbaar (contact, credits,licentie)</string>
     
     
     <!-- Button text: Get the application "OI About". Translations of the application name should be consistent. -->
@@ -77,23 +78,23 @@
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_filemanager">OI File Manager</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_filemanager_not_available">No compatible file manager is available.</string>
+    <string name="oi_distribution_filemanager_not_available">Het bestandsbeheer is niet beschikbaar</string>
     
     <!-- Safe -->
     <!-- Name of the application "OI Safe". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_safe">OI Safe</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_safe_not_available">No compatible application for encryption is available.</string>
+    <string name="oi_distribution_safe_not_available">De applicatie voor de encryptie is niet beschikbaar</string>
     <string name="oi_distribution_safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
     
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
     <string name="oi_distribution_download_market_message">Please download %s from the Market or the OpenIntents website.</string>
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_message">Please download %s from the OpenIntents website.</string>
+    <string name="oi_distribution_download_message">Download %s van de OpenIntents website</string>
     <!-- Dialog button: download the suggested application from Android Market. -->
-    <string name="oi_distribution_download_market">Market download</string>
+    <string name="oi_distribution_download_market">Download van de Android Market</string>
     <!-- Dialog button: download the suggested application from the developer web site. -->
-    <string name="oi_distribution_download_web">Web download</string>
+    <string name="oi_distribution_download_web">Download van het web</string>
 	<!-- Dialog title: %s is the name of an application (e.g. "OI Notepad"). -->
     <string name="oi_distribution_download_title">Download %s</string>
 	

@@ -26,7 +26,7 @@
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
+	<string name="about_comments">Importer og eksporter lister og notater med OI Konverter CSV.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -135,26 +135,26 @@
     
     <string-array name="import_policy">
         <item>DUPLISER - Tillatt duplisering av poster.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>BEHOLD - Ikke overskriv eksisterende poster.</item>
         <item>Overskriv - Overskriv eksisterende poster.</item>
         <item>Gjenopprett - SLETT ALT, så importer.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>DUPLISER - Legg til en ny kopi av en post hvis den allerede eksisterer.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>BEHOLD - Ikke overskriv en eksisterende post, ignorer den i CSV-filen.</item>
         <item>Overskriv - En post i CSV\'en vil OVERSKRIVE en eksisterende post.</item>
         <item>Gjenopprett sikkerhetskopi - SLETT ALLE DINE EKSISTERENDE POSTER, så importer CSV-filen.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>DUPLISER - Tillatt duplisering av poster.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>BEHOLD - Ikke overskriv eksisterende poster.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>DUPLISER - Legg til en ny kopi av en post hvis den allerede eksisterer.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>BEHOLD - Ikke overskriv en eksisterende post, ignorer den i CSV-filen.</item>
     </string-array>
     
 </resources>

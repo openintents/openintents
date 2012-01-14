@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
+  Marek Dobransky https://launchpad.net/~marekdobr
   Matěj Konečný https://launchpad.net/~matejkon
   OpenIntents devs https://launchpad.net/~openintents-devs</translators>
 	<description application="aboutapp/AboutApp">
@@ -65,9 +66,9 @@
 		<!--  -->
 		<!--  Description of application -->
 		<emptyline/>
-		<string>OI Countdown is a helpful timer to increase your productivity and plan your day. </string>
-		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
-		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
+		<string>OI Minutka je užitečný časovač pro zvýšení produktivity a plánováni vašeho dne.</string>
+		<string>Umožňuje nastavit různé akce, aby vás upozornili po skončení časovače.</string>
+		<string>Plně přizpůsobit všechny časovače, bez omezení,  kolik jich můžete spustit nebo uložit.</string>
 		<emptyline/>
 		<string>Tato aplikace je bez reklam a nevyžaduje přístup k internetu.</string>
 		<emptyline/>
@@ -84,19 +85,19 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Vlastnosti:</string>
-		<listitem>Set a countdown by choosing a duration or a date.</listitem>
-		<listitem>Be notified by vibration or any sound of your choice. </listitem>
-		<listitem>Have an unlimited number of timers running at the same time. </listitem>
-		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
-		<listitem>Modify countdowns, even while they are still running</listitem>
+		<listitem>Nastavit odpočítávání výběrem trvání nebo dne.</listitem>
+		<listitem>Buďte upozornění vibrací nebo zvukem dle vašeho výběru.</listitem>
+		<listitem>Mějte neomezený počet časovačů běžících ve stejnou dobu.</listitem>
+		<listitem>Uložte odpočítávání a dejte jím jména pro opakované použití později.</listitem>
+		<listitem>Změňte odpočítávání, i když stále běží</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Countdown": </string>
-		<listitem>Launch applications through Android shortcuts</listitem>
-		<listitem>Use OI About to show license information</listitem>
+		<string>Rozšíření pro "OI MInutka" k dispozici</string>
+		<listitem>Spustit aplikaci pomocí zkratek Androidu</listitem>
+		<listitem>Použijte OI O programu pro zobrazení licenčních informací</listitem>
 		<emptyline/>
 		<string>Klíčová slova:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>countdown, timer, alert</listitem>
+		<listitem>odpočítávání, stopky, upozornění</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>

@@ -501,7 +501,3 @@ msgstr "Дали сакате да ја избришете оваа белешк
 #: tmp_strings.xml:219(string)
 msgid "New note"
 msgstr "Нова белешка"
-
-
-
-

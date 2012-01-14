@@ -27,14 +27,12 @@ msgstr ""
 "  Halilpk https://launchpad.net/~halilpk\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
-"  ariza95 https://launchpad.net/~alirizanazli95\n"
-"  zeugma https://launchpad.net/~sunder67"
+"  ariza95 https://launchpad.net/~alirizanazli95"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
-#, fuzzy
 msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
-msgstr "Ekran arka ışığı yerine kamera flaşını kullanın."
+msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
@@ -93,10 +91,3 @@ msgstr "Kamera ışığı etkinleştirmek için basın(Bir kaç saniyenizi alabi
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
 msgstr "Kamera ışığını devre dışı bırakmak için basın."
-
-
-
-
-
-
-

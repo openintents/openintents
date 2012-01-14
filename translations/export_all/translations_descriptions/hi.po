@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Atharva Lath <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Abhishek https://launchpad.net/~abhishek9797\n"
+"  Atharva Lath https://launchpad.net/~atharvalath96\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  happynawani https://launchpad.net/~happynawani"
 
@@ -175,56 +176,61 @@ msgid ""
 "OI Countdown is a helpful timer to increase your productivity and plan your "
 "day."
 msgstr ""
+"OI काउंटडाउन एक मददगार तैमार हिया आपकी प्रोडक्टिविटी और प्लान को बढाने के लिए वो भी "
+"हर दिन."
 
 #: tmp_strings.xml:67(string)
 msgid ""
 "It allows you to set a variety of different actions to notify you at the end "
 "of a timer."
 msgstr ""
+"यह आप अलग अलग कार्यों की एक किस्म सेट करने के लिए आप एक टाइमर के अंत में सूचित करने की "
+"अनुमति देता है."
 
 #: tmp_strings.xml:68(string)
 msgid ""
 "Fully customize all your timers, with no limit on how many you can have "
 "running or saved."
 msgstr ""
+"पूरी तरह से आपके सभी टाइमर कितने आप या चल रहा हो सकता है बचाया पर कोई सीमा के साथ, "
+"अनुकूलित."
 
 #: tmp_strings.xml:85(listitem)
 msgid "Set a countdown by choosing a duration or a date."
-msgstr ""
+msgstr "काउंटडाउन को सेट करें समय या फिर तरीक को चुन कर."
 
 #: tmp_strings.xml:86(listitem)
 msgid "Be notified by vibration or any sound of your choice."
-msgstr ""
+msgstr "नोतिफैड रहें विब्रेशन या फर किसी भी तरह के साउंड जो आपकी मर्ज़ी का हो."
 
 #: tmp_strings.xml:87(listitem)
 msgid "Have an unlimited number of timers running at the same time."
-msgstr ""
+msgstr "असीमित टाइमर नंबर चल रहे है एक ही समय पर."
 
 #: tmp_strings.xml:88(listitem)
 msgid "Save your countdowns and give them names to reuse at later times."
-msgstr ""
+msgstr "काउंटडाउन को बचा कर रखें और उन्हें नाम दे जिससे हम इससे बाद मैं इस्तमाल कर सके."
 
 #: tmp_strings.xml:89(listitem)
 msgid "Modify countdowns, even while they are still running"
-msgstr ""
+msgstr "काउंटडाउन को संशोधित करें, अगर वोह चल रहें हो तब भी"
 
 #: tmp_strings.xml:91(string)
-#, fuzzy
 msgid "Available extensions for \"OI Countdown\":"
-msgstr "\\\"OI Notepad\\\" के लिए उपलब्ध एक्सटेंशन:"
+msgstr "एक्स्तान्शन \"OI काउंट डाउन\" के लिए उपलब्ध है"
 
 #: tmp_strings.xml:92(listitem)
 msgid "Launch applications through Android shortcuts"
-msgstr ""
+msgstr "एप्प्लिकेशन को लॉन्च करें अन्द्रोइड शोर्टकट्से"
 
 #: tmp_strings.xml:93(listitem)
 msgid "Use OI About to show license information"
-msgstr ""
+msgstr "OI अबाउट इस्तमाल करे लाइसेंस की जानकारी के लिए"
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:97(listitem)
 msgid "countdown, timer, alert"
-msgstr ""
+msgstr "काउंटडाउन, टाइमर, अलर्ट"
 
 #. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
 #: tmp_strings.xml:99(listitem) tmp_strings.xml:197(listitem)
@@ -480,57 +486,61 @@ msgid ""
 "OI Safe safely protects all of your passwords and other private data using "
 "industry standard AES encryption."
 msgstr ""
+"OI सेफ सुरक्षित रूप से आपके पासवर्ड और अन्य निजी उद्योग मानक AES  एन्क्रिप्शन का उपयोग "
+"कर डेटा के सभी बचाता है."
 
 #: tmp_strings.xml:272(string)
 msgid ""
 "It also acts as an extension to OI Notepad to encrypt notes created in OI "
 "Notepad."
 msgstr ""
+"यह भी OI Notepadड के लिए एक विस्तार करने के लिए OI Notepad में बनाया नोट्स एन्क्रिप्ट "
+"रूप में कार्य करता है."
 
 #: tmp_strings.xml:286(listitem)
 msgid "Securely protect data using AES encryption."
-msgstr ""
+msgstr "सुरक्षित रूप से अपना डाटा को सुरक्षित रखें AES एन्क्र्य्प्शन इस्तमाल करते हुए."
 
 #: tmp_strings.xml:287(listitem)
 msgid "Freely move data entries between categories."
-msgstr ""
+msgstr "डाटा एंट्री को आज़ादी से चलने दे केटेगरी के बीच."
 
 #: tmp_strings.xml:288(listitem)
 msgid "Import/Export data entries and databases."
-msgstr ""
+msgstr "आयात/निर्यात डाटा एंट्री और डाटाबेसेस"
 
 #: tmp_strings.xml:289(listitem)
 msgid "Backup/Restore entries."
-msgstr ""
+msgstr "बेकप/रिस्टोर दर्ज किया हुआ"
 
 #: tmp_strings.xml:290(listitem)
 msgid "Includes secure password generator."
-msgstr ""
+msgstr "सुरक्षित पासवर्ड जनरेटर को शामिल करें."
 
 #: tmp_strings.xml:291(listitem)
 msgid "Automatic timeout to protect encrypted documents."
-msgstr ""
+msgstr "औतोमटिक टाइमओउट एन्क्रिप्टओचुमेंट्स को बचाएं."
 
 #: tmp_strings.xml:292(listitem)
 msgid "Encrypt OI Notepad notes."
-msgstr ""
+msgstr "एन्क्रिप्ट OI नोटपेड के नोट्स"
 
 #: tmp_strings.xml:293(listitem)
 msgid "Support for Obscura picture safe."
-msgstr ""
+msgstr "ओब्स्कुरा पिक्चर सेफ के लिए सप्पोर्ट."
 
 #: tmp_strings.xml:294(listitem)
 msgid "MyBackup Pro."
-msgstr ""
+msgstr "MyBackup Pro."
 
 #: tmp_strings.xml:300(listitem)
 msgid "Encrypt notes created in \"OI Notepad\"."
-msgstr ""
+msgstr "नोट्स को एन्क्रिप्ट करें \"OI नोटपद\" मे"
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:304(listitem)
 msgid "safe, encrpytion, password, protection"
-msgstr ""
+msgstr "सुरक्षित, एन्क्र्प्य्शन, पास्वोर्ड,प्रोटेक्शन"
 
 #. Description of application
 #: tmp_strings.xml:323(string)

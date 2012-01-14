@@ -2,6 +2,7 @@
 <main>
 	<translators>Launchpad Contributions:
   Abhishek https://launchpad.net/~abhishek9797
+  Atharva Lath https://launchpad.net/~atharvalath96
   OpenIntents devs https://launchpad.net/~openintents-devs
   happynawani https://launchpad.net/~happynawani</translators>
 	<description application="aboutapp/AboutApp">
@@ -66,9 +67,9 @@
 		<!--  -->
 		<!--  Description of application -->
 		<emptyline/>
-		<string>OI Countdown is a helpful timer to increase your productivity and plan your day. </string>
-		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
-		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
+		<string>OI काउंटडाउन एक मददगार तैमार हिया आपकी प्रोडक्टिविटी और प्लान को बढाने के लिए वो भी हर दिन.</string>
+		<string>यह आप अलग अलग कार्यों की एक किस्म सेट करने के लिए आप एक टाइमर के अंत में सूचित करने की अनुमति देता है.</string>
+		<string>पूरी तरह से आपके सभी टाइमर कितने आप या चल रहा हो सकता है बचाया पर कोई सीमा के साथ, अनुकूलित.</string>
 		<emptyline/>
 		<string>यह अनुप्रयोग विज्ञापन मुक्त है और  इसे  इंटरनेट की अनुमति की आवश्यकता नहीं है|</string>
 		<emptyline/>
@@ -85,19 +86,19 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>सुविधाएँ:</string>
-		<listitem>Set a countdown by choosing a duration or a date.</listitem>
-		<listitem>Be notified by vibration or any sound of your choice. </listitem>
-		<listitem>Have an unlimited number of timers running at the same time. </listitem>
-		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
-		<listitem>Modify countdowns, even while they are still running</listitem>
+		<listitem>काउंटडाउन को सेट करें समय या फिर तरीक को चुन कर.</listitem>
+		<listitem>नोतिफैड रहें विब्रेशन या फर किसी भी तरह के साउंड जो आपकी मर्ज़ी का हो.</listitem>
+		<listitem>असीमित टाइमर नंबर चल रहे है एक ही समय पर.</listitem>
+		<listitem>काउंटडाउन को बचा कर रखें और उन्हें नाम दे जिससे हम इससे बाद मैं इस्तमाल कर सके.</listitem>
+		<listitem>काउंटडाउन को संशोधित करें, अगर वोह चल रहें हो तब भी</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Countdown": </string>
-		<listitem>Launch applications through Android shortcuts</listitem>
-		<listitem>Use OI About to show license information</listitem>
+		<string>एक्स्तान्शन "OI काउंट डाउन" के लिए उपलब्ध है</string>
+		<listitem>एप्प्लिकेशन को लॉन्च करें अन्द्रोइड शोर्टकट्से</listitem>
+		<listitem>OI अबाउट इस्तमाल करे लाइसेंस की जानकारी के लिए</listitem>
 		<emptyline/>
 		<string>कीवर्ड:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>countdown, timer, alert</listitem>
+		<listitem>काउंटडाउन, टाइमर, अलर्ट</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
@@ -271,8 +272,8 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
-		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<string>OI सेफ सुरक्षित रूप से आपके पासवर्ड और अन्य निजी उद्योग मानक AES  एन्क्रिप्शन का उपयोग कर डेटा के सभी बचाता है.</string>
+		<string>यह भी OI Notepadड के लिए एक विस्तार करने के लिए OI Notepad में बनाया नोट्स एन्क्रिप्ट रूप में कार्य करता है.</string>
 		<emptyline/>
 		<string>यह अनुप्रयोग विज्ञापन मुक्त है और  इसे  इंटरनेट की अनुमति की आवश्यकता नहीं है|</string>
 		<emptyline/>
@@ -286,25 +287,25 @@
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>सुविधाएँ:</string>
-		<listitem>Securely protect data using AES encryption.</listitem>
-		<listitem>Freely move data entries between categories.</listitem>
-		<listitem>Import/Export data entries and databases.</listitem>
-		<listitem>Backup/Restore entries.</listitem>
-		<listitem>Includes secure password generator.</listitem>
-		<listitem>Automatic timeout to protect encrypted documents.</listitem>
-		<listitem>Encrypt OI Notepad notes.</listitem>
-		<listitem>Support for Obscura picture safe.</listitem>
+		<listitem>सुरक्षित रूप से अपना डाटा को सुरक्षित रखें AES एन्क्र्य्प्शन इस्तमाल करते हुए.</listitem>
+		<listitem>डाटा एंट्री को आज़ादी से चलने दे केटेगरी के बीच.</listitem>
+		<listitem>आयात/निर्यात डाटा एंट्री और डाटाबेसेस</listitem>
+		<listitem>बेकप/रिस्टोर दर्ज किया हुआ</listitem>
+		<listitem>सुरक्षित पासवर्ड जनरेटर को शामिल करें.</listitem>
+		<listitem>औतोमटिक टाइमओउट एन्क्रिप्टओचुमेंट्स को बचाएं.</listitem>
+		<listitem>एन्क्रिप्ट OI नोटपेड के नोट्स</listitem>
+		<listitem>ओब्स्कुरा पिक्चर सेफ के लिए सप्पोर्ट.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
 		<string>"OI File Manager" के लिए उपलब्ध एक्सटेंशन:</string>
 		<listitem>"OI About" के साथ लाइसेंस जानकारी दिखाएँ .</listitem>
 		<emptyline/>
 		<string>आवेदन ""OI File Manager" के साथ काम करता है:</string>
-		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<listitem>नोट्स को एन्क्रिप्ट करें "OI नोटपद" मे</listitem>
 		<emptyline/>
 		<string>कीवर्ड:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>safe, encrpytion, password, protection</listitem>
+		<listitem>सुरक्षित, एन्क्र्प्य्शन, पास्वोर्ड,प्रोटेक्शन</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>

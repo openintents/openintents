@@ -2,7 +2,7 @@
 OI Baterka
 
 # Promo text:
-Keep the camera flash or the backlight turned on with OI Flashlight.
+Uchovejte blesk nebo podsvícení zapnutý s OI Baterkou.
 
 # Description:
 OI Baterka je jednoduchá a efektivní aplikace, s níž najdete svou cestu tmou. OI Baterka zapne podsvícení displeje, jasně osvětlujíc okolní prostředí. Na zařízeních s bleskem fotoaparátu umí OI Baterka použít i ten jako svítilnu pro rozjasnění místnosti. Barva podsvícení je nastavitelná pomocí OI Výběru barev. 
@@ -35,7 +35,7 @@ Klíčová slova:
 * OI, OpenIntents, Open Intents
 
 Mezinárodní verze: 
-Lanternă OI, Llanterna d'OI, OI Baterka, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+Lanternă OI, Llanterna d'OI, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
 
 
 Prohledat řetězce pro Market: 

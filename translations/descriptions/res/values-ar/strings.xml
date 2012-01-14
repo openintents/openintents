@@ -2,7 +2,8 @@
 <main>
 	<translators>Launchpad Contributions:
   Kras4ooo https://launchpad.net/~kkrassi1984
-  OpenIntents devs https://launchpad.net/~openintents-devs</translators>
+  OpenIntents devs https://launchpad.net/~openintents-devs
+  kenn dhia https://launchpad.net/~kendhia</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->
@@ -65,9 +66,9 @@
 		<!--  -->
 		<!--  Description of application -->
 		<emptyline/>
-		<string>OI Countdown is a helpful timer to increase your productivity and plan your day. </string>
-		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
-		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
+		<string>العد التنازلي OI موقت مساعد جدا لزيادة الانتاجية و التحضير ليومك.</string>
+		<string>يسمح لك بظبط تشكيلة من مختلف الأعمال لتنبيهك عند الانتهاء المؤقت.</string>
+		<string>تخصيص تام لجميع مؤقتاتك، بدون أي حدود حول كم يمكنك تشغيل أو حفظ.</string>
 		<emptyline/>
 		<string>هذا التطبيق هو خالية من الإعلانات ولا يحتاج إذن الإنترنت.</string>
 		<emptyline/>
@@ -84,19 +85,19 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>الميزات:</string>
-		<listitem>Set a countdown by choosing a duration or a date.</listitem>
-		<listitem>Be notified by vibration or any sound of your choice. </listitem>
-		<listitem>Have an unlimited number of timers running at the same time. </listitem>
-		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
-		<listitem>Modify countdowns, even while they are still running</listitem>
+		<listitem>ظبط العد التنازلي باختيار المدة أو التاريخ.</listitem>
+		<listitem>يتم تنبيهك بالذبذبة أو اي صوت حسب اختيارك</listitem>
+		<listitem>عدد غير محدود من المؤقتات المشغلة في نفس الوقت.</listitem>
+		<listitem>احفظ الأعداد التنازلية واعطها أسماء لاستعمالها في أوقات لاحقة.</listitem>
+		<listitem>تعديل الأعداد التنازلية، حتى وهي لا تزال شغالة</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Countdown": </string>
-		<listitem>Launch applications through Android shortcuts</listitem>
-		<listitem>Use OI About to show license information</listitem>
+		<string>المحلقات المتوفرة ل "عد تنازلي OI "</string>
+		<listitem>تشغيل التطبيق باستعمال اختصارات أندرويد</listitem>
+		<listitem>استعمل حول OI لاظهار معلومات الرخصة</listitem>
 		<emptyline/>
 		<string>الكلمات الأساسية:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>countdown, timer, alert</listitem>
+		<listitem>العد التازلي، المؤقت، التنبيه</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>المقاصد مفتوحة OI, OpenIntents</listitem>
 		<emptyline/>

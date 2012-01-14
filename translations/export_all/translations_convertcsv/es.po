@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
+"Last-Translator: Martín González <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,6 +23,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Fitoschido https://launchpad.net/~fitoschido\n"
+"  Martín González https://launchpad.net/~mgonzlezgmz\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm\n"
 "  dcb116 https://launchpad.net/~dcb116"
@@ -30,7 +31,7 @@ msgstr ""
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
 msgid "Import and export lists and notes with OI Convert CSV."
-msgstr ""
+msgstr "Importe y exporte listas y notas con OI Convert CSV."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -45,7 +46,7 @@ msgstr "Bloc de notas OI"
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:39(string)
 msgid "Launch %s and select menu &gt; Convert CSV."
-msgstr ""
+msgstr "Ejecute %s y seleccione el menú &gt; Convertir CSV."
 
 #. Application name. Can be localized.
 #. 	  "CSV" is a common file extension meaning "comma separated values".
@@ -313,7 +314,7 @@ msgstr "Formato CSV de Palm"
 
 #: tmp_strings.xml:127(item)
 msgid "JPilot Memo"
-msgstr ""
+msgstr "JPilot Memo"
 
 #: tmp_strings.xml:131(item)
 msgid "MS Outlook Tasks"
@@ -321,7 +322,7 @@ msgstr "Tareas de MS Outlook"
 
 #: tmp_strings.xml:132(item)
 msgid "HandyShopper"
-msgstr ""
+msgstr "HandyShopper"
 
 #: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
 msgid "DUPLICATE - Allow duplicates of records."
@@ -329,7 +330,7 @@ msgstr "DUPLICAR - Permitir duplicacion de registros."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
 msgid "KEEP - Don't overwrite existing records."
-msgstr ""
+msgstr "KEEP - No sobreescribir archivos existentes."
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -347,6 +348,7 @@ msgstr "DUPLICAR - Agregar una segunda copia del registro si ya existe."
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
+"KEEP - No sobreescribir el archivo existente, ignorarlo en el fichero CSV."
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
@@ -360,20 +362,3 @@ msgid ""
 msgstr ""
 "Restaurar Respaldo - BORRA TODO SUS REGISTROS EXISTENTES, entonces importa "
 "el archivo CSV."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

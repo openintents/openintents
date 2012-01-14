@@ -8,10 +8,11 @@
 	<string name="about_translators">Launchpad Contributions:
   Henk van der Velden https://launchpad.net/~henkvandervelden86
   Jaap-Willem Dooge https://launchpad.net/~japydooge
+  Mark van Kuijk https://launchpad.net/~markvankuyk
   Peli https://launchpad.net/~peli0101</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
+	<string name="about_comments">Stel meerdere timers in met OI Countdown</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -168,4 +169,7 @@
         <item>5 minuten</item>
         <item>10 minuten</item>
     </string-array>
+    
+    
+    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
 </resources>

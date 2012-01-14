@@ -1,0 +1,88 @@
+# Croatian translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Nikola Miljkovic <Unknown>\n"
+"Language-Team: Croatian <hr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Nikola Miljkovic https://launchpad.net/~milja1337"
+
+#. Short explanation of the application (max. 80 characters)
+#: tmp_strings.xml:11(string)
+msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
+msgstr "Sačuvaj blic kamere ili pozadinu upaljenu sa OI Blicem."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:17(string)
+msgid "OI Flashlight"
+msgstr "OI Blic"
+
+#: tmp_strings.xml:19(string)
+msgid "The backlight stays turned on."
+msgstr "Pozadinsko svetlo ostaje upaljeno."
+
+#: tmp_strings.xml:21(string)
+msgid "Color"
+msgstr "Boja"
+
+#. Application name should be consistent across translations.
+#: tmp_strings.xml:24(string)
+msgid "OI Color Picker"
+msgstr "OI Birač Boja"
+
+#. Title for preferences or settings
+#: tmp_strings.xml:26(string) tmp_strings.xml:33(string)
+msgid "Preferences"
+msgstr "Postavke"
+
+#: tmp_strings.xml:34(string)
+msgid "Keep color"
+msgstr "Zadrži boju"
+
+#: tmp_strings.xml:35(string)
+msgid "Save color for next time Flashlight app is started"
+msgstr "Sačuvaj boju za sledeci put Blic aplikacija je pokrenuta"
+
+#. Explanation that is displayed if Color Picker has not been installed yet, but 
+#. 		user tries to access it.
+#: tmp_strings.xml:43(string)
+msgid ""
+"To make the Color Picker more useful to other developers, we have split it "
+"into its own app."
+msgstr ""
+"Da bi napravio Birač Boja korisniji za ostale programere, treba da podelimo "
+"u svoje sopstvene aplikacije."
+
+#: tmp_strings.xml:44(string)
+msgid "Use camera flash"
+msgstr "Koristi blic kamere"
+
+#: tmp_strings.xml:45(string)
+msgid "Use the camera flash instead of the screen backlight."
+msgstr "Koristi blic kamere umesto pozadinskog svetla."
+
+#. Information to enable the camera flash as flashlight.
+#: tmp_strings.xml:47(string)
+msgid "Press to enable camera light (May take a second)."
+msgstr "Pritisni da upališ blic kamere (Možda traje malo duže)"
+
+#: tmp_strings.xml:48(string)
+msgid "Press to disable camera light."
+msgstr "Pritisni da ugasiš svetlo kamere."

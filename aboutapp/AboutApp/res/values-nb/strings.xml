@@ -79,15 +79,15 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabisk</item>
-		<item>Belarusian</item>
-		<item>Bulgarian</item>
-		<item>Catalan</item>
+		<item>Hviterussisk</item>
+		<item>Bulgarsk</item>
+		<item>Katalansk</item>
 		<item>Tsjekkisk</item>
 		<item>Dansk</item>
 		<item>Tysk</item>
 		<item>Gresk</item>
 		<item>Engelsk</item>
-		<item>English (United Kingdom)</item>
+		<item>Engelsk (UK)</item>
 		<item>Spansk</item>
 		<item>Persisk</item>
 		<item>Finsk</item>
@@ -97,16 +97,16 @@
 		<item>Kroatisk</item>
 		<item>Ungarsk</item>
 		<item>Italiensk</item>
-		<item>Hebrew</item>
+		<item>Hebraisk</item>
 		<item>Japansk</item>
 		<item>Koreansk</item>
 		<item>Laotisk</item>
-		<item>Latvian</item>
-		<item>Macedonian</item>
-		<item>Norwegian Bokmal</item>
+		<item>Latvisk</item>
+		<item>Makedonisk</item>
+		<item>Norsk Bokmål</item>
 		<item>Nederlandsk</item>
 		<item>Oksitansk (etter 1500)</item>
-		<item>Punjabi</item>
+		<item>Indisk (Punjab)</item>
 		<item>Polsk</item>
 		<item>Portugisisk</item>
 		<item>Brasiliansk Portugisisk</item>
@@ -115,11 +115,11 @@
 		<item>Sardinske</item>
 		<item>Sindhi</item>
 		<item>Slovakisk</item>
-		<item>Slovenian</item>
+		<item>Slovensk</item>
 		<item>Svensk</item>
 		<item>Tagalog</item>
 		<item>Tyrkisk</item>
-		<item>Uyghur</item>
+		<item>Uigursk</item>
 		<item>Kinesisk (Forenklet)</item>
 		<item>Kinesisk (Tradisjonelt)</item>
 	</string-array>

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Walter Reindeer Martinez H <Unknown>\n"
+"Last-Translator: Martín González <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,17 +25,17 @@ msgstr ""
 "  DiegoJ https://launchpad.net/~diegojromerolopez\n"
 "  Feder Sáiz https://launchpad.net/~federsaiz-deactivatedaccount\n"
 "  Julián Unrrein https://launchpad.net/~junrrein\n"
+"  Martín González https://launchpad.net/~mgonzlezgmz\n"
 "  Paco Molinero https://launchpad.net/~franciscomol\n"
 "  Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm\n"
 "  enrigp https://launchpad.net/~enrgarc"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
-#, fuzzy
 msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
 msgstr ""
-"Utilizar el flash de la cámara en lugar de la retroiluminación de la "
-"pantalla."
+"Mantenga el flash de la cámara o la luz de la pantalla encendida con OI "
+"Flashlight."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
@@ -96,11 +96,3 @@ msgstr "Pulse para activar la luz de la cámara (puede tardar unos segundos)."
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
 msgstr "Pulse para desactivar la luz de la cámara."
-
-
-
-
-
-
-
-

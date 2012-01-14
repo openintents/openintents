@@ -355,20 +355,3 @@ msgid ""
 msgstr ""
 "Restaura còpia de seguretat - ESBORRA TOTS ELS TEUS REGISTRES JA EXISTENTS, "
 "després importa el fitxer CSV."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

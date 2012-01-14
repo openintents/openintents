@@ -67,9 +67,9 @@
 		<!--  -->
 		<!--  Description of application -->
 		<emptyline/>
-		<string>OI Countdown is a helpful timer to increase your productivity and plan your day. </string>
-		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
-		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
+		<string>OI Обратно Броене е полезен таймер, който ви помага да увеличите продуктивноста си и да планирате деня си.</string>
+		<string>То Ви позволява да настроите множество различни действия, които да Ви уведомят в края на таймера.</string>
+		<string>Можете да персонализирате напълно всички Ваши таймери, без ограничение на това колко много от тях работят в момента или имате запазени.</string>
 		<emptyline/>
 		<string>Това приложение е безплатно и не изисква интернет за ползването ѝ.</string>
 		<emptyline/>
@@ -86,19 +86,19 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Характеристики:</string>
-		<listitem>Set a countdown by choosing a duration or a date.</listitem>
-		<listitem>Be notified by vibration or any sound of your choice. </listitem>
-		<listitem>Have an unlimited number of timers running at the same time. </listitem>
-		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
-		<listitem>Modify countdowns, even while they are still running</listitem>
+		<listitem>Настройте обратно броене като изберете продължителност или дата.</listitem>
+		<listitem>Бъдете уведомени с вибрация или със звук по Ваш избор.</listitem>
+		<listitem>Имайте неограничен брой таймери, работещи по едно и също време.</listitem>
+		<listitem>Запазете таймерите си и им дайте имена за да ги използвате отново друг път.</listitem>
+		<listitem>Променяйте таймерите, дори и докато работят</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Countdown": </string>
-		<listitem>Launch applications through Android shortcuts</listitem>
-		<listitem>Use OI About to show license information</listitem>
+		<string>Налични разширение за "OI Обратно Броене":</string>
+		<listitem>Включвайте приложения през техните Android иконки.</listitem>
+		<listitem>Използвайте OI About за да показвате информация за лиценза</listitem>
 		<emptyline/>
 		<string>Ключови думи:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>countdown, timer, alert</listitem>
+		<listitem>обратно броене, таймер, сигнал</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>

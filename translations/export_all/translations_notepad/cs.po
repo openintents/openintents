@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Marek Dobransky <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,13 +22,14 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Marek Dobransky https://launchpad.net/~marekdobr\n"
 "  Matěj Konečný https://launchpad.net/~matejkon\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:33(string)
 msgid "Create and share your notes with OI Notepad."
-msgstr ""
+msgstr "Vytvořte a sdílejte poznámky s OI Poznámkový blok"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
@@ -501,6 +502,3 @@ msgstr "Opravdu chcete smazat tuto poznámku?"
 #: tmp_strings.xml:219(string)
 msgid "New note"
 msgstr "Nová poznámka"
-
-
-

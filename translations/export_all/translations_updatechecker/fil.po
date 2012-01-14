@@ -1,0 +1,374 @@
+# Filipino translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Liezl <Unknown>\n"
+"Language-Team: Filipino <fil@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Liezl https://launchpad.net/~liezl-200"
+
+#. ***************************
+#. Applicatio-specific strings
+#. ***************************
+#: tmp_strings.xml:13(string) tmp_strings.xml:21(string)
+msgid "OI Update"
+msgstr "OI Magbago"
+
+#: tmp_strings.xml:15(string)
+msgid "A new version of %s is available.\\nWould you like to upgrade?"
+msgstr "May bagong bersyon ng %s ay magagamit.\\nGusto mo bang i-upgrade?"
+
+#: tmp_strings.xml:16(string)
+msgid "A new version of %1$s is available at %2$s.\\n%3$s\\n"
+msgstr "May bagong bersyon ng %1$ ay magagamit sa %2$s.\\n%3$s\\n"
+
+#: tmp_strings.xml:17(string)
+msgid "A new version of %1$s is available.\\n%2$s\\n"
+msgstr "May bagong bersyon ng %1$s ay magagamit.\\n%2$s\\n"
+
+#: tmp_strings.xml:18(string)
+msgid "A new version of %1$s is available at %2$s."
+msgstr "May bagong bersyon ng %1$s ay makukuha sa %2$s."
+
+#: tmp_strings.xml:19(string)
+msgid "A new version of %s is available."
+msgstr "May bagong bersyon ng %s ay magagamit."
+
+#: tmp_strings.xml:20(string)
+msgid "Android Market not available."
+msgstr "Hindi magagamit ang Android Merkado."
+
+#: tmp_strings.xml:22(string)
+msgid "Android Market"
+msgstr "Andriod Merkado"
+
+#: tmp_strings.xml:23(string)
+msgid "AndAppStore.com"
+msgstr "AndAppStore.com"
+
+#: tmp_strings.xml:25(string)
+msgid "Version %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
+msgstr "Bersyon %1$s\\nSD card %2$\\s\\n\\nOS\\n%3$s"
+
+#: tmp_strings.xml:26(string)
+msgid "free space: %s"
+msgstr "libreng espasyo: %s"
+
+#: tmp_strings.xml:27(string)
+msgid "Board %1$s\\nBrand %2$s\\nDevice %3$s\\nID %4$s\\nModel %5$s"
+msgstr "Lupon %1$s\\nTatak %2$s\\nAparato %3$s\\nID %4$s\\nModelo %5$s"
+
+#: tmp_strings.xml:29(string)
+msgid "Perform update now!"
+msgstr "Gawin ang pagbabago ngayon!"
+
+#: tmp_strings.xml:30(string)
+msgid "Try update from Market now!"
+msgstr "Subukan baguhin sa Merkado ngayon!"
+
+#: tmp_strings.xml:31(string)
+msgid "Try update from AndAppStore now!"
+msgstr "Subukan baguhin sa AndAppStore ngayon!"
+
+#: tmp_strings.xml:32(string)
+msgid "Remind me later!"
+msgstr "Ipaalala sa akin mamaya!"
+
+#: tmp_strings.xml:33(string)
+msgid "Ignore this update"
+msgstr "Huwag pansinin ang pagbabago na ito"
+
+#: tmp_strings.xml:34(string)
+msgid "Ignore all further updates"
+msgstr "Huwag pansinin ang lahat ng karagdagang mga update"
+
+#: tmp_strings.xml:35(string)
+msgid "Ok"
+msgstr "Ok"
+
+#: tmp_strings.xml:37(string)
+msgid ""
+"Update could not be started!\\n\\nPlease contact application developer!\\n\\"
+"n%s"
+msgstr ""
+"Hindi masimulan ang pagbabago!\\n\\nMangyaring makipag-ugnay sa developer ng "
+"aplikasyon!\\n\\n%s"
+
+#: tmp_strings.xml:38(string)
+msgid "Application is up-to-date."
+msgstr "Ang aplikasyon ay pinakabago."
+
+#: tmp_strings.xml:39(string)
+msgid "Checking for new version."
+msgstr "Sinusuri kung may bagong bersyon."
+
+#: tmp_strings.xml:40(string)
+msgid "Building list of applications."
+msgstr "Gumagawa ng listahan ng mga aplikasyon."
+
+#: tmp_strings.xml:41(string)
+msgid "Check AndAppStore.com"
+msgstr "Suriin ang AndAppStore.com"
+
+#: tmp_strings.xml:42(string)
+msgid "Check versions"
+msgstr "Suriin ang mga bersyon"
+
+#: tmp_strings.xml:43(string)
+msgid "Show all"
+msgstr "Ipakita lahat"
+
+#: tmp_strings.xml:44(string)
+msgid "Refresh"
+msgstr "I-refresh"
+
+#: tmp_strings.xml:45(string)
+msgid "Checked AndAppStore"
+msgstr "Nasuri ang AndAppStore"
+
+#: tmp_strings.xml:46(string)
+msgid "Current version: %s"
+msgstr "Kasalukuyang bersyon: %s"
+
+#: tmp_strings.xml:47(string)
+msgid "Current version code: %s"
+msgstr "Kasalukuyang bersyon ng kodigo: %s"
+
+#: tmp_strings.xml:48(string)
+msgid "Newer version: %s"
+msgstr "Mas bagong bersyon: %s"
+
+#: tmp_strings.xml:49(string)
+msgid "Newer version: %1$s - %2$s"
+msgstr "Mas bagong bersyon: %1$s - %2$s"
+
+#: tmp_strings.xml:50(string)
+msgid "Newer version available."
+msgstr "May mas bagong bersyon na magagamit."
+
+#: tmp_strings.xml:51(string)
+msgid "No update information found."
+msgstr "Walang nabagong impormasyon ang natagpuan."
+
+#: tmp_strings.xml:52(string)
+msgid "OI Update - List of new versions"
+msgstr "OI Magbago - Listahan ng mga bagong bersyon"
+
+#: tmp_strings.xml:53(string)
+msgid "OI Update - New versions at AndAppStore"
+msgstr "OI Magbago - Mga bagong bersyon sa AndAppStore"
+
+#: tmp_strings.xml:54(string)
+msgid "OI Update - List of managed applications"
+msgstr "OI Magbago - Listahan ng mga pinamamahalaang aplikasyon"
+
+#: tmp_strings.xml:55(string)
+msgid "OI Update - List of managed applications (check at AndAppStore)"
+msgstr ""
+"OI Magbago - Listahan ng mga pinamamahalaang aplikasyon (suriin sa "
+"AndAppStore)"
+
+#: tmp_strings.xml:56(string)
+msgid "Settings"
+msgstr "Mga Setting"
+
+#: tmp_strings.xml:57(string)
+msgid "Auto check"
+msgstr "Automatikong pagsuri"
+
+#: tmp_strings.xml:58(string)
+msgid "Ignored"
+msgstr "Hindi pinansin"
+
+#: tmp_strings.xml:59(string)
+msgid ""
+"Updates are currently ignored. Would you like to receive updates again?"
+msgstr ""
+"Ang pagbabago ay kasalukuyang hindi pinapansin. Gusto mo bang muling "
+"makatanggap ng mga pagbabago?"
+
+#: tmp_strings.xml:60(string)
+msgid "Unknown"
+msgstr "Hindi kilala"
+
+#: tmp_strings.xml:61(string)
+msgid ""
+"No update information available. Please check manually and ask the developer "
+"to support OI Update in the future."
+msgstr ""
+"Walang bagong impormasyon na magagamit. Mangyaring suriin ng manu-mano at "
+"hilingin sa developer na suportahan ang OI Magbago sa darating na panahon."
+
+#: tmp_strings.xml:62(string)
+msgid "Search on Market"
+msgstr "Maghanap sa Merkado"
+
+#: tmp_strings.xml:63(string)
+msgid "Search on AndAppStore"
+msgstr "Maghanap sa AndAppStore"
+
+#: tmp_strings.xml:64(string)
+msgid "Processing %s"
+msgstr "Ginagawa %s"
+
+#: tmp_strings.xml:66(string)
+msgid ""
+"The update process of this application directs to a different site than "
+"Android Market. Applications installed from unknown sources might exhibit a "
+"security risk."
+msgstr ""
+"Ang pagawa ng pagbabago para sa aplikasyon na ito ay tumutungo sa ibang "
+"lugar kaysa sa Android Merkado.  Ang aplikasyon na na-install mula sa hindi "
+"kilalang pinagmulan ay maaaring magbigay ng panganib sa seguridad."
+
+#: tmp_strings.xml:70(string)
+msgid "Continue anyway"
+msgstr "Magpatuloy pa rin"
+
+#: tmp_strings.xml:71(string)
+msgid "Abort"
+msgstr "Ihinto"
+
+#: tmp_strings.xml:73(string)
+msgid "Auto update"
+msgstr "Awtomatikong pagbabago"
+
+#: tmp_strings.xml:74(string)
+msgid "If checked, search for updates is performed regularly"
+msgstr ""
+"Kung naka-tsek, ang paghahanap para sa mga pagbabago ay regular na ginagawa"
+
+#: tmp_strings.xml:75(string)
+msgid "Update interval"
+msgstr "Agwat ng pagbabago"
+
+#: tmp_strings.xml:76(string)
+msgid "Set the interval how often the update search should be performed."
+msgstr ""
+"I-set ang agwat kung gaano kadalas gagawin ang paghahanap ng pagbabago."
+
+#: tmp_strings.xml:77(string)
+msgid "Select interval"
+msgstr "Piliin ang agwat"
+
+#: tmp_strings.xml:78(string)
+msgid "every_month"
+msgstr "bawat_buwan"
+
+#: tmp_strings.xml:79(string)
+msgid "Warning"
+msgstr "Babala"
+
+#: tmp_strings.xml:80(string)
+msgid ""
+"If you uncheck this item, you will no longer receive notifications for "
+"updates. Do you still want to uncheck auto update?"
+msgstr ""
+"Kung alisan mo ang tsek ng bagay na ito, hindi mo na matatanggap ang mga "
+"abiso para sa mga pagbabago. Gusto mo pa rin bang alisin ang tsek ng "
+"awtomatikong pagbabago?"
+
+#: tmp_strings.xml:82(string)
+msgid "Use AndAppStore"
+msgstr "Ganitin ang AndAppStore"
+
+#: tmp_strings.xml:83(string)
+msgid "Use version information provided by AndAppStore.com"
+msgstr "Gamitin ang impormasyon ng bersyon na nagmula sa AndAppStore.com"
+
+#: tmp_strings.xml:85(string)
+msgid "Read update information"
+msgstr "Basahin ang impormasyon ng pagbabago"
+
+#: tmp_strings.xml:86(string)
+msgid "Write update information"
+msgstr "Isulat ang impormasyon ng pagbabago"
+
+#: tmp_strings.xml:87(string)
+msgid ""
+"Read information about installed applications, update locations and requests."
+msgstr ""
+"Basahin ang impormasyon na tungkol sa na-install na aplikasyon, mga lokasyon "
+"at mga kahilingan ng pagbabago"
+
+#: tmp_strings.xml:88(string)
+msgid ""
+"Write information about installed applications, update locations and "
+"requests."
+msgstr ""
+"Isulat ang impormasyon na tungkol sa na-install na aplikasyon, mga lokasyon "
+"at mga kahilingan ng pagbabago"
+
+#. About
+#: tmp_strings.xml:92(string)
+msgid "About"
+msgstr "Tungkol"
+
+#: tmp_strings.xml:93(string)
+msgid "About %s"
+msgstr "Tungkol %s"
+
+#: tmp_strings.xml:94(string)
+msgid ""
+"Version %s \\n\\n OI Update keeps you informed on new application versions.\\"
+"n OpenIntents allows different Android applications to share data using "
+"intents and open interfaces.\\n\\n For more information and other great "
+"applications visit OpenIntents at www.openintents.org"
+msgstr ""
+"Bersyon %s\\n\\n Ang OI Magbago ay nagpapa-alam sa iyo ng mga bagong bersyon "
+"ng aplikasyon.\\n OpenIntents ay nagbibigay-daan sa ibang Android aplikasyon "
+"upang ibahagi ang mga datos na gamit ang mga layunin at mga bukas na "
+"interface.\\n\\n Para sa karagdagang impormasyon at iba pang mahusay na mga "
+"aplikasyon  bisitahin ang OpenIntents sa www.openintents. org"
+
+#. EULA
+#: tmp_strings.xml:102(string)
+msgid "OI Update EULA"
+msgstr "OI Magbago EULA"
+
+#: tmp_strings.xml:103(string)
+msgid ""
+"\"Copyright 2008 OpenIntents.org\\n Licensed under the Apache License, "
+"Version 2.0 (the \\\"License\\\"); you may not use this file except in "
+"compliance with the License. You may obtain a copy of the License at\\n "
+"http://www.apache.org/licenses/LICENSE-2.0\\n Unless required by applicable "
+"law or agreed to in writing, software distributed under the License is "
+"distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY "
+"KIND, either express or implied. See the License for the specific language "
+"governing permissions and limitations under the License.\\n \\n\""
+msgstr ""
+"\"Kopirayt 2008 OpenIntents.org\\n Lisensyado sa ilalim ng Lisensya ng "
+"Apache, Bersyon 2.0 (ang \\\"Lisensya\\\"); hindi mo maaaring gamitin ang "
+"file na ito maliban sa pagsunod sa Lisensya.  Maaari kang makakuha ng kopya "
+"ng Lisensya sa\\n\r\n"
+"http: //www.apache.org/licenses/LICENSE-2.0\\n Maliban kung kinakailangan sa "
+"pamamagitan ng naaangkop na batas o sumang-ayon sa sulat, ang software na "
+"ipinamamahagi sa ilalim ng Lisensya ay ipinamamahagi na isang \"AS IS\" na "
+"batayan, WALANG GARANTIYA O KONDISYON NA ANUMANG URI, alinman ipinahayag o "
+"ipinahiwatig. Tingnan ang Lisensya para sa mga partikular na wika na "
+"namamahala ng mga pahintulot at limitasyon sa ilalim ng Lisensya.\\n\\n\""
+
+#: tmp_strings.xml:110(string)
+msgid "Accept"
+msgstr "Tanggapin"
+
+#: tmp_strings.xml:111(string)
+msgid "Cancel"
+msgstr "Kanselahin"

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: vishal panjwani <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,8 +26,10 @@ msgstr "OI वितरण लाइब्रेरी"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Atharva Lath https://launchpad.net/~atharvalath96\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  happynawani https://launchpad.net/~happynawani"
+"  happynawani https://launchpad.net/~happynawani\n"
+"  vishal panjwani https://launchpad.net/~vishal-panjwani15"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
 #. 		Translation should be short, since this is a title.
@@ -46,7 +48,7 @@ msgstr "%s के लिए निम्नलिखित एंड यूज�
 #. Button: Accept terms of EULA.
 #: tmp_strings.xml:26(string)
 msgid "Accept"
-msgstr "स्वीकार करें"
+msgstr "स्वीकारें"
 
 #. Button: Refuse terms of EULA.
 #: tmp_strings.xml:29(string)
@@ -127,12 +129,12 @@ msgstr "OI के बारें में"
 #. Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.
 #: tmp_strings.xml:69(string)
 msgid "Barcode OI Plugin"
-msgstr ""
+msgstr "बारकोड प्लगइन"
 
 #. Dialog message.
 #: tmp_strings.xml:71(string)
 msgid "No compatible barcode scanner is available."
-msgstr ""
+msgstr "कोई संगत बारकोड स्केन्नर उपलब्ध नहीं है"
 
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:74(string)

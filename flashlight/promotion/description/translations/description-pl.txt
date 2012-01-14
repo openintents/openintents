@@ -2,7 +2,7 @@
 OI Latarka
 
 # Promo text:
-Keep the camera flash or the backlight turned on with OI Flashlight.
+Pozostaw lampę błyskową lub podświetlenie ekranu włączone używając OI Latarka.
 
 # Description:
 OI Flashlight to prosta i skuteczna aplikacja, która pomaga znaleźć drogę w ciemnościach. OI Flashlight blokuje podświetlanie, jasno oświetla okolicę. Dla urządzeń z lampą błyskową aparatu, Ol Flashlight może również korzystać z lampy błyskowej jako jasna latarka, aby rozjaśnić pokój. Kolor podświetlenia jest w pełni konfigurowalny z OI Color Picker. 
@@ -35,7 +35,7 @@ Słowa kluczowe:
 * OI, OpenIntents, Open Intents
 
 Wersje międzynarodowe: 
-Lanternă OI, Llanterna d'OI, OI Baterka, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+Lanternă OI, Llanterna d'OI, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
 
 
 Wyszukane ciągi znakó w Markecie: 

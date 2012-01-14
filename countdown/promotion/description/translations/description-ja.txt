@@ -2,12 +2,12 @@
 OI カウントダウン
 
 # Promo text:
-Set multiple countdowns with OI Countdown.
+OI カウントダウン で複数のカウントダウンを設定できます。
 
 # Description:
 
 
-OI Countdown is a helpful timer to increase your productivity and plan your day.  It allows you to set a variety of different actions to notify you at the end of a timer.  Fully customize all your timers, with no limit on how many you can have running or saved.  
+OI カウントダウン は効率を上げて一日の計画を立てる役に立つタイマーです。 タイマー終了時に様々なアクションを設定して通知することができます。 タイマーの動作数や保存数の制限無しで、完全にすべてのタイマーをカスタマイズすることができます。 
 
 このアプリケーションは広告を含まず、インターネット許可を必要としません。 
 
@@ -27,22 +27,22 @@ http://www.openintents.org
 https://translations.launchpad.net/openintents/trunk
 
 機能： 
-* Set a countdown by choosing a duration or a date.
-* Be notified by vibration or any sound of your choice. 
-* Have an unlimited number of timers running at the same time. 
-* Save your countdowns and give them names to reuse at later times. 
-* Modify countdowns, even while they are still running
+* 期間か日付を選択することでカウントダウンをセットします。
+* あなたの選択で振動かサウンドで通知されることができます。
+* 同時に走る
+* カウントダウンを保存して後で再開できるように名前を付けます。
+* カウントダウンの変更（カウントダウンも含む）
 
-Available extensions for "OI Countdown":  
-* Launch applications through Android shortcuts
-* Use OI About to show license information
+"OI カウントダウン" の利用可能な拡張子： 
+* アンドロイドショートカットからアプリケーションを起動する
+* OI 情報 を使ってライセンス情報を表示
 
 キーワード: 
-* countdown, timer, alert
+* カウントダウン、 タイマー、 警告
 * OI, OpenIntents, Open Intents
 
 国際バージョン： 
-Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI
+Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI, عد تنازلي OI
 
 
 マーケット用に文字列を検索： 

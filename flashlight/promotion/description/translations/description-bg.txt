@@ -2,7 +2,7 @@
 OI Фенерче
 
 # Promo text:
-Keep the camera flash or the backlight turned on with OI Flashlight.
+Задръж светкавицата на камерата или дисплея включени с OI Фенерче.
 
 # Description:
 OI Flashlight е просто и ефективно приложение, което Ви позволява да откривате пътя си в тъмното. OI Flashlight включва подсветката на дисплея, като по този начин ясно осветява околността. При устройства със светкавица на камерата, OI Flashlight може също да използва и светкавицата като ярък факел за да освети стаята. Цветът на подсветката може напълно да се персонализира с OI Color Picker. 
@@ -35,7 +35,7 @@ https://translations.launchpad.net/openintents/trunk
 * OI, OpenIntents, Open Intents
 
 Международни версии: 
-Lanternă OI, Llanterna d'OI, OI Baterka, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+Lanternă OI, Llanterna d'OI, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
 
 
 Стрингове за търсенето в Market 

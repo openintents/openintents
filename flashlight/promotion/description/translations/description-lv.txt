@@ -1,4 +1,4 @@
-OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+OI Flashlight ir vienkārša un efektīva aplikācija, kura palīdz atrast ceļu tumsā. OI Flashlight ieslēdz ekrāna apgaismojumu, skaidri izgaismojot apkārtesošo. Ierīcēm ar fotoaparāta zibspuldzi, OI Flashlight var arī izmantot zibspuldzi, lai izgaismotu istabu. Apgaismojuma krāsa ir pilnībā pielāgojama ar OI Color Picker. 
 
 Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju. 
 
@@ -8,30 +8,30 @@ http://code.google.com/p/openintents
 Lai skatītu pilnīgu izmaiņu sarakstu un sarakstu ar biežāk uzdotajiem jautājumiem, lūdzu apmeklējiet: 
 http://www.openintents.org
 
-Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Lounchpad: 
+Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Launchpad: 
 https://translations.launchpad.net/openintents/trunk
 
-Features: 
-* Lock the display backlight on.
-* Lock camera flash on.
-* The color of backlight is customizable.
+Funkcijas: 
+* Ieslēgt ekrāna apgaismojumu.
+* Ieslēgt fotoaparāta zibspuldzi.
+* Apgaismojuma krāsa ir pielāgojama.
 
-Available extensions for "OI Flashlight": 
-* Show the license information with "OI About".
-* Change the color of the backlight with "OI Color Picker".
+Pieejamie paplašinājumi "OI Flashlight": 
+* Parādīt licenzes informāciju ar "OI About".
+* Izmainiet apgaismojuma krāsu ar "OI Color Picker".
 
-Applications that work with "OI Flashlight": 
-* Update with "OI Update".
+Aplikācijas, kuras strādā ar "OI Flashlight": 
+* Atjauniniet ar "OI Update".
 
-Keywords: 
-* Flashlight, light, Backlight
+Atslēgvārdi: 
+* Zibspuldze, gaisma, apgaismojums
 * OI, OpenIntents, Open Intents
 
-International versions: 
-Lanternă OI, Llanterna d'OI, OI Baterka, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+Starptautiskās versijas: 
+Lanternă OI, Llanterna d'OI, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
 
 
-Search strings for Market: 
+Meklēt rindiņas tirgum: 
 * uses OI About
 * uses OI Color Picker
 * uses OI Update

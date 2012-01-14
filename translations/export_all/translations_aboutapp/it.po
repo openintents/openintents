@@ -124,9 +124,8 @@ msgid "Bulgarian"
 msgstr ""
 
 #: tmp_strings.xml:82(item)
-#, fuzzy
 msgid "Catalan"
-msgstr "Italiano"
+msgstr ""
 
 #: tmp_strings.xml:83(item)
 msgid "Czech"
@@ -209,9 +208,8 @@ msgid "Latvian"
 msgstr ""
 
 #: tmp_strings.xml:103(item)
-#, fuzzy
 msgid "Macedonian"
-msgstr "Sardo"
+msgstr ""
 
 #: tmp_strings.xml:104(item)
 msgid "Norwegian Bokmal"
@@ -262,9 +260,8 @@ msgid "Slovak"
 msgstr "Slovacco"
 
 #: tmp_strings.xml:116(item)
-#, fuzzy
 msgid "Slovenian"
-msgstr "Slovacco"
+msgstr ""
 
 #: tmp_strings.xml:117(item)
 msgid "Swedish"

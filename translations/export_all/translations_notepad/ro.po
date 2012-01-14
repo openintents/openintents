@@ -508,6 +508,3 @@ msgstr "Sigur doriți să ștergeți această notiță?"
 #: tmp_strings.xml:219(string)
 msgid "New note"
 msgstr "Notiță nouă"
-
-
-

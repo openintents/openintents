@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Lacko545 <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -116,19 +116,16 @@ msgid "Arabic"
 msgstr "Arabčina"
 
 #: tmp_strings.xml:80(item)
-#, fuzzy
 msgid "Belarusian"
-msgstr "Perzština"
+msgstr "Bieloruština"
 
 #: tmp_strings.xml:81(item)
-#, fuzzy
 msgid "Bulgarian"
-msgstr "Maďarčina"
+msgstr "Bulharčina"
 
 #: tmp_strings.xml:82(item)
-#, fuzzy
 msgid "Catalan"
-msgstr "Taliančina"
+msgstr "Katalánčina"
 
 #: tmp_strings.xml:83(item)
 msgid "Czech"
@@ -152,7 +149,7 @@ msgstr "Angličtina"
 
 #: tmp_strings.xml:88(item)
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "Angličtina (Spojené kráľovstvo)"
 
 #: tmp_strings.xml:89(item)
 msgid "Spanish"
@@ -176,7 +173,7 @@ msgstr "Francúzština"
 
 #: tmp_strings.xml:94(item)
 msgid "Hindi"
-msgstr ""
+msgstr "Hindština"
 
 #: tmp_strings.xml:95(item)
 msgid "Croatian"
@@ -192,7 +189,7 @@ msgstr "Taliančina"
 
 #: tmp_strings.xml:98(item)
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebrejčina"
 
 #: tmp_strings.xml:99(item)
 msgid "Japanese"
@@ -207,18 +204,16 @@ msgid "Lao"
 msgstr "Lao"
 
 #: tmp_strings.xml:102(item)
-#, fuzzy
 msgid "Latvian"
-msgstr "Chorvátčina"
+msgstr "Lotyština"
 
 #: tmp_strings.xml:103(item)
-#, fuzzy
 msgid "Macedonian"
-msgstr "Sardínčina"
+msgstr "Macedónčina"
 
 #: tmp_strings.xml:104(item)
 msgid "Norwegian Bokmal"
-msgstr ""
+msgstr "Nórčina Bokmal"
 
 #: tmp_strings.xml:105(item)
 msgid "Dutch"
@@ -230,7 +225,7 @@ msgstr "Okcitánčina (po 1500)"
 
 #: tmp_strings.xml:107(item)
 msgid "Punjabi"
-msgstr ""
+msgstr "Pandžábsky"
 
 #: tmp_strings.xml:108(item)
 msgid "Polish"
@@ -258,16 +253,15 @@ msgstr "Sardínčina"
 
 #: tmp_strings.xml:114(item)
 msgid "Sindhi"
-msgstr ""
+msgstr "Sindhčina"
 
 #: tmp_strings.xml:115(item)
 msgid "Slovak"
 msgstr "Slovenčina"
 
 #: tmp_strings.xml:116(item)
-#, fuzzy
 msgid "Slovenian"
-msgstr "Slovenčina"
+msgstr "Slovinčina"
 
 #: tmp_strings.xml:117(item)
 msgid "Swedish"
@@ -275,7 +269,7 @@ msgstr "Švédčina"
 
 #: tmp_strings.xml:118(item)
 msgid "Tagalog"
-msgstr ""
+msgstr "Tagalog"
 
 #: tmp_strings.xml:119(item)
 msgid "Turkish"
@@ -283,7 +277,7 @@ msgstr "Turecké"
 
 #: tmp_strings.xml:120(item)
 msgid "Uyghur"
-msgstr ""
+msgstr "Ujgurčina"
 
 #: tmp_strings.xml:121(item)
 msgid "Chinese (Simplified)"

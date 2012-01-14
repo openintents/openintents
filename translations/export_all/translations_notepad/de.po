@@ -506,6 +506,3 @@ msgstr "Soll diese Notiz wirklich gelöscht werden?"
 #: tmp_strings.xml:219(string)
 msgid "New note"
 msgstr "Neue Notiz"
-
-
-

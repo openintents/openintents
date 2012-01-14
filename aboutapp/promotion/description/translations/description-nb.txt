@@ -5,43 +5,43 @@ OI Info
 En enkeltstående informasjonsdialog som er delt mellom applikasjoner.
 
 # Description:
-OI About is a standalone about dialog that is shared between apps. This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 
+OI Info er en frittstående informasjonsdialog som er delt mellom apper. Denne applikasjonen blir påkalt gjennom menyen til andre OI applikasjoner. Den lar deg se på versjonsinformasjon, linker, krediteringer og lisensen til en applikasjon. Krediteringer inkluderer forfattere, dokumentasjon, oversettere og kunstnere. All denne funksjonaliteten er ført sammen i en enkel og effektiv utforming. 
 
-This application is ad free and does not require the internet permission. 
+Denne applikasjonen er reklamefri og trenger ikke inter 
 
-The source code of this free and open source application is available at: 
+Kildekoden til denne gratis applikasjonen med åpen kildekode er tilgjengelig hos: 
 http://code.google.com/p/openintents
 
-For the complete list of changes and a list of frequently asked questions, please visit: 
+For den komplette listen med endringer og en liste over vanlige spørsmål, vennligst besøk: 
 http://www.openintents.org
 
-You can help to improve the translation into your language at Launchpad: 
+Du kan hjelpe til med å forbedre oversettelsen 
 https://translations.launchpad.net/openintents/trunk
 
-Features: 
-* Shows general info, credits, and license tabs.
-* Shows translators of all language versions.
-* Retrieves information from application manifest through default tags and metadata.
-* Optionally, all fields can be modified through intent extras.
+Funksjoner: 
+* Viser generell informasjon, krediteringer og lisensfaner.
+* Viser oversettere av alle språkversjoner.
+* Henter informasjon fra applikasjonsmanifest gjennom standardmerker og metadata.
+* Alternativt, alle felter kan bli endret gjennom ekstra hensikter.
 
-Applications that work with "OI About": 
-* OI Notepad
-* OI File manager
-* OI Shopping List
-* OI Convert CSV
+Applikasjoner som fungerer med "OI Info": 
+* OI Notatblokk
+* OI Filbehandler
+* OI Handleliste
+* OI Konverter CSV
 * OI Safe
-* OI Countdown
-* OI Flashlight
+* OI Nedtelling
+* OI Lykt
 
-Keywords: 
-* About, Credits, Information.
+Nøkkelord: 
+* Om, Krediteringer, Informasjon.
 * OI, OpenIntents, Open Intents.
 
-International versions: 
-OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+Internasjonal versjoner: 
+OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI درباره, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
 
 
-Search strings for Market: 
+Søkestrenger for Marked: 
 * extension for OI Notepad
 * extension for OI File Manager
 * extension for OI Shopping List

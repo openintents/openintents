@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Sahran <Unknown>\n"
 "Language-Team: Uyghur <ug@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -109,7 +109,7 @@ msgstr ""
 
 #: tmp_strings.xml:35(string)
 msgid "Applications that work with \"OI About\":"
-msgstr ""
+msgstr "«OI ھەققىدە» بىلەن ئىشلەيدىغان ئەپلەر:"
 
 #: tmp_strings.xml:36(listitem)
 msgid "OI Notepad"
@@ -206,17 +206,16 @@ msgid "Modify countdowns, even while they are still running"
 msgstr ""
 
 #: tmp_strings.xml:91(string)
-#, fuzzy
 msgid "Available extensions for \"OI Countdown\":"
-msgstr "«OI قول چىراغ»دا ئىشلەتكىلى بولىدىغان كەڭەيتىلمىلەر:"
+msgstr ""
 
 #: tmp_strings.xml:92(listitem)
 msgid "Launch applications through Android shortcuts"
-msgstr ""
+msgstr "ئاندىرويىد قىسقا يولى ئارقىلى ئەپلەرنى قوزغىتىدۇ"
 
 #: tmp_strings.xml:93(listitem)
 msgid "Use OI About to show license information"
-msgstr ""
+msgstr "«OI ھەققىدە»نى ئىشلىتىپ ئىجازەت ئۇچۇرىنى كۆرسىتىدۇ"
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:97(listitem)
@@ -243,6 +242,8 @@ msgid ""
 "It also acts as an extension to other applications to display \"Open\" and "
 "\"Save\" dialogs."
 msgstr ""
+"بىر كېڭەيتىلمە سۈپىتىدە باشقا ئەپلەردە ئىشلىتىپ، «ئاچ» ۋە «ساقلا» سۆزلەشكۈنى "
+"كۆرسىتىدۇ."
 
 #: tmp_strings.xml:131(listitem)
 msgid "Show list of files with thumbnails for images."
@@ -391,11 +392,11 @@ msgstr "ئىزاھات قوشۇش، تەھرىرلەش، ئۆچۈرۈش."
 
 #: tmp_strings.xml:232(listitem)
 msgid "Long-press on notes to add tags."
-msgstr ""
+msgstr "خاتىرە ئۇزۇن بېسىلسا بەلگە قوشىدۇ."
 
 #: tmp_strings.xml:233(listitem)
 msgid "Change font size and sort order."
-msgstr ""
+msgstr "خەت چوڭلۇقى ۋە تەرتىپلەش تەرتىپىنى ئۆزگەرتىدۇ."
 
 #: tmp_strings.xml:234(listitem)
 msgid "A clearly arranged layout with a variety of themes."
@@ -403,15 +404,15 @@ msgstr ""
 
 #: tmp_strings.xml:235(listitem)
 msgid "Quickly search through notes."
-msgstr ""
+msgstr "خاتىرە دەپتەر ئارقىلىق تېز سۈرئەتتە ئىزدەيدۇ."
 
 #: tmp_strings.xml:236(listitem)
 msgid "Send notes as MMS or SMS."
-msgstr ""
+msgstr "خاتىرىنى قىسقا ئۇچۇر ياكى كۆپ ۋاستە ئۇچۇردا يوللايدۇ."
 
 #: tmp_strings.xml:238(string)
 msgid "Available extensions for \"OI Notepad\":"
-msgstr ""
+msgstr "«OI خاتىرە دەپتەر»نىڭ ئىشلىتىلىشچان كېڭەيتىلمىسى:"
 
 #: tmp_strings.xml:239(listitem)
 msgid "Record and attach voice memos to notes with \"OI Voice Notes\"."
@@ -423,7 +424,7 @@ msgstr ""
 
 #: tmp_strings.xml:242(listitem)
 msgid "Insert the date and time into notes with \"OI Insert Date\"."
-msgstr ""
+msgstr "خاتىرە دەپتەرگە «OI چېسلا قىستۇر» ئارقىلىق چېسلا ۋە ۋاقىت قىستۇرىدۇ."
 
 #: tmp_strings.xml:243(listitem)
 msgid "Turn text upside down with \"Upside Down\"."
@@ -431,7 +432,7 @@ msgstr ""
 
 #: tmp_strings.xml:245(string)
 msgid "Applications that work with \"OI Notepad\":"
-msgstr ""
+msgstr "«OI خاتىرە دەپتەر» دە ئىشلەيدىغان ئەپلەر:"
 
 #: tmp_strings.xml:246(listitem)
 msgid "Back up notes with \"My Backup Pro\"."
@@ -439,17 +440,19 @@ msgstr ""
 
 #: tmp_strings.xml:247(listitem)
 msgid "Encrypt notes using \"OI Safe\"."
-msgstr ""
+msgstr "خاتىرىنى «OIبىخەتەرلىك» تە شىفىرلايدۇ."
 
 #: tmp_strings.xml:248(listitem)
 msgid "Manage notes on your SD Card with \"OI File Manager\"."
-msgstr ""
+msgstr "SD كارتىڭىزدىكى خاتىرىلەرنى «OI ھۆججەت باشقۇرغۇچ» بىلەن باشقۇرىدۇ."
 
 #: tmp_strings.xml:250(listitem)
 msgid ""
 "Share notes through \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", and "
 "many other applications."
 msgstr ""
+"خاتىرىلەرنى «Facebook»، «Gmail»، «Google+»، «Twitter» ۋە باشقا نۇرغۇن ئەپلەردە "
+"ھەمبەھىرلەيدۇ."
 
 #: tmp_strings.xml:253(listitem)
 msgid "Note, Notepad, Note book, Notes"
@@ -474,7 +477,7 @@ msgstr ""
 
 #: tmp_strings.xml:287(listitem)
 msgid "Freely move data entries between categories."
-msgstr ""
+msgstr "سانلىق مەلۇمات تۈرلىرىنى كاتېگورىيەلەر ئارىسىدا ئەركىن يۆتكەيدۇ."
 
 #: tmp_strings.xml:288(listitem)
 msgid "Import/Export data entries and databases."
@@ -486,7 +489,7 @@ msgstr "تۈرلەرنى زاپاسلا/ ئەسلىگە كەلتۈر."
 
 #: tmp_strings.xml:290(listitem)
 msgid "Includes secure password generator."
-msgstr ""
+msgstr "بىخەتەر ئىم ھاسىل قىلغۇچنى ئۆز ئىچىگە ئالىدۇ."
 
 #: tmp_strings.xml:291(listitem)
 msgid "Automatic timeout to protect encrypted documents."
@@ -494,7 +497,7 @@ msgstr ""
 
 #: tmp_strings.xml:292(listitem)
 msgid "Encrypt OI Notepad notes."
-msgstr ""
+msgstr "OI خاتىرە دەپتەر خاتىرىلىرىنى شىفىرلايدۇ."
 
 #: tmp_strings.xml:293(listitem)
 msgid "Support for Obscura picture safe."
@@ -506,12 +509,12 @@ msgstr "MyBackup Pro."
 
 #: tmp_strings.xml:300(listitem)
 msgid "Encrypt notes created in \"OI Notepad\"."
-msgstr ""
+msgstr "«OI خاتىرە دەپتەر» دە قۇرۇلغان خاتىرىنى شىفىرلايدۇ."
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:304(listitem)
 msgid "safe, encrpytion, password, protection"
-msgstr ""
+msgstr "بىخەتەرلىك، شىفىرلاش، ئىم، قوغداش"
 
 #. Description of application
 #: tmp_strings.xml:323(string)
@@ -537,6 +540,8 @@ msgid ""
 "Font size, sort order, list columns, and list cleanup behavior are all "
 "settings controlled by the user."
 msgstr ""
+"خەت نۇسخا چوڭلۇقى، تەرتىپلەش تەرتىپى، تىزىم ئىستونى ۋە تىزىم تازىلاش "
+"مەشغۇلاتلىرىنىڭ ھەممە تەڭشەكلىرىنى ئىشلەتكۈچى تىزگىنلەيدۇ."
 
 #: tmp_strings.xml:327(string)
 msgid ""
@@ -570,7 +575,7 @@ msgstr "ئۆزلەشتۈرگىلى بولىدىغان تىزىم ئىستونل�
 
 #: tmp_strings.xml:348(string)
 msgid "Available extensions for \"OI Shopping List\":"
-msgstr ""
+msgstr "«OI سېتىۋېلىش تىزىمى» نىڭ ئىشلىتىلىشچان كېڭەيتىلمىلىرى:"
 
 #: tmp_strings.xml:349(listitem)
 msgid "Add a recorded message to a note with \"OI Voice Notes\"."
@@ -586,7 +591,7 @@ msgstr ""
 
 #: tmp_strings.xml:354(string)
 msgid "Applications that work with \"OI Shopping List\":"
-msgstr ""
+msgstr "«OI سېتىۋېلىش تىزىمى» دا ئىشلەيدىغان ئەپلەر:"
 
 #: tmp_strings.xml:356(listitem)
 msgid "Backup lists with \"My Backup Pro\"."
@@ -598,7 +603,7 @@ msgstr ""
 
 #: tmp_strings.xml:360(listitem)
 msgid "Shopping, List, Shopping List, Checklist"
-msgstr ""
+msgstr "سېتىۋېلىش، تىزىم، سېتىۋېلىش تىزىمى، تەكشۈرۈش تىزىمى"
 
 #: tmp_strings.xml:366(string)
 msgid "Extensions:"

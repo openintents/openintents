@@ -22,11 +22,12 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
+  Lacko545 https://launchpad.net/~lackorauch
   Marek Matejka https://launchpad.net/~marek-matejka
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
+	<string name="about_comments">Importujte a exportujte zoznamy a poznámky s OI Konvertovať CSV.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -135,26 +136,26 @@
     
     <string-array name="import_policy">
         <item>DUPLIKOVAŤ - umožňuje duplikáty záznamov.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>PONECHAŤ - Neprepisovať existujúce záznamy.</item>
         <item>PREPÍSAŤ - Prepísať existujúce záznamy.</item>
         <item>OBNOVIŤ - Vymazať všetky a potom importovať.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>DUPLIKOVAŤ - Pridať druhú kópiu záznamu, ak už existuje.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>PONECHAŤ - Neprepisovať existujúce záznamy, ignorovať ten, nachádzajúci sa v CSV súbore.</item>
         <item>PREPÍSAŤ - Záznam v CSV prepíše existujúci záznam.</item>
         <item>OBNOVIŤ ZÁLOHU - Vymazať všetky Vaše existujúce záznamy a následne importovať CSV súbor.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>DUPLIKOVAŤ - umožňuje duplikáty záznamov.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>PONECHAŤ - Neprepisovať existujúce záznamy.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>DUPLIKOVAŤ - Pridať druhú kópiu záznamu, ak už existuje.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>PONECHAŤ - Neprepisovať existujúce záznamy, ignorovať ten, nachádzajúci sa v CSV súbore.</item>
     </string-array>
     
 </resources>

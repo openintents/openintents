@@ -4,6 +4,7 @@ OI Afteller
 OI Bilang-pababa
 OI Countdown
 OI Geri sayım
+OI Lähtölaskenta
 OI Minutka
 OI Nedtelling
 OI Odliczanie
@@ -14,3 +15,4 @@ OI カウントダウン
 OI 카운트다운
 OI倒计时
 סופר לאחור OI
+عد تنازلي OI

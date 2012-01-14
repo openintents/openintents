@@ -1,6 +1,7 @@
 Lanternă OI
 Llanterna d'OI
 OI Baterka
+OI Blic
 OI El feneri
 OI Flashlight
 OI Latarka

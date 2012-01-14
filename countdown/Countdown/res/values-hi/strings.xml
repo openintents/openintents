@@ -6,11 +6,12 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Atharva Lath https://launchpad.net/~atharvalath96
   OpenIntents devs https://launchpad.net/~openintents-devs
   happynawani https://launchpad.net/~happynawani</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
+	<string name="about_comments">मल्टिपल काउटडाउन  को सेट करे OI काउंट डाउन के साथ.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -167,4 +168,7 @@
         <item>5 मिनट</item>
         <item>10 मिनट</item>
     </string-array>
+    
+    
+    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
 </resources>

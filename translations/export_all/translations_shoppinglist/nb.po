@@ -28,11 +28,10 @@ msgstr ""
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:27(string)
 msgid "Keep track of your shopping items with OI Shopping List."
-msgstr ""
+msgstr "Hold spor på dine handlepunkter med OI Handliste."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-#, fuzzy
 msgid "OI Shopping List"
 msgstr "OI Handleliste"
 
@@ -65,9 +64,8 @@ msgid "My shopping list"
 msgstr "Min handleliste"
 
 #: tmp_strings.xml:42(string)
-#, fuzzy
 msgid "e.g. wishlist, family list"
-msgstr "f. eks. ønskeliste, familieliste"
+msgstr "f.eks. ønskeliste, familieliste"
 
 #. Automation action to clean up a list.
 #: tmp_strings.xml:43(string) tmp_strings.xml:337(item)
@@ -781,13 +779,11 @@ msgstr "Ingen"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
-#, fuzzy
 msgid "Per sentence"
 msgstr "Hver setning"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
-#, fuzzy
 msgid "Per word"
 msgstr "Hvert ord"
 
@@ -826,12 +822,3 @@ msgstr "Velg en liste"
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
 msgstr "Ingen punkter på side %d"
-
-
-
-
-
-
-
-
-

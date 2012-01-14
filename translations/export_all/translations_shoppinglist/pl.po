@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: zielmicha <michal@zielinscy.org.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,18 +29,18 @@ msgstr ""
 "  Piotr Łazarczyk https://launchpad.net/~quazarxd\n"
 "  Tomasz 'Zen' Napierala https://launchpad.net/~tzn\n"
 "  Tomasz Zieliński https://launchpad.net/~tomek0517\n"
-"  friedger https://launchpad.net/~friedger"
+"  friedger https://launchpad.net/~friedger\n"
+"  zielmicha https://launchpad.net/~michal-zielinscy"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:27(string)
 msgid "Keep track of your shopping items with OI Shopping List."
-msgstr ""
+msgstr "Zarządzaj swoimi listami zakupów używając OI Lista zakupów."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-#, fuzzy
 msgid "OI Shopping List"
-msgstr "OI Lista Zakupów"
+msgstr "OI Lista zakupów"
 
 #: tmp_strings.xml:35(string)
 msgid "New item"
@@ -71,9 +71,8 @@ msgid "My shopping list"
 msgstr "Moja lista zakupów"
 
 #: tmp_strings.xml:42(string)
-#, fuzzy
 msgid "e.g. wishlist, family list"
-msgstr "tj. lista życzeń, lista osób"
+msgstr "np. lista życzeń, list rodzin"
 
 #. Automation action to clean up a list.
 #: tmp_strings.xml:43(string) tmp_strings.xml:337(item)
@@ -785,15 +784,13 @@ msgstr "Brak"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
-#, fuzzy
 msgid "Per sentence"
-msgstr "Zdaniami"
+msgstr "Każde zdanie"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
-#, fuzzy
 msgid "Per word"
-msgstr "Wyrazami"
+msgstr "Każde słowo"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
 #: tmp_strings.xml:320(string)
@@ -830,11 +827,3 @@ msgstr "Wybierz listę"
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
 msgstr "Brak elementów na stronie %d"
-
-
-
-
-
-
-
-

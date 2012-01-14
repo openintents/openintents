@@ -345,18 +345,3 @@ msgstr "덮어쓰기 - CSV 파일에 있는 내용을 지금 존재하는 항목
 msgid ""
 "Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
 msgstr "백업 복원 - 지금 있는 모든 항목을 삭제한 후, CSV 파일을 불러옵니다."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

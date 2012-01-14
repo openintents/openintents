@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Sahran <Unknown>\n"
 "Language-Team: Uyghur <ug@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,19 +115,16 @@ msgid "Arabic"
 msgstr "ئەرەبچە"
 
 #: tmp_strings.xml:80(item)
-#, fuzzy
 msgid "Belarusian"
-msgstr "پارسچە"
+msgstr "بېلارۇسچە"
 
 #: tmp_strings.xml:81(item)
-#, fuzzy
 msgid "Bulgarian"
-msgstr "ھۇنگىرچە"
+msgstr "بۇلغارچە"
 
 #: tmp_strings.xml:82(item)
-#, fuzzy
 msgid "Catalan"
-msgstr "ئىتالىيانچە"
+msgstr "كاتالانچە"
 
 #: tmp_strings.xml:83(item)
 msgid "Czech"
@@ -151,7 +148,7 @@ msgstr "ئىنگلىزچە"
 
 #: tmp_strings.xml:88(item)
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "ئىنگلىزچە (ئەنگلىيە)"
 
 #: tmp_strings.xml:89(item)
 msgid "Spanish"
@@ -175,7 +172,7 @@ msgstr "فىرانسۇزچە"
 
 #: tmp_strings.xml:94(item)
 msgid "Hindi"
-msgstr ""
+msgstr "ھىندىچە"
 
 #: tmp_strings.xml:95(item)
 msgid "Croatian"
@@ -191,7 +188,7 @@ msgstr "ئىتالىيانچە"
 
 #: tmp_strings.xml:98(item)
 msgid "Hebrew"
-msgstr ""
+msgstr "ئىبرانىچە"
 
 #: tmp_strings.xml:99(item)
 msgid "Japanese"
@@ -206,18 +203,16 @@ msgid "Lao"
 msgstr "لائوسچە"
 
 #: tmp_strings.xml:102(item)
-#, fuzzy
 msgid "Latvian"
-msgstr "خورۋاتچە"
+msgstr "لاتۋىئانچە"
 
 #: tmp_strings.xml:103(item)
-#, fuzzy
 msgid "Macedonian"
-msgstr "ساردىنىيەچە"
+msgstr "ماكېدونچە"
 
 #: tmp_strings.xml:104(item)
 msgid "Norwegian Bokmal"
-msgstr ""
+msgstr "نورۋىگىيە بوكمالچە"
 
 #: tmp_strings.xml:105(item)
 msgid "Dutch"
@@ -229,7 +224,7 @@ msgstr "ئاۋكچە (post 1500)"
 
 #: tmp_strings.xml:107(item)
 msgid "Punjabi"
-msgstr ""
+msgstr "پەنجابچە"
 
 #: tmp_strings.xml:108(item)
 msgid "Polish"
@@ -257,16 +252,15 @@ msgstr "ساردىنىيەچە"
 
 #: tmp_strings.xml:114(item)
 msgid "Sindhi"
-msgstr ""
+msgstr "سىندىچە"
 
 #: tmp_strings.xml:115(item)
 msgid "Slovak"
 msgstr "سىلوۋاكچە"
 
 #: tmp_strings.xml:116(item)
-#, fuzzy
 msgid "Slovenian"
-msgstr "سىلوۋاكچە"
+msgstr "سىلوۋېنىيەچە"
 
 #: tmp_strings.xml:117(item)
 msgid "Swedish"
@@ -274,7 +268,7 @@ msgstr "شۋېدچە"
 
 #: tmp_strings.xml:118(item)
 msgid "Tagalog"
-msgstr ""
+msgstr "تاگالوگچە"
 
 #: tmp_strings.xml:119(item)
 msgid "Turkish"
@@ -282,7 +276,7 @@ msgstr "تۈركچە"
 
 #: tmp_strings.xml:120(item)
 msgid "Uyghur"
-msgstr ""
+msgstr "ئۇيغۇرچە"
 
 #: tmp_strings.xml:121(item)
 msgid "Chinese (Simplified)"

@@ -2,7 +2,7 @@
 OI Afteller
 
 # Promo text:
-Set multiple countdowns with OI Countdown.
+Stel meerdere timers in met OI Countdown
 
 # Description:
 
@@ -31,9 +31,9 @@ Eigenschappen:
 * Be notified by vibration or any sound of your choice. 
 * Have an unlimited number of timers running at the same time. 
 * Save your countdowns and give them names to reuse at later times. 
-* Modify countdowns, even while they are still running
+* Wijzig je timer, zelfs als ze nog aan het lopen zijn.
 
-Available extensions for "OI Countdown":  
+Beschikbare extensies voor "OI Countdown" 
 * Launch applications through Android shortcuts
 * Use OI About to show license information
 
@@ -42,7 +42,7 @@ Sleutelwoorden:
 * OI, OpenIntents, Open Intents
 
 Internationale versies 
-Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI
+Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI, عد تنازلي OI
 
 
 Search strings for Market: 

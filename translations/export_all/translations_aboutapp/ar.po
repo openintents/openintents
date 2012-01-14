@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: kenn dhia <Unknown>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,19 +115,16 @@ msgid "Arabic"
 msgstr "العربية"
 
 #: tmp_strings.xml:80(item)
-#, fuzzy
 msgid "Belarusian"
-msgstr "الفارسية"
+msgstr "البيلاروسية"
 
 #: tmp_strings.xml:81(item)
-#, fuzzy
 msgid "Bulgarian"
-msgstr "الهنغارية"
+msgstr "البلغارية"
 
 #: tmp_strings.xml:82(item)
-#, fuzzy
 msgid "Catalan"
-msgstr "الإيطالية"
+msgstr "الكاتالونية"
 
 #: tmp_strings.xml:83(item)
 msgid "Czech"
@@ -151,7 +148,7 @@ msgstr "الانجليزية"
 
 #: tmp_strings.xml:88(item)
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "اﻻنجليزية (المملكة المتحدة)"
 
 #: tmp_strings.xml:89(item)
 msgid "Spanish"
@@ -175,7 +172,7 @@ msgstr "الفرنسية"
 
 #: tmp_strings.xml:94(item)
 msgid "Hindi"
-msgstr ""
+msgstr "الهندية"
 
 #: tmp_strings.xml:95(item)
 msgid "Croatian"
@@ -191,7 +188,7 @@ msgstr "الإيطالية"
 
 #: tmp_strings.xml:98(item)
 msgid "Hebrew"
-msgstr ""
+msgstr "العبرية"
 
 #: tmp_strings.xml:99(item)
 msgid "Japanese"
@@ -203,21 +200,19 @@ msgstr "الكورية"
 
 #: tmp_strings.xml:101(item)
 msgid "Lao"
-msgstr ""
+msgstr "اﻻوسية"
 
 #: tmp_strings.xml:102(item)
-#, fuzzy
 msgid "Latvian"
-msgstr "الكرواتية"
+msgstr "اللاتفية"
 
 #: tmp_strings.xml:103(item)
-#, fuzzy
 msgid "Macedonian"
-msgstr "الساردينية"
+msgstr "المقدونية"
 
 #: tmp_strings.xml:104(item)
 msgid "Norwegian Bokmal"
-msgstr ""
+msgstr "نرويجية بوكمال"
 
 #: tmp_strings.xml:105(item)
 msgid "Dutch"
@@ -225,11 +220,11 @@ msgstr "الهولندية"
 
 #: tmp_strings.xml:106(item)
 msgid "Occitan (post 1500)"
-msgstr ""
+msgstr "الأوكيتانية (post 1500)"
 
 #: tmp_strings.xml:107(item)
 msgid "Punjabi"
-msgstr ""
+msgstr "البنجابية"
 
 #: tmp_strings.xml:108(item)
 msgid "Polish"
@@ -257,16 +252,15 @@ msgstr "الساردينية"
 
 #: tmp_strings.xml:114(item)
 msgid "Sindhi"
-msgstr ""
+msgstr "السندية"
 
 #: tmp_strings.xml:115(item)
 msgid "Slovak"
 msgstr "السلوفاكية"
 
 #: tmp_strings.xml:116(item)
-#, fuzzy
 msgid "Slovenian"
-msgstr "السلوفاكية"
+msgstr "السلوفينية"
 
 #: tmp_strings.xml:117(item)
 msgid "Swedish"
@@ -274,7 +268,7 @@ msgstr "السويدية"
 
 #: tmp_strings.xml:118(item)
 msgid "Tagalog"
-msgstr ""
+msgstr "التاغالوغية"
 
 #: tmp_strings.xml:119(item)
 msgid "Turkish"
@@ -282,7 +276,7 @@ msgstr "التركية"
 
 #: tmp_strings.xml:120(item)
 msgid "Uyghur"
-msgstr ""
+msgstr "اﻻوغورية"
 
 #: tmp_strings.xml:121(item)
 msgid "Chinese (Simplified)"

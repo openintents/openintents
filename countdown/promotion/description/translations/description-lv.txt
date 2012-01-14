@@ -1,6 +1,6 @@
 
 
-OI Countdown is a helpful timer to increase your productivity and plan your day.  It allows you to set a variety of different actions to notify you at the end of a timer.  Fully customize all your timers, with no limit on how many you can have running or saved.  
+OI Countdown ir izpalīdzīgs taimeris produktivitātes paaugstināšanai un dienas plānošanai. Tas ļauj Jums uzstādīt dažādas iespējas, lai ziņotu Jums laika atskaites beigās. Pilnībā pielāgojiet visus taimerus, bez saglabāto vai darbojošos taimeru skaita ierobežojuma. 
 
 Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju. 
 
@@ -16,26 +16,26 @@ http://www.openintents.org
 
 
 
-Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Lounchpad: 
+Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Launchpad: 
 https://translations.launchpad.net/openintents/trunk
 
-Features:  
-* Set a countdown by choosing a duration or a date.
-* Be notified by vibration or any sound of your choice. 
-* Have an unlimited number of timers running at the same time. 
-* Save your countdowns and give them names to reuse at later times. 
-* Modify countdowns, even while they are still running
+Funkcijas: 
+* Uzstādiet atskaiti izvēloties ilgumu vai datumu.
+* Jums tiks paziņots ar vibrāciju vai jebkādu skaņu pēc jūsu izvēles.
+* Jums tiek nodrošināts neierobežots vienlaikus darbojošos taimeru skaits.
+* Saglabājiet savas atskaites un dodiet tām vārdus, lai varētu tās izmantot vēlāk.
+* Izmainiet atskaites, kamēr tās joprojām darbojas.
 
-Available extensions for "OI Countdown":  
-* Launch applications through Android shortcuts
-* Use OI About to show license information
+Pieejamie paplašinājumi "OI Countdown": 
+* Darbiniet aplikācijas izmantojot Android saīsnes
+* Izmantojiet OI About, lai parādītu licenžu informāciju
 
-Keywords:  
-* countdown, timer, alert
+Atslēgvārdi: 
+* Laika atskaite, taimeris, brīdinājums, zvans, atgādinājums, modinātājs, countdown, timer, alert
 * OI, OpenIntents, Open Intents
 
-International versions: 
-Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI
+Starptautiskās versijas: 
+Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI, عد تنازلي OI
 
 
-Search strings for Market: 
+Meklēt rindiņas tirgum: 

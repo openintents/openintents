@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+** 	 Copyright (C) 2008-2009 pjv (and others, see About dialog)
+** 
+** 	 This file is part of OI About.
+**
+**   OI About is free software: you can redistribute it and/or modify
+**   it under the terms of the GNU General Public License as published by
+**   the Free Software Foundation, either version 3 of the License, or
+**   (at your option) any later version.
+**
+**   OI About is distributed in the hope that it will be useful,
+**   but WITHOUT ANY WARRANTY; without even the implied warranty of
+**   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**   GNU General Public License for more details.
+**
+**   You should have received a copy of the GNU General Public License
+**   along with OI About.  If not, see <http://www.gnu.org/licenses/>.
+**
+*/
+-->
+<resources>
+    
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  happynawani https://launchpad.net/~happynawani
+  oren https://launchpad.net/~ahujaaditya92</string>
+	
+	<!-- Explanation what this application does. It is a menu extension for other applications. -->
+	<string name="about_comments">مستقل در مورد محاوره ای است که بین برنامه های به اشتراک گذاشته.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_filemanager">OI مدیر فایل</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_shopping">OI لیست خرید</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_notepad">OI يادداشت</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_safe">OI امن</string>
+	
+	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
+	<string name="info_instructions">راه اندازی  s% و انتخاب منوgt </string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
+	   This is an extension that shows an about dialog or info dialog.  -->
+    <string name="app_name">OI درباره</string>
+	
+    <string name="menu_about">درباره OI درباره خود</string>
+    
+    <!-- About some application, where "%s" is the name of another application. -->
+    <string name="about_activity_name_extended">s%در حدود</string>
+    
+	<string name="l_authors">نوشته شده توسط</string>
+	<string name="l_documenters">آنرا مستند ساخته</string>
+	<string name="l_translators">ترجمه شده توسط</string>
+	<string name="l_artists">آثار هنری توسط</string>
+	<string name="l_international_translators">ترجمه های بین المللی با</string>
+	<string name="l_credits">اعتبارات</string>
+	<string name="l_license">پروانه</string>
+	<string name="l_info">اطلاعات عمومی</string>
+	<string name="l_recent_changes">تغییرات اخیر</string>
+	
+	<string name="no_information_available">اطلاعات موجود نیست.</string>
+	
+	<!-- ***************************
+	     International languages
+	     *************************** -->
+	<!-- Language names. -->
+    <string-array name="language_names">
+		<item>عربی</item>
+		<item>بلاروس</item>
+		<item>بلغاری</item>
+		<item>کاتالان</item>
+		<item>چک</item>
+		<item>دانمارکی</item>
+		<item>آلمانی</item>
+		<item>یونانی</item>
+		<item>انگلیسی</item>
+		<item>انگلیسی (انگلستان)</item>
+		<item>اسپانیایی</item>
+		<item>فارسی</item>
+		<item>فنلاندی</item>
+		<item>فاروئی</item>
+		<item>فرانسوی</item>
+		<item>هندی</item>
+		<item>کرواتی</item>
+		<item>مجارستانی</item>
+		<item>ایتالیایی</item>
+		<item>زبان عبری</item>
+		<item>ژاپنی</item>
+		<item>کره ای</item>
+		<item>لائوس</item>
+		<item>لتونی</item>
+		<item>مقدونی</item>
+		<item>نروژی بوکمال</item>
+		<item>هلندی</item>
+		<item>اکسیتان (پست 1500)</item>
+		<item>پنجابی</item>
+		<item>لهستانی</item>
+		<item>پرتغالی</item>
+		<item>پرتغالی برزیل</item>
+		<item>رومانیایی</item>
+		<item>روسی</item>
+		<item>ساردینیا</item>
+		<item>سندی</item>
+		<item>اسلواکی</item>
+		<item>اسلوونیایی</item>
+		<item>سوئد</item>
+		<item>تاگالوگ</item>
+		<item>ترکی</item>
+		<item>اویگور</item>
+		<item>چینی (ساده شده)</item>
+		<item>چینی (سنتی)</item>
+	</string-array>
+</resources>

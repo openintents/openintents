@@ -26,7 +26,7 @@
   Sahran https://launchpad.net/~sahran</string>
 	
 	<!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
+	<string name="about_comments">تىزىم ۋە خاتىرەلەرنى OI ئايلاندۇرغۇچ CSV بىلەن ئەكىرىپ ۋە چىقىرىدۇ.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -135,26 +135,26 @@
     
     <string-array name="import_policy">
         <item>كۆچۈر - تەكرار خاتىرىگە يول قوي.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>ساقلاپ قال - مەۋجۇت خاتىرىلەرنى قاپلىۋەتمە.</item>
         <item>قاپلا - نۆۋەتتە مەۋجۇت خاتىرىلەرنى قاپلىۋەت.</item>
         <item>ئەسلىگە كەلتۈر - ھەممىنى ئۆچۈرۈپ ئاندىن ئەكىر.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>كۆچۈر - ئەگەر مەۋجۇت بولسا بىر خاتىرىنى قوشۇپ ئىككى نۇسخا خاتىرىلەيدۇ.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>ساقلاپ قال - مەۋجۇت خاتىرىنى قاپلىۋەتمە، CSV ھۆججەتتىكى بىرسىگە پەرۋا قىلما.</item>
         <item>قاپلا - CSV  خاتىرىسى ئارقىلىق مەۋجۇت خاتىرىنى قاپلىۋېتىدۇ.</item>
         <item>زاپاسنى ئەسلىگە كەلتۈر - نۆۋەتتە مەۋجۇت ھەممە خاتىرىنى ئۆچۈرۈپ ئاندىن CSV ھۆججەت ئەكىرىدۇ.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>كۆچۈر - تەكرار خاتىرىگە يول قوي.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>ساقلاپ قال - مەۋجۇت خاتىرىلەرنى قاپلىۋەتمە.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>كۆچۈر - ئەگەر مەۋجۇت بولسا بىر خاتىرىنى قوشۇپ ئىككى نۇسخا خاتىرىلەيدۇ.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>ساقلاپ قال - مەۋجۇت خاتىرىنى قاپلىۋەتمە، CSV ھۆججەتتىكى بىرسىگە پەرۋا قىلما.</item>
     </string-array>
     
 </resources>

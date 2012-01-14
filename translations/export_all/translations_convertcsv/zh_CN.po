@@ -339,16 +339,3 @@ msgstr "覆盖 - 用CSV的记录将覆盖现有的记录。"
 msgid ""
 "Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
 msgstr "恢复备份 - 删除所有现有的记录，然后导入CSV文件。"
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -27,8 +27,7 @@ msgstr ""
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  ariza95 https://launchpad.net/~alirizanazli95\n"
-"  ehturan https://launchpad.net/~ehturan1968\n"
-"  zeugma https://launchpad.net/~sunder67"
+"  ehturan https://launchpad.net/~ehturan1968"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:33(string)
@@ -506,7 +505,3 @@ msgstr "Bu notu silmek istediğinizden emin misiniz?"
 #: tmp_strings.xml:219(string)
 msgid "New note"
 msgstr "Yeni not"
-
-
-
-

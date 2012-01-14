@@ -87,11 +87,3 @@ msgstr ""
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
 msgstr ""
-
-
-
-
-
-
-
-

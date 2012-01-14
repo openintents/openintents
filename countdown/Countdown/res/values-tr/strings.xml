@@ -10,8 +10,7 @@
 Launchpad Contributions:
   Halilpk https://launchpad.net/~halilpk
   OpenIntents devs https://launchpad.net/~openintents-devs
-  Peli https://launchpad.net/~peli0101
-  zeugma https://launchpad.net/~sunder67</string>
+  Peli https://launchpad.net/~peli0101</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
 	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
@@ -171,4 +170,7 @@ Launchpad Contributions:
         <item>5 dakika</item>
         <item>10 dakika</item>
     </string-array>
+    
+    
+    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
 </resources>

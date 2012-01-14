@@ -28,6 +28,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Marek Dobransky https://launchpad.net/~marekdobr
   Matěj Konečný https://launchpad.net/~matejkon
   OpenIntents devs https://launchpad.net/~openintents-devs
   slavino https://launchpad.net/~slavomir-hustaty</string>
@@ -80,47 +81,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabština</item>
-		<item>Belarusian</item>
-		<item>Bulgarian</item>
-		<item>Catalan</item>
+		<item>Běloruština</item>
+		<item>Bulharština</item>
+		<item>Katalánština</item>
 		<item>Čeština</item>
 		<item>Dánština</item>
 		<item>Němčina</item>
 		<item>Řečtina</item>
 		<item>Angličtina</item>
-		<item>English (United Kingdom)</item>
+		<item>Angličtina (Velká Británie)</item>
 		<item>Španělština</item>
 		<item>Perština</item>
 		<item>Finština</item>
 		<item>Faerština</item>
 		<item>Francouzština</item>
-		<item>Hindi</item>
+		<item>Hindština</item>
 		<item>Chorvatština</item>
 		<item>Maďarština</item>
 		<item>Italština</item>
-		<item>Hebrew</item>
+		<item>Hebrejština</item>
 		<item>Japonština</item>
 		<item>Korejština</item>
 		<item>Laoština</item>
-		<item>Latvian</item>
-		<item>Macedonian</item>
-		<item>Norwegian Bokmal</item>
+		<item>Lotyština</item>
+		<item>Makedonština</item>
+		<item>Nórština (knižní)</item>
 		<item>Holandština</item>
 		<item>Okcitánština (po 1500)</item>
-		<item>Punjabi</item>
+		<item>Pandžábština</item>
 		<item>Polština</item>
 		<item>Portugalština</item>
 		<item>Brazilská portugalština</item>
 		<item>Rumunština</item>
 		<item>Ruština</item>
 		<item>Sardinština</item>
-		<item>Sindhi</item>
+		<item>Sindhština</item>
 		<item>Slovenština</item>
-		<item>Slovenian</item>
+		<item>Slovinština</item>
 		<item>Švédština</item>
-		<item>Tagalog</item>
+		<item>Tagalština</item>
 		<item>Turečtina</item>
-		<item>Uyghur</item>
+		<item>Ujgurština</item>
 		<item>Čínština (zjednodušená)</item>
 		<item>Čínština (klasická)</item>
 	</string-array>

@@ -1,4 +1,4 @@
-Ol About ir patstāvīgs paskaidrojošs dialogs, kurš ir sadalīts starp aplikācijām. Šī aplikācija atsaucas uz citu OI aplikāciju izvēlnēm. Tā ļauj skatīt versijas informāciju, saites, titrus un aplikācijas licenzi. Titri iekļauj autorus, dokumentāciju, tulkotājus un māklsiniekus. Visa ši funkcionalitāte ir savesta kopā vienkāršā un efektīvā izkārtojumā. 
+Ol About ir patstāvīgs paskaidrojošs dialogs, kurš ir sadalīts starp aplikācijām. Šī aplikācija atsaucas uz citu OI aplikāciju izvēlnēm. Tā ļauj skatīt versijas informāciju, saites, titrus un aplikācijas licenzi. Titri iekļauj autorus, dokumentāciju, tulkotājus un māksliniekus. Visa ši funkcionalitāte ir savesta kopā vienkāršā un efektīvā izkārtojumā. 
 
 Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju. 
 
@@ -8,16 +8,16 @@ http://code.google.com/p/openintents
 Lai skatītu pilnīgu izmaiņu sarakstu un sarakstu ar biežāk uzdotajiem jautājumiem, lūdzu apmeklējiet: 
 http://www.openintents.org
 
-Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Lounchpad: 
+Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Launchpad: 
 https://translations.launchpad.net/openintents/trunk
 
-Features: 
-* Shows general info, credits, and license tabs.
-* Shows translators of all language versions.
-* Retrieves information from application manifest through default tags and metadata.
-* Optionally, all fields can be modified through intent extras.
+Funkcijas: 
+* Parāda vispārīgu informāciju, titrus un licenžu cilnes.
+* Parāda visu valodu tulkotāju versijas.
+* Atgūst informāciju no aplikācijas skaidrojuma caur noklusējuma iezīmēm un metadatiem.
+* Pēc izvēles, visi lauciņi var tikt izmaniīti caur nolūkotiem papildinājumiem.
 
-Applications that work with "OI About": 
+Aplikācijas, kuras strādā ar "OI About": 
 * OI Notepad
 * OI File manager
 * OI Shopping List
@@ -26,15 +26,15 @@ Applications that work with "OI About":
 * OI Countdown
 * OI Flashlight
 
-Keywords: 
-* About, Credits, Information.
+Atslēgvārdi: 
+* Paskaidrojums, titri, informācija.
 * OI, OpenIntents, Open Intents.
 
-International versions: 
-OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+Starptautiskās versijas: 
+OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI درباره, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
 
 
-Search strings for Market: 
+Meklēt rindiņas tirgum: 
 * extension for OI Notepad
 * extension for OI File Manager
 * extension for OI Shopping List

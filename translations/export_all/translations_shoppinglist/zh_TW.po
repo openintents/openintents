@@ -32,9 +32,8 @@ msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-#, fuzzy
 msgid "OI Shopping List"
-msgstr "OI 購物清單"
+msgstr ""
 
 #: tmp_strings.xml:35(string)
 msgid "New item"

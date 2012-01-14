@@ -1,3 +1,10 @@
+# Application:
+OI Blic
+
+# Promo text:
+Sačuvaj blic kamere ili pozadinu upaljenu sa OI Blicem.
+
+# Description:
 OI Blic je je prosta i efektivna aplikacija koja ti pomaže da nađeš put i mraku. OI Blic zaključa prikaz pozadinskog osvjetljenja, čisto, osvetljavajući okolinu. Za uređaje sa blicom na kameri, OI Blic takođe može da koristi blic kao osvetljivač. Boja pozadinskog osvjetljenja je potpuno izmenjiva pomoću OI Odabiračem Boja. 
 
 Ova aplikacija nema reklame i zahtijeva internet konkciju. 
@@ -28,7 +35,7 @@ Ključne riječi:
 * OI, OpenIntents, Open Intents
 
 Internacionalna verzija: 
-Lanternă OI, Llanterna d'OI, OI Baterka, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+Lanternă OI, Llanterna d'OI, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
 
 
 Pretraži tekst na Marketu: 

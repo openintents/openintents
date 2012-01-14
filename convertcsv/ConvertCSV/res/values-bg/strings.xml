@@ -23,11 +23,12 @@
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
   Anton Dudov https://launchpad.net/~anton-cho
+  Dariel Kremov https://launchpad.net/~dkremov
   OpenIntents devs https://launchpad.net/~openintents-devs
   Stefani Soyanova https://launchpad.net/~stefi-stoyanova95</string>
 	
 	<!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
+	<string name="about_comments">Импортирай и експортирай списъци и бележки с OI Конвертор CSV.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -136,26 +137,26 @@
     
     <string-array name="import_policy">
         <item>ДУБЛИКАТ- Позволение за копиране на записи.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>ЗАПАЗИ - Не препокривай съществуващите документи.</item>
         <item>Презаписване- Презапиши съществуващи записи.</item>
         <item>Възстанови- ИЗТРИЙ ВСИЧКИ, след това вмъкни.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>ДУБЛИКАТ- Добави второ копие на записа ако той вече съществува.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>ЗАПАЗИ - Не препокривай съществуващия документ, игнорирай този в CSV файла.</item>
         <item>Презаписване- запис в CSV ще ПРЕЗАПИШЕ съществуващ запис.</item>
         <item>Възстановяване на резервното копие- ИЗТРИЙ ВСИЧКИ ТВОЙ СЪЩЕСТВУВАЩИ ЗАПИСИ, след това вмъкни CSV файла.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>ДУБЛИКАТ- Позволение за копиране на записи.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>ЗАПАЗИ - Не препокривай съществуващите документи.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>ДУБЛИКАТ- Добави второ копие на записа ако той вече съществува.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>ЗАПАЗИ - Не препокривай съществуващия документ, игнорирай този в CSV файла.</item>
     </string-array>
     
 </resources>

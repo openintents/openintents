@@ -226,9 +226,8 @@ msgid "Modify countdowns, even while they are still running"
 msgstr ""
 
 #: tmp_strings.xml:91(string)
-#, fuzzy
 msgid "Available extensions for \"OI Countdown\":"
-msgstr "Extensions disponibles pour \"OI Notepad \":"
+msgstr ""
 
 #: tmp_strings.xml:92(listitem)
 msgid "Launch applications through Android shortcuts"

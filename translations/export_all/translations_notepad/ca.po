@@ -500,6 +500,3 @@ msgstr "Esteu segurs que voleu suprimir aquesta nota?"
 #: tmp_strings.xml:219(string)
 msgid "New note"
 msgstr "Nota nova"
-
-
-

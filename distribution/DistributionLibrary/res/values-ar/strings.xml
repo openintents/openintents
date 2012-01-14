@@ -22,7 +22,7 @@
 	
 	<!-- EULA welcome message. %s is an application name, e.g. "... (EULA) for OI Notepad".
 		Translation can be as long as required. -->
-	<string name="oi_distribution_eula_message">Please read and accept the following End User License Agreement (EULA) for %s.</string>
+	<string name="oi_distribution_eula_message">رجاءا قم بقراءة والموافقة على اتفاقية رخصة المستعمل النهائية(EULA) من أجل %s.</string>
 	
 	<!-- Button: Accept terms of EULA. -->
 	<string name="oi_distribution_eula_accept">موافق</string>
@@ -58,7 +58,7 @@
     <!-- Menu command to open the "about" or "info" dialog. -->
     <string name="oi_distribution_about">عن</string>
     <!-- %s is the version number (e.g. "1.2.1") -->
-	<string name="oi_distribution_aboutapp_not_available">No compatible extension available to display full info (contact, credits, license).</string>
+	<string name="oi_distribution_aboutapp_not_available">لا يوجد أي ملحق متوفر لعرض المعلومات(الاتصالات، المشاركون، الرخصة).</string>
     
     
     <!-- Button text: Get the application "OI About". Translations of the application name should be consistent. -->
@@ -68,9 +68,9 @@
     <string name="oi_distribution_aboutapp">عن OI</string>
     
     <!-- Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_barcodescanner">Barcode OI Plugin</string>
+    <string name="oi_distribution_barcodescanner">باركود OI المساعد</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_barcodescanner_not_available">No compatible barcode scanner is available.</string>
+    <string name="oi_distribution_barcodescanner_not_available">لا يوجد أي ماسح باركود متوفر.</string>
     
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_filemanager">مديرالملفات OI</string>
@@ -82,10 +82,10 @@
     <string name="oi_distribution_safe">حماية OI</string>
     <!-- Dialog message. -->
     <string name="oi_distribution_safe_not_available">لا يوجد أي تطبيق تشفير متوافق متوفر.</string>
-    <string name="oi_distribution_safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
+    <string name="oi_distribution_safe_not_available_decrypt">لا يوجد أي تطبيق متوفر  لفك التشفير .\n\n انتبه: يجب عليك استرجاع كلمة المرور الرئيسية من ملف نسخة احتياطية لتتمكن من الدخول الى البيانات السابقة المشفرة .</string>
     
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_market_message">Please download %s from the Market or the OpenIntents website.</string>
+    <string name="oi_distribution_download_market_message">رجاءاقم بتحميل %s من المتجر أو موقعOpenIntents  .</string>
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
     <string name="oi_distribution_download_message">رجاءا قم بالتحميل %s من موقع OpenIntents.</string>
     <!-- Dialog button: download the suggested application from Android Market. -->
@@ -101,7 +101,7 @@
     <string name="oi_distribution_info_launch">شغل %s</string>
     <!-- %1$s is the current application name. %2$s is another application name, and %3$s is the other application\'s version name
     (e.g. "OI About requires OI Notepad 1.2.0 or higher.") -->
-	<string name="oi_distribution_info_not_available">%1$s requires %2$s %3$s or higher.</string>
+	<string name="oi_distribution_info_not_available">%1$s يطلب %2$s %3$s أو أعلى.</string>
 	<!-- Title of a dialog. -->
 	<string name="oi_distribution_info_instructions">التعليمات</string>
 	<!-- Error message -->

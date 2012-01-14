@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
+  Mark van Kuijk https://launchpad.net/~markvankuyk
   OpenIntents devs https://launchpad.net/~openintents-devs
   Sjoerd Hiemstra https://launchpad.net/~sjohie</translators>
 	<description application="aboutapp/AboutApp">
@@ -88,9 +89,9 @@
 		<listitem>Be notified by vibration or any sound of your choice. </listitem>
 		<listitem>Have an unlimited number of timers running at the same time. </listitem>
 		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
-		<listitem>Modify countdowns, even while they are still running</listitem>
+		<listitem>Wijzig je timer, zelfs als ze nog aan het lopen zijn.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Countdown": </string>
+		<string>Beschikbare extensies voor "OI Countdown"</string>
 		<listitem>Launch applications through Android shortcuts</listitem>
 		<listitem>Use OI About to show license information</listitem>
 		<emptyline/>
@@ -138,11 +139,11 @@
 		<listitem>Ondersteunt vele bestandsformaten en mime types.</listitem>
 		<listitem>Ondersteunt PICK_FILE en PICK_DIRECTORY intents, waardoor andere programma\'s OI File Manager ook kunnen gebruiken.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
+		<string>Beschikbare extensies voor "OI File Manager"</string>
 		<listitem>Show the license information with "OI About".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<string>Applicaties die werken met "OI File Manager"</string>
+		<listitem>Open en bewaar tekstbestanden in "OI Notepad"</listitem>
 		<emptyline/>
 		<string>Sleutelwoorden:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
@@ -238,15 +239,15 @@
 		<listitem>Send notes as MMS or SMS.</listitem>
 		<emptyline/>
 		<string>Available extensions for "OI Notepad":</string>
-		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
+		<listitem>Neem stem memos op en voeg ze toe met "OI Voice Notes"</listitem>
 		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
 		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
-		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<listitem>Stel de datum en tijd in uw notities met "OI Insert Date"</listitem>
+		<listitem>Zet teksten ondersteboven met "Upside Down"</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Notepad":</string>
+		<string>Applicaties die werken met "OI Notepad"</string>
 		<listitem>Back up notes with "My Backup Pro".</listitem>
-		<listitem>Encrypt notes using "OI Safe".</listitem>
+		<listitem>Beveilig notities met "OI Safe"</listitem>
 		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
 		<listitem>Update with "OI Update".</listitem>
 		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
@@ -295,10 +296,10 @@
 		<listitem>Support for Obscura picture safe.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
+		<string>Beschikbare extensies voor "OI File Manager"</string>
 		<listitem>Show the license information with "OI About".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
+		<string>Applicaties die werken met "OI File Manager"</string>
 		<listitem>Encrypt notes created in "OI Notepad".</listitem>
 		<emptyline/>
 		<string>Sleutelwoorden:</string>

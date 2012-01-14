@@ -504,6 +504,3 @@ msgstr "Sigurado ka bang gusto mong tanggalin ang tala na ito?"
 #: tmp_strings.xml:219(string)
 msgid "New note"
 msgstr "Bagong tala"
-
-
-

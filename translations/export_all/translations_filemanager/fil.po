@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Liezl <Unknown>\n"
 "Language-Team: Filipino <fil@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,10 +25,10 @@ msgstr ""
 "  Liezl https://launchpad.net/~liezl-200\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
-#. Short explanation of the application. Max. 80 characters.
+#. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:26(string)
-msgid "Manage files on the SD card."
-msgstr "Pamahalaan ang mga file sa SD card."
+msgid "Manage files on the SD card with OI File Manager."
+msgstr "Pamahalaan ang mga file sa SD card na gamit ang OI File Manedyer."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:32(string)
@@ -78,11 +78,11 @@ msgstr "Marami pa"
 
 #: tmp_strings.xml:47(string)
 msgid "Compress (ZIP)"
-msgstr ""
+msgstr "I-kompres (ZIP)"
 
 #: tmp_strings.xml:48(string)
 msgid "Extract (ZIP)"
-msgstr ""
+msgstr "Hanguin (ZIP)"
 
 #: tmp_strings.xml:49(string)
 msgid "Filter"
@@ -428,48 +428,48 @@ msgstr "May palatandaan na ang file na ito"
 #. ***************************
 #: tmp_strings.xml:177(string)
 msgid "Item compressed successfully"
-msgstr ""
+msgstr "Ang bagay ay matagumpay na na-kompres."
 
 #: tmp_strings.xml:178(string)
 msgid "Could not compress the item"
-msgstr ""
+msgstr "Hindi ma-kompres ang bagay."
 
 #: tmp_strings.xml:179(string)
 msgid "Compress into archive:"
-msgstr ""
+msgstr "I-kompres sa archive:"
 
 #: tmp_strings.xml:180(string)
 msgid "Item extracted successfully"
-msgstr ""
+msgstr "Ang bagay ay matagumpay na nahango."
 
 #: tmp_strings.xml:181(string)
 msgid "Could not extract the item"
-msgstr ""
+msgstr "Hindi mahango ang bagau"
 
 #: tmp_strings.xml:182(string)
 msgid "Extract into folder:"
-msgstr ""
+msgstr "Hanguin papuntang polder:"
 
 #: tmp_strings.xml:183(string)
 msgid "Select folder to extract into"
-msgstr ""
+msgstr "Piliin ang polder na pag-hahanguan"
 
 #: tmp_strings.xml:184(string)
 msgid "Extract here"
-msgstr ""
+msgstr "Hanguin dito"
 
 #: tmp_strings.xml:185(string)
 msgid "Extracting..."
-msgstr ""
+msgstr "Hinahango..."
 
 #: tmp_strings.xml:186(string)
 msgid "Compressing..."
-msgstr ""
+msgstr "Ikino-kompres"
 
 #: tmp_strings.xml:187(string)
 msgid "File %s exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Mayroon ng file na %s. Gusto mo bang patungan ito?"
 
 #: tmp_strings.xml:189(string)
 msgid "Do you want to change the file extension?"
-msgstr ""
+msgstr "Nais mo bang baguhin ang file ekstensyon?"

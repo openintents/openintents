@@ -32,6 +32,7 @@
   Feder Sáiz https://launchpad.net/~federsaiz-deactivatedaccount
   Fitoschido https://launchpad.net/~fitoschido
   Jonay https://launchpad.net/~jonay-santana
+  Martín González https://launchpad.net/~mgonzlezgmz
   Paco Molinero https://launchpad.net/~franciscomol</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
@@ -82,15 +83,15 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Árabe</item>
-		<item>Belarusian</item>
-		<item>Bulgarian</item>
-		<item>Catalan</item>
+		<item>Bielorruso</item>
+		<item>Búlgaro</item>
+		<item>Catalán</item>
 		<item>Checo</item>
 		<item>Danés</item>
 		<item>Alemán</item>
 		<item>Griego</item>
 		<item>Inglés</item>
-		<item>English (United Kingdom)</item>
+		<item>Inglés (Reino Unido)</item>
 		<item>Español</item>
 		<item>Persa</item>
 		<item>Finlandés</item>
@@ -100,16 +101,16 @@
 		<item>Croata</item>
 		<item>Húngaro</item>
 		<item>Italiano</item>
-		<item>Hebrew</item>
+		<item>Hebreo</item>
 		<item>Japonés</item>
 		<item>Coreano</item>
 		<item>Laosiano</item>
-		<item>Latvian</item>
-		<item>Macedonian</item>
-		<item>Norwegian Bokmal</item>
+		<item>Letón</item>
+		<item>Macedonio</item>
+		<item>Noruego (bokmål)</item>
 		<item>Neerlandés</item>
 		<item>Occitano (después de 1500)</item>
-		<item>Punjabi</item>
+		<item>Punyabí</item>
 		<item>Polaco</item>
 		<item>Portugués</item>
 		<item>Portugués brasileño</item>
@@ -118,11 +119,11 @@
 		<item>Sardo</item>
 		<item>Sindhi</item>
 		<item>Eslovaco</item>
-		<item>Slovenian</item>
+		<item>Esloveno</item>
 		<item>Sueco</item>
-		<item>Tagalog</item>
+		<item>Tagalo</item>
 		<item>Turco</item>
-		<item>Uyghur</item>
+		<item>Uigur</item>
 		<item>Chino (Simplificado)</item>
 		<item>Chino (Tradicional)</item>
 	</string-array>

@@ -1,0 +1,313 @@
+# Arabic translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: kenn dhia <Unknown>\n"
+"Language-Team: Arabic <ar@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  kenn dhia https://launchpad.net/~kendhia"
+
+#. Short explanation of the application (max. 80 characters)
+#: tmp_strings.xml:11(string)
+msgid "Set multiple countdowns with OI Countdown."
+msgstr "اختر عد تنازلي متعدد مع  عد تنازلي OI"
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:17(string) tmp_strings.xml:56(string)
+msgid "OI Countdown"
+msgstr "عد تنازلي OI"
+
+#: tmp_strings.xml:19(string)
+msgid "Start"
+msgstr "بدأ"
+
+#: tmp_strings.xml:20(string)
+msgid "Stop"
+msgstr "توقيف"
+
+#: tmp_strings.xml:21(string)
+msgid "Modify"
+msgstr "تعديل"
+
+#: tmp_strings.xml:22(string)
+msgid "Continue"
+msgstr "اكمال"
+
+#: tmp_strings.xml:24(string)
+msgid "Use menu to add new countdown."
+msgstr "استعمل القائمة لاضافة عد تنازلي جديد."
+
+#: tmp_strings.xml:25(string)
+msgid "Countdown list"
+msgstr "قائمة العد التنازلي"
+
+#: tmp_strings.xml:27(string)
+msgid "Delete"
+msgstr "حذف"
+
+#: tmp_strings.xml:28(string)
+msgid "Edit"
+msgstr "تعديل"
+
+#: tmp_strings.xml:29(string)
+msgid "Add countdown"
+msgstr "أضف عد تنازلي"
+
+#: tmp_strings.xml:30(string)
+msgid "Ringtone"
+msgstr "الرنة"
+
+#. Menu item: Set the countdown by setting a final date or deadline.
+#: tmp_strings.xml:33(string)
+msgid "Set date"
+msgstr "ظبط التاريخ"
+
+#. Menu item: Set the countdown by setting a duration.
+#: tmp_strings.xml:36(string)
+msgid "Set duration"
+msgstr "ظبط المدة"
+
+#. Menu item: Set the action to be performed at the end of the countdown.
+#: tmp_strings.xml:39(string)
+msgid "Set action"
+msgstr "ظبط العمل"
+
+#: tmp_strings.xml:41(string)
+msgid "e.g. pizza"
+msgstr "مثلا بيتزا"
+
+#. Title of the activity for setting (editing) the countdown.
+#: tmp_strings.xml:44(string)
+msgid "Set countdown"
+msgstr "ظبط العد التنازلي"
+
+#. Title of the activity for creating a new countdown.
+#: tmp_strings.xml:47(string)
+msgid "Create countdown"
+msgstr "انشاء عد تنازلي"
+
+#. Title of the activity for editing the countdown.
+#: tmp_strings.xml:50(string)
+msgid "Edit countdown"
+msgstr "تعديل عد تنازلي"
+
+#. Title of the activity for editing the countdown.
+#: tmp_strings.xml:53(string)
+msgid "Pick countdown"
+msgstr "اختر عد تنازلي"
+
+#. Title of the activity when an internal error occurs. This should practially never happen.
+#: tmp_strings.xml:59(string)
+msgid "Error"
+msgstr "خطأ"
+
+#. Message to display when an internal error occurs. This should practially never happen.
+#: tmp_strings.xml:62(string)
+msgid "Error loading countdown"
+msgstr "خطأ تحميل عد تنازلي"
+
+#. Checkbox label whether to notifications.
+#: tmp_strings.xml:67(string)
+msgid "Notification in status bar"
+msgstr "التنبيه في شريط الحالة"
+
+#. Checkbox label whether to launch automation task through the status bar
+#: tmp_strings.xml:70(string)
+msgid "Launch through status bar"
+msgstr "بدأ عبر شريط الحالة"
+
+#. Checkbox label whether to use the ring tone for notifications.
+#: tmp_strings.xml:73(string)
+msgid "Ring"
+msgstr "رنة"
+
+#. Checkbox label whether to vibrate.
+#: tmp_strings.xml:76(string)
+msgid "Vibrate"
+msgstr "ذبذبة"
+
+#. Checkbox label whether to flash light for notifications.
+#: tmp_strings.xml:79(string)
+msgid "Light"
+msgstr "الضوء"
+
+#. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
+#: tmp_strings.xml:82(string)
+msgid "Action: %s"
+msgstr "العمل:%s"
+
+#. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
+#: tmp_strings.xml:85(string)
+msgid "Select action: %s"
+msgstr "اختر عمل :%s"
+
+#. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
+#: tmp_strings.xml:88(string)
+msgid "Select countdown: %s"
+msgstr "اختر  عد تنازلي :  %s"
+
+#. Button to test an action.
+#: tmp_strings.xml:91(string)
+msgid "Test"
+msgstr "تجريب"
+
+#. Button to view / edit settings.
+#: tmp_strings.xml:94(string)
+msgid "Settings"
+msgstr "الاعدادات"
+
+#. Button label to dismiss notification after countdown ended.
+#: tmp_strings.xml:97(string)
+msgid "Dismiss"
+msgstr "رفض"
+
+#. For the countdown display. "%s" is the number of days remaining (more than 1).
+#: tmp_strings.xml:100(string)
+msgid "days"
+msgstr "الأيام"
+
+#. For the countdown display. "%s" is 1 (the number of days remaining).
+#: tmp_strings.xml:103(string)
+msgid "day"
+msgstr "اليوم"
+
+#. Options in "Select action" dialog box; Title of the group containing the list of all apps
+#: tmp_strings.xml:108(string)
+msgid "Applications"
+msgstr "التطبيقات"
+
+#. Options in "Select action" dialog box; Title of the group containing the list of all shortcuts
+#: tmp_strings.xml:110(string)
+msgid "Shortcuts"
+msgstr "الاختصارات"
+
+#. Options in "Select action" dialog box; Title of the group containing the list of all automation tasks
+#: tmp_strings.xml:112(string)
+msgid "Automation tasks"
+msgstr "أتمتة المهام"
+
+#. Title of dialog when user is selecting shortcut to add as activity
+#: tmp_strings.xml:116(string)
+msgid "Select shortcut"
+msgstr "اختر اختصار"
+
+#. Title of dialog when user is selecting shortcut to add as activity
+#: tmp_strings.xml:119(string)
+msgid "Select automation task"
+msgstr "اختيار أتمتةالمهمة"
+
+#. The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action.
+#: tmp_strings.xml:122(string)
+msgid "Select activity"
+msgstr "اختر نشاط"
+
+#. Automation action to start a countdown.
+#: tmp_strings.xml:128(item)
+msgid "Start countdown"
+msgstr "بدأ العد التنازلي"
+
+#. Automation action to stop a countdown.
+#: tmp_strings.xml:130(item)
+msgid "Stop countdown"
+msgstr "ايقاف العد التنازلي"
+
+#. Preference section title for general settings regarding the countdown
+#: tmp_strings.xml:138(string)
+msgid "Countdown"
+msgstr "العد التنازلي"
+
+#: tmp_strings.xml:140(string)
+msgid "Extensions"
+msgstr "الملحقات"
+
+#: tmp_strings.xml:141(string)
+msgid "Get new extensions"
+msgstr "أحصل عىل ملحقات جديدة"
+
+#: tmp_strings.xml:142(string)
+msgid "Search for extensions online."
+msgstr "ابحث عن ملحقات اونلاين"
+
+#: tmp_strings.xml:143(string)
+msgid "Get extensions from"
+msgstr "أحصل على ملحقات من"
+
+#: tmp_strings.xml:144(string)
+msgid "Android Market"
+msgstr "متجر أنرويد"
+
+#: tmp_strings.xml:145(string)
+msgid "Search for extensions at Android Market."
+msgstr "البحث عن الملحقات  في متجر أندرويد"
+
+#: tmp_strings.xml:146(string)
+msgid "OpenIntents"
+msgstr "OpenIntents"
+
+#: tmp_strings.xml:147(string)
+msgid "Get extensions from the OpenIntents homepage."
+msgstr "أحصل على ملحقات من الصفحة الرئيسية ل OpenIntents"
+
+#. Preference title: Set the notification timeout (2 sec, 10 min, ...)
+#: tmp_strings.xml:150(string)
+msgid "Notification timeout"
+msgstr "مهلة الاخطار"
+
+#. Preference summary: Set notification timeout (2 sec, 10 min, ...)
+#: tmp_strings.xml:153(string)
+msgid "Timeout for ring, vibrate, or light notification."
+msgstr "مهلة للرنة، الذبذبة، أو التنبيه الضوئي."
+
+#. Dialog title to set timeout for notification
+#: tmp_strings.xml:156(string)
+msgid "Set timeout"
+msgstr "ظبط المهلة"
+
+#: tmp_strings.xml:160(item)
+msgid "2 seconds"
+msgstr "2 ثانية"
+
+#: tmp_strings.xml:161(item)
+msgid "5 seconds"
+msgstr "5 ثوان"
+
+#: tmp_strings.xml:162(item)
+msgid "10 seconds"
+msgstr "10 ثوان"
+
+#: tmp_strings.xml:163(item)
+msgid "30 seconds"
+msgstr "30 ثانية"
+
+#: tmp_strings.xml:164(item)
+msgid "1 minute"
+msgstr "1 دقيقة"
+
+#: tmp_strings.xml:165(item)
+msgid "5 minutes"
+msgstr "5 دقائق"
+
+#: tmp_strings.xml:166(item)
+msgid "10 minutes"
+msgstr "10 دقائق"
+
+#: tmp_strings.xml:170(string)
+msgid "OI Countdown doesn't have the permission for this task."
+msgstr ""

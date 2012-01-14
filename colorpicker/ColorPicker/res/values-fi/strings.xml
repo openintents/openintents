@@ -10,56 +10,56 @@
   Winner Winner https://launchpad.net/~winnerwinner57</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Color Picker is an extension for OI Flashlight and other compatible applications.</string>
+	<string name="about_comments">OpenIntents Color Picker on laajennus OI Taskulamppu ja muita yhteensopivia sovelluksia.</string>
 	
 	<!-- ***************************
 	     Application-specific strings
 	     *************************** -->
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
-    <string name="app_name">OI Color Picker</string>
+    <string name="app_name">OI Värivalitsin</string>
     
     <!-- Title of the color picker activity. -->
-    <string name="color_picker">Color picker</string>
+    <string name="color_picker">Värivalitsin</string>
     
-    <string name="recent_colors_condensed">Recent</string>
-    <string name="recent_colors">Recent colors</string>
-    <string name="recent_colors_expanded">Recently chosen colors</string>
-    <string name="recent_colors_clear_history">Clear</string>
-    <string name="recent_colors_empty">There are no recently chosen colors.</string>
+    <string name="recent_colors_condensed">Viimeaikainen</string>
+    <string name="recent_colors">Viimeaikaiset värit</string>
+    <string name="recent_colors_expanded">Äskettäin valittu värit</string>
+    <string name="recent_colors_clear_history">Tyhjennä</string>
+    <string name="recent_colors_empty">Ole olemassa viime aikoina valinnut värit.</string>
     
-    <string name="confirm_color_title">Use color?</string>
-    <string name="confirm_color_message">Use this new color? You can avoid this message by clicking on the center circle.</string>
+    <string name="confirm_color_title">Käytä väriä?</string>
+    <string name="confirm_color_message">Käytä tätä uutta väriä? Voit välttää tämän viestin klikkaamalla keskus ympyrä.</string>
     
     
 	<!-- About -->
-	<string name="about">About</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-	<string name="aboutapp_get">Get OI About</string>
+	<string name="about">Noin</string>
+	<string name="aboutapp_not_available">Versio %s\n\nYhtään yhteensopiva saatavana jatkokappale näyttää kaikki tiedot (yhteystiedot, op, lisenssi).</string>
+	<string name="aboutapp_get">Saada OI Tietoa</string>
 
 
 	<!-- Update -->
-	<string name="update_error">Download application not available.</string>
+	<string name="update_error">Lataa sovellus ei ole käytettävissä.</string>
 	
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
-    <string name="info_app_flashlight">To select a color in OI Flashlight, press menu &gt; Color.</string>
-    <string name="title_app_flashlight">OI Flashlight</string>
+    <string name="info_app_flashlight">Jotta valita värin OI Taskulamppu Paina Valikko &gt; Väri.</string>
+    <string name="title_app_flashlight">OI Taskulamppu</string>
     
-    <string name="info_app_spiral_wallpaper">Hypnotic, animated spiral Live Wallpaper.</string>
+    <string name="info_app_spiral_wallpaper">Hypnoottinen, animoituja spiraali Live-Taustakuva.</string>
     <string name="title_app_spiral_wallpaper">HypnoTwister Live Wallpaper</string>
     
-    <string name="info_app_bettr_flickr">Native Flickr interface for Android</string>
+    <string name="info_app_bettr_flickr">Native Flickr liitäntä varten Android</string>
     <string name="title_app_bettr_flickr">BettrFlickr</string>
     
-    <string name="info_app_character_gen">Mix and match artwork to generate anime characters</string>
-    <string name="title_app_character_gen">Anime Character Generator</string>
+    <string name="info_app_character_gen">Sekoittaa ja sovittaa kuvitusta tuottaa  anime merkkiä</string>
+    <string name="title_app_character_gen">Anime Merkistön Generaattorit</string>
     
     
-	<string name="info_activity_text">This app can be used with the following applications:</string>
+	<string name="info_activity_text">Tämä sovellus voi olla käytetty kanssa seuraavia sovelluksia:</string>
     <string name="info_launch">Käynnistä %s</string>
     <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
 	<string name="info_not_available">Tämä sovellus edellyttää %1$s %2$s tai korkeampi.</string>
-	<string name="info_get">Get %s</string>
+	<string name="info_get">Saada %s</string>
 </resources>

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Paco Molinero <paco@byasl.com>\n"
+"Last-Translator: Martín González <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,6 +23,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Javier Martínez Arrieta https://launchpad.net/~javote87\n"
+"  Martín González https://launchpad.net/~mgonzlezgmz\n"
 "  Monkey https://launchpad.net/~monkey-libre\n"
 "  Paco Molinero https://launchpad.net/~franciscomol\n"
 "  Peli https://launchpad.net/~peli0101\n"
@@ -30,9 +31,8 @@ msgstr ""
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
-#, fuzzy
 msgid "Store your private data with OI Safe."
-msgstr "Permitir a otra aplicacion asegurar tus datos con OI safe"
+msgstr "Proteja sus datos privados con OI Safe."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:34(string)
@@ -183,7 +183,7 @@ msgstr "Exportar base de datos"
 
 #: tmp_strings.xml:67(string)
 msgid "Select a file for export"
-msgstr ""
+msgstr "Seleccione un archivo para exportar"
 
 #: tmp_strings.xml:68(string)
 msgid ""
@@ -215,7 +215,7 @@ msgstr "Importar base de datos"
 
 #: tmp_strings.xml:72(string)
 msgid "Select a file for import"
-msgstr ""
+msgstr "Seleccione un archivo para importar"
 
 #: tmp_strings.xml:73(string)
 msgid "Import file is missing:"
@@ -404,11 +404,11 @@ msgstr "Respaldo fallido:"
 
 #: tmp_strings.xml:115(string)
 msgid "Select a file for backup"
-msgstr ""
+msgstr "Seleccione un archivo para hacer una copia de seguridad"
 
 #: tmp_strings.xml:116(string)
 msgid "Error while backing up"
-msgstr ""
+msgstr "Error al hacer la copia de seguridad"
 
 #: tmp_strings.xml:117(string)
 msgid "Restore"
@@ -436,11 +436,11 @@ msgstr ""
 
 #: tmp_strings.xml:121(string)
 msgid "Select a file for restore"
-msgstr ""
+msgstr "Seleccionar un archivo para restaurar"
 
 #: tmp_strings.xml:122(string)
 msgid "Error while restoring"
-msgstr ""
+msgstr "Error al restaurar"
 
 #. Toast message. %s contains a more detailed error message.
 #: tmp_strings.xml:125(string)
@@ -614,11 +614,11 @@ msgstr "Dñias de copia de seguridad automática"
 
 #: tmp_strings.xml:196(string)
 msgid "Default backup path"
-msgstr ""
+msgstr "Ruta de copia de seguridad por defecto"
 
 #: tmp_strings.xml:197(string)
 msgid "Default export path"
-msgstr ""
+msgstr "Ruta de exportación por defecto"
 
 #: tmp_strings.xml:200(string)
 msgid "Decrypt (OI Safe)"
@@ -792,11 +792,11 @@ msgstr "Finalizar copia de seguridad automática"
 
 #: tmp_strings.xml:242(string)
 msgid "Time to autolock: %s"
-msgstr ""
+msgstr "Tiempo para autobloqueo: %s"
 
 #: tmp_strings.xml:243(string)
 msgid "While not downloaded, default location will be used."
-msgstr ""
+msgstr "Mientras no haya sido descargado, la ruta por defecto será usada."
 
 #. Permission to access master password
 #: tmp_strings.xml:251(string)
@@ -859,6 +859,3 @@ msgstr "30 días"
 #: tmp_strings.xml:275(item)
 msgid "60 days"
 msgstr "60 días"
-
-
-

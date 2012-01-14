@@ -360,20 +360,3 @@ msgid ""
 msgstr ""
 "Backup wiederherstellen - LÖSCHT ALLE BESTEHENDEN EINTRÄGE und importiert "
 "danach die CSV Datei."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

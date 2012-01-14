@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Marek Dobransky <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,13 +22,14 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Marek Dobransky https://launchpad.net/~marekdobr\n"
 "  Matěj Konečný https://launchpad.net/~matejkon\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
 msgid "Import and export lists and notes with OI Convert CSV."
-msgstr ""
+msgstr "Import a export seznamů a poznámek s OI Převést CSV."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -325,7 +326,7 @@ msgstr "DUPLIKOVAT - Povolit duplikáty záznamů."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
 msgid "KEEP - Don't overwrite existing records."
-msgstr ""
+msgstr "PONECHAT - Nepřepisovat existující záznamy."
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -343,6 +344,7 @@ msgstr "DUPLIKOVAT - Přidat druhou kopii záznamu když záznam již existuje."
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
+"PONECHAT - Nepřepisovat existující záznamy, ignorovat ten ve CSV souboru."
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
@@ -354,20 +356,3 @@ msgid ""
 msgstr ""
 "Obnovit ze zálohy - SMAŽE VŠECHNY VAŠE EXISTUJÍCÍ ZÁZNAMY, potom importuje "
 "CSV soubor."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

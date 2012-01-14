@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Nikola Miljkovic https://launchpad.net/~milja1337</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Birač Boja je nastavak za OI Blic i ostale kompatibilne aplikacije.</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Birač Boja</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">Birač Boja</string>
+    
+    <string name="recent_colors_condensed">Nedavne</string>
+    <string name="recent_colors">Nedavne boje</string>
+    <string name="recent_colors_expanded">Nedavno odabrane boje</string>
+    <string name="recent_colors_clear_history">Očisti</string>
+    <string name="recent_colors_empty">Nema nedavno odabranih boja.</string>
+    
+    <string name="confirm_color_title">Koristi boju?</string>
+    <string name="confirm_color_message">Koristi ovu novu boju?Možeš izbeći ovu poruku klikom na centralni krug.</string>
+    
+    
+	<!-- About -->
+	<string name="about">O aplikaciji</string>
+	<string name="aboutapp_not_available">Verzija %s\n\nNije kompatibilna extenzija dostupna da prikaže pune informacije (kontact, zasluge, licence).</string>
+	<string name="aboutapp_get">Dobiji OI About</string>
+
+
+	<!-- Update -->
+	<string name="update_error">Aplikacija koja se skida nije dostupna.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">Da bi odabrao boju u OI Blic, pritisni meni &gt;  Boju.</string>
+    <string name="title_app_flashlight">OI Blic</string>
+    
+    <string name="info_app_spiral_wallpaper">Hipnoticna, animirana spiralna Živa Pozadina.</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister Živa Pozadina</string>
+    
+    <string name="info_app_bettr_flickr">Izvorni Flickr interfejs za Android</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">Miksuj i pronadji ilustracije da napravi anime likove</string>
+    <string name="title_app_character_gen">Generator Likova Anime</string>
+    
+    
+	<string name="info_activity_text">Ova aplikacija se može koristiti sa sledećim aplikacijama:</string>
+    <string name="info_launch">Pokreni %s</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">Ova aplikacija zahteva %1$s %2$s ili veći.</string>
+	<string name="info_get">Get %s</string>
+</resources>

@@ -24,10 +24,11 @@
  	<string name="about_translators">Launchpad Contributions:
   Andrzej Ziółek https://launchpad.net/~andro-v-zik
   OpenIntents devs https://launchpad.net/~openintents-devs
-  Tomasz Zieliński https://launchpad.net/~tomek0517</string>
+  Tomasz Zieliński https://launchpad.net/~tomek0517
+  zielmicha https://launchpad.net/~michal-zielinscy</string>
 	
 	<!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
+	<string name="about_comments">Importuj i eksportuj listy i notatki używając OI Konwertuj CSV.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -136,26 +137,26 @@
     
     <string-array name="import_policy">
         <item>POWIELAJ - pozwala powielać zapisy.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>POZOSTAW - Nie nadpisuj istniejących rekordów.</item>
         <item>Nadpisz - nadpisz istniejące zapisy.</item>
         <item>Przywróć - USUŃ WSZYSTKIE, potem importuj.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>POWIEL - dodaj drugą kopię zapisu jeśli już istnieje.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>POZOSTAW - Nie nadpisuj istniejących rekordów, ignoruj ten z pliku CSV.</item>
         <item>Nadpisz - zapis z pliku CSV NADPISZE istniejący zapis.</item>
         <item>Przywróć kopię zapasową - USUŃ WSZYSTKIE ISTNIEJĄCE ZAPISY, potem importuj plik CSV.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>POWIELAJ - pozwala powielać zapisy.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>POZOSTAW - Nie nadpisuj istniejących rekordów.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>POWIEL - dodaj drugą kopię zapisu jeśli już istnieje.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>POZOSTAW - Nie nadpisuj istniejących rekordów, ignoruj ten z pliku CSV.</item>
     </string-array>
     
 </resources>

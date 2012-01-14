@@ -9,10 +9,11 @@
 
 Launchpad Contributions:
   Damian Skrodzki https://launchpad.net/~damienix
-  Tomasz \'Zen\' Napierala https://launchpad.net/~tzn</string>
+  Tomasz \'Zen\' Napierala https://launchpad.net/~tzn
+  zielmicha https://launchpad.net/~michal-zielinscy</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
+	<string name="about_comments">Odliczaj czas z OI Odliczanie.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -169,4 +170,7 @@ Launchpad Contributions:
         <item>5 minut</item>
         <item>10 minut</item>
     </string-array>
+    
+    
+    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
 </resources>

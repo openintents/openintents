@@ -27,7 +27,7 @@
 	    
     <string name="about_text_extended">Wersja %1$s\nkarta SD %2$s\n\nOS\n%3$s</string>
     <string name="free_space">wolne miejsce: %s</string>
-    <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
+    <string name="os_info">Płyta %1$s\nMarka %2$s\nUrządzenie %3$s\nID %4$s\nModel %5$s</string>
     
     <string name="do_update">Aktualizuj!</string>
     <string name="do_update_market">Spróbuj aktualizować z Marketu teraz!</string>

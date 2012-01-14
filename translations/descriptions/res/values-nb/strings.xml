@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
-	<translators>translator-credits</translators>
+	<translators>Launchpad Contributions:
+  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->
@@ -9,46 +10,46 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI About is a standalone about dialog that is shared between apps.</string>
-		<string>This application is invoked through the menu of other OI applications.</string>
-		<string>It allows you to view version information, links, credits, and license of an application.</string>
-		<string>Credits include authors, documentation, translators, and artists.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<string>OI Info er en frittstående informasjonsdialog som er delt mellom apper.</string>
+		<string>Denne applikasjonen blir påkalt gjennom menyen til andre OI applikasjoner.</string>
+		<string>Den lar deg se på versjonsinformasjon, linker, krediteringer og lisensen til en applikasjon.</string>
+		<string>Krediteringer inkluderer forfattere, dokumentasjon, oversettere og kunstnere.</string>
+		<string>All denne funksjonaliteten er ført sammen i en enkel og effektiv utforming.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Denne applikasjonen er reklamefri og trenger ikke inter</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Kildekoden til denne gratis applikasjonen med åpen kildekode er tilgjengelig hos:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>For den komplette listen med endringer og en liste over vanlige spørsmål, vennligst besøk:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Du kan hjelpe til med å forbedre oversettelsen</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Shows general info, credits, and license tabs.</listitem>
-		<listitem>Shows translators of all language versions.</listitem>
-		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
-		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<string>Funksjoner:</string>
+		<listitem>Viser generell informasjon, krediteringer og lisensfaner.</listitem>
+		<listitem>Viser oversettere av alle språkversjoner.</listitem>
+		<listitem>Henter informasjon fra applikasjonsmanifest gjennom standardmerker og metadata.</listitem>
+		<listitem>Alternativt, alle felter kan bli endret gjennom ekstra hensikter.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI About":</string>
-		<listitem>OI Notepad</listitem>
-		<listitem>OI File manager</listitem>
-		<listitem>OI Shopping List</listitem>
-		<listitem>OI Convert CSV</listitem>
+		<string>Applikasjoner som fungerer med "OI Info":</string>
+		<listitem>OI Notatblokk</listitem>
+		<listitem>OI Filbehandler</listitem>
+		<listitem>OI Handleliste</listitem>
+		<listitem>OI Konverter CSV</listitem>
 		<listitem>OI Safe</listitem>
-		<listitem>OI Countdown</listitem>
-		<listitem>OI Flashlight</listitem>
+		<listitem>OI Nedtelling</listitem>
+		<listitem>OI Lykt</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>About, Credits, Information.</listitem>
+		<string>Nøkkelord:</string>
+		<listitem>Om, Krediteringer, Informasjon.</listitem>
 		<listitem>OI, OpenIntents, Open Intents.</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Internasjonal versjoner:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Søkestrenger for Marked:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -63,45 +64,45 @@
 		<!--  -->
 		<!--  Description of application -->
 		<emptyline/>
-		<string>OI Countdown is a helpful timer to increase your productivity and plan your day. </string>
-		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
-		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
+		<string>OI Nedtelling er en nyttig tidtaker for å øke produktivitet og planlegge dagen din.</string>
+		<string>Den lar deg sette mange ulike handlinger for å varsle deg når tidtakeren er ferdig.</string>
+		<string>Tilpass alle dine tidtakere, med ingen grense på hvor mange du kan ha kjørende eller lagret.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission. </string>
+		<string>Denne applikasjonen er reklamefri og trenger ikke inter</string>
 		<emptyline/>
 		<emptyline/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Kildekoden til denne gratis applikasjonen med åpen kildekode er tilgjengelig hos:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>For den komplette listen med endringer og en liste over vanlige spørsmål, vennligst besøk:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Du kan hjelpe til med å forbedre oversettelsen</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features: </string>
-		<listitem>Set a countdown by choosing a duration or a date.</listitem>
-		<listitem>Be notified by vibration or any sound of your choice. </listitem>
-		<listitem>Have an unlimited number of timers running at the same time. </listitem>
-		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
-		<listitem>Modify countdowns, even while they are still running</listitem>
+		<string>Funksjoner:</string>
+		<listitem>Sett en nedtelling ved å velge en varighet eller en dato.</listitem>
+		<listitem>Bli varslet av vibrasjon eller en lyd du velger.</listitem>
+		<listitem>Ha et ubegrenset antall tidtakere kjørende samtidig.</listitem>
+		<listitem>Lagre dine nedtellinger og gi dem navn for å bruke igjen senere.</listitem>
+		<listitem>Endre nedtellinger, selv når de kjører</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Countdown": </string>
-		<listitem>Launch applications through Android shortcuts</listitem>
-		<listitem>Use OI About to show license information</listitem>
+		<string>Tilgjengelige utvidelser for "OI Nedtelling":</string>
+		<listitem>Start applikasjoner gjennom snarveier i Android</listitem>
+		<listitem>Bruk OI Info for å vise lisensinformasjon</listitem>
 		<emptyline/>
-		<string>Keywords: </string>
+		<string>Nøkkelord:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>countdown, timer, alert</listitem>
+		<listitem>nedtelling, tidtakere, varsel</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Internasjonal versjoner:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Søkestrenger for Marked:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt "/>
 	</description>
@@ -113,45 +114,45 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
-		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
+		<string>OI Filbehandler lar deg</string>
+		<string>Den fungerer også som en utvidelse til andre applikasjoner for å vise "Åpne" og "Lagre" dialoger.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Denne applikasjonen er reklamefri og trenger ikke inter</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>For den komplette listen med endringer og en liste over vanlige spørsmål, vennligst besøk:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Du kan hjelpe til med å forbedre oversettelsen</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Kildekoden til denne gratis applikasjonen med åpen kildekode er tilgjengelig hos:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Show list of files with thumbnails for images.</listitem>
-		<listitem>Move, copy, rename, and delete files.</listitem>
-		<listitem>Create and delete directories (folders).</listitem>
-		<listitem>Send files by email.</listitem>
-		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
-		<listitem>Support for many file endings and mime types.</listitem>
-		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
+		<string>Funksjoner:</string>
+		<listitem>Vis lister over filer med miniatyrbilder for fotografier.</listitem>
+		<listitem>Flytt, kopier, gi nytt navn til og slett filer.</listitem>
+		<listitem>Opprett og slett mapper.</listitem>
+		<listitem>Send filer via e-post.</listitem>
+		<listitem>Fungerer som en utvidelse til andre applikasjoner, som Gmail, for å legge ved filer.</listitem>
+		<listitem>Støtte for mange filendelser og mime-typer.</listitem>
+		<listitem>Støtter PICK-FILE og PICK_DIRECTORY hensikter sånn at andre applikasjoner kan bruk OI Filbehandler.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>TIlgjengelige utvidelser for "OI Filbehandler":</string>
+		<listitem>Vis lisensinformasjonen med "OI Info".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<string>Applikasjoner som fungerer med "OI Filbehandler":</string>
+		<listitem>Åpne og lagre tekstfiler i "OI Notatblokk".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Nøkkelord:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>file manager, filemanager, file explorer</listitem>
+		<listitem>filbehandler, filutforsker</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Internasjonal versjoner:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Søkestrenger for Marked:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -164,42 +165,42 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
-		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
-		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
-		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<string>OI Lykt er en enkel og effektiv applikasjon som hjelper deg finne veien i mørket.</string>
+		<string>OI Lykt låser skjermens baklys på, tydelig opplysende for det omkringliggende området.</string>
+		<string>For enheter med en kamerablits, OI Lykt kan også bruke blitsen som en lys lykt for å lyse opp rommet.</string>
+		<string>Fargen på baklyset er helt egendefinerbart med OI Fargevelger.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Denne applikasjonen er reklamefri og trenger ikke inter</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Kildekoden til denne gratis applikasjonen med åpen kildekode er tilgjengelig hos:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>For den komplette listen med endringer og en liste over vanlige spørsmål, vennligst besøk:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Du kan hjelpe til med å forbedre oversettelsen</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Lock the display backlight on.</listitem>
-		<listitem>Lock camera flash on.</listitem>
-		<listitem>The color of backlight is customizable.</listitem>
+		<string>Funksjoner:</string>
+		<listitem>Låser baklyset på.</listitem>
+		<listitem>Lås kamerablits på.</listitem>
+		<listitem>Fargen på baklyset er egendefinerbart.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Flashlight":</string>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<string>Tilgjengelige utvidelser for "OI Lykt":</string>
+		<listitem>Vis lisensinformasjonen med "OI Info".</listitem>
+		<listitem>Endre fargen på baklyset med "OI Fargevelger".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Flashlight":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<string>Applikasjoner som fungerer med "OI Lykt":</string>
+		<listitem>Oppdater med "OI Oppdater".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>Flashlight, light, Backlight</listitem>
+		<string>Nøkkelord:</string>
+		<listitem>Lykt, lys, Baklys</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Internasjonal versjoner:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Søkestrenger for Marked:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -211,52 +212,52 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Notepad is a full-featured open source note taking application.</string>
-		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
-		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<string>OI Notatblokk er en fullt funksjonell applikasjon for å ta notater og har åpen kildekode.</string>
+		<string>Med den kan du merke, søke og sende dine notater, i tillegg til grunnleggende funksjonalitet som å opprette, slette og redigere notater.</string>
+		<string>Avanserte funksjoner som kryptering, import/eksport og talebeskjeder er alle tilgjengelige gjennom utvidelser.</string>
+		<string>All denne funksjonaliteten er ført sammen gjennom en enkel og effektiv utforming, egendefinerbar gjennom en variasjon av temaer.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Denne applikasjonen er reklamefri og trenger ikke inter</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Kildekoden til denne gratis applikasjonen med åpen kildekode er tilgjengelig hos:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>For den komplette listen med endringer og en liste over vanlige spørsmål, vennligst besøk:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Du kan hjelpe til med å forbedre oversettelsen</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Add, edit and delete notes.</listitem>
-		<listitem>Long-press on notes to add tags.</listitem>
-		<listitem>Change font size and sort order.</listitem>
-		<listitem>A clearly arranged layout with a variety of themes.</listitem>
-		<listitem>Quickly search through notes.</listitem>
-		<listitem>Send notes as MMS or SMS.</listitem>
+		<string>Funksjoner:</string>
+		<listitem>Legg til, rediger og slett notater.</listitem>
+		<listitem>Hold inne på notater for å legge til merker.</listitem>
+		<listitem>Endre skriftstørrelse og sorteringsrekkefølge.</listitem>
+		<listitem>En tydelig arrangert utforming med en variasjon i temaer.</listitem>
+		<listitem>Søk raskt gjennom notater.</listitem>
+		<listitem>Send notater som MMS eller SMS.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Notepad":</string>
-		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
-		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
-		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<string>Tilgjengelige utvidelser for "OI Notatblokk":</string>
+		<listitem>Ta opp og legg ved stemmebeskjed til notater med "OI Voice Notes".</listitem>
+		<listitem>Importer/eksporter notater fra SD-kortet med "OI Konverter CSV".</listitem>
+		<listitem>Vis lisensinformasjonen med "OI Info".</listitem>
+		<listitem>Sett inn dato og tid i notater med "OI Insert Date".</listitem>
+		<listitem>Snu tekst opp-ned med "Upside Down".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Notepad":</string>
-		<listitem>Back up notes with "My Backup Pro".</listitem>
-		<listitem>Encrypt notes using "OI Safe".</listitem>
-		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<string>Applikasjoner som fungerer med "OI Notatblokk":</string>
+		<listitem>Sikkerhetskopier notater med "My Backup Pro".</listitem>
+		<listitem>Enkrypt notater ved bruk av "OI Safe".</listitem>
+		<listitem>Administrer notater på ditt SD-kort med "OI Filbehandler".</listitem>
+		<listitem>Oppdater med "OI Oppdater".</listitem>
+		<listitem>Del notater gjennom "Facebook", "Gmail", "Google+", "Twitter", og mange andre applikasjoner.</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<string>Nøkkelord:</string>
+		<listitem>Notat, Notatblokk, Notatbok, Notater</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Internasjonal versjoner:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Søkestrenger for Marked:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -268,47 +269,47 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
-		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<string>OI Safe beskytter alle dine passord og andre private data ved bruk av AES-kryptering som er en industristandard.</string>
+		<string>Den fungerer også som en utvidelse til OI Notatblokk for å kryptere notater opprettet i OI Notatblokk.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Denne applikasjonen er reklamefri og trenger ikke inter</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>For den komplette listen med endringer og en liste over vanlige spørsmål, vennligst besøk:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Du kan hjelpe til med å forbedre oversettelsen</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Kildekoden til denne gratis applikasjonen med åpen kildekode er tilgjengelig hos:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Securely protect data using AES encryption.</listitem>
-		<listitem>Freely move data entries between categories.</listitem>
-		<listitem>Import/Export data entries and databases.</listitem>
-		<listitem>Backup/Restore entries.</listitem>
-		<listitem>Includes secure password generator.</listitem>
-		<listitem>Automatic timeout to protect encrypted documents.</listitem>
-		<listitem>Encrypt OI Notepad notes.</listitem>
-		<listitem>Support for Obscura picture safe.</listitem>
+		<string>Funksjoner:</string>
+		<listitem>Trygt beskytt data ved bruk av AES-kryptering.</listitem>
+		<listitem>Fritt flytt dataoppføringer mellom kategorier.</listitem>
+		<listitem>Importer/Eksporter dataoppføringer og databaser.</listitem>
+		<listitem>Sikkerhetskopier/Gjenopprett oppføringer</listitem>
+		<listitem>Inkluderer sikker passordgenerator.</listitem>
+		<listitem>Automatisk tidsavbrudd for å beskytte krypterte dokumenter.</listitem>
+		<listitem>Krypter OI Notatblokk notater.</listitem>
+		<listitem>Støtte for Obscura bildesafe.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>TIlgjengelige utvidelser for "OI Filbehandler":</string>
+		<listitem>Vis lisensinformasjonen med "OI Info".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<string>Applikasjoner som fungerer med "OI Filbehandler":</string>
+		<listitem>Krypterte notater opprettet i "OI Notepad".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Nøkkelord:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>safe, encrpytion, password, protection</listitem>
+		<listitem>safe, kryptering, passord, beskyttelse</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Internasjonal versjoner:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Søkestrenger for Marked:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -320,50 +321,50 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
-		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
-		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
-		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
-		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<string>OI Handleliste er en kraftig applikasjon som gjør det lett å opprette og administrere sjekklister.</string>
+		<string>OI Handleliste gjør det enkelt å legge til punkter til en liste, krysse punktet av, og fjerne det fra listen.</string>
+		<string>Applikasjonen kan spore seperate priser for hver butikk du bruker, og har en høy grad av tilpasning.</string>
+		<string>Skriftstørrelse, sorteringsrekkefølge, listekolonner og oppførsel for rydding er alle innstillinger kontrollert av brukeren.</string>
+		<string>Alle disse funksjonene blir ført sammen i en tydelig utforming som er egendefinerbar gjennom en variasjon med temaer.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Kildekoden til denne gratis applikasjonen med åpen kildekode er tilgjengelig hos:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Denne applikasjonen er reklamefri og trenger ikke inter</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>For den komplette listen med endringer og en liste over vanlige spørsmål, vennligst besøk:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Du kan hjelpe til med å forbedre oversettelsen</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Add, edit and delete lists.</listitem>
-		<listitem>Create, delete, and check items quickly and easily.</listitem>
-		<listitem>Variety of themes.</listitem>
-		<listitem>Customizable font size and sort order.</listitem>
-		<listitem>Keep track of separate prices for each store.</listitem>
-		<listitem>Customizable list columns.</listitem>
+		<string>Funksjoner:</string>
+		<listitem>Legg til, rediger og slett lister.</listitem>
+		<listitem>Opprett, slett og kryss av oppføringer raskt og enkelt.</listitem>
+		<listitem>Variasjon i temaer.</listitem>
+		<listitem>Egendefinerbar skriftstørrelse og sorteringsrekkefølge.</listitem>
+		<listitem>Hold styr på seperate priser for hver butikk.</listitem>
+		<listitem>Egendefinerbare listekolonner.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Shopping List":</string>
-		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
-		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<string>Tilgjengelige utvidelser for "OI Handleliste":</string>
+		<listitem>Legg til en innspilt melding til et notat med " OI Voice Notes".</listitem>
+		<listitem>Importer/eksporter handlelister med "OI Konverter CSV".</listitem>
+		<listitem>Vis lisensinformasjonen med "OI Info".</listitem>
+		<listitem>Skriv inn/kryss av punkter med "Barcode OI Plugin".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Shopping List":</string>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Backup lists with "My Backup Pro".</listitem>
-		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<string>Applikasjoner som fungerer med "OI Handleliste":</string>
+		<listitem>Oppdater med "OI Oppdater".</listitem>
+		<listitem>Sikkerhetskopier lister med "My Backup Pro".</listitem>
+		<listitem>Importer ingredienser i oppskrifter med "Bites".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<string>Nøkkelord:</string>
+		<listitem>Handling, Liste, Handleliste, Sjekkliste</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Internasjonal versjoner:</string>
 		<international/>
 		<emptyline/>
-		<string>Extensions:</string>
+		<string>Utvidelser:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>

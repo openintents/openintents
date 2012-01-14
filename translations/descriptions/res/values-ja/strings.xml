@@ -65,9 +65,9 @@
 		<!--  -->
 		<!--  Description of application -->
 		<emptyline/>
-		<string>OI Countdown is a helpful timer to increase your productivity and plan your day. </string>
-		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
-		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
+		<string>OI カウントダウン は効率を上げて一日の計画を立てる役に立つタイマーです。</string>
+		<string>タイマー終了時に様々なアクションを設定して通知することができます。</string>
+		<string>タイマーの動作数や保存数の制限無しで、完全にすべてのタイマーをカスタマイズすることができます。</string>
 		<emptyline/>
 		<string>このアプリケーションは広告を含まず、インターネット許可を必要としません。</string>
 		<emptyline/>
@@ -84,19 +84,19 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>機能：</string>
-		<listitem>Set a countdown by choosing a duration or a date.</listitem>
-		<listitem>Be notified by vibration or any sound of your choice. </listitem>
-		<listitem>Have an unlimited number of timers running at the same time. </listitem>
-		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
-		<listitem>Modify countdowns, even while they are still running</listitem>
+		<listitem>期間か日付を選択することでカウントダウンをセットします。</listitem>
+		<listitem>あなたの選択で振動かサウンドで通知されることができます。</listitem>
+		<listitem>同時に走る</listitem>
+		<listitem>カウントダウンを保存して後で再開できるように名前を付けます。</listitem>
+		<listitem>カウントダウンの変更（カウントダウンも含む）</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Countdown": </string>
-		<listitem>Launch applications through Android shortcuts</listitem>
-		<listitem>Use OI About to show license information</listitem>
+		<string>"OI カウントダウン" の利用可能な拡張子：</string>
+		<listitem>アンドロイドショートカットからアプリケーションを起動する</listitem>
+		<listitem>OI 情報 を使ってライセンス情報を表示</listitem>
 		<emptyline/>
 		<string>キーワード:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>countdown, timer, alert</listitem>
+		<listitem>カウントダウン、 タイマー、 警告</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>

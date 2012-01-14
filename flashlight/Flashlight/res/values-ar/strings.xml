@@ -10,7 +10,7 @@
   kenn dhia https://launchpad.net/~kendhia</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
+	<string name="about_comments">أبق فلاش الكاميرا أو ضوء الخلفية شغال مع مصباح يدوي OI.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -18,7 +18,7 @@
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">مصباح يدوي OI</string>
     
-    <string name="backlight_info">The backlight stays turned on.</string>
+    <string name="backlight_info">ضوء الخلفية باق شغال.</string>
     
     <string name="color">اللون</string>
     
@@ -42,7 +42,7 @@
 	
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.</string>
+    <string name="color_picker_modularization_explanation">لجعل اختيار الألوان أكثر فائدة للمطورين الآخرين، قمنا بتقسميه الى التطبيق الخاص به.</string>
     <string name="setting_use_camera_flash">استعمل فلاش الكاميرا</string>
     <string name="setting_use_camera_flash_summary">استعمل ضوء الكاميرا بدلا من خلفية الشاشة.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
     <!-- Information to enable the camera flash as flashlight. -->

@@ -3,7 +3,8 @@
 	<translators>Launchpad Contributions:
   Karolina Kowal https://launchpad.net/~gwiazdeczka11
   OpenIntents devs https://launchpad.net/~openintents-devs
-  Tomasz Zieliński https://launchpad.net/~tomek0517</translators>
+  Tomasz Zieliński https://launchpad.net/~tomek0517
+  zielmicha https://launchpad.net/~michal-zielinscy</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->
@@ -66,9 +67,9 @@
 		<!--  -->
 		<!--  Description of application -->
 		<emptyline/>
-		<string>OI Countdown is a helpful timer to increase your productivity and plan your day. </string>
-		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
-		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
+		<string>OI Odliczanie to przydatny czasomierz, który zwiększa twoją efektowność i pozwala lepiej zaplanować dzień.</string>
+		<string>Aplikacja pozwala na ustawienie różnych akcji, które zostaną wykonane aby powiadomić cię o zakończeniu odliczania.</string>
+		<string>Możesz utworzyć tyle alarmów, ile tylko zechcesz.</string>
 		<emptyline/>
 		<string>Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.</string>
 		<emptyline/>
@@ -85,19 +86,19 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Cechy:</string>
-		<listitem>Set a countdown by choosing a duration or a date.</listitem>
-		<listitem>Be notified by vibration or any sound of your choice. </listitem>
-		<listitem>Have an unlimited number of timers running at the same time. </listitem>
-		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
-		<listitem>Modify countdowns, even while they are still running</listitem>
+		<listitem>Ustaw odliczanie poprzez wybranie okresu lub daty.</listitem>
+		<listitem>W zależności od twojego wyboru zostaniesz powiadomiony poprzez wibrację lub dowolny dzwięk.</listitem>
+		<listitem>Możesz uruchomić dowolną liczbę alarmów.</listitem>
+		<listitem>Możesz ponownie wykorzystać odliczania zapisując je i nadając im nazwy.</listitem>
+		<listitem>Możesz zmieniać odliczania nawet gdy są uruchomione.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Countdown": </string>
-		<listitem>Launch applications through Android shortcuts</listitem>
-		<listitem>Use OI About to show license information</listitem>
+		<string>Dostępne rozszerzenia dla "OI Odliczanie":</string>
+		<listitem>Uruchom aplikację przez skrót</listitem>
+		<listitem>Użyj OI About aby pokazać informacje licencyjne</listitem>
 		<emptyline/>
 		<string>Słowa kluczowe:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>countdown, timer, alert</listitem>
+		<listitem>odliczanie, czasomierz, alarm</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>

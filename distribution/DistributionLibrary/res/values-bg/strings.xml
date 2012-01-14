@@ -8,6 +8,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Dariel Kremov https://launchpad.net/~dkremov
   Kras4ooo https://launchpad.net/~kkrassi1984
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
@@ -68,9 +69,9 @@
     <string name="oi_distribution_aboutapp">OI За</string>
     
     <!-- Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_barcodescanner">Barcode OI Plugin</string>
+    <string name="oi_distribution_barcodescanner">Баркод OI Приставка</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_barcodescanner_not_available">No compatible barcode scanner is available.</string>
+    <string name="oi_distribution_barcodescanner_not_available">Не е наличен съвместим баркод скенер.</string>
     
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_filemanager">OI Файлов Диспечер</string>

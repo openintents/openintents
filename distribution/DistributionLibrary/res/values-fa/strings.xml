@@ -9,7 +9,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Ben Jordan https://launchpad.net/~ben-jordan86
-  OpenIntents devs https://launchpad.net/~openintents-devs</string>
+  OpenIntents devs https://launchpad.net/~openintents-devs
+  oren https://launchpad.net/~ahujaaditya92</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -52,34 +53,34 @@
 	<string name="oi_distribution_update_error">دانلود کاربرد نه در دسترس است.</string>
 	
     <!-- Name of the application "OI Update". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_update_app">OI Update</string>
+    <string name="oi_distribution_update_app">OI بروز رسانی OI بروز رسانی</string>
     
     <!-- About -->
     <!-- Menu command to open the "about" or "info" dialog. -->
-    <string name="oi_distribution_about">About</string>
+    <string name="oi_distribution_about">در مورد</string>
     <!-- %s is the version number (e.g. "1.2.1") -->
-	<string name="oi_distribution_aboutapp_not_available">No compatible extension available to display full info (contact, credits, license).</string>
+	<string name="oi_distribution_aboutapp_not_available">هیچ فرمت سازگار در دسترس برای نمایش کامل اطلاعات (تماس، اعتبار، مجوز).</string>
     
     
     <!-- Button text: Get the application "OI About". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_aboutapp_get">Get OI About</string>
+    <string name="oi_distribution_aboutapp_get">هر چه زودتر OI در مورد</string>
     
     <!-- Name of the application "OI About". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_aboutapp">OI About</string>
+    <string name="oi_distribution_aboutapp">OI درباره</string>
     
     <!-- Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_barcodescanner">Barcode OI Plugin</string>
+    <string name="oi_distribution_barcodescanner">بارکد پلاگین OI</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_barcodescanner_not_available">No compatible barcode scanner is available.</string>
+    <string name="oi_distribution_barcodescanner_not_available">هیچ اسکنر بارکد سازگار در دسترس است.</string>
     
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_filemanager">OI File Manager</string>
+    <string name="oi_distribution_filemanager">OI مدیر فایل</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_filemanager_not_available">No compatible file manager is available.</string>
+    <string name="oi_distribution_filemanager_not_available">هیچ مدیر فایل سازگار در دسترس است.</string>
     
     <!-- Safe -->
     <!-- Name of the application "OI Safe". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_safe">OI Safe</string>
+    <string name="oi_distribution_safe">OI امن</string>
     <!-- Dialog message. -->
     <string name="oi_distribution_safe_not_available">No compatible application for encryption is available.</string>
     <string name="oi_distribution_safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
@@ -93,12 +94,12 @@
     <!-- Dialog button: download the suggested application from the developer web site. -->
     <string name="oi_distribution_download_web">Web download</string>
 	<!-- Dialog title: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_title">Download %s</string>
+    <string name="oi_distribution_download_title">دانلود s%</string>
 	
 	<!-- %s is an application name (e.g. "OI About can be used with the following applications:") -->
 	<string name="oi_distribution_info_activity_text">%s can be used with the following applications:</string>
 	<!-- %s is an application name (e.g. "Launch OI Notepad") -->
-    <string name="oi_distribution_info_launch">Launch %s</string>
+    <string name="oi_distribution_info_launch">پرت‌ كردن‌ s%</string>
     <!-- %1$s is the current application name. %2$s is another application name, and %3$s is the other application\'s version name
     (e.g. "OI About requires OI Notepad 1.2.0 or higher.") -->
 	<string name="oi_distribution_info_not_available">%1$s requires %2$s %3$s or higher.</string>

@@ -79,47 +79,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>العربية</item>
-		<item>Belarusian</item>
-		<item>Bulgarian</item>
-		<item>Catalan</item>
+		<item>البيلاروسية</item>
+		<item>البلغارية</item>
+		<item>الكاتالونية</item>
 		<item>التشيكية</item>
 		<item>الدنماركية</item>
 		<item>الألمانية</item>
 		<item>اليونانية</item>
 		<item>الانجليزية</item>
-		<item>English (United Kingdom)</item>
+		<item>اﻻنجليزية (المملكة المتحدة)</item>
 		<item>الاسبانية</item>
 		<item>الفارسية</item>
 		<item>الفنلندية</item>
 		<item>الفرنسية</item>
 		<item>الفرنسية</item>
-		<item>Hindi</item>
+		<item>الهندية</item>
 		<item>الكرواتية</item>
 		<item>الهنغارية</item>
 		<item>الإيطالية</item>
-		<item>Hebrew</item>
+		<item>العبرية</item>
 		<item>اليابانية</item>
 		<item>الكورية</item>
-		<item>Lao</item>
-		<item>Latvian</item>
-		<item>Macedonian</item>
-		<item>Norwegian Bokmal</item>
+		<item>اﻻوسية</item>
+		<item>اللاتفية</item>
+		<item>المقدونية</item>
+		<item>نرويجية بوكمال</item>
 		<item>الهولندية</item>
-		<item>Occitan (post 1500)</item>
-		<item>Punjabi</item>
+		<item>الأوكيتانية (post 1500)</item>
+		<item>البنجابية</item>
 		<item>البولندية</item>
 		<item>البرتغالية</item>
 		<item>البرتغالية البرازيلية</item>
 		<item>الرومانية</item>
 		<item>الروسية</item>
 		<item>الساردينية</item>
-		<item>Sindhi</item>
+		<item>السندية</item>
 		<item>السلوفاكية</item>
-		<item>Slovenian</item>
+		<item>السلوفينية</item>
 		<item>السويدية</item>
-		<item>Tagalog</item>
+		<item>التاغالوغية</item>
 		<item>التركية</item>
-		<item>Uyghur</item>
+		<item>اﻻوغورية</item>
 		<item>الصينية (البسيطة)</item>
 		<item>الصينية (القديمة)</item>
 	</string-array>

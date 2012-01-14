@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Nikola Miljkovic https://launchpad.net/~milja1337</string>
+	
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Sačuvaj blic kamere ili pozadinu upaljenu sa OI Blicem.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Blic</string>
+    
+    <string name="backlight_info">Pozadinsko svetlo ostaje upaljeno.</string>
+    
+    <string name="color">Boja</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">OI Birač Boja</string>
+    
+    <string name="preferences">Postavke</string>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<!-- Title for preferences or settings -->
+	<string name="settings_titlebar">Postavke</string>
+	<string name="settings_title_keep_color">Zadrži boju</string>
+	<string name="settings_summary_keep_color">Sačuvaj boju za sledeci put Blic aplikacija je pokrenuta</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
+		user tries to access it. -->
+    <string name="color_picker_modularization_explanation">Da bi napravio Birač Boja korisniji za ostale programere, treba da podelimo u svoje sopstvene aplikacije.</string>
+    <string name="setting_use_camera_flash">Koristi blic kamere</string>
+    <string name="setting_use_camera_flash_summary">Koristi blic kamere umesto pozadinskog svetla.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <!-- Information to enable the camera flash as flashlight. -->
+    <string name="cameralight_info">Pritisni da upališ blic kamere (Možda traje malo duže)</string>
+    <string name="cameralight_stop_info">Pritisni da ugasiš svetlo kamere.</string>
+    
+</resources>

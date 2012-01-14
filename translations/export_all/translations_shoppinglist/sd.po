@@ -32,9 +32,8 @@ msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-#, fuzzy
 msgid "OI Shopping List"
-msgstr "OI खरीदारी सूची"
+msgstr ""
 
 #: tmp_strings.xml:35(string)
 msgid "New item"
@@ -65,9 +64,8 @@ msgid "My shopping list"
 msgstr "मुंजी खरीदारी सूची"
 
 #: tmp_strings.xml:42(string)
-#, fuzzy
 msgid "e.g. wishlist, family list"
-msgstr "जीयं इच्छा सूची, परिवार सूची"
+msgstr ""
 
 #. Automation action to clean up a list.
 #: tmp_strings.xml:43(string) tmp_strings.xml:337(item)
@@ -773,15 +771,13 @@ msgstr "कोई नहीं"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
-#, fuzzy
 msgid "Per sentence"
-msgstr "प्रति वाकया"
+msgstr ""
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
-#, fuzzy
 msgid "Per word"
-msgstr "प्रति शब्द"
+msgstr ""
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
 #: tmp_strings.xml:320(string)
@@ -818,12 +814,3 @@ msgstr "हिक्क सूची चुन्दयो"
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
 msgstr "पृष्ठ %d  ते कोई भी आईटम काने"
-
-
-
-
-
-
-
-
-

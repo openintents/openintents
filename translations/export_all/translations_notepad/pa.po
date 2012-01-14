@@ -492,6 +492,3 @@ msgstr "ਕਯਾ ਆਪ ਯੇ ਨੋਟ ਮਿਟਾਨਾ ਚਾਹਤੇ ਹ
 #: tmp_strings.xml:219(string)
 msgid "New note"
 msgstr "ਨਵਾ ਨੋਟ"
-
-
-

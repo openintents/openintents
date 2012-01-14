@@ -11,7 +11,7 @@
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
+	<string name="about_comments">Задръж светкавицата на камерата или дисплея включени с OI Фенерче.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

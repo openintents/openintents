@@ -11,8 +11,7 @@ Launchpad Contributions:
   Halilpk https://launchpad.net/~halilpk
   OpenIntents devs https://launchpad.net/~openintents-devs
   Peli https://launchpad.net/~peli0101
-  ariza95 https://launchpad.net/~alirizanazli95
-  zeugma https://launchpad.net/~sunder67</string>
+  ariza95 https://launchpad.net/~alirizanazli95</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
 	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>

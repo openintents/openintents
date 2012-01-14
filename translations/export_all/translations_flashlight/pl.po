@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: zielmicha <michal@zielinscy.org.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,13 +28,15 @@ msgstr ""
 "  Karolina Kowal https://launchpad.net/~gwiazdeczka11\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Tomasz 'Zen' Napierala https://launchpad.net/~tzn\n"
-"  Tomasz Zieliński https://launchpad.net/~tomek0517"
+"  Tomasz Zieliński https://launchpad.net/~tomek0517\n"
+"  zielmicha https://launchpad.net/~michal-zielinscy"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
-#, fuzzy
 msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
-msgstr "Używaj fleszu kamery zamiast podświetlenia ekranu."
+msgstr ""
+"Pozostaw lampę błyskową lub podświetlenie ekranu włączone używając OI "
+"Latarka."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
@@ -93,10 +95,3 @@ msgstr "Naciśnij, aby włączyć światło aparatu (może trwać sekundę)."
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
 msgstr "Naciśnij, aby wyłączyć światło aparatu."
-
-
-
-
-
-
-

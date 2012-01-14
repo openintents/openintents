@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Atharva Lath <Unknown>\n"
 "Language-Team: Hindi <hi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,19 +22,19 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Atharva Lath https://launchpad.net/~atharvalath96\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Shitiz Garg https://launchpad.net/~l95s"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:27(string)
 msgid "Keep track of your shopping items with OI Shopping List."
-msgstr ""
+msgstr "अपने खरीदारी के सामान का ट्रेक रखें OI शौपिंग लिस्ट के साथ."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
-#, fuzzy
 msgid "OI Shopping List"
-msgstr "ओआई शौपिंग लिस्ट"
+msgstr "OI खरीदारी सूची"
 
 #: tmp_strings.xml:35(string)
 msgid "New item"
@@ -65,9 +65,8 @@ msgid "My shopping list"
 msgstr "मेरी खरीदारी सूची"
 
 #: tmp_strings.xml:42(string)
-#, fuzzy
 msgid "e.g. wishlist, family list"
-msgstr "जैसे कि इच्छा सूची, परिवार सूची"
+msgstr "उदाहरण इच्छा सूची, परियार की लिस्ट"
 
 #. Automation action to clean up a list.
 #: tmp_strings.xml:43(string) tmp_strings.xml:337(item)
@@ -177,7 +176,7 @@ msgstr "आइटम अन्य सूची में ले जाएँ"
 
 #: tmp_strings.xml:76(string)
 msgid "Copy item"
-msgstr ""
+msgstr "चीज़ को कोपी करें"
 
 #. Button label to add an item to the list.
 #: tmp_strings.xml:79(string)
@@ -279,7 +278,7 @@ msgstr "प्रधानता १-४: %s"
 
 #: tmp_strings.xml:116(string)
 msgid "Are you sure you want to permanently delete this item?"
-msgstr ""
+msgstr "क्या आप पक्का से इस चीज़ को हमेशा के लिए हटाना चाहते हैं?"
 
 #: tmp_strings.xml:117(string)
 msgid "Delete"
@@ -482,11 +481,11 @@ msgstr "आइटम जोड़ने पर मात्रा को शू�
 
 #: tmp_strings.xml:182(string)
 msgid "Barcode Scanner"
-msgstr ""
+msgstr "बारकोड स्केनर"
 
 #: tmp_strings.xml:183(string)
 msgid "Long press the Add button to start Barcode OI Plugin (if installed)."
-msgstr ""
+msgstr "एड्ड बटन को दबाएँ रखें बारकोड OI प्लगइन ऑफ शुरू करने के लिए (अगर है तो)."
 
 #: tmp_strings.xml:184(string)
 msgid "Show tags"
@@ -638,15 +637,15 @@ msgstr "छूने के प्रधानता या मुल्ये �
 
 #: tmp_strings.xml:235(string)
 msgid "Reset all settings"
-msgstr ""
+msgstr "सारी सेटिंग्स को रिसेट करें"
 
 #: tmp_strings.xml:236(string)
 msgid "Do you really want to RESET ALL settings? This cannot be undone."
-msgstr ""
+msgstr "क्या आप पक्का से सारी सेटिंग्स को रिसेट करना कहते हैं? यह वापस नहीं आ सकता."
 
 #: tmp_strings.xml:237(string)
 msgid "All settings have been reset"
-msgstr ""
+msgstr "सारी सेट्टिंग रिसेट हो चुकी है"
 
 #. Permission to read shopping lists
 #: tmp_strings.xml:245(string)
@@ -773,15 +772,13 @@ msgstr "कोई नहीं"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:311(item)
-#, fuzzy
 msgid "Per sentence"
-msgstr "प्रति वाकया"
+msgstr "हर एक वाक्य"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:313(item)
-#, fuzzy
 msgid "Per word"
-msgstr "प्रति शब्द"
+msgstr "हर एक शब्द"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
 #: tmp_strings.xml:320(string)
@@ -805,25 +802,16 @@ msgstr "सूची चुनिए:"
 
 #: tmp_strings.xml:340(string)
 msgid "Previous page"
-msgstr ""
+msgstr "पिछला पृष्ठ"
 
 #: tmp_strings.xml:341(string)
 msgid "Next page"
-msgstr ""
+msgstr "अगला पृष्ठ"
 
 #: tmp_strings.xml:342(string)
 msgid "Choose a list"
-msgstr ""
+msgstr "एक लिस्ट को चुने"
 
 #: tmp_strings.xml:343(string)
 msgid "No items on page %d"
-msgstr ""
-
-
-
-
-
-
-
-
-
+msgstr "पेज पर कोई आइटम नहीं है %d"

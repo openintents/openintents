@@ -21,6 +21,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Tomass https://launchpad.net/~txt1"
 
 #. Description of application
@@ -43,7 +44,7 @@ msgstr ""
 
 #: tmp_strings.xml:15(string)
 msgid "Credits include authors, documentation, translators, and artists."
-msgstr "Titri iekļauj autorus, dokumentāciju, tulkotājus un māklsiniekus."
+msgstr "Titri iekļauj autorus, dokumentāciju, tulkotājus un māksliniekus."
 
 #: tmp_strings.xml:16(string)
 msgid ""
@@ -85,153 +86,167 @@ msgstr ""
 #: tmp_strings.xml:337(string)
 msgid ""
 "You can help to improve the translation into your language at Launchpad:"
-msgstr "Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Lounchpad:"
+msgstr "Jūs varat palīdzēt uzlabot tulkojumu savā valodā izmantojot Launchpad:"
 
 #: tmp_strings.xml:29(string) tmp_strings.xml:84(string)
 #: tmp_strings.xml:130(string) tmp_strings.xml:183(string)
 #: tmp_strings.xml:230(string) tmp_strings.xml:285(string)
 #: tmp_strings.xml:340(string)
 msgid "Features:"
-msgstr ""
+msgstr "Funkcijas:"
 
 #: tmp_strings.xml:30(listitem)
 msgid "Shows general info, credits, and license tabs."
-msgstr ""
+msgstr "Parāda vispārīgu informāciju, titrus un licenžu cilnes."
 
 #: tmp_strings.xml:31(listitem)
 msgid "Shows translators of all language versions."
-msgstr ""
+msgstr "Parāda visu valodu tulkotāju versijas."
 
 #: tmp_strings.xml:32(listitem)
 msgid ""
 "Retrieves information from application manifest through default tags and "
 "metadata."
 msgstr ""
+"Atgūst informāciju no aplikācijas skaidrojuma caur noklusējuma iezīmēm un "
+"metadatiem."
 
 #: tmp_strings.xml:33(listitem)
 msgid "Optionally, all fields can be modified through intent extras."
 msgstr ""
+"Pēc izvēles, visi lauciņi var tikt izmaniīti caur nolūkotiem papildinājumiem."
 
 #: tmp_strings.xml:35(string)
 msgid "Applications that work with \"OI About\":"
-msgstr ""
+msgstr "Aplikācijas, kuras strādā ar \"OI About\":"
 
 #: tmp_strings.xml:36(listitem)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI Notepad"
 
 #: tmp_strings.xml:37(listitem)
 msgid "OI File manager"
-msgstr ""
+msgstr "OI File manager"
 
 #: tmp_strings.xml:38(listitem)
 msgid "OI Shopping List"
-msgstr ""
+msgstr "OI Shopping List"
 
 #: tmp_strings.xml:39(listitem)
 msgid "OI Convert CSV"
-msgstr ""
+msgstr "OI Convert CSV"
 
 #: tmp_strings.xml:40(listitem)
 msgid "OI Safe"
-msgstr ""
+msgstr "OI Safe"
 
 #: tmp_strings.xml:41(listitem)
 msgid "OI Countdown"
-msgstr ""
+msgstr "OI Countdown"
 
 #: tmp_strings.xml:42(listitem)
 msgid "OI Flashlight"
-msgstr ""
+msgstr "OI Flashlight"
 
 #: tmp_strings.xml:44(string) tmp_strings.xml:95(string)
 #: tmp_strings.xml:145(string) tmp_strings.xml:195(string)
 #: tmp_strings.xml:252(string) tmp_strings.xml:302(string)
 #: tmp_strings.xml:359(string)
 msgid "Keywords:"
-msgstr ""
+msgstr "Atslēgvārdi:"
 
 #: tmp_strings.xml:45(listitem)
 msgid "About, Credits, Information."
-msgstr ""
+msgstr "Paskaidrojums, titri, informācija."
 
 #: tmp_strings.xml:46(listitem)
 msgid "OI, OpenIntents, Open Intents."
-msgstr ""
+msgstr "OI, OpenIntents, Open Intents."
 
 #: tmp_strings.xml:48(string) tmp_strings.xml:101(string)
 #: tmp_strings.xml:151(string) tmp_strings.xml:199(string)
 #: tmp_strings.xml:256(string) tmp_strings.xml:308(string)
 #: tmp_strings.xml:363(string)
 msgid "International versions:"
-msgstr ""
+msgstr "Starptautiskās versijas:"
 
 #: tmp_strings.xml:51(string) tmp_strings.xml:104(string)
 #: tmp_strings.xml:154(string) tmp_strings.xml:202(string)
 #: tmp_strings.xml:259(string) tmp_strings.xml:311(string)
 msgid "Search strings for Market:"
-msgstr ""
+msgstr "Meklēt rindiņas tirgum:"
 
 #: tmp_strings.xml:66(string)
 msgid ""
 "OI Countdown is a helpful timer to increase your productivity and plan your "
 "day."
 msgstr ""
+"OI Countdown ir izpalīdzīgs taimeris produktivitātes paaugstināšanai un "
+"dienas plānošanai."
 
 #: tmp_strings.xml:67(string)
 msgid ""
 "It allows you to set a variety of different actions to notify you at the end "
 "of a timer."
 msgstr ""
+"Tas ļauj Jums uzstādīt dažādas iespējas, lai ziņotu Jums laika atskaites "
+"beigās."
 
 #: tmp_strings.xml:68(string)
 msgid ""
 "Fully customize all your timers, with no limit on how many you can have "
 "running or saved."
 msgstr ""
+"Pilnībā pielāgojiet visus taimerus, bez saglabāto vai darbojošos taimeru "
+"skaita ierobežojuma."
 
 #: tmp_strings.xml:85(listitem)
 msgid "Set a countdown by choosing a duration or a date."
-msgstr ""
+msgstr "Uzstādiet atskaiti izvēloties ilgumu vai datumu."
 
 #: tmp_strings.xml:86(listitem)
 msgid "Be notified by vibration or any sound of your choice."
-msgstr ""
+msgstr "Jums tiks paziņots ar vibrāciju vai jebkādu skaņu pēc jūsu izvēles."
 
 #: tmp_strings.xml:87(listitem)
 msgid "Have an unlimited number of timers running at the same time."
 msgstr ""
+"Jums tiek nodrošināts neierobežots vienlaikus darbojošos taimeru skaits."
 
 #: tmp_strings.xml:88(listitem)
 msgid "Save your countdowns and give them names to reuse at later times."
 msgstr ""
+"Saglabājiet savas atskaites un dodiet tām vārdus, lai varētu tās izmantot "
+"vēlāk."
 
 #: tmp_strings.xml:89(listitem)
 msgid "Modify countdowns, even while they are still running"
-msgstr ""
+msgstr "Izmainiet atskaites, kamēr tās joprojām darbojas."
 
 #: tmp_strings.xml:91(string)
 msgid "Available extensions for \"OI Countdown\":"
-msgstr ""
+msgstr "Pieejamie paplašinājumi \"OI Countdown\":"
 
 #: tmp_strings.xml:92(listitem)
 msgid "Launch applications through Android shortcuts"
-msgstr ""
+msgstr "Darbiniet aplikācijas izmantojot Android saīsnes"
 
 #: tmp_strings.xml:93(listitem)
 msgid "Use OI About to show license information"
-msgstr ""
+msgstr "Izmantojiet OI About, lai parādītu licenžu informāciju"
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:97(listitem)
 msgid "countdown, timer, alert"
 msgstr ""
+"Laika atskaite, taimeris, brīdinājums, zvans, atgādinājums, modinātājs, "
+"countdown, timer, alert"
 
 #. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
 #: tmp_strings.xml:99(listitem) tmp_strings.xml:197(listitem)
 #: tmp_strings.xml:254(listitem) tmp_strings.xml:361(listitem)
 msgid "OI, OpenIntents, Open Intents"
-msgstr ""
+msgstr "OI, OpenIntents, Open Intents"
 
 #. Description of application
 #: tmp_strings.xml:116(string)
@@ -239,71 +254,79 @@ msgid ""
 "OI File Manager allows you to browse your SD card, create directories, "
 "rename, copy, move, and delete files."
 msgstr ""
+"OI File Manager ļauj pārlūkot Jūsu SD karti, izveidot failu katalogus, "
+"pārsaukt, kopēt, pārvietot un izdzēst failus."
 
 #: tmp_strings.xml:117(string)
 msgid ""
 "It also acts as an extension to other applications to display \"Open\" and "
 "\"Save\" dialogs."
 msgstr ""
+"Tas darbojas arī kā paplašinājums citām aplikācijām, lai parādītu \"Open\" "
+"un \"Save\" dialogus."
 
 #: tmp_strings.xml:131(listitem)
 msgid "Show list of files with thumbnails for images."
-msgstr ""
+msgstr "Parāda failu sarakstu ar sīktēliem kā attēliem."
 
 #: tmp_strings.xml:132(listitem)
 msgid "Move, copy, rename, and delete files."
-msgstr ""
+msgstr "Pārvietojiet, kopējiet, pārsauciet un izdzēšiet failus."
 
 #: tmp_strings.xml:133(listitem)
 msgid "Create and delete directories (folders)."
-msgstr ""
+msgstr "Izveidojiet un izdzēsiet failu katalogus (mapes)."
 
 #: tmp_strings.xml:134(listitem)
 msgid "Send files by email."
-msgstr ""
+msgstr "Sūtiet failus ar e-pastu."
 
 #: tmp_strings.xml:135(listitem)
 msgid ""
 "Acts as an extension to other applications, like GMail, to attach files."
 msgstr ""
+"Darbojas kā paplašinājums citām aplikācijām kā GMail, lai pievienotu failus."
 
 #: tmp_strings.xml:136(listitem)
 msgid "Support for many file endings and mime types."
-msgstr ""
+msgstr "Atbalsta daudzus failu nobeigumus un mime veidus."
 
 #: tmp_strings.xml:137(listitem)
 msgid ""
 "Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can "
 "use OI File Manager."
 msgstr ""
+"Atbalsta PICK_FILE un PICK_DIRECTORY darbības, tādējādi citas aplikācijas "
+"var izmantot OI File Manager."
 
 #: tmp_strings.xml:139(string) tmp_strings.xml:296(string)
 msgid "Available extensions for \"OI File Manager\":"
-msgstr ""
+msgstr "Pieejamie paplašinājumi \"OI File Manager\":"
 
 #: tmp_strings.xml:140(listitem) tmp_strings.xml:189(listitem)
 #: tmp_strings.xml:241(listitem) tmp_strings.xml:297(listitem)
 #: tmp_strings.xml:351(listitem)
 msgid "Show the license information with \"OI About\"."
-msgstr ""
+msgstr "Parādīt licenzes informāciju ar \"OI About\"."
 
 #: tmp_strings.xml:142(string) tmp_strings.xml:299(string)
 msgid "Applications that work with \"OI File Manager\":"
-msgstr ""
+msgstr "Aplikācijas, kuras strādā ar \"OI File Manager\":"
 
 #: tmp_strings.xml:143(listitem)
 msgid "Open and save text files in \"OI Notepad\"."
-msgstr ""
+msgstr "Atveriet un saglabājiet teksta failus ar \"OI Notepad\"."
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:147(listitem)
 msgid "file manager, filemanager, file explorer"
 msgstr ""
+"failu pārvaldnieks, failu pārlūks, file manager, filemanager, file explorer"
 
 #. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
 #: tmp_strings.xml:149(listitem) tmp_strings.xml:306(listitem)
 msgid "OI, IO, OpenIntents, Open Intents"
-msgstr ""
+msgstr "OI, IO, OpenIntents, Open Intents"
 
 #. Description of application
 #: tmp_strings.xml:167(string)
@@ -311,149 +334,166 @@ msgid ""
 "OI Flashlight is a simple and effective application that helps you find a "
 "way in the dark."
 msgstr ""
+"OI Flashlight ir vienkārša un efektīva aplikācija, kura palīdz atrast ceļu "
+"tumsā."
 
 #: tmp_strings.xml:168(string)
 msgid ""
 "OI Flashlight locks the display backlight on, clearly illuminating the "
 "surrounding area."
 msgstr ""
+"OI Flashlight ieslēdz ekrāna apgaismojumu, skaidri izgaismojot apkārtesošo."
 
 #: tmp_strings.xml:169(string)
 msgid ""
 "For devices with a camera flash, OI Flashlight can also use the flash as a "
 "bright torch to brighten the room."
 msgstr ""
+"Ierīcēm ar fotoaparāta zibspuldzi, OI Flashlight var arī izmantot "
+"zibspuldzi, lai izgaismotu istabu."
 
 #: tmp_strings.xml:170(string)
 msgid ""
 "The color of the backlight is completely customizable with OI Color Picker."
-msgstr ""
+msgstr "Apgaismojuma krāsa ir pilnībā pielāgojama ar OI Color Picker."
 
 #: tmp_strings.xml:184(listitem)
 msgid "Lock the display backlight on."
-msgstr ""
+msgstr "Ieslēgt ekrāna apgaismojumu."
 
 #: tmp_strings.xml:185(listitem)
 msgid "Lock camera flash on."
-msgstr ""
+msgstr "Ieslēgt fotoaparāta zibspuldzi."
 
 #: tmp_strings.xml:186(listitem)
 msgid "The color of backlight is customizable."
-msgstr ""
+msgstr "Apgaismojuma krāsa ir pielāgojama."
 
 #: tmp_strings.xml:188(string)
 msgid "Available extensions for \"OI Flashlight\":"
-msgstr ""
+msgstr "Pieejamie paplašinājumi \"OI Flashlight\":"
 
 #: tmp_strings.xml:190(listitem)
 msgid "Change the color of the backlight with \"OI Color Picker\"."
-msgstr ""
+msgstr "Izmainiet apgaismojuma krāsu ar \"OI Color Picker\"."
 
 #: tmp_strings.xml:192(string)
 msgid "Applications that work with \"OI Flashlight\":"
-msgstr ""
+msgstr "Aplikācijas, kuras strādā ar \"OI Flashlight\":"
 
 #: tmp_strings.xml:193(listitem) tmp_strings.xml:249(listitem)
 #: tmp_strings.xml:355(listitem)
 msgid "Update with \"OI Update\"."
-msgstr ""
+msgstr "Atjauniniet ar \"OI Update\"."
 
 #: tmp_strings.xml:196(listitem)
 msgid "Flashlight, light, Backlight"
-msgstr ""
+msgstr "Zibspuldze, gaisma, apgaismojums"
 
 #. Description of application
 #: tmp_strings.xml:214(string)
 msgid "OI Notepad is a full-featured open source note taking application."
 msgstr ""
+"OI Notepad ir pilnīgi iespējota atvērtā pirmkoda piezīmju veikšanas "
+"aplikācija."
 
 #: tmp_strings.xml:215(string)
 msgid ""
 "With it you can tag, search, and send your notes, in addition to basic "
 "functionality such as creating, deleting, and editing notes."
 msgstr ""
+"Ar to var veidot iezīmes, meklēt un sūtīt piezīmes, papildus pamata "
+"funkcionalitātei kā piezīmju izveidošanai, izdzēšanai un labošanai."
 
 #: tmp_strings.xml:216(string)
 msgid ""
 "Advanced features like encryption, import/export, and voice memos are all "
 "available through extensions."
 msgstr ""
+"Papildus iespējas kā šifrēšana, importēšana/eksportēšana un balss piezīmes "
+"ir pieejamas izmantojot paplašinājumus."
 
 #: tmp_strings.xml:217(string)
 msgid ""
 "All of this functionality is brought together in a simplistic and efficient "
 "layout, customizable through a variety of themes."
 msgstr ""
+"Visa ši funkcionalitāte ir apkopota vienkāršā un efektīvā izkārtojumā, "
+"pielāgojamā ar dažādām tēmām."
 
 #: tmp_strings.xml:231(listitem)
 msgid "Add, edit and delete notes."
-msgstr ""
+msgstr "Pievienojiet, labojiet un izdzēsiet piezīmes."
 
 #: tmp_strings.xml:232(listitem)
 msgid "Long-press on notes to add tags."
-msgstr ""
+msgstr "Turiet nospiestu ilgi, lai pievienotu iezīmes."
 
 #: tmp_strings.xml:233(listitem)
 msgid "Change font size and sort order."
-msgstr ""
+msgstr "Izmainiet fonta lielumu un šķirošanas kārtību."
 
 #: tmp_strings.xml:234(listitem)
 msgid "A clearly arranged layout with a variety of themes."
-msgstr ""
+msgstr "Skaidri sakārtots izkārtojums ar tēmu dažādību."
 
 #: tmp_strings.xml:235(listitem)
 msgid "Quickly search through notes."
-msgstr ""
+msgstr "Ātra meklēšana caur piezīmēm."
 
 #: tmp_strings.xml:236(listitem)
 msgid "Send notes as MMS or SMS."
-msgstr ""
+msgstr "Sūtiet piezīmes kā MMS vai SMS."
 
 #: tmp_strings.xml:238(string)
 msgid "Available extensions for \"OI Notepad\":"
-msgstr ""
+msgstr "Pieejamie paplašinājumi \"OI Notepad\":"
 
 #: tmp_strings.xml:239(listitem)
 msgid "Record and attach voice memos to notes with \"OI Voice Notes\"."
 msgstr ""
+"Ierakstiet un pievienojiet balss piezīmes savām piezīmēm ar \"OI Voice Notes"
+"\"."
 
 #: tmp_strings.xml:240(listitem)
 msgid "With \"OI Convert CSV\" import/export notes from the SD card."
-msgstr ""
+msgstr "Ar \"OI Convert CSV\" importējiet/eksportējiet piezīmes no SD kartes."
 
 #: tmp_strings.xml:242(listitem)
 msgid "Insert the date and time into notes with \"OI Insert Date\"."
-msgstr ""
+msgstr "Ievietojiet datumu un laiku piezīmēs ar \"OI Insert Date\"."
 
 #: tmp_strings.xml:243(listitem)
 msgid "Turn text upside down with \"Upside Down\"."
-msgstr ""
+msgstr "Pagrieziet tekstu kājām gaisā ar \"Upside Down\"."
 
 #: tmp_strings.xml:245(string)
 msgid "Applications that work with \"OI Notepad\":"
-msgstr ""
+msgstr "Aplikācijas, kuras strādā ar \"OI Notepad\":"
 
 #: tmp_strings.xml:246(listitem)
 msgid "Back up notes with \"My Backup Pro\"."
-msgstr ""
+msgstr "Dublējiet piezīmes ar \"My Backup Pro\"."
 
 #: tmp_strings.xml:247(listitem)
 msgid "Encrypt notes using \"OI Safe\"."
-msgstr ""
+msgstr "Šifrējiet piezīmes izmantojot \"OI Safe\"."
 
 #: tmp_strings.xml:248(listitem)
 msgid "Manage notes on your SD Card with \"OI File Manager\"."
-msgstr ""
+msgstr "Pārvaldiet piezīmes SD kartē ar \"OI File Manager\"."
 
 #: tmp_strings.xml:250(listitem)
 msgid ""
 "Share notes through \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", and "
 "many other applications."
 msgstr ""
+"Dalieties ar piezīmēm caur \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\" "
+"un daudzām citām aplikācijām."
 
 #: tmp_strings.xml:253(listitem)
 msgid "Note, Notepad, Note book, Notes"
-msgstr ""
+msgstr "Piezīme, piezīmju grāmata, piezīmes"
 
 #. Description of application
 #: tmp_strings.xml:271(string)
@@ -461,48 +501,52 @@ msgid ""
 "OI Safe safely protects all of your passwords and other private data using "
 "industry standard AES encryption."
 msgstr ""
+"OI Safe droši aizsargā visas Jūsu paroles un citus privātos datus izmantojot "
+"nozares standartu AES šifrēšanu."
 
 #: tmp_strings.xml:272(string)
 msgid ""
 "It also acts as an extension to OI Notepad to encrypt notes created in OI "
 "Notepad."
 msgstr ""
+"Tas arī darbojas kā paplašinājums OI Notepad, lai šifrētu piezīmes, kuras ir "
+"izveidotas ar OI Notepad."
 
 #: tmp_strings.xml:286(listitem)
 msgid "Securely protect data using AES encryption."
-msgstr ""
+msgstr "Aizsargājiet datus droši izmantojot AES šifrēšanu."
 
 #: tmp_strings.xml:287(listitem)
 msgid "Freely move data entries between categories."
-msgstr ""
+msgstr "Brīvi pārvietojiet datu ievades starp kategorijām"
 
 #: tmp_strings.xml:288(listitem)
 msgid "Import/Export data entries and databases."
-msgstr ""
+msgstr "Importējiet/eksportējiet datu ievades un datubāzes."
 
 #: tmp_strings.xml:289(listitem)
 msgid "Backup/Restore entries."
-msgstr ""
+msgstr "Dublējiet/atjaunojiet ievades."
 
 #: tmp_strings.xml:290(listitem)
 msgid "Includes secure password generator."
-msgstr ""
+msgstr "Iekļauj drošu paroļu ģeneratoru."
 
 #: tmp_strings.xml:291(listitem)
 msgid "Automatic timeout to protect encrypted documents."
-msgstr ""
+msgstr "Automātisks noilgums, lai aizsargātu šifrētos dokumentus."
 
 #: tmp_strings.xml:292(listitem)
 msgid "Encrypt OI Notepad notes."
-msgstr ""
+msgstr "Šifrējiet OI Notepad piezīmes."
 
 #: tmp_strings.xml:293(listitem)
 msgid "Support for Obscura picture safe."
-msgstr ""
+msgstr "Atbalsts Obscura attēlu seifam."
 
 #: tmp_strings.xml:294(listitem)
 msgid "MyBackup Pro."
-msgstr ""
+msgstr "MyBackup Pro."
 
 #: tmp_strings.xml:300(listitem)
 msgid "Encrypt notes created in \"OI Notepad\"."
