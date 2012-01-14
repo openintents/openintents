@@ -1,5 +1,6 @@
 Icons for OI Countdown
 
+ic_launcher_automation_task: Lovelace (GCI task 2011/12, issue 481)
 ic_launcher_application: Deep_Sky28 (GCI task 2011/12, issue 479)
 ic_launcher_shortcut: Deep_Sky28 (GCI task 2011/12, issue 480)
 ic_menu_add_countdown: Darriel (GCI task 2011/12, issue 477)
