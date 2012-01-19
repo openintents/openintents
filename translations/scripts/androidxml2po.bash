@@ -12,6 +12,7 @@
 # Jan 8, 2012: Peli: Add special language cases: he<->iw (Hebrew), id<->in (Indonesian), yi<->ji (Yiddish)
 #                    Skip "fil" (Filipino) as it is not supported on Android.
 #                    Delimit "?" at the beginning of a string.
+# Jan 19, 2012: Peli: Add option for manual download as opposed to bzr update (file names differ slightly)
 
 #Change the dirs where the files are located. Dirs cannot have leading "."'s or msgmerge will complain.
 launchpad_po_files_dir="."
@@ -31,6 +32,7 @@ languages=()
 
 option_no_po=0
 option_no_timestamp=0
+option_manual_download=0
 
 # Delimit apostrophes: "'" -> "\'"
 # argument $1 is file name
@@ -142,7 +144,12 @@ do
 		else
 			echo "Importing .xml from .po for "${language}" ("${androidlanguage}")"
 			mkdir -p "${android_xml_files_res_dir}"-"${androidlanguage}"
-			${xml2po} -a -l "${language}" -p "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po tmp_strings.xml > "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml
+			po_filename="${language}".po
+			if [ $option_manual_download -eq 1 ] ; then
+				po_filename="${launchpad_po_filename}"-"${language}".po
+			fi
+			echo "Importing from ${po_filename}..."
+			${xml2po} -a -l "${language}" -p "${launchpad_po_files_dir}"/"${po_filename}" tmp_strings.xml > "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml
 			delimitapostrophe "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml
 		fi
     fi
@@ -275,6 +282,9 @@ while [ "$1" != "" ]; do
 				;;
 		--notimestamp )   # Remove timestamp from po and pot files in export
 				option_no_timestamp=1
+				;;
+		--manualdownload )   # Translation files downloaded manually
+	 			option_manual_download=1
 				;;
         -h | --help )           		usage
                                 		exit
