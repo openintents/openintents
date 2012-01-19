@@ -8,6 +8,7 @@
 #                     directly from the trunk from Launchpad.
 # Feb 12, 2011: Peli: Implement "STOP" command.
 # Jan 9, 2012: Peli: Handle DOS file ending
+# Jan 19, 2012: Peli: add option manualdownload.
 
 # Suppress generation of .po file:
 nopo=
@@ -21,16 +22,21 @@ notimestamp="--notimestamp"
 function execute
 {
 	translationfilename=$1
-    mainpath=$2
-    scriptpath=../../$mainpath/translations
+	mainpath=$2
+	scriptpath=../../$mainpath/translations
 	translationspath=translations_$translationfilename
-    echo "Translating $mainpath"
-    mkdir translations_$translationfilename
-    rm translations_$translationfilename/*.po
-    rm translations_$translationfilename/*.pot
+	echo "Translating $mainpath"
+	mkdir translations_$translationfilename
+	rm translations_$translationfilename/*.po
+	rm translations_$translationfilename/*.pot
 	echo "$nopo"
-    ../scripts/androidxml2po.bash -lp "../import_all/translations/export_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -ex "translations_$translationfilename" $nopo $notimestamp -e
+	../scripts/androidxml2po.bash -lp "../import_all/translations/export_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -ex "translations_$translationfilename" $nopo $notimestamp $manualdownload -e
 }
+
+manualdownload=""
+if [ -e "../import_all/launchpad-export.tar.gz" ] ; then
+	manualdownload="--manualdownload"
+fi
 
 # Delete all existing output directories:
 #rm -r translations_*/*.po

@@ -13,20 +13,20 @@
 function execute
 {
 	translationfilename="$1"
-    mainpath="$2"
-    scriptpath="../../$mainpath/translations"
-    echo "Translating $mainpath"
-    ../scripts/androidxml2po.bash -lp "translations/export_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" $manualdownload -i
+	mainpath="$2"
+	scriptpath="../../$mainpath/translations"
+	echo "Translating $mainpath"
+	../scripts/androidxml2po.bash -lp "translations/export_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" $manualdownload -i
 }
 
 manualdownload=""
 
 if [ -e "launchpad-export.tar.gz" ] ; then
-    manualdownload="--manualdownload"
+	manualdownload="--manualdownload"
 
-    # Extract translation files as obtained from Launchpad
-    echo "Extracing translation files..."
-    tar -xvvzf launchpad-export.tar.gz
+	# Extract translation files as obtained from Launchpad
+	echo "Extracing translation files..."
+	tar -xvvzf launchpad-export.tar.gz
 fi
 
 # Read all apps that should be translated.

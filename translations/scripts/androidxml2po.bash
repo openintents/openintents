@@ -76,10 +76,17 @@ function undodelimitapostrophe
 # languages=("de" "fr" "zh_CN")
 function setlanguagelist
 {
-	# ls: from the listing of files
-	# grep: take only those that end with "po"
-	# sed: and extract only the parts between the dash "-" and ".po"
-	languages=( `ls "$launchpad_po_files_dir" | grep "po$" | sed "s/.*\-\(.*\)\.po/\1/"`)
+	if [ $option_manual_download -eq 1 ] ; then
+		# ls: from the listing of files
+		# grep: take only those that end with "po"
+		# sed: and extract only the parts between the dash "-" and ".po"
+		languages=( `ls "$launchpad_po_files_dir" | grep "po$" | sed "s/.*\-\(.*\)\.po/\1/"`)
+	else
+		# ls: from the listing of files
+		# grep: take only those that end with "po"
+		# sed: and extract only the parts from the beginning until ".po"
+		languages=( `ls "$launchpad_po_files_dir" | grep "po$" | sed "s/\(.*\)\.po/\1/"`)
+	fi
 }
 
 # Convert language code into language code used in Android,
@@ -136,7 +143,11 @@ undodelimitapostrophe tmp_strings.xml
 
 for language in ${languages[@]}
 do
-    if [ -e "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po ] ; then
+	po_filename="${launchpad_po_files_dir}"/"${language}".po
+	if [ $option_manual_download -eq 1 ] ; then
+		po_filename="${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po
+	fi
+	if [ -e "${po_filename}" ] ; then
 		set_androidlanguage_from_language
 		if [ "${androidlanguage}" = "fil" ] ; then
 			# "fil" is currently not supported on Android
@@ -144,15 +155,10 @@ do
 		else
 			echo "Importing .xml from .po for "${language}" ("${androidlanguage}")"
 			mkdir -p "${android_xml_files_res_dir}"-"${androidlanguage}"
-			po_filename="${language}".po
-			if [ $option_manual_download -eq 1 ] ; then
-				po_filename="${launchpad_po_filename}"-"${language}".po
-			fi
-			echo "Importing from ${po_filename}..."
-			${xml2po} -a -l "${language}" -p "${launchpad_po_files_dir}"/"${po_filename}" tmp_strings.xml > "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml
+			${xml2po} -a -l "${language}" -p "${po_filename}" tmp_strings.xml > "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml
 			delimitapostrophe "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml
 		fi
-    fi
+	fi
 done
 rm tmp_strings.xml
 }
@@ -182,14 +188,19 @@ fi
 if [ $option_no_po -eq 0 ] ; then
 	for language in ${languages[@]}
 	do
-	    if [ -e "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po ] ; then
+		po_filename="${launchpad_po_files_dir}"/"${language}".po
+		if [ $option_manual_download -eq 1 ] ; then
+			po_filename="${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po
+		fi
+		echo "Export 0000000 ${po_filename}"
+		if [ -e "${po_filename}" ] ; then
 			set_androidlanguage_from_language
 			if [ "${androidlanguage}" = "fil" ] ; then
 				# "fil" is currently not supported on Android
 				echo "Skipping Filipino (only doing literal copy)"
 				
 				# Export a literal copy as was obtained from Launchpad
-				cp "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po "${language}".po
+				cp "${po_filename}" "${language}".po
 				
 				# Take out lines starting with "#~".
 				# These are deleted translations, and Launchpad may show an error
@@ -202,15 +213,15 @@ if [ $option_no_po -eq 0 ] ; then
 				mv "${language}".po "${export_po}"/"${language}".po
 			else
 				# All other languages (except Filipino)
-		    	echo "Exporting .xml to updated .po for "${language}" ("${androidlanguage}")"
-		    	if [ -e "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml ] ; then
+				echo "Exporting .xml to updated .po for "${language}" ("${androidlanguage}")"
+				if [ -e "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml ] ; then
 					# Create separate copy, because Launchpad exports "project-xx.po" but imports "xx.po".
 					# WORKAROUND: 
 					#    msgmerge will not merge properly, if export file is not in current directory.
 					#    Therefore: first create .po file in current directory, then
 					#    move it to export directory.
-					cp "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po "${language}".po
-		            ${xml2po} -a -u "${language}".po tmp_strings.xml
+					cp "${po_filename}" "${language}".po
+					${xml2po} -a -u "${language}".po tmp_strings.xml
 					undodelimitapostrophe "${language}".po
 					
 					# Take out lines starting with "#~".
@@ -223,11 +234,11 @@ if [ $option_no_po -eq 0 ] ; then
 					fi
 
 					mv "${language}".po "${export_po}"/"${language}".po
-		        else
-				    echo "-"
-		        fi
+				else
+					echo "-"
+				fi
 			fi
-	    fi
+		fi
 	done
 fi
 rm tmp_strings.xml
@@ -235,31 +246,33 @@ rm tmp_strings.xml
 
 function usage
 {
-    echo "Wrapper for xml2po for android and launchpad."
-    echo "Usage: androidxml2po -lp .. -a .. -n .. -i        Import .xml's from .po's. Updates the .xml's."
-    echo "       androidxml2po -lp .. -a .. -n .. -ex .. -e        Export/update .po's from string.xml's. Overwrites the .pot and merges the .po's."
+	echo "Wrapper for xml2po for android and launchpad."
+	echo "Usage: androidxml2po -lp .. -a .. -n .. -i        Import .xml's from .po's. Updates the .xml's."
+	echo "       androidxml2po -lp .. -a .. -n .. -ex .. -e        Export/update .po's from string.xml's. Overwrites the .pot and merges the .po's."
 	echo "Parameters:"
 	echo " -lp: Lauchpad files path (.po and .pot files)."
 	echo " -a:  Android project path."
 	echo " -n:  Launchpad name for translation files."
 	echo " -ex: Export path for Launchpad files."
 	echo " --no-po: Option for export to suppress generation of .po files."
-    echo "Set variables correctly inside. Run from the /res directory. Provide a string with value "translator-credits" for Launchpad."
-    echo ""
-    echo "Copyright 2009 by pjv. Licensed under GPLv3."
+	echo "Set variables correctly inside. Run from the /res directory. Provide a string with value "translator-credits" for Launchpad."
+	echo ""
+	echo "Copyright 2009 by pjv. Licensed under GPLv3."
 }
 
 ###Main
 while [ "$1" != "" ]; do
-    case $1 in
-        -i | --po2xml | --import )         	shift
-							import_po2xml
-        					exit
-                                		;;
-        -e | --xml2po | --export )    		export_xml2po
-        					exit
-							;;
-		-lp )	# Launchpad files path
+	case $1 in
+		-i | --po2xml | --import )
+				shift
+				import_po2xml
+				exit
+				;;
+		-e | --xml2po | --export )
+				export_xml2po
+				exit
+				;;
+		-lp )   # Launchpad files path
 				shift
 				launchpad_po_files_dir="$1"
 				launchpad_pot_files_dir="$1"
@@ -286,12 +299,14 @@ while [ "$1" != "" ]; do
 		--manualdownload )   # Translation files downloaded manually
 	 			option_manual_download=1
 				;;
-        -h | --help )           		usage
-                                		exit
-                                		;;
-        * )                     		usage
-                                		exit 1
-    esac
-    shift
+		-h | --help )
+				usage
+				exit
+				;;
+		* )
+				usage
+				exit 1
+	esac
+	shift
 done
 usage
