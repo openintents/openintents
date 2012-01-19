@@ -109,6 +109,16 @@ function set_androidlanguage_from_language
 	if [ "$androidlanguage" = "yi" ] ; then
 		androidlanguage="ji"
 	fi
+	if [ "$androidlanguage" = "fil" ] ; then
+		# "fil" is currently not supported on Android
+		echo "Skipping Filipino"
+		androidlanguage="skip"
+	fi
+	if [[ "$androidlanguage" == *\@* ]] ; then
+		# something like "ca@valencia" is currently not supported on Android
+		echo "Skipping ${androidlanguage}"
+		androidlanguage="skip"
+	fi
 }
 
 
@@ -149,9 +159,8 @@ do
 	fi
 	if [ -e "${po_filename}" ] ; then
 		set_androidlanguage_from_language
-		if [ "${androidlanguage}" = "fil" ] ; then
-			# "fil" is currently not supported on Android
-			echo "Skipping Filipino"
+		if [ "${androidlanguage}" = "skip" ] ; then
+			echo "Skipping "${language}"
 		else
 			echo "Importing .xml from .po for "${language}" ("${androidlanguage}")"
 			mkdir -p "${android_xml_files_res_dir}"-"${androidlanguage}"
@@ -192,12 +201,10 @@ if [ $option_no_po -eq 0 ] ; then
 		if [ $option_manual_download -eq 1 ] ; then
 			po_filename="${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po
 		fi
-		echo "Export 0000000 ${po_filename}"
 		if [ -e "${po_filename}" ] ; then
 			set_androidlanguage_from_language
-			if [ "${androidlanguage}" = "fil" ] ; then
-				# "fil" is currently not supported on Android
-				echo "Skipping Filipino (only doing literal copy)"
+			if [ "${androidlanguage}" = "skip" ] ; then
+				echo "Skipping ${language} - copying literally"
 				
 				# Export a literal copy as was obtained from Launchpad
 				cp "${po_filename}" "${language}".po
@@ -212,7 +219,7 @@ if [ $option_no_po -eq 0 ] ; then
 				fi
 				mv "${language}".po "${export_po}"/"${language}".po
 			else
-				# All other languages (except Filipino)
+				# All other languages
 				echo "Exporting .xml to updated .po for "${language}" ("${androidlanguage}")"
 				if [ -e "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml ] ; then
 					# Create separate copy, because Launchpad exports "project-xx.po" but imports "xx.po".
