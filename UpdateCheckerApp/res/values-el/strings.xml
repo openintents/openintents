@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Αναβάθμιση</string>
+    
+    <string name="update_available">Μια νέα έκδοση του %s είναι διαθέσιμη.\nΘα θέλατε να κάνετε αναβάθμιση;</string>
+    <string name="update_available_3">Μια νέα έκδοση του %1$s είναι διαθέσιμη στο %2$s.\n%3$s\n</string>
+    <string name="update_available_2">Μια νέα έκδοση του %1$s είναι διαθέσιμη.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">Μια νέα έκδοση του %1$s είναι διαθέσιμη στο %2$s.</string>
+    <string name="update_available_no_comment">Μια νέα έκδοση του %s είναι διαθέσιμη.</string>
+	<string name="market_not_available">Το Android Market δεν είναι διαθέσιμο.</string>
+    <string name="market_search_term">OI Αναβάθμιση</string>
+	<string name="android_market">Android Market</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">Έκδοση %1$s\nΚάρτα SD %2$s\n\nOS\n%3$s</string>
+    <string name="free_space">ελεύθερος χώρος: %s</string>
+    <string name="os_info">Πλακέτα %1$s\nΜάρκα %2$s\nΣυσκευή %3$s\nID %4$s\nΜοντέλο %5$s</string>
+    
+    <string name="do_update">Εκκίνηση της αναβάθμισης τώρα!</string>
+    <string name="do_update_market">Δοκιμή αναβάθμισης από το Market τώρα!</string>
+    <string name="do_update_andAppStore">Δοκιμή αναβάθμισης από το AndAppStore τώρα!</string>
+    <string name="remind_me_later">Υπενθύμιση αργότερα!</string>
+    <string name="ignore_this_update">Παράβλεψη αυτής της αναβάθμισης</string>
+    <string name="ignore_all_further_updates">Παράβλεψη όλων των μελλοντικών αναβαθμίσεων</string>
+    <string name="ok">Εντάξει</string>
+    
+    <string name="update_not_started">Αδυναμία εκκίνησης της αναβάθμισης!\n\nΠαρακαλώ επικοινωνήστε με τον προγραμματιστή της εφαρμογής!\n\n%s</string>
+    <string name="app_up_to_date">Η εφαρμογή είναι ενημερωμένη.</string>
+    <string name="checking">Έλεγχος για νέα έκδοση.</string>
+    <string name="building_app_list">Δημιουργία λίστας εφαρμογών.</string>
+    <string name="check_andappstore">Έλεγχος του AndAppStore.com</string>
+    <string name="check_versions">Έλεγχος εκδόσεων</string>
+    <string name="show_versions">Εμφάνιση όλων</string>
+    <string name="refresh">Ανανέωση</string>
+    <string name="checked_against_andappstore">Έλεγχθηκε το AndAppStore</string>
+    <string name="current_version">Τρέχουσα έκδοση: %s</string>
+    <string name="current_version_code">Τρέχουσα έκδοση κώδικα: %s</string>
+    <string name="newer_version">Νεότερη έκδοση: %s</string>
+    <string name="newer_version_comment">Νεότερη έκδοση: %1$s - %2$s</string>
+    <string name="newer_version_available">Νεότερη έκδοση διαθέσιμη.</string>
+    <string name="no_update_info_found">Δε βρέθηκαν πληροφορίες αναβάθμισης.</string>
+    <string name="title_list_new_versions">OI Αναβάθμιση - Εμφάνιση νέων εκδόσεων</string>
+    <string name="title_list_new_versions_from_andappstore">OI Αναβάθμιση - Νέες εκδόσεις στο AndAppStore</string>
+    <string name="title_list_all_versions">OI Αναβάθμιση - Εμφάνιση των διαχειριζόμενων εφαρμογών</string>
+    <string name="title_list_all_versions_from_andappstore">OI Αναβάθμιση - Εμφάνιση των διαχειριζόμενων εφαρμογών (έλεγχος και στο AndAppStore)</string>
+    <string name="settings">Ρυθμίσεις</string>
+    <string name="auto_update">Αυτόματος έλεγχος</string>
+    <string name="ignore_title">Παραλείφθηκε</string>
+    <string name="ignore_text">Οι αναβαθμίσεις έχουν παραλειφθεί αυτή τη στιγμή. Θέλετε να λαμβάνετε αναβαθμίσεις ξανά;</string>
+    <string name="unknown_title">Άγνωστο</string>
+    <string name="unknown_text">Δεν υπάρχουν διαθέσιμες πληροφορίες αναβάθμισης. Παρακαλώ ελέξτε χειροκίνητα και ζητήστε από τον προγραμματιστή να υποστηρίζει το OI Αναβάθμιση στο μέλλον.</string>
+    <string name="search_on_market">Αναζήτηση στο Market</string>
+    <string name="search_on_andappstore">Αναζήτηση στο AndAppStore</string>
+    <string name="processing">Γίνεται πεξεργασία του %s</string>
+    
+    <string name="warn">Η διαδικασία αναβάθμισης της εφαρμογής κατευθύνει σε μια ιστοσελίδα διαφορετική από το Android Market. Οι εφαρμογές που εγκαθίστανται από άγνωστες πηγές μπορεί να αποτελέσουν κινδύνους ασφαλείας.</string>
+    <string name="continue_anyway">Συνέχεια ούτως ή άλλως</string>
+    <string name="abort">Εγκατάλειψη</string>
+    
+    <string name="preference_auto_update">Αυτόματη αναβάθμιση</string>
+    <string name="preference_auto_update_summary">Εάν επιλεγεί, η αναζήτηση για αναβαθμίσεις εφαρμόζεται συχνά</string>
+    <string name="title_update_interval">Διάστημα αναβάθμισης</string>
+    <string name="summary_update_interval">Ορίστε το διάστημα κατά το οποίο μια αναζήτηση αναβάθμισης πρέπει να εφαρμόζεται.</string>
+    <string name="dialog_title_update_interval">Επιλογή διαστήματος</string>
+    <string name="default_update_interval">κάθε_μήνα</string>
+    <string name="preference_warning_title">Προειδοποίηση</string>
+    <string name="preference_warning_text">Εάν απεπιλέξτε αυτό το αντικείμενο, τότε δεν θα λαμβάνετε μελλοντικά ειδοποιήσεις για αναβαθμίσεις. Θέλετε σίγουρα να απεπιλέξετε την αυτόματη αναβάθμιση;</string>
+    
+    <string name="preference_andappstore">Χρήση AndAppStore</string>
+    <string name="preference_andappstore_summary">Χρήση της έκδοσης που παρέχεται από το AndAppStore.com</string>
+    
+    <string name="permission_read_update_info">Ανάγνωση πληροφοριών αναβάθμισης</string>
+    <string name="permission_write_update_info">Εγγραφή πληροφοριών αναβάθμισης</string>
+    <string name="permission_read_update_info_descr">Ανάγνωση πληροφοριών σχετικά με τις εγκατεστημένες εφαρμογές, τις τοποθεσίες αναβάθμισης και τα αιτήματα.</string>
+    <string name="permission_write_update_info_descr">Εγγραφή πληροφοριών σχετικά με τις εγκατεστημένες εφαρμογές, τις τοποθεσίες αναβάθμισης και τα αιτήματα.</string>
+
+
+	<!-- About -->
+	<string name="about">Σχετικά</string>
+	<string name="about_title">Περί  του %s</string>
+	<string name="about_text">Έκδοση %s \n\n Το OI Αναβάθμιση σας κρατά ενημερωμένους σχετικά με τις νέες εκδόσεις εφαρμογών.\n Το OpenIntents επιτρέπει διαφορετικές εφαρμογές Android να μοιράζονται δεδομένα χρησιμοποιώντας προθέσεις και ανοικτές διεπαφές.\n\n Για περισσότερες πληροφορίες και άλλες σημαντικές εφαρμογές επισκευτείτε το OpenIntents στο www.openintents.org</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">EULA του OI Αναβάθμιση</string>
+<string name="eula_description">"Copyright 2008 OpenIntents.org\n Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n http://www.apache.org/licenses/LICENSE-2.0\n Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n \n"</string>
+	<string name="eula_accept">Αποδοχή</string>
+	<string name="eula_refuse">Ακύρωση</string>
+	
+</resources>

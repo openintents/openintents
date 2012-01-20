@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: oren <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Persian <fa@li.org>\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -40,8 +41,8 @@ msgstr "٪ s با EULA"
 #. 		Translation can be as long as required.
 #: tmp_strings.xml:23(string)
 msgid ""
-"Please read and accept the following End User License Agreement (EULA) for %"
-"s."
+"Please read and accept the following End User License Agreement (EULA) for "
+"%s."
 msgstr ""
 "لطفا برای خواندن و پذیرفتن توافقنامه مجوز کاربر نهایی زیر (EULA) برای ٪ s با"
 
@@ -152,7 +153,7 @@ msgstr "OI امن"
 #. Dialog message.
 #: tmp_strings.xml:82(string)
 msgid "No compatible application for encryption is available."
-msgstr ""
+msgstr "هیچ برنامه برای رمزگذاری سازگار در دسترس است."
 
 #: tmp_strings.xml:83(string)
 msgid ""
@@ -174,12 +175,12 @@ msgstr ""
 #. Dialog button: download the suggested application from Android Market.
 #: tmp_strings.xml:90(string)
 msgid "Market download"
-msgstr ""
+msgstr "دانلود بازار"
 
 #. Dialog button: download the suggested application from the developer web site.
 #: tmp_strings.xml:92(string)
 msgid "Web download"
-msgstr ""
+msgstr "وب سایت دانلود"
 
 #. Dialog title: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:94(string)
@@ -205,9 +206,9 @@ msgstr ""
 #. Title of a dialog.
 #: tmp_strings.xml:104(string)
 msgid "Instructions"
-msgstr ""
+msgstr "دستورالعمل"
 
 #. Error message
 #: tmp_strings.xml:106(string)
 msgid "Application could not be launched"
-msgstr ""
+msgstr "برنامه می تواند نه راه اندازی شد"

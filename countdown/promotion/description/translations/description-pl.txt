@@ -15,7 +15,7 @@ Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.
 
 
 
-Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem: 
+Kod źródłowy tej darmowej i open-source'owej aplikacji jest dostępny pod adresem: 
 http://code.google.com/p/openintents
 
 Aby zobaczyć pełną listę zmian oraz FAQ, odwiedź: 
@@ -42,7 +42,7 @@ Słowa kluczowe:
 * OI, OpenIntents, Open Intents
 
 Wersje międzynarodowe: 
-Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI, عد تنازلي OI
+Compte enrere d'OI, IO ໄລກັບ, OI カウントダウン, OI 카운트다운, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI Χρονομετρητής, OI Одбројувач, OI काउंटडाउन, OI倒计时, عد تنازلي OI, סופר לאחור OI
 
 
-Wyszukane ciągi znakó w Markecie: 
+Szukaj ciągów znaków w Markecie: 

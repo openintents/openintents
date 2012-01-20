@@ -2,23 +2,23 @@
 OI टॉर्च
 
 # Promo text:
-Keep the camera flash or the backlight turned on with OI Flashlight.
+केमेर्रा फ्लेश या बेक्लाईट खे चालू राख्यो OI फ्लेशलाईट सां गडद
 
 # Description:
 OI टॉर्च हिक्क सरल अऊँ  प्रभावी अनुप्रयोग आहे जेको तहां खे अंधेरे में रास्तो खोजन में मदद कन्दो आ OI टॉर्च प्रदर्शन बैकलाइट खे चालु छड़न दो आ,स्पष्ट रूप सां आसपास जे क्षेत्र खे रोशन कंदों हुओ कैमरा फ्लैश युक्त उपकरणन जे लाये, OI टॉर्च कमरे खे रोशन करण लाये हिक्क उज्ज्वल टॉर्च जे रूप में फ्लैश जो भी प्रयोग करे तो सगे बैकलाइट जा रंग पूरी तरह सां OI रंगचयनक जे अनुकूलन योग्य आहिन 
 
 ईयो अनुप्रयोग विज्ञापन मुक्त आहे अऊँ इनखे इंटरनेट जी अनुमति जी आवश्यकता काने 
 
-इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे : 
+:इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे 
 http://code.google.com/p/openintents
 
-परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो: 
+:परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो 
 http://www.openintents.org
 
-तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो : 
+:तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो 
 https://translations.launchpad.net/openintents/trunk
 
-सुविधाऊँ: 
+:सुविधाऊँ 
 * प्रदर्शन बैकलाइट खे चालू रख्यो
 * कैमरा फ्लैश चालु रख्यो
 * बैकलाइट जा रंग अनुकूलन योग्य आहिन
@@ -35,7 +35,7 @@ https://translations.launchpad.net/openintents/trunk
 * OI, OpenIntents, Open Intents
 
 अंतर्राष्ट्रीय संस्करण: 
-Lanternă OI, Llanterna d'OI, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+Lanternă OI, Llanterna d'OI, OI フラッシュライト, OI 전등, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI قول چىراغ, OI Φακός, OI Светилка, OI Фенерче, OI टॉर्च, OI手电筒, مصباح يدوي OI, פנס OI
 
 
 बाजार जे लाये स्ट्रिंग्स खोजयो  : 

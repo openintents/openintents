@@ -11,6 +11,7 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: thebowseat <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,7 +35,7 @@ msgstr "OI メモ帳 でノートを作成したり共有したりすること�
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
-#: tmp_strings.xml:117(string)
+#: tmp_strings.xml:123(string)
 msgid "OI Notepad"
 msgstr "OI メモ帳"
 
@@ -92,7 +93,7 @@ msgid "Pick note for shortcut"
 msgstr "ショートカット用のノートを選択する"
 
 #. Dialog box
-#: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
+#: tmp_strings.xml:63(string) tmp_strings.xml:133(string)
 msgid "OK"
 msgstr "OK"
 
@@ -181,8 +182,8 @@ msgstr "SDカードから開く"
 msgid "File name"
 msgstr "ファイル名"
 
-#: tmp_strings.xml:91(string) tmp_strings.xml:102(string)
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:91(string) tmp_strings.xml:108(string)
+#: tmp_strings.xml:112(string)
 msgid "Save"
 msgstr "保存"
 
@@ -214,146 +215,170 @@ msgstr "ファイルが既に存在します"
 msgid "Do you really want to overwrite the existing file?"
 msgstr "ファイルを上書き保存してもいいですか？"
 
+#: tmp_strings.xml:100(string)
+msgid "Word count"
+msgstr ""
+
+#: tmp_strings.xml:102(item)
+msgid "One word."
+msgstr ""
+
+#: tmp_strings.xml:103(item)
+msgid "%d words."
+msgstr ""
+
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
-#: tmp_strings.xml:101(string)
+#: tmp_strings.xml:107(string)
 msgid "Import"
 msgstr "インポート"
 
-#: tmp_strings.xml:103(string)
+#: tmp_strings.xml:109(string)
 msgid "Save as"
 msgstr "名前を付けて保存"
 
-#: tmp_strings.xml:104(string)
+#: tmp_strings.xml:110(string)
 msgid "Text modified"
 msgstr "テキスト変更"
 
-#: tmp_strings.xml:105(string)
+#: tmp_strings.xml:111(string)
 msgid "Do you want to save the changes?"
 msgstr "変更を保存しますか？"
 
-#: tmp_strings.xml:107(string)
+#: tmp_strings.xml:113(string)
 msgid "Don't save"
 msgstr "保存しない"
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:115(string)
 msgid "Theme"
 msgstr "テーマ"
 
-#: tmp_strings.xml:110(string)
+#: tmp_strings.xml:116(string)
 msgid "Pick a theme"
 msgstr "テーマを選択"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:111(string) tmp_strings.xml:200(item)
+#: tmp_strings.xml:117(string) tmp_strings.xml:209(item)
 msgid "Default"
 msgstr "デフォルト"
 
-#: tmp_strings.xml:112(string)
+#: tmp_strings.xml:118(string)
 msgid "Monospaced font"
 msgstr "等幅フォント"
 
-#: tmp_strings.xml:113(string)
+#: tmp_strings.xml:119(string)
 msgid "Serif font"
 msgstr "Serifフォント"
 
 #. Search
-#: tmp_strings.xml:116(string) tmp_strings.xml:121(string)
+#: tmp_strings.xml:122(string) tmp_strings.xml:127(string)
 msgid "Search"
 msgstr "検索"
 
 #. %s is the search string
-#: tmp_strings.xml:119(string)
+#: tmp_strings.xml:125(string)
 msgid "No results found for %s."
 msgstr "%s の結果は見つかりませんでした。"
 
-#: tmp_strings.xml:120(string)
+#: tmp_strings.xml:126(string)
 msgid "OI Notepad search"
 msgstr "OI メモ帳検索"
 
 #. The description that will show up in the search settings for this source.
-#: tmp_strings.xml:124(string)
+#: tmp_strings.xml:130(string)
 msgid "Titles of your notes"
 msgstr "ノートのタイトル"
 
-#: tmp_strings.xml:128(string)
+#: tmp_strings.xml:134(string)
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: tmp_strings.xml:129(string)
+#: tmp_strings.xml:135(string)
 msgid "Use this theme for all lists"
 msgstr "テーマを全てのリストで使用する"
 
-#: tmp_strings.xml:130(string)
+#: tmp_strings.xml:136(string)
 msgid "Get more themes"
 msgstr "テーマを入手"
 
-#: tmp_strings.xml:132(string)
+#: tmp_strings.xml:138(string)
 msgid "All notes"
 msgstr "全てのノート"
 
 #. Title for settings regarding the list of notes
-#: tmp_strings.xml:136(string)
+#: tmp_strings.xml:142(string)
 msgid "Notes List"
 msgstr "ノート一覧"
 
-#: tmp_strings.xml:137(string) tmp_strings.xml:138(string)
+#: tmp_strings.xml:143(string) tmp_strings.xml:144(string)
 msgid "List Sorting Order"
 msgstr "一覧のソート順"
 
-#: tmp_strings.xml:139(string)
+#: tmp_strings.xml:145(string)
 msgid "The order in which notes are shown in the notes list"
 msgstr "ノートがノートリストに表示される順序"
 
-#: tmp_strings.xml:140(string)
+#: tmp_strings.xml:146(string)
 msgid "Marquee note titles."
 msgstr "ノートのタイトルをマーキー"
 
-#: tmp_strings.xml:141(string)
+#: tmp_strings.xml:147(string)
 msgid "Continuously scroll note titles that are too long."
 msgstr "長すぎるノートタイトルを連続でスクロール"
 
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:149(string)
 msgid "Note Editor"
 msgstr "メモ編集ツール"
 
-#: tmp_strings.xml:144(string)
+#: tmp_strings.xml:150(string)
 msgid "Font size"
 msgstr "フォントサイズ"
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:151(string)
 msgid "Change font size"
 msgstr "フォントサイズを変更"
 
-#: tmp_strings.xml:146(string)
+#: tmp_strings.xml:152(string)
 msgid "Choose font size"
 msgstr "フォントサイズを選択"
 
-#: tmp_strings.xml:147(string)
+#: tmp_strings.xml:153(string)
 msgid "Auto-create Links"
 msgstr "リンクを自動作成"
 
-#: tmp_strings.xml:148(string)
+#: tmp_strings.xml:154(string)
 msgid "Create links for phone numbers and email/street/web addresses"
 msgstr "電話番号/Eメールアドレス/住所/Webアドレスからリンクを作成"
 
-#: tmp_strings.xml:149(string)
+#: tmp_strings.xml:155(string)
 msgid "Do not create links on notes"
 msgstr "リンクを作成しない"
 
-#: tmp_strings.xml:151(string)
+#: tmp_strings.xml:156(string)
+msgid "Character count"
+msgstr ""
+
+#: tmp_strings.xml:157(string)
+msgid "Show character count in editor"
+msgstr ""
+
+#: tmp_strings.xml:158(string)
+msgid "Do not show character count in editor"
+msgstr ""
+
+#: tmp_strings.xml:160(string)
 msgid "Settings"
 msgstr "設定"
 
-#: tmp_strings.xml:152(string)
+#: tmp_strings.xml:161(string)
 msgid "Sort Order"
 msgstr "ソート順"
 
 #. Permission to read notes.
-#: tmp_strings.xml:160(string)
+#: tmp_strings.xml:169(string)
 msgid "read notes"
 msgstr "ノートの閲覧"
 
-#: tmp_strings.xml:161(string)
+#: tmp_strings.xml:170(string)
 msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
@@ -362,20 +387,20 @@ msgstr ""
 "号化された状態で提供される事に注意してください。"
 
 #. Permission to write notes.
-#: tmp_strings.xml:163(string)
+#: tmp_strings.xml:172(string)
 msgid "write notes"
 msgstr "ノートの作成・編集"
 
-#: tmp_strings.xml:164(string)
+#: tmp_strings.xml:173(string)
 msgid "Allows an application to create new notes or modify existing notes."
 msgstr "他のアプリケーションにノートの新規作成や編集を許可します。"
 
 #. Permission to read shopping lists.
-#: tmp_strings.xml:168(string)
+#: tmp_strings.xml:177(string)
 msgid "read shopping lists"
 msgstr "ショッピングリストの閲覧"
 
-#: tmp_strings.xml:169(string)
+#: tmp_strings.xml:178(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
@@ -384,21 +409,21 @@ msgstr ""
 "たリストやアイテムは暗号化された状態で提供される事に注意してください。"
 
 #. Permission to write shopping lists.
-#: tmp_strings.xml:171(string)
+#: tmp_strings.xml:180(string)
 msgid "write shopping lists"
 msgstr "ショッピングリストの作成・編集"
 
-#: tmp_strings.xml:172(string)
+#: tmp_strings.xml:181(string)
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
 msgstr "他のアプリケーションにリストやアイテムの新規追加や編集を許可する。"
 
 #. Permission to encrypt and decrypt data.
-#: tmp_strings.xml:176(string)
+#: tmp_strings.xml:185(string)
 msgid "encrypt and decrypt data"
 msgstr "暗号化・複合化データ"
 
-#: tmp_strings.xml:177(string)
+#: tmp_strings.xml:186(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
@@ -406,97 +431,97 @@ msgstr ""
 "他のアプリケーションがテキストを暗号化・複合化し、OI Safeにより保存されたパス"
 "ワードにアクセスする事を許可する。"
 
-#: tmp_strings.xml:186(item)
+#: tmp_strings.xml:195(item)
 msgid "Alphabetical"
 msgstr "アルファベット順"
 
-#: tmp_strings.xml:187(item)
+#: tmp_strings.xml:196(item)
 msgid "Reverse Alphabetical"
 msgstr "逆アルファベット順"
 
-#: tmp_strings.xml:188(item)
+#: tmp_strings.xml:197(item)
 msgid "Last Modified"
 msgstr "最終更新日時"
 
-#: tmp_strings.xml:189(item)
+#: tmp_strings.xml:198(item)
 msgid "First Modified"
 msgstr "最初に更新された日時"
 
-#: tmp_strings.xml:190(item)
+#: tmp_strings.xml:199(item)
 msgid "Newest to Oldest"
 msgstr "新しいもの順"
 
-#: tmp_strings.xml:191(item)
+#: tmp_strings.xml:200(item)
 msgid "Oldest to Newest"
 msgstr "古いもの順"
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:196(item)
+#: tmp_strings.xml:205(item)
 msgid "Tiny"
 msgstr "極小"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:198(item)
+#: tmp_strings.xml:207(item)
 msgid "Small"
 msgstr "小"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:202(item)
+#: tmp_strings.xml:211(item)
 msgid "Large"
 msgstr "大"
 
-#: tmp_strings.xml:205(string)
+#: tmp_strings.xml:214(string)
 msgid "Add-ons"
 msgstr "アドオン"
 
-#: tmp_strings.xml:206(string)
+#: tmp_strings.xml:215(string)
 msgid "Get new add-ons"
 msgstr "アドオンを取得"
 
-#: tmp_strings.xml:207(string)
+#: tmp_strings.xml:216(string)
 msgid "Search for extensions and themes online."
 msgstr "拡張機能とテーマをインターネットで検索"
 
-#: tmp_strings.xml:208(string)
+#: tmp_strings.xml:217(string)
 msgid "Get add-ons from Market"
 msgstr "アドオンをマーケットから取得"
 
-#: tmp_strings.xml:209(string)
+#: tmp_strings.xml:218(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "アドオンをOpenIntentsから取得"
 
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:219(string)
 msgid "Extensions"
 msgstr "拡張機能"
 
-#: tmp_strings.xml:211(string)
+#: tmp_strings.xml:220(string)
 msgid "Themes"
 msgstr "テーマ"
 
-#: tmp_strings.xml:212(string)
+#: tmp_strings.xml:221(string)
 msgid "Search for extensions at Android Market."
 msgstr "拡張機能をAndroid Marketから検索"
 
-#: tmp_strings.xml:213(string)
+#: tmp_strings.xml:222(string)
 msgid "Search for themes at Android Market."
 msgstr "テーマをAndroid Marketから検索"
 
-#: tmp_strings.xml:214(string)
+#: tmp_strings.xml:223(string)
 msgid "Get extensions from the OpenIntents homepage."
 msgstr "拡張機能をOpenIntentsから検索"
 
-#: tmp_strings.xml:215(string)
+#: tmp_strings.xml:224(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "テーマをOpenIntentsから取得"
 
-#: tmp_strings.xml:216(string)
+#: tmp_strings.xml:225(string)
 msgid "Deletion Confirmation"
 msgstr "削除の確認"
 
-#: tmp_strings.xml:217(string)
+#: tmp_strings.xml:226(string)
 msgid "Are you sure you want to delete this note?"
 msgstr "このノートを削除してよろしいですか?"
 
-#: tmp_strings.xml:219(string)
+#: tmp_strings.xml:228(string)
 msgid "New note"
 msgstr "新規ノート"

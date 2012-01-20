@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Marek Dobransky <Unknown>\n"
+"Last-Translator: Matěj Konečný <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +30,7 @@ msgstr ""
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
 msgid "Set multiple countdowns with OI Countdown."
-msgstr "Nastavit vícenásobní minutky s OI Minutka"
+msgstr "S OI Minutkou nastavte mnoho minutek!"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string) tmp_strings.xml:56(string)
@@ -312,4 +313,4 @@ msgstr "10 minut"
 
 #: tmp_strings.xml:170(string)
 msgid "OI Countdown doesn't have the permission for this task."
-msgstr ""
+msgstr "OI Minutka nemá oprávnění k tomuto úkonu"

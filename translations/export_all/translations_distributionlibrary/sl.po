@@ -11,6 +11,7 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,8 +40,8 @@ msgstr "Pogoji uporabe aplikacije %s"
 #. 		Translation can be as long as required.
 #: tmp_strings.xml:23(string)
 msgid ""
-"Please read and accept the following End User License Agreement (EULA) for %"
-"s."
+"Please read and accept the following End User License Agreement (EULA) for "
+"%s."
 msgstr "Prosimo preberite in potrdite pogoje uporabe za aplikacijo %s."
 
 #. Button: Accept terms of EULA.

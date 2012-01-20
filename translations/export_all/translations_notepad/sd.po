@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: vishal panjwani <Unknown>\n"
 "Language-Team: Sindhi <sd@li.org>\n"
+"Language: sd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,16 +24,17 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  happynawani https://launchpad.net/~happynawani"
+"  happynawani https://launchpad.net/~happynawani\n"
+"  vishal panjwani https://launchpad.net/~vishal-panjwani15"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:33(string)
 msgid "Create and share your notes with OI Notepad."
-msgstr ""
+msgstr "पेंजा नोट्स OI नोटपेड सां गडद ठायो अऊँ बट्यो"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
-#: tmp_strings.xml:117(string)
+#: tmp_strings.xml:123(string)
 msgid "OI Notepad"
 msgstr "OI नोटपैड"
 
@@ -90,7 +92,7 @@ msgid "Pick note for shortcut"
 msgstr "शोर्त्चुत जे लाये व्याख्या चुन्दयो"
 
 #. Dialog box
-#: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
+#: tmp_strings.xml:63(string) tmp_strings.xml:133(string)
 msgid "OK"
 msgstr "ठीक आ"
 
@@ -179,8 +181,8 @@ msgstr "SD कार्ड मां खोलयो"
 msgid "File name"
 msgstr "फाइल जो नाम"
 
-#: tmp_strings.xml:91(string) tmp_strings.xml:102(string)
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:91(string) tmp_strings.xml:108(string)
+#: tmp_strings.xml:112(string)
 msgid "Save"
 msgstr "सुरक्षित कयो"
 
@@ -212,146 +214,170 @@ msgstr "फाईल पहरों खां ही मौजूद आ"
 msgid "Do you really want to overwrite the existing file?"
 msgstr "शा तहां मौजूदा फाइल ते वरी सां लिखण चाह्यो ता?"
 
+#: tmp_strings.xml:100(string)
+msgid "Word count"
+msgstr ""
+
+#: tmp_strings.xml:102(item)
+msgid "One word."
+msgstr ""
+
+#: tmp_strings.xml:103(item)
+msgid "%d words."
+msgstr ""
+
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
-#: tmp_strings.xml:101(string)
+#: tmp_strings.xml:107(string)
 msgid "Import"
 msgstr "आयात"
 
-#: tmp_strings.xml:103(string)
+#: tmp_strings.xml:109(string)
 msgid "Save as"
 msgstr "ईयं सुरक्षित कयो"
 
-#: tmp_strings.xml:104(string)
+#: tmp_strings.xml:110(string)
 msgid "Text modified"
 msgstr "पाठ बदल जी वयो"
 
-#: tmp_strings.xml:105(string)
+#: tmp_strings.xml:111(string)
 msgid "Do you want to save the changes?"
 msgstr "?शा तहां सहिया में बदलवान खे सुरक्षित करण ता चाह्यो"
 
-#: tmp_strings.xml:107(string)
+#: tmp_strings.xml:113(string)
 msgid "Don't save"
 msgstr "सुरक्षित न कयो"
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:115(string)
 msgid "Theme"
 msgstr "विषयवस्तु"
 
-#: tmp_strings.xml:110(string)
+#: tmp_strings.xml:116(string)
 msgid "Pick a theme"
 msgstr "विषयवस्तु खद्यो"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:111(string) tmp_strings.xml:200(item)
+#: tmp_strings.xml:117(string) tmp_strings.xml:209(item)
 msgid "Default"
 msgstr "डिफ़ॉल्ट"
 
-#: tmp_strings.xml:112(string)
+#: tmp_strings.xml:118(string)
 msgid "Monospaced font"
 msgstr "समंदूरी फॉण्ट"
 
-#: tmp_strings.xml:113(string)
+#: tmp_strings.xml:119(string)
 msgid "Serif font"
 msgstr "सेरिफ़ फॉण्ट"
 
 #. Search
-#: tmp_strings.xml:116(string) tmp_strings.xml:121(string)
+#: tmp_strings.xml:122(string) tmp_strings.xml:127(string)
 msgid "Search"
 msgstr "खोजयो"
 
 #. %s is the search string
-#: tmp_strings.xml:119(string)
+#: tmp_strings.xml:125(string)
 msgid "No results found for %s."
 msgstr "s जे लायेकोई परिणाम काने%"
 
-#: tmp_strings.xml:120(string)
+#: tmp_strings.xml:126(string)
 msgid "OI Notepad search"
 msgstr "OI नोट्पाद खोज"
 
 #. The description that will show up in the search settings for this source.
-#: tmp_strings.xml:124(string)
+#: tmp_strings.xml:130(string)
 msgid "Titles of your notes"
 msgstr "व्याख्याओं जे लाये शीर्षक"
 
-#: tmp_strings.xml:128(string)
+#: tmp_strings.xml:134(string)
 msgid "Cancel"
 msgstr "|रद्द क्यो"
 
-#: tmp_strings.xml:129(string)
+#: tmp_strings.xml:135(string)
 msgid "Use this theme for all lists"
 msgstr "सभीन सूच्युन लाये इन्ह विषयवस्तु जो प्रयोग कयो"
 
-#: tmp_strings.xml:130(string)
+#: tmp_strings.xml:136(string)
 msgid "Get more themes"
 msgstr "बियून भी विषयवस्तु खंदी अच्चो"
 
-#: tmp_strings.xml:132(string)
+#: tmp_strings.xml:138(string)
 msgid "All notes"
 msgstr "सद्यूं व्याख्या"
 
 #. Title for settings regarding the list of notes
-#: tmp_strings.xml:136(string)
+#: tmp_strings.xml:142(string)
 msgid "Notes List"
 msgstr "व्यखायुं जी सूची"
 
-#: tmp_strings.xml:137(string) tmp_strings.xml:138(string)
+#: tmp_strings.xml:143(string) tmp_strings.xml:144(string)
 msgid "List Sorting Order"
 msgstr "सूचीय जो अलग करण जो क्रम"
 
-#: tmp_strings.xml:139(string)
+#: tmp_strings.xml:145(string)
 msgid "The order in which notes are shown in the notes list"
 msgstr "ऊओ क्रम जेमे व्याखा व्याखा जी सूची में लगंदी आ"
 
-#: tmp_strings.xml:140(string)
+#: tmp_strings.xml:146(string)
 msgid "Marquee note titles."
 msgstr "मार्की व्याख्या शीर्षक"
 
-#: tmp_strings.xml:141(string)
+#: tmp_strings.xml:147(string)
 msgid "Continuously scroll note titles that are too long."
 msgstr "वधीक लंबा व्याख्या शीर्षकन खे लगातार खिसकईन्दा रह्यो"
 
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:149(string)
 msgid "Note Editor"
 msgstr "व्याख्या संपादक"
 
-#: tmp_strings.xml:144(string)
+#: tmp_strings.xml:150(string)
 msgid "Font size"
 msgstr "फ़ॉन्ट आकार"
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:151(string)
 msgid "Change font size"
 msgstr "फ़ॉन्टयो आकार बदलयो"
 
-#: tmp_strings.xml:146(string)
+#: tmp_strings.xml:152(string)
 msgid "Choose font size"
 msgstr "फ़ॉन्टयो आकार चुन्द्यो"
 
-#: tmp_strings.xml:147(string)
+#: tmp_strings.xml:153(string)
 msgid "Auto-create Links"
 msgstr "स्वत: निर्मित लिंक"
 
-#: tmp_strings.xml:148(string)
+#: tmp_strings.xml:154(string)
 msgid "Create links for phone numbers and email/street/web addresses"
 msgstr "फोन नंबर अऊँ ईमेल/सड़क/वेब पतन जे लाये लिंक ठायो"
 
-#: tmp_strings.xml:149(string)
+#: tmp_strings.xml:155(string)
 msgid "Do not create links on notes"
 msgstr "व्याख्या ते लिंक न ठायो"
 
-#: tmp_strings.xml:151(string)
+#: tmp_strings.xml:156(string)
+msgid "Character count"
+msgstr ""
+
+#: tmp_strings.xml:157(string)
+msgid "Show character count in editor"
+msgstr ""
+
+#: tmp_strings.xml:158(string)
+msgid "Do not show character count in editor"
+msgstr ""
+
+#: tmp_strings.xml:160(string)
 msgid "Settings"
 msgstr "सेटिंग्स"
 
-#: tmp_strings.xml:152(string)
+#: tmp_strings.xml:161(string)
 msgid "Sort Order"
 msgstr "छंटाई क्रम"
 
 #. Permission to read notes.
-#: tmp_strings.xml:160(string)
+#: tmp_strings.xml:169(string)
 msgid "read notes"
 msgstr "व्याख्याऊँ पड्यो"
 
-#: tmp_strings.xml:161(string)
+#: tmp_strings.xml:170(string)
 msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
@@ -360,20 +386,20 @@ msgstr ""
 "प्रारूप में में ही मिलन्दव"
 
 #. Permission to write notes.
-#: tmp_strings.xml:163(string)
+#: tmp_strings.xml:172(string)
 msgid "write notes"
 msgstr "नोट्स लिख्यो"
 
-#: tmp_strings.xml:164(string)
+#: tmp_strings.xml:173(string)
 msgid "Allows an application to create new notes or modify existing notes."
 msgstr "अनुप्रयोग खे नयी व्याख्या ठायण या मोजुदा व्याख्या खे बदलन जि अनुमती दीन्दो आ"
 
 #. Permission to read shopping lists.
-#: tmp_strings.xml:168(string)
+#: tmp_strings.xml:177(string)
 msgid "read shopping lists"
 msgstr "खरीदारी  सूची पड्यो"
 
-#: tmp_strings.xml:169(string)
+#: tmp_strings.xml:178(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
@@ -382,21 +408,21 @@ msgstr ""
 "अऊँ आइटम एन्क्रिप्टेड स्वरूप में ही प्रदान थीन्दी आ"
 
 #. Permission to write shopping lists.
-#: tmp_strings.xml:171(string)
+#: tmp_strings.xml:180(string)
 msgid "write shopping lists"
 msgstr "खरीदारी सूची  लिख्यो"
 
-#: tmp_strings.xml:172(string)
+#: tmp_strings.xml:181(string)
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
 msgstr "अनुप्रयोग खे नयी सूची ठायण या मोजुदा सूची खे बदलन जि अनुमती दीन्दो आ"
 
 #. Permission to encrypt and decrypt data.
-#: tmp_strings.xml:176(string)
+#: tmp_strings.xml:185(string)
 msgid "encrypt and decrypt data"
 msgstr "डाटा गूढ़ तथा विगूढ़ कयो"
 
-#: tmp_strings.xml:177(string)
+#: tmp_strings.xml:186(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
@@ -404,97 +430,97 @@ msgstr ""
 "अनुप्रयोग खे व्याख्या खे गूढ़ तथा विगूढ़ करण दीन्दो आ अऊँ OI सुरक्षा में संचित पासवर्डन ताणी "
 "वनण दीन्दो आ"
 
-#: tmp_strings.xml:186(item)
+#: tmp_strings.xml:195(item)
 msgid "Alphabetical"
 msgstr "अकारादि"
 
-#: tmp_strings.xml:187(item)
+#: tmp_strings.xml:196(item)
 msgid "Reverse Alphabetical"
 msgstr "प्रतिलोम वर्णमाला अनुक्रमणिका"
 
-#: tmp_strings.xml:188(item)
+#: tmp_strings.xml:197(item)
 msgid "Last Modified"
 msgstr "आखरी बार संशोधित थ्यल"
 
-#: tmp_strings.xml:189(item)
+#: tmp_strings.xml:198(item)
 msgid "First Modified"
 msgstr "पहरों बार संशोधित"
 
-#: tmp_strings.xml:190(item)
+#: tmp_strings.xml:199(item)
 msgid "Newest to Oldest"
 msgstr "सबहिन खां नए खां वठी सबहिन खां पुराणे ताणी"
 
-#: tmp_strings.xml:191(item)
+#: tmp_strings.xml:200(item)
 msgid "Oldest to Newest"
 msgstr "सबहिन खां पुराणे खां वठी सबहिन खां नए ताणी"
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:196(item)
+#: tmp_strings.xml:205(item)
 msgid "Tiny"
 msgstr "नन्हा"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:198(item)
+#: tmp_strings.xml:207(item)
 msgid "Small"
 msgstr "छोटा"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:202(item)
+#: tmp_strings.xml:211(item)
 msgid "Large"
 msgstr "बड़ा"
 
-#: tmp_strings.xml:205(string)
+#: tmp_strings.xml:214(string)
 msgid "Add-ons"
 msgstr "आड-ओंस"
 
-#: tmp_strings.xml:206(string)
+#: tmp_strings.xml:215(string)
 msgid "Get new add-ons"
 msgstr "नया आड-ओंस वठो"
 
-#: tmp_strings.xml:207(string)
+#: tmp_strings.xml:216(string)
 msgid "Search for extensions and themes online."
 msgstr "विस्तारों अऊँ विषयों खे ऑनलाइन गोल्यो"
 
-#: tmp_strings.xml:208(string)
+#: tmp_strings.xml:217(string)
 msgid "Get add-ons from Market"
 msgstr "आड-ओंस बाजार मां वठो"
 
-#: tmp_strings.xml:209(string)
+#: tmp_strings.xml:218(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "आड-ओंस OpenIntents मां वठो"
 
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:219(string)
 msgid "Extensions"
 msgstr "एक्सटेंशन्स"
 
-#: tmp_strings.xml:211(string)
+#: tmp_strings.xml:220(string)
 msgid "Themes"
 msgstr "थीम्स"
 
-#: tmp_strings.xml:212(string)
+#: tmp_strings.xml:221(string)
 msgid "Search for extensions at Android Market."
 msgstr "Android बाजार में एक्सटेंशन खे गोल्यो"
 
-#: tmp_strings.xml:213(string)
+#: tmp_strings.xml:222(string)
 msgid "Search for themes at Android Market."
 msgstr "अंद्रोइड बाजार में थीम्स गोल्यो"
 
-#: tmp_strings.xml:214(string)
+#: tmp_strings.xml:223(string)
 msgid "Get extensions from the OpenIntents homepage."
 msgstr "OpenIntents मुखपृष्ठ मां एक्सटेंशन प्राप्त कयो"
 
-#: tmp_strings.xml:215(string)
+#: tmp_strings.xml:224(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "OpenIntents मुखपृष्ठ मां थीम्स प्राप्त कयो"
 
-#: tmp_strings.xml:216(string)
+#: tmp_strings.xml:225(string)
 msgid "Deletion Confirmation"
 msgstr "मितायण जो पुष्टिकरण"
 
-#: tmp_strings.xml:217(string)
+#: tmp_strings.xml:226(string)
 msgid "Are you sure you want to delete this note?"
 msgstr "शा तहां इन्न व्याख्य खे मितायण जे लाये निश्चित आयो"
 
-#: tmp_strings.xml:219(string)
+#: tmp_strings.xml:228(string)
 msgid "New note"
 msgstr "नयी व्यख्या"

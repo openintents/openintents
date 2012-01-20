@@ -28,7 +28,7 @@
   iulargsb https://launchpad.net/~iulargsb</string>
 	
 	<!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
+	<string name="about_comments">Importă și exportă listele și notițele cu OI Convert CSV.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -137,26 +137,26 @@
     
     <string-array name="import_policy">
         <item>DUPLICĂ - Permite duplicarea înregistrărilor.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>PĂSTREAZĂ - Nu suprascrie înregistrările existente.</item>
         <item>Suprascrie - Suprascrie înregistrările existente.</item>
         <item>Restaurează - ȘTERGE TOT, apoi importă.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>DUPLICĂ - Adaugă o a doua copie unei înregistrări, dacă aceasta există deja.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>PĂSTREAZĂ - Nu suprascrie o înregistrare existentă, ignoră înregistrarea din fișierul CSV.</item>
         <item>Suprascrie - O înregistrare din CSV va SUPRASCRIE o înregistrare existentă.</item>
         <item>Restaurează copia de rezervă - ȘTERGE TOATE ÎNREGISTRĂRILE EXISTENTE, apoi importă fișierul CSV.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>DUPLICĂ - Permite duplicarea înregistrărilor.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>PĂSTREAZĂ - Nu suprascrie înregistrările existente.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>DUPLICĂ - Adaugă o a doua copie unei înregistrări, dacă aceasta există deja.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>PĂSTREAZĂ - Nu suprascrie o înregistrare existentă, ignoră înregistrarea din fișierul CSV.</item>
     </string-array>
     
 </resources>

@@ -2,7 +2,8 @@
 <main>
 	<translators>Launchpad Contributions:
   OpenIntents devs https://launchpad.net/~openintents-devs
-  happynawani https://launchpad.net/~happynawani</translators>
+  happynawani https://launchpad.net/~happynawani
+  vishal panjwani https://launchpad.net/~vishal-panjwani15</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->
@@ -15,26 +16,26 @@
 		<string>ईयो अनुप्रयोग अन्य OI अनुप्रयोगन जे मेनू जे माध्यम सां लागू थींदो आ</string>
 		<string>ईयो तहां खे संस्करण जानकारी, लिंक, क्रेडिट, अऊँ केडे भी अनुप्रयोग जे लाइसेंस खे दिसण जी अनुमति दीन्दो आ</string>
 		<string>श्रेय में लेखक, प्रलेखन, अनुवादक, अऊँ कलाकार शामिल आहिन</string>
-		<string>इन्ह  कार्यशीलता खे हिक्क साथ हिक्क सरलीकृत अऊँ कुशल लेआउट में घुरायो आ</string>
+		<string>इन्ह कार्यशीलता खे हिक्क साथ हिक्क सरलीकृत अऊँ कुशल लेआउट में घुरायो आ</string>
 		<emptyline/>
 		<string>ईयो अनुप्रयोग विज्ञापन मुक्त आहे अऊँ इनखे इंटरनेट जी अनुमति जी आवश्यकता काने</string>
 		<emptyline/>
-		<string>इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे :</string>
+		<string>:इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो:</string>
+		<string>:परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो :</string>
+		<string>:तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>सुविधाऊँ:</string>
-		<listitem>सामान्य जानकारी, क्रेडिट, अऊँ  लाइसेंस टैब दिखार्यो</listitem>
-		<listitem>सद्यूं भाषा संस्करणन जे अनुवादकन खे दिखार्यो</listitem>
-		<listitem>डिफ़ॉल्ट टैग अऊँ मेटाडाटा जे माध्यम सां प्रकट आवेदन माँ जानकारी पुनर्प्राप्त कन्दो आ</listitem>
-		<listitem>वैकल्पिक रूप सां, सभी क्षेत्र इंटेंट एक्स्त्रस जे माध्यम सां संशोधित थी ता सगन</listitem>
+		<string>:सुविधाऊँ</string>
+		<listitem>|सामान्य जानकारी, क्रेडिट, अऊँ  लाइसेंस टैब दिखार्यो</listitem>
+		<listitem>|सद्यूं भाषा संस्करणन जे अनुवादकन खे दिखार्यो</listitem>
+		<listitem>|डिफ़ॉल्ट टैग अऊँ मेटाडाटा जे माध्यम सां प्रकट आवेदन माँ जानकारी पुनर्प्राप्त कन्दो आ</listitem>
+		<listitem>|वैकल्पिक रूप सां, सभी क्षेत्र इंटेंट एक्स्त्रस जे माध्यम सां संशोधित थी ता सगन</listitem>
 		<emptyline/>
-		<string>:जेका अनुप्रयोग "OI  जे बारे में " सां गड्ड कम कंदा इन</string>
+		<string>:जेका अनुप्रयोग\'OI  जे बारे में\' सां गड्ड कम कंदा इन</string>
 		<listitem>OI नोटपैड</listitem>
 		<listitem>OI फाइल प्रबंधक</listitem>
 		<listitem>OI खरीदारी सूची</listitem>
@@ -65,38 +66,38 @@
 		<!--  -->
 		<!--  Description of application -->
 		<emptyline/>
-		<string>OI Countdown is a helpful timer to increase your productivity and plan your day. </string>
-		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
-		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
+		<string>OI काउंटडाउन हिक मददगार काल सम्नाजक तव तहांजी प्रोडक्टिविटी अऊँ प्लान खे वध्यणा लाये ऊओ भी हर दियां</string>
+		<string>ईयो तहां खे अलग अलग कार्यन जी हिक्क किस्म सेट करण लाये तहां खे हिक्क टाइमर जे अंत में सूचित करण जी अनुमति दीन्दो आ</string>
+		<string>पूरी तरह सां आपके सभी टाइमर कितने आप या चल रहा हो सकता है बचाया पर कोई सीमा के साथ, अनुकूलित.</string>
 		<emptyline/>
 		<string>ईयो अनुप्रयोग विज्ञापन मुक्त आहे अऊँ इनखे इंटरनेट जी अनुमति जी आवश्यकता काने</string>
 		<emptyline/>
 		<emptyline/>
 		<emptyline/>
-		<string>इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे :</string>
+		<string>:इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो:</string>
+		<string>:परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
 		<emptyline/>
-		<string>तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो :</string>
+		<string>:तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>सुविधाऊँ:</string>
-		<listitem>Set a countdown by choosing a duration or a date.</listitem>
-		<listitem>Be notified by vibration or any sound of your choice. </listitem>
-		<listitem>Have an unlimited number of timers running at the same time. </listitem>
-		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
-		<listitem>Modify countdowns, even while they are still running</listitem>
+		<string>:सुविधाऊँ</string>
+		<listitem>काउंटडाउन सेट कयो समय या तारिख चुन्दे  करे</listitem>
+		<listitem>नोतिफैड रहयो विब्रेशन या कड़े भी तरह जे साउंड सां जेंझी तहां खे  मर्ज़ी हुजेव</listitem>
+		<listitem>असीमित काल समंजक हलन ता  हिक्क ही समय ते</listitem>
+		<listitem>काउंटडाउन खे सेव कयो अऊँ  उन्ह खे नाम दयोस जेंसान तहां इन्न्खे वारी सां इस्तेमाल करे सग्यो</listitem>
+		<listitem>काउंटडाउन खे संशोधित कयो, अगर हो हलन ता  पाया त</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Countdown": </string>
-		<listitem>Launch applications through Android shortcuts</listitem>
-		<listitem>Use OI About to show license information</listitem>
+		<string>एक्स्तान्शन \"OI काउंट डाउन\" जे  लाये उपलब्ध आहिन</string>
+		<listitem>एप्प्लिकेशन खे लॉन्च कयो Android शोर्टकट्से सां</listitem>
+		<listitem>OI अबाउट इस्तमाल कयो लाइसेंस जी जानकारी जे लाये</listitem>
 		<emptyline/>
 		<string>कीवर्ड:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>countdown, timer, alert</listitem>
+		<listitem>काउंटडाउन, टाइमर, अलर्ट</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
@@ -120,16 +121,16 @@
 		<emptyline/>
 		<string>ईयो अनुप्रयोग विज्ञापन मुक्त आहे अऊँ इनखे इंटरनेट जी अनुमति जी आवश्यकता काने</string>
 		<emptyline/>
-		<string>परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो:</string>
+		<string>:परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो :</string>
+		<string>:तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे :</string>
+		<string>:इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>सुविधाऊँ:</string>
+		<string>:सुविधाऊँ</string>
 		<listitem>छवियन जे लाये थंबनेल सां गड्ड फ़ाइलन जी सूची दिखर्यो</listitem>
 		<listitem>मोक्ल्यो,कॉपी कयो,नाम बदल्यो अऊँ फाईल मिटायो</listitem>
 		<listitem>निर्देशिका (फ़ोल्डर्स) ठायो अऊँ मिटायो |</listitem>
@@ -173,16 +174,16 @@
 		<emptyline/>
 		<string>ईयो अनुप्रयोग विज्ञापन मुक्त आहे अऊँ इनखे इंटरनेट जी अनुमति जी आवश्यकता काने</string>
 		<emptyline/>
-		<string>इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे :</string>
+		<string>:इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो:</string>
+		<string>:परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो :</string>
+		<string>:तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>सुविधाऊँ:</string>
+		<string>:सुविधाऊँ</string>
 		<listitem>प्रदर्शन बैकलाइट खे चालू रख्यो</listitem>
 		<listitem>कैमरा फ्लैश चालु रख्यो</listitem>
 		<listitem>बैकलाइट जा रंग अनुकूलन योग्य आहिन</listitem>
@@ -220,16 +221,16 @@
 		<emptyline/>
 		<string>ईयो अनुप्रयोग विज्ञापन मुक्त आहे अऊँ इनखे इंटरनेट जी अनुमति जी आवश्यकता काने</string>
 		<emptyline/>
-		<string>इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे :</string>
+		<string>:इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो:</string>
+		<string>:परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो :</string>
+		<string>:तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>सुविधाऊँ:</string>
+		<string>:सुविधाऊँ</string>
 		<listitem>जोड़यो, संपादित कयो अऊँ नोट्स मिटायो</listitem>
 		<listitem>नोट्स ते टैग जोड़न लाये लम्बे समय ताणी दबायो</listitem>
 		<listitem>फ़ॉन्ट आकार अऊँ सॉर्ट क्रम बदल्यो</listitem>
@@ -276,16 +277,16 @@
 		<emptyline/>
 		<string>ईयो अनुप्रयोग विज्ञापन मुक्त आहे अऊँ इनखे इंटरनेट जी अनुमति जी आवश्यकता काने</string>
 		<emptyline/>
-		<string>परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो:</string>
+		<string>:परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो :</string>
+		<string>:तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे :</string>
+		<string>:इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>सुविधाऊँ:</string>
+		<string>:सुविधाऊँ</string>
 		<listitem>AES जो प्रयोग करे पंजो डाटा सुरक्षित कयो</listitem>
 		<listitem>अजदिया सां डाटा प्रवष्टियुं खे स्थानांतरित कयो</listitem>
 		<listitem>डेटा प्रविष्टियों अऊँ डेटाबेस खे आयत/निर्यात कयो</listitem>
@@ -329,18 +330,18 @@
 		<string>फ़ॉन्ट आकार, सॉर्ट क्रम, सूची स्तंभ, अऊँ सूची सफाई व्यवहार सभी सेटिंग्स उपयोगकर्ता द्वारा नियंत्रित थीन्दी आहिन्</string>
 		<string>ईया सद्यूं सुविधाऊँ हिक्क साथ कुरकुरे लेआउट में आयूं आहिन जो अनुकूलन योग्य आहिन अलग किस्म जी थीम्स जे द्वारा</string>
 		<emptyline/>
-		<string>इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे :</string>
+		<string>:इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>ईयो अनुप्रयोग विज्ञापन मुक्त आहे अऊँ इनखे इंटरनेट जी अनुमति जी आवश्यकता काने</string>
 		<emptyline/>
-		<string>परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो:</string>
+		<string>:परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो :</string>
+		<string>:तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>सुविधाऊँ:</string>
+		<string>:सुविधाऊँ</string>
 		<listitem>जोड़यो, सूच्युन खे संपादित कयो अऊँ मिटायो</listitem>
 		<listitem>ठायो, हटायो, अऊँ वस्तुअन जी जाँच कयो जल्दी अऊँ आसानीय सां</listitem>
 		<listitem>थीम्स में विविधता|</listitem>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Pance Zvezdanov https://launchpad.net/~pance-zvezdanov</string>
+	
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Држете го блицот или позадинското светло вклучени со OI Светилка.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Светилка</string>
+    
+    <string name="backlight_info">Позадинското светло останува вклучено.</string>
+    
+    <string name="color">Боја</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">OI Избирач на бои</string>
+    
+    <string name="preferences">Нагодувања</string>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<!-- Title for preferences or settings -->
+	<string name="settings_titlebar">Нагодувања</string>
+	<string name="settings_title_keep_color">Задржи ја бојата</string>
+	<string name="settings_summary_keep_color">Зачувај ја бојата за следното стартување на OI Светилка</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
+		user tries to access it. -->
+    <string name="color_picker_modularization_explanation">За да биде Избирачот на бои покорисен за другите развивачи, ние го поделивме во неговата апликација.</string>
+    <string name="setting_use_camera_flash">Употреби блиц</string>
+    <string name="setting_use_camera_flash_summary">Употреби го блицот наместо позадинското светло.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <!-- Information to enable the camera flash as flashlight. -->
+    <string name="cameralight_info">Притисни за да се вклучи блицот (може да потрае неколку секунди).</string>
+    <string name="cameralight_stop_info">Притисни за да се исклучи блицот.</string>
+    
+</resources>

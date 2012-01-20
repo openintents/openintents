@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: zielmicha <michal@zielinscy.org.pl>\n"
+"Last-Translator: Piotr Łazarczyk <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,6 +25,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Andrzej Ziółek https://launchpad.net/~andro-v-zik\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
+"  Piotr Łazarczyk https://launchpad.net/~quazarxd\n"
 "  Tomasz Zieliński https://launchpad.net/~tomek0517\n"
 "  zielmicha https://launchpad.net/~michal-zielinscy"
 
@@ -148,7 +150,7 @@ msgstr "Nie pytaj więcej. Zawsze nadpisuj!"
 
 #: tmp_strings.xml:73(string)
 msgid "Import policy set to RESTORE"
-msgstr "Sposób importu ustawiony na ODŚ"
+msgstr "Sposób importu ustawiony na ODŚWIEŻANIE"
 
 #: tmp_strings.xml:74(string)
 msgid ""
@@ -226,7 +228,7 @@ msgstr "Import/eksport ustawień dla OI Notatnika"
 
 #: tmp_strings.xml:99(string)
 msgid "OI Shopping list"
-msgstr "OI Lista Zakupów"
+msgstr "OI Lista zakupów"
 
 #: tmp_strings.xml:100(string)
 msgid "Import/export settings for OI Shopping list."
@@ -257,7 +259,7 @@ msgstr ""
 #. Permission
 #: tmp_strings.xml:110(string)
 msgid "read notes"
-msgstr "przeglądaj notatki"
+msgstr "czytaj notatki"
 
 #: tmp_strings.xml:111(string)
 msgid ""

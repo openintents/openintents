@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: zielmicha <michal@zielinscy.org.pl>\n"
+"Last-Translator: Piotr Łazarczyk <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,6 +27,7 @@ msgstr ""
 "  Damian Skrodzki https://launchpad.net/~damienix\n"
 "  Iskast https://launchpad.net/~iskast-deactivatedaccount1\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
+"  Piotr Łazarczyk https://launchpad.net/~quazarxd\n"
 "  Tomasz Zieliński https://launchpad.net/~tomek0517\n"
 "  usul https://launchpad.net/~usultis\n"
 "  zielmicha https://launchpad.net/~michal-zielinscy"
@@ -108,7 +110,7 @@ msgstr "Dodaj do zakładek"
 
 #: tmp_strings.xml:53(string)
 msgid "Refresh"
-msgstr ""
+msgstr "Odśwież"
 
 #: tmp_strings.xml:55(string)
 msgid "Create new folder"
@@ -132,7 +134,7 @@ msgstr "Na na pewno chcesz usunąć %s?"
 
 #: tmp_strings.xml:61(string)
 msgid "File deleted."
-msgstr "Plik usunięty"
+msgstr "Plik usunięty."
 
 #: tmp_strings.xml:62(string)
 msgid "Folder deleted."
@@ -152,7 +154,7 @@ msgstr "Plik przeniesiony."
 
 #: tmp_strings.xml:66(string)
 msgid "Folder moved."
-msgstr "Katalog przesunięty."
+msgstr "Katalog przeniesiony."
 
 #: tmp_strings.xml:67(string)
 msgid "File copied."
@@ -296,7 +298,7 @@ msgstr "Nie udało się skopiować pliku."
 
 #: tmp_strings.xml:114(string)
 msgid "File does not exist."
-msgstr "Plik nie istnieje"
+msgstr "Plik nie istnieje."
 
 #: tmp_strings.xml:115(string)
 msgid "Could not delete child file '%s'."
@@ -436,11 +438,11 @@ msgstr "Ten plik jest już zakładką"
 #.           ***************************
 #: tmp_strings.xml:178(string)
 msgid "Item compressed successfully"
-msgstr "Spakowano."
+msgstr "Spakowano"
 
 #: tmp_strings.xml:179(string)
 msgid "Could not compress the item"
-msgstr "Pakowanie nie powiodło się."
+msgstr "Pakowanie nie powiodło się"
 
 #: tmp_strings.xml:180(string)
 msgid "Compress into archive:"
@@ -448,11 +450,11 @@ msgstr "Spakuj do archiwum:"
 
 #: tmp_strings.xml:181(string)
 msgid "Item extracted successfully"
-msgstr "Wypakowano."
+msgstr "Wypakowano"
 
 #: tmp_strings.xml:182(string)
 msgid "Could not extract the item"
-msgstr "Wypakowanie nie powiodło się."
+msgstr "Wypakowanie nie powiodło się"
 
 #: tmp_strings.xml:183(string)
 msgid "Extract into folder:"

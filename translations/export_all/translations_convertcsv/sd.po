@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: vishal panjwani <Unknown>\n"
 "Language-Team: Sindhi <sd@li.org>\n"
+"Language: sd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,12 +24,13 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  happynawani https://launchpad.net/~happynawani"
+"  happynawani https://launchpad.net/~happynawani\n"
+"  vishal panjwani https://launchpad.net/~vishal-panjwani15"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
 msgid "Import and export lists and notes with OI Convert CSV."
-msgstr ""
+msgstr "अंदर लाएं अऊँ बहार मोक्ल्यो लिस्ट्स अऊँ नोट्स खे OI क्न्वेर्ट CSV सां गडद"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -320,7 +322,7 @@ msgstr "डुप्लीकेट - रिकॉर्ड खे डुप्�
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
 msgid "KEEP - Don't overwrite existing records."
-msgstr ""
+msgstr "राख्यो - मौजूदा रेकोर्दन खे अधिलेखित न कयो"
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -338,7 +340,7 @@ msgstr ""
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
-msgstr ""
+msgstr "राख्यो - मौजूदा रेकोर्दन खे अधिलेखित न कयो,CSV फाईल खे अन्देखो कयोस"
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."

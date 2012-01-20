@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Florentina Mușat <deep.sky.028@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,6 +25,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Alex Toma https://launchpad.net/~alex26toma\n"
 "  Eduard Roventa https://launchpad.net/~rov-93\n"
+"  Florentina Mușat https://launchpad.net/~kuchiki14\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  Pricop Alexandru-Mihai https://launchpad.net/~pricop2008\n"
@@ -34,7 +36,7 @@ msgstr ""
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
 msgid "Store your private data with OI Safe."
-msgstr ""
+msgstr "Stochează datele personale cu OI Safe."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:34(string)
@@ -185,7 +187,7 @@ msgstr "Exportă baze de date"
 
 #: tmp_strings.xml:67(string)
 msgid "Select a file for export"
-msgstr ""
+msgstr "Selectează un fișier pentru export"
 
 #: tmp_strings.xml:68(string)
 msgid ""
@@ -218,7 +220,7 @@ msgstr "Importă baze de date"
 
 #: tmp_strings.xml:72(string)
 msgid "Select a file for import"
-msgstr ""
+msgstr "Selectează un fișier pentru import"
 
 #: tmp_strings.xml:73(string)
 msgid "Import file is missing:"
@@ -407,11 +409,11 @@ msgstr "Copierea de rezervă a eșuat"
 
 #: tmp_strings.xml:115(string)
 msgid "Select a file for backup"
-msgstr ""
+msgstr "Selectează un fișier pentru o copie de rezervă"
 
 #: tmp_strings.xml:116(string)
 msgid "Error while backing up"
-msgstr ""
+msgstr "Eroare în timpul creării copiei de rezervă"
 
 #: tmp_strings.xml:117(string)
 msgid "Restore"
@@ -440,11 +442,11 @@ msgstr ""
 
 #: tmp_strings.xml:121(string)
 msgid "Select a file for restore"
-msgstr ""
+msgstr "Selectează un fișier pentru restaurare"
 
 #: tmp_strings.xml:122(string)
 msgid "Error while restoring"
-msgstr ""
+msgstr "Eroare în timpul restaurării"
 
 #. Toast message. %s contains a more detailed error message.
 #: tmp_strings.xml:125(string)
@@ -614,11 +616,11 @@ msgstr "Zile în care se efectuează autocopierea de rezervă"
 
 #: tmp_strings.xml:196(string)
 msgid "Default backup path"
-msgstr ""
+msgstr "Calea implicită pentru copia de rezervă"
 
 #: tmp_strings.xml:197(string)
 msgid "Default export path"
-msgstr ""
+msgstr "Calea implicită pentru export"
 
 #: tmp_strings.xml:200(string)
 msgid "Decrypt (OI Safe)"
@@ -795,18 +797,78 @@ msgstr "Oprește autocopierea de rezervă"
 
 #: tmp_strings.xml:242(string)
 msgid "Time to autolock: %s"
-msgstr ""
+msgstr "Timp de blocare automată: %s"
 
 #: tmp_strings.xml:243(string)
 msgid "While not downloaded, default location will be used."
+msgstr "Cât timp nu este descărcat, se va utiliza locația implicită."
+
+#: tmp_strings.xml:244(string)
+#, fuzzy
+msgid "A backup file was found. Would you like to restore it?"
+msgstr ""
+"Nicio copiere de rezervă nu a fost efectuată pană acum. Doriți să efectuați "
+"una acum ?"
+
+#: tmp_strings.xml:245(string)
+#, fuzzy
+msgid "Backup file found"
+msgstr "Copierea de rezervă a eșuat"
+
+#: tmp_strings.xml:246(string)
+msgid "0"
+msgstr ""
+
+#: tmp_strings.xml:247(string)
+msgid "1"
+msgstr ""
+
+#: tmp_strings.xml:248(string)
+msgid "2"
+msgstr ""
+
+#: tmp_strings.xml:249(string)
+msgid "3"
+msgstr ""
+
+#: tmp_strings.xml:250(string)
+msgid "4"
+msgstr ""
+
+#: tmp_strings.xml:251(string)
+msgid "5"
+msgstr ""
+
+#: tmp_strings.xml:252(string)
+msgid "6"
+msgstr ""
+
+#: tmp_strings.xml:253(string)
+msgid "7"
+msgstr ""
+
+#: tmp_strings.xml:254(string)
+msgid "8"
+msgstr ""
+
+#: tmp_strings.xml:255(string)
+msgid "9"
+msgstr ""
+
+#: tmp_strings.xml:256(string)
+msgid "#"
+msgstr ""
+
+#: tmp_strings.xml:257(string)
+msgid "*"
 msgstr ""
 
 #. Permission to access master password
-#: tmp_strings.xml:251(string)
+#: tmp_strings.xml:265(string)
 msgid "access the master password"
 msgstr "Accesează parola principală"
 
-#: tmp_strings.xml:252(string)
+#: tmp_strings.xml:266(string)
 msgid ""
 "Allows the application to access the master key used for encryption and "
 "decryption. Should never be used except by OI Safe."
@@ -815,11 +877,11 @@ msgstr ""
 "decriptare. Nu ar trebui folosită niciodată cu excepția OI Safe."
 
 #. Permission to encrypt and decrypt data
-#: tmp_strings.xml:254(string)
+#: tmp_strings.xml:268(string)
 msgid "encrypt and decrypt data"
 msgstr "criptează și decriptează date"
 
-#: tmp_strings.xml:255(string)
+#: tmp_strings.xml:269(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
@@ -827,38 +889,38 @@ msgstr ""
 "Permite aplicațiilor să cripteze și să decripteze text, și să acceseze "
 "parolele pe care le-au salvat in OI Safe."
 
-#: tmp_strings.xml:263(item)
+#: tmp_strings.xml:277(item)
 msgid "1 minute"
 msgstr "1 minut"
 
-#: tmp_strings.xml:264(item)
+#: tmp_strings.xml:278(item)
 msgid "5 minutes"
 msgstr "5 minute"
 
-#: tmp_strings.xml:265(item)
+#: tmp_strings.xml:279(item)
 msgid "10 minutes"
 msgstr "10 minute"
 
-#: tmp_strings.xml:266(item)
+#: tmp_strings.xml:280(item)
 msgid "15 minutes"
 msgstr "15 minute"
 
-#: tmp_strings.xml:267(item)
+#: tmp_strings.xml:281(item)
 msgid "30 minutes"
 msgstr "30 de minute"
 
-#: tmp_strings.xml:272(item)
+#: tmp_strings.xml:286(item)
 msgid "1 day"
 msgstr "1 zi"
 
-#: tmp_strings.xml:273(item)
+#: tmp_strings.xml:287(item)
 msgid "7 days"
 msgstr "7 zile"
 
-#: tmp_strings.xml:274(item)
+#: tmp_strings.xml:288(item)
 msgid "30 days"
 msgstr "30 de zile"
 
-#: tmp_strings.xml:275(item)
+#: tmp_strings.xml:289(item)
 msgid "60 days"
 msgstr "60 de zile"

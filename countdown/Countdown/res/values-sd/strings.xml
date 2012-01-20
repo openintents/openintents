@@ -7,10 +7,11 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   OpenIntents devs https://launchpad.net/~openintents-devs
-  happynawani https://launchpad.net/~happynawani</string>
+  happynawani https://launchpad.net/~happynawani
+  vishal panjwani https://launchpad.net/~vishal-panjwani15</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
+	<string name="about_comments">मल्टिपल काउटडाउन सेट कयो OI काउंट डाउन सां गडद</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -169,5 +170,5 @@
     </string-array>
     
     
-    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
+    <string name="no_permission">OI काऊंट डाऊन खे ईयू कार्य करण जी अनुमति कानेस</string>
 </resources>

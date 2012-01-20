@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: vishal panjwani <Unknown>\n"
 "Language-Team: Sindhi <sd@li.org>\n"
+"Language: sd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,12 +24,13 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  happynawani https://launchpad.net/~happynawani"
+"  happynawani https://launchpad.net/~happynawani\n"
+"  vishal panjwani https://launchpad.net/~vishal-panjwani15"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
 msgid "Store your private data with OI Safe."
-msgstr ""
+msgstr "पंजो निजी डाटा राख्यो OI सेफ सां गडद"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:34(string)
@@ -778,12 +780,70 @@ msgstr "स्वतः लोक करण जो समय:%s"
 msgid "While not downloaded, default location will be used."
 msgstr "जेस ताणी डाउनलोड नाथो  थे टेस ताणी देफौल्ट जगह इस्तेमाल थीन्दी"
 
-#. Permission to access master password
+#: tmp_strings.xml:244(string)
+#, fuzzy
+msgid "A backup file was found. Would you like to restore it?"
+msgstr "?हिम्म्ल ताणी कोई बैकअप न थ्यो आ| शा तहां हिम्म्ल बैकअप करण चाहीन्दावा"
+
+#: tmp_strings.xml:245(string)
+#, fuzzy
+msgid "Backup file found"
+msgstr "बैकुप नाकाम थी वयुव"
+
+#: tmp_strings.xml:246(string)
+msgid "0"
+msgstr ""
+
+#: tmp_strings.xml:247(string)
+msgid "1"
+msgstr ""
+
+#: tmp_strings.xml:248(string)
+msgid "2"
+msgstr ""
+
+#: tmp_strings.xml:249(string)
+msgid "3"
+msgstr ""
+
+#: tmp_strings.xml:250(string)
+msgid "4"
+msgstr ""
+
 #: tmp_strings.xml:251(string)
+msgid "5"
+msgstr ""
+
+#: tmp_strings.xml:252(string)
+msgid "6"
+msgstr ""
+
+#: tmp_strings.xml:253(string)
+msgid "7"
+msgstr ""
+
+#: tmp_strings.xml:254(string)
+msgid "8"
+msgstr ""
+
+#: tmp_strings.xml:255(string)
+msgid "9"
+msgstr ""
+
+#: tmp_strings.xml:256(string)
+msgid "#"
+msgstr ""
+
+#: tmp_strings.xml:257(string)
+msgid "*"
+msgstr ""
+
+#. Permission to access master password
+#: tmp_strings.xml:265(string)
 msgid "access the master password"
 msgstr "मुख्य पासवर्ड प्राप्त कयो"
 
-#: tmp_strings.xml:252(string)
+#: tmp_strings.xml:266(string)
 msgid ""
 "Allows the application to access the master key used for encryption and "
 "decryption. Should never be used except by OI Safe."
@@ -792,11 +852,11 @@ msgstr ""
 "OI सुरक्षित जे आलावा कड्डी भी इस्तेमाल न थ्यानो खप्पे"
 
 #. Permission to encrypt and decrypt data
-#: tmp_strings.xml:254(string)
+#: tmp_strings.xml:268(string)
 msgid "encrypt and decrypt data"
 msgstr "डाटा गूढ़ तथा विगूढ़ कयो"
 
-#: tmp_strings.xml:255(string)
+#: tmp_strings.xml:269(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
@@ -804,38 +864,38 @@ msgstr ""
 "अनुप्रयोग खे व्याख्या खे गूढ़ तथा विगूढ़ करण दीन्दो आ अऊँ OI सुरक्षा में संचित पासवर्डन ताणी "
 "वनण दीन्दो आ"
 
-#: tmp_strings.xml:263(item)
+#: tmp_strings.xml:277(item)
 msgid "1 minute"
 msgstr "१ मिनट"
 
-#: tmp_strings.xml:264(item)
+#: tmp_strings.xml:278(item)
 msgid "5 minutes"
 msgstr "५ मिनट"
 
-#: tmp_strings.xml:265(item)
+#: tmp_strings.xml:279(item)
 msgid "10 minutes"
 msgstr "१० मिनट"
 
-#: tmp_strings.xml:266(item)
+#: tmp_strings.xml:280(item)
 msgid "15 minutes"
 msgstr "१५ मिनट"
 
-#: tmp_strings.xml:267(item)
+#: tmp_strings.xml:281(item)
 msgid "30 minutes"
 msgstr "३० मिनट"
 
-#: tmp_strings.xml:272(item)
+#: tmp_strings.xml:286(item)
 msgid "1 day"
 msgstr "१ दिन"
 
-#: tmp_strings.xml:273(item)
+#: tmp_strings.xml:287(item)
 msgid "7 days"
 msgstr "७ दिन"
 
-#: tmp_strings.xml:274(item)
+#: tmp_strings.xml:288(item)
 msgid "30 days"
 msgstr "३० दिन"
 
-#: tmp_strings.xml:275(item)
+#: tmp_strings.xml:289(item)
 msgid "60 days"
 msgstr "६० दिन"

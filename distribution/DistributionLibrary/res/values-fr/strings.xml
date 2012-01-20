@@ -10,7 +10,8 @@
 	<string name="about_translators">Launchpad Contributions:
   John Andre https://launchpad.net/~john-andre
   OpenIntents devs https://launchpad.net/~openintents-devs
-  Peli https://launchpad.net/~peli0101</string>
+  Peli https://launchpad.net/~peli0101
+  Pierre Slamich https://launchpad.net/~pierre-slamich</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -71,7 +72,7 @@
     <!-- Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_barcodescanner">Barcode OI Plugin</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_barcodescanner_not_available">No compatible barcode scanner is available.</string>
+    <string name="oi_distribution_barcodescanner_not_available">Aucun scanner de code barre compatible n\'est disponible.</string>
     
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_filemanager">OI gestionnaire de fichiers</string>

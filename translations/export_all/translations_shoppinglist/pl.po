@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: zielmicha <michal@zielinscy.org.pl>\n"
+"Last-Translator: Piotr Łazarczyk <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -75,7 +76,7 @@ msgid "e.g. wishlist, family list"
 msgstr "np. lista życzeń, list rodzin"
 
 #. Automation action to clean up a list.
-#: tmp_strings.xml:43(string) tmp_strings.xml:337(item)
+#: tmp_strings.xml:43(string) tmp_strings.xml:339(item)
 msgid "Clean up list"
 msgstr "Wyczyść listę"
 
@@ -315,8 +316,8 @@ msgid "Choose a theme for this list"
 msgstr "Wybierz  motyw dla tej listy"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:133(string) tmp_strings.xml:293(item)
-#: tmp_strings.xml:300(item)
+#: tmp_strings.xml:133(string) tmp_strings.xml:295(item)
+#: tmp_strings.xml:302(item)
 msgid "Default"
 msgstr "Domyślny"
 
@@ -448,234 +449,242 @@ msgid "Immediately hide items checked off."
 msgstr "Chowaj odznaczane elementy"
 
 #: tmp_strings.xml:173(string)
+msgid "Fast Scrolling"
+msgstr ""
+
+#: tmp_strings.xml:174(string)
+msgid "Scroll handle appears when scrolling 35 items or more."
+msgstr ""
+
+#: tmp_strings.xml:175(string)
 msgid "Show price"
 msgstr "Pokaż cenę"
 
-#: tmp_strings.xml:174(string) tmp_strings.xml:185(string)
-#: tmp_strings.xml:187(string) tmp_strings.xml:189(string)
-#: tmp_strings.xml:191(string)
+#: tmp_strings.xml:176(string) tmp_strings.xml:187(string)
+#: tmp_strings.xml:189(string) tmp_strings.xml:191(string)
+#: tmp_strings.xml:193(string)
 msgid "Shown as extra column in list."
 msgstr "Pokaż jako dodatkową kolumnę na liście."
 
-#: tmp_strings.xml:175(string)
+#: tmp_strings.xml:177(string)
 msgid "Per-store prices"
 msgstr "Ceny w sklepie"
 
-#: tmp_strings.xml:176(string)
+#: tmp_strings.xml:178(string)
 msgid "Track per-store prices"
 msgstr "Śledź ceny w sklepie"
 
-#: tmp_strings.xml:177(string)
+#: tmp_strings.xml:179(string)
 msgid "Keep track of separate prices for each item at each store."
 msgstr "Śledź ceny oddzielnie dla każdego elementu w każdym sklepie."
 
-#: tmp_strings.xml:178(string)
+#: tmp_strings.xml:180(string)
 msgid "Disable screen lock"
 msgstr "Wyłącz blokadę ekranu"
 
-#: tmp_strings.xml:179(string)
+#: tmp_strings.xml:181(string)
 msgid "Prevents the screen to be locked when checked."
 msgstr "Zapobiega blokadzie ekranu podczas sprawdzania."
 
-#: tmp_strings.xml:180(string)
+#: tmp_strings.xml:182(string)
 msgid "Reset Quantity"
 msgstr "Resetuj Ilość"
 
-#: tmp_strings.xml:181(string)
+#: tmp_strings.xml:183(string)
 msgid "Resets the quantity when adding items again."
 msgstr "Resetuje ilość podczas dodawania elementów ponownie."
 
-#: tmp_strings.xml:182(string)
+#: tmp_strings.xml:184(string)
 msgid "Barcode Scanner"
 msgstr "Skaner kodów kreskowych"
 
-#: tmp_strings.xml:183(string)
+#: tmp_strings.xml:185(string)
 msgid "Long press the Add button to start Barcode OI Plugin (if installed)."
 msgstr ""
 "Przytrzymaj przycisk Dodaj, aby uruchomić Barcode OI Plugin (jeśli jest "
 "zainstalowany)."
 
-#: tmp_strings.xml:184(string)
+#: tmp_strings.xml:186(string)
 msgid "Show tags"
 msgstr "Pokaż etykiety"
 
-#: tmp_strings.xml:186(string)
+#: tmp_strings.xml:188(string)
 msgid "Show quantity"
 msgstr "Pokaż ilość"
 
-#: tmp_strings.xml:188(string)
+#: tmp_strings.xml:190(string)
 msgid "Show priority"
 msgstr "Pokazuj priorytet"
 
-#: tmp_strings.xml:190(string)
+#: tmp_strings.xml:192(string)
 msgid "Show units"
 msgstr "Pokazuj jednostki"
 
-#: tmp_strings.xml:192(string) tmp_strings.xml:193(string)
-#: tmp_strings.xml:195(string)
+#: tmp_strings.xml:194(string) tmp_strings.xml:195(string)
+#: tmp_strings.xml:197(string)
 msgid "Subtotal by priority"
 msgstr "Razem dla priorytetu"
 
-#: tmp_strings.xml:194(string)
+#: tmp_strings.xml:196(string)
 msgid "No subtotal by priority shown."
 msgstr "Brak sumy dla priorytetu."
 
-#: tmp_strings.xml:196(string)
+#: tmp_strings.xml:198(string)
 msgid "Include checked items"
 msgstr "Dodaj sprawdzone elementy"
 
-#: tmp_strings.xml:197(string)
+#: tmp_strings.xml:199(string)
 msgid "Subtotal by priority includes checked items"
 msgstr "Razem dla priorytetu włączając sprawdzone elementy"
 
-#: tmp_strings.xml:198(string)
+#: tmp_strings.xml:200(string)
 msgid "Subtotal by priority excludes checked items"
 msgstr "Razem dla priorytetu wyłączając sprawdzone elementy"
 
-#: tmp_strings.xml:199(string)
+#: tmp_strings.xml:201(string)
 msgid "Pick items directly in list"
 msgstr "Wybierz elementy bezpośrednio w liście"
 
-#: tmp_strings.xml:200(string)
+#: tmp_strings.xml:202(string)
 msgid "Switch main list to edit mode to re-add existing items"
 msgstr "Przejdź do trybu edycji, aby ponownie dodawać elementy"
 
-#: tmp_strings.xml:201(string)
+#: tmp_strings.xml:203(string)
 msgid "Add items to list using a dedicated dialog"
 msgstr "Dodaj elementy do listy za pomocą oddzielnego formularza"
 
-#: tmp_strings.xml:202(string)
+#: tmp_strings.xml:204(string)
 msgid "Always same sort order"
 msgstr "Zawsze ta sama kolejność sortowania"
 
-#: tmp_strings.xml:203(string)
+#: tmp_strings.xml:205(string)
 msgid "Items are sorted in Pick Items mode just as in Shopping mode."
 msgstr ""
 "Elementy są posortowane tak samo w wybieraniu elementów i trybie Zakupów."
 
-#: tmp_strings.xml:204(string)
+#: tmp_strings.xml:206(string)
 msgid "Sort order for Pick Items mode can be chosen separately."
 msgstr "Kolejność sortowania w wybieraniu elementów można ustawić oddzielnie."
 
 #. Preference title: Shake the phone to clean up the list.
-#: tmp_strings.xml:207(string)
+#: tmp_strings.xml:209(string)
 msgid "Shake to clean up"
 msgstr "Potrząśnij, aby wyczyścić"
 
 #. Preference summary: Shake the phone to clean up the list.
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:212(string)
 msgid "Shake the phone to clean up the list."
 msgstr "Potrząśnij telefonem, aby wyczyścić listę."
 
-#: tmp_strings.xml:212(string)
+#: tmp_strings.xml:214(string)
 msgid "Advanced settings"
 msgstr "Ustawienia zaawansowane"
 
-#: tmp_strings.xml:213(string)
+#: tmp_strings.xml:215(string)
 msgid "Additional settings."
 msgstr "Dodatkowe ustawienia."
 
 #. Preference category: General settings
-#: tmp_strings.xml:216(string)
+#: tmp_strings.xml:218(string)
 msgid "General"
 msgstr "Ogólne"
 
-#: tmp_strings.xml:217(string)
+#: tmp_strings.xml:219(string)
 msgid "Pick Items"
 msgstr "Wybierz elementy"
 
-#: tmp_strings.xml:219(string)
+#: tmp_strings.xml:221(string)
 msgid "Appearance"
 msgstr "Wygląd"
 
-#: tmp_strings.xml:221(string)
+#: tmp_strings.xml:223(string)
 msgid "Add-ons"
 msgstr "Dodatki"
 
-#: tmp_strings.xml:222(string)
+#: tmp_strings.xml:224(string)
 msgid "Get new add-ons"
 msgstr "Pobierz nowe dodatki"
 
-#: tmp_strings.xml:223(string)
+#: tmp_strings.xml:225(string)
 msgid "Search for extensions and themes online."
 msgstr "Szukaj rozszerzeń i tematów w sieci."
 
-#: tmp_strings.xml:224(string)
+#: tmp_strings.xml:226(string)
 msgid "Get add-ons from Market"
 msgstr "Pobierz dodatki z Marketu"
 
-#: tmp_strings.xml:225(string)
+#: tmp_strings.xml:227(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "Pobierz dodatki z OpenIntents"
 
-#: tmp_strings.xml:226(string)
+#: tmp_strings.xml:228(string)
 msgid "Extensions"
 msgstr "Rozszerzenia"
 
-#: tmp_strings.xml:227(string)
+#: tmp_strings.xml:229(string)
 msgid "Themes"
 msgstr "Motywy"
 
-#: tmp_strings.xml:228(string)
-msgid "Search for extensions at Android Market."
-msgstr "Szukaj rozszerzeń na Android Market"
-
-#: tmp_strings.xml:229(string)
-msgid "Search for themes at Android Market."
-msgstr "Szukaj motywów na Android Market"
-
 #: tmp_strings.xml:230(string)
+msgid "Search for extensions at Android Market."
+msgstr "Szukaj rozszerzeń w Android Market"
+
+#: tmp_strings.xml:231(string)
+msgid "Search for themes at Android Market."
+msgstr "Szukaj motywów w Android Market."
+
+#: tmp_strings.xml:232(string)
 msgid "Get extensions from the OpenIntents homepage."
 msgstr "Pobierz rozszerzenia ze strony OpenIntents."
 
-#: tmp_strings.xml:231(string)
+#: tmp_strings.xml:233(string)
 msgid "Get themes from the OpenIntents homepage."
-msgstr "Pobierz motywy ze strony OpenIntents"
+msgstr "Pobierz motywy ze strony OpenIntents."
 
-#: tmp_strings.xml:232(string)
+#: tmp_strings.xml:234(string)
 msgid "Quick Edit Mode"
 msgstr "Tryb Szybkiej Edycji"
 
-#: tmp_strings.xml:233(string)
+#: tmp_strings.xml:235(string)
 msgid "Touch Priority or Quantity values for a menu of common values."
 msgstr "Dotknij wartości Priorytet lub Ilość w menu dla wspólnych wartości."
 
-#: tmp_strings.xml:234(string)
+#: tmp_strings.xml:236(string)
 msgid "Touching Priority or Quantity values summons the Edit Item dialog."
 msgstr "Dotykanie wartości Priorytet lub Ilość wywołuje Edycję Elementu."
 
-#: tmp_strings.xml:235(string)
+#: tmp_strings.xml:237(string)
 msgid "Reset all settings"
 msgstr "Resetuj wszystkie ustawienia"
 
-#: tmp_strings.xml:236(string)
+#: tmp_strings.xml:238(string)
 msgid "Do you really want to RESET ALL settings? This cannot be undone."
 msgstr ""
 "Czy na pewno chcesz zresetować wszystkie ustawienia? Nie będzie można cofnąć."
 
-#: tmp_strings.xml:237(string)
+#: tmp_strings.xml:239(string)
 msgid "All settings have been reset"
 msgstr "Wszystkie ustawienia zostały zresetowane"
 
 #. Permission to read shopping lists
-#: tmp_strings.xml:245(string)
+#: tmp_strings.xml:247(string)
 msgid "read shopping lists"
 msgstr "czytanie list zakupów"
 
-#: tmp_strings.xml:246(string)
+#: tmp_strings.xml:248(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
-"Pozwala aplikacji czytać listy zakupów. Warto odnotować, że listy i elementy "
+"Pozwala aplikacji czytać listy zakupów. Zwróć uwagę, że listy i elementy "
 "zaszyfrowane będą dostępne w formie zaszyfrowanej."
 
 #. Permission to write to shopping lists
-#: tmp_strings.xml:248(string)
+#: tmp_strings.xml:250(string)
 msgid "write shopping lists"
 msgstr "zapis list zakupów"
 
-#: tmp_strings.xml:249(string)
+#: tmp_strings.xml:251(string)
 msgid ""
 "Allows an application to create new lists and items or change existing ones."
 msgstr ""
@@ -683,147 +692,147 @@ msgstr ""
 "istniejące."
 
 #. Preference sort order: List unchecked items first, sort items alphabetically
-#: tmp_strings.xml:258(item)
+#: tmp_strings.xml:260(item)
 msgid "unchecked first, alphabetical"
 msgstr "najpierw niezaznaczone, alfabetycznie"
 
 #. Preference sort order: Sort by item name
-#: tmp_strings.xml:260(item)
+#: tmp_strings.xml:262(item)
 msgid "alphabetical"
 msgstr "alfabetycznie"
 
 #. Preference sort order: Newest item first
-#: tmp_strings.xml:262(item)
+#: tmp_strings.xml:264(item)
 msgid "newest first"
 msgstr "najpierw najnowsze"
 
 #. Preference sort order: Oldest item first
-#: tmp_strings.xml:264(item)
+#: tmp_strings.xml:266(item)
 msgid "oldest first"
 msgstr "najpierw najstarsze"
 
 #. Preference sort order: Sort alphabetically by tags
-#: tmp_strings.xml:266(item)
+#: tmp_strings.xml:268(item)
 msgid "tags alphabetical"
 msgstr "znaczniki alfabetycznie"
 
 #. Preference sort order: Sort by priority, then alphabetically by tags
-#: tmp_strings.xml:268(item)
+#: tmp_strings.xml:270(item)
 msgid "priority, tags alphabetical"
 msgstr "priorytet, znaczniki alfabetycznie"
 
 #. Preference sort order: Sort by price, the most expensive first
-#: tmp_strings.xml:270(item)
+#: tmp_strings.xml:272(item)
 msgid "most expensive first"
 msgstr "najdroższe najpierw"
 
 #. Preference sort order: List unchecked items first, sort alphabetically by tags
-#: tmp_strings.xml:272(item)
+#: tmp_strings.xml:274(item)
 msgid "unchecked first, tags alphabetical"
 msgstr "najpierw nieodznaczone, znaczniki alfabetycznie"
 
 #. Preference sort order: List unchecked items first, priority, sort items alphabetically
-#: tmp_strings.xml:274(item)
+#: tmp_strings.xml:276(item)
 msgid "unchecked first, priority, alphabetical"
 msgstr "nieukończone pierwsze, priorytet, alfabetycznie"
 
 #. Preference sort order: List unchecked items first, priority, tags, sort items alphabetically
-#: tmp_strings.xml:276(item)
+#: tmp_strings.xml:278(item)
 msgid "unchecked first, priority, tags alphabetical"
 msgstr "niezaznaczone, priorytet, znaczniki alfabetycznie"
 
-#: tmp_strings.xml:280(item)
+#: tmp_strings.xml:282(item)
 msgid "Not shown"
 msgstr "Nie pokazano"
 
-#: tmp_strings.xml:281(item)
+#: tmp_strings.xml:283(item)
 msgid "Priority 1"
 msgstr "Priority 1"
 
-#: tmp_strings.xml:282(item)
+#: tmp_strings.xml:284(item)
 msgid "Priority 1-2"
 msgstr "Priority 1-2"
 
-#: tmp_strings.xml:283(item)
+#: tmp_strings.xml:285(item)
 msgid "Priority 1-3"
 msgstr "Priority 1-3"
 
-#: tmp_strings.xml:284(item)
+#: tmp_strings.xml:286(item)
 msgid "Priority 1-4"
 msgstr "Priority 1-4"
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:289(item)
+#: tmp_strings.xml:291(item)
 msgid "Tiny"
 msgstr "Najmniejszy"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:291(item)
+#: tmp_strings.xml:293(item)
 msgid "Small"
 msgstr "Mały"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:295(item)
+#: tmp_strings.xml:297(item)
 msgid "Large"
 msgstr "Duży"
 
 #. Preference orientation: landscape
-#: tmp_strings.xml:302(item)
+#: tmp_strings.xml:304(item)
 msgid "Landscape"
 msgstr "Pozioma"
 
 #. Preference orientation: portrait
-#: tmp_strings.xml:304(item)
+#: tmp_strings.xml:306(item)
 msgid "Portrait"
 msgstr "Pionowa"
 
 #. Preference capitalization: No capitalization
-#: tmp_strings.xml:309(item)
+#: tmp_strings.xml:311(item)
 msgid "None"
 msgstr "Brak"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
-#: tmp_strings.xml:311(item)
+#: tmp_strings.xml:313(item)
 msgid "Per sentence"
 msgstr "Każde zdanie"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
-#: tmp_strings.xml:313(item)
+#: tmp_strings.xml:315(item)
 msgid "Per word"
 msgstr "Każde słowo"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
-#: tmp_strings.xml:320(string)
+#: tmp_strings.xml:322(string)
 msgid "Editing item notes requires OI Notepad."
 msgstr "Edytowanie notatek do wpisów wymaga programu OI Notatnik."
 
 #. Name of application "OI Notepad". Translations should be consistent.
-#: tmp_strings.xml:322(string)
+#: tmp_strings.xml:324(string)
 msgid "OI Notepad"
 msgstr "OI Notatnik"
 
 #. Label above spinner for all actions (automation tasks) that can be performed.
-#: tmp_strings.xml:328(string)
+#: tmp_strings.xml:330(string)
 msgid "Select action:"
 msgstr "Wybierz działanie:"
 
 #. Label above button that opens a list of all shopping lists to choose from.
-#: tmp_strings.xml:331(string)
+#: tmp_strings.xml:333(string)
 msgid "Select list:"
 msgstr "Wybierz listę:"
 
-#: tmp_strings.xml:340(string)
+#: tmp_strings.xml:342(string)
 msgid "Previous page"
 msgstr "Poprzednia strona"
 
-#: tmp_strings.xml:341(string)
+#: tmp_strings.xml:343(string)
 msgid "Next page"
 msgstr "Następna strona"
 
-#: tmp_strings.xml:342(string)
+#: tmp_strings.xml:344(string)
 msgid "Choose a list"
 msgstr "Wybierz listę"
 
-#: tmp_strings.xml:343(string)
+#: tmp_strings.xml:345(string)
 msgid "No items on page %d"
 msgstr "Brak elementów na stronie %d"

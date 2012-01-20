@@ -5,40 +5,40 @@ OI Torcia
 Keep the camera flash or the backlight turned on with OI Flashlight.
 
 # Description:
-OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+OI Torcia è un'applicazione semplice e efficace che ti aiuta a trovare la via nel buio. OI Torcia mantiene l'illuminazione di dietro allo schermo avviata, illuminando in modo chiaro la zona circonstante. Per i dispositivi con la camera flash, OI Torcia può utilizzare il flash come una torcia luminosa per illuminare la stanza. Il colore dell'illuminazione di dietro personalizzabile con OI Color Picker. 
 
-This application is ad free and does not require the internet permission. 
+Questa applicazione non contiene la pubblicità e non richiede la permissione di internet. 
 
-The source code of this free and open source application is available at: 
+Il codice sorgente dell' applicazione gratuita e con la sorgente aperta è disponibile a: 
 http://code.google.com/p/openintents
 
-For the complete list of changes and a list of frequently asked questions, please visit: 
+Per la lista completa con le modifiche e una lista con le domande frequenti, prego visitare: 
 http://www.openintents.org
 
-You can help to improve the translation into your language at Launchpad: 
+Potete aiutare a migliorare la traduzione nella vostra lingua a Launchpad: 
 https://translations.launchpad.net/openintents/trunk
 
-Features: 
-* Lock the display backlight on.
-* Lock camera flash on.
-* The color of backlight is customizable.
+Caratteristiche: 
+* Conservate l'illuminazione di dietro dello schermo avviata.
+* Mantieni il flash avviato.
+* Il colore dell'illuminazione di dietro è personalizzabile.
 
-Available extensions for "OI Flashlight": 
-* Show the license information with "OI About".
-* Change the color of the backlight with "OI Color Picker".
+Estensioni disponibili per "OI Flashlight": 
+* Mostra le informazioni della licenza con "OI About".
+* Cambiate il colore dell'illuminazione di dietro con "OI Color Picker".
 
-Applications that work with "OI Flashlight": 
-* Update with "OI Update".
+Le applicazioni che funzionano con "OI Flashlight": 
+* Aggiornate con "OI Update".
 
-Keywords: 
-* Flashlight, light, Backlight
+Le parole chiave: 
+* Torcia, luce, Illuminazione di dietro
 * OI, OpenIntents, Open Intents
 
-International versions: 
-Lanternă OI, Llanterna d'OI, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+Versioni internazionali: 
+Lanternă OI, Llanterna d'OI, OI フラッシュライト, OI 전등, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI قول چىراغ, OI Φακός, OI Светилка, OI Фенерче, OI टॉर्च, OI手电筒, مصباح يدوي OI, פנס OI
 
 
-Search strings for Market: 
+Cerca le stringhe per Market: 
 * uses OI About
 * uses OI Color Picker
 * uses OI Update

@@ -5,11 +5,11 @@ OI About
 Dialog informacyjny dzielony miedzy aplikacjami
 
 # Description:
-"Ol About" to samodzielny dialog, który jest dzielony między aplikacjami. Ta aplikacja jest wywoływana za pomocą menu innych aplikacji Ol. Umożliwia wyświetlanie informacji o wersji, linków, punktów i licencji aplikacji. Punkty obejmują autorów dokumentacji, tłumaczy i artystów. Wszystkie te funkcje są połączone w uproszczony i efektywny układ. 
+Ol About to samodzielny dialog, który jest dzielony między aplikacjami. Ta aplikacja jest wywoływana za pomocą menu innych aplikacji OI. Umożliwia wyświetlanie informacji o wersji, linków, twórców i licencji aplikacji. Podziękowania obejmują autorów dokumentacji, tłumaczy i artystów. Wszystkie te funkcje są połączone w uproszczony i efektywny układ. 
 
 Ta aplikacja jest darmowa i nie wymaga dostępu do internetu. 
 
-Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem: 
+Kod źródłowy tej darmowej i open-source'owej aplikacji jest dostępny pod adresem: 
 http://code.google.com/p/openintents
 
 Aby zobaczyć pełną listę zmian oraz FAQ, odwiedź: 
@@ -24,12 +24,12 @@ Cechy:
 * Pobiera informacje z manifestu aplikacji poprzez domyślne etykiety i metadane.
 * Opcjonalnie wszystkie pola mogą być modyfikowane poprzez dodatkowe zamiary.
 
-Aplikacja który pracują z "Ol About": 
-* Notatnik Ol
-* Menedżer plików Ol
-* Lista zakupów Ol
+Aplikacje, które działają z "Ol About": 
+* OI Notatnik
+* OI Menedżer plików
+* OI Lista zakupów
 * OI Konwertuj CSV
-* Bezpieczne Ol
+* OI Sejf
 * OI Odliczanie
 * OI Latarka
 
@@ -38,10 +38,10 @@ Słowa kluczowe:
 * OI, OpenIntents, Open Intents.
 
 Wersje międzynarodowe: 
-OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI درباره, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+ກ່ຽວກັບ OI, OI에 대하여, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Sobre, OI Tungkol, OI درباره, OI ھەققىدە, OI Σχετικά, OI А праграме, OI За, OI के बारे में, OI  जे बारे में, OI简介, Sobre o OI, عن OI, אודות OI, За OI
 
 
-Wyszukane ciągi znakó w Markecie: 
+Szukaj ciągów znaków w Markecie: 
 * extension for OI Notepad
 * extension for OI File Manager
 * extension for OI Shopping List

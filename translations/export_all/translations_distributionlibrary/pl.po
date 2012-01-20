@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Piotr Łazarczyk <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -40,8 +41,8 @@ msgstr "Umowa licencyjna %s"
 #. 		Translation can be as long as required.
 #: tmp_strings.xml:23(string)
 msgid ""
-"Please read and accept the following End User License Agreement (EULA) for %"
-"s."
+"Please read and accept the following End User License Agreement (EULA) for "
+"%s."
 msgstr "Proszę przeczytać i zaakceptować poniższą Umowę licencyjną %s."
 
 #. Button: Accept terms of EULA.
@@ -140,7 +141,7 @@ msgstr "Nie ma kompatybilnego skanera kodów kreskowych."
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:74(string)
 msgid "OI File Manager"
-msgstr "OI File Manager"
+msgstr "OI Menedżer plików"
 
 #. Dialog message.
 #: tmp_strings.xml:76(string)
@@ -150,7 +151,7 @@ msgstr "Nie znaleziono zgodnego menedżera plików."
 #. Name of the application "OI Safe". Translations of the application name should be consistent.
 #: tmp_strings.xml:80(string)
 msgid "OI Safe"
-msgstr "OI Safe"
+msgstr "OI Sejf"
 
 #. Dialog message.
 #: tmp_strings.xml:82(string)
@@ -170,7 +171,7 @@ msgstr ""
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:86(string)
 msgid "Please download %s from the Market or the OpenIntents website."
-msgstr "Proszę pobrać %s z Marketu lub za strony OpenIntents."
+msgstr "Proszę pobrać %s z Marketu lub ze strony OpenIntents."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:88(string)

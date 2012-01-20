@@ -11,6 +11,7 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Sahran <Unknown>\n"
 "Language-Team: Uyghur <ug@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -311,4 +312,4 @@ msgstr "10 مىنۇت"
 
 #: tmp_strings.xml:170(string)
 msgid "OI Countdown doesn't have the permission for this task."
-msgstr ""
+msgstr "OI تەتۈر ۋاقىت خاتىرىلىگۈچنىڭ بۇ ۋەزىپىگە ھوقۇقى يەتمەيدۇ."

@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Giannis Konstantinidis <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,17 +23,18 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
 msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
-msgstr ""
+msgstr "Κρατήστε ενεργοποιημένο το φλας ή τον οπίσθιο φωτισμό με το OI Φακός."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
 msgid "OI Flashlight"
-msgstr "OI Flashlight"
+msgstr "OI Φακός"
 
 #: tmp_strings.xml:19(string)
 msgid "The backlight stays turned on."
@@ -45,7 +47,7 @@ msgstr "Χρώμα"
 #. Application name should be consistent across translations.
 #: tmp_strings.xml:24(string)
 msgid "OI Color Picker"
-msgstr "OI Color Picker"
+msgstr "OI Επιλογέας Χρώματος"
 
 #. Title for preferences or settings
 #: tmp_strings.xml:26(string) tmp_strings.xml:33(string)

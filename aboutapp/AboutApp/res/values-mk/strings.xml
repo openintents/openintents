@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+** 	 Copyright (C) 2008-2009 pjv (and others, see About dialog)
+** 
+** 	 This file is part of OI About.
+**
+**   OI About is free software: you can redistribute it and/or modify
+**   it under the terms of the GNU General Public License as published by
+**   the Free Software Foundation, either version 3 of the License, or
+**   (at your option) any later version.
+**
+**   OI About is distributed in the hope that it will be useful,
+**   but WITHOUT ANY WARRANTY; without even the implied warranty of
+**   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**   GNU General Public License for more details.
+**
+**   You should have received a copy of the GNU General Public License
+**   along with OI About.  If not, see <http://www.gnu.org/licenses/>.
+**
+*/
+-->
+<resources>
+    
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Pance Zvezdanov https://launchpad.net/~pance-zvezdanov</string>
+	
+	<!-- Explanation what this application does. It is a menu extension for other applications. -->
+	<string name="about_comments">Самостоен „За“ дијалог кој е поделен меѓу апликациите.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_filemanager">OI Управувач со датотеки</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_shopping">OI Листа за купување</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_notepad">OI Бележник</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_safe">OI Сеф</string>
+	
+	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
+	<string name="info_instructions">Стартувај %s и избери мени &gt; За.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
+	   This is an extension that shows an about dialog or info dialog.  -->
+    <string name="app_name">За OI</string>
+	
+    <string name="menu_about">За самото „ За OI“</string>
+    
+    <!-- About some application, where "%s" is the name of another application. -->
+    <string name="about_activity_name_extended">За %s</string>
+    
+	<string name="l_authors">Напишано од</string>
+	<string name="l_documenters">Документирано од</string>
+	<string name="l_translators">Преведено од</string>
+	<string name="l_artists">Дизајнирано од</string>
+	<string name="l_international_translators">Меѓународни преводи од</string>
+	<string name="l_credits">Заслуги</string>
+	<string name="l_license">Лиценца</string>
+	<string name="l_info">Општи информации</string>
+	<string name="l_recent_changes">Последни промени</string>
+	
+	<string name="no_information_available">Нема достапни информации.</string>
+	
+	<!-- ***************************
+	     International languages
+	     *************************** -->
+	<!-- Language names. -->
+    <string-array name="language_names">
+		<item>Арапски</item>
+		<item>Белоруски</item>
+		<item>Бугарски</item>
+		<item>Каталонски</item>
+		<item>Чешки</item>
+		<item>Дански</item>
+		<item>Германски</item>
+		<item>Грчки</item>
+		<item>Англиски</item>
+		<item>Англиски (Обединетото Кралство)</item>
+		<item>Шпански</item>
+		<item>Персиски</item>
+		<item>Фински</item>
+		<item>Фарски</item>
+		<item>Француски</item>
+		<item>Индиски</item>
+		<item>Хрватски</item>
+		<item>Унгарски</item>
+		<item>Италијански</item>
+		<item>Хебрејски</item>
+		<item>Јапонски</item>
+		<item>Корејски</item>
+		<item>Лаошки</item>
+		<item>Латвиски</item>
+		<item>Македонски</item>
+		<item>Норвешки Бокмал</item>
+		<item>Холандски</item>
+		<item>Окситански (после 1500)</item>
+		<item>Панџаби</item>
+		<item>Полски</item>
+		<item>Португалски</item>
+		<item>Бразилско-португалски</item>
+		<item>Романски</item>
+		<item>Руски</item>
+		<item>Сардиниски</item>
+		<item>Синди</item>
+		<item>Словачки</item>
+		<item>Словенечки</item>
+		<item>Шведски</item>
+		<item>Тагалошки</item>
+		<item>Турски</item>
+		<item>Ујгурски</item>
+		<item>Кинески (Едноставен)</item>
+		<item>Кинески (Традиционален)</item>
+	</string-array>
+</resources>

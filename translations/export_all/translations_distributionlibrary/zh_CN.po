@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: thebowseat <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -40,8 +41,8 @@ msgstr "最终用户许可协议"
 #. 		Translation can be as long as required.
 #: tmp_strings.xml:23(string)
 msgid ""
-"Please read and accept the following End User License Agreement (EULA) for %"
-"s."
+"Please read and accept the following End User License Agreement (EULA) for "
+"%s."
 msgstr "请阅读并接受最终用户许可协议"
 
 #. Button: Accept terms of EULA.

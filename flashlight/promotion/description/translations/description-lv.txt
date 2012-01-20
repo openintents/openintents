@@ -1,4 +1,4 @@
-OI Flashlight ir vienkārša un efektīva aplikācija, kura palīdz atrast ceļu tumsā. OI Flashlight ieslēdz ekrāna apgaismojumu, skaidri izgaismojot apkārtesošo. Ierīcēm ar fotoaparāta zibspuldzi, OI Flashlight var arī izmantot zibspuldzi, lai izgaismotu istabu. Apgaismojuma krāsa ir pilnībā pielāgojama ar OI Color Picker. 
+OI Lukturis ir vienkārša un efektīva aplikācija, kura palīdz atrast ceļu tumsā. OI Lukturis ieslēdz ekrāna apgaismojumu, skaidri izgaismojot apkārtesošo. Ierīcēm ar fotoaparāta zibspuldzi, OI Lukturis var arī izmantot zibspuldzi, lai izgaismotu istabu. Apgaismojuma krāsa ir pilnībā pielāgojama ar OI Krāsu izvēlni. 
 
 Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju. 
 
@@ -16,19 +16,19 @@ Funkcijas:
 * Ieslēgt fotoaparāta zibspuldzi.
 * Apgaismojuma krāsa ir pielāgojama.
 
-Pieejamie paplašinājumi "OI Flashlight": 
-* Parādīt licenzes informāciju ar "OI About".
-* Izmainiet apgaismojuma krāsu ar "OI Color Picker".
+Pieejamie paplašinājumi "OI Lukturim": 
+* Parādīt licenzes informāciju ar "OI Paskaidrojumi".
+* Izmainiet apgaismojuma krāsu ar "OI Krāsu izvēlni".
 
-Aplikācijas, kuras strādā ar "OI Flashlight": 
-* Atjauniniet ar "OI Update".
+Aplikācijas, kuras strādā ar "OI Lukturi": 
+* Atjauniniet ar "OI Atjauninājumi".
 
 Atslēgvārdi: 
 * Zibspuldze, gaisma, apgaismojums
 * OI, OpenIntents, Open Intents
 
 Starptautiskās versijas: 
-Lanternă OI, Llanterna d'OI, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+Lanternă OI, Llanterna d'OI, OI フラッシュライト, OI 전등, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI قول چىراغ, OI Φακός, OI Светилка, OI Фенерче, OI टॉर्च, OI手电筒, مصباح يدوي OI, פנס OI
 
 
 Meklēt rindiņas tirgum: 

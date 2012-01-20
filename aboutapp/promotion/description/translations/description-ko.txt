@@ -38,7 +38,7 @@ https://translations.launchpad.net/openintents/trunk
 * OI, OpenIntents, Open Intents.
 
 국제 버전들: 
-OI  जे बारे में, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Tungkol, OI За, OI درباره, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+ກ່ຽວກັບ OI, OI에 대하여, OI About, OI Hakkında, OI Info, OI O Programe, OI Quant a, OI Sobre, OI Tungkol, OI درباره, OI ھەققىدە, OI Σχετικά, OI А праграме, OI За, OI के बारे में, OI  जे बारे में, OI简介, Sobre o OI, عن OI, אודות OI, За OI
 
 
 마켓에서 검색하기: 

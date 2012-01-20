@@ -12,7 +12,7 @@
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">OI Update</string>
+    <string name="app_name">OI Абнаўленні</string>
     
     <string name="update_available">Даступна новая версія %s.\nЖадаеце абнавіць?</string>
     <string name="update_available_3">Даступна новая версія %1$s на %2$s.\n%3$s\n</string>
@@ -20,7 +20,7 @@
     <string name="update_available_location_no_comment">Даступна новая версія %1$s на %2$s.</string>
     <string name="update_available_no_comment">Даступна новая версія %s.</string>
 	<string name="market_not_available">Android Market недаступны.</string>
-    <string name="market_search_term">OI Update</string>
+    <string name="market_search_term">OI Абнаўленні</string>
 	<string name="android_market">Android Market</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
@@ -51,16 +51,16 @@
     <string name="newer_version_comment">Навейшая версія: %1$s - %2$s</string>
     <string name="newer_version_available">Даступна навейшая версія.</string>
     <string name="no_update_info_found">Не знойдзена інфармацыі аб абнаўленнях.</string>
-    <string name="title_list_new_versions">OI Update - Спіс новых версій</string>
-    <string name="title_list_new_versions_from_andappstore">OI Update - Новыя версіі на AndAppStore</string>
-    <string name="title_list_all_versions">OI Update - Спіс кіруемых прыкладанняў</string>
-    <string name="title_list_all_versions_from_andappstore">OI Update - Спіс кіруемых прыкладанняў (праверка на AndAppStore)</string>
+    <string name="title_list_new_versions">OI Абнаўленні - Спіс новых версій</string>
+    <string name="title_list_new_versions_from_andappstore">OI Абнаўленні - Новыя версіі на AndAppStore</string>
+    <string name="title_list_all_versions">OI Абнаўленні - Спіс кіруемых прыкладанняў</string>
+    <string name="title_list_all_versions_from_andappstore">OI Абнаўленні - Спіс кіруемых прыкладанняў (праверка на AndAppStore)</string>
     <string name="settings">Наладкі</string>
     <string name="auto_update">Аўта-праверка</string>
     <string name="ignore_title">Ігнаруецца</string>
     <string name="ignore_text">У дадзены момант абнаўленні ігнаруюцца. Ці жадаеце вы зноў атрымліваць абнаўленні?</string>
     <string name="unknown_title">Невядома</string>
-    <string name="unknown_text">Няма інфармацыі аб абнаўленнях. Праверце ўручную і папытаеце распрацоўніка, каб ён падтрымліваў OI Update ў будучыні.</string>
+    <string name="unknown_text">Няма інфармацыі аб абнаўленнях. Праверце ўручную і папытаеце распрацоўніка, каб ён падтрымліваў OI Абнаўленні ў будучыні.</string>
     <string name="search_on_market">Пошук на Market</string>
     <string name="search_on_andappstore">Пошук на AndAppStore</string>
     <string name="processing">Апрацоўка %s</string>
@@ -90,10 +90,10 @@
 	<!-- About -->
 	<string name="about">А праграме</string>
 	<string name="about_title">А %s</string>
-	<string name="about_text">Версія %s \n\n OI Update трымае вас у курсе новых версій прыкладанняў.\n OpenIntents дапамагае розным прыкладанням Android выкарыстоўваць адкрытыя інтэрфейсы для абмену інфармацыяй.\n\n Для атрымання дадатковай інфармацыі і іншых карысных прыкладанняў, наведайце OpenIntents на www.openintents.org</string>
+	<string name="about_text">Версія %s \n\n OI Абнаўленні трымае вас у курсе новых версій прыкладанняў.\n OpenIntents дапамагае розным прыкладанням Android выкарыстоўваць адкрытыя інтэрфейсы для абмену інфармацыяй.\n\n Для атрымання дадатковай інфармацыі і іншых карысных прыкладанняў, наведайце OpenIntents на www.openintents.org</string>
 	
 	<!-- EULA -->
-	<string name="eula_title">Ліцэнзійнае пагадненне OI Update</string>
+	<string name="eula_title">Ліцэнзійнае пагадненне OI Абнаўленні</string>
 <string name="eula_description">"Copyright 2008 OpenIntents.org\nРаспаўсюджваецца на ўмовах ліцэнзіі Apache, версіі 2.0 (\"Ліцэнзія\"); вы можаце выкарыстоўваць гэты файл толькі ў адпаведнасці з ліцэнзіяй. Вы можаце атрымаць копію ліцэнзіі на 
  http://www.apache.org/licenses/LICENSE-2.0\n За выключэннем патрабаванняў дзеючага заканадаўства або згоды ў пісьмовай форме, праграмнае забеспячэнне распаўсюджваецца пад ліцэнзіяй па прынцыпе ЯК ЁСЦЬ, БЕЗ ГАРАНТЫЙ АБО УМОЎ любога роду: відавочных, або тых, што маюцца на ўвазе. See the License for the specific language governing permissions and limitations under the License.\n \n"</string>
 	<string name="eula_accept">Прыняць</string>

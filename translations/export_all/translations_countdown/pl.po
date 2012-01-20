@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: zielmicha <michal@zielinscy.org.pl>\n"
+"Last-Translator: Piotr Łazarczyk <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,6 +26,7 @@ msgstr ""
 "\n"
 "Launchpad Contributions:\n"
 "  Damian Skrodzki https://launchpad.net/~damienix\n"
+"  Piotr Łazarczyk https://launchpad.net/~quazarxd\n"
 "  Tomasz 'Zen' Napierala https://launchpad.net/~tzn\n"
 "  zielmicha https://launchpad.net/~michal-zielinscy"
 
@@ -95,7 +97,7 @@ msgstr "Ustaw działanie"
 
 #: tmp_strings.xml:41(string)
 msgid "e.g. pizza"
-msgstr "n.p. pizza"
+msgstr "np. pizza"
 
 #. Title of the activity for setting (editing) the countdown.
 #: tmp_strings.xml:44(string)
@@ -259,7 +261,7 @@ msgstr "Android Market"
 
 #: tmp_strings.xml:145(string)
 msgid "Search for extensions at Android Market."
-msgstr "Szukaj rozszerzeń na Android Market"
+msgstr "Szukaj rozszerzeń w Android Market"
 
 #: tmp_strings.xml:146(string)
 msgid "OpenIntents"
@@ -277,7 +279,7 @@ msgstr "Czas trwania powiadomień"
 #. Preference summary: Set notification timeout (2 sec, 10 min, ...)
 #: tmp_strings.xml:153(string)
 msgid "Timeout for ring, vibrate, or light notification."
-msgstr "Zwłoka dla dzwonka, wibracji lub powiadomienia świetlnego."
+msgstr "Opóźnienie dzwonka, wibracji lub powiadomienia świetlnego."
 
 #. Dialog title to set timeout for notification
 #: tmp_strings.xml:156(string)
@@ -314,4 +316,4 @@ msgstr "10 minut"
 
 #: tmp_strings.xml:170(string)
 msgid "OI Countdown doesn't have the permission for this task."
-msgstr ""
+msgstr "OI Countdown nie ma uprawnień do tego zadania."

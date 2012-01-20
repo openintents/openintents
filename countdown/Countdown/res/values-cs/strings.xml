@@ -11,7 +11,7 @@
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Nastavit vícenásobní minutky s OI Minutka</string>
+	<string name="about_comments">S OI Minutkou nastavte mnoho minutek!</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -170,5 +170,5 @@
     </string-array>
     
     
-    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
+    <string name="no_permission">OI Minutka nemá oprávnění k tomuto úkonu</string>
 </resources>

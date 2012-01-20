@@ -11,6 +11,7 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Peli <peli0101@googlemail.com>\n"
 "Language-Team: German <de@li.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,6 +25,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Eric Baudach https://launchpad.net/~cs-sniffer\n"
 "  Florian Sievers https://launchpad.net/~florian-sievers\n"
+"  Hans https://launchpad.net/~hans-wuerstchen42\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Patrick Eigensatz https://launchpad.net/~p.eigensatz\n"
 "  Peli https://launchpad.net/~peli0101\n"
@@ -33,6 +35,7 @@ msgstr ""
 #: tmp_strings.xml:11(string)
 msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
 msgstr ""
+"Die OI Taschenlampe lässt Ihr Kameralicht oder Ihr Display aufleuchten."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
@@ -45,7 +48,7 @@ msgstr "Die Hintergrundbeleuchtung bleibt eingeschaltet"
 
 #: tmp_strings.xml:21(string)
 msgid "Color"
-msgstr "Farben"
+msgstr "Farbe"
 
 #. Application name should be consistent across translations.
 #: tmp_strings.xml:24(string)

@@ -38,13 +38,13 @@
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
+	<string name="info_app_filemanager">OI Файл-мэнэджар</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI Пакупкі</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">OI Нататнік</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_safe">OI Safe</string>
+	<string name="info_app_safe">OI Сэйф</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
 	<string name="info_instructions">Запусціце %s і выберыце пункт &gt; А праграме.</string>
@@ -54,9 +54,9 @@
 	     *************************** -->
 	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
 	   This is an extension that shows an about dialog or info dialog.  -->
-    <string name="app_name">OI About</string>
+    <string name="app_name">OI А праграме</string>
 	
-    <string name="menu_about">А самой About OI About</string>
+    <string name="menu_about">А самой OI А праграме</string>
     
     <!-- About some application, where "%s" is the name of another application. -->
     <string name="about_activity_name_extended">А %s</string>
@@ -79,47 +79,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Арабская</item>
-		<item>Belarusian</item>
-		<item>Bulgarian</item>
-		<item>Catalan</item>
+		<item>Беларуская</item>
+		<item>Балгарская</item>
+		<item>Каталонская</item>
 		<item>Чэшская</item>
 		<item>Дацкая</item>
 		<item>Нямецкая</item>
 		<item>Грэцкая</item>
 		<item>Ангельская</item>
-		<item>English (United Kingdom)</item>
+		<item>Ангельская (Вялікабрытанія)</item>
 		<item>Іспанская</item>
 		<item>Персідская</item>
 		<item>Фінская</item>
 		<item>Фарэрская</item>
 		<item>Французская</item>
-		<item>Hindi</item>
+		<item>Хіндзі</item>
 		<item>Харвацкая</item>
 		<item>Венгерская</item>
 		<item>Італьянская</item>
-		<item>Hebrew</item>
+		<item>Іўрыт</item>
 		<item>Японская</item>
 		<item>Карэйская</item>
 		<item>Лаоская</item>
-		<item>Latvian</item>
-		<item>Macedonian</item>
-		<item>Norwegian Bokmal</item>
+		<item>Латышская</item>
+		<item>Македонская</item>
+		<item>Нарвежскі Букмол</item>
 		<item>Галандская</item>
 		<item>Аксітанская (пасля 1500)</item>
-		<item>Punjabi</item>
+		<item>Панджабі</item>
 		<item>Польская</item>
 		<item>Партугальская</item>
 		<item>Партугальская (Бразілія)</item>
 		<item>Румынская</item>
 		<item>Руская</item>
 		<item>Сардынская</item>
-		<item>Sindhi</item>
+		<item>Сіндхі</item>
 		<item>Славацкая</item>
-		<item>Slovenian</item>
+		<item>Славенская</item>
 		<item>Шведская</item>
-		<item>Tagalog</item>
+		<item>Тагалог</item>
 		<item>Турэцкая</item>
-		<item>Uyghur</item>
+		<item>Уйгур</item>
 		<item>Кітайская (Спрошчаная)</item>
 		<item>Кітайская (Традыцыйная)</item>
 	</string-array>

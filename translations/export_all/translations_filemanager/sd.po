@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: vishal panjwani <Unknown>\n"
 "Language-Team: Sindhi <sd@li.org>\n"
+"Language: sd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,12 +25,13 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
-"  happynawani https://launchpad.net/~happynawani"
+"  happynawani https://launchpad.net/~happynawani\n"
+"  vishal panjwani https://launchpad.net/~vishal-panjwani15"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:26(string)
 msgid "Manage files on the SD card with OI File Manager."
-msgstr ""
+msgstr "फ़ाइल खे मनेज कयो जो असडी कार्ड में आहिन OI फ़ाइल मेनेजर सां गद्द"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:32(string)
@@ -80,11 +82,11 @@ msgstr "वधीक"
 
 #: tmp_strings.xml:47(string)
 msgid "Compress (ZIP)"
-msgstr ""
+msgstr "संपीड़ित कयो (ZIP)"
 
 #: tmp_strings.xml:48(string)
 msgid "Extract (ZIP)"
-msgstr ""
+msgstr "काढ्यो (ZIP)"
 
 #: tmp_strings.xml:49(string)
 msgid "Filter"
@@ -104,7 +106,7 @@ msgstr "बुकमार्क में जोड़यो"
 
 #: tmp_strings.xml:53(string)
 msgid "Refresh"
-msgstr ""
+msgstr "ताजो कयो"
 
 #: tmp_strings.xml:55(string)
 msgid "Create new folder"
@@ -432,48 +434,48 @@ msgstr "ईया फाईल पहरों सां ही बुकमा�
 #.           ***************************
 #: tmp_strings.xml:178(string)
 msgid "Item compressed successfully"
-msgstr ""
+msgstr "आइटम सफलतापूर्वक कम्प्रेस थी वयो"
 
 #: tmp_strings.xml:179(string)
 msgid "Could not compress the item"
-msgstr ""
+msgstr "आइटम खे कम्प्रेस न करे सग्यास"
 
 #: tmp_strings.xml:180(string)
 msgid "Compress into archive:"
-msgstr ""
+msgstr "संग्रह मैं कम्प्रेस कयो:"
 
 #: tmp_strings.xml:181(string)
 msgid "Item extracted successfully"
-msgstr ""
+msgstr "आइटम सफलतापूर्वक एक्स्त्रक्ट थी वयो"
 
 #: tmp_strings.xml:182(string)
 msgid "Could not extract the item"
-msgstr ""
+msgstr "आइटम खे एक्स्त्रक्ट न करे सग्यास"
 
 #: tmp_strings.xml:183(string)
 msgid "Extract into folder:"
-msgstr ""
+msgstr "फोल्डर में एक्स्त्रक्ट कयो:"
 
 #: tmp_strings.xml:184(string)
 msgid "Select folder to extract into"
-msgstr ""
+msgstr "एक्स्त्रक्ट करण लाये फोल्डर  चयनित कयो"
 
 #: tmp_strings.xml:185(string)
 msgid "Extract here"
-msgstr ""
+msgstr "हित्ते एक्स्त्रक्ट कयो"
 
 #: tmp_strings.xml:186(string)
 msgid "Extracting..."
-msgstr ""
+msgstr "एक्स्त्रक्ट थे तो पयो..."
 
 #: tmp_strings.xml:187(string)
 msgid "Compressing..."
-msgstr ""
+msgstr "कम्प्रेस थे तो पयो..."
 
 #: tmp_strings.xml:188(string)
 msgid "File %s exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "फाईल %s पहरों खान ही आहे| शा तहां अधिलेखित करण ता चाह्यो ?"
 
 #: tmp_strings.xml:190(string)
 msgid "Do you want to change the file extension?"
-msgstr ""
+msgstr "शा तहां फाईल विस्तार खे बदलन चाह्यो ता ?"

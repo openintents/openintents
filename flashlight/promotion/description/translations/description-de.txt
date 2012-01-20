@@ -2,7 +2,7 @@
 OI Taschenlampe
 
 # Promo text:
-Keep the camera flash or the backlight turned on with OI Flashlight.
+Die OI Taschenlampe lässt Ihr Kameralicht oder Ihr Display aufleuchten.
 
 # Description:
 OI Flashlight ist eine einfache und effektive Anwendung, die Ihnen hilft, den Weg im Dunkeln zu finden. OI Flashlight schaltet die Hintergrundbeleuchtung an, die die nähere Umgebung gut beleuchtet. Für Geräte mit einem Kamerablitz kann OI Flashlight auch den Blitz als Lichtquelle benutzen, um den Raum zu beleuchten. Mithilfe von OI Color Picker, ist die Farbe der Hintergrundbeleuchtung komplett einstellbar. 
@@ -35,7 +35,7 @@ Schlüsselwörter:
 * OI, OpenIntents, Open Intents
 
 Internationale Versionen: 
-Lanternă OI, Llanterna d'OI, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+Lanternă OI, Llanterna d'OI, OI フラッシュライト, OI 전등, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI قول چىراغ, OI Φακός, OI Светилка, OI Фенерче, OI टॉर्च, OI手电筒, مصباح يدوي OI, פנס OI
 
 
 Im Market suchen nach: 

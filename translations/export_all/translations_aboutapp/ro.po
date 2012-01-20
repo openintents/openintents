@@ -11,6 +11,7 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Florentina Mușat <deep.sky.028@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -117,15 +118,15 @@ msgstr "Arabă"
 
 #: tmp_strings.xml:80(item)
 msgid "Belarusian"
-msgstr ""
+msgstr "Belarusă"
 
 #: tmp_strings.xml:81(item)
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgară"
 
 #: tmp_strings.xml:82(item)
 msgid "Catalan"
-msgstr ""
+msgstr "Catalană"
 
 #: tmp_strings.xml:83(item)
 msgid "Czech"
@@ -149,7 +150,7 @@ msgstr "Engleză"
 
 #: tmp_strings.xml:88(item)
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "Engleză (Regatul Unit al Marii Britanii)"
 
 #: tmp_strings.xml:89(item)
 msgid "Spanish"
@@ -173,7 +174,7 @@ msgstr "Franceză"
 
 #: tmp_strings.xml:94(item)
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 #: tmp_strings.xml:95(item)
 msgid "Croatian"
@@ -189,7 +190,7 @@ msgstr "Italiană"
 
 #: tmp_strings.xml:98(item)
 msgid "Hebrew"
-msgstr ""
+msgstr "Ebraică"
 
 #: tmp_strings.xml:99(item)
 msgid "Japanese"
@@ -205,15 +206,15 @@ msgstr "Lao"
 
 #: tmp_strings.xml:102(item)
 msgid "Latvian"
-msgstr ""
+msgstr "Letonă"
 
 #: tmp_strings.xml:103(item)
 msgid "Macedonian"
-msgstr ""
+msgstr "Macedoneană"
 
 #: tmp_strings.xml:104(item)
 msgid "Norwegian Bokmal"
-msgstr ""
+msgstr "Norvegiană Bokmal"
 
 #: tmp_strings.xml:105(item)
 msgid "Dutch"
@@ -225,7 +226,7 @@ msgstr "Occitană (post 1500)"
 
 #: tmp_strings.xml:107(item)
 msgid "Punjabi"
-msgstr ""
+msgstr "Punjabi"
 
 #: tmp_strings.xml:108(item)
 msgid "Polish"
@@ -253,7 +254,7 @@ msgstr "Sardiniană"
 
 #: tmp_strings.xml:114(item)
 msgid "Sindhi"
-msgstr ""
+msgstr "Sindhi"
 
 #: tmp_strings.xml:115(item)
 msgid "Slovak"
@@ -261,7 +262,7 @@ msgstr "Slovacă"
 
 #: tmp_strings.xml:116(item)
 msgid "Slovenian"
-msgstr ""
+msgstr "Slovenă"
 
 #: tmp_strings.xml:117(item)
 msgid "Swedish"
@@ -269,7 +270,7 @@ msgstr "Suedeză"
 
 #: tmp_strings.xml:118(item)
 msgid "Tagalog"
-msgstr ""
+msgstr "Tagalog"
 
 #: tmp_strings.xml:119(item)
 msgid "Turkish"
@@ -277,7 +278,7 @@ msgstr "Turcă"
 
 #: tmp_strings.xml:120(item)
 msgid "Uyghur"
-msgstr ""
+msgstr "Uyghur"
 
 #: tmp_strings.xml:121(item)
 msgid "Chinese (Simplified)"

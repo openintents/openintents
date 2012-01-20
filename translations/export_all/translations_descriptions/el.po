@@ -1,0 +1,680 @@
+# Greek translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Giannis Konstantinidis <Unknown>\n"
+"Language-Team: Greek <el@li.org>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#: tmp_strings.xml:3(translators)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis"
+
+#. Description of application
+#: tmp_strings.xml:12(string)
+msgid "OI About is a standalone about dialog that is shared between apps."
+msgstr ""
+"Το OI Σχετικά είναι ένας αυτόνομος σχετικά διάλογος που διαμοιράζεται μεταξύ "
+"των εφαρμογών."
+
+#: tmp_strings.xml:13(string)
+msgid "This application is invoked through the menu of other OI applications."
+msgstr "Αυτή η εφαρμογή εφαρμόζεται μέσω των μενού άλλων OI εφαρμογών."
+
+#: tmp_strings.xml:14(string)
+msgid ""
+"It allows you to view version information, links, credits, and license of an "
+"application."
+msgstr ""
+"Σας επιτρέπει να προβάλλετε πληροφορίες έκδοσης, συνδέσμους, συντελεστές και "
+"την άδεια μιας εφαρμογής."
+
+#: tmp_strings.xml:15(string)
+msgid "Credits include authors, documentation, translators, and artists."
+msgstr ""
+"Οι συντελεστές περιλαμβάνουν συγγραφείς, άτομα στην τεκμηρίωση, μεταφραστές "
+"και καλλιτέχνες."
+
+#: tmp_strings.xml:16(string)
+msgid ""
+"All of this functionality is brought together in a simplistic and efficient "
+"layout."
+msgstr ""
+"Όλη αυτή η λειτουργικότητα βρίσκεται κοντά σε μια απλά αλλά επαρκή δομή."
+
+#: tmp_strings.xml:18(string) tmp_strings.xml:70(string)
+#: tmp_strings.xml:119(string) tmp_strings.xml:172(string)
+#: tmp_strings.xml:219(string) tmp_strings.xml:274(string)
+#: tmp_strings.xml:332(string)
+msgid ""
+"This application is ad free and does not require the internet permission."
+msgstr ""
+"Αυτή η εφαρμογή δεν έχει διαφημήσεις και δεν απαιτεί άδεια στο διαδίκτυο."
+
+#: tmp_strings.xml:20(string) tmp_strings.xml:74(string)
+#: tmp_strings.xml:127(string) tmp_strings.xml:174(string)
+#: tmp_strings.xml:221(string) tmp_strings.xml:282(string)
+#: tmp_strings.xml:329(string)
+msgid ""
+"The source code of this free and open source application is available at:"
+msgstr ""
+"Ο πηγαίος κώδικας αυτού είναι δωρεάν και η εφαρμογή ανοικτού κώδικα είναι "
+"διαθέσιμη στο:"
+
+#: tmp_strings.xml:23(string) tmp_strings.xml:77(string)
+#: tmp_strings.xml:121(string) tmp_strings.xml:177(string)
+#: tmp_strings.xml:224(string) tmp_strings.xml:276(string)
+#: tmp_strings.xml:334(string)
+msgid ""
+"For the complete list of changes and a list of frequently asked questions, "
+"please visit:"
+msgstr ""
+"Για την πλήρη λίστα των αλλαγών και μια λίστα συχνών ερωτημάτων, παρακαλώ "
+"επισκευτείτε:"
+
+#: tmp_strings.xml:26(string) tmp_strings.xml:81(string)
+#: tmp_strings.xml:124(string) tmp_strings.xml:180(string)
+#: tmp_strings.xml:227(string) tmp_strings.xml:279(string)
+#: tmp_strings.xml:337(string)
+msgid ""
+"You can help to improve the translation into your language at Launchpad:"
+msgstr ""
+"Μπορείτε να βοηθήσετε στη βελτίωση της μετάφρασης στη γλώσσα σας στο "
+"Launchpad:"
+
+#: tmp_strings.xml:29(string) tmp_strings.xml:84(string)
+#: tmp_strings.xml:130(string) tmp_strings.xml:183(string)
+#: tmp_strings.xml:230(string) tmp_strings.xml:285(string)
+#: tmp_strings.xml:340(string)
+msgid "Features:"
+msgstr "Χαρακτηριστικά:"
+
+#: tmp_strings.xml:30(listitem)
+msgid "Shows general info, credits, and license tabs."
+msgstr "Εμφανίζει γενικές πληροφορίες, συντελεστές και καρτέλες άδειας."
+
+#: tmp_strings.xml:31(listitem)
+msgid "Shows translators of all language versions."
+msgstr "Εμφανίζει τους μεταφραστές όλων των γλωσσών."
+
+#: tmp_strings.xml:32(listitem)
+msgid ""
+"Retrieves information from application manifest through default tags and "
+"metadata."
+msgstr ""
+"Ανακτά πληροφορίες από το μανιφέστο της εφαρμογής μέσω των προεπιλεγμένων "
+"ετικετών και των μεταδεδομένων."
+
+#: tmp_strings.xml:33(listitem)
+msgid "Optionally, all fields can be modified through intent extras."
+msgstr ""
+"Προαιρετικά, όλα τα πεδία μπορούν να τροποποιηθούν μέσω επιπρόσθετων "
+"προθέσεων."
+
+#: tmp_strings.xml:35(string)
+msgid "Applications that work with \"OI About\":"
+msgstr "Οι εφαρμογές που συνεργάζονται με το \"OI Σχετικά\":"
+
+#: tmp_strings.xml:36(listitem)
+msgid "OI Notepad"
+msgstr "OI Σημειωματάριο"
+
+#: tmp_strings.xml:37(listitem)
+msgid "OI File manager"
+msgstr "OI Διαχειριστής Αρχείων"
+
+#: tmp_strings.xml:38(listitem)
+msgid "OI Shopping List"
+msgstr "OI Λίστα Αγορών"
+
+#: tmp_strings.xml:39(listitem)
+msgid "OI Convert CSV"
+msgstr "OI Μετατροπέας CSV"
+
+#: tmp_strings.xml:40(listitem)
+msgid "OI Safe"
+msgstr "OI Κιβώτιο"
+
+#: tmp_strings.xml:41(listitem)
+msgid "OI Countdown"
+msgstr "OI Χρονομετρητής"
+
+#: tmp_strings.xml:42(listitem)
+msgid "OI Flashlight"
+msgstr "OI Φακός"
+
+#: tmp_strings.xml:44(string) tmp_strings.xml:95(string)
+#: tmp_strings.xml:145(string) tmp_strings.xml:195(string)
+#: tmp_strings.xml:252(string) tmp_strings.xml:302(string)
+#: tmp_strings.xml:359(string)
+msgid "Keywords:"
+msgstr "Λέξεις κλειδιά:"
+
+#: tmp_strings.xml:45(listitem)
+msgid "About, Credits, Information."
+msgstr "Σχετικά, Συντελεστές, Πληροφορίες."
+
+#: tmp_strings.xml:46(listitem)
+msgid "OI, OpenIntents, Open Intents."
+msgstr "OI, OpenIntents, Open Intents."
+
+#: tmp_strings.xml:48(string) tmp_strings.xml:101(string)
+#: tmp_strings.xml:151(string) tmp_strings.xml:199(string)
+#: tmp_strings.xml:256(string) tmp_strings.xml:308(string)
+#: tmp_strings.xml:363(string)
+msgid "International versions:"
+msgstr "Διεθνείς εκδόσεις:"
+
+#: tmp_strings.xml:51(string) tmp_strings.xml:104(string)
+#: tmp_strings.xml:154(string) tmp_strings.xml:202(string)
+#: tmp_strings.xml:259(string) tmp_strings.xml:311(string)
+msgid "Search strings for Market:"
+msgstr "Αναζήτηση συμβολοσειρών για το Market:"
+
+#: tmp_strings.xml:66(string)
+msgid ""
+"OI Countdown is a helpful timer to increase your productivity and plan your "
+"day."
+msgstr ""
+"Ο OI Χρονομετρητής είναι ένα χρήσιμο εργαλείο για να αυξήσετε την "
+"παραγωγικότητα σας και να σχεδιάσετε την ημέρα σας."
+
+#: tmp_strings.xml:67(string)
+msgid ""
+"It allows you to set a variety of different actions to notify you at the end "
+"of a timer."
+msgstr ""
+"Σας επιτρέπει να ορίσετε μια ποικιλία διαφορετικών ενεργειών για να σας "
+"ενημερώσουν στη λήξη ενός  χρονομετρητή."
+
+#: tmp_strings.xml:68(string)
+msgid ""
+"Fully customize all your timers, with no limit on how many you can have "
+"running or saved."
+msgstr ""
+"Προσαρμόστε πλήρως όλους τους χρονομετρητές σας, χωρίς κανένα όριο στους "
+"πόσους μπορείτε να έχετε ενεργούς ή αποθηκευμένους."
+
+#: tmp_strings.xml:85(listitem)
+msgid "Set a countdown by choosing a duration or a date."
+msgstr ""
+"Ορίστε μια αντίστροφη μέτρηση επιλέγοντας μια διάρκεια ή μια ημερομηνία."
+
+#: tmp_strings.xml:86(listitem)
+msgid "Be notified by vibration or any sound of your choice."
+msgstr "Ενημερωθείτε μεσω δόνησης ή κάποιου ήχουν της επιλογής σας."
+
+#: tmp_strings.xml:87(listitem)
+msgid "Have an unlimited number of timers running at the same time."
+msgstr ""
+"Έχετε έναν ατελείωτο αριθμό χρονομετρητών που είναι ενεργοί την ίδια στιγμή."
+
+#: tmp_strings.xml:88(listitem)
+msgid "Save your countdowns and give them names to reuse at later times."
+msgstr ""
+"Αποθηκεύστε τις αντίστροφες μετρήσεις σας και δώστε τις ονόματα για να τις "
+"χρησιμοποιήσετε μελλοντικά."
+
+#: tmp_strings.xml:89(listitem)
+msgid "Modify countdowns, even while they are still running"
+msgstr "Επεξεργαστείτε αντίστροφες μετρήσεις, ακόμα και όταν είναι ενεργές."
+
+#: tmp_strings.xml:91(string)
+msgid "Available extensions for \"OI Countdown\":"
+msgstr "Διαθέσιμες επεκτάσεις για το \"OI Χρονομετρητής\":"
+
+#: tmp_strings.xml:92(listitem)
+msgid "Launch applications through Android shortcuts"
+msgstr "Εκτελέστε εφαρμογές μέσω τις συντομεύσεις του Android"
+
+#: tmp_strings.xml:93(listitem)
+msgid "Use OI About to show license information"
+msgstr "Χρησιμοποιήστε το OI Σχετικά για να προβάλλετε πληροφορίες άδειας"
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:97(listitem)
+msgid "countdown, timer, alert"
+msgstr "αντίστροφη μέτρηση, χρονομετρητής, ειδοποίηση"
+
+#. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
+#: tmp_strings.xml:99(listitem) tmp_strings.xml:197(listitem)
+#: tmp_strings.xml:254(listitem) tmp_strings.xml:361(listitem)
+msgid "OI, OpenIntents, Open Intents"
+msgstr "OI, OpenIntents, Open Intents"
+
+#. Description of application
+#: tmp_strings.xml:116(string)
+msgid ""
+"OI File Manager allows you to browse your SD card, create directories, "
+"rename, copy, move, and delete files."
+msgstr ""
+"Ο OI Διαχειριστής Αρχείων σας επιτρέπει να περιηγηθείτε στην κάρτα SD, να "
+"δημιουργήσετε καταλόγους, να μετονομάσετε, αντιγράψετε, μετακινήσετε και "
+"διαγράψετε αρχεία."
+
+#: tmp_strings.xml:117(string)
+msgid ""
+"It also acts as an extension to other applications to display \"Open\" and "
+"\"Save\" dialogs."
+msgstr ""
+"Επίσης δρά και ως μια επέκταση σε άλλες εφαρογές για την προβολή των "
+"διαλόγων \"Άνοιγμα\" και \"Αποθήκευση\" ."
+
+#: tmp_strings.xml:131(listitem)
+msgid "Show list of files with thumbnails for images."
+msgstr "Εμφάνιση λίστας των αρχείων με επισκοπήσεις εικόνων."
+
+#: tmp_strings.xml:132(listitem)
+msgid "Move, copy, rename, and delete files."
+msgstr "Μετακινήστε, αντιγράψτε, μετονομάστε και διαγράψτε αρχεία."
+
+#: tmp_strings.xml:133(listitem)
+msgid "Create and delete directories (folders)."
+msgstr "Δημιουργήστε και διαγράψτε καταλόγους (φακέλους)."
+
+#: tmp_strings.xml:134(listitem)
+msgid "Send files by email."
+msgstr "Αποστολή αρχείων μέσω ηλεκτρονικού μηνύματος."
+
+#: tmp_strings.xml:135(listitem)
+msgid ""
+"Acts as an extension to other applications, like GMail, to attach files."
+msgstr ""
+"Δρά ως μια επέκταση σε άλλες εφαρμογές, όπως το GMail, για να επισυνάπτει "
+"αρχεία."
+
+#: tmp_strings.xml:136(listitem)
+msgid "Support for many file endings and mime types."
+msgstr "Υποστήριξη για πολλές καταλήξεις αρχείων και τύπους αρχείων."
+
+#: tmp_strings.xml:137(listitem)
+msgid ""
+"Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can "
+"use OI File Manager."
+msgstr ""
+"Υποστηρίζει τις προθέσεις PICK_FILE και PICK_DIRECTORY ώστε και άλλες "
+"εφαρμογές να μπορούν να χρησιμοποιήσουν τον OI Διαχειριστή Αρχείων."
+
+#: tmp_strings.xml:139(string) tmp_strings.xml:296(string)
+msgid "Available extensions for \"OI File Manager\":"
+msgstr "Διαθέσιμες επεκτάσεις για τον \"OI Διαχειριστή Αρχείων\":"
+
+#: tmp_strings.xml:140(listitem) tmp_strings.xml:189(listitem)
+#: tmp_strings.xml:241(listitem) tmp_strings.xml:297(listitem)
+#: tmp_strings.xml:351(listitem)
+msgid "Show the license information with \"OI About\"."
+msgstr "Εμφάνιση των πληροφοριών άδειας με το \"OI Σχετικά\"."
+
+#: tmp_strings.xml:142(string) tmp_strings.xml:299(string)
+msgid "Applications that work with \"OI File Manager\":"
+msgstr "Εφαρμογές που συνεργάζονται με τον \"OI Διαχειριστή Αρχείων\":"
+
+#: tmp_strings.xml:143(listitem)
+msgid "Open and save text files in \"OI Notepad\"."
+msgstr "Ανοίξτε και αποθηκεύστεαρχεία κειμένου στο \"OI Σημειωματάριο\"."
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:147(listitem)
+msgid "file manager, filemanager, file explorer"
+msgstr "διαχειριστής αρχείων, αρχεία, περιηγητής αρχείων"
+
+#. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
+#: tmp_strings.xml:149(listitem) tmp_strings.xml:306(listitem)
+msgid "OI, IO, OpenIntents, Open Intents"
+msgstr "OI, IO, OpenIntents, Open Intents"
+
+#. Description of application
+#: tmp_strings.xml:167(string)
+msgid ""
+"OI Flashlight is a simple and effective application that helps you find a "
+"way in the dark."
+msgstr ""
+"Ο OI Φακός είναι μια απλή και αποτελεσματική εφαρμογή που σας βοηθά να "
+"βρείτε το δρόμο σας στο σκοτάδι."
+
+#: tmp_strings.xml:168(string)
+msgid ""
+"OI Flashlight locks the display backlight on, clearly illuminating the "
+"surrounding area."
+msgstr ""
+"Ο OI Φακός κλειδώνει τον οπίσθιο φωτισμό της οθόνης, φωτίζοντας έτσι τον "
+"περιβάλλοτα χώρο,"
+
+#: tmp_strings.xml:169(string)
+msgid ""
+"For devices with a camera flash, OI Flashlight can also use the flash as a "
+"bright torch to brighten the room."
+msgstr ""
+"Για συσκευές με φλας κάμερας, ο OI Φακός μπορεί επίσης να χρησιμοποιήσει το "
+"φλας ως ένα φωτεινό πυρσό για το φωτισμό του δωματίου."
+
+#: tmp_strings.xml:170(string)
+msgid ""
+"The color of the backlight is completely customizable with OI Color Picker."
+msgstr ""
+"Το χρώμα του οπίσθιου φωτισμού είναι ολοκληρωτικά προσαρμόσιμο με τον OI "
+"Επιλογέα Χρώματος."
+
+#: tmp_strings.xml:184(listitem)
+msgid "Lock the display backlight on."
+msgstr "Κλειδώστε τον ενεργοποιημένο οπίσθιο φωτισμό της οθόνης."
+
+#: tmp_strings.xml:185(listitem)
+msgid "Lock camera flash on."
+msgstr "Κλειδώστε το ενεργοποιημένο φλας της κάμερας."
+
+#: tmp_strings.xml:186(listitem)
+msgid "The color of backlight is customizable."
+msgstr "Το χρώμα του οπίσθιου φωτισμού είναι προσαρμόσιμο."
+
+#: tmp_strings.xml:188(string)
+msgid "Available extensions for \"OI Flashlight\":"
+msgstr "Διαθέσιμες επεκτάσεις για το \"OI Φακός\":"
+
+#: tmp_strings.xml:190(listitem)
+msgid "Change the color of the backlight with \"OI Color Picker\"."
+msgstr ""
+"Αλλάξτε το χρώμα του οπίσθιου φωτισμού με το \"OI Επιλογέας Χρώματος\"."
+
+#: tmp_strings.xml:192(string)
+msgid "Applications that work with \"OI Flashlight\":"
+msgstr "Εγαρμογές που συνεργάζονται με το \"OI Φακός\":"
+
+#: tmp_strings.xml:193(listitem) tmp_strings.xml:249(listitem)
+#: tmp_strings.xml:355(listitem)
+msgid "Update with \"OI Update\"."
+msgstr "Αναβάθμιση με το \"OI Αναβάθμιση\"."
+
+#: tmp_strings.xml:196(listitem)
+msgid "Flashlight, light, Backlight"
+msgstr "φακός, φώς, φωτισμός"
+
+#. Description of application
+#: tmp_strings.xml:214(string)
+msgid "OI Notepad is a full-featured open source note taking application."
+msgstr ""
+"Το OI Σημειωματάρια είναι μια εφαρμογή ανοικτού κώδικα πλήρων δραστηριοτήτων "
+"για την εγγραφή σημειώσεων."
+
+#: tmp_strings.xml:215(string)
+msgid ""
+"With it you can tag, search, and send your notes, in addition to basic "
+"functionality such as creating, deleting, and editing notes."
+msgstr ""
+"Με αυτό μπορείτε να κατηγοριοποιήσετε, να αναζητήσετε και να αποστείλετε τις "
+"σημειώσεις σας, εκτός από τις βασικές λειτουργίες όπως δημιουργώντας, "
+"διαγράφοντας και επεξεργάζοντας σημειώσεις."
+
+#: tmp_strings.xml:216(string)
+msgid ""
+"Advanced features like encryption, import/export, and voice memos are all "
+"available through extensions."
+msgstr ""
+"Προχωρημένα χαρακτηριστικά όπως κρυπτογράφηση, εισαγωγή/εξαγωγή, και "
+"φωνητικά υπομνήματα είναι όλα διαθέσιμες μέσω επεκτάσεων."
+
+#: tmp_strings.xml:217(string)
+msgid ""
+"All of this functionality is brought together in a simplistic and efficient "
+"layout, customizable through a variety of themes."
+msgstr ""
+"Όλη αυτή η λειτουργικότητα βρίσκεται κοντά σε μια απλοποιημένη και "
+"αποτελεσματική δομή, που είναι προσαρμόσιμη γύρω από μια ποικιλία θεμάτων."
+
+#: tmp_strings.xml:231(listitem)
+msgid "Add, edit and delete notes."
+msgstr "Προσθέστε, επεξεργαστείτε και διαγράψτε σημειώσεις."
+
+#: tmp_strings.xml:232(listitem)
+msgid "Long-press on notes to add tags."
+msgstr "Κάντε ένα διαρκές πάτημα στις σημειώσεις για να προσθέσετε ετικέτες."
+
+#: tmp_strings.xml:233(listitem)
+msgid "Change font size and sort order."
+msgstr "Αλλάξτε το μέγεθος γραμματοσειράς και τη σειρά ταξινόμησης."
+
+#: tmp_strings.xml:234(listitem)
+msgid "A clearly arranged layout with a variety of themes."
+msgstr "Μια καθαρά τακτοποιημένη μορφή με μια ποικιλία θεμάτων."
+
+#: tmp_strings.xml:235(listitem)
+msgid "Quickly search through notes."
+msgstr "Αναζητήστε γρήγορα ανάμεσα στις σημειώσεις."
+
+#: tmp_strings.xml:236(listitem)
+msgid "Send notes as MMS or SMS."
+msgstr "Στείλετε σημειώσεις ως MMS ή SMS."
+
+#: tmp_strings.xml:238(string)
+msgid "Available extensions for \"OI Notepad\":"
+msgstr "Διαθέσιμες επεκτάσεις για το \"OI Σημειωματάριο\":"
+
+#: tmp_strings.xml:239(listitem)
+msgid "Record and attach voice memos to notes with \"OI Voice Notes\"."
+msgstr ""
+"Εγγράψτε και επισυνάψτε φωνητικά υπομνήματα με το \"OI Φωνητικές Σημειώσεις"
+"\"."
+
+#: tmp_strings.xml:240(listitem)
+msgid "With \"OI Convert CSV\" import/export notes from the SD card."
+msgstr ""
+"Με το \"OI Μετατροπέας CSV\" εισάγετε/εξάγετε σημειώσεις από την κάρτα SD."
+
+#: tmp_strings.xml:242(listitem)
+msgid "Insert the date and time into notes with \"OI Insert Date\"."
+msgstr ""
+"Εισάγετε την ημερομηνία και ώρα στις σημειώσεις με το \"OI Εισαγωγή "
+"Ημερομηνίας\"."
+
+#: tmp_strings.xml:243(listitem)
+msgid "Turn text upside down with \"Upside Down\"."
+msgstr "Γυρίστε το κείμενο ανάποδα με το \"Ανάποδα\"."
+
+#: tmp_strings.xml:245(string)
+msgid "Applications that work with \"OI Notepad\":"
+msgstr "Εφαρμογές που συνεργάζονται με το \"OI Σημειωματάριο\":"
+
+#: tmp_strings.xml:246(listitem)
+msgid "Back up notes with \"My Backup Pro\"."
+msgstr "Λάβετε αντίγραφα ασφαλείας των σημειώσεων με το \"My Backup Pro\"."
+
+#: tmp_strings.xml:247(listitem)
+msgid "Encrypt notes using \"OI Safe\"."
+msgstr "Κρυπτογραφήστε σημειώσεις χρησιμοποιώντας το \"OI Κιβώτιο\"."
+
+#: tmp_strings.xml:248(listitem)
+msgid "Manage notes on your SD Card with \"OI File Manager\"."
+msgstr ""
+"Διαχειριστείτε σημειώσεις στην κάρτα SD με το \"OI Διαχειριστής Αρχείων\"."
+
+#: tmp_strings.xml:250(listitem)
+msgid ""
+"Share notes through \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", and "
+"many other applications."
+msgstr ""
+"Μοιράστε σημειώσεις στο \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", "
+"και άλλες πολλές εφαρμογές."
+
+#: tmp_strings.xml:253(listitem)
+msgid "Note, Notepad, Note book, Notes"
+msgstr "Σημείωση, Σημειωματάριο, Βιβλίο σημειώσεων, Σημειώσεις"
+
+#. Description of application
+#: tmp_strings.xml:271(string)
+msgid ""
+"OI Safe safely protects all of your passwords and other private data using "
+"industry standard AES encryption."
+msgstr ""
+"Το OI Κιβώτιο προστατεύει με ασφάλεια όλους τους κωδικούς και άλλα προσωπικά "
+"δεδομένα σας χρησιμοποιώντας το σύστημα κρυπτογράφησης AES."
+
+#: tmp_strings.xml:272(string)
+msgid ""
+"It also acts as an extension to OI Notepad to encrypt notes created in OI "
+"Notepad."
+msgstr ""
+"Δρά επίσης και ως μια επέκταση του OI Σημειωματάριο για την κρυπτογράφηση "
+"των σημειώσεων που δημιουργήθηκαν από αυτό."
+
+#: tmp_strings.xml:286(listitem)
+msgid "Securely protect data using AES encryption."
+msgstr "Προστατεύει ε ασφάλεια τα δεδομένα χρησιμοποιώντας κρυπτογράφηση AES."
+
+#: tmp_strings.xml:287(listitem)
+msgid "Freely move data entries between categories."
+msgstr "Μετακινήστε ελεύθερα τις καταχωρήσεις δεδομένων μεταξύ κατηγοριών."
+
+#: tmp_strings.xml:288(listitem)
+msgid "Import/Export data entries and databases."
+msgstr "Εισάγετε/Εξάγετε καταχωρήσεις δεδομένων και βάσεις δεδομένων."
+
+#: tmp_strings.xml:289(listitem)
+msgid "Backup/Restore entries."
+msgstr "Λάβετε αντίγραφα/Επαναφέρετε καταχωρήσεις."
+
+#: tmp_strings.xml:290(listitem)
+msgid "Includes secure password generator."
+msgstr "Περιλαμβάνει έναν ασφαλή δημιουργό κωδικών."
+
+#: tmp_strings.xml:291(listitem)
+msgid "Automatic timeout to protect encrypted documents."
+msgstr "Αυτόματο χρονικό όριο για την προστασία κρυπτογραφημένων κειμένων."
+
+#: tmp_strings.xml:292(listitem)
+msgid "Encrypt OI Notepad notes."
+msgstr "Κρυπτογράφηση σημειώσεων του OI Σημειωματάριο."
+
+#: tmp_strings.xml:293(listitem)
+msgid "Support for Obscura picture safe."
+msgstr "Υποστήριξη για το κιβώτιο εικόνων Obscura."
+
+#: tmp_strings.xml:294(listitem)
+msgid "MyBackup Pro."
+msgstr "MyBackup Pro."
+
+#: tmp_strings.xml:300(listitem)
+msgid "Encrypt notes created in \"OI Notepad\"."
+msgstr ""
+"Κρυπτογράφηση σημειώσεων που δημιουργήθηκαν με το \"OI Σημειωματάριο\"."
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:304(listitem)
+msgid "safe, encrpytion, password, protection"
+msgstr "κιβώτιο, κρυπτογράφηση, κωδικός, προστασία"
+
+#. Description of application
+#: tmp_strings.xml:323(string)
+msgid ""
+"OI Shopping List is a powerful application which makes it easy to create and "
+"manage checklists."
+msgstr ""
+"Η OI Λίστα Αγορών είναι μια δυναμική εφαρμογή που κάνει έυκολη τη δημιουργία "
+"και διαχείριση λιστών."
+
+#: tmp_strings.xml:324(string)
+msgid ""
+"OI Shopping List makes it easy to add items to a list, check the item off, "
+"and remove it from the list."
+msgstr ""
+"Η OI Λίστα Αγορών κάνει εύκολη την προσθήκη αντικειμένων σε μια λίστα, τον "
+"έλεγχο τους και την μετέπειτα αφαίρεση τους από τη λίστα."
+
+#: tmp_strings.xml:325(string)
+msgid ""
+"The application can track separate prices for each store that you use, and "
+"features a high level of customization."
+msgstr ""
+"Η εφαρμογή μπορεί να ανιχνεύει ξεχωριστές τιμές για κάθε κατάστημα που "
+"επισκέπτεστε και παραμετροποιείται σε υψηλό επίπεδο."
+
+#: tmp_strings.xml:326(string)
+msgid ""
+"Font size, sort order, list columns, and list cleanup behavior are all "
+"settings controlled by the user."
+msgstr ""
+"Το Μέγεθος γραμματοσειράς, σειρά ταξινόμησης, στήλες λίστας και εκκαθάριση "
+"λίστας είναι όλα ρυθμίσεις που ελέγχονται από τον χρήστη."
+
+#: tmp_strings.xml:327(string)
+msgid ""
+"All of these features are brought together in a crisp layout that is "
+"customizable through a variety of themes."
+msgstr ""
+"Όλα αυτά τα χαρακτηριστικά βρίσκονται κοντά σε μια απλή δομή που "
+"προσαρμόζεται μέσα από μια ποικιλία θεμάτων."
+
+#: tmp_strings.xml:341(listitem)
+msgid "Add, edit and delete lists."
+msgstr "Προσθήκη, επεξεργασία και διαγραφή λιστών."
+
+#: tmp_strings.xml:342(listitem)
+msgid "Create, delete, and check items quickly and easily."
+msgstr "Δημιουργήστε, διαγράψτε και ελέξτε αντικείμενα γρήγορα και εύκολα."
+
+#: tmp_strings.xml:343(listitem)
+msgid "Variety of themes."
+msgstr "Ποικιλία θεμάτων"
+
+#: tmp_strings.xml:344(listitem)
+msgid "Customizable font size and sort order."
+msgstr "Προσαρμόσιμο μέγεθος γραμματοσειράς και σειρά ταξινόμησης."
+
+#: tmp_strings.xml:345(listitem)
+msgid "Keep track of separate prices for each store."
+msgstr "Παρακολουθήστε διαφορετικές τιμές για κάθε κατάστημα."
+
+#: tmp_strings.xml:346(listitem)
+msgid "Customizable list columns."
+msgstr "Προσαρμόσιμες στήλες λιστών."
+
+#: tmp_strings.xml:348(string)
+msgid "Available extensions for \"OI Shopping List\":"
+msgstr "Διαθέσιμα πρόσθετα για την \"OI Λίστα Αγορών\":"
+
+#: tmp_strings.xml:349(listitem)
+msgid "Add a recorded message to a note with \"OI Voice Notes\"."
+msgstr ""
+"Προσθέστε ένα ηχογραφημένο μήνυμα σε μια σημείωση με το \"OI Ηχητικές "
+"Σημειώσεις\"."
+
+#: tmp_strings.xml:350(listitem)
+msgid "Import/export shopping lists with \"OI Convert CSV\"."
+msgstr "Εισάγετε/εξάγετε λίστες αγορών με το \"OI Μετατροπέας CSV\"."
+
+#: tmp_strings.xml:352(listitem)
+msgid "Enter/check items with \"Barcode OI Plugin\"."
+msgstr "Εισάγετε/ελέξτε αντικείμενα με το \"OI Πρόσθετο Γραμμωτού Κώδικα\"."
+
+#: tmp_strings.xml:354(string)
+msgid "Applications that work with \"OI Shopping List\":"
+msgstr "Εφαρμογές που συνεργάζονται με την \"OI Λίστα Αγορών\":"
+
+#: tmp_strings.xml:356(listitem)
+msgid "Backup lists with \"My Backup Pro\"."
+msgstr "Λάβετε αντίγραφα ασφαλείας των λιστών με το \"My Backup Pro\"."
+
+#: tmp_strings.xml:357(listitem)
+msgid "Import ingredients of recipes with \"Bites\"."
+msgstr "Εισάγετε τα συστατικά των συνταγών με το \"Bites\"."
+
+#: tmp_strings.xml:360(listitem)
+msgid "Shopping, List, Shopping List, Checklist"
+msgstr "Αγορές, Λίστα, Λίστα Αγορών"
+
+#: tmp_strings.xml:366(string)
+msgid "Extensions:"
+msgstr "Επεκτάσεις:"

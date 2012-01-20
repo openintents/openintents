@@ -74,19 +74,19 @@
     <string name="oi_distribution_barcodescanner_not_available">Nie ma kompatybilnego skanera kodów kreskowych.</string>
     
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_filemanager">OI File Manager</string>
+    <string name="oi_distribution_filemanager">OI Menedżer plików</string>
     <!-- Dialog message. -->
     <string name="oi_distribution_filemanager_not_available">Nie znaleziono zgodnego menedżera plików.</string>
     
     <!-- Safe -->
     <!-- Name of the application "OI Safe". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_safe">OI Safe</string>
+    <string name="oi_distribution_safe">OI Sejf</string>
     <!-- Dialog message. -->
     <string name="oi_distribution_safe_not_available">Nie znaleziono kompatybilnej aplikacji do szyfrowania.</string>
     <string name="oi_distribution_safe_not_available_decrypt">Nie znaleziono kompatybilnej aplikacji do szyfrowania.\n\nUwaga: Aby uzyskać dostęp do zaszyfrowanych danych, należy odzyskać klucz główny z kopii zapasowej pliku.</string>
     
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_market_message">Proszę pobrać %s z Marketu lub za strony OpenIntents.</string>
+    <string name="oi_distribution_download_market_message">Proszę pobrać %s z Marketu lub ze strony OpenIntents.</string>
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
     <string name="oi_distribution_download_message">Proszę pobrać %s ze strony OpenIntents.</string>
     <!-- Dialog button: download the suggested application from Android Market. -->

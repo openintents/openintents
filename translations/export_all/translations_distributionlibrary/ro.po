@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Florentina Mușat <deep.sky.028@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,8 +42,8 @@ msgstr "%s EULA"
 #. 		Translation can be as long as required.
 #: tmp_strings.xml:23(string)
 msgid ""
-"Please read and accept the following End User License Agreement (EULA) for %"
-"s."
+"Please read and accept the following End User License Agreement (EULA) for "
+"%s."
 msgstr ""
 "Citiți și acceptați următorul Acord de Licențiere pentru Utilizatorul Final "
 "(EULA) pentru %s."
@@ -133,12 +134,12 @@ msgstr "Despre OI"
 #. Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.
 #: tmp_strings.xml:69(string)
 msgid "Barcode OI Plugin"
-msgstr ""
+msgstr "Modul Cod de bare OI"
 
 #. Dialog message.
 #: tmp_strings.xml:71(string)
 msgid "No compatible barcode scanner is available."
-msgstr ""
+msgstr "Nu există un scanner pentru cod de bare disponibil."
 
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:74(string)

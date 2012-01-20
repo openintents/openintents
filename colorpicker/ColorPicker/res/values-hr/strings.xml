@@ -6,7 +6,8 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Nikola Miljkovic https://launchpad.net/~milja1337</string>
+  Nikola Miljkovic https://launchpad.net/~milja1337
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">OpenIntents Birač Boja je nastavak za OI Blic i ostale kompatibilne aplikacije.</string>

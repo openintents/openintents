@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
-	<translators>translator-credits</translators>
+	<translators>Launchpad Contributions:
+  Georgiana https://launchpad.net/~birjovanu-georgiana</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->
@@ -9,46 +10,46 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI About is a standalone about dialog that is shared between apps.</string>
-		<string>This application is invoked through the menu of other OI applications.</string>
-		<string>It allows you to view version information, links, credits, and license of an application.</string>
-		<string>Credits include authors, documentation, translators, and artists.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<string>OI About è un dialogo di base il quale è condiviso fra le applicazioni.</string>
+		<string>Questa applicazione è invocata attraverso il menu di altre applicazioni OI.</string>
+		<string>Vi permette di visualizzare l\'informazione della versione, i link, i crediti, e la licenza dell\'applicazione.</string>
+		<string>I crediti includono gli autori, le documentazioni, i traduttori, e gli artisti.</string>
+		<string>Tutte queste funzioni sono portate assieme in una struttura semplice e efficiente.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Questa applicazione non contiene la pubblicità e non richiede la permissione di internet.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Il codice sorgente dell\' applicazione gratuita e con la sorgente aperta è disponibile a:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Per la lista completa con le modifiche e una lista con le domande frequenti, prego visitare:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Potete aiutare a migliorare la traduzione nella vostra lingua a Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Shows general info, credits, and license tabs.</listitem>
-		<listitem>Shows translators of all language versions.</listitem>
-		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
-		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<string>Caratteristiche:</string>
+		<listitem>Mostra le informazioni generali, i crediti, e i file con licenza.</listitem>
+		<listitem>Mostra le traduzioni per tutte le versioni della lingua.</listitem>
+		<listitem>Recupera l\'informazione del manifesto dell\'applicazione attraverso metadata e marche implicite.</listitem>
+		<listitem>Opzionale, tutti i campi possono essere modificati con l\'aiuto di extra-intenzione.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI About":</string>
-		<listitem>OI Notepad</listitem>
-		<listitem>OI File manager</listitem>
-		<listitem>OI Shopping List</listitem>
-		<listitem>OI Convert CSV</listitem>
-		<listitem>OI Safe</listitem>
-		<listitem>OI Countdown</listitem>
-		<listitem>OI Flashlight</listitem>
+		<string>Le applicazioni che funzionano con "OI About":</string>
+		<listitem>OI Annotazioni</listitem>
+		<listitem>OI Documenti manager</listitem>
+		<listitem>Lista di acquisti OI</listitem>
+		<listitem>OI converte CVS</listitem>
+		<listitem>OI Sicurezza</listitem>
+		<listitem>OI Conto alla rovescia</listitem>
+		<listitem>OI Torcia</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>About, Credits, Information.</listitem>
+		<string>Le parole chiave:</string>
+		<listitem>Riguardo a, Crediti, Informazione.</listitem>
 		<listitem>OI, OpenIntents, Open Intents.</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Versioni internazionali:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Cerca le stringhe per Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -63,45 +64,45 @@
 		<!--  -->
 		<!--  Description of application -->
 		<emptyline/>
-		<string>OI Countdown is a helpful timer to increase your productivity and plan your day. </string>
-		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
-		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
+		<string>OI Conto alla rovescia è un timer di aiuto per sviluppare la vostra produttività e pianificare la vostra giornata.</string>
+		<string>Vi permette di impostare una varietà di azioni differenti per avvisare la fine del timer.</string>
+		<string>Personalizzate completamente tutti i vostri timer, senza limiti a quanti ne potete usare oppure salvare.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission. </string>
+		<string>Questa applicazione non contiene la pubblicità e non richiede la permissione di internet.</string>
 		<emptyline/>
 		<emptyline/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Il codice sorgente dell\' applicazione gratuita e con la sorgente aperta è disponibile a:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Per la lista completa con le modifiche e una lista con le domande frequenti, prego visitare:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Potete aiutare a migliorare la traduzione nella vostra lingua a Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features: </string>
-		<listitem>Set a countdown by choosing a duration or a date.</listitem>
-		<listitem>Be notified by vibration or any sound of your choice. </listitem>
-		<listitem>Have an unlimited number of timers running at the same time. </listitem>
-		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
-		<listitem>Modify countdowns, even while they are still running</listitem>
+		<string>Caratteristiche:</string>
+		<listitem>Imposta il conto alla rovescia scegliendo il tempo oppure la data.</listitem>
+		<listitem>Ricevi notifiche con delle vibrazioni oppure qualsiasi suono a vostra scelta.</listitem>
+		<listitem>Avere un numero illimitato di timers che funzionano nello stesso tempo.</listitem>
+		<listitem>Salvate i vostri conti alla rovescia e dategli i nomi per usarli in futuro .</listitem>
+		<listitem>Modificate i conti alla rovescia, anche se stanno funzionando</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Countdown": </string>
-		<listitem>Launch applications through Android shortcuts</listitem>
-		<listitem>Use OI About to show license information</listitem>
+		<string>Le estensioni disponibili per "IO Conto alla rovescia":</string>
+		<listitem>Lancia le applicazioni attraverso le scorciatoie Android</listitem>
+		<listitem>Utilizzate OI About per mostrare le informazioni della licenza</listitem>
 		<emptyline/>
-		<string>Keywords: </string>
+		<string>Le parole chiave:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>countdown, timer, alert</listitem>
+		<listitem>conto alla rovescia, timer, allarme</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Versioni internazionali:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Cerca le stringhe per Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt "/>
 	</description>
@@ -113,45 +114,45 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
-		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
+		<string>Il Manager dei documenti OI vi permette di navigare la scheda SD, creare cartelle, rinominare, copiare, spostare, e cancellare i file.</string>
+		<string>Funziona anche come un\'estensione per le altre applicazioni per visualizzare "Apri" e "Salva" dialoghi.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Questa applicazione non contiene la pubblicità e non richiede la permissione di internet.</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Per la lista completa con le modifiche e una lista con le domande frequenti, prego visitare:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Potete aiutare a migliorare la traduzione nella vostra lingua a Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Il codice sorgente dell\' applicazione gratuita e con la sorgente aperta è disponibile a:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Show list of files with thumbnails for images.</listitem>
-		<listitem>Move, copy, rename, and delete files.</listitem>
-		<listitem>Create and delete directories (folders).</listitem>
-		<listitem>Send files by email.</listitem>
-		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
-		<listitem>Support for many file endings and mime types.</listitem>
-		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
+		<string>Caratteristiche:</string>
+		<listitem>Mostra la lista dei file con miniature per le immagini.</listitem>
+		<listitem>Sposta, copia, rinomina, e cancella i documenti.</listitem>
+		<listitem>Crea e cancella direttori (cartelle).</listitem>
+		<listitem>Invia i documenti attraverso email.</listitem>
+		<listitem>Funziona come un\'estensione per le altre applicazioni,  per esempio GMail, per aggiungere i documenti.</listitem>
+		<listitem>Supporto per molte terminazioni dei file e tipi mime.</listitem>
+		<listitem>Supporta intents PICK_FILE e PICK_DIRECTORY così le altre applicazioni possono usare OI File Manager.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>Estensioni disponibili per "OI File Manager":</string>
+		<listitem>Mostra le informazioni della licenza con "OI About".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<string>Le applicazioni che funzionano con "OI File Manager":</string>
+		<listitem>Apri e salva i documenti testi in "OI Notepad":</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Le parole chiave:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
 		<listitem>file manager, filemanager, file explorer</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Versioni internazionali:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Cerca le stringhe per Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -164,42 +165,42 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
-		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
-		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
-		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<string>OI Torcia è un\'applicazione semplice e efficace che ti aiuta a trovare la via nel buio.</string>
+		<string>OI Torcia mantiene l\'illuminazione di dietro allo schermo avviata, illuminando in modo chiaro la zona circonstante.</string>
+		<string>Per i dispositivi con la camera flash, OI Torcia può utilizzare il flash come una torcia luminosa per illuminare la stanza.</string>
+		<string>Il colore dell\'illuminazione di dietro personalizzabile con OI Color Picker.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Questa applicazione non contiene la pubblicità e non richiede la permissione di internet.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Il codice sorgente dell\' applicazione gratuita e con la sorgente aperta è disponibile a:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Per la lista completa con le modifiche e una lista con le domande frequenti, prego visitare:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Potete aiutare a migliorare la traduzione nella vostra lingua a Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Lock the display backlight on.</listitem>
-		<listitem>Lock camera flash on.</listitem>
-		<listitem>The color of backlight is customizable.</listitem>
+		<string>Caratteristiche:</string>
+		<listitem>Conservate l\'illuminazione di dietro dello schermo avviata.</listitem>
+		<listitem>Mantieni il flash avviato.</listitem>
+		<listitem>Il colore dell\'illuminazione di dietro è personalizzabile.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Flashlight":</string>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<string>Estensioni disponibili per "OI Flashlight":</string>
+		<listitem>Mostra le informazioni della licenza con "OI About".</listitem>
+		<listitem>Cambiate il colore dell\'illuminazione di dietro con "OI Color Picker".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Flashlight":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<string>Le applicazioni che funzionano con "OI Flashlight":</string>
+		<listitem>Aggiornate con "OI Update".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>Flashlight, light, Backlight</listitem>
+		<string>Le parole chiave:</string>
+		<listitem>Torcia, luce, Illuminazione di dietro</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Versioni internazionali:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Cerca le stringhe per Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -211,52 +212,52 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Notepad is a full-featured open source note taking application.</string>
-		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
-		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<string>OI Notepad è un\'applicazione con fonte pubblica, con tutte le caratteristiche per scrivere le note.</string>
+		<string>Con questa potete etichettare, cercare, e mandare le note, oltre alla funzionalità di base, come sarebbe creare, cancellare e modificare delle note.</string>
+		<string>Le caratteristiche avanzate come sarebbe criptare, importare/esportare, e le memo vocali sono tutte disponibili attraverso le estensioni.</string>
+		<string>Tutte queste funzioni sono portate insieme in un aspetto semplice e efficiente, personalizzabile con una varietà di temi.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Questa applicazione non contiene la pubblicità e non richiede la permissione di internet.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Il codice sorgente dell\' applicazione gratuita e con la sorgente aperta è disponibile a:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Per la lista completa con le modifiche e una lista con le domande frequenti, prego visitare:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Potete aiutare a migliorare la traduzione nella vostra lingua a Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Add, edit and delete notes.</listitem>
-		<listitem>Long-press on notes to add tags.</listitem>
-		<listitem>Change font size and sort order.</listitem>
-		<listitem>A clearly arranged layout with a variety of themes.</listitem>
-		<listitem>Quickly search through notes.</listitem>
-		<listitem>Send notes as MMS or SMS.</listitem>
+		<string>Caratteristiche:</string>
+		<listitem>Aggiungi, modifica e cancella le note.</listitem>
+		<listitem>Premere prolungatamente sulle note per aggiungere le etichette.</listitem>
+		<listitem>Cambia la dimensione del font e l\'odine dell\'elenco.</listitem>
+		<listitem>Una struttura organizzata in modo chiaro con una varietà di temi.</listitem>
+		<listitem>Cercare rapidamente attraverso le note.</listitem>
+		<listitem>Mandare note come MMS oppure SMS.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Notepad":</string>
-		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
-		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
-		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<string>Estensioni disponibili per "OI Notepad":</string>
+		<listitem>Registrate e allegate le memo delle voci alle note con "OI Voice Notes".</listitem>
+		<listitem>Con "OI Convert CSV" importate/esportate le note dalla scheda SD.</listitem>
+		<listitem>Mostra le informazioni della licenza con "OI About".</listitem>
+		<listitem>Inserisci la data e l\'ora alle note con "OI Insert Date".</listitem>
+		<listitem>Capovolgere il testo con "Upside Down".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Notepad":</string>
-		<listitem>Back up notes with "My Backup Pro".</listitem>
-		<listitem>Encrypt notes using "OI Safe".</listitem>
-		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<string>Applicazioni che funzionano con "OI Notepad":</string>
+		<listitem>Back up le note con "My Backup Pro".</listitem>
+		<listitem>Criptate le note usando "OI Safe".</listitem>
+		<listitem>Gestisci le note della vostra scheda SD con " File Manager OI".</listitem>
+		<listitem>Aggiornate con "OI Update".</listitem>
+		<listitem>Distribuisci le note attraverso "Facebook", "Gmail", "Google+", "Twitter", e tante altre applicazioni.</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<string>Le parole chiave:</string>
+		<listitem>Nota, Notepad, Note book, Note</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Versioni internazionali:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Cerca le stringhe per Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -268,47 +269,47 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
-		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<string>OI Sicurezza protegge tutte le vostre password e gli altri dati privati utilizzando lo standard industriale di criptaggio AES.</string>
+		<string>Funziona anche come un\'estensione verso OI Notepad per criptare le note create in OI Notepad.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Questa applicazione non contiene la pubblicità e non richiede la permissione di internet.</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Per la lista completa con le modifiche e una lista con le domande frequenti, prego visitare:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Potete aiutare a migliorare la traduzione nella vostra lingua a Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Il codice sorgente dell\' applicazione gratuita e con la sorgente aperta è disponibile a:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Securely protect data using AES encryption.</listitem>
-		<listitem>Freely move data entries between categories.</listitem>
-		<listitem>Import/Export data entries and databases.</listitem>
-		<listitem>Backup/Restore entries.</listitem>
-		<listitem>Includes secure password generator.</listitem>
-		<listitem>Automatic timeout to protect encrypted documents.</listitem>
-		<listitem>Encrypt OI Notepad notes.</listitem>
-		<listitem>Support for Obscura picture safe.</listitem>
+		<string>Caratteristiche:</string>
+		<listitem>Protegge i dati in sicurezza utilizzando il criptaggio AES.</listitem>
+		<listitem>Muovere liberamente le entrate dei dati fra le categorie.</listitem>
+		<listitem>Importa/Esporta le entrate dei dati e delle basi dei dati.</listitem>
+		<listitem>Backup/Ripristina entrate.</listitem>
+		<listitem>Include il generatore delle password sicure.</listitem>
+		<listitem>Timeout automatico per proteggere i documenti criptati.</listitem>
+		<listitem>Cripta OI Notepad note.</listitem>
+		<listitem>Aiuto per la sicurezza dell\'immagine Obscura.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>Estensioni disponibili per "OI File Manager":</string>
+		<listitem>Mostra le informazioni della licenza con "OI About".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<string>Le applicazioni che funzionano con "OI File Manager":</string>
+		<listitem>Cripta le note create in "OI Annotazioni".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Le parole chiave:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>safe, encrpytion, password, protection</listitem>
+		<listitem>sicuro, criptaggio,  password, protezione</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Versioni internazionali:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Cerca le stringhe per Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -320,50 +321,50 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
-		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
-		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
-		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
-		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<string>La lista degli Acquisti OI è un\'applicazione forte e la quale semplifica la gestione e la creazione delle liste di verifica.</string>
+		<string>La lista degli Acquisti OI simplifica l\'aggiungimento del prodotto su una lista, deseleziona il prodotto e lo rimuove dalla lista.</string>
+		<string>L\'applicazione può seguire separatamente i prezzi per ciascun negozio che gli utilizza , e dispone di un livello alto di personalizzazione.</string>
+		<string>La dimensione del font, l\'ordine dell\'elenco, le colonne liste e il comportamento della lista di pulizia sono tutte le impostazioni controllate dall\'utilizzatore.</string>
+		<string>Tutte queste caratteristiche sono riunite in un aspetto fresco il quale è personalizzabile attraverso una varietà di temi.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Il codice sorgente dell\' applicazione gratuita e con la sorgente aperta è disponibile a:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Questa applicazione non contiene la pubblicità e non richiede la permissione di internet.</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Per la lista completa con le modifiche e una lista con le domande frequenti, prego visitare:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Potete aiutare a migliorare la traduzione nella vostra lingua a Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Add, edit and delete lists.</listitem>
-		<listitem>Create, delete, and check items quickly and easily.</listitem>
-		<listitem>Variety of themes.</listitem>
-		<listitem>Customizable font size and sort order.</listitem>
-		<listitem>Keep track of separate prices for each store.</listitem>
-		<listitem>Customizable list columns.</listitem>
+		<string>Caratteristiche:</string>
+		<listitem>Aggiungi, modifica e cancella le liste.</listitem>
+		<listitem>Crea, cancella, e verifica gli articoli velocemente e facilmente.</listitem>
+		<listitem>Varietà di temi.</listitem>
+		<listitem>La dimensione del font e l\'ordine di smistare personalizzabile.</listitem>
+		<listitem>Mantieni l\'evidenza dei prezzi separati per ogni negozio.</listitem>
+		<listitem>La lista colonna personalizzabile.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Shopping List":</string>
-		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
-		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<string>Estensioni disponibili per "Lista di acquisti OI":</string>
+		<listitem>Aggiungi un messaggio registrato a una nota con "OI Voice Notes".</listitem>
+		<listitem>Importa/esporta le liste degli acquisti con "OI Convert CSV".</listitem>
+		<listitem>Mostra le informazioni della licenza con "OI About".</listitem>
+		<listitem>Entra/seleziona gli articoli con "Barcode OI Plugin".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Shopping List":</string>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Backup lists with "My Backup Pro".</listitem>
-		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<string>Le applicazioni che lavorano con "OI  Shopping List":</string>
+		<listitem>Aggiornate con "OI Update".</listitem>
+		<listitem>Backup le liste con "My Backup Pro".</listitem>
+		<listitem>Importa gli ingredienti delle ricette con "Bites".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<string>Le parole chiave:</string>
+		<listitem>Acquisti, Lista, Lista degli acquisti, Lista di verifica</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Versioni internazionali:</string>
 		<international/>
 		<emptyline/>
-		<string>Extensions:</string>
+		<string>Estensioni:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>

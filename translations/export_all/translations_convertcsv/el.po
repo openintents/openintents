@@ -1,0 +1,367 @@
+# Greek translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Giannis Konstantinidis <Unknown>\n"
+"Language-Team: Greek <el@li.org>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:25(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis"
+
+#. Short explanation of the application (max. 80 characters)
+#: tmp_strings.xml:28(string)
+msgid "Import and export lists and notes with OI Convert CSV."
+msgstr "Εισάγετε και εξάγετε λίστες και σημειώσεις με τον OI Μετατροπέα CSV."
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:34(string)
+msgid "OI Shopping List"
+msgstr "OI Λίστα Αγορών"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:36(string) tmp_strings.xml:96(string)
+msgid "OI Notepad"
+msgstr "OI Σημειωματάριο"
+
+#. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
+#: tmp_strings.xml:39(string)
+msgid "Launch %s and select menu &gt; Convert CSV."
+msgstr "Εκκινήστε το %s το επιλέξτε μενού &gt;  Μεταροπέας CSV."
+
+#. Application name. Can be localized.
+#. 	  "CSV" is a common file extension meaning "comma separated values".
+#. 	  "OI" and "CSV" should not be changed.
+#: tmp_strings.xml:47(string)
+msgid "OI Convert CSV"
+msgstr "OI Μετατροπέας CSV"
+
+#: tmp_strings.xml:48(string)
+msgid "Convert CSV"
+msgstr "Μετατροπή CSV"
+
+#: tmp_strings.xml:49(string)
+msgid "Convert CSV to Notepad"
+msgstr "Μετατροπή CSV στο Σημειωματάριο"
+
+#: tmp_strings.xml:50(string)
+msgid "Convert CSV to Shopping list"
+msgstr "Μετατροπή CSV στη Λίστα Αγορών"
+
+#: tmp_strings.xml:51(string)
+msgid "Convert all notes"
+msgstr "Μετατροπή όλων των σημειώσεων"
+
+#: tmp_strings.xml:52(string)
+msgid "Convert all shopping lists"
+msgstr "Μετατρέψτε όλες τις λίστες αγορών"
+
+#: tmp_strings.xml:53(string)
+msgid "Convert list '%s'"
+msgstr "Μετατρέψτε τη λίστα '%s'"
+
+#: tmp_strings.xml:54(string)
+msgid "File path"
+msgstr "Διαδρομή αρχείου"
+
+#: tmp_strings.xml:55(string)
+msgid "Import"
+msgstr "Εισαγωγή"
+
+#: tmp_strings.xml:56(string)
+msgid "Export"
+msgstr "Εξαγωγή"
+
+#: tmp_strings.xml:57(string)
+msgid "Error writing to file"
+msgstr "Σφάλμα κατά την εγγραφή στο αρχείο"
+
+#: tmp_strings.xml:58(string)
+msgid "Error reading from file"
+msgstr "Σφάλμα κατά την ανάγνωση από το αρχείο"
+
+#: tmp_strings.xml:59(string)
+msgid "Wrong CSV format"
+msgstr "Λανθασμένη μορφή CSV"
+
+#: tmp_strings.xml:60(string)
+msgid "File not found"
+msgstr "Το αρχείο δε βρέθηκε"
+
+#: tmp_strings.xml:61(string)
+msgid "Not yet implemented, please choose different option."
+msgstr "Δεν έχει ακόμα εφαρμοστεί, παρακαλώ διαλέξτε μια διαφορετική επιλογή"
+
+#: tmp_strings.xml:62(string)
+msgid "Import finished"
+msgstr "Η εισαγωγή ολοκληρώθηκε"
+
+#: tmp_strings.xml:63(string)
+msgid "Export finished"
+msgstr "Η εξαγωγή ολοκληρώθηκε"
+
+#: tmp_strings.xml:64(string)
+msgid "Select notepad CSV file"
+msgstr "Επιλογή αρχείου CSV σημειωματαρίου"
+
+#: tmp_strings.xml:65(string)
+msgid "Select shopping list CSV file"
+msgstr "Επιλογή αρχείου CSV λίστας αγορών"
+
+#: tmp_strings.xml:66(string)
+msgid "Current Import Policy:"
+msgstr "Τρέχουσα Πολιτική Εισαγωγής:"
+
+#: tmp_strings.xml:67(string)
+msgid "Import Policy"
+msgstr "Πολιτική Εισαγωγής"
+
+#: tmp_strings.xml:68(string) tmp_strings.xml:83(string)
+msgid "Select the import policy to use"
+msgstr "Επιλέξτε την πολιτική εισαγωγής προς χρήση"
+
+#: tmp_strings.xml:70(string)
+msgid "The file exists. Do you want to overwrite?"
+msgstr "Το αρχείο υπάρχει ήδη. Θέλετε να το αντικαταστήσετε;"
+
+#: tmp_strings.xml:71(string)
+msgid "Don't ask again. Always overwrite!"
+msgstr "Να μην ερωτηθώ ξανά. Πάντα να γίνεται αντικατάσταση!"
+
+#: tmp_strings.xml:73(string)
+msgid "Import policy set to RESTORE"
+msgstr "Η πολιτική εισαγωγής ορίστηκε στο ΕΠΑΝΑΦΟΡΑ"
+
+#: tmp_strings.xml:74(string)
+msgid ""
+"Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE "
+"them with the contents of the CSV file. Are you sure?"
+msgstr ""
+"Η τρέχουσα πολιτική εισαγωγής σας είναι να ΔΙΑΓΡΑΦΟΥΝ ΟΛΕΣ ΟΙ ΤΡΕΧΟΥΣΕΣ "
+"ΚΑΤΑΧΩΡΗΣΕΙΣ και να ΑΝΤΙΚΑΤΑΣΤΑΘΟΥΝ με τα περιεχόμενα του αρχείου CSV. Είστε "
+"σίγουρος;"
+
+#: tmp_strings.xml:76(string)
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: tmp_strings.xml:77(string)
+msgid "CSV file format"
+msgstr "Μορφή αρχείου CSV"
+
+#: tmp_strings.xml:78(string)
+msgid "Select CSV file format"
+msgstr "Επιλέξτε τη μορφή αρχείου CSV"
+
+#: tmp_strings.xml:79(string)
+msgid "Select encoding"
+msgstr "Επιλογή κωδικοποίησης"
+
+#: tmp_strings.xml:80(string)
+msgid "Default"
+msgstr "Προεπιλογή"
+
+#: tmp_strings.xml:81(string)
+msgid "Use custom encoding (advanced users)"
+msgstr "Χρήση προσαρμοσμένης κωδικοποίησης (προχωρημένοι χρήστες)"
+
+#: tmp_strings.xml:82(string)
+msgid "Select a CSV file format"
+msgstr "Επιλέξτε μια μορφή αρχείου CSV"
+
+#. Preference category title
+#: tmp_strings.xml:87(string)
+msgid "Common settings"
+msgstr "Κοινές ρυθμίσεις"
+
+#: tmp_strings.xml:88(string)
+msgid "Import/export settings that apply to Notepad and Shopping list."
+msgstr ""
+"εισαγωγή/εξαγωγή ρυθμίσεων που αφαρμόζονται στο Σημειωματάριο και τη Λίστα "
+"Αγορών."
+
+#: tmp_strings.xml:89(string)
+msgid "Ask if file exists"
+msgstr "Ερώτηση εάν το αρχείο υπάρχει"
+
+#: tmp_strings.xml:90(string)
+msgid ""
+"If checked a dialog appears to confirm overwriting if the export file "
+"already exists."
+msgstr ""
+"Εάν επιλεγεί εμφανίζεται ένας διάλογος για την επιβεβαίωση αντικατάστασης "
+"εάν το εξαγώμενο αρχείο υπάρχει ήδη."
+
+#: tmp_strings.xml:92(string)
+msgid "Application specific settings"
+msgstr "Ειδικές ρυθμίσεις εφαρμογής"
+
+#: tmp_strings.xml:93(string)
+msgid "Filename"
+msgstr "Όνομα αρχείου"
+
+#: tmp_strings.xml:94(string)
+msgid "Full path for file."
+msgstr "Πλήρης διαδρομή για το αρχείο."
+
+#: tmp_strings.xml:97(string)
+msgid "Import/export settings for OI Notepad."
+msgstr "Ρυθμίσεις εισαγωγής/εξαγωγής για το OI Σημειωματάριο."
+
+#: tmp_strings.xml:99(string)
+msgid "OI Shopping list"
+msgstr "OI Λίστα Αγορών"
+
+#: tmp_strings.xml:100(string)
+msgid "Import/export settings for OI Shopping list."
+msgstr "Ρυθμίσεις εισαγωγής/εξαγωγής για την OI Λίστα Αγορών"
+
+#: tmp_strings.xml:102(string)
+msgid "Converting..."
+msgstr "Γίνεται μετατροπή..."
+
+#: tmp_strings.xml:103(string)
+msgid "Ok"
+msgstr "Εντάξει"
+
+#: tmp_strings.xml:104(string)
+msgid "Import stores"
+msgstr "Εισαγωγή καταστημάτων"
+
+#: tmp_strings.xml:105(string)
+msgid "Import HandyShopper store names only as item tags."
+msgstr ""
+"Η εισαγωγή HandyShopper αποθηκεύει ονόματα μόνο ως ετικέτες αντικειμένων."
+
+#: tmp_strings.xml:106(string)
+msgid "Import HandyShopper stores and per-store price and aisle information."
+msgstr ""
+"Η εισαγωγή HandyShopper αποθηκεύει και τις τιμές ανα κατάστημα και της "
+"πληροφορίες των διαδρόμων."
+
+#. Permission
+#: tmp_strings.xml:110(string)
+msgid "read notes"
+msgstr "ανάνγωση σημειώσεων"
+
+#: tmp_strings.xml:111(string)
+msgid ""
+"Allows an application to read notes. Note that encrypted notes are provided "
+"in the encrypted format."
+msgstr ""
+"Επιτρέπει μια εφαρμογή να διαβάζει σημειώσεις. Σημειώστε οτι οι "
+"κρυπτογραφημένες σημειώσεις παρέχονται στην κρυπτογραφημένη μορφή."
+
+#. Permission
+#: tmp_strings.xml:113(string)
+msgid "write notes"
+msgstr "εγγραφή σημειώσεων"
+
+#: tmp_strings.xml:114(string)
+msgid "Allows an application to create new notes or modify existing notes."
+msgstr ""
+"Επιτρέπει μια εφαρμογή να δημιουργεί νέες σημειώσεις ή να επεξεργάζεται "
+"παλαιότερες."
+
+#. Permission
+#: tmp_strings.xml:118(string)
+msgid "read shopping lists"
+msgstr "ανάγνωση λιστών αγορών"
+
+#: tmp_strings.xml:119(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+"Επιτρέπει σε μια εφαρμογή την ανάγνωση λιστών αγορών. Σημειώστε ότι οι "
+"κρυπτογραφημένες λίστες και τα στοιχεία παρέχονται σε κρυπτογραφημένη μορφή."
+
+#. Permission
+#: tmp_strings.xml:121(string)
+msgid "write shopping lists"
+msgstr "εγγραφή λιστών αγορών"
+
+#: tmp_strings.xml:122(string)
+msgid ""
+"Allows an application to create new lists and items or modify existing ones."
+msgstr ""
+"Επιτρέπει μια εφαρμογή να δημιουργεί νέες λίστες και στοιχεία ή να "
+"επεξεργάζεται παλαιότερες."
+
+#: tmp_strings.xml:125(item)
+msgid "MS Outlook Notes"
+msgstr "Σημειώσεις MS Outlook"
+
+#: tmp_strings.xml:126(item)
+msgid "Palm CSV"
+msgstr "Palm CSV"
+
+#: tmp_strings.xml:127(item)
+msgid "JPilot Memo"
+msgstr "JPilot Memo"
+
+#: tmp_strings.xml:131(item)
+msgid "MS Outlook Tasks"
+msgstr "Εργασίες MS Outlook"
+
+#: tmp_strings.xml:132(item)
+msgid "HandyShopper"
+msgstr "HandyShopper"
+
+#: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
+msgid "DUPLICATE - Allow duplicates of records."
+msgstr "ΑΝΤΙΓΡΑΦΟ - Να επιτρέπονται αντίγραφα των καταχωρήσεων."
+
+#: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
+msgid "KEEP - Don't overwrite existing records."
+msgstr "ΔΙΑΤΗΡΗΣΗ - Να μη γίνεται αντικατάσταση των υπάρχοντων καταχωρήσεων."
+
+#: tmp_strings.xml:138(item)
+msgid "Overwrite - Overwrite existing records."
+msgstr "ΑΝΤΙΚΑΤΑΣΤΑΣΗ - Αντικατάσταση των υπάρχοντων καταχωρήσεων."
+
+#: tmp_strings.xml:139(item)
+msgid "Restore - DELETE ALL, then import."
+msgstr "Επαναφορά - ΔΙΑΓΡΑΦΗ ΟΛΩΝ, έπειτα εισαγωγή."
+
+#: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
+msgid "DUPLICATE - Add a second copy of a record if it already exists."
+msgstr ""
+"ΑΝΤΙΓΡΑΦΟ - Προσθήκη ενός δεύτερου αντιγράφου μιας καταχώρησης εάν ήδη "
+"υπάρχει."
+
+#: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+msgid ""
+"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
+msgstr ""
+"ΔΙΑΤΗΡΗΣΗ - Να μη γίνει αντικατάσταση μιας υπάρχοντος καταχώρησης, να "
+"αγνοείται αυτή στο αρχείο CSV."
+
+#: tmp_strings.xml:145(item)
+msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
+msgstr ""
+"Αντικατάσταση - Μια καταχώρηση στο CSV θα ΑΝΤΙΚΑΤΑΣΤΗΣΕΙ μια υπάρχουσα "
+"καταχώρηση."
+
+#: tmp_strings.xml:146(item)
+msgid ""
+"Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
+msgstr ""
+"Επαναφορά Αντιγράφου Ασφαλείας - ΔΙΑΓΡΑΦΗ ΟΛΩΝ ΤΩΝ ΥΠΑΡΧΟΝΤΩΝ ΚΑΤΑΧΩΡΗΣΕΩΝ, "
+"έπειτα εισαγωγή του αρχείου CSV."

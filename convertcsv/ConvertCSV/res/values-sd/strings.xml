@@ -23,10 +23,11 @@
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
   OpenIntents devs https://launchpad.net/~openintents-devs
-  happynawani https://launchpad.net/~happynawani</string>
+  happynawani https://launchpad.net/~happynawani
+  vishal panjwani https://launchpad.net/~vishal-panjwani15</string>
 	
 	<!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
+	<string name="about_comments">अंदर लाएं अऊँ बहार मोक्ल्यो लिस्ट्स अऊँ नोट्स खे OI क्न्वेर्ट CSV सां गडद</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -135,26 +136,26 @@
     
     <string-array name="import_policy">
         <item>डुप्लीकेट - रिकॉर्ड खे डुप्लिकेट करण जी अनुमति दीन्दो आ</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>राख्यो - मौजूदा रेकोर्दन खे अधिलेखित न कयो</item>
         <item>अधिलेखित - मौजूदा रिकॉर्ड अधिलेखित कंदों आ</item>
         <item>रेस्टोर - सब मिटायो, पो  आयात कयो</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>डुप्लीकेट - हिक्क रिकॉर्ड जी  खे कॉपी कंदों आ अगर ऊओ पहरों  खान ही मौजूद हून्दो आ |</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>राख्यो - मौजूदा रेकोर्दन खे अधिलेखित न कयो,CSV फाईल खे अन्देखो कयोस</item>
         <item>अधिलेखित - CSV में हिक्क मौजूदा रिकॉर्ड खे अधिलेखित करे शादंड़ो</item>
         <item>बैकअप रेस्टोर कयो - पेंजे मौजूदा सादे रिकॉर्डन खे मिटायो, पो CSV फ़ाइल आयात कयो</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>डुप्लीकेट - रिकॉर्ड खे डुप्लिकेट करण जी अनुमति दीन्दो आ</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>राख्यो - मौजूदा रेकोर्दन खे अधिलेखित न कयो</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>डुप्लीकेट - हिक्क रिकॉर्ड जी  खे कॉपी कंदों आ अगर ऊओ पहरों  खान ही मौजूद हून्दो आ |</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>राख्यो - मौजूदा रेकोर्दन खे अधिलेखित न कयो,CSV फाईल खे अन्देखो कयोस</item>
     </string-array>
     
 </resources>

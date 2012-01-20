@@ -80,15 +80,15 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabă</item>
-		<item>Belarusian</item>
-		<item>Bulgarian</item>
-		<item>Catalan</item>
+		<item>Belarusă</item>
+		<item>Bulgară</item>
+		<item>Catalană</item>
 		<item>Cehă</item>
 		<item>Daneză</item>
 		<item>Germană</item>
 		<item>Greacă</item>
 		<item>Engleză</item>
-		<item>English (United Kingdom)</item>
+		<item>Engleză (Regatul Unit al Marii Britanii)</item>
 		<item>Spaniolă</item>
 		<item>Persană</item>
 		<item>Finlandeză</item>
@@ -98,13 +98,13 @@
 		<item>Croată</item>
 		<item>Maghiară</item>
 		<item>Italiană</item>
-		<item>Hebrew</item>
+		<item>Ebraică</item>
 		<item>Japoneză</item>
 		<item>Coreană</item>
 		<item>Lao</item>
-		<item>Latvian</item>
-		<item>Macedonian</item>
-		<item>Norwegian Bokmal</item>
+		<item>Letonă</item>
+		<item>Macedoneană</item>
+		<item>Norvegiană Bokmal</item>
 		<item>Olandeză</item>
 		<item>Occitană (post 1500)</item>
 		<item>Punjabi</item>
@@ -116,7 +116,7 @@
 		<item>Sardiniană</item>
 		<item>Sindhi</item>
 		<item>Slovacă</item>
-		<item>Slovenian</item>
+		<item>Slovenă</item>
 		<item>Suedeză</item>
 		<item>Tagalog</item>
 		<item>Turcă</item>

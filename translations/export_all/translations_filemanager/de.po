@@ -11,6 +11,7 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Daniel Winzen <d@winzen4.de>\n"
 "Language-Team: German <de@li.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,6 +26,8 @@ msgstr ""
 "  Alexander Sapronov https://launchpad.net/~warmonger\n"
 "  Daniel Winzen https://launchpad.net/~q-d\n"
 "  Flosen https://launchpad.net/~flose\n"
+"  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis\n"
+"  Hans https://launchpad.net/~hans-wuerstchen42\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Patrick Eigensatz https://launchpad.net/~p.eigensatz\n"
 "  Schrotti https://launchpad.net/~schrott-micha\n"
@@ -36,6 +39,7 @@ msgstr ""
 #: tmp_strings.xml:26(string)
 msgid "Manage files on the SD card with OI File Manager."
 msgstr ""
+"Mit den OI Dateimanager können Sie Ihre Daten auf der SD-Karte verwalten."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:32(string)
@@ -86,11 +90,11 @@ msgstr "Mehr"
 
 #: tmp_strings.xml:47(string)
 msgid "Compress (ZIP)"
-msgstr ""
+msgstr "Komprimiere (ZIP)"
 
 #: tmp_strings.xml:48(string)
 msgid "Extract (ZIP)"
-msgstr ""
+msgstr "Entpacke (ZIP)"
 
 #: tmp_strings.xml:49(string)
 msgid "Filter"
@@ -110,7 +114,7 @@ msgstr "Als Lesezeichnen hinzufügen"
 
 #: tmp_strings.xml:53(string)
 msgid "Refresh"
-msgstr ""
+msgstr "Aktualisieren"
 
 #: tmp_strings.xml:55(string)
 msgid "Create new folder"
@@ -439,48 +443,48 @@ msgstr "Diese Datei hat schon ein Lesezeichen"
 #.           ***************************
 #: tmp_strings.xml:178(string)
 msgid "Item compressed successfully"
-msgstr ""
+msgstr "Die Datei wurde erfolgreich komprimiert"
 
 #: tmp_strings.xml:179(string)
 msgid "Could not compress the item"
-msgstr ""
+msgstr "Die Datei konnte nicht komprimiert werden"
 
 #: tmp_strings.xml:180(string)
 msgid "Compress into archive:"
-msgstr ""
+msgstr "In ein Archiv komprimieren"
 
 #: tmp_strings.xml:181(string)
 msgid "Item extracted successfully"
-msgstr ""
+msgstr "Die Datei wurde erfolgreich entpackt"
 
 #: tmp_strings.xml:182(string)
 msgid "Could not extract the item"
-msgstr ""
+msgstr "Die Datei konnte nicht entpackt werden"
 
 #: tmp_strings.xml:183(string)
 msgid "Extract into folder:"
-msgstr ""
+msgstr "In Ordner entpacken"
 
 #: tmp_strings.xml:184(string)
 msgid "Select folder to extract into"
-msgstr ""
+msgstr "Wählen Sie einen Ordner zum Entpacken aus"
 
 #: tmp_strings.xml:185(string)
 msgid "Extract here"
-msgstr ""
+msgstr "Hierher entpacken"
 
 #: tmp_strings.xml:186(string)
 msgid "Extracting..."
-msgstr ""
+msgstr "Entpacke..."
 
 #: tmp_strings.xml:187(string)
 msgid "Compressing..."
-msgstr ""
+msgstr "Komprimiere..."
 
 #: tmp_strings.xml:188(string)
 msgid "File %s exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Die Datei %s existiert schon. Wollen Sie die Datei überschreiben?"
 
 #: tmp_strings.xml:190(string)
 msgid "Do you want to change the file extension?"
-msgstr ""
+msgstr "Wollen Sie die Dateiendung ändern?"

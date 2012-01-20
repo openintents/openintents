@@ -6,10 +6,11 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Hans https://launchpad.net/~hans-wuerstchen42
   Peli https://launchpad.net/~peli0101</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
+	<string name="about_comments">Mit OI Countdown können Sie mehrere Countdowns erstellen.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

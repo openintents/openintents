@@ -7,42 +7,42 @@ Set multiple countdowns with OI Countdown.
 # Description:
 
 
-OI Countdown is a helpful timer to increase your productivity and plan your day.  It allows you to set a variety of different actions to notify you at the end of a timer.  Fully customize all your timers, with no limit on how many you can have running or saved.  
+OI Conto alla rovescia è un timer di aiuto per sviluppare la vostra produttività e pianificare la vostra giornata. Vi permette di impostare una varietà di azioni differenti per avvisare la fine del timer. Personalizzate completamente tutti i vostri timer, senza limiti a quanti ne potete usare oppure salvare. 
 
-This application is ad free and does not require the internet permission.  
-
-
+Questa applicazione non contiene la pubblicità e non richiede la permissione di internet. 
 
 
 
-The source code of this free and open source application is available at: 
+
+
+Il codice sorgente dell' applicazione gratuita e con la sorgente aperta è disponibile a: 
 http://code.google.com/p/openintents
 
-For the complete list of changes and a list of frequently asked questions, please visit: 
+Per la lista completa con le modifiche e una lista con le domande frequenti, prego visitare: 
 http://www.openintents.org
 
 
 
-You can help to improve the translation into your language at Launchpad: 
+Potete aiutare a migliorare la traduzione nella vostra lingua a Launchpad: 
 https://translations.launchpad.net/openintents/trunk
 
-Features:  
-* Set a countdown by choosing a duration or a date.
-* Be notified by vibration or any sound of your choice. 
-* Have an unlimited number of timers running at the same time. 
-* Save your countdowns and give them names to reuse at later times. 
-* Modify countdowns, even while they are still running
+Caratteristiche: 
+* Imposta il conto alla rovescia scegliendo il tempo oppure la data.
+* Ricevi notifiche con delle vibrazioni oppure qualsiasi suono a vostra scelta.
+* Avere un numero illimitato di timers che funzionano nello stesso tempo.
+* Salvate i vostri conti alla rovescia e dategli i nomi per usarli in futuro .
+* Modificate i conti alla rovescia, anche se stanno funzionando
 
-Available extensions for "OI Countdown":  
-* Launch applications through Android shortcuts
-* Use OI About to show license information
+Le estensioni disponibili per "IO Conto alla rovescia": 
+* Lancia le applicazioni attraverso le scorciatoie Android
+* Utilizzate OI About per mostrare le informazioni della licenza
 
-Keywords:  
-* countdown, timer, alert
+Le parole chiave: 
+* conto alla rovescia, timer, allarme
 * OI, OpenIntents, Open Intents
 
-International versions: 
-Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI, عد تنازلي OI
+Versioni internazionali: 
+Compte enrere d'OI, IO ໄລກັບ, OI カウントダウン, OI 카운트다운, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI Χρονομετρητής, OI Одбројувач, OI काउंटडाउन, OI倒计时, عد تنازلي OI, סופר לאחור OI
 
 
-Search strings for Market: 
+Cerca le stringhe per Market: 

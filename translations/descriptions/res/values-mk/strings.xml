@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  Pance Zvezdanov https://launchpad.net/~pance-zvezdanov</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>„За OI“ е посебен „За“ дијалог кој е поделен меѓу апликациите.</string>
+		<string>Оваа апликација се повикува преку менито на други OI апликации.</string>
+		<string>Дозволува да се видат информации за верзијата, линкови, заслуги и лиценца на апликација.</string>
+		<string>„Заслуги“ вклучува автори, документација, преведувачи и уметници.</string>
+		<string>Сета оваа функционалност е соберена во еден едноставен и ефикасен распоред.</string>
+		<emptyline/>
+		<string>Оваа апликација е без реклами и не и е потребно интернет дозвола.</string>
+		<emptyline/>
+		<string>Изворниот код на оваа бесплатна и со отворен код апликација е достапен на:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>За целосната листа на промени и често поставувани прашања, посетете ја:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Ти можеш да помогнеш да се подобри преводот во твојот јазик на Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Карактеристики:</string>
+		<listitem>Покажува општи информации, заслуги и лиценци.</listitem>
+		<listitem>Покажува преведувачи од сите јазични верзии.</listitem>
+		<listitem>Вади информации од апликациониот манифест преку стандардни ознаки и метаподатоци.</listitem>
+		<listitem>По избор, сите полиња можат да се менуваат преку намерни додатоци.</listitem>
+		<emptyline/>
+		<string>Апликации кои работат со „За OI“:</string>
+		<listitem>OI Бележник</listitem>
+		<listitem>OI Управувач со датотеки</listitem>
+		<listitem>OI Листа за купување</listitem>
+		<listitem>OI Претвори CSV</listitem>
+		<listitem>OI Сеф</listitem>
+		<listitem>OI Одбројувач</listitem>
+		<listitem>OI Светилка</listitem>
+		<emptyline/>
+		<string>Клучни зборови:</string>
+		<listitem>За, Заслуги, Информации:</listitem>
+		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<emptyline/>
+		<string>Меѓународни верзии:</string>
+		<international/>
+		<emptyline/>
+		<string>Барај стрингови за Пазар:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+	<description application="countdown/Countdown">
+		<!--  OI Countdown -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<emptyline/>
+		<string>OI Одбројувач е корисен одбројувач за зголемување на продуктивноста и планирање на денот.</string>
+		<string>Ви дозволува да поставите разновидни дејства за известување на крајот од одбројувачот</string>
+		<string>Потполно прилагодете ги сите ваши одбројувачи, со неограничен број на извршувани или снимени.</string>
+		<emptyline/>
+		<string>Оваа апликација е без реклами и не и е потребно интернет дозвола.</string>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+		<string>Изворниот код на оваа бесплатна и со отворен код апликација е достапен на:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>За целосната листа на промени и често поставувани прашања, посетете ја:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<emptyline/>
+		<string>Ти можеш да помогнеш да се подобри преводот во твојот јазик на Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Карактеристики:</string>
+		<listitem>Поставете одбројувач со бирање на траење или датум.</listitem>
+		<listitem>Бидете известени преку вибрација или звук по ваш избор.</listitem>
+		<listitem>Имајте неограничен број одбројувачи кои се извршуваат истовремено.</listitem>
+		<listitem>Снимете ги вашите одбројувачи и именувајте ги за да ги користите подоцна.</listitem>
+		<listitem>Менувајте ги одбројувачите, дури и кога се извршуваат</listitem>
+		<emptyline/>
+		<string>Достапни проширувања за „OI Одбројувач“:</string>
+		<listitem>Стартувајте ги апликациите преку Android кратенки</listitem>
+		<listitem>Користете „За OI“ за да ги видете информациите за лиценца</listitem>
+		<emptyline/>
+		<string>Клучни зборови:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>одбројувач, тајмер, аларм, countdown, timer, alert</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, OpenIntents, Open Intents, Отворени Намери</listitem>
+		<emptyline/>
+		<string>Меѓународни верзии:</string>
+		<international/>
+		<emptyline/>
+		<string>Барај стрингови за Пазар:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt "/>
+	</description>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Управувач со датотеки ви дозволува прелистувате низ вашата SD картичка, да создавате директориуми, да преименувате, да копирате, да поместувате и да бришете датотеки.</string>
+		<string>Исто така има улога на додаток на други апликации за прикажување на „Отвори“ и „Зачувај“ дијалозите.</string>
+		<emptyline/>
+		<string>Оваа апликација е без реклами и не и е потребно интернет дозвола.</string>
+		<emptyline/>
+		<string>За целосната листа на промени и често поставувани прашања, посетете ја:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Ти можеш да помогнеш да се подобри преводот во твојот јазик на Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Изворниот код на оваа бесплатна и со отворен код апликација е достапен на:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Карактеристики:</string>
+		<listitem>Покажи листа на датотеки со рамки за слики.</listitem>
+		<listitem>Поместувај, копирај, преименувај и бриши датотеки.</listitem>
+		<listitem>Создавај и бриши директориуми (папки).</listitem>
+		<listitem>Испраќај датотеки преку електронска пошта.</listitem>
+		<listitem>Дејствува како додаток на други апликации, на пример Gmail, за прикачување датотеки.</listitem>
+		<listitem>Подршка за многу типови датотеки и гестови.</listitem>
+		<listitem>Подржува PICK_FILE и PICK_DIRECTORY намери за да можат другите апликации да го користат OI Управувач со датотеки.</listitem>
+		<emptyline/>
+		<string>Достапни додатоци за „OI Управувач со датотеки“:</string>
+		<listitem>Покажи ги информациите за лиценцата со „OI About“.</listitem>
+		<emptyline/>
+		<string>Апликации кои работат со „OI Управувач со датотеки“:</string>
+		<listitem>Отвори и сними текстуални датотеки со „OI Бележник“.</listitem>
+		<emptyline/>
+		<string>Клучни зборови:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>file manager, filemanager, file explorer, управувач со датотеки, истражувач на датотеки, менаџер на фајлови</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents, Отворени Намери</listitem>
+		<emptyline/>
+		<string>Меѓународни верзии:</string>
+		<international/>
+		<emptyline/>
+		<string>Барај стрингови за Пазар:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Светилка  едноставна и ефективна апликација која ви помага најдете пат во темнината.</string>
+		<string>OI Светилка  го заклучува позадинското светло на екранот во вклучена состојба, јасно осветлувајќи ја околината.</string>
+		<string>За уреди со блиц, OI Светилка може да го користи блицот како факел за да ја осветли собата.</string>
+		<string>Бојата на позадинското светло е потполно прилагодлива со OI Избирач на бои.</string>
+		<emptyline/>
+		<string>Оваа апликација е без реклами и не и е потребно интернет дозвола.</string>
+		<emptyline/>
+		<string>Изворниот код на оваа бесплатна и со отворен код апликација е достапен на:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>За целосната листа на промени и често поставувани прашања, посетете ја:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Ти можеш да помогнеш да се подобри преводот во твојот јазик на Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Карактеристики:</string>
+		<listitem>Го заклучува позадинското светло во вклучена состојба.</listitem>
+		<listitem>Го заклучува блицот во вклучена состојба.</listitem>
+		<listitem>Бојата на позадинското светло е прилагодлива.</listitem>
+		<emptyline/>
+		<string>Достапни додатоци за „OI Светилка“:</string>
+		<listitem>Покажи ги информациите за лиценцата со „OI About“.</listitem>
+		<listitem>Смени ја бојата на позадинското светло со „OI Избирач на бои“.</listitem>
+		<emptyline/>
+		<string>Апликации кои работат со „OI Светилка“:</string>
+		<listitem>Ажурирај со „OI Ажурирај“.</listitem>
+		<emptyline/>
+		<string>Клучни зборови:</string>
+		<listitem>Flashlight, light, Backlight, Светилка, светлина, Позадинско светло</listitem>
+		<listitem>OI, OpenIntents, Open Intents, Отворени Намери</listitem>
+		<emptyline/>
+		<string>Меѓународни верзии:</string>
+		<international/>
+		<emptyline/>
+		<string>Барај стрингови за Пазар:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Бележник е комплетна апликација за забелешки со отворен код.</string>
+		<string>Со неа можете да означувате, пребарувате и испраќате белешки, како додаток на основните функции како што се создавање, бришење и уредување на белешки.</string>
+		<string>Напредни опции како енкрипција, увоз/извоз и гласовни записи се достапни преку додатоци.</string>
+		<string>Сета оваа функционалност е собрана во еден едноставен и ефикасен распоред, прилагодлив преку разни теми.</string>
+		<emptyline/>
+		<string>Оваа апликација е без реклами и не и е потребно интернет дозвола.</string>
+		<emptyline/>
+		<string>Изворниот код на оваа бесплатна и со отворен код апликација е достапен на:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>За целосната листа на промени и често поставувани прашања, посетете ја:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Ти можеш да помогнеш да се подобри преводот во твојот јазик на Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Карактеристики:</string>
+		<listitem>Додади, уреди и бриши белешки.</listitem>
+		<listitem>Дого притискајте на белешките за да додадете ознаки.</listitem>
+		<listitem>Смени големина на фонт и редослед.</listitem>
+		<listitem>Јасно подреден распоред со разновидни теми.</listitem>
+		<listitem>Брзи пребарување низ белешки.</listitem>
+		<listitem>Прати белешки како MMS или SMS.</listitem>
+		<emptyline/>
+		<string>Достапни додатоци за „OI Бележник“:</string>
+		<listitem>Сними и прикачи гласовни записи на белешки со „OI Гласовни белешки“.</listitem>
+		<listitem>Со „ OI Претвори CSV“ внеси/изнеси белешки од SD картичката.</listitem>
+		<listitem>Покажи ги информациите за лиценцата со „OI About“.</listitem>
+		<listitem>Внеси го датумот и времето во белешки со „OI Внеси датум“.</listitem>
+		<listitem>Преврти текст наопаку со „Превртено“.</listitem>
+		<emptyline/>
+		<string>Апликации кои работат со „OI Бележник“:</string>
+		<listitem>Врати белешки со „My Backup Pro“.</listitem>
+		<listitem>Енкриптирај белешки користејќи „OI Сеф“</listitem>
+		<listitem>Управувај со белешки на SD картичка со „OI Управувач со датотеки“.</listitem>
+		<listitem>Ажурирај со „OI Ажурирај“.</listitem>
+		<listitem>Сподели белешки преку "Facebook", "Gmail", "Google+", "Twitter" и многу други апликации.</listitem>
+		<emptyline/>
+		<string>Клучни зборови:</string>
+		<listitem>Note, Notepad, Note book, Notes, Белешки, Бележник</listitem>
+		<listitem>OI, OpenIntents, Open Intents, Отворени Намери</listitem>
+		<emptyline/>
+		<string>Меѓународни верзии:</string>
+		<international/>
+		<emptyline/>
+		<string>Барај стрингови за Пазар:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Сеф безбедно ги заштитува сите лозинки и други приватни податоци користејќи енкрипција со индустриски стандард AES.</string>
+		<string>91.	Исто така има улога на додаток на OI Бележник за енкрипција на белешки направени во OI Бележник.</string>
+		<emptyline/>
+		<string>Оваа апликација е без реклами и не и е потребно интернет дозвола.</string>
+		<emptyline/>
+		<string>За целосната листа на промени и често поставувани прашања, посетете ја:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Ти можеш да помогнеш да се подобри преводот во твојот јазик на Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Изворниот код на оваа бесплатна и со отворен код апликација е достапен на:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Карактеристики:</string>
+		<listitem>92.	Безбедно заштити податоци користејќи AES енкрипција.</listitem>
+		<listitem>93.	Слободно движи податочни записи помеѓу категории.</listitem>
+		<listitem>94.	Внеси/Изнеси податочни записи и бази на податоци.</listitem>
+		<listitem>95.	Врати/Обнови записи.</listitem>
+		<listitem>96.	Вклучува безбеден генератор на лозинки.</listitem>
+		<listitem>97.	Автоматски истек на време за заштита на енкриптирани документи.</listitem>
+		<listitem>98.	Енкриптирај OI Бележник белешки.</listitem>
+		<listitem>99.	Подршка за Obscura picture safe.</listitem>
+		<listitem>MyBackup Pro.</listitem>
+		<emptyline/>
+		<string>Достапни додатоци за „OI Управувач со датотеки“:</string>
+		<listitem>Покажи ги информациите за лиценцата со „OI About“.</listitem>
+		<emptyline/>
+		<string>Апликации кои работат со „OI Управувач со датотеки“:</string>
+		<listitem>Енкриптирај белешки направени во "OI Бележник".</listitem>
+		<emptyline/>
+		<string>Клучни зборови:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>safe, encrpytion, password, protection, безбедност, сеф, енкрипција, лозинка, заштита</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents, Отворени Намери</listitem>
+		<emptyline/>
+		<string>Меѓународни верзии:</string>
+		<international/>
+		<emptyline/>
+		<string>Барај стрингови за Пазар:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Листа за купување е моќна апликација која правењето и управувањето со списоците го прави полесно.</string>
+		<string>OI Листа за купување го олеснува додавањето предмети на листа, проверувањето и отстранувањето на нив од листата.</string>
+		<string>Апликацијата може да следи посебни цени за секоја продавница што ја користите, нудејќи високо ниво на прилагодување.</string>
+		<string>Големина на фонт, редослед, колони на листа и чистење листа се подесувања кои ги управува корисникот.</string>
+		<string>Сите овие карактеристки се собрани заедно во еден јасен распоред кој е прилагодлив преку разновидност од теми.</string>
+		<emptyline/>
+		<string>Изворниот код на оваа бесплатна и со отворен код апликација е достапен на:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Оваа апликација е без реклами и не и е потребно интернет дозвола.</string>
+		<emptyline/>
+		<string>За целосната листа на промени и често поставувани прашања, посетете ја:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Ти можеш да помогнеш да се подобри преводот во твојот јазик на Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Карактеристики:</string>
+		<listitem>Додади, уреди и избриши листи.</listitem>
+		<listitem>Создади, избриши и провери предмети брзо и лесно.</listitem>
+		<listitem>Разновидност од теми.</listitem>
+		<listitem>Прилагодлива големина на фонт и редослед.</listitem>
+		<listitem>Следи одделни цени за секоја продавница.</listitem>
+		<listitem>Прилагодливи колони од листа.</listitem>
+		<emptyline/>
+		<string>Достапни додатоци за „OI Листа за купување“:</string>
+		<listitem>Додади снимена порака на белешка со „OI Гласовни белешки“.</listitem>
+		<listitem>Увези/Извези листи за купување со „OI Претвори CSV“</listitem>
+		<listitem>Покажи ги информациите за лиценцата со „OI About“.</listitem>
+		<listitem>Внеси/провери предмети со „Баркод OI приклучок“.</listitem>
+		<emptyline/>
+		<string>Апликации кои работат со „OI Листа за купување“:</string>
+		<listitem>Ажурирај со „OI Ажурирај“.</listitem>
+		<listitem>Врати листи со „My Backup Pro“.</listitem>
+		<listitem>Увези состојќи од рецепти со „Каснувања“.</listitem>
+		<emptyline/>
+		<string>Клучни зборови:</string>
+		<listitem>Shopping, List, Shopping List, Checklist, Пазарување, Листа за купување</listitem>
+		<listitem>OI, OpenIntents, Open Intents, Отворени Намери</listitem>
+		<emptyline/>
+		<string>Меѓународни верзии:</string>
+		<international/>
+		<emptyline/>
+		<string>Додатоци:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+</main>

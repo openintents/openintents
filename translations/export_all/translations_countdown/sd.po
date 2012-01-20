@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: vishal panjwani <Unknown>\n"
 "Language-Team: Sindhi <sd@li.org>\n"
+"Language: sd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,12 +24,13 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  happynawani https://launchpad.net/~happynawani"
+"  happynawani https://launchpad.net/~happynawani\n"
+"  vishal panjwani https://launchpad.net/~vishal-panjwani15"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
 msgid "Set multiple countdowns with OI Countdown."
-msgstr ""
+msgstr "मल्टिपल काउटडाउन सेट कयो OI काउंट डाउन सां गडद"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string) tmp_strings.xml:56(string)
@@ -311,4 +313,4 @@ msgstr "१० मिनट"
 
 #: tmp_strings.xml:170(string)
 msgid "OI Countdown doesn't have the permission for this task."
-msgstr ""
+msgstr "OI काऊंट डाऊन खे ईयू कार्य करण जी अनुमति कानेस"

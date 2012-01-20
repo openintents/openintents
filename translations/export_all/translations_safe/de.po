@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Hans <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,6 +24,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  DHermit https://launchpad.net/~dhermit\n"
+"  Hans https://launchpad.net/~hans-wuerstchen42\n"
 "  Kim Linoh https://launchpad.net/~psychokim\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Patrick Eigensatz https://launchpad.net/~p.eigensatz\n"
@@ -32,7 +34,7 @@ msgstr ""
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
 msgid "Store your private data with OI Safe."
-msgstr ""
+msgstr "Mit den OI Safe können Sie Ihre Passwörter sicher speichern."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:34(string)
@@ -186,7 +188,7 @@ msgstr "Datenbank exportieren"
 
 #: tmp_strings.xml:67(string)
 msgid "Select a file for export"
-msgstr ""
+msgstr "Wählen Sie eine Datei für den Export aus"
 
 #: tmp_strings.xml:68(string)
 msgid ""
@@ -217,7 +219,7 @@ msgstr "Datenbank importieren"
 
 #: tmp_strings.xml:72(string)
 msgid "Select a file for import"
-msgstr ""
+msgstr "Wählen Sie eine Datei für den Import aus"
 
 #: tmp_strings.xml:73(string)
 msgid "Import file is missing:"
@@ -406,11 +408,11 @@ msgstr "Sicherungskopie erstellen fehlgeschlagen:"
 
 #: tmp_strings.xml:115(string)
 msgid "Select a file for backup"
-msgstr ""
+msgstr "Wählen Sie eine Datei für das Backup aus"
 
 #: tmp_strings.xml:116(string)
 msgid "Error while backing up"
-msgstr ""
+msgstr "Fehler beim Erstellen des Backups"
 
 #: tmp_strings.xml:117(string)
 msgid "Restore"
@@ -438,11 +440,11 @@ msgstr ""
 
 #: tmp_strings.xml:121(string)
 msgid "Select a file for restore"
-msgstr ""
+msgstr "Wählen Sie eine Datei für"
 
 #: tmp_strings.xml:122(string)
 msgid "Error while restoring"
-msgstr ""
+msgstr "Fehler beim Wiederherstellen"
 
 #. Toast message. %s contains a more detailed error message.
 #: tmp_strings.xml:125(string)
@@ -612,11 +614,11 @@ msgstr "Tage für die automatischen Backups"
 
 #: tmp_strings.xml:196(string)
 msgid "Default backup path"
-msgstr ""
+msgstr "Standard Backup-Pfad"
 
 #: tmp_strings.xml:197(string)
 msgid "Default export path"
-msgstr ""
+msgstr "Standard Export-Pfad"
 
 #: tmp_strings.xml:200(string)
 msgid "Decrypt (OI Safe)"
@@ -792,18 +794,79 @@ msgstr "automatische Sicherung ausschalten"
 
 #: tmp_strings.xml:242(string)
 msgid "Time to autolock: %s"
-msgstr ""
+msgstr "Zeit bis zum automatischen Sperren: %s"
 
 #: tmp_strings.xml:243(string)
 msgid "While not downloaded, default location will be used."
 msgstr ""
+"Solange der OI Dateimanager nicht installiert ist, wird der "
+"Standardspeicherort benutzt."
+
+#: tmp_strings.xml:244(string)
+#, fuzzy
+msgid "A backup file was found. Would you like to restore it?"
+msgstr ""
+"Bisher wurde noch kein Backup durchgeführt. Wollen Sie jetzt eines erstellen?"
+
+#: tmp_strings.xml:245(string)
+#, fuzzy
+msgid "Backup file found"
+msgstr "Sicherungskopie erstellen fehlgeschlagen:"
+
+#: tmp_strings.xml:246(string)
+msgid "0"
+msgstr ""
+
+#: tmp_strings.xml:247(string)
+msgid "1"
+msgstr ""
+
+#: tmp_strings.xml:248(string)
+msgid "2"
+msgstr ""
+
+#: tmp_strings.xml:249(string)
+msgid "3"
+msgstr ""
+
+#: tmp_strings.xml:250(string)
+msgid "4"
+msgstr ""
+
+#: tmp_strings.xml:251(string)
+msgid "5"
+msgstr ""
+
+#: tmp_strings.xml:252(string)
+msgid "6"
+msgstr ""
+
+#: tmp_strings.xml:253(string)
+msgid "7"
+msgstr ""
+
+#: tmp_strings.xml:254(string)
+msgid "8"
+msgstr ""
+
+#: tmp_strings.xml:255(string)
+msgid "9"
+msgstr ""
+
+#: tmp_strings.xml:256(string)
+msgid "#"
+msgstr ""
+
+#: tmp_strings.xml:257(string)
+msgid "*"
+msgstr ""
 
 #. Permission to access master password
-#: tmp_strings.xml:251(string)
+#: tmp_strings.xml:265(string)
 msgid "access the master password"
 msgstr "auf Hauptpasswort zugreifen"
 
-#: tmp_strings.xml:252(string)
+#: tmp_strings.xml:266(string)
 msgid ""
 "Allows the application to access the master key used for encryption and "
 "decryption. Should never be used except by OI Safe."
@@ -813,11 +876,11 @@ msgstr ""
 "Safe selber."
 
 #. Permission to encrypt and decrypt data
-#: tmp_strings.xml:254(string)
+#: tmp_strings.xml:268(string)
 msgid "encrypt and decrypt data"
 msgstr "Daten ver- und entschlüsseln"
 
-#: tmp_strings.xml:255(string)
+#: tmp_strings.xml:269(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
@@ -825,38 +888,38 @@ msgstr ""
 "Erlaubt einer Anwendung, Daten zu verschlüsseln und zu entschlüsseln, und "
 "auf Passwörter, die in OI Safe gespeichert wurden, zuzugreifen."
 
-#: tmp_strings.xml:263(item)
+#: tmp_strings.xml:277(item)
 msgid "1 minute"
 msgstr "1 Minute"
 
-#: tmp_strings.xml:264(item)
+#: tmp_strings.xml:278(item)
 msgid "5 minutes"
 msgstr "5 Minuten"
 
-#: tmp_strings.xml:265(item)
+#: tmp_strings.xml:279(item)
 msgid "10 minutes"
 msgstr "10 Minuten"
 
-#: tmp_strings.xml:266(item)
+#: tmp_strings.xml:280(item)
 msgid "15 minutes"
 msgstr "15 Minuten"
 
-#: tmp_strings.xml:267(item)
+#: tmp_strings.xml:281(item)
 msgid "30 minutes"
 msgstr "30 Minuten"
 
-#: tmp_strings.xml:272(item)
+#: tmp_strings.xml:286(item)
 msgid "1 day"
 msgstr "1 Tag"
 
-#: tmp_strings.xml:273(item)
+#: tmp_strings.xml:287(item)
 msgid "7 days"
 msgstr "7 Tage"
 
-#: tmp_strings.xml:274(item)
+#: tmp_strings.xml:288(item)
 msgid "30 days"
 msgstr "30 Tage"
 
-#: tmp_strings.xml:275(item)
+#: tmp_strings.xml:289(item)
 msgid "60 days"
 msgstr "60 Tage"

@@ -1,5 +1,7 @@
 Compte enrere d'OI
 IO ໄລກັບ
+OI カウントダウン
+OI 카운트다운
 OI Afteller
 OI Bilang-pababa
 OI Countdown
@@ -10,9 +12,9 @@ OI Nedtelling
 OI Odliczanie
 OI Odpočítavanie
 OI تەتۈر ۋاقىت خاتىرىلىگۈچ
+OI Χρονομετρητής
+OI Одбројувач
 OI काउंटडाउन
-OI カウントダウン
-OI 카운트다운
 OI倒计时
-סופר לאחור OI
 عد تنازلي OI
+סופר לאחור OI

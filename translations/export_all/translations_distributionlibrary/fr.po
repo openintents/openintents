@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: Pierre Slamich <pierre.slamich@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,7 +29,8 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  John Andre https://launchpad.net/~john-andre\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  Peli https://launchpad.net/~peli0101"
+"  Peli https://launchpad.net/~peli0101\n"
+"  Pierre Slamich https://launchpad.net/~pierre-slamich"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
 #. 		Translation should be short, since this is a title.
@@ -40,8 +42,8 @@ msgstr "%s CLUF"
 #. 		Translation can be as long as required.
 #: tmp_strings.xml:23(string)
 msgid ""
-"Please read and accept the following End User License Agreement (EULA) for %"
-"s."
+"Please read and accept the following End User License Agreement (EULA) for "
+"%s."
 msgstr ""
 "S'il vous plaît lire et accepter le Contrat de Licence Utilisateur suivantes "
 "(CLUF) pour %s"
@@ -137,7 +139,7 @@ msgstr ""
 #. Dialog message.
 #: tmp_strings.xml:71(string)
 msgid "No compatible barcode scanner is available."
-msgstr ""
+msgstr "Aucun scanner de code barre compatible n'est disponible."
 
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:74(string)

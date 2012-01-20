@@ -11,7 +11,7 @@
   Piotr Łazarczyk https://launchpad.net/~quazarxd</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Próbnik Kolorów Picker jest rozszerzeniem dla OI Latarki i innych kompatybilnych aplikacji.</string>
+	<string name="about_comments">OpenIntents Próbnik Kolorów jest rozszerzeniem dla OI Latarki i innych kompatybilnych aplikacji.</string>
 	
 	<!-- ***************************
 	     Application-specific strings
@@ -54,7 +54,7 @@
     <string name="info_app_bettr_flickr">Język interfejsu Flickr dla Androida</string>
     <string name="title_app_bettr_flickr">BettrFlickr</string>
     
-    <string name="info_app_character_gen">Mieszaj i łącz grafikę aby stworzyć postacie anime.</string>
+    <string name="info_app_character_gen">Mieszaj i łącz grafikę aby stworzyć postacie anime</string>
     <string name="title_app_character_gen">Generator postaci Anime</string>
     
     

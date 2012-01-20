@@ -3,6 +3,7 @@
 	<translators>Launchpad Contributions:
   Karolina Kowal https://launchpad.net/~gwiazdeczka11
   OpenIntents devs https://launchpad.net/~openintents-devs
+  Piotr Łazarczyk https://launchpad.net/~quazarxd
   Tomasz Zieliński https://launchpad.net/~tomek0517
   zielmicha https://launchpad.net/~michal-zielinscy</translators>
 	<description application="aboutapp/AboutApp">
@@ -13,15 +14,15 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>"Ol About" to samodzielny dialog, który jest dzielony między aplikacjami.</string>
-		<string>Ta aplikacja jest wywoływana za pomocą menu innych aplikacji Ol.</string>
-		<string>Umożliwia wyświetlanie informacji o wersji, linków, punktów i licencji aplikacji.</string>
-		<string>Punkty obejmują autorów dokumentacji, tłumaczy i artystów.</string>
+		<string>Ol About to samodzielny dialog, który jest dzielony między aplikacjami.</string>
+		<string>Ta aplikacja jest wywoływana za pomocą menu innych aplikacji OI.</string>
+		<string>Umożliwia wyświetlanie informacji o wersji, linków, twórców i licencji aplikacji.</string>
+		<string>Podziękowania obejmują autorów dokumentacji, tłumaczy i artystów.</string>
 		<string>Wszystkie te funkcje są połączone w uproszczony i efektywny układ.</string>
 		<emptyline/>
 		<string>Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.</string>
 		<emptyline/>
-		<string>Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem:</string>
+		<string>Kod źródłowy tej darmowej i open-source\'owej aplikacji jest dostępny pod adresem:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Aby zobaczyć pełną listę zmian oraz FAQ, odwiedź:</string>
@@ -36,12 +37,12 @@
 		<listitem>Pobiera informacje z manifestu aplikacji poprzez domyślne etykiety i metadane.</listitem>
 		<listitem>Opcjonalnie wszystkie pola mogą być modyfikowane poprzez dodatkowe zamiary.</listitem>
 		<emptyline/>
-		<string>Aplikacja który pracują z "Ol About":</string>
-		<listitem>Notatnik Ol</listitem>
-		<listitem>Menedżer plików Ol</listitem>
-		<listitem>Lista zakupów Ol</listitem>
+		<string>Aplikacje, które działają z "Ol About":</string>
+		<listitem>OI Notatnik</listitem>
+		<listitem>OI Menedżer plików</listitem>
+		<listitem>OI Lista zakupów</listitem>
 		<listitem>OI Konwertuj CSV</listitem>
-		<listitem>Bezpieczne Ol</listitem>
+		<listitem>OI Sejf</listitem>
 		<listitem>OI Odliczanie</listitem>
 		<listitem>OI Latarka</listitem>
 		<emptyline/>
@@ -52,7 +53,7 @@
 		<string>Wersje międzynarodowe:</string>
 		<international/>
 		<emptyline/>
-		<string>Wyszukane ciągi znakó w Markecie:</string>
+		<string>Szukaj ciągów znaków w Markecie:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -75,7 +76,7 @@
 		<emptyline/>
 		<emptyline/>
 		<emptyline/>
-		<string>Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem:</string>
+		<string>Kod źródłowy tej darmowej i open-source\'owej aplikacji jest dostępny pod adresem:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Aby zobaczyć pełną listę zmian oraz FAQ, odwiedź:</string>
@@ -105,7 +106,7 @@
 		<string>Wersje międzynarodowe:</string>
 		<international/>
 		<emptyline/>
-		<string>Wyszukane ciągi znakó w Markecie:</string>
+		<string>Szukaj ciągów znaków w Markecie:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt "/>
 	</description>
@@ -128,12 +129,12 @@
 		<string>Możesz poprawić tłumaczenie na Twój język:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem:</string>
+		<string>Kod źródłowy tej darmowej i open-source\'owej aplikacji jest dostępny pod adresem:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Cechy:</string>
 		<listitem>Pokaż listę plików z miniaturami obrazów.</listitem>
-		<listitem>Przenosić, kopiować, zmieniać nazwy i usuwać pliki.</listitem>
+		<listitem>Przenoszenie, kopiowanie, zmiana nazwy i usuwanie plików.</listitem>
 		<listitem>Tworzenie i usuwanie katalogów (folderów).</listitem>
 		<listitem>Wysyłanie plików e-mailem.</listitem>
 		<listitem>Działa jako rozszerzenie do innych aplikacji, takich jak GMail, aby dołącząć pliki.</listitem>
@@ -141,21 +142,21 @@
 		<listitem>Obsługuje PICK_FILE i PICK_DIRECTORY, tak aby inne aplikacje mogły korzystać z OI File Manager.</listitem>
 		<emptyline/>
 		<string>Dostępne rozszerzenia dla "Ol File Manager":</string>
-		<listitem>Pokaż informacje licencyjne z "O Ol".</listitem>
+		<listitem>Pokaż informacje licencyjne za pomocą "OI About".</listitem>
 		<emptyline/>
-		<string>Aplikacje, który pracują z "Ol File Manager":</string>
-		<listitem>Otwórz i zapisz pliki tekstowe używając "Ol Notepad".</listitem>
+		<string>Aplikacje działające z "OI Menedżer plików":</string>
+		<listitem>Otwórz i zapisz pliki tekstowe używając "OI Notepad".</listitem>
 		<emptyline/>
 		<string>Słowa kluczowe:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>menedżer plików, menedżer plików, eksplorator plików</listitem>
+		<listitem>menedżer plików, menadżer plików, eksplorator plików</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Wersje międzynarodowe:</string>
 		<international/>
 		<emptyline/>
-		<string>Wyszukane ciągi znakó w Markecie:</string>
+		<string>Szukaj ciągów znaków w Markecie:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -171,11 +172,11 @@
 		<string>OI Flashlight to prosta i skuteczna aplikacja, która pomaga znaleźć drogę w ciemnościach.</string>
 		<string>OI Flashlight blokuje podświetlanie, jasno oświetla okolicę.</string>
 		<string>Dla urządzeń z lampą błyskową aparatu, Ol Flashlight może również korzystać z lampy błyskowej jako jasna latarka, aby rozjaśnić pokój.</string>
-		<string>Kolor podświetlenia jest w pełni konfigurowalny z OI Color Picker.</string>
+		<string>Kolor podświetlenia jest w pełni konfigurowalny z OI Próbnik Kolorów.</string>
 		<emptyline/>
 		<string>Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.</string>
 		<emptyline/>
-		<string>Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem:</string>
+		<string>Kod źródłowy tej darmowej i open-source\'owej aplikacji jest dostępny pod adresem:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Aby zobaczyć pełną listę zmian oraz FAQ, odwiedź:</string>
@@ -186,15 +187,15 @@
 		<emptyline/>
 		<string>Cechy:</string>
 		<listitem>Zablokuj podświetlenie.</listitem>
-		<listitem>Zablokuj lampę błyskową</listitem>
+		<listitem>Zablokuj lampę błyskową.</listitem>
 		<listitem>Kolor podświetlenia można dostosować.</listitem>
 		<emptyline/>
-		<string>Dostępne rozszerzenia dla "OI Flashlight":</string>
-		<listitem>Pokaż informacje licencyjne z "O Ol".</listitem>
-		<listitem>Zmiana koloru podświetlenia z "OI Color Picker".</listitem>
+		<string>Dostępne rozszerzenia dla "OI Latarka":</string>
+		<listitem>Pokaż informacje licencyjne za pomocą "OI About".</listitem>
+		<listitem>Zmień kolor podświetlania za pomocą "OI Próbnik Kolorów".</listitem>
 		<emptyline/>
-		<string>Aplikacje który pracują z "OI Flashlight":</string>
-		<listitem>Aktualizuj z "OI Uptade".</listitem>
+		<string>Aplikacje działające z "OI Latarka":</string>
+		<listitem>Aktualizuj za pomocą "OI Uptade".</listitem>
 		<emptyline/>
 		<string>Słowa kluczowe:</string>
 		<listitem>Latarka, światło, Podświetlenie</listitem>
@@ -203,7 +204,7 @@
 		<string>Wersje międzynarodowe:</string>
 		<international/>
 		<emptyline/>
-		<string>Wyszukane ciągi znakó w Markecie:</string>
+		<string>Szukaj ciągów znaków w Markecie:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -215,14 +216,14 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>Ol Notepad jest w pełni funkcjonalną open-source-ową aplikacją do tworzenia notatek.</string>
+		<string>Ol Notepad jest w pełni funkcjonalną open-source\'ową aplikacją do tworzenia notatek.</string>
 		<string>Oprócz podstawowych funkcjonalności, takich jak tworzenie, usuwanie, i edytowanie notatek, dzięki niemu możesz znaczyć, wyszukiwać, i wysyłać swoje notatki.</string>
-		<string>Zaawansowane funkcje, takie jak szyfrowanie, import / eksport, i notatki głosowe są dostępne za pośrednictwem rozszerzeń.</string>
+		<string>Zaawansowane funkcje, takie jak szyfrowanie, import/eksport i notatki głosowe są dostępne za pośrednictwem rozszerzeń.</string>
 		<string>Wszystkie te funkcje są uproszczone i efektywne, konfigurowalne za pomocą różnych motywów.</string>
 		<emptyline/>
 		<string>Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.</string>
 		<emptyline/>
-		<string>Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem:</string>
+		<string>Kod źródłowy tej darmowej i open-source\'owej aplikacji jest dostępny pod adresem:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Aby zobaczyć pełną listę zmian oraz FAQ, odwiedź:</string>
@@ -239,18 +240,18 @@
 		<listitem>Szybkie przeszukiwanie notatek.</listitem>
 		<listitem>Wysyłaj notatki MMS-em albo SMS-em.</listitem>
 		<emptyline/>
-		<string>Dostępne rozszerzenia dla "OI Notepad":</string>
-		<listitem>Nagrywanie notatek głosowych i dołączanie do notatek "OI Voice Notes".</listitem>
-		<listitem>Z "Ol Convert CSV importuj/eksortuj notatki z karty SD.</listitem>
-		<listitem>Pokaż informacje licencyjne z "O Ol".</listitem>
-		<listitem>Wstawianie daty i czasu do notatek z "OI Insert Date".</listitem>
+		<string>Dostępne rozszerzenia dla "OI Natatnik":</string>
+		<listitem>Nagrywaj notatki głosowe i dołączaj do notatek za pomocą "OI Notatki głosowe".</listitem>
+		<listitem>Importuj/eksportuj notatki z karty SD za pomocą "Ol Konwertuj CSV".</listitem>
+		<listitem>Pokaż informacje licencyjne za pomocą "OI About".</listitem>
+		<listitem>Wstaw datę i czas do notatek za pomocą "OI Insert Date".</listitem>
 		<listitem>Obróć tekst do góry nogami używając "Upside Down".</listitem>
 		<emptyline/>
-		<string>Aplikacje działające z "OI Notepad":</string>
+		<string>Aplikacje działające z "OI Notatnik":</string>
 		<listitem>Przywracaj notatki z "My Backup Pro".</listitem>
 		<listitem>Szyfruj notatki używając "OI Safe".</listitem>
-		<listitem>Zarządzaj notatkami na twojej Karcie SD z "OI File Manager".</listitem>
-		<listitem>Aktualizuj z "OI Uptade".</listitem>
+		<listitem>Zarządzaj notatkami na twojej karcie SD za pomocą "OI Menedżer plików".</listitem>
+		<listitem>Aktualizuj za pomocą "OI Uptade".</listitem>
 		<listitem>Dziel się notatkami poprzez "Facebook", "Gmail", "Google+", "Twitter" oraz wiele innych aplikacji.</listitem>
 		<emptyline/>
 		<string>Słowa kluczowe:</string>
@@ -260,7 +261,7 @@
 		<string>Wersje międzynarodowe:</string>
 		<international/>
 		<emptyline/>
-		<string>Wyszukane ciągi znakó w Markecie:</string>
+		<string>Szukaj ciągów znaków w Markecie:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -273,7 +274,7 @@
 		<!--  -->
 		<!--  Description of application -->
 		<string>OI Safe bezpiecznie chroni wszystkie hasła i inne prywatne dane przy użyciu standardowego szyfrowania AES.</string>
-		<string>Działa również jako rozszerzenie do Ol Notepad aby szyfrować notatki w nim utworzone.</string>
+		<string>Działa również jako rozszerzenie do Ol Notatnik pozwalające na szyfrowanie notatek w nim utworzonych.</string>
 		<emptyline/>
 		<string>Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.</string>
 		<emptyline/>
@@ -283,36 +284,36 @@
 		<string>Możesz poprawić tłumaczenie na Twój język:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem:</string>
+		<string>Kod źródłowy tej darmowej i open-source\'owej aplikacji jest dostępny pod adresem:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Cechy:</string>
 		<listitem>Bezpieczna ochrona danych przy użyciu szyfrowania AES.</listitem>
 		<listitem>Swobodnie przenosić dane pomiędzy kategoriami.</listitem>
 		<listitem>Import / Eksport wpisów danych i baz danych.</listitem>
-		<listitem>Kopia zapasowa / Przywracanie wpisów.</listitem>
+		<listitem>Kopia zapasowa Przywracanie wpisów.</listitem>
 		<listitem>Włączając generatora bezpiecznych haseł.</listitem>
-		<listitem>Automatyczny timeout żeby chronić zaszyfrowane dokumenty.</listitem>
-		<listitem>Szyfrowanie notatek Ol Notepad.</listitem>
+		<listitem>Automatyczny limit czasu chroniący zaszyfrowane dokumenty.</listitem>
+		<listitem>Szyfrowanie notatek Ol Notatnik.</listitem>
 		<listitem>Wsparcie dla bezpiecznego obrazu Obscura.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
 		<string>Dostępne rozszerzenia dla "Ol File Manager":</string>
-		<listitem>Pokaż informacje licencyjne z "O Ol".</listitem>
+		<listitem>Pokaż informacje licencyjne za pomocą "OI About".</listitem>
 		<emptyline/>
-		<string>Aplikacje, który pracują z "Ol File Manager":</string>
-		<listitem>Szyfruj notatki utworzone w "Ol Notepad".</listitem>
+		<string>Aplikacje działające z "OI Menedżer plików":</string>
+		<listitem>Szyfruj notatki utworzone w "Ol Notatnik".</listitem>
 		<emptyline/>
 		<string>Słowa kluczowe:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>bezpieczne, szyfrowanie, hasła, ochrona</listitem>
+		<listitem>szyfrowanie, sejf, hasła, ochrona, bezpieczeństwo</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Wersje międzynarodowe:</string>
 		<international/>
 		<emptyline/>
-		<string>Wyszukane ciągi znakó w Markecie:</string>
+		<string>Szukaj ciągów znaków w Markecie:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -324,13 +325,13 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>Lista zakupów Ol to potężna aplikacja, która umożliwia łatwe tworzenie i zarządzanie listami kontrolnymi.</string>
-		<string>Lista zakupów OI ułatwia dodawanie elementów do listy, zaznacz element, usuń go z listy.</string>
+		<string>OI Lista zakupów to potężna aplikacja, która umożliwia łatwe tworzenie i zarządzanie listami kontrolnymi.</string>
+		<string>OI Lista zakupów ułatwia dodawanie elementów do listy, zaznaczanie i usuwanie ich z listy.</string>
 		<string>Aplikacja może śledzić oddzielne cen dla każdego sklepu, którego używasz, i oferuje wysoki poziom personalizacji.</string>
-		<string>Rozmiar czcionki, porządek sortowania, kolumny listy, a zachowanie podczas czyszczenia listy są wszystkie ustawienia kontrolowane przez użytkownika.</string>
-		<string>Wszystkie te funkcje są połączone w wyraźny układ, który można dostosować do różnych motywów.</string>
+		<string>Rozmiar czcionki, porządek sortowania, kolumny list, i zachowanie podczas czyszczenia list to ustawienia kontrolowane przez użytkownika.</string>
+		<string>Wszystkie te funkcje są połączone w wyraźny wygląd, który można zmieniać za pomocą różnych motywów.</string>
 		<emptyline/>
-		<string>Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem:</string>
+		<string>Kod źródłowy tej darmowej i open-source\'owej aplikacji jest dostępny pod adresem:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.</string>
@@ -343,22 +344,22 @@
 		<emptyline/>
 		<string>Cechy:</string>
 		<listitem>Dodawaj, edytuj i usuwaj listy.</listitem>
-		<listitem>Tworzenie, usuwanie i sprawdzanie pozycji szybko i łatwo.</listitem>
-		<listitem>Różnorodność tematów</listitem>
+		<listitem>Twórz, usuwaj i sprawdzaj pozycje szybko i łatwo.</listitem>
+		<listitem>Różnorodność motywów.</listitem>
 		<listitem>Możliwość dostosowania rozmiaru czcionki oraz porządku sortowania.</listitem>
 		<listitem>Śledź oddzielnie ceny dla każdego sklepu.</listitem>
 		<listitem>Dostosuj kolumny listy.</listitem>
 		<emptyline/>
-		<string>Dostępne rozszerzenia do "Listy zakupów Ol":</string>
-		<listitem>Dodaj nagraną wiadomość do notatki używając "Ol Voice Notes".</listitem>
-		<listitem>Import/eksport list zakupów z "Ol Convert CSV".</listitem>
-		<listitem>Pokaż informacje licencyjne z "O Ol".</listitem>
-		<listitem>Wprowadź/sprawdź pozycje używając "Barcode Ol Plugin".</listitem>
+		<string>Dostępne rozszerzenia dla "OI Lista zakupów":</string>
+		<listitem>Dodaj nagraną wiadomość do notatki używając "OI Voice Notes".</listitem>
+		<listitem>Import/eksport list zakupów z "OI Konwertuj CSV".</listitem>
+		<listitem>Pokaż informacje licencyjne za pomocą "OI About".</listitem>
+		<listitem>Wprowadź/sprawdź pozycje używając "Barcode OI Plugin".</listitem>
 		<emptyline/>
-		<string>Aplikacje, które pracują z "Ol Shopping List":</string>
-		<listitem>Aktualizuj z "OI Uptade".</listitem>
-		<listitem>Kopia zapasowa list z "My Backup Pro".</listitem>
-		<listitem>Importuj składniki przepisów z "Bites".</listitem>
+		<string>Aplikacje działające z "OI Lista zakupów":</string>
+		<listitem>Aktualizuj za pomocą "OI Uptade".</listitem>
+		<listitem>Twórz kopie zapasowe list używając "My Backup Pro".</listitem>
+		<listitem>Importuj składniki przepisów używając "Bites".</listitem>
 		<emptyline/>
 		<string>Słowa kluczowe:</string>
 		<listitem>Zakupy, Lista, Lista zakupów, Lista kontrolna</listitem>

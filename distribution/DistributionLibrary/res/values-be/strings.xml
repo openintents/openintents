@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="oi_distribution_app_name">OI Distribution Library</string>
+    <string name="oi_distribution_app_name">OI Размеркавальная бібліятэка</string>
     
 	<!-- ***************************
 	     About information
@@ -46,13 +46,13 @@
 	<!-- Update -->
 	<!-- Menu command to look for updates. -->
     <string name="oi_distribution_menu_update">Праверка абнаўленняў</string>
-	<string name="oi_distribution_update_box_text">Праверце абнаўленні ўручную, ці ўсталюйце OI Update для аўтаматычнай праверкі.</string>
+	<string name="oi_distribution_update_box_text">Праверце абнаўленні ўручную, ці ўсталюйце OI Абнаўленні для аўтаматычнай праверкі.</string>
 	<string name="oi_distribution_update_check_now">Праверыць зараз</string>
-	<string name="oi_distribution_update_get_updater">Атрымаць OI Updater</string>
+	<string name="oi_distribution_update_get_updater">Атрымаць OI Абнаўленні</string>
 	<string name="oi_distribution_update_error">Запампоўка прыкладання недаступна.</string>
 	
     <!-- Name of the application "OI Update". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_update_app">OI Update</string>
+    <string name="oi_distribution_update_app">OI Абнаўленні</string>
     
     <!-- About -->
     <!-- Menu command to open the "about" or "info" dialog. -->
@@ -62,10 +62,10 @@
     
     
     <!-- Button text: Get the application "OI About". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_aboutapp_get">Атрымаць OI About</string>
+    <string name="oi_distribution_aboutapp_get">Атрымаць OI А праграме</string>
     
     <!-- Name of the application "OI About". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_aboutapp">OI About</string>
+    <string name="oi_distribution_aboutapp">OI А праграме</string>
     
     <!-- Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_barcodescanner">Barcode OI Plugin</string>
@@ -73,13 +73,13 @@
     <string name="oi_distribution_barcodescanner_not_available">No compatible barcode scanner is available.</string>
     
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_filemanager">OI File Manager</string>
+    <string name="oi_distribution_filemanager">OI Файл-мэнэджар</string>
     <!-- Dialog message. -->
     <string name="oi_distribution_filemanager_not_available">Няма даступнага сумяшчальнага файлавага мэнэджэру.</string>
     
     <!-- Safe -->
     <!-- Name of the application "OI Safe". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_safe">OI Safe</string>
+    <string name="oi_distribution_safe">OI Сэйф</string>
     <!-- Dialog message. -->
     <string name="oi_distribution_safe_not_available">Няма даступнага сумяшчальнага прыкладання для кадавання.</string>
     <string name="oi_distribution_safe_not_available_decrypt">Няма даступнага сумяшчальнага прыкладання для дэкадавання.\n\nПадказка: Вам патрэбна будзе аднавіць мастэр ключ да рэзервовай копіі, каб атрымаць доступ да закадаванай інфармацыі.</string>

@@ -7,10 +7,11 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   OpenIntents devs https://launchpad.net/~openintents-devs
-  happynawani https://launchpad.net/~happynawani</string>
+  happynawani https://launchpad.net/~happynawani
+  vishal panjwani https://launchpad.net/~vishal-panjwani15</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
+	<string name="about_comments">केमेर्रा फ्लेश या बेक्लाईट खे चालू राख्यो OI फ्लेशलाईट सां गडद</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

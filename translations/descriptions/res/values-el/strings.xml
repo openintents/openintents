@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>Το OI Σχετικά είναι ένας αυτόνομος σχετικά διάλογος που διαμοιράζεται μεταξύ των εφαρμογών.</string>
+		<string>Αυτή η εφαρμογή εφαρμόζεται μέσω των μενού άλλων OI εφαρμογών.</string>
+		<string>Σας επιτρέπει να προβάλλετε πληροφορίες έκδοσης, συνδέσμους, συντελεστές και την άδεια μιας εφαρμογής.</string>
+		<string>Οι συντελεστές περιλαμβάνουν συγγραφείς, άτομα στην τεκμηρίωση, μεταφραστές και καλλιτέχνες.</string>
+		<string>Όλη αυτή η λειτουργικότητα βρίσκεται κοντά σε μια απλά αλλά επαρκή δομή.</string>
+		<emptyline/>
+		<string>Αυτή η εφαρμογή δεν έχει διαφημήσεις και δεν απαιτεί άδεια στο διαδίκτυο.</string>
+		<emptyline/>
+		<string>Ο πηγαίος κώδικας αυτού είναι δωρεάν και η εφαρμογή ανοικτού κώδικα είναι διαθέσιμη στο:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Για την πλήρη λίστα των αλλαγών και μια λίστα συχνών ερωτημάτων, παρακαλώ επισκευτείτε:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Μπορείτε να βοηθήσετε στη βελτίωση της μετάφρασης στη γλώσσα σας στο Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Χαρακτηριστικά:</string>
+		<listitem>Εμφανίζει γενικές πληροφορίες, συντελεστές και καρτέλες άδειας.</listitem>
+		<listitem>Εμφανίζει τους μεταφραστές όλων των γλωσσών.</listitem>
+		<listitem>Ανακτά πληροφορίες από το μανιφέστο της εφαρμογής μέσω των προεπιλεγμένων ετικετών και των μεταδεδομένων.</listitem>
+		<listitem>Προαιρετικά, όλα τα πεδία μπορούν να τροποποιηθούν μέσω επιπρόσθετων προθέσεων.</listitem>
+		<emptyline/>
+		<string>Οι εφαρμογές που συνεργάζονται με το "OI Σχετικά":</string>
+		<listitem>OI Σημειωματάριο</listitem>
+		<listitem>OI Διαχειριστής Αρχείων</listitem>
+		<listitem>OI Λίστα Αγορών</listitem>
+		<listitem>OI Μετατροπέας CSV</listitem>
+		<listitem>OI Κιβώτιο</listitem>
+		<listitem>OI Χρονομετρητής</listitem>
+		<listitem>OI Φακός</listitem>
+		<emptyline/>
+		<string>Λέξεις κλειδιά:</string>
+		<listitem>Σχετικά, Συντελεστές, Πληροφορίες.</listitem>
+		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<emptyline/>
+		<string>Διεθνείς εκδόσεις:</string>
+		<international/>
+		<emptyline/>
+		<string>Αναζήτηση συμβολοσειρών για το Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+	<description application="countdown/Countdown">
+		<!--  OI Countdown -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<emptyline/>
+		<string>Ο OI Χρονομετρητής είναι ένα χρήσιμο εργαλείο για να αυξήσετε την παραγωγικότητα σας και να σχεδιάσετε την ημέρα σας.</string>
+		<string>Σας επιτρέπει να ορίσετε μια ποικιλία διαφορετικών ενεργειών για να σας ενημερώσουν στη λήξη ενός  χρονομετρητή.</string>
+		<string>Προσαρμόστε πλήρως όλους τους χρονομετρητές σας, χωρίς κανένα όριο στους πόσους μπορείτε να έχετε ενεργούς ή αποθηκευμένους.</string>
+		<emptyline/>
+		<string>Αυτή η εφαρμογή δεν έχει διαφημήσεις και δεν απαιτεί άδεια στο διαδίκτυο.</string>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+		<string>Ο πηγαίος κώδικας αυτού είναι δωρεάν και η εφαρμογή ανοικτού κώδικα είναι διαθέσιμη στο:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Για την πλήρη λίστα των αλλαγών και μια λίστα συχνών ερωτημάτων, παρακαλώ επισκευτείτε:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<emptyline/>
+		<string>Μπορείτε να βοηθήσετε στη βελτίωση της μετάφρασης στη γλώσσα σας στο Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Χαρακτηριστικά:</string>
+		<listitem>Ορίστε μια αντίστροφη μέτρηση επιλέγοντας μια διάρκεια ή μια ημερομηνία.</listitem>
+		<listitem>Ενημερωθείτε μεσω δόνησης ή κάποιου ήχουν της επιλογής σας.</listitem>
+		<listitem>Έχετε έναν ατελείωτο αριθμό χρονομετρητών που είναι ενεργοί την ίδια στιγμή.</listitem>
+		<listitem>Αποθηκεύστε τις αντίστροφες μετρήσεις σας και δώστε τις ονόματα για να τις χρησιμοποιήσετε μελλοντικά.</listitem>
+		<listitem>Επεξεργαστείτε αντίστροφες μετρήσεις, ακόμα και όταν είναι ενεργές.</listitem>
+		<emptyline/>
+		<string>Διαθέσιμες επεκτάσεις για το "OI Χρονομετρητής":</string>
+		<listitem>Εκτελέστε εφαρμογές μέσω τις συντομεύσεις του Android</listitem>
+		<listitem>Χρησιμοποιήστε το OI Σχετικά για να προβάλλετε πληροφορίες άδειας</listitem>
+		<emptyline/>
+		<string>Λέξεις κλειδιά:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>αντίστροφη μέτρηση, χρονομετρητής, ειδοποίηση</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Διεθνείς εκδόσεις:</string>
+		<international/>
+		<emptyline/>
+		<string>Αναζήτηση συμβολοσειρών για το Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt "/>
+	</description>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>Ο OI Διαχειριστής Αρχείων σας επιτρέπει να περιηγηθείτε στην κάρτα SD, να δημιουργήσετε καταλόγους, να μετονομάσετε, αντιγράψετε, μετακινήσετε και διαγράψετε αρχεία.</string>
+		<string>Επίσης δρά και ως μια επέκταση σε άλλες εφαρογές για την προβολή των διαλόγων "Άνοιγμα" και "Αποθήκευση" .</string>
+		<emptyline/>
+		<string>Αυτή η εφαρμογή δεν έχει διαφημήσεις και δεν απαιτεί άδεια στο διαδίκτυο.</string>
+		<emptyline/>
+		<string>Για την πλήρη λίστα των αλλαγών και μια λίστα συχνών ερωτημάτων, παρακαλώ επισκευτείτε:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Μπορείτε να βοηθήσετε στη βελτίωση της μετάφρασης στη γλώσσα σας στο Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Ο πηγαίος κώδικας αυτού είναι δωρεάν και η εφαρμογή ανοικτού κώδικα είναι διαθέσιμη στο:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Χαρακτηριστικά:</string>
+		<listitem>Εμφάνιση λίστας των αρχείων με επισκοπήσεις εικόνων.</listitem>
+		<listitem>Μετακινήστε, αντιγράψτε, μετονομάστε και διαγράψτε αρχεία.</listitem>
+		<listitem>Δημιουργήστε και διαγράψτε καταλόγους (φακέλους).</listitem>
+		<listitem>Αποστολή αρχείων μέσω ηλεκτρονικού μηνύματος.</listitem>
+		<listitem>Δρά ως μια επέκταση σε άλλες εφαρμογές, όπως το GMail, για να επισυνάπτει αρχεία.</listitem>
+		<listitem>Υποστήριξη για πολλές καταλήξεις αρχείων και τύπους αρχείων.</listitem>
+		<listitem>Υποστηρίζει τις προθέσεις PICK_FILE και PICK_DIRECTORY ώστε και άλλες εφαρμογές να μπορούν να χρησιμοποιήσουν τον OI Διαχειριστή Αρχείων.</listitem>
+		<emptyline/>
+		<string>Διαθέσιμες επεκτάσεις για τον "OI Διαχειριστή Αρχείων":</string>
+		<listitem>Εμφάνιση των πληροφοριών άδειας με το "OI Σχετικά".</listitem>
+		<emptyline/>
+		<string>Εφαρμογές που συνεργάζονται με τον "OI Διαχειριστή Αρχείων":</string>
+		<listitem>Ανοίξτε και αποθηκεύστεαρχεία κειμένου στο "OI Σημειωματάριο".</listitem>
+		<emptyline/>
+		<string>Λέξεις κλειδιά:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>διαχειριστής αρχείων, αρχεία, περιηγητής αρχείων</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Διεθνείς εκδόσεις:</string>
+		<international/>
+		<emptyline/>
+		<string>Αναζήτηση συμβολοσειρών για το Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>Ο OI Φακός είναι μια απλή και αποτελεσματική εφαρμογή που σας βοηθά να βρείτε το δρόμο σας στο σκοτάδι.</string>
+		<string>Ο OI Φακός κλειδώνει τον οπίσθιο φωτισμό της οθόνης, φωτίζοντας έτσι τον περιβάλλοτα χώρο,</string>
+		<string>Για συσκευές με φλας κάμερας, ο OI Φακός μπορεί επίσης να χρησιμοποιήσει το φλας ως ένα φωτεινό πυρσό για το φωτισμό του δωματίου.</string>
+		<string>Το χρώμα του οπίσθιου φωτισμού είναι ολοκληρωτικά προσαρμόσιμο με τον OI Επιλογέα Χρώματος.</string>
+		<emptyline/>
+		<string>Αυτή η εφαρμογή δεν έχει διαφημήσεις και δεν απαιτεί άδεια στο διαδίκτυο.</string>
+		<emptyline/>
+		<string>Ο πηγαίος κώδικας αυτού είναι δωρεάν και η εφαρμογή ανοικτού κώδικα είναι διαθέσιμη στο:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Για την πλήρη λίστα των αλλαγών και μια λίστα συχνών ερωτημάτων, παρακαλώ επισκευτείτε:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Μπορείτε να βοηθήσετε στη βελτίωση της μετάφρασης στη γλώσσα σας στο Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Χαρακτηριστικά:</string>
+		<listitem>Κλειδώστε τον ενεργοποιημένο οπίσθιο φωτισμό της οθόνης.</listitem>
+		<listitem>Κλειδώστε το ενεργοποιημένο φλας της κάμερας.</listitem>
+		<listitem>Το χρώμα του οπίσθιου φωτισμού είναι προσαρμόσιμο.</listitem>
+		<emptyline/>
+		<string>Διαθέσιμες επεκτάσεις για το "OI Φακός":</string>
+		<listitem>Εμφάνιση των πληροφοριών άδειας με το "OI Σχετικά".</listitem>
+		<listitem>Αλλάξτε το χρώμα του οπίσθιου φωτισμού με το "OI Επιλογέας Χρώματος".</listitem>
+		<emptyline/>
+		<string>Εγαρμογές που συνεργάζονται με το "OI Φακός":</string>
+		<listitem>Αναβάθμιση με το "OI Αναβάθμιση".</listitem>
+		<emptyline/>
+		<string>Λέξεις κλειδιά:</string>
+		<listitem>φακός, φώς, φωτισμός</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Διεθνείς εκδόσεις:</string>
+		<international/>
+		<emptyline/>
+		<string>Αναζήτηση συμβολοσειρών για το Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>Το OI Σημειωματάρια είναι μια εφαρμογή ανοικτού κώδικα πλήρων δραστηριοτήτων για την εγγραφή σημειώσεων.</string>
+		<string>Με αυτό μπορείτε να κατηγοριοποιήσετε, να αναζητήσετε και να αποστείλετε τις σημειώσεις σας, εκτός από τις βασικές λειτουργίες όπως δημιουργώντας, διαγράφοντας και επεξεργάζοντας σημειώσεις.</string>
+		<string>Προχωρημένα χαρακτηριστικά όπως κρυπτογράφηση, εισαγωγή/εξαγωγή, και φωνητικά υπομνήματα είναι όλα διαθέσιμες μέσω επεκτάσεων.</string>
+		<string>Όλη αυτή η λειτουργικότητα βρίσκεται κοντά σε μια απλοποιημένη και αποτελεσματική δομή, που είναι προσαρμόσιμη γύρω από μια ποικιλία θεμάτων.</string>
+		<emptyline/>
+		<string>Αυτή η εφαρμογή δεν έχει διαφημήσεις και δεν απαιτεί άδεια στο διαδίκτυο.</string>
+		<emptyline/>
+		<string>Ο πηγαίος κώδικας αυτού είναι δωρεάν και η εφαρμογή ανοικτού κώδικα είναι διαθέσιμη στο:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Για την πλήρη λίστα των αλλαγών και μια λίστα συχνών ερωτημάτων, παρακαλώ επισκευτείτε:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Μπορείτε να βοηθήσετε στη βελτίωση της μετάφρασης στη γλώσσα σας στο Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Χαρακτηριστικά:</string>
+		<listitem>Προσθέστε, επεξεργαστείτε και διαγράψτε σημειώσεις.</listitem>
+		<listitem>Κάντε ένα διαρκές πάτημα στις σημειώσεις για να προσθέσετε ετικέτες.</listitem>
+		<listitem>Αλλάξτε το μέγεθος γραμματοσειράς και τη σειρά ταξινόμησης.</listitem>
+		<listitem>Μια καθαρά τακτοποιημένη μορφή με μια ποικιλία θεμάτων.</listitem>
+		<listitem>Αναζητήστε γρήγορα ανάμεσα στις σημειώσεις.</listitem>
+		<listitem>Στείλετε σημειώσεις ως MMS ή SMS.</listitem>
+		<emptyline/>
+		<string>Διαθέσιμες επεκτάσεις για το "OI Σημειωματάριο":</string>
+		<listitem>Εγγράψτε και επισυνάψτε φωνητικά υπομνήματα με το "OI Φωνητικές Σημειώσεις".</listitem>
+		<listitem>Με το "OI Μετατροπέας CSV" εισάγετε/εξάγετε σημειώσεις από την κάρτα SD.</listitem>
+		<listitem>Εμφάνιση των πληροφοριών άδειας με το "OI Σχετικά".</listitem>
+		<listitem>Εισάγετε την ημερομηνία και ώρα στις σημειώσεις με το "OI Εισαγωγή Ημερομηνίας".</listitem>
+		<listitem>Γυρίστε το κείμενο ανάποδα με το "Ανάποδα".</listitem>
+		<emptyline/>
+		<string>Εφαρμογές που συνεργάζονται με το "OI Σημειωματάριο":</string>
+		<listitem>Λάβετε αντίγραφα ασφαλείας των σημειώσεων με το "My Backup Pro".</listitem>
+		<listitem>Κρυπτογραφήστε σημειώσεις χρησιμοποιώντας το "OI Κιβώτιο".</listitem>
+		<listitem>Διαχειριστείτε σημειώσεις στην κάρτα SD με το "OI Διαχειριστής Αρχείων".</listitem>
+		<listitem>Αναβάθμιση με το "OI Αναβάθμιση".</listitem>
+		<listitem>Μοιράστε σημειώσεις στο "Facebook", "Gmail", "Google+", "Twitter", και άλλες πολλές εφαρμογές.</listitem>
+		<emptyline/>
+		<string>Λέξεις κλειδιά:</string>
+		<listitem>Σημείωση, Σημειωματάριο, Βιβλίο σημειώσεων, Σημειώσεις</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Διεθνείς εκδόσεις:</string>
+		<international/>
+		<emptyline/>
+		<string>Αναζήτηση συμβολοσειρών για το Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>Το OI Κιβώτιο προστατεύει με ασφάλεια όλους τους κωδικούς και άλλα προσωπικά δεδομένα σας χρησιμοποιώντας το σύστημα κρυπτογράφησης AES.</string>
+		<string>Δρά επίσης και ως μια επέκταση του OI Σημειωματάριο για την κρυπτογράφηση των σημειώσεων που δημιουργήθηκαν από αυτό.</string>
+		<emptyline/>
+		<string>Αυτή η εφαρμογή δεν έχει διαφημήσεις και δεν απαιτεί άδεια στο διαδίκτυο.</string>
+		<emptyline/>
+		<string>Για την πλήρη λίστα των αλλαγών και μια λίστα συχνών ερωτημάτων, παρακαλώ επισκευτείτε:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Μπορείτε να βοηθήσετε στη βελτίωση της μετάφρασης στη γλώσσα σας στο Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Ο πηγαίος κώδικας αυτού είναι δωρεάν και η εφαρμογή ανοικτού κώδικα είναι διαθέσιμη στο:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Χαρακτηριστικά:</string>
+		<listitem>Προστατεύει ε ασφάλεια τα δεδομένα χρησιμοποιώντας κρυπτογράφηση AES.</listitem>
+		<listitem>Μετακινήστε ελεύθερα τις καταχωρήσεις δεδομένων μεταξύ κατηγοριών.</listitem>
+		<listitem>Εισάγετε/Εξάγετε καταχωρήσεις δεδομένων και βάσεις δεδομένων.</listitem>
+		<listitem>Λάβετε αντίγραφα/Επαναφέρετε καταχωρήσεις.</listitem>
+		<listitem>Περιλαμβάνει έναν ασφαλή δημιουργό κωδικών.</listitem>
+		<listitem>Αυτόματο χρονικό όριο για την προστασία κρυπτογραφημένων κειμένων.</listitem>
+		<listitem>Κρυπτογράφηση σημειώσεων του OI Σημειωματάριο.</listitem>
+		<listitem>Υποστήριξη για το κιβώτιο εικόνων Obscura.</listitem>
+		<listitem>MyBackup Pro.</listitem>
+		<emptyline/>
+		<string>Διαθέσιμες επεκτάσεις για τον "OI Διαχειριστή Αρχείων":</string>
+		<listitem>Εμφάνιση των πληροφοριών άδειας με το "OI Σχετικά".</listitem>
+		<emptyline/>
+		<string>Εφαρμογές που συνεργάζονται με τον "OI Διαχειριστή Αρχείων":</string>
+		<listitem>Κρυπτογράφηση σημειώσεων που δημιουργήθηκαν με το "OI Σημειωματάριο".</listitem>
+		<emptyline/>
+		<string>Λέξεις κλειδιά:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>κιβώτιο, κρυπτογράφηση, κωδικός, προστασία</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Διεθνείς εκδόσεις:</string>
+		<international/>
+		<emptyline/>
+		<string>Αναζήτηση συμβολοσειρών για το Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>Η OI Λίστα Αγορών είναι μια δυναμική εφαρμογή που κάνει έυκολη τη δημιουργία και διαχείριση λιστών.</string>
+		<string>Η OI Λίστα Αγορών κάνει εύκολη την προσθήκη αντικειμένων σε μια λίστα, τον έλεγχο τους και την μετέπειτα αφαίρεση τους από τη λίστα.</string>
+		<string>Η εφαρμογή μπορεί να ανιχνεύει ξεχωριστές τιμές για κάθε κατάστημα που επισκέπτεστε και παραμετροποιείται σε υψηλό επίπεδο.</string>
+		<string>Το Μέγεθος γραμματοσειράς, σειρά ταξινόμησης, στήλες λίστας και εκκαθάριση λίστας είναι όλα ρυθμίσεις που ελέγχονται από τον χρήστη.</string>
+		<string>Όλα αυτά τα χαρακτηριστικά βρίσκονται κοντά σε μια απλή δομή που προσαρμόζεται μέσα από μια ποικιλία θεμάτων.</string>
+		<emptyline/>
+		<string>Ο πηγαίος κώδικας αυτού είναι δωρεάν και η εφαρμογή ανοικτού κώδικα είναι διαθέσιμη στο:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Αυτή η εφαρμογή δεν έχει διαφημήσεις και δεν απαιτεί άδεια στο διαδίκτυο.</string>
+		<emptyline/>
+		<string>Για την πλήρη λίστα των αλλαγών και μια λίστα συχνών ερωτημάτων, παρακαλώ επισκευτείτε:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Μπορείτε να βοηθήσετε στη βελτίωση της μετάφρασης στη γλώσσα σας στο Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Χαρακτηριστικά:</string>
+		<listitem>Προσθήκη, επεξεργασία και διαγραφή λιστών.</listitem>
+		<listitem>Δημιουργήστε, διαγράψτε και ελέξτε αντικείμενα γρήγορα και εύκολα.</listitem>
+		<listitem>Ποικιλία θεμάτων</listitem>
+		<listitem>Προσαρμόσιμο μέγεθος γραμματοσειράς και σειρά ταξινόμησης.</listitem>
+		<listitem>Παρακολουθήστε διαφορετικές τιμές για κάθε κατάστημα.</listitem>
+		<listitem>Προσαρμόσιμες στήλες λιστών.</listitem>
+		<emptyline/>
+		<string>Διαθέσιμα πρόσθετα για την "OI Λίστα Αγορών":</string>
+		<listitem>Προσθέστε ένα ηχογραφημένο μήνυμα σε μια σημείωση με το "OI Ηχητικές Σημειώσεις".</listitem>
+		<listitem>Εισάγετε/εξάγετε λίστες αγορών με το "OI Μετατροπέας CSV".</listitem>
+		<listitem>Εμφάνιση των πληροφοριών άδειας με το "OI Σχετικά".</listitem>
+		<listitem>Εισάγετε/ελέξτε αντικείμενα με το "OI Πρόσθετο Γραμμωτού Κώδικα".</listitem>
+		<emptyline/>
+		<string>Εφαρμογές που συνεργάζονται με την "OI Λίστα Αγορών":</string>
+		<listitem>Αναβάθμιση με το "OI Αναβάθμιση".</listitem>
+		<listitem>Λάβετε αντίγραφα ασφαλείας των λιστών με το "My Backup Pro".</listitem>
+		<listitem>Εισάγετε τα συστατικά των συνταγών με το "Bites".</listitem>
+		<emptyline/>
+		<string>Λέξεις κλειδιά:</string>
+		<listitem>Αγορές, Λίστα, Λίστα Αγορών</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Διεθνείς εκδόσεις:</string>
+		<international/>
+		<emptyline/>
+		<string>Επεκτάσεις:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+</main>

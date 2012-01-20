@@ -11,7 +11,7 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>Ol About ir patstāvīgs paskaidrojošs dialogs, kurš ir sadalīts starp aplikācijām.</string>
+		<string>OI Paskaidrojumi ir patstāvīgs paskaidrojošs dialogs, kurš ir sadalīts starp aplikācijām.</string>
 		<string>Šī aplikācija atsaucas uz citu OI aplikāciju izvēlnēm.</string>
 		<string>Tā ļauj skatīt versijas informāciju, saites, titrus un aplikācijas licenzi.</string>
 		<string>Titri iekļauj autorus, dokumentāciju, tulkotājus un māksliniekus.</string>
@@ -34,14 +34,14 @@
 		<listitem>Atgūst informāciju no aplikācijas skaidrojuma caur noklusējuma iezīmēm un metadatiem.</listitem>
 		<listitem>Pēc izvēles, visi lauciņi var tikt izmaniīti caur nolūkotiem papildinājumiem.</listitem>
 		<emptyline/>
-		<string>Aplikācijas, kuras strādā ar "OI About":</string>
-		<listitem>OI Notepad</listitem>
-		<listitem>OI File manager</listitem>
-		<listitem>OI Shopping List</listitem>
-		<listitem>OI Convert CSV</listitem>
-		<listitem>OI Safe</listitem>
-		<listitem>OI Countdown</listitem>
-		<listitem>OI Flashlight</listitem>
+		<string>Aplikācijas, kuras strādā ar "OI Paskaidrojumiem":</string>
+		<listitem>OI Piezīmju bloks</listitem>
+		<listitem>OI Failu pārvaldnieks</listitem>
+		<listitem>OI Iepirkšanās saraksts</listitem>
+		<listitem>OI Konvertēt CSV</listitem>
+		<listitem>OI Seifs</listitem>
+		<listitem>OI Laika Atskaite</listitem>
+		<listitem>OI Lukturis</listitem>
 		<emptyline/>
 		<string>Atslēgvārdi:</string>
 		<listitem>Paskaidrojums, titri, informācija.</listitem>
@@ -65,7 +65,7 @@
 		<!--  -->
 		<!--  Description of application -->
 		<emptyline/>
-		<string>OI Countdown ir izpalīdzīgs taimeris produktivitātes paaugstināšanai un dienas plānošanai.</string>
+		<string>OI Laika Atskaite ir izpalīdzīgs taimeris produktivitātes paaugstināšanai un dienas plānošanai.</string>
 		<string>Tas ļauj Jums uzstādīt dažādas iespējas, lai ziņotu Jums laika atskaites beigās.</string>
 		<string>Pilnībā pielāgojiet visus taimerus, bez saglabāto vai darbojošos taimeru skaita ierobežojuma.</string>
 		<emptyline/>
@@ -90,9 +90,9 @@
 		<listitem>Saglabājiet savas atskaites un dodiet tām vārdus, lai varētu tās izmantot vēlāk.</listitem>
 		<listitem>Izmainiet atskaites, kamēr tās joprojām darbojas.</listitem>
 		<emptyline/>
-		<string>Pieejamie paplašinājumi "OI Countdown":</string>
+		<string>Pieejamie paplašinājumi "OI Laika atskaitei":</string>
 		<listitem>Darbiniet aplikācijas izmantojot Android saīsnes</listitem>
-		<listitem>Izmantojiet OI About, lai parādītu licenžu informāciju</listitem>
+		<listitem>Izmantojiet OI Paskaidrojumi, lai parādītu licenžu informāciju</listitem>
 		<emptyline/>
 		<string>Atslēgvārdi:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
@@ -115,7 +115,7 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI File Manager ļauj pārlūkot Jūsu SD karti, izveidot failu katalogus, pārsaukt, kopēt, pārvietot un izdzēst failus.</string>
+		<string>OI Failu pārvaldnieks ļauj pārlūkot Jūsu SD karti, izveidot failu katalogus, pārsaukt, kopēt, pārvietot un izdzēst failus.</string>
 		<string>Tas darbojas arī kā paplašinājums citām aplikācijām, lai parādītu "Open" un "Save" dialogus.</string>
 		<emptyline/>
 		<string>Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju.</string>
@@ -136,13 +136,13 @@
 		<listitem>Sūtiet failus ar e-pastu.</listitem>
 		<listitem>Darbojas kā paplašinājums citām aplikācijām kā GMail, lai pievienotu failus.</listitem>
 		<listitem>Atbalsta daudzus failu nobeigumus un mime veidus.</listitem>
-		<listitem>Atbalsta PICK_FILE un PICK_DIRECTORY darbības, tādējādi citas aplikācijas var izmantot OI File Manager.</listitem>
+		<listitem>Atbalsta PICK_FILE un PICK_DIRECTORY darbības, tādējādi citas aplikācijas var izmantot OI Failu pārvaldnieku.</listitem>
 		<emptyline/>
-		<string>Pieejamie paplašinājumi "OI File Manager":</string>
-		<listitem>Parādīt licenzes informāciju ar "OI About".</listitem>
+		<string>Pieejamie paplašinājumi "OI Failu pārvaldnieks":</string>
+		<listitem>Parādīt licenzes informāciju ar "OI Paskaidrojumi".</listitem>
 		<emptyline/>
-		<string>Aplikācijas, kuras strādā ar "OI File Manager":</string>
-		<listitem>Atveriet un saglabājiet teksta failus ar "OI Notepad".</listitem>
+		<string>Aplikācijas, kuras strādā ar "OI Failu pārvaldnieks":</string>
+		<listitem>Atveriet un saglabājiet teksta failus ar "OI Piezīmju bloku".</listitem>
 		<emptyline/>
 		<string>Atslēgvārdi:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
@@ -166,10 +166,10 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Flashlight ir vienkārša un efektīva aplikācija, kura palīdz atrast ceļu tumsā.</string>
-		<string>OI Flashlight ieslēdz ekrāna apgaismojumu, skaidri izgaismojot apkārtesošo.</string>
-		<string>Ierīcēm ar fotoaparāta zibspuldzi, OI Flashlight var arī izmantot zibspuldzi, lai izgaismotu istabu.</string>
-		<string>Apgaismojuma krāsa ir pilnībā pielāgojama ar OI Color Picker.</string>
+		<string>OI Lukturis ir vienkārša un efektīva aplikācija, kura palīdz atrast ceļu tumsā.</string>
+		<string>OI Lukturis ieslēdz ekrāna apgaismojumu, skaidri izgaismojot apkārtesošo.</string>
+		<string>Ierīcēm ar fotoaparāta zibspuldzi, OI Lukturis var arī izmantot zibspuldzi, lai izgaismotu istabu.</string>
+		<string>Apgaismojuma krāsa ir pilnībā pielāgojama ar OI Krāsu izvēlni.</string>
 		<emptyline/>
 		<string>Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju.</string>
 		<emptyline/>
@@ -187,12 +187,12 @@
 		<listitem>Ieslēgt fotoaparāta zibspuldzi.</listitem>
 		<listitem>Apgaismojuma krāsa ir pielāgojama.</listitem>
 		<emptyline/>
-		<string>Pieejamie paplašinājumi "OI Flashlight":</string>
-		<listitem>Parādīt licenzes informāciju ar "OI About".</listitem>
-		<listitem>Izmainiet apgaismojuma krāsu ar "OI Color Picker".</listitem>
+		<string>Pieejamie paplašinājumi "OI Lukturim":</string>
+		<listitem>Parādīt licenzes informāciju ar "OI Paskaidrojumi".</listitem>
+		<listitem>Izmainiet apgaismojuma krāsu ar "OI Krāsu izvēlni".</listitem>
 		<emptyline/>
-		<string>Aplikācijas, kuras strādā ar "OI Flashlight":</string>
-		<listitem>Atjauniniet ar "OI Update".</listitem>
+		<string>Aplikācijas, kuras strādā ar "OI Lukturi":</string>
+		<listitem>Atjauniniet ar "OI Atjauninājumi".</listitem>
 		<emptyline/>
 		<string>Atslēgvārdi:</string>
 		<listitem>Zibspuldze, gaisma, apgaismojums</listitem>
@@ -213,7 +213,7 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Notepad ir pilnīgi iespējota atvērtā pirmkoda piezīmju veikšanas aplikācija.</string>
+		<string>OI Piezīmju bloks ir pilnīgi iespējota atvērtā pirmkoda piezīmju veikšanas aplikācija.</string>
 		<string>Ar to var veidot iezīmes, meklēt un sūtīt piezīmes, papildus pamata funkcionalitātei kā piezīmju izveidošanai, izdzēšanai un labošanai.</string>
 		<string>Papildus iespējas kā šifrēšana, importēšana/eksportēšana un balss piezīmes ir pieejamas izmantojot paplašinājumus.</string>
 		<string>Visa ši funkcionalitāte ir apkopota vienkāršā un efektīvā izkārtojumā, pielāgojamā ar dažādām tēmām.</string>
@@ -237,18 +237,18 @@
 		<listitem>Ātra meklēšana caur piezīmēm.</listitem>
 		<listitem>Sūtiet piezīmes kā MMS vai SMS.</listitem>
 		<emptyline/>
-		<string>Pieejamie paplašinājumi "OI Notepad":</string>
-		<listitem>Ierakstiet un pievienojiet balss piezīmes savām piezīmēm ar "OI Voice Notes".</listitem>
-		<listitem>Ar "OI Convert CSV" importējiet/eksportējiet piezīmes no SD kartes.</listitem>
-		<listitem>Parādīt licenzes informāciju ar "OI About".</listitem>
-		<listitem>Ievietojiet datumu un laiku piezīmēs ar "OI Insert Date".</listitem>
-		<listitem>Pagrieziet tekstu kājām gaisā ar "Upside Down".</listitem>
+		<string>Pieejamie paplašinājumi "OI Piezīmju blokam":</string>
+		<listitem>Ierakstiet un pievienojiet balss piezīmes savām piezīmēm ar "OI Balss piezīmēm".</listitem>
+		<listitem>Ar "OI Konvertējiet CSV" importējiet/eksportējiet piezīmes no SD kartes.</listitem>
+		<listitem>Parādīt licenzes informāciju ar "OI Paskaidrojumi".</listitem>
+		<listitem>Ievietojiet datumu un laiku piezīmēs ar "OI Ievietojiet datumu".</listitem>
+		<listitem>Pagrieziet tekstu kājām gaisā ar "Kājām gaisā".</listitem>
 		<emptyline/>
-		<string>Aplikācijas, kuras strādā ar "OI Notepad":</string>
-		<listitem>Dublējiet piezīmes ar "My Backup Pro".</listitem>
-		<listitem>Šifrējiet piezīmes izmantojot "OI Safe".</listitem>
-		<listitem>Pārvaldiet piezīmes SD kartē ar "OI File Manager".</listitem>
-		<listitem>Atjauniniet ar "OI Update".</listitem>
+		<string>Aplikācijas, kuras strādā ar "OI Piezīmju bloku":</string>
+		<listitem>Dublējiet piezīmes ar "Mans rezerves kopiju Pro".</listitem>
+		<listitem>Šifrējiet piezīmes izmantojot "OI Seifu".</listitem>
+		<listitem>Pārvaldiet piezīmes SD kartē ar "OI Failu pārvaldnieku".</listitem>
+		<listitem>Atjauniniet ar "OI Atjauninājumi".</listitem>
 		<listitem>Dalieties ar piezīmēm caur "Facebook", "Gmail", "Google+", "Twitter" un daudzām citām aplikācijām.</listitem>
 		<emptyline/>
 		<string>Atslēgvārdi:</string>
@@ -270,8 +270,8 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Safe droši aizsargā visas Jūsu paroles un citus privātos datus izmantojot nozares standartu AES šifrēšanu.</string>
-		<string>Tas arī darbojas kā paplašinājums OI Notepad, lai šifrētu piezīmes, kuras ir izveidotas ar OI Notepad.</string>
+		<string>OI Seifs droši aizsargā visas Jūsu paroles un citus privātos datus izmantojot nozares standartu AES šifrēšanu.</string>
+		<string>Tas arī darbojas kā paplašinājums OI Piezīmju blokam, lai šifrētu piezīmes, kuras ir izveidotas ar OI Piezīmju bloku.</string>
 		<emptyline/>
 		<string>Šī aplikācija ir bezmaksas un tai nevajag interneta atļauju.</string>
 		<emptyline/>
@@ -291,14 +291,14 @@
 		<listitem>Dublējiet/atjaunojiet ievades.</listitem>
 		<listitem>Iekļauj drošu paroļu ģeneratoru.</listitem>
 		<listitem>Automātisks noilgums, lai aizsargātu šifrētos dokumentus.</listitem>
-		<listitem>Šifrējiet OI Notepad piezīmes.</listitem>
+		<listitem>Šifrējiet OI Piezīmju bloka piezīmes.</listitem>
 		<listitem>Atbalsts Obscura attēlu seifam.</listitem>
-		<listitem>MyBackup Pro.</listitem>
+		<listitem>Mans rezerves kopiju Pro.</listitem>
 		<emptyline/>
-		<string>Pieejamie paplašinājumi "OI File Manager":</string>
-		<listitem>Parādīt licenzes informāciju ar "OI About".</listitem>
+		<string>Pieejamie paplašinājumi "OI Failu pārvaldnieks":</string>
+		<listitem>Parādīt licenzes informāciju ar "OI Paskaidrojumi".</listitem>
 		<emptyline/>
-		<string>Aplikācijas, kuras strādā ar "OI File Manager":</string>
+		<string>Aplikācijas, kuras strādā ar "OI Failu pārvaldnieks":</string>
 		<listitem>Encrypt notes created in "OI Notepad".</listitem>
 		<emptyline/>
 		<string>Atslēgvārdi:</string>
@@ -350,11 +350,11 @@
 		<string>Available extensions for "OI Shopping List":</string>
 		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
 		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
-		<listitem>Parādīt licenzes informāciju ar "OI About".</listitem>
+		<listitem>Parādīt licenzes informāciju ar "OI Paskaidrojumi".</listitem>
 		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
 		<emptyline/>
 		<string>Applications that work with "OI Shopping List":</string>
-		<listitem>Atjauniniet ar "OI Update".</listitem>
+		<listitem>Atjauniniet ar "OI Atjauninājumi".</listitem>
 		<listitem>Backup lists with "My Backup Pro".</listitem>
 		<listitem>Import ingredients of recipes with "Bites".</listitem>
 		<emptyline/>

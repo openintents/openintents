@@ -82,7 +82,7 @@
     <!-- Name of the application "OI Safe". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_safe">OI امن</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_safe_not_available">No compatible application for encryption is available.</string>
+    <string name="oi_distribution_safe_not_available">هیچ برنامه برای رمزگذاری سازگار در دسترس است.</string>
     <string name="oi_distribution_safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
     
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
@@ -90,9 +90,9 @@
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
     <string name="oi_distribution_download_message">Please download %s from the OpenIntents website.</string>
     <!-- Dialog button: download the suggested application from Android Market. -->
-    <string name="oi_distribution_download_market">Market download</string>
+    <string name="oi_distribution_download_market">دانلود بازار</string>
     <!-- Dialog button: download the suggested application from the developer web site. -->
-    <string name="oi_distribution_download_web">Web download</string>
+    <string name="oi_distribution_download_web">وب سایت دانلود</string>
 	<!-- Dialog title: %s is the name of an application (e.g. "OI Notepad"). -->
     <string name="oi_distribution_download_title">دانلود s%</string>
 	
@@ -104,8 +104,8 @@
     (e.g. "OI About requires OI Notepad 1.2.0 or higher.") -->
 	<string name="oi_distribution_info_not_available">%1$s requires %2$s %3$s or higher.</string>
 	<!-- Title of a dialog. -->
-	<string name="oi_distribution_info_instructions">Instructions</string>
+	<string name="oi_distribution_info_instructions">دستورالعمل</string>
 	<!-- Error message -->
-	<string name="oi_distribution_launch_error">Application could not be launched</string>
+	<string name="oi_distribution_launch_error">برنامه می تواند نه راه اندازی شد</string>
 	
 </resources>

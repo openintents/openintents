@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+    
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis</string>
+	
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Ορίστε πολλαπλές αντίστροφες μετρήσεις με το OI Χρονομετρητή.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Χρονομετρητής</string>
+    
+    <string name="start">Έναρξη</string>
+    <string name="stop">Διακοπή</string>
+    <string name="modify">Τροποποίηση</string>
+    <string name="cont">Συνέχεια</string>
+    
+	<string name="no_durations">Χρησιμοποιήστε το μενού για να προσθέσετε μια νέα αντίστροφη μέτρηση.</string>
+	<string name="countdown_list">Λίστ αντιστρόφων μετρήσεων</string>
+	
+    <string name="menu_delete">Διαγραφή</string>
+    <string name="menu_edit">Επεξεργασία</string>
+    <string name="menu_insert">Προσθήκη αντίστροφης μέτρησης</string>
+    <string name="menu_pick_ringtone">Ήχος ειδοποιήσεων</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">Ορισμός ημερομηνίας</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">Ορισμός διάρκειας</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">Ορισμός ενέργειας</string>
+    
+    <string name="hint_title">π.χ. πίτσα</string>
+    
+    <!-- Title of the activity for setting (editing) the countdown. -->
+    <string name="title_setcountdown">Ορισμός αντίστροφης μέτρησης</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
+    <string name="title_create">Δημιουργία αντίστροφης μέτρησης</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_edit">Επεξεργασία αντίστροφης μέτρησης</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">Επιλογή αντίστροφης μέτρησης</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">OI Χρονομετρητής</string>
+    
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
+	<string name="error_title">Σφάλμα</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
+	<string name="error_message">Σφάλμα κατά τη φόρτωση της αντίστροφης μέτρησης</string>
+	
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
+	
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">Ειδοποίηση στη γραμμή κατάστασης</string>
+	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">Εκκίνηση μέσω της γραμμής κατάστασης</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">Κλήση</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
+	<string name="vibrate">Δόνηση</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">Φώς</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="action">Ενέργεια: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_action">Ορισμός ενέργειας: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_countdown">Ορισμός αντίστροφης μέτρησης: %s</string>
+	
+	<!-- Button to test an action. -->
+	<string name="test">Δοκιμή</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">Ρυθμίσεις</string>
+	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">Απόκρυψη</string>
+	
+	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
+	<string name="days">ημέρες</string>
+	
+	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
+	<string name="day">ημέρα</string>
+	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">Εφαρμογές</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">Συντομεύσεις</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">Αυτοματοποιημένες εργασίες</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">Επιλογή συντόμευσης</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">Επιλογή αυτοματοποιημένης εργασίας</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">Επιλογή δραστηριότητας</string>
+ 
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>Έναρξη αντίστροφης μέτρησης</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>Διακοπή αντίστροφης μέτρησης</item>
+    </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+	<!-- Preference section title for general settings regarding the countdown -->
+    <string name="preference_countdown">Αντίστροφη Μέτρηση</string>
+
+    <string name="preference_extensions">Επεκτάσεις</string>
+    <string name="preference_get_extensions">Λήψη νέων επεκτάσεων</string>
+    <string name="preference_get_extensions_summary">Αναζήτηση για επεκτάσεις στο διαδίκτυο</string>
+    <string name="preference_get_extensions_from">Λήψη επεκτάσεων από</string>
+    <string name="preference_extensions_market">Android Market</string>
+    <string name="preference_extensions_market_summary">Αναζήτηση επεκτάσεων στο Android Market.</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">Λήψη επεκτάσεων από την κεντρική σελίδα του OpenIntents.</string>
+	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">Χρονικό όριο της ειδοποίησης</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">Χρονικό όριο για την κλήση, δόνηση, ή ελαφρή ειδοποίηση</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">Ορισμός χρονικού ορίου</string>
+    
+    <!-- Timeout for notifications -->
+    <string-array name="preference_notification_timeout_entries">
+        <item>2 δευτερόλεπτα</item>
+        <item>5 δευτερόλεπτα</item>
+        <item>10 δευτερόλεπτα</item>
+        <item>30 δευτερόλεπτα</item>
+        <item>1 λεπτό</item>
+        <item>5 λεπτά</item>
+        <item>10 λεπτά</item>
+    </string-array>
+    
+    
+    <string name="no_permission">Ο OI Χρονομετρητής δεν έχει τα απαραίτητα δικαιώματα για αυτή την ενέργεια</string>
+</resources>

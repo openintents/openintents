@@ -2,12 +2,12 @@
 OI Countdown
 
 # Promo text:
-Set multiple countdowns with OI Countdown.
+Configurează numărători inverse multiple cu OI Countdown.
 
 # Description:
 
 
-OI Countdown is a helpful timer to increase your productivity and plan your day.  It allows you to set a variety of different actions to notify you at the end of a timer.  Fully customize all your timers, with no limit on how many you can have running or saved.  
+OI Countdown este un cronometru folositor pentru a vă spori productivitatea și pentru a vă planifica ziua. Vă permite să configurați o varietate de acțiuni diferite pentru a vă înștiința la sfârșitul unui cronometru. Personalizați complet toate cronometrele, fără limită în privința numărului de cronometre care rulează sau care sunt salvate. 
 
 Această aplicație nu conține reclame și nu necesită permisiunea de internet. 
 
@@ -27,22 +27,22 @@ Puteți ajuta la îmbunătățirea traducerii în limba dumneavoastră la Launch
 https://translations.launchpad.net/openintents/trunk
 
 Caracteristici: 
-* Set a countdown by choosing a duration or a date.
-* Be notified by vibration or any sound of your choice. 
-* Have an unlimited number of timers running at the same time. 
-* Save your countdowns and give them names to reuse at later times. 
-* Modify countdowns, even while they are still running
+* Configurează o numărătoare inversă prin alegerea unei durate sau a unei date.
+* Să fiți înștiințat prin vibrare sau prin orice sunet la alegere.
+* Deținerea unui număr nelimitat de cronometre care rulează în același timp.
+* Salvează numărătorile inverse și redenumește-le pentru a le reutiliza mai târziu.
+* Modifică numărătoarea inversă, chiar și atunci când încă rulează
 
-Available extensions for "OI Countdown":  
-* Launch applications through Android shortcuts
-* Use OI About to show license information
+Extensii disponibile pentru „OI Countdown”: 
+* Lansează aplicații prin scurtăturile Android
+* Utilizează Despre OI pentru a afișa informațiile de licență
 
 Cuvinte cheie: 
-* countdown, timer, alert
+* numărătoare inversă, cronometru, alertă
 * OI, OpenIntents, Open Intents
 
 Versiuni internaționale: 
-Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI, عد تنازلي OI
+Compte enrere d'OI, IO ໄລກັບ, OI カウントダウン, OI 카운트다운, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI Χρονομετρητής, OI Одбројувач, OI काउंटडाउन, OI倒计时, عد تنازلي OI, סופר לאחור OI
 
 
 Caută șiruri pentru Market: 

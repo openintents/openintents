@@ -22,12 +22,13 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
+  Hans https://launchpad.net/~hans-wuerstchen42
   OpenIntents devs https://launchpad.net/~openintents-devs
   Vincent Schüßler https://launchpad.net/~tq-vincent
   appricoo https://launchpad.net/~appricoo</string>
 	
 	<!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Import and export lists and notes with OI Convert CSV.</string>
+	<string name="about_comments">Mit OI Convert CSV können Sie Ihre Listen/Notizen importieren und exportieren.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -136,26 +137,26 @@
     
     <string-array name="import_policy">
         <item>DOPPELT - Erlaubt doppelte Einträge.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>Einträge beibehalten - Existierende Einträge nicht überschreiben</item>
         <item>Überschreiben - Überschreibe bestehende Einträge.</item>
         <item>Wiederherstellen - ALLE LÖSCHEN, danach importieren.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>KOPIEREN - Fügt eine zweite Kopie eines Eintrags hinzu, wenn er bereits besteht.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>Eintrag beibehalten - Existierender Eintrag wird nicht überschrieben und ignoriert in der CSV-Datei</item>
         <item>Überschreiben - Ein Eintrag in der CSV-Datei wird bestehende Einträge ÜBERSCHREIBEN.</item>
         <item>Backup wiederherstellen - LÖSCHT ALLE BESTEHENDEN EINTRÄGE und importiert danach die CSV Datei.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>DOPPELT - Erlaubt doppelte Einträge.</item>
-        <item>KEEP - Don\'t overwrite existing records.</item>
+        <item>Einträge beibehalten - Existierende Einträge nicht überschreiben</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>KOPIEREN - Fügt eine zweite Kopie eines Eintrags hinzu, wenn er bereits besteht.</item>
-        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
+        <item>Eintrag beibehalten - Existierender Eintrag wird nicht überschrieben und ignoriert in der CSV-Datei</item>
     </string-array>
     
 </resources>

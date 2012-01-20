@@ -11,6 +11,7 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Croatian <hr@li.org>\n"
+"Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,7 +33,7 @@ msgstr ""
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
-#: tmp_strings.xml:117(string)
+#: tmp_strings.xml:123(string)
 msgid "OI Notepad"
 msgstr "OI Blokčić"
 
@@ -90,7 +91,7 @@ msgid "Pick note for shortcut"
 msgstr "Postavi biljesku kao prečicu"
 
 #. Dialog box
-#: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
+#: tmp_strings.xml:63(string) tmp_strings.xml:133(string)
 msgid "OK"
 msgstr "OK"
 
@@ -179,8 +180,8 @@ msgstr "Otvori sa SD kartice"
 msgid "File name"
 msgstr "Naziv datoteke"
 
-#: tmp_strings.xml:91(string) tmp_strings.xml:102(string)
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:91(string) tmp_strings.xml:108(string)
+#: tmp_strings.xml:112(string)
 msgid "Save"
 msgstr "Snimi"
 
@@ -212,146 +213,170 @@ msgstr "Datoteka već postoji"
 msgid "Do you really want to overwrite the existing file?"
 msgstr "Želite li zaista da napišete preko postojeće datoteke?"
 
+#: tmp_strings.xml:100(string)
+msgid "Word count"
+msgstr ""
+
+#: tmp_strings.xml:102(item)
+msgid "One word."
+msgstr ""
+
+#: tmp_strings.xml:103(item)
+msgid "%d words."
+msgstr ""
+
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
-#: tmp_strings.xml:101(string)
+#: tmp_strings.xml:107(string)
 msgid "Import"
 msgstr "Uvedi"
 
-#: tmp_strings.xml:103(string)
+#: tmp_strings.xml:109(string)
 msgid "Save as"
 msgstr "Sačuvati kao"
 
-#: tmp_strings.xml:104(string)
+#: tmp_strings.xml:110(string)
 msgid "Text modified"
 msgstr "Tekst izenjen"
 
-#: tmp_strings.xml:105(string)
+#: tmp_strings.xml:111(string)
 msgid "Do you want to save the changes?"
 msgstr "Želiš li sačuvati izmene?"
 
-#: tmp_strings.xml:107(string)
+#: tmp_strings.xml:113(string)
 msgid "Don't save"
 msgstr "Nemoj sačuvati"
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:115(string)
 msgid "Theme"
 msgstr "Tema"
 
-#: tmp_strings.xml:110(string)
+#: tmp_strings.xml:116(string)
 msgid "Pick a theme"
 msgstr "Odaberi temu"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:111(string) tmp_strings.xml:200(item)
+#: tmp_strings.xml:117(string) tmp_strings.xml:209(item)
 msgid "Default"
 msgstr "Uobičajeno"
 
-#: tmp_strings.xml:112(string)
+#: tmp_strings.xml:118(string)
 msgid "Monospaced font"
 msgstr "Mono-odvijen font"
 
-#: tmp_strings.xml:113(string)
+#: tmp_strings.xml:119(string)
 msgid "Serif font"
 msgstr "Font Serif"
 
 #. Search
-#: tmp_strings.xml:116(string) tmp_strings.xml:121(string)
+#: tmp_strings.xml:122(string) tmp_strings.xml:127(string)
 msgid "Search"
 msgstr "Traži"
 
 #. %s is the search string
-#: tmp_strings.xml:119(string)
+#: tmp_strings.xml:125(string)
 msgid "No results found for %s."
 msgstr "Nema rezultata za %s."
 
-#: tmp_strings.xml:120(string)
+#: tmp_strings.xml:126(string)
 msgid "OI Notepad search"
 msgstr "Pretraga OI Blokčića"
 
 #. The description that will show up in the search settings for this source.
-#: tmp_strings.xml:124(string)
+#: tmp_strings.xml:130(string)
 msgid "Titles of your notes"
 msgstr "Naslovi tvojih bilješki"
 
-#: tmp_strings.xml:128(string)
+#: tmp_strings.xml:134(string)
 msgid "Cancel"
 msgstr "Otkazati"
 
-#: tmp_strings.xml:129(string)
+#: tmp_strings.xml:135(string)
 msgid "Use this theme for all lists"
 msgstr "Koristi ovu temu za sve liste"
 
-#: tmp_strings.xml:130(string)
+#: tmp_strings.xml:136(string)
 msgid "Get more themes"
 msgstr "Preuzimi više tema"
 
-#: tmp_strings.xml:132(string)
+#: tmp_strings.xml:138(string)
 msgid "All notes"
 msgstr "Sve bilješke"
 
 #. Title for settings regarding the list of notes
-#: tmp_strings.xml:136(string)
+#: tmp_strings.xml:142(string)
 msgid "Notes List"
 msgstr "Lista Bilješki"
 
-#: tmp_strings.xml:137(string) tmp_strings.xml:138(string)
+#: tmp_strings.xml:143(string) tmp_strings.xml:144(string)
 msgid "List Sorting Order"
 msgstr "Redosljed u listi"
 
-#: tmp_strings.xml:139(string)
+#: tmp_strings.xml:145(string)
 msgid "The order in which notes are shown in the notes list"
 msgstr "Redosljed u kom su bilješke prikazane u listi bilješki"
 
-#: tmp_strings.xml:140(string)
+#: tmp_strings.xml:146(string)
 msgid "Marquee note titles."
 msgstr "Marikiraj naslove bilješki."
 
-#: tmp_strings.xml:141(string)
+#: tmp_strings.xml:147(string)
 msgid "Continuously scroll note titles that are too long."
 msgstr "Uvek spusti naslove bilješki koji su predugački."
 
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:149(string)
 msgid "Note Editor"
 msgstr "Izmenjivač Bilješki"
 
-#: tmp_strings.xml:144(string)
+#: tmp_strings.xml:150(string)
 msgid "Font size"
 msgstr "Veličina fonta"
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:151(string)
 msgid "Change font size"
 msgstr "Izmeni veličinu fonta"
 
-#: tmp_strings.xml:146(string)
+#: tmp_strings.xml:152(string)
 msgid "Choose font size"
 msgstr "Odaberi veličinu fonta"
 
-#: tmp_strings.xml:147(string)
+#: tmp_strings.xml:153(string)
 msgid "Auto-create Links"
 msgstr "Autmatski napravi Linkove"
 
-#: tmp_strings.xml:148(string)
+#: tmp_strings.xml:154(string)
 msgid "Create links for phone numbers and email/street/web addresses"
 msgstr "Napravi linkove za brojeve telefona i adrese email-a, ulica i sajta."
 
-#: tmp_strings.xml:149(string)
+#: tmp_strings.xml:155(string)
 msgid "Do not create links on notes"
 msgstr "Nepravi linkove na bilješkama"
 
-#: tmp_strings.xml:151(string)
+#: tmp_strings.xml:156(string)
+msgid "Character count"
+msgstr ""
+
+#: tmp_strings.xml:157(string)
+msgid "Show character count in editor"
+msgstr ""
+
+#: tmp_strings.xml:158(string)
+msgid "Do not show character count in editor"
+msgstr ""
+
+#: tmp_strings.xml:160(string)
 msgid "Settings"
 msgstr "Podešavanja"
 
-#: tmp_strings.xml:152(string)
+#: tmp_strings.xml:161(string)
 msgid "Sort Order"
 msgstr "Redosled Svrstavanja"
 
 #. Permission to read notes.
-#: tmp_strings.xml:160(string)
+#: tmp_strings.xml:169(string)
 msgid "read notes"
 msgstr "čitaj bilješke"
 
-#: tmp_strings.xml:161(string)
+#: tmp_strings.xml:170(string)
 msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
@@ -360,20 +385,20 @@ msgstr ""
 "raspoložive u šifriranom formatu."
 
 #. Permission to write notes.
-#: tmp_strings.xml:163(string)
+#: tmp_strings.xml:172(string)
 msgid "write notes"
 msgstr "pisanje bilješki"
 
-#: tmp_strings.xml:164(string)
+#: tmp_strings.xml:173(string)
 msgid "Allows an application to create new notes or modify existing notes."
 msgstr "Dozvoli aplikaciji da napravi nove bilješke ili izmjeni postojeće."
 
 #. Permission to read shopping lists.
-#: tmp_strings.xml:168(string)
+#: tmp_strings.xml:177(string)
 msgid "read shopping lists"
 msgstr "čitanje lista za kupovinu"
 
-#: tmp_strings.xml:169(string)
+#: tmp_strings.xml:178(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
@@ -382,22 +407,22 @@ msgstr ""
 "popisi i predmeti raspoloživi u šifriranom formatu."
 
 #. Permission to write shopping lists.
-#: tmp_strings.xml:171(string)
+#: tmp_strings.xml:180(string)
 msgid "write shopping lists"
 msgstr "pisanje popisa za kupovinu"
 
-#: tmp_strings.xml:172(string)
+#: tmp_strings.xml:181(string)
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
 msgstr ""
 "Dozvoljava aplikaciji pravljenje novih listi i predmeta ili izmeni postojeće."
 
 #. Permission to encrypt and decrypt data.
-#: tmp_strings.xml:176(string)
+#: tmp_strings.xml:185(string)
 msgid "encrypt and decrypt data"
 msgstr "sifrirani i dešifrirani podaci"
 
-#: tmp_strings.xml:177(string)
+#: tmp_strings.xml:186(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
@@ -405,97 +430,97 @@ msgstr ""
 "Dozvoljava aplikaci da šifrira i dešfrira tekst, i pristupi šiframa koje su "
 "sačuvali u OI Safe-u."
 
-#: tmp_strings.xml:186(item)
+#: tmp_strings.xml:195(item)
 msgid "Alphabetical"
 msgstr "Po abecedi"
 
-#: tmp_strings.xml:187(item)
+#: tmp_strings.xml:196(item)
 msgid "Reverse Alphabetical"
 msgstr "Obrtno abecedi"
 
-#: tmp_strings.xml:188(item)
+#: tmp_strings.xml:197(item)
 msgid "Last Modified"
 msgstr "Posljednja Izmjena"
 
-#: tmp_strings.xml:189(item)
+#: tmp_strings.xml:198(item)
 msgid "First Modified"
 msgstr "Prva Izmjena"
 
-#: tmp_strings.xml:190(item)
+#: tmp_strings.xml:199(item)
 msgid "Newest to Oldest"
 msgstr "Novije prema Starijem"
 
-#: tmp_strings.xml:191(item)
+#: tmp_strings.xml:200(item)
 msgid "Oldest to Newest"
 msgstr "Starije prema Novijem"
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:196(item)
+#: tmp_strings.xml:205(item)
 msgid "Tiny"
 msgstr "Sićušan"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:198(item)
+#: tmp_strings.xml:207(item)
 msgid "Small"
 msgstr "Mali"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:202(item)
+#: tmp_strings.xml:211(item)
 msgid "Large"
 msgstr "Veliki"
 
-#: tmp_strings.xml:205(string)
+#: tmp_strings.xml:214(string)
 msgid "Add-ons"
 msgstr "Dodaci"
 
-#: tmp_strings.xml:206(string)
+#: tmp_strings.xml:215(string)
 msgid "Get new add-ons"
 msgstr "Preuzime nove dodatake"
 
-#: tmp_strings.xml:207(string)
+#: tmp_strings.xml:216(string)
 msgid "Search for extensions and themes online."
 msgstr "Pretraživanje za dodacima i temama na mreži."
 
-#: tmp_strings.xml:208(string)
+#: tmp_strings.xml:217(string)
 msgid "Get add-ons from Market"
 msgstr "Preuzmi dodatke iz Market-a"
 
-#: tmp_strings.xml:209(string)
+#: tmp_strings.xml:218(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "Preuzmi dodatke sa OpenIntents-a"
 
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:219(string)
 msgid "Extensions"
 msgstr "Dodaci"
 
-#: tmp_strings.xml:211(string)
+#: tmp_strings.xml:220(string)
 msgid "Themes"
 msgstr "Teme"
 
-#: tmp_strings.xml:212(string)
+#: tmp_strings.xml:221(string)
 msgid "Search for extensions at Android Market."
 msgstr "Pretraži dodatke na Android Market-u."
 
-#: tmp_strings.xml:213(string)
+#: tmp_strings.xml:222(string)
 msgid "Search for themes at Android Market."
 msgstr "Pretraži teme na Android Market-u."
 
-#: tmp_strings.xml:214(string)
+#: tmp_strings.xml:223(string)
 msgid "Get extensions from the OpenIntents homepage."
 msgstr "Preuzmi dodatke na OpenIntents strainici."
 
-#: tmp_strings.xml:215(string)
+#: tmp_strings.xml:224(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "Preuzmi teme na OpenIntents stranici."
 
-#: tmp_strings.xml:216(string)
+#: tmp_strings.xml:225(string)
 msgid "Deletion Confirmation"
 msgstr "Potvrda Brisanja"
 
-#: tmp_strings.xml:217(string)
+#: tmp_strings.xml:226(string)
 msgid "Are you sure you want to delete this note?"
 msgstr "Da li siguran da želiš da obrišep ovu bilješku?"
 
-#: tmp_strings.xml:219(string)
+#: tmp_strings.xml:228(string)
 msgid "New note"
 msgstr "Nova bilješka"

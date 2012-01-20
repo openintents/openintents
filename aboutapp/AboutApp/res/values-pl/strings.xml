@@ -30,6 +30,7 @@
 	<string name="about_translators">Launchpad Contributions:
   Andrzej Ziółek https://launchpad.net/~andro-v-zik
   OpenIntents devs https://launchpad.net/~openintents-devs
+  Piotr Łazarczyk https://launchpad.net/~quazarxd
   usul https://launchpad.net/~usultis
   zielmicha https://launchpad.net/~michal-zielinscy</string>
 	
@@ -80,49 +81,49 @@
 	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
-		<item>Arabski</item>
+		<item>arabski</item>
 		<item>białoruski</item>
 		<item>bułgarski</item>
 		<item>kataloński</item>
-		<item>Czeski</item>
-		<item>Duński</item>
-		<item>Niemiecki</item>
-		<item>Grecki</item>
-		<item>Angielski</item>
+		<item>czeski</item>
+		<item>duński</item>
+		<item>niemiecki</item>
+		<item>grecki</item>
+		<item>angielski</item>
 		<item>angielski (Wielka Brytania)</item>
-		<item>Hiszpański</item>
-		<item>Perski</item>
-		<item>Fiński</item>
-		<item>Farerski</item>
-		<item>Francuski</item>
+		<item>hiszpański</item>
+		<item>perski</item>
+		<item>fiński</item>
+		<item>farerski</item>
+		<item>francuski</item>
 		<item>hindi</item>
-		<item>Chorwacki</item>
-		<item>Węgierski</item>
-		<item>Włoski</item>
+		<item>chorwacki</item>
+		<item>węgierski</item>
+		<item>włoski</item>
 		<item>hebrajski</item>
-		<item>Japoński</item>
-		<item>Koreański</item>
-		<item>Laotański</item>
+		<item>japoński</item>
+		<item>koreański</item>
+		<item>laotański</item>
 		<item>łotewski</item>
 		<item>macedoński</item>
 		<item>norweski (Bokmal)</item>
-		<item>Niderlandzki</item>
-		<item>Oksytański (po 1500)</item>
+		<item>holenderski</item>
+		<item>okcytański (po 1500)</item>
 		<item>pendżabski</item>
-		<item>Polski</item>
-		<item>Portugalski</item>
-		<item>Portugalski (brazylijski)</item>
-		<item>Rumuński</item>
-		<item>Rosyjski</item>
-		<item>Sardyński</item>
+		<item>polski</item>
+		<item>portugalski</item>
+		<item>portugalski (Brazylia)</item>
+		<item>rumuński</item>
+		<item>rosyjski</item>
+		<item>sardyński</item>
 		<item>sindhi</item>
-		<item>Słowacki</item>
+		<item>słowacki</item>
 		<item>słoweński</item>
-		<item>Szwedzki</item>
+		<item>szwedzki</item>
 		<item>tagalski</item>
-		<item>Turecki</item>
+		<item>turecki</item>
 		<item>ujgurski</item>
-		<item>Chiński (uproszczony)</item>
-		<item>Chiński (tradycyjny)</item>
+		<item>chiński (uproszczony)</item>
+		<item>chiński (tradycyjny)</item>
 	</string-array>
 </resources>

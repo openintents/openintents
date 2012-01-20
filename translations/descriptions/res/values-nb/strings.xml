@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
-  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias</translators>
+  Arne Tobias Malkenes Ødegaard https://launchpad.net/~arne-tobias
+  OpenIntents devs https://launchpad.net/~openintents-devs</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->

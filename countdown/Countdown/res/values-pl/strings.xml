@@ -9,6 +9,7 @@
 
 Launchpad Contributions:
   Damian Skrodzki https://launchpad.net/~damienix
+  Piotr Łazarczyk https://launchpad.net/~quazarxd
   Tomasz \'Zen\' Napierala https://launchpad.net/~tzn
   zielmicha https://launchpad.net/~michal-zielinscy</string>
 	
@@ -43,7 +44,7 @@ Launchpad Contributions:
     <!-- Menu item: Set the action to be performed at the end of the countdown. -->
     <string name="menu_set_action">Ustaw działanie</string>
     
-    <string name="hint_title">n.p. pizza</string>
+    <string name="hint_title">np. pizza</string>
     
     <!-- Title of the activity for setting (editing) the countdown. -->
     <string name="title_setcountdown">Ustaw odliczanie</string>
@@ -147,7 +148,7 @@ Launchpad Contributions:
     <string name="preference_get_extensions_summary">Szukaj rozszerzeń w sieci.</string>
     <string name="preference_get_extensions_from">Pobierz rozszerzenia z</string>
     <string name="preference_extensions_market">Android Market</string>
-    <string name="preference_extensions_market_summary">Szukaj rozszerzeń na Android Market</string>
+    <string name="preference_extensions_market_summary">Szukaj rozszerzeń w Android Market</string>
     <string name="preference_extensions_developer">OpenIntents</string>
     <string name="preference_extensions_developer_summary">Pobierz rozszerzenia ze strony OpenIntents.</string>
 	
@@ -155,7 +156,7 @@ Launchpad Contributions:
     <string name="preference_notification_timeout_title">Czas trwania powiadomień</string>
     
     <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_summary">Zwłoka dla dzwonka, wibracji lub powiadomienia świetlnego.</string>
+    <string name="preference_notification_timeout_summary">Opóźnienie dzwonka, wibracji lub powiadomienia świetlnego.</string>
     
     <!-- Dialog title to set timeout for notification -->
     <string name="preference_notification_timeout_dialog_title">Ustaw czas trwania</string>
@@ -172,5 +173,5 @@ Launchpad Contributions:
     </string-array>
     
     
-    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
+    <string name="no_permission">OI Countdown nie ma uprawnień do tego zadania.</string>
 </resources>

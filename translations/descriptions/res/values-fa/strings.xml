@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  oren https://launchpad.net/~ahujaaditya92</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI درباره مستقل در مورد محاوره ای است که بین برنامه های به اشتراک گذاشته است.</string>
+		<string>این برنامه از طریق منوی برنامه های کاربردی دیگر OI نمود.</string>
+		<string>این اجازه می دهد تا شما را به نمایش اطلاعات نسخه ها ، پیوند ها، اعتبار و مجوز برنامه.</string>
+		<string>اعتبارات شامل نویسندگان ، اسناد و مدارک ، مترجمان ، و هنرمندان.</string>
+		<string>همه این قابلیت را با هم در یک طرح ساده و کارآمد به ارمغان آورد.</string>
+		<emptyline/>
+		<string>این نرم افزار تبلیغ رایگان است و اجازه به اینترنت نیاز ندارد.</string>
+		<emptyline/>
+		<string>کد منبع این نرم افزار منبع آزاد و باز در دسترس است :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>برای لیست کامل تغییرات و یک لیست از سؤالاتی که مکررا پرسیده می، لطفا از سایت :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>شما می توانید کمک به بهبود ترجمه به زبان خود را در گفتوگو :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>ویژگی ها :</string>
+		<listitem>اطلاعات عمومی ، اعتبارات ، و زبانه مجوز نشان می دهد.</listitem>
+		<listitem>نشان می دهد مترجمان از همه زبان.</listitem>
+		<listitem>بازیابی اطلاعات از آشکار برنامه را از طریق تگ ها و ابرداده به طور پیش فرض است.</listitem>
+		<listitem>به صورت اختیاری، تمامی زمینه ها می تواند از طریق اضافی قصد تغییر یافتهاست.</listitem>
+		<emptyline/>
+		<string>برنامه های کاربردی که کار با "OI درباره" :</string>
+		<listitem>OI يادداشت</listitem>
+		<listitem>OI مدیر فایل</listitem>
+		<listitem>OI لیست خرید</listitem>
+		<listitem>OI تبدیل CSV</listitem>
+		<listitem>OI امن</listitem>
+		<listitem>OI معکوس</listitem>
+		<listitem>OI چراغ قوه</listitem>
+		<emptyline/>
+		<string>کلید واژه ها :</string>
+		<listitem>درباره ما، اعتبارات ، اطلاعات.</listitem>
+		<listitem>OI, Open Intents, Open Intents.</listitem>
+		<emptyline/>
+		<string>نسخه بین المللی :</string>
+		<international/>
+		<emptyline/>
+		<string>جستجو در رشته ها در بازار :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+	<description application="countdown/Countdown">
+		<!--  OI Countdown -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<emptyline/>
+		<string>OI شمارش معکوس یک تایمر مفید برای افزایش بهره وری خود را و روز خود را برنامه ریزی می باشد.</string>
+		<string>این اجازه می دهد تا شما را به مجموعه های مختلف از اقدامات مختلف به شما در پایان از یک تایمر با خبر می سازیم.</string>
+		<string>کاملا همه تایمر های خود را، با هیچ محدودیتی در چگونه بسیاری از شما می توانید در حال اجرا و یا ذخیره سفارشی.</string>
+		<emptyline/>
+		<string>این نرم افزار تبلیغ رایگان است و اجازه به اینترنت نیاز ندارد.</string>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+		<string>کد منبع این نرم افزار منبع آزاد و باز در دسترس است :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>برای لیست کامل تغییرات و یک لیست از سؤالاتی که مکررا پرسیده می، لطفا از سایت :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<emptyline/>
+		<string>شما می توانید کمک به بهبود ترجمه به زبان خود را در گفتوگو :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>ویژگی ها :</string>
+		<listitem>مجموعه شمارش معکوس با انتخاب یک مدت زمان و یا تاریخ.</listitem>
+		<listitem>با لرزش یا هر صدا از انتخاب شما مطلع شود.</listitem>
+		<listitem>تعداد نامحدودی از تایمر در حال اجرا در همان زمان است.</listitem>
+		<listitem>فراز شمارش خود را ذخیره و آنها را نامی برای استفاده مجدد در زمان های بعد به من بدهید.</listitem>
+		<listitem>اصلاح شمارش فراز، حتی در حالی که آنها هنوز هم در حال اجرا</listitem>
+		<emptyline/>
+		<string>ماژول موجود برای "شمارش معکوس OI" :</string>
+		<listitem>راه اندازی برنامه های کاربردی را از طریق کلید های میانبر آندروید</listitem>
+		<listitem>استفاده از OI درباره مجوز اطلاعات را به نشان می دهد</listitem>
+		<emptyline/>
+		<string>کلید واژه ها :</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>شمارش معکوس، زمان سنج، هشدار</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI، مفاهیم باز، باز مفاهیم</listitem>
+		<emptyline/>
+		<string>نسخه بین المللی :</string>
+		<international/>
+		<emptyline/>
+		<string>جستجو در رشته ها در بازار :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt "/>
+	</description>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>مدیریت فایل های OI اجازه می دهد تا شما به فهرست کارت خود SD، ساخت پوشه، تغییر نام دهید ، کپی کنید، جابجا کردن، و حذف فایل های.</string>
+		<string>همچنین به عنوان پسوند به یک برنامه دیگر برای نشان دادن "باز کردن" و "ذخیره" را محاوره عمل می کند.</string>
+		<emptyline/>
+		<string>این نرم افزار تبلیغ رایگان است و اجازه به اینترنت نیاز ندارد.</string>
+		<emptyline/>
+		<string>برای لیست کامل تغییرات و یک لیست از سؤالاتی که مکررا پرسیده می، لطفا از سایت :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>شما می توانید کمک به بهبود ترجمه به زبان خود را در گفتوگو :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>کد منبع این نرم افزار منبع آزاد و باز در دسترس است :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>ویژگی ها :</string>
+		<listitem>نمایش لیست فایل های با ریز عکسها برای تصاویر.</listitem>
+		<listitem>انتقال ، کپی ، تغییر نام و حذف فایل های.</listitem>
+		<listitem>ایجاد و حذف دایرکتوری ها (پوشه ها).</listitem>
+		<listitem>ارسال فایل از طریق ایمیل.</listitem>
+		<listitem>عمل به عنوان یک پسوند به یک برنامه دیگر، مانند جیمیل ، به ضمیمه کردن فایل های.</listitem>
+		<listitem>پشتیبانی از بسیاری از انتهای فایل و مایم نوع.</listitem>
+		<listitem>پشتیبانی از مفاهیم PICK_FILE و PICK_DIRECTORY به طوری که برنامه های کاربردی دیگر را می توانید مدیریت فایل OI استفاده است.</listitem>
+		<emptyline/>
+		<string>ماژول موجود برای  "OIمدیریت فایل" :</string>
+		<listitem>دیدن اطلاعات مجوز "OI درباره". دیدن اطلاعات مجوز "OI درباره".</listitem>
+		<emptyline/>
+		<string>برنامه های کاربردی که کار با "مدیریت فایل OI" :</string>
+		<listitem>باز کردن و ذخیره فایل های متنی در "OI دفترچه یادداشت".</listitem>
+		<emptyline/>
+		<string>کلید واژه ها :</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>مدیر فایل، مدیر فایل ، مدیر فایل اکسپلورر</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI، IO ها، مفاهیم باز، مفاهیم باز</listitem>
+		<emptyline/>
+		<string>نسخه بین المللی :</string>
+		<international/>
+		<emptyline/>
+		<string>جستجو در رشته ها در بازار :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI چراغ قوه یک برنامه ساده و موثر است که کمک می کند تا راه را پیدا کنید در تاریکی است.</string>
+		<string>OI چراغ قوه نور پس زمینه صفحه نمایش را قفل می کند، به وضوح روشن کردن مناطق اطراف آن است.</string>
+		<string>برای دستگاه های با فلاش دوربین، چراغ قوه OI، همچنین می توانید از فلش به عنوان مشعل روشن و درخشان اتاق استفاده کنید.</string>
+		<string>رنگ از نور پس زمینه کاملا سفارشی با جمع کن رنگ OI.</string>
+		<emptyline/>
+		<string>این نرم افزار تبلیغ رایگان است و اجازه به اینترنت نیاز ندارد.</string>
+		<emptyline/>
+		<string>کد منبع این نرم افزار منبع آزاد و باز در دسترس است :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>برای لیست کامل تغییرات و یک لیست از سؤالاتی که مکررا پرسیده می، لطفا از سایت :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>شما می توانید کمک به بهبود ترجمه به زبان خود را در گفتوگو :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>ویژگی ها :</string>
+		<listitem>قفل کردن نور پس زمینه صفحه نمایش.</listitem>
+		<listitem>فلش دوربین قفل در.</listitem>
+		<listitem>رنگ از نور پس زمینه قابل تنظیم است.</listitem>
+		<emptyline/>
+		<string>ماژول موجود برای "چراغ قوه OI" :</string>
+		<listitem>دیدن اطلاعات مجوز "OI درباره". دیدن اطلاعات مجوز "OI درباره".</listitem>
+		<listitem>تغییر رنگ نور پس زمینه با "رنگ OI روزانه" است.</listitem>
+		<emptyline/>
+		<string>برنامه های کاربردی که کار با "چراغ قوه OI" : برنامه های کاربردی که کار با "چراغ قوه OI" :</string>
+		<listitem>با بروز رسانی "به روز رسانی OI".</listitem>
+		<emptyline/>
+		<string>کلید واژه ها :</string>
+		<listitem>چراغ قوه ، نور، نور پس زمینه</listitem>
+		<listitem>OI، مفاهیم باز، باز مفاهیم</listitem>
+		<emptyline/>
+		<string>نسخه بین المللی :</string>
+		<international/>
+		<emptyline/>
+		<string>جستجو در رشته ها در بازار :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI دفترچه یادداشت کامل شامل منبع باز توجه داشته باشید مصرف برنامه است.</string>
+		<string>با این برنامه میتوانید برچسب ، جستجو ، و فرستادن یادداشت خود را، به علاوه به قابلیت های اساسی از جمله ایجاد، حذف و ویرایش یادداشت ها.</string>
+		<string>ویژگی های پیشرفته ای مانند رمزنگاری، واردات / صادرات ، و یادداشت های صوتی در دسترس از طریق افزونهها.</string>
+		<string>همه این قابلیت را با هم در یک طرح ساده و کارآمد به ارمغان آورد، از طریق از تم های مختلف قابل تنظیم است.</string>
+		<emptyline/>
+		<string>این نرم افزار تبلیغ رایگان است و اجازه به اینترنت نیاز ندارد.</string>
+		<emptyline/>
+		<string>کد منبع این نرم افزار منبع آزاد و باز در دسترس است :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>برای لیست کامل تغییرات و یک لیست از سؤالاتی که مکررا پرسیده می، لطفا از سایت :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>شما می توانید کمک به بهبود ترجمه به زبان خود را در گفتوگو :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>ویژگی ها :</string>
+		<listitem>اضافه کردن ، ویرایش و حذف یادداشت.</listitem>
+		<listitem>در یادداشت های طولانی را فشار دهید برای اضافه کردن برچسب.</listitem>
+		<listitem>تغییر اندازه فونت و نظم مرتب کردن بر اساس.</listitem>
+		<listitem>طرح به وضوح مرتب شده با انواع تم.</listitem>
+		<listitem>به سرعت از طریق یادداشت های جستجو کنید.</listitem>
+		<listitem>ارسال یادداشت ها به عنوان MMS و یا SMS.</listitem>
+		<emptyline/>
+		<string>ماژول موجود برای، "OI دفترچه یادداشت" :</string>
+		<listitem>ثبت و یادداشت های صوتی به یادداشت ضمیمه با : "یادداشت های OI صدای".</listitem>
+		<listitem>با "OI تبدیل CSV" واردات / صادرات یادداشت ها از کارت SD است.</listitem>
+		<listitem>دیدن اطلاعات مجوز "OI درباره". دیدن اطلاعات مجوز "OI درباره".</listitem>
+		<listitem>درج تاریخ و ساعت را به یادداشت با "تاریخ درج OI ".</listitem>
+		<listitem>غیرفعال کردن متن وارونه با "وارونه".</listitem>
+		<emptyline/>
+		<string>برنامه های کاربردی که با، "OI دفترچه یادداشت" کار می کنند :</string>
+		<listitem>بازگشت تا یادداشت با "نرم افزار پشتیبان گیری من".</listitem>
+		<listitem>رمزبندی یادداشت ها با استفاده از "بی خطر است OI".</listitem>
+		<listitem>مدیریت یادداشت ها بر روی کارت SD خود را با "مدیریت فایل OI".</listitem>
+		<listitem>با بروز رسانی "به روز رسانی OI".</listitem>
+		<listitem>یادداشت های به اشتراک بگذارید از طریق "فیس بوک" ، "جی میل"، "گوگل +"، "توییتر"، و بسیاری از برنامه های کاربردی دیگر.</listitem>
+		<emptyline/>
+		<string>کلید واژه ها :</string>
+		<listitem>توجه داشته باشید ، دفترچه یادداشت، کتاب توجه داشته باشید ، یادداشت ها</listitem>
+		<listitem>OI، مفاهیم باز، باز مفاهیم</listitem>
+		<emptyline/>
+		<string>نسخه بین المللی :</string>
+		<international/>
+		<emptyline/>
+		<string>جستجو در رشته ها در بازار :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI امن ایمن محافظت همه رمزهای عبور شما و دیگر اطلاعات خصوصی با استفاده از صنعت استاندارد رمزگذاری AES.</string>
+		<string>همچنین به عنوان پسوند به OI دفترچه یادداشت برای رمزگذاری یادداشت های ایجاد شده در OI دفترچه یادداشت عمل می کند.</string>
+		<emptyline/>
+		<string>این نرم افزار تبلیغ رایگان است و اجازه به اینترنت نیاز ندارد.</string>
+		<emptyline/>
+		<string>برای لیست کامل تغییرات و یک لیست از سؤالاتی که مکررا پرسیده می، لطفا از سایت :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>شما می توانید کمک به بهبود ترجمه به زبان خود را در گفتوگو :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>کد منبع این نرم افزار منبع آزاد و باز در دسترس است :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>ویژگی ها :</string>
+		<listitem>ایمن محافظت از داده ها با استفاده از رمزگذاری AES.</listitem>
+		<listitem>آزادانه داده ورودی در میان مقولهها حرکت می کند.</listitem>
+		<listitem>واردات/صادرات داده های ورودی و پایگاه داده.</listitem>
+		<listitem>پشتیبان گیری/بازیابی مدخل.</listitem>
+		<listitem>شامل ژنراتور رمز ورود ایمن است.</listitem>
+		<listitem>ایست خودکار برای محافظت از اسناد رمزنگاری شده است.</listitem>
+		<listitem>رمزبندی OI دفترچه یادداشت یادداشت.</listitem>
+		<listitem>پشتیبانی برای ایمن تصویر تاریک.</listitem>
+		<listitem>نرم افزار پشتیبان گیری من است.</listitem>
+		<emptyline/>
+		<string>ماژول موجود برای  "OIمدیریت فایل" :</string>
+		<listitem>دیدن اطلاعات مجوز "OI درباره". دیدن اطلاعات مجوز "OI درباره".</listitem>
+		<emptyline/>
+		<string>برنامه های کاربردی که کار با "مدیریت فایل OI" :</string>
+		<listitem>یادداشت رمزبندی در "OI دفترچه یادداشت" ایجاد می شود.</listitem>
+		<emptyline/>
+		<string>کلید واژه ها :</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>امن، رمزنگاری ، رمز عبور ، حفاظت از</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI، IO ها، مفاهیم باز، مفاهیم باز</listitem>
+		<emptyline/>
+		<string>نسخه بین المللی :</string>
+		<international/>
+		<emptyline/>
+		<string>جستجو در رشته ها در بازار :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI لیست خرید نرم افزار قدرتمند که آن را آسان برای ایجاد و مدیریت چک لیست می باشد.</string>
+		<string>OI لیست خرید را آسان می کند برای اضافه کردن آیتم به لیست، چک کردن آیتم مورد نظر خاموش ، و حذف آن از لیست.</string>
+		<string>برنامه کاربردی می توانند قیمت های جداگانه برای هر فروشگاه است که به شما استفاده از ردیابی، و ویژگی های سطح بالایی از سفارشی.</string>
+		<string>اندازه فونت، نظم مرتب کردن بر اساس، ستون لیست، رفتار پاکسازی و لیست تمام تنظیمات مربوط به کنترل توسط کاربر است.</string>
+		<string>تمام این ویژگی ها با هم در یک طرح واضح است که از طریق انواع تم سفارشی آورده شده است.</string>
+		<emptyline/>
+		<string>کد منبع این نرم افزار منبع آزاد و باز در دسترس است :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>این نرم افزار تبلیغ رایگان است و اجازه به اینترنت نیاز ندارد.</string>
+		<emptyline/>
+		<string>برای لیست کامل تغییرات و یک لیست از سؤالاتی که مکررا پرسیده می، لطفا از سایت :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>شما می توانید کمک به بهبود ترجمه به زبان خود را در گفتوگو :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>ویژگی ها :</string>
+		<listitem>اضافه کردن ، ویرایش و حذف لیست های.</listitem>
+		<listitem>ایجاد ، حذف ، و بررسی و رفع به سرعت و به آسانی.</listitem>
+		<listitem>تنوع از مضمونها.</listitem>
+		<listitem>اندازه فونت قابل تنظیم و ترتیب بندی از نوع.</listitem>
+		<listitem>پیگیری قیمت های جداگانه برای هر فروشگاه.</listitem>
+		<listitem>ستون لیست های قابل برنامه ریزی است.</listitem>
+		<emptyline/>
+		<string>ماژول موجود برای "لیست خرید OI" :</string>
+		<listitem>اضافه کردن یک پیام ضبط شده به توجه داشته باشید با "یادداشت OI صدای".</listitem>
+		<listitem>واردات / صادرات لیست خرید با "OI تبدیل CSV".</listitem>
+		<listitem>دیدن اطلاعات مجوز "OI درباره". دیدن اطلاعات مجوز "OI درباره".</listitem>
+		<listitem>را وارد کنید / بررسی آیتم های با "بارکد پلاگین OI".</listitem>
+		<emptyline/>
+		<string>برنامه های کاربردی که با "لیست خرید OI" کار می کنند :</string>
+		<listitem>با بروز رسانی "به روز رسانی OI".</listitem>
+		<listitem>لیست های پشتیبان با "نرم افزار پشتیبان گیری من".</listitem>
+		<listitem>مواد تشکیل دهنده واردات از دستور العمل با "گزش". مواد تشکیل دهنده واردات از دستور العمل با "گزش".</listitem>
+		<emptyline/>
+		<string>کلید واژه ها :</string>
+		<listitem>خرید ، لیست، لیست خرید ، چک لیست</listitem>
+		<listitem>OI، مفاهیم باز، باز مفاهیم</listitem>
+		<emptyline/>
+		<string>نسخه بین المللی :</string>
+		<international/>
+		<emptyline/>
+		<string>ضمیمهها :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+</main>

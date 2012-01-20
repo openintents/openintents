@@ -6,11 +6,12 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Florentina Mușat https://launchpad.net/~kuchiki14
   Peli https://launchpad.net/~peli0101
   iulargsb https://launchpad.net/~iulargsb</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
+	<string name="about_comments">Configurează numărători inverse multiple cu OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -169,5 +170,5 @@
     </string-array>
     
     
-    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
+    <string name="no_permission">OI Countdown nu are permisiunea pentru această sarcină.</string>
 </resources>

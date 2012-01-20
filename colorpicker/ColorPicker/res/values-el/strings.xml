@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">Ο OpenIntents Επιλογέας Χρώματος είναι μια επέκταση για το OI Φακός και άλλες συμβατές εφαρμογές.</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Επιλογέας Χρώματος</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">Επιλογέας χρώματος</string>
+    
+    <string name="recent_colors_condensed">Πρόσφατα</string>
+    <string name="recent_colors">Πρόσφατα χρώματα</string>
+    <string name="recent_colors_expanded">Προσφάτως επιλεγμένα χρώματα</string>
+    <string name="recent_colors_clear_history">Εκκαθάριση</string>
+    <string name="recent_colors_empty">Δεν υπάρχουν προσφάτως επιλεγμένα χρώματα</string>
+    
+    <string name="confirm_color_title">Χρήση χρώματος;</string>
+    <string name="confirm_color_message">Χρήση αυτου του νέου χρώματος; Μπορείτε να αποφύγετε αυτό το μήνυμα κάνωντας κλικ στο μεσαίο κύκλο.</string>
+    
+    
+	<!-- About -->
+	<string name="about">Σχετικά</string>
+	<string name="aboutapp_not_available">Έκδοση %s\n\nΔεν υπάρχει κάποια διαθέσιμη συμβατή επέκταση για την προβολή των πλήρων πληροφοριών (επικοινωνία, συντελεστές, άδεια)</string>
+	<string name="aboutapp_get">Λήψη του OI Σχετικά</string>
+
+
+	<!-- Update -->
+	<string name="update_error">Η λήψη της εφαρμογής δεν είναι διαθέσιμη.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">Για να επιλέξετε ένα χρώμα στο OI Φακός, πατήστε μενού &gt; Χρώμα.</string>
+    <string name="title_app_flashlight">OI Flashlight</string>
+    
+    <string name="info_app_spiral_wallpaper">Υπνωτική, κινούμενη σπειροειδής Ζωντανή Ταπετσαρία.</string>
+    <string name="title_app_spiral_wallpaper">Ζωντανή Ταπετσαρία HypnoTwister</string>
+    
+    <string name="info_app_bettr_flickr">Εγγενής διεπαφή Flickr για το Android</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">Ανάμειξη και ταίριαγμα γραφικών για τη δημιουργία κινούμενων χαρακτήρων</string>
+    <string name="title_app_character_gen">Δημιουργός Κινούμενων Χαρακτήρων</string>
+    
+    
+	<string name="info_activity_text">Αυτή η εφαρμογή μπορεί να χρησιμοποιηθεί με τις παρακάτω εφαρμογές:</string>
+    <string name="info_launch">Εκκίνηση του %s</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">Αυτή η εφαρμογή απαιρεί το %1$s %2$s ή παραπάνω.</string>
+	<string name="info_get">Λήψη του %s</string>
+</resources>

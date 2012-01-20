@@ -42,7 +42,7 @@ Available extensions for "OI Countdown":
 * OI, OpenIntents, Open Intents
 
 Перекладзеныя версіі: 
-Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI, عد تنازلي OI
+Compte enrere d'OI, IO ໄລກັບ, OI カウントダウン, OI 카운트다운, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI Χρονομετρητής, OI Одбројувач, OI काउंटडाउन, OI倒计时, عد تنازلي OI, סופר לאחור OI
 
 
 Пошук у Market: 

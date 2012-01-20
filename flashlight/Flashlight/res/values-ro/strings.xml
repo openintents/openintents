@@ -13,7 +13,7 @@
   iulargsb https://launchpad.net/~iulargsb</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
+	<string name="about_comments">Păstrează blițul camerei sau iluminarea din spatele ecranului pornite cu Lanternă OI.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

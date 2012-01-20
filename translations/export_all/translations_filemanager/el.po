@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Giannis Konstantinidis <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,12 +29,12 @@ msgstr ""
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:26(string)
 msgid "Manage files on the SD card with OI File Manager."
-msgstr ""
+msgstr "Διαχείριση αρχείων στην κάρτα SD με το OI Διαχειριστής Αρχείων."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:32(string)
 msgid "OI File Manager"
-msgstr "OI File Manager"
+msgstr "OI Διαχειριστής Αρχείων"
 
 #: tmp_strings.xml:34(string)
 msgid "New Folder"
@@ -79,11 +80,11 @@ msgstr "Περισσότερα"
 
 #: tmp_strings.xml:47(string)
 msgid "Compress (ZIP)"
-msgstr ""
+msgstr "Συμπίεση (ZIP)"
 
 #: tmp_strings.xml:48(string)
 msgid "Extract (ZIP)"
-msgstr ""
+msgstr "Αποσυμπίεση (ZIP)"
 
 #: tmp_strings.xml:49(string)
 msgid "Filter"
@@ -99,11 +100,11 @@ msgstr "Εξαίρεση από τη σάρωση μέσων"
 
 #: tmp_strings.xml:52(string)
 msgid "Add to bookmarks"
-msgstr ""
+msgstr "Προσθήκη στους σελιδοδείκτες"
 
 #: tmp_strings.xml:53(string)
 msgid "Refresh"
-msgstr ""
+msgstr "Ανανέωση"
 
 #: tmp_strings.xml:55(string)
 msgid "Create new folder"
@@ -398,83 +399,83 @@ msgstr "Το αρχείο αποθηκεύτηκε επιτυχώς!"
 
 #: tmp_strings.xml:164(string)
 msgid "Bookmarks"
-msgstr ""
+msgstr "Σελιδοδείκτες"
 
 #: tmp_strings.xml:165(string)
 msgid "Cancel"
-msgstr ""
+msgstr "Ακύρωση"
 
 #: tmp_strings.xml:167(string)
 msgid "Select bookmarks to delete"
-msgstr ""
+msgstr "Επιλογή σελιδοδεικτών προς διαγραφή"
 
 #: tmp_strings.xml:168(string)
 msgid "Manage bookmarks"
-msgstr ""
+msgstr "Διαχείριση σελιδοδεικτών"
 
 #: tmp_strings.xml:169(string)
 msgid "Bookmark added"
-msgstr ""
+msgstr "Προστέθηκε ο σελιδοδείκτης"
 
 #: tmp_strings.xml:170(string)
 msgid "Bookmarked destination not found."
-msgstr ""
+msgstr "Ο προορισμός  του σελιδοδείκτη δε βρέθηκε."
 
 #: tmp_strings.xml:171(string)
 msgid "Selected bookmarks deleted"
-msgstr ""
+msgstr "Οι επιλεγμένοι σελιδοδείκτες διαγράφτηκαν."
 
 #: tmp_strings.xml:172(string)
 msgid "This file is already bookmarked"
-msgstr ""
+msgstr "Αυτό το αρχείο έχει ήδη προστεθεί στους σελιδοδείκτες"
 
 #. ***************************
 #.              Strings for the 'Compressing' and 'Extracting' feature
 #.           ***************************
 #: tmp_strings.xml:178(string)
 msgid "Item compressed successfully"
-msgstr ""
+msgstr "Το αντικείμενο συμπιέστηκε με επιτυχία"
 
 #: tmp_strings.xml:179(string)
 msgid "Could not compress the item"
-msgstr ""
+msgstr "Αδυναμία συμπίεσης του αντικειμένου"
 
 #: tmp_strings.xml:180(string)
 msgid "Compress into archive:"
-msgstr ""
+msgstr "Συμπίεση σε αρχείο:"
 
 #: tmp_strings.xml:181(string)
 msgid "Item extracted successfully"
-msgstr ""
+msgstr "Το αντικείμενο αποσυμπιέστηκε με επιτυχία"
 
 #: tmp_strings.xml:182(string)
 msgid "Could not extract the item"
-msgstr ""
+msgstr "Αδυναμία αποσυμπίεσης του αντικειμένου"
 
 #: tmp_strings.xml:183(string)
 msgid "Extract into folder:"
-msgstr ""
+msgstr "Αποσυμπίεση σε φάκελο:"
 
 #: tmp_strings.xml:184(string)
 msgid "Select folder to extract into"
-msgstr ""
+msgstr "Επιλέξτε φάκελο για να γίνει η απουμπίεση"
 
 #: tmp_strings.xml:185(string)
 msgid "Extract here"
-msgstr ""
+msgstr "Αποσυμπίεση εδώ"
 
 #: tmp_strings.xml:186(string)
 msgid "Extracting..."
-msgstr ""
+msgstr "Γίνεται αποσυμπίεση..."
 
 #: tmp_strings.xml:187(string)
 msgid "Compressing..."
-msgstr ""
+msgstr "Γίνεται συμπίεση..."
 
 #: tmp_strings.xml:188(string)
 msgid "File %s exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Το αρχείο %s υπάρχει ήδη. Θέλετε να το αντικαταστήσετε;"
 
 #: tmp_strings.xml:190(string)
 msgid "Do you want to change the file extension?"
-msgstr ""
+msgstr "Θέλετε να αλλάξτε την επέκταση του αρχείου;"

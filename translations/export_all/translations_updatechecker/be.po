@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Alexander Geroimenko <Unknown>\n"
 "Language-Team: Belarusian <be@li.org>\n"
+"Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,7 +31,7 @@ msgstr ""
 #. 	     ***************************
 #: tmp_strings.xml:13(string) tmp_strings.xml:21(string)
 msgid "OI Update"
-msgstr "OI Update"
+msgstr "OI Абнаўленні"
 
 #: tmp_strings.xml:15(string)
 msgid "A new version of %s is available.\\nWould you like to upgrade?"
@@ -170,19 +171,19 @@ msgstr "Не знойдзена інфармацыі аб абнаўленнях
 
 #: tmp_strings.xml:52(string)
 msgid "OI Update - List of new versions"
-msgstr "OI Update - Спіс новых версій"
+msgstr "OI Абнаўленні - Спіс новых версій"
 
 #: tmp_strings.xml:53(string)
 msgid "OI Update - New versions at AndAppStore"
-msgstr "OI Update - Новыя версіі на AndAppStore"
+msgstr "OI Абнаўленні - Новыя версіі на AndAppStore"
 
 #: tmp_strings.xml:54(string)
 msgid "OI Update - List of managed applications"
-msgstr "OI Update - Спіс кіруемых прыкладанняў"
+msgstr "OI Абнаўленні - Спіс кіруемых прыкладанняў"
 
 #: tmp_strings.xml:55(string)
 msgid "OI Update - List of managed applications (check at AndAppStore)"
-msgstr "OI Update - Спіс кіруемых прыкладанняў (праверка на AndAppStore)"
+msgstr "OI Абнаўленні - Спіс кіруемых прыкладанняў (праверка на AndAppStore)"
 
 #: tmp_strings.xml:56(string)
 msgid "Settings"
@@ -212,7 +213,7 @@ msgid ""
 "to support OI Update in the future."
 msgstr ""
 "Няма інфармацыі аб абнаўленнях. Праверце ўручную і папытаеце распрацоўніка, "
-"каб ён падтрымліваў OI Update ў будучыні."
+"каб ён падтрымліваў OI Абнаўленні ў будучыні."
 
 #: tmp_strings.xml:62(string)
 msgid "Search on Market"
@@ -327,15 +328,16 @@ msgid ""
 "intents and open interfaces.\\n\\n For more information and other great "
 "applications visit OpenIntents at www.openintents.org"
 msgstr ""
-"Версія %s \\n\\n OI Update трымае вас у курсе новых версій прыкладанняў.\\n "
-"OpenIntents дапамагае розным прыкладанням Android выкарыстоўваць адкрытыя "
-"інтэрфейсы для абмену інфармацыяй.\\n\\n Для атрымання дадатковай інфармацыі "
-"і іншых карысных прыкладанняў, наведайце OpenIntents на www.openintents.org"
+"Версія %s \\n\\n OI Абнаўленні трымае вас у курсе новых версій прыкладанняў."
+"\\n OpenIntents дапамагае розным прыкладанням Android выкарыстоўваць "
+"адкрытыя інтэрфейсы для абмену інфармацыяй.\\n\\n Для атрымання дадатковай "
+"інфармацыі і іншых карысных прыкладанняў, наведайце OpenIntents на www."
+"openintents.org"
 
 #. EULA
 #: tmp_strings.xml:102(string)
 msgid "OI Update EULA"
-msgstr "Ліцэнзійнае пагадненне OI Update"
+msgstr "Ліцэнзійнае пагадненне OI Абнаўленні"
 
 #: tmp_strings.xml:103(string)
 msgid ""

@@ -70,9 +70,9 @@
     <string name="oi_distribution_aboutapp">Despre OI</string>
     
     <!-- Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_barcodescanner">Barcode OI Plugin</string>
+    <string name="oi_distribution_barcodescanner">Modul Cod de bare OI</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_barcodescanner_not_available">No compatible barcode scanner is available.</string>
+    <string name="oi_distribution_barcodescanner_not_available">Nu există un scanner pentru cod de bare disponibil.</string>
     
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_filemanager">Gestionar de fișiere OI</string>

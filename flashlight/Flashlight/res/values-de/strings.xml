@@ -8,13 +8,14 @@
 	<string name="about_translators">Launchpad Contributions:
   Eric Baudach https://launchpad.net/~cs-sniffer
   Florian Sievers https://launchpad.net/~florian-sievers
+  Hans https://launchpad.net/~hans-wuerstchen42
   OpenIntents devs https://launchpad.net/~openintents-devs
   Patrick Eigensatz https://launchpad.net/~p.eigensatz
   Peli https://launchpad.net/~peli0101
   appricoo https://launchpad.net/~appricoo</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
+	<string name="about_comments">Die OI Taschenlampe lässt Ihr Kameralicht oder Ihr Display aufleuchten.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -24,7 +25,7 @@
     
     <string name="backlight_info">Die Hintergrundbeleuchtung bleibt eingeschaltet</string>
     
-    <string name="color">Farben</string>
+    <string name="color">Farbe</string>
     
     <!-- Application name should be consistent across translations. -->
     <string name="color_picker">OI Color Picker</string>

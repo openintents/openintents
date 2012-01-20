@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+    
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Pance Zvezdanov https://launchpad.net/~pance-zvezdanov</string>
+	
+    <!-- Short explanation of the application (max. 80 characters) -->
+	<string name="about_comments">Постави повеќе одбројувачи со OI Одбројувач.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Одбројувач</string>
+    
+    <string name="start">Старт</string>
+    <string name="stop">Стоп</string>
+    <string name="modify">Измени</string>
+    <string name="cont">Продолжи</string>
+    
+	<string name="no_durations">Употреби мени за додавање нов одбројувач.</string>
+	<string name="countdown_list">Одбројувачка листа</string>
+	
+    <string name="menu_delete">Избриши</string>
+    <string name="menu_edit">Уреди</string>
+    <string name="menu_insert">Додади одбројувач</string>
+    <string name="menu_pick_ringtone">Рингтон</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">Постави датум</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">Постави времетраење</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">Постави дејство</string>
+    
+    <string name="hint_title">На пр. пица</string>
+    
+    <!-- Title of the activity for setting (editing) the countdown. -->
+    <string name="title_setcountdown">Постави одбројувач</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
+    <string name="title_create">Креирај одбројувач</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_edit">Уреди одбројувач</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">Одбери одбројувач</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">OI Одбројувач</string>
+    
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
+	<string name="error_title">Грешка</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
+	<string name="error_message">Грешка при вчитување на одбројувачот</string>
+	
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
+	
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">Известување во статусната лента</string>
+	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">Стартувај преку статусната лента</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">Ѕвонење</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
+	<string name="vibrate">Вибрации</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">Светло</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="action">Дејство: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_action">Избери дејство: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_countdown">Избери одбројувач: %s</string>
+	
+	<!-- Button to test an action. -->
+	<string name="test">Тест</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">Подесувања</string>
+	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">Отфрли</string>
+	
+	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
+	<string name="days">денови</string>
+	
+	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
+	<string name="day">ден</string>
+	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">Апликации</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">Кратенки</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">Задачи за автоматизација</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">Избери кратенка</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">Избери задача за автоматизација</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">Одбери дејство</string>
+ 
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>Стартувај одбројувач</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>Стопирај одбројувач</item>
+    </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+	<!-- Preference section title for general settings regarding the countdown -->
+    <string name="preference_countdown">Одбројувач</string>
+
+    <string name="preference_extensions">Додатоци</string>
+    <string name="preference_get_extensions">Земи нови додатоци</string>
+    <string name="preference_get_extensions_summary">Барај додатоци на интернет</string>
+    <string name="preference_get_extensions_from">Земи додатоци од</string>
+    <string name="preference_extensions_market">Android пазар</string>
+    <string name="preference_extensions_market_summary">Пребарувај додатоци на Android пазарот</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">Земи додатоци од главната страница на OpenIntents.</string>
+	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">Време на истекување на известување</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">Време на истекување на ѕвонење, вибрирање или светлосно известување.</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">Постави време на истекување</string>
+    
+    <!-- Timeout for notifications -->
+    <string-array name="preference_notification_timeout_entries">
+        <item>2 секунди</item>
+        <item>5 секунди</item>
+        <item>10 секунди</item>
+        <item>30 секунди</item>
+        <item>1 минута</item>
+        <item>5 минути</item>
+        <item>10 минути</item>
+    </string-array>
+    
+    
+    <string name="no_permission">OI Одбројувач нема дозвола за оваа задача.</string>
+</resources>

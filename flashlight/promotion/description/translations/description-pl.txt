@@ -5,11 +5,11 @@ OI Latarka
 Pozostaw lampę błyskową lub podświetlenie ekranu włączone używając OI Latarka.
 
 # Description:
-OI Flashlight to prosta i skuteczna aplikacja, która pomaga znaleźć drogę w ciemnościach. OI Flashlight blokuje podświetlanie, jasno oświetla okolicę. Dla urządzeń z lampą błyskową aparatu, Ol Flashlight może również korzystać z lampy błyskowej jako jasna latarka, aby rozjaśnić pokój. Kolor podświetlenia jest w pełni konfigurowalny z OI Color Picker. 
+OI Flashlight to prosta i skuteczna aplikacja, która pomaga znaleźć drogę w ciemnościach. OI Flashlight blokuje podświetlanie, jasno oświetla okolicę. Dla urządzeń z lampą błyskową aparatu, Ol Flashlight może również korzystać z lampy błyskowej jako jasna latarka, aby rozjaśnić pokój. Kolor podświetlenia jest w pełni konfigurowalny z OI Próbnik Kolorów. 
 
 Ta aplikacja jest darmowa i nie wymaga dostępu do internetu. 
 
-Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem: 
+Kod źródłowy tej darmowej i open-source'owej aplikacji jest dostępny pod adresem: 
 http://code.google.com/p/openintents
 
 Aby zobaczyć pełną listę zmian oraz FAQ, odwiedź: 
@@ -20,25 +20,25 @@ https://translations.launchpad.net/openintents/trunk
 
 Cechy: 
 * Zablokuj podświetlenie.
-* Zablokuj lampę błyskową
+* Zablokuj lampę błyskową.
 * Kolor podświetlenia można dostosować.
 
-Dostępne rozszerzenia dla "OI Flashlight": 
-* Pokaż informacje licencyjne z "O Ol".
-* Zmiana koloru podświetlenia z "OI Color Picker".
+Dostępne rozszerzenia dla "OI Latarka": 
+* Pokaż informacje licencyjne za pomocą "OI About".
+* Zmień kolor podświetlania za pomocą "OI Próbnik Kolorów".
 
-Aplikacje który pracują z "OI Flashlight": 
-* Aktualizuj z "OI Uptade".
+Aplikacje działające z "OI Latarka": 
+* Aktualizuj za pomocą "OI Uptade".
 
 Słowa kluczowe: 
 * Latarka, światło, Podświetlenie
 * OI, OpenIntents, Open Intents
 
 Wersje międzynarodowe: 
-Lanternă OI, Llanterna d'OI, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI フラッシュライト, OI 전등, OI手电筒, פנס OI, مصباح يدوي OI
+Lanternă OI, Llanterna d'OI, OI フラッシュライト, OI 전등, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI قول چىراغ, OI Φακός, OI Светилка, OI Фенерче, OI टॉर्च, OI手电筒, مصباح يدوي OI, פנס OI
 
 
-Wyszukane ciągi znakó w Markecie: 
+Szukaj ciągów znaków w Markecie: 
 * uses OI About
 * uses OI Color Picker
 * uses OI Update

@@ -2,12 +2,12 @@
 OI Countdown
 
 # Promo text:
-Set multiple countdowns with OI Countdown.
+Mit OI Countdown können Sie mehrere Countdowns erstellen.
 
 # Description:
 
 
-OI Countdown is a helpful timer to increase your productivity and plan your day.  It allows you to set a variety of different actions to notify you at the end of a timer.  Fully customize all your timers, with no limit on how many you can have running or saved.  
+OI Countdown hilft Ihnen, ihren Tag zu planen und Ihre Produktivität zu erhöhen. Sie können festlegen, welche Aktion beim Ende eines Timers geschieht. Sie können unendliche viele Timer erstellen und jeden Timer beliebige Eigenschaften zuweisen. 
 
 Diese Applikation ist werbefrei und benötigt keine Internetverbindung. 
 
@@ -27,22 +27,22 @@ Sie können uns mit der Verbesserung der Übersetzung in ihre Sprache auf Launch
 https://translations.launchpad.net/openintents/trunk
 
 Eigentschaften: 
-* Set a countdown by choosing a duration or a date.
-* Be notified by vibration or any sound of your choice. 
-* Have an unlimited number of timers running at the same time. 
-* Save your countdowns and give them names to reuse at later times. 
-* Modify countdowns, even while they are still running
+* Sie können einen Countdown einrichten, indem Sie die Dauer oder ein Datum festlegen.
+* Sie können über das Ende eines Timers mit einen Sound ihrer Wahl oder mit Vibration informiert werden.
+* Zur gleichen Zeit können unbegrenzt viele Timer laufen.
+* Geben Sie den Countdown beim Speichern einen Namen, damit Sie Ihn später wiederfinden.
+* Sie können die Eigenschaften der Countdowns ändern, auch wenn die Countdowns schon laufen
 
-Available extensions for "OI Countdown":  
-* Launch applications through Android shortcuts
-* Use OI About to show license information
+Existierende Erweiterungen für "OI Countdown" 
+* Sie können Anwendungen durch Android Shortcuts starten
+* Mithilfe von OI Info können Sie Lizentinformationen anzeigen.
 
 Schlüsselwörter: 
-* countdown, timer, alert
+* Countdown, Timer, Erinnerung, Zeit, Datum, beliebig, Eigenschaften, Sound, Wecker
 * OI, OpenIntents, Open Intents
 
 Internationale Versionen: 
-Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI, عد تنازلي OI
+Compte enrere d'OI, IO ໄລກັບ, OI カウントダウン, OI 카운트다운, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI Χρονομετρητής, OI Одбројувач, OI काउंटडाउन, OI倒计时, عد تنازلي OI, סופר לאחור OI
 
 
 Im Market suchen nach: 

@@ -28,6 +28,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Hans https://launchpad.net/~hans-wuerstchen42
   Patrick Eigensatz https://launchpad.net/~p.eigensatz
   Peli https://launchpad.net/~peli0101</string>
 	
@@ -79,15 +80,15 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabisch</item>
-		<item>Belarusian</item>
-		<item>Bulgarian</item>
-		<item>Catalan</item>
+		<item>Weißrussisch</item>
+		<item>Bulgarisch</item>
+		<item>Katalanisch</item>
 		<item>Tschechisch</item>
 		<item>Dänisch</item>
 		<item>Deutsch</item>
 		<item>Griechisch</item>
 		<item>Englisch</item>
-		<item>English (United Kingdom)</item>
+		<item>Englisch (Großbritannien)</item>
 		<item>Spanisch</item>
 		<item>Persisch</item>
 		<item>Finnisch</item>
@@ -97,16 +98,16 @@
 		<item>Kroatisch</item>
 		<item>Ungarisch</item>
 		<item>Italienisch</item>
-		<item>Hebrew</item>
+		<item>Hebräisch</item>
 		<item>Japanisch</item>
 		<item>Koreanisch</item>
 		<item>Laotisch</item>
-		<item>Latvian</item>
-		<item>Macedonian</item>
-		<item>Norwegian Bokmal</item>
+		<item>Lettisch</item>
+		<item>Mazedonisch</item>
+		<item>Norwegisch (Bokmål)</item>
 		<item>Niederländisch</item>
 		<item>Okzitanisch (nach 1500)</item>
-		<item>Punjabi</item>
+		<item>Panjabi</item>
 		<item>Polnisch</item>
 		<item>Portugiesisch</item>
 		<item>Brasilianisches Portugiesisch</item>
@@ -115,11 +116,11 @@
 		<item>Sardinisch</item>
 		<item>Sindhi</item>
 		<item>Slowakisch</item>
-		<item>Slovenian</item>
+		<item>Slowenisch</item>
 		<item>Schwedisch</item>
 		<item>Tagalog</item>
 		<item>Türkisch</item>
-		<item>Uyghur</item>
+		<item>Uigurisch</item>
 		<item>Chinesisch (Kurzzeichen)</item>
 		<item>Chinesisch (Langzeichen)</item>
 	</string-array>

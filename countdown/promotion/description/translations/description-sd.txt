@@ -2,12 +2,12 @@
 OI काउंटडाउन
 
 # Promo text:
-Set multiple countdowns with OI Countdown.
+मल्टिपल काउटडाउन सेट कयो OI काउंट डाउन सां गडद
 
 # Description:
 
 
-OI Countdown is a helpful timer to increase your productivity and plan your day.  It allows you to set a variety of different actions to notify you at the end of a timer.  Fully customize all your timers, with no limit on how many you can have running or saved.  
+OI काउंटडाउन हिक मददगार काल सम्नाजक तव तहांजी प्रोडक्टिविटी अऊँ प्लान खे वध्यणा लाये ऊओ भी हर दियां ईयो तहां खे अलग अलग कार्यन जी हिक्क किस्म सेट करण लाये तहां खे हिक्क टाइमर जे अंत में सूचित करण जी अनुमति दीन्दो आ पूरी तरह सां आपके सभी टाइमर कितने आप या चल रहा हो सकता है बचाया पर कोई सीमा के साथ, अनुकूलित. 
 
 ईयो अनुप्रयोग विज्ञापन मुक्त आहे अऊँ इनखे इंटरनेट जी अनुमति जी आवश्यकता काने 
 
@@ -15,34 +15,34 @@ OI Countdown is a helpful timer to increase your productivity and plan your day.
 
 
 
-इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे : 
+:इन्ह स्वतंत्र अऊँ खुले स्रोत अनुप्रयोग जो स्रोत कोड हित्ते उपलब्ध आहे 
 http://code.google.com/p/openintents
 
-परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो: 
+:परिवर्तन अऊँ अक्सर पुष्यन वनण वारा प्रश्नन जी पूरी सूची लाये, कृपया हेड़े वन्नो 
 http://www.openintents.org
 
 
 
-तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो : 
+:तहां Launchpad ते पेंजी भाषा जे अनुवाद खे बेहतर ठायण में मदद करे ता सगो 
 https://translations.launchpad.net/openintents/trunk
 
-सुविधाऊँ: 
-* Set a countdown by choosing a duration or a date.
-* Be notified by vibration or any sound of your choice. 
-* Have an unlimited number of timers running at the same time. 
-* Save your countdowns and give them names to reuse at later times. 
-* Modify countdowns, even while they are still running
+:सुविधाऊँ 
+* काउंटडाउन सेट कयो समय या तारिख चुन्दे  करे
+* नोतिफैड रहयो विब्रेशन या कड़े भी तरह जे साउंड सां जेंझी तहां खे  मर्ज़ी हुजेव
+* असीमित काल समंजक हलन ता  हिक्क ही समय ते
+* काउंटडाउन खे सेव कयो अऊँ  उन्ह खे नाम दयोस जेंसान तहां इन्न्खे वारी सां इस्तेमाल करे सग्यो
+* काउंटडाउन खे संशोधित कयो, अगर हो हलन ता  पाया त
 
-Available extensions for "OI Countdown":  
-* Launch applications through Android shortcuts
-* Use OI About to show license information
+एक्स्तान्शन "OI काउंट डाउन" जे  लाये उपलब्ध आहिन 
+* एप्प्लिकेशन खे लॉन्च कयो Android शोर्टकट्से सां
+* OI अबाउट इस्तमाल कयो लाइसेंस जी जानकारी जे लाये
 
 कीवर्ड: 
-* countdown, timer, alert
+* काउंटडाउन, टाइमर, अलर्ट
 * OI, OpenIntents, Open Intents
 
 अंतर्राष्ट्रीय संस्करण: 
-Compte enrere d'OI, IO ໄລກັບ, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI काउंटडाउन, OI カウントダウン, OI 카운트다운, OI倒计时, סופר לאחור OI, عد تنازلي OI
+Compte enrere d'OI, IO ໄລກັບ, OI カウントダウン, OI 카운트다운, OI Afteller, OI Bilang-pababa, OI Countdown, OI Geri sayım, OI Lähtölaskenta, OI Minutka, OI Nedtelling, OI Odliczanie, OI Odpočítavanie, OI تەتۈر ۋاقىت خاتىرىلىگۈچ, OI Χρονομετρητής, OI Одбројувач, OI काउंटडाउन, OI倒计时, عد تنازلي OI, סופר לאחור OI
 
 
 बाजार जे लाये स्ट्रिंग्स खोजयो  : 

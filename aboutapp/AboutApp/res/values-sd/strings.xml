@@ -29,7 +29,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   OpenIntents devs https://launchpad.net/~openintents-devs
-  happynawani https://launchpad.net/~happynawani</string>
+  happynawani https://launchpad.net/~happynawani
+  vishal panjwani https://launchpad.net/~vishal-panjwani15</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">हिक्क स्वसंपूर्ण उन्न संवाद जे बारे में जेको अनुप्रयोगन विच्च में बत्यल आ</string>
@@ -79,47 +80,47 @@
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>अरबी भाषा</item>
-		<item>Belarusian</item>
-		<item>Bulgarian</item>
-		<item>Catalan</item>
+		<item>बैलोरूशियन्</item>
+		<item>बल्गेरियन्</item>
+		<item>कातालान</item>
 		<item>चेकोस्लोवाकिया जी भाषा</item>
 		<item>डेनिश भाषा</item>
 		<item>जर्मन भाषा</item>
 		<item>यूनानी/ग्रीक भाषा</item>
 		<item>अंग्रेज़ी भाषा</item>
-		<item>English (United Kingdom)</item>
+		<item>अंग्रेजी (यूनाइटेड किंगडम)</item>
 		<item>स्पेनिश भाषा</item>
 		<item>फ़ारसी भाषा</item>
 		<item>फ़िन भाषा</item>
 		<item>फिरोज़ी भाषा</item>
 		<item>फ्रांसीसी भाषा</item>
-		<item>Hindi</item>
+		<item>हिंदी</item>
 		<item>क्रोएशियाई भाषा</item>
 		<item>हंगेरी भाषा</item>
 		<item>इतालवी भाषा</item>
-		<item>Hebrew</item>
+		<item>हिब्रू</item>
 		<item>जापानी भाषा</item>
 		<item>कोरियाई भाषा</item>
 		<item>लाओथियाई भाषा</item>
-		<item>Latvian</item>
-		<item>Macedonian</item>
-		<item>Norwegian Bokmal</item>
+		<item>लाटवियन्</item>
+		<item>मैसेडोनियन्</item>
+		<item>नॉर्वेजिअन बुकमल</item>
 		<item>डच भाषा</item>
 		<item>ओसीटान ( पद 1500)</item>
-		<item>Punjabi</item>
+		<item>पंजाबी</item>
 		<item>पोलिश भाषा</item>
 		<item>पुर्तगाली भाषा</item>
 		<item>ब्राज़ीली पुर्तगाली भाषा</item>
 		<item>रोमानियाई भाषा</item>
 		<item>रूसी भाषा</item>
 		<item>सार्दीनीअन भाषा</item>
-		<item>Sindhi</item>
+		<item>सिंधी</item>
 		<item>स्लोवाक भाषा</item>
-		<item>Slovenian</item>
+		<item>स्लोवेनियन्</item>
 		<item>स्वीडिश भाषा</item>
-		<item>Tagalog</item>
+		<item>तागालोग</item>
 		<item>तुर्की</item>
-		<item>Uyghur</item>
+		<item>उईघुर</item>
 		<item>चीनी भाषा (सरलीकृत)</item>
 		<item>चीनी भाषा (पारंपरिक)</item>
 	</string-array>

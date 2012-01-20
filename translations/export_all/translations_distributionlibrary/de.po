@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: appricoo <Unknown>\n"
+"Last-Translator: Hans <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,6 +27,7 @@ msgstr "OI Distributions Bibliothek"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Hans https://launchpad.net/~hans-wuerstchen42\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Patrick Eigensatz https://launchpad.net/~p.eigensatz\n"
 "  Peli https://launchpad.net/~peli0101\n"
@@ -42,8 +44,8 @@ msgstr "%s EULA"
 #. 		Translation can be as long as required.
 #: tmp_strings.xml:23(string)
 msgid ""
-"Please read and accept the following End User License Agreement (EULA) for %"
-"s."
+"Please read and accept the following End User License Agreement (EULA) for "
+"%s."
 msgstr ""
 "Bitte lesen und akzeptiern sie den folgenden Endbenutzer-Lizenzvertrag "
 "(EULA) für %s."
@@ -134,12 +136,12 @@ msgstr "OI About"
 #. Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.
 #: tmp_strings.xml:69(string)
 msgid "Barcode OI Plugin"
-msgstr ""
+msgstr "Barcode OI Plugin"
 
 #. Dialog message.
 #: tmp_strings.xml:71(string)
 msgid "No compatible barcode scanner is available."
-msgstr ""
+msgstr "Es ist kein kompatibler Barcode Scanner verfügbar."
 
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:74(string)

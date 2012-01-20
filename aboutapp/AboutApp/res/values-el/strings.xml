@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+** 	 Copyright (C) 2008-2009 pjv (and others, see About dialog)
+** 
+** 	 This file is part of OI About.
+**
+**   OI About is free software: you can redistribute it and/or modify
+**   it under the terms of the GNU General Public License as published by
+**   the Free Software Foundation, either version 3 of the License, or
+**   (at your option) any later version.
+**
+**   OI About is distributed in the hope that it will be useful,
+**   but WITHOUT ANY WARRANTY; without even the implied warranty of
+**   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**   GNU General Public License for more details.
+**
+**   You should have received a copy of the GNU General Public License
+**   along with OI About.  If not, see <http://www.gnu.org/licenses/>.
+**
+*/
+-->
+<resources>
+    
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis</string>
+	
+	<!-- Explanation what this application does. It is a menu extension for other applications. -->
+	<string name="about_comments">Ένας αυτόνομος σχετικός διάλογος που μοιράζεται μεταξύ των εφαρμογών.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_filemanager">OI Διαχειριστής Αρχείων</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_shopping">OI Λίστα Αγορών</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_notepad">OI Σημειωματάριο</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_safe">OI Κιβώτιο</string>
+	
+	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
+	<string name="info_instructions">Εκτελέστε το %s  και επιλέξτε μενού &gt; Σχετικά.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
+	   This is an extension that shows an about dialog or info dialog.  -->
+    <string name="app_name">OI Σχετικά</string>
+	
+    <string name="menu_about">Περί της εφαρμογής OI Σχετικά.</string>
+    
+    <!-- About some application, where "%s" is the name of another application. -->
+    <string name="about_activity_name_extended">Περί  του %s</string>
+    
+	<string name="l_authors">Γράφτηκε από</string>
+	<string name="l_documenters">Τεκμηριώθηκε από</string>
+	<string name="l_translators">Μεταφράστηκε από</string>
+	<string name="l_artists">Γραφικά από</string>
+	<string name="l_international_translators">Διεθνείς μεταφράσεις από</string>
+	<string name="l_credits">Συντελεστές</string>
+	<string name="l_license">Άδεια</string>
+	<string name="l_info">Γενικές πληροφορίες</string>
+	<string name="l_recent_changes">Πρόσφατες αλλαγές</string>
+	
+	<string name="no_information_available">Δεν υπάρχουν διαθέσιμες πληροφορίες.</string>
+	
+	<!-- ***************************
+	     International languages
+	     *************************** -->
+	<!-- Language names. -->
+    <string-array name="language_names">
+		<item>Αραβικά</item>
+		<item>Λευκορωσικά</item>
+		<item>Βουλγαρικά</item>
+		<item>Καταλανικά</item>
+		<item>Τσέχικα</item>
+		<item>Δανέζικα</item>
+		<item>Γερμανικά</item>
+		<item>Ελληνικά</item>
+		<item>Αγγλικά</item>
+		<item>Αγγλικά (Ηνωμένο Βασίλειο)</item>
+		<item>Ισπανικά</item>
+		<item>Περσικά</item>
+		<item>Φινλανδικά</item>
+		<item>Φεροέζ</item>
+		<item>Γαλλικά</item>
+		<item>Ινδικά</item>
+		<item>Κροατικά</item>
+		<item>Ουγγρικά</item>
+		<item>Ιταλικά</item>
+		<item>Εβραϊκά</item>
+		<item>Ιαπωνικά</item>
+		<item>Κορεάτικα</item>
+		<item>Λάο</item>
+		<item>Λετονικά</item>
+		<item>Σλαβομακεδονικά</item>
+		<item>Νορβηγικά Μπόκμαλ</item>
+		<item>Ολλανδικά</item>
+		<item>Οξιτανικά (πρίν το 1500)</item>
+		<item>Πουντζάμπι</item>
+		<item>Πολωνικά</item>
+		<item>Πορτογαλικά</item>
+		<item>Πορτογαλικά Βραζιλίας</item>
+		<item>Ρουμάνικα</item>
+		<item>Ρώσικα</item>
+		<item>Σαρδηνικά</item>
+		<item>Σίντχι</item>
+		<item>Σλοβακικά</item>
+		<item>Σλοβένικα</item>
+		<item>Σουηδικά</item>
+		<item>Ταγκαλόγκ</item>
+		<item>Τούρκικα</item>
+		<item>Uyghur</item>
+		<item>Κινέζικα (Απλοποιημένα)</item>
+		<item>Κινέζικα (Παραδοσιακά)</item>
+	</string-array>
+</resources>

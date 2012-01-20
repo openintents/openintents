@@ -11,6 +11,7 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,11 +42,11 @@ msgstr "%s EULA"
 #. 		Translation can be as long as required.
 #: tmp_strings.xml:23(string)
 msgid ""
-"Please read and accept the following End User License Agreement (EULA) for %"
-"s."
+"Please read and accept the following End User License Agreement (EULA) for "
+"%s."
 msgstr ""
-"Lea y acepte el siguiente acuerdo de licencia de usuario final (EULA) para %"
-"s."
+"Lea y acepte el siguiente acuerdo de licencia de usuario final (EULA) para "
+"%s."
 
 #. Button: Accept terms of EULA.
 #: tmp_strings.xml:26(string)

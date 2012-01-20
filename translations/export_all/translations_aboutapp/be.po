@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Alexander Geroimenko <Unknown>\n"
 "Language-Team: Belarusian <be@li.org>\n"
+"Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,22 +34,22 @@ msgstr "Асобнае акно а праграме, сумесна выкары
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:39(string)
 msgid "OI File Manager"
-msgstr "OI File Manager"
+msgstr "OI Файл-мэнэджар"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:41(string)
 msgid "OI Shopping List"
-msgstr "OI Shopping List"
+msgstr "OI Пакупкі"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:43(string)
 msgid "OI Notepad"
-msgstr "OI Notepad"
+msgstr "OI Нататнік"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:45(string)
 msgid "OI Safe"
-msgstr "OI Safe"
+msgstr "OI Сэйф"
 
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:48(string)
@@ -59,11 +60,11 @@ msgstr "Запусціце %s і выберыце пункт &gt; А прагр�
 #. 	   This is an extension that shows an about dialog or info dialog.
 #: tmp_strings.xml:55(string)
 msgid "OI About"
-msgstr "OI About"
+msgstr "OI А праграме"
 
 #: tmp_strings.xml:57(string)
 msgid "About OI About itself"
-msgstr "А самой About OI About"
+msgstr "А самой OI А праграме"
 
 #. About some application, where "%s" is the name of another application.
 #: tmp_strings.xml:60(string)
@@ -116,15 +117,15 @@ msgstr "Арабская"
 
 #: tmp_strings.xml:80(item)
 msgid "Belarusian"
-msgstr ""
+msgstr "Беларуская"
 
 #: tmp_strings.xml:81(item)
 msgid "Bulgarian"
-msgstr ""
+msgstr "Балгарская"
 
 #: tmp_strings.xml:82(item)
 msgid "Catalan"
-msgstr ""
+msgstr "Каталонская"
 
 #: tmp_strings.xml:83(item)
 msgid "Czech"
@@ -148,7 +149,7 @@ msgstr "Ангельская"
 
 #: tmp_strings.xml:88(item)
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "Ангельская (Вялікабрытанія)"
 
 #: tmp_strings.xml:89(item)
 msgid "Spanish"
@@ -172,7 +173,7 @@ msgstr "Французская"
 
 #: tmp_strings.xml:94(item)
 msgid "Hindi"
-msgstr ""
+msgstr "Хіндзі"
 
 #: tmp_strings.xml:95(item)
 msgid "Croatian"
@@ -188,7 +189,7 @@ msgstr "Італьянская"
 
 #: tmp_strings.xml:98(item)
 msgid "Hebrew"
-msgstr ""
+msgstr "Іўрыт"
 
 #: tmp_strings.xml:99(item)
 msgid "Japanese"
@@ -204,15 +205,15 @@ msgstr "Лаоская"
 
 #: tmp_strings.xml:102(item)
 msgid "Latvian"
-msgstr ""
+msgstr "Латышская"
 
 #: tmp_strings.xml:103(item)
 msgid "Macedonian"
-msgstr ""
+msgstr "Македонская"
 
 #: tmp_strings.xml:104(item)
 msgid "Norwegian Bokmal"
-msgstr ""
+msgstr "Нарвежскі Букмол"
 
 #: tmp_strings.xml:105(item)
 msgid "Dutch"
@@ -224,7 +225,7 @@ msgstr "Аксітанская (пасля 1500)"
 
 #: tmp_strings.xml:107(item)
 msgid "Punjabi"
-msgstr ""
+msgstr "Панджабі"
 
 #: tmp_strings.xml:108(item)
 msgid "Polish"
@@ -252,7 +253,7 @@ msgstr "Сардынская"
 
 #: tmp_strings.xml:114(item)
 msgid "Sindhi"
-msgstr ""
+msgstr "Сіндхі"
 
 #: tmp_strings.xml:115(item)
 msgid "Slovak"
@@ -260,7 +261,7 @@ msgstr "Славацкая"
 
 #: tmp_strings.xml:116(item)
 msgid "Slovenian"
-msgstr ""
+msgstr "Славенская"
 
 #: tmp_strings.xml:117(item)
 msgid "Swedish"
@@ -268,7 +269,7 @@ msgstr "Шведская"
 
 #: tmp_strings.xml:118(item)
 msgid "Tagalog"
-msgstr ""
+msgstr "Тагалог"
 
 #: tmp_strings.xml:119(item)
 msgid "Turkish"
@@ -276,7 +277,7 @@ msgstr "Турэцкая"
 
 #: tmp_strings.xml:120(item)
 msgid "Uyghur"
-msgstr ""
+msgstr "Уйгур"
 
 #: tmp_strings.xml:121(item)
 msgid "Chinese (Simplified)"

@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Florentina Mușat <deep.sky.028@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,7 +31,7 @@ msgstr ""
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
 msgid "Import and export lists and notes with OI Convert CSV."
-msgstr ""
+msgstr "Importă și exportă listele și notițele cu OI Convert CSV."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -329,7 +330,7 @@ msgstr "DUPLICĂ - Permite duplicarea înregistrărilor."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
 msgid "KEEP - Don't overwrite existing records."
-msgstr ""
+msgstr "PĂSTREAZĂ - Nu suprascrie înregistrările existente."
 
 #: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
@@ -348,6 +349,8 @@ msgstr ""
 msgid ""
 "KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 msgstr ""
+"PĂSTREAZĂ - Nu suprascrie o înregistrare existentă, ignoră înregistrarea din "
+"fișierul CSV."
 
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."

@@ -11,6 +11,7 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Alexander Geroimenko <Unknown>\n"
 "Language-Team: Belarusian <be@li.org>\n"
+"Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,17 +23,18 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Alexander Geroimenko https://launchpad.net/~geroimenko"
+"  Alexander Geroimenko https://launchpad.net/~geroimenko\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:26(string)
 msgid "Manage files on the SD card with OI File Manager."
-msgstr "Кіруйце файламі на SD картцы пры дапамозе OI File Manager."
+msgstr "Кіруйце файламі на SD картцы пры дапамозе OI Файл-мэнэджар."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:32(string)
 msgid "OI File Manager"
-msgstr "OI File Manager"
+msgstr "OI Файл-мэнэджар"
 
 #: tmp_strings.xml:34(string)
 msgid "New Folder"
@@ -102,7 +104,7 @@ msgstr "Дадаць у абранае"
 
 #: tmp_strings.xml:53(string)
 msgid "Refresh"
-msgstr ""
+msgstr "Абнавіць"
 
 #: tmp_strings.xml:55(string)
 msgid "Create new folder"
@@ -438,7 +440,7 @@ msgstr "Немагчыма скампрэсаваць"
 
 #: tmp_strings.xml:180(string)
 msgid "Compress into archive:"
-msgstr "Скампрэсаваць у архіў:"
+msgstr "Кампрэсаваць у архіў:"
 
 #: tmp_strings.xml:181(string)
 msgid "Item extracted successfully"
