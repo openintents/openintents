@@ -160,7 +160,7 @@ do
 	if [ -e "${po_filename}" ] ; then
 		set_androidlanguage_from_language
 		if [ "${androidlanguage}" = "skip" ] ; then
-			echo "Skipping "${language}"
+			echo "Skipping ${language}"
 		else
 			echo "Importing .xml from .po for "${language}" ("${androidlanguage}")"
 			mkdir -p "${android_xml_files_res_dir}"-"${androidlanguage}"
