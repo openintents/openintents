@@ -28,7 +28,7 @@ To obtain the current release, visit
   http://www.openintents.org
 
 
----------------------------------------------------------
+----------------
 release: 1.1
 date: ?
 
@@ -36,7 +36,7 @@ date: ?
 - support for about.xml (GCI task by Matěj Konečný, issue 248)
 - list more languages for translations.
 
----------------------------------------------------------
+----------------
 release: 1.0.3
 date: 2011-05-01
 
@@ -47,7 +47,7 @@ date: 2011-05-01
 - support Android 2.3.
 - translations into various languages.
 
----------------------------------------------------------
+----------------
 release: 1.0.2
 date: 2009-10-14
 
@@ -55,14 +55,14 @@ date: 2009-10-14
 - translations: Chinese (simplified), Japanese, Lao,
   Portugese
 
----------------------------------------------------------
+----------------
 release: 1.0.1
 date: 2009-01-13
 
 - Fix blackening of license text while touching.
 - translations: Dutch, French, German, Spanish
 
----------------------------------------------------------
+----------------
 release: 1.0.0
 date: 2009-01-12
 

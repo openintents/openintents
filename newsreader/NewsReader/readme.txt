@@ -19,7 +19,7 @@
 To obtain the current release, visit
   http://www.openintents.org
   
----------------------------------------------------------
+----------------
 release: 1.1.1
 date: 2010-05-16
 
@@ -28,25 +28,25 @@ date: 2010-05-16
 - Minor improvements on menu icons.
 - Fix crash after returning from browser on low memory.
 
----------------------------------------------------------
+----------------
 release: 1.1.0
 date: 2010-04-05
 
 - Add Google ads on main screen.
   
----------------------------------------------------------
+----------------
 release: 1.0.7
 date: 2008-10-28
 
 - fix bug: crash when clicking "Show advanced settings"
 
----------------------------------------------------------
+----------------
 release: 1.0.6
 date: 2008-10-27
 
 - fix bug with resources when uploading to Android Market
 
----------------------------------------------------------
+----------------
 release: 1.0.5
 date: 2008-10-27
 

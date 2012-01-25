@@ -19,7 +19,7 @@ This is an extension for OI Notepad that acts as QR code generator and reader.
 To obtain the current release, visit
   http://www.openintents.org
 
----------------------------------------------------------
+----------------
 release 1.0
 date: ?
 - initial version by Vincent (Google Code-in 2011 task)

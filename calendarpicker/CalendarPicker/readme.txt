@@ -20,14 +20,14 @@ and visualize timeline-based information.
 To obtain the current release, visit
   http://www.openintents.org
 
----------------------------------------------------------
+----------------
 release: 1.0.1
 date: ?
 
 - support moving app to SD card.
 - support Android 2.3.
 
----------------------------------------------------------
+----------------
 release: 1.0
 date: 2010-10-20
 

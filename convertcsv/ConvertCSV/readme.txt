@@ -20,13 +20,13 @@ that lets you import and export the lists to CSV files.
 To obtain the current release, visit
   http://www.openintents.org
 
----------------------------------------------------------
+----------------
 release: 1.??
 date: ??
 
 - Add support for JPilot import and export (Issue 252 Google Code-In task by Michał Zieliński).
 
----------------------------------------------------------
+----------------
 release: 1.1.0
 date: 2011-05-28
 
@@ -39,7 +39,7 @@ NOTE: Use the new HandyShopper format to export tags, price, and quantity from O
 - Choose custom encoding.
 - support Android 2.3.
 
----------------------------------------------------------
+----------------
 release: 1.0.1
 date: 2009-01-19
 
@@ -47,7 +47,7 @@ date: 2009-01-19
 - Add support for new fields in NotePad 1.1.0.
 - Prepare for OI Notepad and OI Shopping list permissions.
 
----------------------------------------------------------
+----------------
 release: 1.0.0
 date: 2008-12-09
 

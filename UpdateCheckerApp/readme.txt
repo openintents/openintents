@@ -25,20 +25,20 @@ More information available at http://www.openintents.org/en/node/136
 To obtain the current release, visit
   http://www.openintents.org
 
----------------------------------------------------------
+----------------
 release: 1.0.3
 date: 2011-?
 
 - translations into various languages.
 
----------------------------------------------------------
+----------------
 release: 1.0.2
 date: 2009-01-25
 
 - perform update from default store.
 - new url for AndAppStore
 
----------------------------------------------------------
+----------------
 release: 1.0.1
 date: 2008-12-02
 
@@ -49,7 +49,7 @@ date: 2008-12-02
 - Application ids not supported anymore in txt version files.
 - Sort by Application name
 
----------------------------------------------------------
+----------------
 release: 1.0.0
 date: 2008-11-13
 

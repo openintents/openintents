@@ -22,19 +22,19 @@ To obtain the current release, visit
   http://www.openintents.org
 
 
----------------------------------------------------------
+----------------
 release: 1.2
 date: ?
 - Don't crash on denied permissions (issue 299, GCI task by Matěj Konečný)
 
----------------------------------------------------------
+----------------
 release: 1.1.1
 date: 2011-02-05
 - new application icon for Android 2.0 or higher.
 - support Android 2.3.
 - translations into various languages.
 
----------------------------------------------------------
+----------------
 release: 1.1.0
 date: 2009-07-05
 - Increase maximum duration from 24 hours to 100000 days.
@@ -50,12 +50,12 @@ date: 2009-07-05
 - Fix vibrate only notification.
 - Light notification.
  
----------------------------------------------------------
+----------------
 release: 1.0.1
 date: 2008-11-11
 - Include Start button on list of countdowns.
 
----------------------------------------------------------
+----------------
 release: 1.0.0
 date: 2008-11-07
 - First public release on Android SDK 1.0.
