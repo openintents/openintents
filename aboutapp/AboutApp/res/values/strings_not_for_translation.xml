@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 **
-** 	 Copyright (C) 2008-2011 pjv (and others, see About dialog)
+** 	 Copyright (C) 2008-2012 pjv (and others, see About dialog)
 ** 
 ** 	 This file is part of OI About.
 **
@@ -21,7 +21,7 @@
 */
 -->
 <resources>
-    <string name="about_copyright">Copyright © 2008-2011 OpenIntents</string> 
+    <string name="about_copyright">Copyright © 2008-2012 OpenIntents</string> 
 	<string name="about_website_url">http://www.openintents.org</string>
 	<string name="about_email">support@openintents.org</string>
 	

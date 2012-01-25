@@ -1,4 +1,4 @@
----------------------------------------------------------
+----------------
 For the complete list of changes and a list of frequently asked questions, please visit:
 http://www.openintents.org
 
