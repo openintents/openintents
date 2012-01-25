@@ -1,6 +1,6 @@
 ﻿ ****************************************************************************
  *                                                                          *
- *   Copyright (C) 2008-2012 pjv (and others, see About dialog)             *
+ *   Copyright (C) 2009-2012 pjv (and others, see About dialog)             *
  *                                                                          *
  *   OI About is free software: you can redistribute it and/or modify       *
  *   it under the terms of the GNU General Public License as published by   *
