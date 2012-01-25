@@ -1,6 +1,6 @@
 ﻿ ****************************************************************************
  *                                                                          *
- *   Copyright (C) 2008-2011 pjv (and others, see About dialog)             *
+ *   Copyright (C) 2008-2012 pjv (and others, see About dialog)             *
  *                                                                          *
  *   OI About is free software: you can redistribute it and/or modify       *
  *   it under the terms of the GNU General Public License as published by   *
@@ -30,7 +30,7 @@ To obtain the current release, visit
 
 ----------------
 release: 1.1
-date: ?
+date: 2012-01-25
 
 - high-resolution icon for Android 2.3 and later.
 - support for about.xml (GCI task by Matěj Konečný, issue 248)
