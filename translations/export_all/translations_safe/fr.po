@@ -809,16 +809,12 @@ msgid "While not downloaded, default location will be used."
 msgstr ""
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
 msgstr ""
-"Pas de sauvegarde a été effectuée ce jour. Voulez-vous sauvegarder "
-"maintenant?"
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "La sauvegarde a échoué:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

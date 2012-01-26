@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  mrx5682 https://launchpad.net/~mrx5682</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Update</string>
+    
+    <string name="update_available">A new version of %s is available.\nWould you like to upgrade?</string>
+    <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
+    <string name="update_available_2">A new version of %1$s is available.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
+    <string name="update_available_no_comment">A new version of %s is available.</string>
+	<string name="market_not_available">Android Market not available.</string>
+    <string name="market_search_term">OI Update</string>
+	<string name="android_market">Android Market</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">Version %1$s\nSD card %2$s\n\nOS\n%3$s</string>
+    <string name="free_space">free space: %s</string>
+    <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
+    
+    <string name="do_update">Perform update now!</string>
+    <string name="do_update_market">Try update from Market now!</string>
+    <string name="do_update_andAppStore">Try update from AndAppStore now!</string>
+    <string name="remind_me_later">Remind me later!</string>
+    <string name="ignore_this_update">Ignore this update</string>
+    <string name="ignore_all_further_updates">Ignore all further updates</string>
+    <string name="ok">Ok</string>
+    
+    <string name="update_not_started">Update could not be started!\n\nPlease contact application developer!\n\n%s</string>
+    <string name="app_up_to_date">Application is up-to-date.</string>
+    <string name="checking">Checking for new version.</string>
+    <string name="building_app_list">Building list of applications.</string>
+    <string name="check_andappstore">Check AndAppStore.com</string>
+    <string name="check_versions">Check versions</string>
+    <string name="show_versions">Show all</string>
+    <string name="refresh">Refresh</string>
+    <string name="checked_against_andappstore">Checked AndAppStore</string>
+    <string name="current_version">Current version: %s</string>
+    <string name="current_version_code">Current version code: %s</string>
+    <string name="newer_version">Newer version: %s</string>
+    <string name="newer_version_comment">Newer version: %1$s - %2$s</string>
+    <string name="newer_version_available">Newer version available.</string>
+    <string name="no_update_info_found">No update information found.</string>
+    <string name="title_list_new_versions">OI Update - List of new versions</string>
+    <string name="title_list_new_versions_from_andappstore">OI Update - New versions at AndAppStore</string>
+    <string name="title_list_all_versions">OI Update - List of managed applications</string>
+    <string name="title_list_all_versions_from_andappstore">OI Update - List of managed applications (check at AndAppStore)</string>
+    <string name="settings">Settings</string>
+    <string name="auto_update">Auto check</string>
+    <string name="ignore_title">Ignored</string>
+    <string name="ignore_text">Updates are currently ignored. Would you like to receive updates again?</string>
+    <string name="unknown_title">Unknown</string>
+    <string name="unknown_text">No update information available. Please check manually and ask the developer to support OI Update in the future.</string>
+    <string name="search_on_market">Search on Market</string>
+    <string name="search_on_andappstore">Search on AndAppStore</string>
+    <string name="processing">Processing %s</string>
+    
+    <string name="warn">The update process of this application directs to a different site than Android Market. Applications installed from unknown sources might exhibit a security risk.</string>
+    <string name="continue_anyway">Continue anyway</string>
+    <string name="abort">Abort</string>
+    
+    <string name="preference_auto_update">Auto update</string>
+    <string name="preference_auto_update_summary">If checked, search for updates is performed regularly</string>
+    <string name="title_update_interval">Update interval</string>
+    <string name="summary_update_interval">Set the interval how often the update search should be performed.</string>
+    <string name="dialog_title_update_interval">Select interval</string>
+    <string name="default_update_interval">every_month</string>
+    <string name="preference_warning_title">Warning</string>
+    <string name="preference_warning_text">If you uncheck this item, you will no longer receive notifications for updates. Do you still want to uncheck auto update?</string>
+    
+    <string name="preference_andappstore">Use AndAppStore</string>
+    <string name="preference_andappstore_summary">Use version information provided by AndAppStore.com</string>
+    
+    <string name="permission_read_update_info">Read update information</string>
+    <string name="permission_write_update_info">Write update information</string>
+    <string name="permission_read_update_info_descr">Read information about installed applications, update locations and requests.</string>
+    <string name="permission_write_update_info_descr">Write information about installed applications, update locations and requests.</string>
+
+
+	<!-- About -->
+	<string name="about">About</string>
+	<string name="about_title">About %s</string>
+	<string name="about_text">Version %s \n\n OI Update keeps you informed on new application versions.\n OpenIntents allows different Android applications to share data using intents and open interfaces.\n\n For more information and other great applications visit OpenIntents at www.openintents.org</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Update EULA</string>
+<string name="eula_description">"Copyright 2008 OpenIntents.org\n Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n http://www.apache.org/licenses/LICENSE-2.0\n Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n \n"</string>
+	<string name="eula_accept">Accept</string>
+	<string name="eula_refuse">Cancel</string>
+	
+</resources>

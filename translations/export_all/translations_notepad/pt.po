@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: Sérgio Marques <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -26,22 +26,23 @@ msgstr ""
 "\n"
 "Launchpad Contributions:\n"
 "  Peli https://launchpad.net/~peli0101\n"
+"  Sérgio Marques https://launchpad.net/~sergio+marques\n"
 "  Tiago Silva https://launchpad.net/~tiagosilva"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:33(string)
 msgid "Create and share your notes with OI Notepad."
-msgstr ""
+msgstr "Crie e partilhe as suas notas com o OI Notepad."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
 #: tmp_strings.xml:123(string)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI Notepad"
 
 #: tmp_strings.xml:42(string)
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #: tmp_strings.xml:43(string)
 msgid "Add note"
@@ -49,15 +50,15 @@ msgstr "Adicionar nota"
 
 #: tmp_strings.xml:44(string)
 msgid "Revert"
-msgstr ""
+msgstr "Reverter"
 
 #: tmp_strings.xml:45(string)
 msgid "Discard"
-msgstr ""
+msgstr "Rejeitar"
 
 #: tmp_strings.xml:47(string)
 msgid "Use menu to add new notes."
-msgstr ""
+msgstr "Utilize o menu para adicionar notas."
 
 #: tmp_strings.xml:49(string) tmp_strings.xml:53(string)
 msgid "Edit note"
@@ -77,25 +78,25 @@ msgstr "Nota"
 
 #: tmp_strings.xml:56(string)
 msgid "Note title:"
-msgstr ""
+msgstr "Título da nota:"
 
 #: tmp_strings.xml:57(string)
 msgid "%s (new note)"
-msgstr ""
+msgstr "%s (nova nota)"
 
 #: tmp_strings.xml:58(string)
 msgid "%s (edit note)"
-msgstr ""
+msgstr "%s (editar nota)"
 
 #. Title: Pick note for shortcut (to be placed on the home screen)
 #: tmp_strings.xml:61(string)
 msgid "Pick note for shortcut"
-msgstr ""
+msgstr "Escolha a nota para o atalho"
 
 #. Dialog box
 #: tmp_strings.xml:63(string) tmp_strings.xml:133(string)
 msgid "OK"
-msgstr ""
+msgstr "Aceitar"
 
 #: tmp_strings.xml:65(string)
 msgid "Error"
@@ -103,12 +104,12 @@ msgstr "Erro"
 
 #: tmp_strings.xml:66(string)
 msgid "Error loading note"
-msgstr "Erro ao carregar nota"
+msgstr "Erro ao carregar a nota"
 
 #. <string name="no_notes">Note list is empty.</string>
 #: tmp_strings.xml:69(string)
 msgid "Share"
-msgstr ""
+msgstr "Partilhar"
 
 #: tmp_strings.xml:70(string)
 msgid "Empty note"
@@ -116,76 +117,76 @@ msgstr "Nota vazia"
 
 #: tmp_strings.xml:71(string)
 msgid "No application available for sharing."
-msgstr ""
+msgstr "Sem aplicação de partilha."
 
 #: tmp_strings.xml:73(string)
 msgid "Encrypting note"
-msgstr ""
+msgstr "Codificar nota"
 
 #: tmp_strings.xml:74(string)
 msgid "Encrypted"
-msgstr ""
+msgstr "Codificada"
 
 #: tmp_strings.xml:75(string)
 msgid "Encrypt"
-msgstr ""
+msgstr "Codificar"
 
 #: tmp_strings.xml:76(string)
 msgid "Decrypt"
-msgstr ""
+msgstr "Descodificar"
 
 #: tmp_strings.xml:77(string)
 msgid "Undo encryption"
-msgstr ""
+msgstr "Anular codificação"
 
 #: tmp_strings.xml:78(string)
 msgid "Do not encrypt"
-msgstr ""
+msgstr "Não codificar"
 
 #: tmp_strings.xml:79(string)
 msgid "Already encrypted."
-msgstr ""
+msgstr "Já está codificada."
 
 #: tmp_strings.xml:80(string)
 msgid "Not encrypted."
-msgstr ""
+msgstr "Não codificada."
 
 #: tmp_strings.xml:81(string)
 msgid "Encryption failed."
-msgstr ""
+msgstr "Falha ao codificar."
 
 #: tmp_strings.xml:82(string)
 msgid "Decryption failed."
-msgstr ""
+msgstr "Falha ao descodificar."
 
 #: tmp_strings.xml:84(string)
 msgid "Edit tags"
-msgstr ""
+msgstr "Editar \"tags\""
 
 #: tmp_strings.xml:85(string)
 msgid "Touch to see list"
-msgstr ""
+msgstr "Toque para ver a lista"
 
 #: tmp_strings.xml:86(string)
 msgid "Enter tags, separated by comma"
-msgstr ""
+msgstr "Indique as \"tags\", separadas por vírgulas"
 
 #: tmp_strings.xml:88(string)
 msgid "Save to SD card"
-msgstr ""
+msgstr "Gravar no cartão SD"
 
 #: tmp_strings.xml:89(string)
 msgid "Open from SD card"
-msgstr ""
+msgstr "Abrir do cartão SD"
 
 #: tmp_strings.xml:90(string)
 msgid "File name"
-msgstr ""
+msgstr "Nome do ficheiro"
 
 #: tmp_strings.xml:91(string) tmp_strings.xml:108(string)
 #: tmp_strings.xml:112(string)
 msgid "Save"
-msgstr "Guardar"
+msgstr "Gravar"
 
 #: tmp_strings.xml:92(string)
 msgid "Open"
@@ -193,60 +194,60 @@ msgstr "Abrir"
 
 #: tmp_strings.xml:93(string)
 msgid "Error while writing file"
-msgstr ""
+msgstr "Erro ao escrever o ficheiro"
 
 #: tmp_strings.xml:94(string)
 msgid "Error while reading file"
-msgstr ""
+msgstr "Erro ao ler o ficheiro"
 
 #: tmp_strings.xml:95(string)
 msgid "File not found"
-msgstr ""
+msgstr "Ficheiro não encontrado"
 
 #: tmp_strings.xml:96(string)
 msgid "Note saved"
-msgstr ""
+msgstr "Nota gravada"
 
 #: tmp_strings.xml:97(string)
 msgid "File exists already"
-msgstr ""
+msgstr "O ficheiro já existe"
 
 #: tmp_strings.xml:98(string)
 msgid "Do you really want to overwrite the existing file?"
-msgstr ""
+msgstr "Pretende substituir o ficheiro existente?"
 
 #: tmp_strings.xml:100(string)
 msgid "Word count"
-msgstr ""
+msgstr "Contar palavras"
 
 #: tmp_strings.xml:102(item)
 msgid "One word."
-msgstr ""
+msgstr "Uma palavra."
 
 #: tmp_strings.xml:103(item)
 msgid "%d words."
-msgstr ""
+msgstr "%d palavras."
 
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
 #: tmp_strings.xml:107(string)
 msgid "Import"
-msgstr ""
+msgstr "Importar"
 
 #: tmp_strings.xml:109(string)
 msgid "Save as"
-msgstr ""
+msgstr "Gravar como"
 
 #: tmp_strings.xml:110(string)
 msgid "Text modified"
-msgstr ""
+msgstr "Texto modificado"
 
 #: tmp_strings.xml:111(string)
 msgid "Do you want to save the changes?"
-msgstr ""
+msgstr "Pretende gravar as alterações?"
 
 #: tmp_strings.xml:113(string)
 msgid "Don't save"
-msgstr ""
+msgstr "Não gravar"
 
 #: tmp_strings.xml:115(string)
 msgid "Theme"
@@ -254,39 +255,39 @@ msgstr "Tema"
 
 #: tmp_strings.xml:116(string)
 msgid "Pick a theme"
-msgstr ""
+msgstr "Escolha o tema"
 
 #. Preference fontsize: default font size
 #: tmp_strings.xml:117(string) tmp_strings.xml:209(item)
 msgid "Default"
-msgstr ""
+msgstr "Padrão"
 
 #: tmp_strings.xml:118(string)
 msgid "Monospaced font"
-msgstr ""
+msgstr "Tipo de letra mono espaçada"
 
 #: tmp_strings.xml:119(string)
 msgid "Serif font"
-msgstr ""
+msgstr "Tipo de letra Serif"
 
 #. Search
 #: tmp_strings.xml:122(string) tmp_strings.xml:127(string)
 msgid "Search"
-msgstr ""
+msgstr "Procurar"
 
 #. %s is the search string
 #: tmp_strings.xml:125(string)
 msgid "No results found for %s."
-msgstr ""
+msgstr "Sem resultados para %s."
 
 #: tmp_strings.xml:126(string)
 msgid "OI Notepad search"
-msgstr ""
+msgstr "Procura OI Notepad"
 
 #. The description that will show up in the search settings for this source.
 #: tmp_strings.xml:130(string)
 msgid "Titles of your notes"
-msgstr ""
+msgstr "Títulos das notas"
 
 #: tmp_strings.xml:134(string)
 msgid "Cancel"
@@ -294,28 +295,28 @@ msgstr "Cancelar"
 
 #: tmp_strings.xml:135(string)
 msgid "Use this theme for all lists"
-msgstr ""
+msgstr "Utilizar tema em todas as listas"
 
 #: tmp_strings.xml:136(string)
 msgid "Get more themes"
-msgstr ""
+msgstr "Obter mais temas"
 
 #: tmp_strings.xml:138(string)
 msgid "All notes"
-msgstr ""
+msgstr "Todas as notas"
 
 #. Title for settings regarding the list of notes
 #: tmp_strings.xml:142(string)
 msgid "Notes List"
-msgstr ""
+msgstr "Lista de notas"
 
 #: tmp_strings.xml:143(string) tmp_strings.xml:144(string)
 msgid "List Sorting Order"
-msgstr ""
+msgstr "Organização das listas"
 
 #: tmp_strings.xml:145(string)
 msgid "The order in which notes are shown in the notes list"
-msgstr ""
+msgstr "A ordem em que as notas são mostradas na lista"
 
 #: tmp_strings.xml:146(string)
 msgid "Marquee note titles."
@@ -327,23 +328,23 @@ msgstr ""
 
 #: tmp_strings.xml:149(string)
 msgid "Note Editor"
-msgstr ""
+msgstr "Editor de notas"
 
 #: tmp_strings.xml:150(string)
 msgid "Font size"
-msgstr ""
+msgstr "Tamanho da letra"
 
 #: tmp_strings.xml:151(string)
 msgid "Change font size"
-msgstr ""
+msgstr "Alterar tamanho"
 
 #: tmp_strings.xml:152(string)
 msgid "Choose font size"
-msgstr ""
+msgstr "Escolha o tamanho"
 
 #: tmp_strings.xml:153(string)
 msgid "Auto-create Links"
-msgstr ""
+msgstr "Criar ligações automaticamente"
 
 #: tmp_strings.xml:154(string)
 msgid "Create links for phone numbers and email/street/web addresses"

@@ -782,14 +782,12 @@ msgid "While not downloaded, default location will be used."
 msgstr "عند عدم التعحميل، سيتم استعمالها من طرف الموضع الافتراضي."
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
-msgstr "لم يتم تنفيذ أي نسخة احتياطية بعد. هل تود أخذ نسخة احتياطية الآن ؟"
+msgstr ""
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "فشل أخذ نسخة احتياطية :"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

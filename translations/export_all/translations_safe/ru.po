@@ -792,16 +792,12 @@ msgid "While not downloaded, default location will be used."
 msgstr ""
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
 msgstr ""
-"Резервное копирование ещё не было выполненно. Выполнить резервное "
-"копирование сейчас?"
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "Резервная копия не создана:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

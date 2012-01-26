@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Hans <Unknown>\n"
+"Last-Translator: mrx5682 <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,8 @@ msgstr ""
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Patrick Eigensatz https://launchpad.net/~p.eigensatz\n"
 "  Peli https://launchpad.net/~peli0101\n"
-"  appricoo https://launchpad.net/~appricoo"
+"  appricoo https://launchpad.net/~appricoo\n"
+"  mrx5682 https://launchpad.net/~mrx5682"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:33(string)
@@ -219,15 +220,15 @@ msgstr "Möchten Sie die bestehende Datei wirklich überschreiben?"
 
 #: tmp_strings.xml:100(string)
 msgid "Word count"
-msgstr ""
+msgstr "Wortanzahl"
 
 #: tmp_strings.xml:102(item)
 msgid "One word."
-msgstr ""
+msgstr "Ein Wort."
 
 #: tmp_strings.xml:103(item)
 msgid "%d words."
-msgstr ""
+msgstr "&d Wörter"
 
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
 #: tmp_strings.xml:107(string)
@@ -357,15 +358,15 @@ msgstr "Erstelle keine Links zu Notizen"
 
 #: tmp_strings.xml:156(string)
 msgid "Character count"
-msgstr ""
+msgstr "Zeichenanzahl"
 
 #: tmp_strings.xml:157(string)
 msgid "Show character count in editor"
-msgstr ""
+msgstr "Zeige Buchstabenzahl im Editor an"
 
 #: tmp_strings.xml:158(string)
 msgid "Do not show character count in editor"
-msgstr ""
+msgstr "Zeige Buchstabenanzahl nicht im Editor an"
 
 #: tmp_strings.xml:160(string)
 msgid "Settings"

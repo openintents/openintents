@@ -50,7 +50,7 @@ msgid "Multi Select"
 msgstr "Selecție multiplă"
 
 #: tmp_strings.xml:39(string) tmp_strings.xml:81(string)
-#: tmp_strings.xml:166(string)
+#: tmp_strings.xml:167(string)
 msgid "Delete"
 msgstr "Șterge"
 
@@ -98,7 +98,7 @@ msgstr "Filtru"
 msgid "Include in media scan"
 msgstr "Include în scanare media"
 
-#: tmp_strings.xml:51(string) tmp_strings.xml:131(string)
+#: tmp_strings.xml:51(string) tmp_strings.xml:132(string)
 msgid "Exclude from media scan"
 msgstr "Exclude din scanare media"
 
@@ -196,288 +196,292 @@ msgid "Do you really want to delete %d files?"
 msgstr "Sigur doriți ștergerea a %d fișiere?"
 
 #: tmp_strings.xml:82(string)
+msgid "ZIP"
+msgstr ""
+
+#: tmp_strings.xml:83(string)
 msgid "Select multiple files"
 msgstr "Selectează fișiere multiple"
 
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:84(string)
 msgid "Please select one or more file(s)."
 msgstr "Selectați unul sau mai multe fișiere."
 
 #. Strings for details table
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:87(string)
 msgid "Type"
 msgstr "Tip"
 
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:88(string)
 msgid "Folder"
 msgstr "Dosar"
 
-#: tmp_strings.xml:88(string)
+#: tmp_strings.xml:89(string)
 msgid "File"
 msgstr "Fișier"
 
-#: tmp_strings.xml:89(string)
+#: tmp_strings.xml:90(string)
 msgid "Other"
 msgstr "Alte"
 
-#: tmp_strings.xml:90(string) tmp_strings.xml:150(item)
+#: tmp_strings.xml:91(string) tmp_strings.xml:151(item)
 msgid "Size"
 msgstr "Dimensiune"
 
-#: tmp_strings.xml:91(string)
+#: tmp_strings.xml:92(string)
 msgid "Permissions"
 msgstr "Permisiuni"
 
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:93(string)
 msgid "Hidden"
 msgstr "Ascuns"
 
-#: tmp_strings.xml:93(string)
+#: tmp_strings.xml:94(string)
 msgid "Last Modified"
 msgstr "Ultimul Modificat"
 
-#: tmp_strings.xml:94(string)
+#: tmp_strings.xml:95(string)
 msgid "Yes"
 msgstr "Da"
 
-#: tmp_strings.xml:95(string)
+#: tmp_strings.xml:96(string)
 msgid "No"
 msgstr "Nu"
 
 #. Construct a unique file name of a file called %s.
-#: tmp_strings.xml:98(string)
+#: tmp_strings.xml:99(string)
 msgid "Copy of %s"
 msgstr "Copie a %s"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
-#: tmp_strings.xml:101(string)
+#: tmp_strings.xml:102(string)
 msgid "Copy %1$d of %2$s"
 msgstr "Copiază %1$d din %2$s"
 
-#: tmp_strings.xml:103(string)
+#: tmp_strings.xml:104(string)
 msgid "This folder will be included in the next media scan."
 msgstr "Acest dosar va fi inclus în următoarea scanare media."
 
-#: tmp_strings.xml:104(string)
+#: tmp_strings.xml:105(string)
 msgid "This folder will be excluded during the next media scan."
 msgstr "Acest dosar va fi exclus în timpul următoarei scanări media."
 
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:107(string)
 msgid "Could not create new folder."
 msgstr "Nu s-a putut crea un dosar nou."
 
-#: tmp_strings.xml:107(string)
+#: tmp_strings.xml:108(string)
 msgid "Could not delete file."
 msgstr "Nu s-a putut șterge fișierul."
 
-#: tmp_strings.xml:108(string)
+#: tmp_strings.xml:109(string)
 msgid "Could not delete folder '%s'."
 msgstr "Nu s-a putut șterge dosarul '%s'."
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:110(string)
 msgid "Could not rename file."
 msgstr "Nu s-a putut redenumi fișierul."
 
-#: tmp_strings.xml:110(string)
+#: tmp_strings.xml:111(string)
 msgid "Could not rename folder."
 msgstr "Nu s-a putut redenumi dosarul."
 
-#: tmp_strings.xml:111(string)
+#: tmp_strings.xml:112(string)
 msgid "Could not move file."
 msgstr "Nu s-a putut muta fișierul."
 
-#: tmp_strings.xml:112(string)
+#: tmp_strings.xml:113(string)
 msgid "Could not move folder."
 msgstr "Nu s-a putut muta dosarul."
 
-#: tmp_strings.xml:113(string)
+#: tmp_strings.xml:114(string)
 msgid "Could not copy file."
 msgstr "Nu s-a putut copia fișierul."
 
-#: tmp_strings.xml:114(string)
+#: tmp_strings.xml:115(string)
 msgid "File does not exist."
 msgstr "Fișierul nu există."
 
-#: tmp_strings.xml:115(string)
+#: tmp_strings.xml:116(string)
 msgid "Could not delete child file '%s'."
 msgstr "Nu s-a putut șterge sub-fișierul „%s”."
 
-#: tmp_strings.xml:116(string)
+#: tmp_strings.xml:117(string)
 msgid "An error occurred:"
 msgstr "A apărut o eroare:"
 
-#: tmp_strings.xml:117(string)
+#: tmp_strings.xml:118(string)
 msgid "Could not change media scan settings."
 msgstr "Nu s-au putut schimba configurările scanării media."
 
-#: tmp_strings.xml:119(string)
+#: tmp_strings.xml:120(string)
 msgid "No application available for sending."
 msgstr "Nu există aplicație pentru trimitere."
 
-#: tmp_strings.xml:121(string)
+#: tmp_strings.xml:122(string)
 msgid "Application not available"
 msgstr "Aplicație indisponibilă"
 
 #. Menu item for Settings
-#: tmp_strings.xml:127(string)
+#: tmp_strings.xml:128(string)
 msgid "Settings"
 msgstr "Configurări"
 
 #. Category for preferences.
-#: tmp_strings.xml:130(string)
+#: tmp_strings.xml:131(string)
 msgid "Advanced features"
 msgstr "Funcții avansate"
 
-#: tmp_strings.xml:132(string)
+#: tmp_strings.xml:133(string)
 msgid "Show menu item to exclude folders from media scan."
 msgstr "Afișează elementul meniu pentru a exclude dosare din scanarea media."
 
-#: tmp_strings.xml:133(string)
+#: tmp_strings.xml:134(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr "Ascunde elementul meniu pentru a exclude dosare din scanarea media."
 
-#: tmp_strings.xml:135(string)
+#: tmp_strings.xml:136(string)
 msgid "Show all warnings"
 msgstr "Afișează toate avertizările"
 
-#: tmp_strings.xml:136(string)
+#: tmp_strings.xml:137(string)
 msgid "Show all warning messages"
 msgstr "Afișează toate mesajele avertizărilor"
 
-#: tmp_strings.xml:137(string)
+#: tmp_strings.xml:138(string)
 msgid "Suppress warning messages"
 msgstr "Suprimă mesajele avertizărilor"
 
-#: tmp_strings.xml:139(string) tmp_strings.xml:140(string)
+#: tmp_strings.xml:140(string) tmp_strings.xml:141(string)
 msgid "Display hidden files"
 msgstr "Arată toate fișierele ascunse"
 
-#: tmp_strings.xml:141(string)
+#: tmp_strings.xml:142(string)
 msgid "Hide hidden files"
 msgstr "Ascunde fișierele ascunse"
 
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:144(string)
 msgid "Sort settings"
 msgstr "Configurări sortare"
 
-#: tmp_strings.xml:144(string)
+#: tmp_strings.xml:145(string)
 msgid "Sort by"
 msgstr "Sortează după"
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:146(string)
 msgid "In ascending order"
 msgstr "În ordine ascendentă"
 
-#: tmp_strings.xml:146(string)
+#: tmp_strings.xml:147(string)
 msgid "Sort in ascending order"
 msgstr "Sortează în ordine ascendentă"
 
-#: tmp_strings.xml:147(string)
+#: tmp_strings.xml:148(string)
 msgid "Sort in descending order"
 msgstr "Sotează în ordine descendentă"
 
-#: tmp_strings.xml:149(item)
+#: tmp_strings.xml:150(item)
 msgid "Name"
 msgstr "Nume"
 
-#: tmp_strings.xml:151(item)
+#: tmp_strings.xml:152(item)
 msgid "Last modified"
 msgstr "Modificat ultima dată"
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
-#: tmp_strings.xml:158(string)
+#: tmp_strings.xml:159(string)
 msgid "You haven't picked any file."
 msgstr "Nu ați ales niciun fișier."
 
-#: tmp_strings.xml:159(string)
+#: tmp_strings.xml:160(string)
 msgid "An error occured."
 msgstr "A apărut o eroare."
 
-#: tmp_strings.xml:160(string)
+#: tmp_strings.xml:161(string)
 msgid "File successfully saved!"
 msgstr "Fișierul a fost salvat cu succes!"
 
-#: tmp_strings.xml:164(string)
+#: tmp_strings.xml:165(string)
 msgid "Bookmarks"
 msgstr "Semne de carte"
 
-#: tmp_strings.xml:165(string)
+#: tmp_strings.xml:166(string)
 msgid "Cancel"
 msgstr "Anulează"
 
-#: tmp_strings.xml:167(string)
+#: tmp_strings.xml:168(string)
 msgid "Select bookmarks to delete"
 msgstr "Selectează semnele de carte care să fie șterse"
 
-#: tmp_strings.xml:168(string)
+#: tmp_strings.xml:169(string)
 msgid "Manage bookmarks"
 msgstr "Gestionaţi semnele de carte"
 
-#: tmp_strings.xml:169(string)
+#: tmp_strings.xml:170(string)
 msgid "Bookmark added"
 msgstr "Semn de carte adăugat"
 
-#: tmp_strings.xml:170(string)
+#: tmp_strings.xml:171(string)
 msgid "Bookmarked destination not found."
 msgstr "Destinația semnului de carte nu a fost găsită."
 
-#: tmp_strings.xml:171(string)
+#: tmp_strings.xml:172(string)
 msgid "Selected bookmarks deleted"
 msgstr "Selectează semnele de carte șterse"
 
-#: tmp_strings.xml:172(string)
+#: tmp_strings.xml:173(string)
 msgid "This file is already bookmarked"
 msgstr "Acest fișier este deja semn de carte."
 
 #. ***************************
 #.              Strings for the 'Compressing' and 'Extracting' feature
 #.           ***************************
-#: tmp_strings.xml:178(string)
+#: tmp_strings.xml:179(string)
 msgid "Item compressed successfully"
 msgstr "Element comprimat cu succes"
 
-#: tmp_strings.xml:179(string)
+#: tmp_strings.xml:180(string)
 msgid "Could not compress the item"
 msgstr "Nu s-a putut comprima elementul"
 
-#: tmp_strings.xml:180(string)
+#: tmp_strings.xml:181(string)
 msgid "Compress into archive:"
 msgstr "Comprimă într-o arhivă"
 
-#: tmp_strings.xml:181(string)
+#: tmp_strings.xml:182(string)
 msgid "Item extracted successfully"
 msgstr "Element extras cu succes"
 
-#: tmp_strings.xml:182(string)
+#: tmp_strings.xml:183(string)
 msgid "Could not extract the item"
 msgstr "Nu s-a putut extrage elementul"
 
-#: tmp_strings.xml:183(string)
+#: tmp_strings.xml:184(string)
 msgid "Extract into folder:"
 msgstr "Extrage în dosarul:"
 
-#: tmp_strings.xml:184(string)
+#: tmp_strings.xml:185(string)
 msgid "Select folder to extract into"
 msgstr "Selectează dosarul în care se extrage"
 
-#: tmp_strings.xml:185(string)
+#: tmp_strings.xml:186(string)
 msgid "Extract here"
 msgstr "Extrage aici"
 
-#: tmp_strings.xml:186(string)
+#: tmp_strings.xml:187(string)
 msgid "Extracting..."
 msgstr "Se extrage..."
 
-#: tmp_strings.xml:187(string)
+#: tmp_strings.xml:188(string)
 msgid "Compressing..."
 msgstr "Se comprimă..."
 
-#: tmp_strings.xml:188(string)
+#: tmp_strings.xml:189(string)
 msgid "File %s exists. Do you want to overwrite it?"
 msgstr "Fișierul %s există. Doriți să îl suprascrieți?"
 
-#: tmp_strings.xml:190(string)
+#: tmp_strings.xml:191(string)
 msgid "Do you want to change the file extension?"
 msgstr "Doriți să modificați extensia fișierului?"

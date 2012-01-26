@@ -781,14 +781,12 @@ msgid "While not downloaded, default location will be used."
 msgstr "जब डाऊनलोड माहि किया गया, तब डिफ़ॉल्ट जगह इस्तेमाल होगी."
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
-msgstr "अभी तक कोई बैकअप नहीं हुआ है| क्या आप अभी बैकअप करना चाहेंगे?"
+msgstr ""
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "बैकुप नाकाम हुआ:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

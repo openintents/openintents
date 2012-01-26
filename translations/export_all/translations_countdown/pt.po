@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: Sérgio Marques <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -23,19 +23,22 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Almufadado https://launchpad.net/~almufadado\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  PresuntoRJ https://launchpad.net/~fabio-tleitao\n"
-"  Tiago Silva https://launchpad.net/~tiagosilva"
+"  Sérgio Marques https://launchpad.net/~sergio+marques\n"
+"  Tiago Silva https://launchpad.net/~tiagosilva\n"
+"  nglnx https://launchpad.net/~nglnx"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
 msgid "Set multiple countdowns with OI Countdown."
-msgstr ""
+msgstr "Definir contagens decrescentes com o OI Countdown."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string) tmp_strings.xml:56(string)
 msgid "OI Countdown"
-msgstr ""
+msgstr "OI Countdown"
 
 #: tmp_strings.xml:19(string)
 msgid "Start"
@@ -47,7 +50,7 @@ msgstr "Parar"
 
 #: tmp_strings.xml:21(string)
 msgid "Modify"
-msgstr "Alterar"
+msgstr "Modificar"
 
 #: tmp_strings.xml:22(string)
 msgid "Continue"
@@ -63,7 +66,7 @@ msgstr "Lista de contagens decrescentes"
 
 #: tmp_strings.xml:27(string)
 msgid "Delete"
-msgstr "Apagar"
+msgstr "Eliminar"
 
 #: tmp_strings.xml:28(string)
 msgid "Edit"
@@ -85,12 +88,12 @@ msgstr "Definir data"
 #. Menu item: Set the countdown by setting a duration.
 #: tmp_strings.xml:36(string)
 msgid "Set duration"
-msgstr "Definir a duração"
+msgstr "Definir duração"
 
 #. Menu item: Set the action to be performed at the end of the countdown.
 #: tmp_strings.xml:39(string)
 msgid "Set action"
-msgstr "Definir a acção"
+msgstr "Definir ação"
 
 #: tmp_strings.xml:41(string)
 msgid "e.g. pizza"
@@ -134,17 +137,17 @@ msgstr "Notificação na barra de estado"
 #. Checkbox label whether to launch automation task through the status bar
 #: tmp_strings.xml:70(string)
 msgid "Launch through status bar"
-msgstr "Executar através da área de notificação"
+msgstr "Iniciar através da área de notificação"
 
 #. Checkbox label whether to use the ring tone for notifications.
 #: tmp_strings.xml:73(string)
 msgid "Ring"
-msgstr "Som de chamada"
+msgstr "Toque"
 
 #. Checkbox label whether to vibrate.
 #: tmp_strings.xml:76(string)
 msgid "Vibrate"
-msgstr "Vibrar"
+msgstr "Vibração"
 
 #. Checkbox label whether to flash light for notifications.
 #: tmp_strings.xml:79(string)
@@ -154,17 +157,17 @@ msgstr "Aviso luminoso"
 #. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
 #: tmp_strings.xml:82(string)
 msgid "Action: %s"
-msgstr "Acção: %s"
+msgstr "Ação: %s"
 
 #. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
 #: tmp_strings.xml:85(string)
 msgid "Select action: %s"
-msgstr "Seleccionar acção: %s"
+msgstr "Selecione a ação: %s"
 
 #. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
 #: tmp_strings.xml:88(string)
 msgid "Select countdown: %s"
-msgstr "Seleccionar cont. decrescente: %s"
+msgstr "Selecione a contagem decrescente: %s"
 
 #. Button to test an action.
 #: tmp_strings.xml:91(string)
@@ -174,7 +177,7 @@ msgstr "Testar"
 #. Button to view / edit settings.
 #: tmp_strings.xml:94(string)
 msgid "Settings"
-msgstr "Preferências"
+msgstr "Definições"
 
 #. Button label to dismiss notification after countdown ended.
 #: tmp_strings.xml:97(string)
@@ -204,113 +207,113 @@ msgstr "Atalhos"
 #. Options in "Select action" dialog box; Title of the group containing the list of all automation tasks
 #: tmp_strings.xml:112(string)
 msgid "Automation tasks"
-msgstr "Tarefas de Automatização"
+msgstr "Tarefas automáticas"
 
 #. Title of dialog when user is selecting shortcut to add as activity
 #: tmp_strings.xml:116(string)
 msgid "Select shortcut"
-msgstr "Seleccionar Atalho"
+msgstr "Selecione o atalho"
 
 #. Title of dialog when user is selecting shortcut to add as activity
 #: tmp_strings.xml:119(string)
 msgid "Select automation task"
-msgstr "Seleccionar Tarefa de Automatização"
+msgstr "Selecione a tarefa automática"
 
 #. The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action.
 #: tmp_strings.xml:122(string)
 msgid "Select activity"
-msgstr "Seleccionar Actividade"
+msgstr "Selecione a atividade"
 
 #. Automation action to start a countdown.
 #: tmp_strings.xml:128(item)
 msgid "Start countdown"
-msgstr ""
+msgstr "Iniciar contagem"
 
 #. Automation action to stop a countdown.
 #: tmp_strings.xml:130(item)
 msgid "Stop countdown"
-msgstr ""
+msgstr "Parar contagem"
 
 #. Preference section title for general settings regarding the countdown
 #: tmp_strings.xml:138(string)
 msgid "Countdown"
-msgstr ""
+msgstr "Contagem decrescente"
 
 #: tmp_strings.xml:140(string)
 msgid "Extensions"
-msgstr ""
+msgstr "Extensões"
 
 #: tmp_strings.xml:141(string)
 msgid "Get new extensions"
-msgstr ""
+msgstr "Obter extensões"
 
 #: tmp_strings.xml:142(string)
 msgid "Search for extensions online."
-msgstr ""
+msgstr "Procurar extensões na Web."
 
 #: tmp_strings.xml:143(string)
 msgid "Get extensions from"
-msgstr ""
+msgstr "Obter extensões em"
 
 #: tmp_strings.xml:144(string)
 msgid "Android Market"
-msgstr ""
+msgstr "Android Market"
 
 #: tmp_strings.xml:145(string)
 msgid "Search for extensions at Android Market."
-msgstr ""
+msgstr "Procurar extensões no Android Market."
 
 #: tmp_strings.xml:146(string)
 msgid "OpenIntents"
-msgstr ""
+msgstr "OpenIntents"
 
 #: tmp_strings.xml:147(string)
 msgid "Get extensions from the OpenIntents homepage."
-msgstr ""
+msgstr "Obter extensões na página OpenIntents."
 
 #. Preference title: Set the notification timeout (2 sec, 10 min, ...)
 #: tmp_strings.xml:150(string)
 msgid "Notification timeout"
-msgstr ""
+msgstr "Duração da notificação"
 
 #. Preference summary: Set notification timeout (2 sec, 10 min, ...)
 #: tmp_strings.xml:153(string)
 msgid "Timeout for ring, vibrate, or light notification."
-msgstr ""
+msgstr "Duração para toque, vibração ou aviso luminoso."
 
 #. Dialog title to set timeout for notification
 #: tmp_strings.xml:156(string)
 msgid "Set timeout"
-msgstr ""
+msgstr "Definir duração"
 
 #: tmp_strings.xml:160(item)
 msgid "2 seconds"
-msgstr ""
+msgstr "2 segundos"
 
 #: tmp_strings.xml:161(item)
 msgid "5 seconds"
-msgstr ""
+msgstr "5 segundos"
 
 #: tmp_strings.xml:162(item)
 msgid "10 seconds"
-msgstr ""
+msgstr "10 segundos"
 
 #: tmp_strings.xml:163(item)
 msgid "30 seconds"
-msgstr ""
+msgstr "30 segundos"
 
 #: tmp_strings.xml:164(item)
 msgid "1 minute"
-msgstr ""
+msgstr "1 minuto"
 
 #: tmp_strings.xml:165(item)
 msgid "5 minutes"
-msgstr ""
+msgstr "5 minutos"
 
 #: tmp_strings.xml:166(item)
 msgid "10 minutes"
-msgstr ""
+msgstr "10 minutos"
 
 #: tmp_strings.xml:170(string)
 msgid "OI Countdown doesn't have the permission for this task."
-msgstr ""
+msgstr "O OI Countdown não possui as permissões para esta tarefa."

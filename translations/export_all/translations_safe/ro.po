@@ -804,16 +804,12 @@ msgid "While not downloaded, default location will be used."
 msgstr "Cât timp nu este descărcat, se va utiliza locația implicită."
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
 msgstr ""
-"Nicio copiere de rezervă nu a fost efectuată pană acum. Doriți să efectuați "
-"una acum ?"
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "Copierea de rezervă a eșuat"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

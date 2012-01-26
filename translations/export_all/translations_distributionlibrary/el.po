@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Giannis Konstantinidis <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,8 @@ msgstr "OI Βιβλιοθήκη Διανομής"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis"
+"  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
 #. 		Translation should be short, since this is a title.

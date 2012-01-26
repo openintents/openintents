@@ -1,0 +1,482 @@
+# English (United Kingdom) translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: mrx5682 <Unknown>\n"
+"Language-Team: English (United Kingdom) <en_GB@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:23(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  mrx5682 https://launchpad.net/~mrx5682"
+
+#. Short explanation of the application (max. 80 characters)
+#: tmp_strings.xml:26(string)
+msgid "Manage files on the SD card with OI File Manager."
+msgstr "Manage files on the SD card with OI File Manager."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:32(string)
+msgid "OI File Manager"
+msgstr "OI File Manager"
+
+#: tmp_strings.xml:34(string)
+msgid "New Folder"
+msgstr "New Folder"
+
+#. Multi select option menu
+#: tmp_strings.xml:37(string)
+msgid "Multi Select"
+msgstr "Multi Select"
+
+#: tmp_strings.xml:39(string) tmp_strings.xml:81(string)
+#: tmp_strings.xml:167(string)
+msgid "Delete"
+msgstr "Delete"
+
+#: tmp_strings.xml:40(string)
+msgid "Rename"
+msgstr "Rename"
+
+#: tmp_strings.xml:41(string)
+msgid "Send"
+msgstr "Send"
+
+#: tmp_strings.xml:42(string)
+msgid "Open"
+msgstr "Open"
+
+#: tmp_strings.xml:43(string) tmp_strings.xml:79(string)
+msgid "Move"
+msgstr "Move"
+
+#: tmp_strings.xml:44(string) tmp_strings.xml:80(string)
+msgid "Copy"
+msgstr "Copy"
+
+#: tmp_strings.xml:45(string)
+msgid "Details"
+msgstr "Details"
+
+#: tmp_strings.xml:46(string)
+msgid "More"
+msgstr "More"
+
+#: tmp_strings.xml:47(string)
+msgid "Compress (ZIP)"
+msgstr "Compress (ZIP)"
+
+#: tmp_strings.xml:48(string)
+msgid "Extract (ZIP)"
+msgstr "Extract (ZIP)"
+
+#: tmp_strings.xml:49(string)
+msgid "Filter"
+msgstr "Filter"
+
+#: tmp_strings.xml:50(string)
+msgid "Include in media scan"
+msgstr "Include in media scan"
+
+#: tmp_strings.xml:51(string) tmp_strings.xml:132(string)
+msgid "Exclude from media scan"
+msgstr "Exclude from media scan"
+
+#: tmp_strings.xml:52(string)
+msgid "Add to bookmarks"
+msgstr "Add to bookmarks"
+
+#: tmp_strings.xml:53(string)
+msgid "Refresh"
+msgstr "Refresh"
+
+#: tmp_strings.xml:55(string)
+msgid "Create new folder"
+msgstr "Create new folder"
+
+#: tmp_strings.xml:56(string) tmp_strings.xml:57(string)
+msgid "Folder name"
+msgstr "Folder name"
+
+#: tmp_strings.xml:58(string)
+msgid "Extension (with '.')"
+msgstr "Extension (with '.')"
+
+#: tmp_strings.xml:59(string)
+msgid "This folder is empty."
+msgstr "This folder is empty."
+
+#: tmp_strings.xml:60(string)
+msgid "Do you really want to delete %s?"
+msgstr "Do you really want to delete %s?"
+
+#: tmp_strings.xml:61(string)
+msgid "File deleted."
+msgstr "File deleted."
+
+#: tmp_strings.xml:62(string)
+msgid "Folder deleted."
+msgstr "Folder deleted."
+
+#: tmp_strings.xml:63(string)
+msgid "File renamed."
+msgstr "File renamed."
+
+#: tmp_strings.xml:64(string)
+msgid "Folder renamed."
+msgstr "Folder renamed."
+
+#: tmp_strings.xml:65(string)
+msgid "File moved."
+msgstr "File moved."
+
+#: tmp_strings.xml:66(string)
+msgid "Folder moved."
+msgstr "Folder moved."
+
+#: tmp_strings.xml:67(string)
+msgid "File copied."
+msgstr "File copied."
+
+#: tmp_strings.xml:68(string)
+msgid "Select folder to move to"
+msgstr "Select folder to move to"
+
+#: tmp_strings.xml:69(string)
+msgid "Move here"
+msgstr "Move here"
+
+#: tmp_strings.xml:70(string)
+msgid "Select folder to copy to"
+msgstr "Select folder to copy to"
+
+#: tmp_strings.xml:71(string)
+msgid "Copy here"
+msgstr "Copy here"
+
+#: tmp_strings.xml:72(string)
+msgid "Deleting files..."
+msgstr "Deleting files..."
+
+#: tmp_strings.xml:73(string)
+msgid "Warning"
+msgstr "Warning"
+
+#: tmp_strings.xml:74(string)
+msgid "Some of the following options may not work."
+msgstr "Some of the following options may not work."
+
+#: tmp_strings.xml:75(string)
+msgid "Show warning again"
+msgstr "Show warning again"
+
+#. Strings for a multi select feature
+#: tmp_strings.xml:78(string)
+msgid "Do you really want to delete %d files?"
+msgstr "Do you really want to delete %d files?"
+
+#: tmp_strings.xml:82(string)
+msgid "ZIP"
+msgstr ""
+
+#: tmp_strings.xml:83(string)
+msgid "Select multiple files"
+msgstr "Select multiple files"
+
+#: tmp_strings.xml:84(string)
+msgid "Please select one or more file(s)."
+msgstr "Please select one or more file(s)."
+
+#. Strings for details table
+#: tmp_strings.xml:87(string)
+msgid "Type"
+msgstr "Type"
+
+#: tmp_strings.xml:88(string)
+msgid "Folder"
+msgstr "Folder"
+
+#: tmp_strings.xml:89(string)
+msgid "File"
+msgstr "File"
+
+#: tmp_strings.xml:90(string)
+msgid "Other"
+msgstr "Other"
+
+#: tmp_strings.xml:91(string) tmp_strings.xml:151(item)
+msgid "Size"
+msgstr "Size"
+
+#: tmp_strings.xml:92(string)
+msgid "Permissions"
+msgstr "Permissions"
+
+#: tmp_strings.xml:93(string)
+msgid "Hidden"
+msgstr "Hidden"
+
+#: tmp_strings.xml:94(string)
+msgid "Last Modified"
+msgstr "Last Modified"
+
+#: tmp_strings.xml:95(string)
+msgid "Yes"
+msgstr "Yes"
+
+#: tmp_strings.xml:96(string)
+msgid "No"
+msgstr "No"
+
+#. Construct a unique file name of a file called %s.
+#: tmp_strings.xml:99(string)
+msgid "Copy of %s"
+msgstr "Copy of %s"
+
+#. Construct a unique file name with number %1$d of a file called %2$s.
+#: tmp_strings.xml:102(string)
+msgid "Copy %1$d of %2$s"
+msgstr "Copy %1$d of %2$s"
+
+#: tmp_strings.xml:104(string)
+msgid "This folder will be included in the next media scan."
+msgstr "This folder will be included in the next media scan."
+
+#: tmp_strings.xml:105(string)
+msgid "This folder will be excluded during the next media scan."
+msgstr "This folder will be excluded during the next media scan."
+
+#: tmp_strings.xml:107(string)
+msgid "Could not create new folder."
+msgstr "Could not create new folder."
+
+#: tmp_strings.xml:108(string)
+msgid "Could not delete file."
+msgstr "Could not delete file."
+
+#: tmp_strings.xml:109(string)
+msgid "Could not delete folder '%s'."
+msgstr "Could not delete folder '%s'."
+
+#: tmp_strings.xml:110(string)
+msgid "Could not rename file."
+msgstr "Could not rename file."
+
+#: tmp_strings.xml:111(string)
+msgid "Could not rename folder."
+msgstr "Could not rename folder."
+
+#: tmp_strings.xml:112(string)
+msgid "Could not move file."
+msgstr "Could not move file."
+
+#: tmp_strings.xml:113(string)
+msgid "Could not move folder."
+msgstr "Could not move folder."
+
+#: tmp_strings.xml:114(string)
+msgid "Could not copy file."
+msgstr "Could not copy file."
+
+#: tmp_strings.xml:115(string)
+msgid "File does not exist."
+msgstr "File does not exist."
+
+#: tmp_strings.xml:116(string)
+msgid "Could not delete child file '%s'."
+msgstr "Could not delete child file '%s'."
+
+#: tmp_strings.xml:117(string)
+msgid "An error occurred:"
+msgstr "An error occurred:"
+
+#: tmp_strings.xml:118(string)
+msgid "Could not change media scan settings."
+msgstr "Could not change media scan settings."
+
+#: tmp_strings.xml:120(string)
+msgid "No application available for sending."
+msgstr "No application available for sending."
+
+#: tmp_strings.xml:122(string)
+msgid "Application not available"
+msgstr "Application not available"
+
+#. Menu item for Settings
+#: tmp_strings.xml:128(string)
+msgid "Settings"
+msgstr "Settings"
+
+#. Category for preferences.
+#: tmp_strings.xml:131(string)
+msgid "Advanced features"
+msgstr "Advanced features"
+
+#: tmp_strings.xml:133(string)
+msgid "Show menu item to exclude folders from media scan."
+msgstr "Show menu item to exclude folders from media scan."
+
+#: tmp_strings.xml:134(string)
+msgid "Hide menu item to exclude folders from media scan."
+msgstr "Hide menu item to exclude folders from media scan."
+
+#: tmp_strings.xml:136(string)
+msgid "Show all warnings"
+msgstr "Show all warnings"
+
+#: tmp_strings.xml:137(string)
+msgid "Show all warning messages"
+msgstr "Show all warning messages"
+
+#: tmp_strings.xml:138(string)
+msgid "Suppress warning messages"
+msgstr "Suppress warning messages"
+
+#: tmp_strings.xml:140(string) tmp_strings.xml:141(string)
+msgid "Display hidden files"
+msgstr "Display hidden files"
+
+#: tmp_strings.xml:142(string)
+msgid "Hide hidden files"
+msgstr "Hide hidden files"
+
+#: tmp_strings.xml:144(string)
+msgid "Sort settings"
+msgstr "Sort settings"
+
+#: tmp_strings.xml:145(string)
+msgid "Sort by"
+msgstr "Sort by"
+
+#: tmp_strings.xml:146(string)
+msgid "In ascending order"
+msgstr "In ascending order"
+
+#: tmp_strings.xml:147(string)
+msgid "Sort in ascending order"
+msgstr "Sort in ascending order"
+
+#: tmp_strings.xml:148(string)
+msgid "Sort in descending order"
+msgstr "Sort in descending order"
+
+#: tmp_strings.xml:150(item)
+msgid "Name"
+msgstr "Name"
+
+#: tmp_strings.xml:152(item)
+msgid "Last modified"
+msgstr "Last modified"
+
+#. ***************************
+#.    		 Strings for the 'Save as' feature
+#.     	 ***************************
+#: tmp_strings.xml:159(string)
+msgid "You haven't picked any file."
+msgstr "You haven't picked any file."
+
+#: tmp_strings.xml:160(string)
+msgid "An error occured."
+msgstr "An error occured."
+
+#: tmp_strings.xml:161(string)
+msgid "File successfully saved!"
+msgstr "File successfully saved!"
+
+#: tmp_strings.xml:165(string)
+msgid "Bookmarks"
+msgstr "Bookmarks"
+
+#: tmp_strings.xml:166(string)
+msgid "Cancel"
+msgstr "Cancel"
+
+#: tmp_strings.xml:168(string)
+msgid "Select bookmarks to delete"
+msgstr "Select bookmarks to delete"
+
+#: tmp_strings.xml:169(string)
+msgid "Manage bookmarks"
+msgstr "Manage bookmarks"
+
+#: tmp_strings.xml:170(string)
+msgid "Bookmark added"
+msgstr "Bookmark added"
+
+#: tmp_strings.xml:171(string)
+msgid "Bookmarked destination not found."
+msgstr "Bookmarked destination not found."
+
+#: tmp_strings.xml:172(string)
+msgid "Selected bookmarks deleted"
+msgstr "Selected bookmarks deleted"
+
+#: tmp_strings.xml:173(string)
+msgid "This file is already bookmarked"
+msgstr "This file is already bookmarked"
+
+#. ***************************
+#.              Strings for the 'Compressing' and 'Extracting' feature
+#.           ***************************
+#: tmp_strings.xml:179(string)
+msgid "Item compressed successfully"
+msgstr "Item compressed successfully"
+
+#: tmp_strings.xml:180(string)
+msgid "Could not compress the item"
+msgstr "Could not compress the item"
+
+#: tmp_strings.xml:181(string)
+msgid "Compress into archive:"
+msgstr "Compress into archive:"
+
+#: tmp_strings.xml:182(string)
+msgid "Item extracted successfully"
+msgstr "Item extracted successfully"
+
+#: tmp_strings.xml:183(string)
+msgid "Could not extract the item"
+msgstr "Could not extract the item"
+
+#: tmp_strings.xml:184(string)
+msgid "Extract into folder:"
+msgstr "Extract into folder:"
+
+#: tmp_strings.xml:185(string)
+msgid "Select folder to extract into"
+msgstr "Select folder to extract into"
+
+#: tmp_strings.xml:186(string)
+msgid "Extract here"
+msgstr "Extract here"
+
+#: tmp_strings.xml:187(string)
+msgid "Extracting..."
+msgstr "Extracting..."
+
+#: tmp_strings.xml:188(string)
+msgid "Compressing..."
+msgstr "Compressing..."
+
+#: tmp_strings.xml:189(string)
+msgid "File %s exists. Do you want to overwrite it?"
+msgstr "File %s exists. Do you want to overwrite it?"
+
+#: tmp_strings.xml:191(string)
+msgid "Do you want to change the file extension?"
+msgstr "Do you want to change the file extension?"

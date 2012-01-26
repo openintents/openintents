@@ -790,14 +790,12 @@ msgid "While not downloaded, default location will be used."
 msgstr "Dokud není stažen, bude použit výchozí soubor"
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
-msgstr "Žádná záloha zatím nebyla provedena. Chcete zálohovat nyní?"
+msgstr ""
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "Záloha se nezdařila:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

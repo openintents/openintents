@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: Sérgio Marques <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -25,6 +25,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Joao Nogueira https://launchpad.net/~whipx\n"
 "  Peli https://launchpad.net/~peli0101\n"
+"  Sérgio Marques https://launchpad.net/~sergio+marques\n"
 "  Tiago Silva https://launchpad.net/~tiagosilva\n"
 "  miguel narciso https://launchpad.net/~as1309831\n"
 "  nglnx https://launchpad.net/~nglnx"
@@ -32,42 +33,42 @@ msgstr ""
 #. Explanation what this application does. It is a menu extension for other applications.
 #: tmp_strings.xml:33(string)
 msgid "A standalone about dialog that is shared between apps."
-msgstr "Um ficheiro de informação partilhado entre as aplicações."
+msgstr "Uma aplicação de informações transversais das aplicações."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:39(string)
 msgid "OI File Manager"
-msgstr ""
+msgstr "OI File Manager"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:41(string)
 msgid "OI Shopping List"
-msgstr ""
+msgstr "OI Shopping List"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:43(string)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI Notepad"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:45(string)
 msgid "OI Safe"
-msgstr ""
+msgstr "OI Safe"
 
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:48(string)
 msgid "Launch %s and select menu &gt; About."
-msgstr ""
+msgstr "Inicie o %s e selecione o menu &gt; Sobre"
 
 #. Application name. Can be localized, like "OI About", or "OI Info". 
 #. 	   This is an extension that shows an about dialog or info dialog.
 #: tmp_strings.xml:55(string)
 msgid "OI About"
-msgstr "Sobre o OI"
+msgstr "OI About"
 
 #: tmp_strings.xml:57(string)
 msgid "About OI About itself"
-msgstr "Sobre o próprio OI"
+msgstr "Sobre OI About"
 
 #. About some application, where "%s" is the name of another application.
 #: tmp_strings.xml:60(string)
@@ -88,11 +89,11 @@ msgstr "Traduzido por"
 
 #: tmp_strings.xml:65(string)
 msgid "Artwork by"
-msgstr "Arte Gráfica por"
+msgstr "Ilustrações por"
 
 #: tmp_strings.xml:66(string)
 msgid "International translations by"
-msgstr ""
+msgstr "Traduções internacionais por"
 
 #: tmp_strings.xml:67(string)
 msgid "Credits"
@@ -104,11 +105,11 @@ msgstr "Licença"
 
 #: tmp_strings.xml:69(string)
 msgid "General Info"
-msgstr "Informação geral"
+msgstr "Informações gerais"
 
 #: tmp_strings.xml:70(string)
 msgid "Recent changes"
-msgstr ""
+msgstr "Alterações recentes"
 
 #: tmp_strings.xml:72(string)
 msgid "No information available."
@@ -116,176 +117,176 @@ msgstr "Informação não disponivel."
 
 #: tmp_strings.xml:79(item)
 msgid "Arabic"
-msgstr ""
+msgstr "Árabe"
 
 #: tmp_strings.xml:80(item)
 msgid "Belarusian"
-msgstr ""
+msgstr "Bielorrusso"
 
 #: tmp_strings.xml:81(item)
 msgid "Bulgarian"
-msgstr ""
+msgstr "Búlgaro"
 
 #: tmp_strings.xml:82(item)
 msgid "Catalan"
-msgstr ""
+msgstr "Catalão"
 
 #: tmp_strings.xml:83(item)
 msgid "Czech"
-msgstr ""
+msgstr "Checo"
 
 #: tmp_strings.xml:84(item)
 msgid "Danish"
-msgstr ""
+msgstr "Dinamarquês"
 
 #: tmp_strings.xml:85(item)
 msgid "German"
-msgstr ""
+msgstr "Alemão"
 
 #: tmp_strings.xml:86(item)
 msgid "Greek"
-msgstr ""
+msgstr "Grego"
 
 #: tmp_strings.xml:87(item)
 msgid "English"
-msgstr ""
+msgstr "Inglês"
 
 #: tmp_strings.xml:88(item)
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "Inglês (Reino Unido)"
 
 #: tmp_strings.xml:89(item)
 msgid "Spanish"
-msgstr ""
+msgstr "Espanhol"
 
 #: tmp_strings.xml:90(item)
 msgid "Persian"
-msgstr ""
+msgstr "Persa"
 
 #: tmp_strings.xml:91(item)
 msgid "Finnish"
-msgstr ""
+msgstr "Finlandês"
 
 #: tmp_strings.xml:92(item)
 msgid "Faroese"
-msgstr ""
+msgstr "Faroês"
 
 #: tmp_strings.xml:93(item)
 msgid "French"
-msgstr ""
+msgstr "Francês"
 
 #: tmp_strings.xml:94(item)
 msgid "Hindi"
-msgstr ""
+msgstr "Hindu"
 
 #: tmp_strings.xml:95(item)
 msgid "Croatian"
-msgstr ""
+msgstr "Croata"
 
 #: tmp_strings.xml:96(item)
 msgid "Hungarian"
-msgstr ""
+msgstr "Húngaro"
 
 #: tmp_strings.xml:97(item)
 msgid "Italian"
-msgstr ""
+msgstr "Italiano"
 
 #: tmp_strings.xml:98(item)
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebraico"
 
 #: tmp_strings.xml:99(item)
 msgid "Japanese"
-msgstr ""
+msgstr "Japonês"
 
 #: tmp_strings.xml:100(item)
 msgid "Korean"
-msgstr ""
+msgstr "Coreano"
 
 #: tmp_strings.xml:101(item)
 msgid "Lao"
-msgstr ""
+msgstr "Laoês"
 
 #: tmp_strings.xml:102(item)
 msgid "Latvian"
-msgstr ""
+msgstr "Letão"
 
 #: tmp_strings.xml:103(item)
 msgid "Macedonian"
-msgstr ""
+msgstr "Macedónio"
 
 #: tmp_strings.xml:104(item)
 msgid "Norwegian Bokmal"
-msgstr ""
+msgstr "Norueguês Bokmal"
 
 #: tmp_strings.xml:105(item)
 msgid "Dutch"
-msgstr ""
+msgstr "Holandês"
 
 #: tmp_strings.xml:106(item)
 msgid "Occitan (post 1500)"
-msgstr ""
+msgstr "Occitano (após 1500)"
 
 #: tmp_strings.xml:107(item)
 msgid "Punjabi"
-msgstr ""
+msgstr "Punjabi"
 
 #: tmp_strings.xml:108(item)
 msgid "Polish"
-msgstr ""
+msgstr "Polaco"
 
 #: tmp_strings.xml:109(item)
 msgid "Portuguese"
-msgstr ""
+msgstr "Português"
 
 #: tmp_strings.xml:110(item)
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Português do Brasil"
 
 #: tmp_strings.xml:111(item)
 msgid "Romanian"
-msgstr ""
+msgstr "Romeno"
 
 #: tmp_strings.xml:112(item)
 msgid "Russian"
-msgstr ""
+msgstr "Russo"
 
 #: tmp_strings.xml:113(item)
 msgid "Sardinian"
-msgstr ""
+msgstr "Sardenho"
 
 #: tmp_strings.xml:114(item)
 msgid "Sindhi"
-msgstr ""
+msgstr "Sindhi"
 
 #: tmp_strings.xml:115(item)
 msgid "Slovak"
-msgstr ""
+msgstr "Eslovaco"
 
 #: tmp_strings.xml:116(item)
 msgid "Slovenian"
-msgstr ""
+msgstr "Esloveno"
 
 #: tmp_strings.xml:117(item)
 msgid "Swedish"
-msgstr ""
+msgstr "Sueco"
 
 #: tmp_strings.xml:118(item)
 msgid "Tagalog"
-msgstr ""
+msgstr "Tagaloge"
 
 #: tmp_strings.xml:119(item)
 msgid "Turkish"
-msgstr ""
+msgstr "Turco"
 
 #: tmp_strings.xml:120(item)
 msgid "Uyghur"
-msgstr ""
+msgstr "Uyghur"
 
 #: tmp_strings.xml:121(item)
 msgid "Chinese (Simplified)"
-msgstr ""
+msgstr "Mandarim (Simplificado)"
 
 #: tmp_strings.xml:122(item)
 msgid "Chinese (Traditional)"
-msgstr ""
+msgstr "Mandarim (Tradicional)"

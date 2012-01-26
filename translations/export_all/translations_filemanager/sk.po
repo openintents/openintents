@@ -47,7 +47,7 @@ msgid "Multi Select"
 msgstr "Viacnásobné Označenie"
 
 #: tmp_strings.xml:39(string) tmp_strings.xml:81(string)
-#: tmp_strings.xml:166(string)
+#: tmp_strings.xml:167(string)
 msgid "Delete"
 msgstr "Zmazať"
 
@@ -95,7 +95,7 @@ msgstr "Filter"
 msgid "Include in media scan"
 msgstr "Zahrnúť v prehľadávaní médií"
 
-#: tmp_strings.xml:51(string) tmp_strings.xml:131(string)
+#: tmp_strings.xml:51(string) tmp_strings.xml:132(string)
 msgid "Exclude from media scan"
 msgstr "Vyňať z prehľadávania médií"
 
@@ -193,288 +193,292 @@ msgid "Do you really want to delete %d files?"
 msgstr "Naozaj chcete zmazať %d súborov?"
 
 #: tmp_strings.xml:82(string)
+msgid "ZIP"
+msgstr ""
+
+#: tmp_strings.xml:83(string)
 msgid "Select multiple files"
 msgstr "Označiť viacero súborov"
 
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:84(string)
 msgid "Please select one or more file(s)."
 msgstr "Prosím označte jeden alebo viac súborov."
 
 #. Strings for details table
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:87(string)
 msgid "Type"
 msgstr "Typ"
 
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:88(string)
 msgid "Folder"
 msgstr "Priečinok"
 
-#: tmp_strings.xml:88(string)
+#: tmp_strings.xml:89(string)
 msgid "File"
 msgstr "Súbor"
 
-#: tmp_strings.xml:89(string)
+#: tmp_strings.xml:90(string)
 msgid "Other"
 msgstr "Iné"
 
-#: tmp_strings.xml:90(string) tmp_strings.xml:150(item)
+#: tmp_strings.xml:91(string) tmp_strings.xml:151(item)
 msgid "Size"
 msgstr "Veľkosť"
 
-#: tmp_strings.xml:91(string)
+#: tmp_strings.xml:92(string)
 msgid "Permissions"
 msgstr "Práva"
 
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:93(string)
 msgid "Hidden"
 msgstr "Skryté"
 
-#: tmp_strings.xml:93(string)
+#: tmp_strings.xml:94(string)
 msgid "Last Modified"
 msgstr "Naposledy zmenené"
 
-#: tmp_strings.xml:94(string)
+#: tmp_strings.xml:95(string)
 msgid "Yes"
 msgstr "Áno"
 
-#: tmp_strings.xml:95(string)
+#: tmp_strings.xml:96(string)
 msgid "No"
 msgstr "Nie"
 
 #. Construct a unique file name of a file called %s.
-#: tmp_strings.xml:98(string)
+#: tmp_strings.xml:99(string)
 msgid "Copy of %s"
 msgstr "Kópia z %s"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
-#: tmp_strings.xml:101(string)
+#: tmp_strings.xml:102(string)
 msgid "Copy %1$d of %2$s"
 msgstr "Kopírovať %1$d z %2$s"
 
-#: tmp_strings.xml:103(string)
+#: tmp_strings.xml:104(string)
 msgid "This folder will be included in the next media scan."
 msgstr "Tento priečinok bude zahrnutý v nasledujúcom prehľadávaní médií."
 
-#: tmp_strings.xml:104(string)
+#: tmp_strings.xml:105(string)
 msgid "This folder will be excluded during the next media scan."
 msgstr "Tento priečinok bude vyňatý z nasledujúceho prehľadávania médií."
 
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:107(string)
 msgid "Could not create new folder."
 msgstr "Nebolo možné vytvoriť priečinok."
 
-#: tmp_strings.xml:107(string)
+#: tmp_strings.xml:108(string)
 msgid "Could not delete file."
 msgstr "Nebolo možné zmazať súbor."
 
-#: tmp_strings.xml:108(string)
+#: tmp_strings.xml:109(string)
 msgid "Could not delete folder '%s'."
 msgstr "Nebolo možné zmazať priečinok '%s'."
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:110(string)
 msgid "Could not rename file."
 msgstr "Nebolo možné premenovať súbor."
 
-#: tmp_strings.xml:110(string)
+#: tmp_strings.xml:111(string)
 msgid "Could not rename folder."
 msgstr "Nebolo možné premenovať priečinok."
 
-#: tmp_strings.xml:111(string)
+#: tmp_strings.xml:112(string)
 msgid "Could not move file."
 msgstr "Nebolo možné presunúť súbor."
 
-#: tmp_strings.xml:112(string)
+#: tmp_strings.xml:113(string)
 msgid "Could not move folder."
 msgstr "Nebolo možné presunúť priečinok."
 
-#: tmp_strings.xml:113(string)
+#: tmp_strings.xml:114(string)
 msgid "Could not copy file."
 msgstr "Nebolo možné skopírovať súbor."
 
-#: tmp_strings.xml:114(string)
+#: tmp_strings.xml:115(string)
 msgid "File does not exist."
 msgstr "Súbor neexistuje."
 
-#: tmp_strings.xml:115(string)
+#: tmp_strings.xml:116(string)
 msgid "Could not delete child file '%s'."
 msgstr "Nebolo možné zmazať dcérsky súbor '%s'."
 
-#: tmp_strings.xml:116(string)
+#: tmp_strings.xml:117(string)
 msgid "An error occurred:"
 msgstr "Nastala chyba."
 
-#: tmp_strings.xml:117(string)
+#: tmp_strings.xml:118(string)
 msgid "Could not change media scan settings."
 msgstr "Nebolo možné zmeniť nastavenia prehľadávania médií."
 
-#: tmp_strings.xml:119(string)
+#: tmp_strings.xml:120(string)
 msgid "No application available for sending."
 msgstr "Nie je dostupná žiadna aplikácia pre odosielanie."
 
-#: tmp_strings.xml:121(string)
+#: tmp_strings.xml:122(string)
 msgid "Application not available"
 msgstr "Aplikácia nie je dostupná."
 
 #. Menu item for Settings
-#: tmp_strings.xml:127(string)
+#: tmp_strings.xml:128(string)
 msgid "Settings"
 msgstr "Nastavenia"
 
 #. Category for preferences.
-#: tmp_strings.xml:130(string)
+#: tmp_strings.xml:131(string)
 msgid "Advanced features"
 msgstr "Pokročilé funkcie"
 
-#: tmp_strings.xml:132(string)
+#: tmp_strings.xml:133(string)
 msgid "Show menu item to exclude folders from media scan."
 msgstr "Zobraziť položku menu pre vyňatie priečinkov z prehľadávania médií."
 
-#: tmp_strings.xml:133(string)
+#: tmp_strings.xml:134(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr "Skryť položku menu pre vyňatie priečinkov z prehľadávania médií."
 
-#: tmp_strings.xml:135(string)
+#: tmp_strings.xml:136(string)
 msgid "Show all warnings"
 msgstr "Zobraziť všetky varovania"
 
-#: tmp_strings.xml:136(string)
+#: tmp_strings.xml:137(string)
 msgid "Show all warning messages"
 msgstr "Zobraziť všetky správy varovaní"
 
-#: tmp_strings.xml:137(string)
+#: tmp_strings.xml:138(string)
 msgid "Suppress warning messages"
 msgstr "Zakázať správy varovaní"
 
-#: tmp_strings.xml:139(string) tmp_strings.xml:140(string)
+#: tmp_strings.xml:140(string) tmp_strings.xml:141(string)
 msgid "Display hidden files"
 msgstr "Zobraziť skryté súbory"
 
-#: tmp_strings.xml:141(string)
+#: tmp_strings.xml:142(string)
 msgid "Hide hidden files"
 msgstr "Skryť skryté súbory"
 
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:144(string)
 msgid "Sort settings"
 msgstr "Nastavenia triedenia"
 
-#: tmp_strings.xml:144(string)
+#: tmp_strings.xml:145(string)
 msgid "Sort by"
 msgstr "Triediť podľa"
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:146(string)
 msgid "In ascending order"
 msgstr "Vo vzostupnom poradí"
 
-#: tmp_strings.xml:146(string)
+#: tmp_strings.xml:147(string)
 msgid "Sort in ascending order"
 msgstr "Triediť vo vzostupnom poradí"
 
-#: tmp_strings.xml:147(string)
+#: tmp_strings.xml:148(string)
 msgid "Sort in descending order"
 msgstr "Triediť v zostupnom poradí"
 
-#: tmp_strings.xml:149(item)
+#: tmp_strings.xml:150(item)
 msgid "Name"
 msgstr "Meno"
 
-#: tmp_strings.xml:151(item)
+#: tmp_strings.xml:152(item)
 msgid "Last modified"
 msgstr "Naposledy zmenené"
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
-#: tmp_strings.xml:158(string)
+#: tmp_strings.xml:159(string)
 msgid "You haven't picked any file."
 msgstr "Nevybrali ste žiadny súbor."
 
-#: tmp_strings.xml:159(string)
+#: tmp_strings.xml:160(string)
 msgid "An error occured."
 msgstr "Nastala chyba."
 
-#: tmp_strings.xml:160(string)
+#: tmp_strings.xml:161(string)
 msgid "File successfully saved!"
 msgstr "Súbor bol úspešne uložený!"
 
-#: tmp_strings.xml:164(string)
+#: tmp_strings.xml:165(string)
 msgid "Bookmarks"
 msgstr "Záložky"
 
-#: tmp_strings.xml:165(string)
+#: tmp_strings.xml:166(string)
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: tmp_strings.xml:167(string)
+#: tmp_strings.xml:168(string)
 msgid "Select bookmarks to delete"
 msgstr "Vybrať záložky na vymazanie"
 
-#: tmp_strings.xml:168(string)
+#: tmp_strings.xml:169(string)
 msgid "Manage bookmarks"
 msgstr "Spravovať záložky"
 
-#: tmp_strings.xml:169(string)
+#: tmp_strings.xml:170(string)
 msgid "Bookmark added"
 msgstr "Záložka pridaná"
 
-#: tmp_strings.xml:170(string)
+#: tmp_strings.xml:171(string)
 msgid "Bookmarked destination not found."
 msgstr "Uložená destinácia nebola nájdená."
 
-#: tmp_strings.xml:171(string)
+#: tmp_strings.xml:172(string)
 msgid "Selected bookmarks deleted"
 msgstr "Vybrané záložky boli vymazané"
 
-#: tmp_strings.xml:172(string)
+#: tmp_strings.xml:173(string)
 msgid "This file is already bookmarked"
 msgstr "Tento súbor už má záložku"
 
 #. ***************************
 #.              Strings for the 'Compressing' and 'Extracting' feature
 #.           ***************************
-#: tmp_strings.xml:178(string)
+#: tmp_strings.xml:179(string)
 msgid "Item compressed successfully"
 msgstr "Položky boli úspešne skomprimované"
 
-#: tmp_strings.xml:179(string)
+#: tmp_strings.xml:180(string)
 msgid "Could not compress the item"
 msgstr "Nebolo možné komprimovať položku"
 
-#: tmp_strings.xml:180(string)
+#: tmp_strings.xml:181(string)
 msgid "Compress into archive:"
 msgstr "Komprimovat do archívu:"
 
-#: tmp_strings.xml:181(string)
+#: tmp_strings.xml:182(string)
 msgid "Item extracted successfully"
 msgstr "Položky boli úspešne extrahované"
 
-#: tmp_strings.xml:182(string)
+#: tmp_strings.xml:183(string)
 msgid "Could not extract the item"
 msgstr "Nebolo možné extrahovať položku"
 
-#: tmp_strings.xml:183(string)
+#: tmp_strings.xml:184(string)
 msgid "Extract into folder:"
 msgstr "Extrahovať do adresára:"
 
-#: tmp_strings.xml:184(string)
+#: tmp_strings.xml:185(string)
 msgid "Select folder to extract into"
 msgstr "Zvoľte adresár do ktorého sa bude extrahovať"
 
-#: tmp_strings.xml:185(string)
+#: tmp_strings.xml:186(string)
 msgid "Extract here"
 msgstr "Extrahovať sem"
 
-#: tmp_strings.xml:186(string)
+#: tmp_strings.xml:187(string)
 msgid "Extracting..."
 msgstr "Extrahujem..."
 
-#: tmp_strings.xml:187(string)
+#: tmp_strings.xml:188(string)
 msgid "Compressing..."
 msgstr "Komprimujem..."
 
-#: tmp_strings.xml:188(string)
+#: tmp_strings.xml:189(string)
 msgid "File %s exists. Do you want to overwrite it?"
 msgstr "Súbor %s existuje. Chcete ho prepísať?"
 
-#: tmp_strings.xml:190(string)
+#: tmp_strings.xml:191(string)
 msgid "Do you want to change the file extension?"
 msgstr "Chcete zmeniť príponu súboru?"

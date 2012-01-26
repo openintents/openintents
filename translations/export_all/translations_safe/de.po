@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Hans <Unknown>\n"
+"Last-Translator: mrx5682 <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,8 @@ msgstr ""
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Patrick Eigensatz https://launchpad.net/~p.eigensatz\n"
 "  Peli https://launchpad.net/~peli0101\n"
-"  appricoo https://launchpad.net/~appricoo"
+"  appricoo https://launchpad.net/~appricoo\n"
+"  mrx5682 https://launchpad.net/~mrx5682"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:28(string)
@@ -803,63 +804,61 @@ msgstr ""
 "Standardspeicherort benutzt."
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
 msgstr ""
-"Bisher wurde noch kein Backup durchgeführt. Wollen Sie jetzt eines erstellen?"
+"Eine Sicherungsdatei wurde gefunden. Möchten sie diese wiederherstellen?"
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "Sicherungskopie erstellen fehlgeschlagen:"
+msgstr "Sicherungsdatei gefunden"
 
 #: tmp_strings.xml:246(string)
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: tmp_strings.xml:247(string)
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: tmp_strings.xml:248(string)
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: tmp_strings.xml:249(string)
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: tmp_strings.xml:250(string)
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: tmp_strings.xml:251(string)
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: tmp_strings.xml:252(string)
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: tmp_strings.xml:253(string)
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: tmp_strings.xml:254(string)
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #: tmp_strings.xml:255(string)
 msgid "9"
-msgstr ""
+msgstr "8"
 
 #: tmp_strings.xml:256(string)
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: tmp_strings.xml:257(string)
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #. Permission to access master password
 #: tmp_strings.xml:265(string)

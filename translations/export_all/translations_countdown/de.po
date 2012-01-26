@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Hans <Unknown>\n"
+"Last-Translator: mrx5682 <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,9 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Hans https://launchpad.net/~hans-wuerstchen42\n"
-"  Peli https://launchpad.net/~peli0101"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
+"  Peli https://launchpad.net/~peli0101\n"
+"  mrx5682 https://launchpad.net/~mrx5682"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
@@ -312,4 +314,4 @@ msgstr "10 Minuten"
 
 #: tmp_strings.xml:170(string)
 msgid "OI Countdown doesn't have the permission for this task."
-msgstr ""
+msgstr "OI Countdown besitzt nicht die Berechtigung für diese Aufgabe"

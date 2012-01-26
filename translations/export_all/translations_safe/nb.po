@@ -792,15 +792,12 @@ msgid "While not downloaded, default location will be used."
 msgstr "Når ikke nedlastet, vil standard plassering bli brukt."
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
 msgstr ""
-"Ingen sikkerhetskopiering har blitt utført ennå. Vil du sikkerhetskopiere nå?"
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "Sikkerhetskopiering feilet:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

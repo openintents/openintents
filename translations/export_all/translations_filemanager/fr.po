@@ -48,7 +48,7 @@ msgid "Multi Select"
 msgstr "Sélectionnez multi"
 
 #: tmp_strings.xml:39(string) tmp_strings.xml:81(string)
-#: tmp_strings.xml:166(string)
+#: tmp_strings.xml:167(string)
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -96,7 +96,7 @@ msgstr "filtre"
 msgid "Include in media scan"
 msgstr "Inclure dans les recherches"
 
-#: tmp_strings.xml:51(string) tmp_strings.xml:131(string)
+#: tmp_strings.xml:51(string) tmp_strings.xml:132(string)
 msgid "Exclude from media scan"
 msgstr "Exclure des recherches"
 
@@ -194,290 +194,294 @@ msgid "Do you really want to delete %d files?"
 msgstr "Voulez-vous vraiment supprimer %d fichiers?"
 
 #: tmp_strings.xml:82(string)
+msgid "ZIP"
+msgstr ""
+
+#: tmp_strings.xml:83(string)
 msgid "Select multiple files"
 msgstr "Sélectionner plusieurs fichiers"
 
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:84(string)
 msgid "Please select one or more file(s)."
 msgstr "S'il vous plaît sélectionner un ou plusieurs fichier(s)."
 
 #. Strings for details table
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:87(string)
 msgid "Type"
 msgstr "Tapez"
 
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:88(string)
 msgid "Folder"
 msgstr "dossier"
 
-#: tmp_strings.xml:88(string)
+#: tmp_strings.xml:89(string)
 msgid "File"
 msgstr "fichier"
 
-#: tmp_strings.xml:89(string)
+#: tmp_strings.xml:90(string)
 msgid "Other"
 msgstr "autres"
 
-#: tmp_strings.xml:90(string) tmp_strings.xml:150(item)
+#: tmp_strings.xml:91(string) tmp_strings.xml:151(item)
 msgid "Size"
 msgstr "Taille"
 
-#: tmp_strings.xml:91(string)
+#: tmp_strings.xml:92(string)
 msgid "Permissions"
 msgstr "autorisations"
 
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:93(string)
 msgid "Hidden"
 msgstr "Invisible"
 
-#: tmp_strings.xml:93(string)
+#: tmp_strings.xml:94(string)
 msgid "Last Modified"
 msgstr "Dernière mise à jour"
 
-#: tmp_strings.xml:94(string)
+#: tmp_strings.xml:95(string)
 msgid "Yes"
 msgstr "Oui"
 
-#: tmp_strings.xml:95(string)
+#: tmp_strings.xml:96(string)
 msgid "No"
 msgstr "Non"
 
 #. Construct a unique file name of a file called %s.
-#: tmp_strings.xml:98(string)
+#: tmp_strings.xml:99(string)
 msgid "Copy of %s"
 msgstr "Copie de %s"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
-#: tmp_strings.xml:101(string)
+#: tmp_strings.xml:102(string)
 msgid "Copy %1$d of %2$s"
 msgstr "Copie %1$d de %2$s"
 
-#: tmp_strings.xml:103(string)
+#: tmp_strings.xml:104(string)
 msgid "This folder will be included in the next media scan."
 msgstr "Ce dossier sera inclus dans la prochaine recherche"
 
-#: tmp_strings.xml:104(string)
+#: tmp_strings.xml:105(string)
 msgid "This folder will be excluded during the next media scan."
 msgstr "Ce dossier sera exclus de la prochaine recherche"
 
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:107(string)
 msgid "Could not create new folder."
 msgstr "Impossible de créer le nouveau dossier."
 
-#: tmp_strings.xml:107(string)
+#: tmp_strings.xml:108(string)
 msgid "Could not delete file."
 msgstr "Impossible de supprimer le fichier."
 
-#: tmp_strings.xml:108(string)
+#: tmp_strings.xml:109(string)
 msgid "Could not delete folder '%s'."
 msgstr "Impossible de supprimer le dossier '%s'."
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:110(string)
 msgid "Could not rename file."
 msgstr "Impossible de renommer le fichier."
 
-#: tmp_strings.xml:110(string)
+#: tmp_strings.xml:111(string)
 msgid "Could not rename folder."
 msgstr "Impossible de renommer le dossier."
 
-#: tmp_strings.xml:111(string)
+#: tmp_strings.xml:112(string)
 msgid "Could not move file."
 msgstr "Impossible de déplacer le fichier."
 
-#: tmp_strings.xml:112(string)
+#: tmp_strings.xml:113(string)
 msgid "Could not move folder."
 msgstr "Impossible de déplacer le dossier."
 
-#: tmp_strings.xml:113(string)
+#: tmp_strings.xml:114(string)
 msgid "Could not copy file."
 msgstr "Impossible de copier le fichier."
 
-#: tmp_strings.xml:114(string)
+#: tmp_strings.xml:115(string)
 msgid "File does not exist."
 msgstr "Le fichier n'existe pas."
 
-#: tmp_strings.xml:115(string)
+#: tmp_strings.xml:116(string)
 msgid "Could not delete child file '%s'."
 msgstr "Impossible de supprimer le fichier enfant '%s'."
 
-#: tmp_strings.xml:116(string)
+#: tmp_strings.xml:117(string)
 msgid "An error occurred:"
 msgstr "Une erreur s'est produite:"
 
-#: tmp_strings.xml:117(string)
+#: tmp_strings.xml:118(string)
 msgid "Could not change media scan settings."
 msgstr "Impossible de changer les paramètres de numérisation des médias."
 
-#: tmp_strings.xml:119(string)
+#: tmp_strings.xml:120(string)
 msgid "No application available for sending."
 msgstr "Pas d'application disponible pour l'envoi"
 
-#: tmp_strings.xml:121(string)
+#: tmp_strings.xml:122(string)
 msgid "Application not available"
 msgstr "Application non disponible"
 
 #. Menu item for Settings
-#: tmp_strings.xml:127(string)
+#: tmp_strings.xml:128(string)
 msgid "Settings"
 msgstr "Réglages"
 
 #. Category for preferences.
-#: tmp_strings.xml:130(string)
+#: tmp_strings.xml:131(string)
 msgid "Advanced features"
 msgstr "Les fonctionnalités avancées"
 
-#: tmp_strings.xml:132(string)
+#: tmp_strings.xml:133(string)
 msgid "Show menu item to exclude folders from media scan."
 msgstr ""
 "Montrer élément de menu pour exclure des dossiers de balayage des supports."
 
-#: tmp_strings.xml:133(string)
+#: tmp_strings.xml:134(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr ""
 "Cacher élément de menu pour exclure des dossiers de balayage des supports."
 
-#: tmp_strings.xml:135(string)
+#: tmp_strings.xml:136(string)
 msgid "Show all warnings"
 msgstr "Voir tous les avertissements"
 
-#: tmp_strings.xml:136(string)
+#: tmp_strings.xml:137(string)
 msgid "Show all warning messages"
 msgstr "Voir tous les messages d'avertissement"
 
-#: tmp_strings.xml:137(string)
+#: tmp_strings.xml:138(string)
 msgid "Suppress warning messages"
 msgstr "Supprimer les messages d'avertissement"
 
-#: tmp_strings.xml:139(string) tmp_strings.xml:140(string)
+#: tmp_strings.xml:140(string) tmp_strings.xml:141(string)
 msgid "Display hidden files"
 msgstr "Afficher les fichiers cachés"
 
-#: tmp_strings.xml:141(string)
+#: tmp_strings.xml:142(string)
 msgid "Hide hidden files"
 msgstr "Masquer les fichiers cachés"
 
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:144(string)
 msgid "Sort settings"
 msgstr "Trier Réglages"
 
-#: tmp_strings.xml:144(string)
+#: tmp_strings.xml:145(string)
 msgid "Sort by"
 msgstr "Trier par"
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:146(string)
 msgid "In ascending order"
 msgstr "Dans l'ordre croissant"
 
-#: tmp_strings.xml:146(string)
+#: tmp_strings.xml:147(string)
 msgid "Sort in ascending order"
 msgstr "Trier dans l'ordre croissant"
 
-#: tmp_strings.xml:147(string)
+#: tmp_strings.xml:148(string)
 msgid "Sort in descending order"
 msgstr "Trier dans l'ordre décroissant"
 
-#: tmp_strings.xml:149(item)
+#: tmp_strings.xml:150(item)
 msgid "Name"
 msgstr "Nom"
 
-#: tmp_strings.xml:151(item)
+#: tmp_strings.xml:152(item)
 msgid "Last modified"
 msgstr "Dernière modification"
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
-#: tmp_strings.xml:158(string)
+#: tmp_strings.xml:159(string)
 msgid "You haven't picked any file."
 msgstr "Vous n'avez pas choisi n'importe quel fichier."
 
-#: tmp_strings.xml:159(string)
+#: tmp_strings.xml:160(string)
 msgid "An error occured."
 msgstr "Une erreur s'est produite"
 
-#: tmp_strings.xml:160(string)
+#: tmp_strings.xml:161(string)
 msgid "File successfully saved!"
 msgstr "Fichier sauvegardé avec succès"
 
-#: tmp_strings.xml:164(string)
+#: tmp_strings.xml:165(string)
 msgid "Bookmarks"
 msgstr "Signets"
 
-#: tmp_strings.xml:165(string)
+#: tmp_strings.xml:166(string)
 msgid "Cancel"
 msgstr "Annuler"
 
-#: tmp_strings.xml:167(string)
+#: tmp_strings.xml:168(string)
 msgid "Select bookmarks to delete"
 msgstr "Sélectionnez les signets de supprimer"
 
-#: tmp_strings.xml:168(string)
+#: tmp_strings.xml:169(string)
 msgid "Manage bookmarks"
 msgstr "Gérer les signets"
 
-#: tmp_strings.xml:169(string)
+#: tmp_strings.xml:170(string)
 msgid "Bookmark added"
 msgstr "Signet ajouté"
 
-#: tmp_strings.xml:170(string)
+#: tmp_strings.xml:171(string)
 msgid "Bookmarked destination not found."
 msgstr "Destination de signet pas été trouvé."
 
-#: tmp_strings.xml:171(string)
+#: tmp_strings.xml:172(string)
 msgid "Selected bookmarks deleted"
 msgstr "Signets sélectionnés supprimés"
 
-#: tmp_strings.xml:172(string)
+#: tmp_strings.xml:173(string)
 msgid "This file is already bookmarked"
 msgstr "Ce fichier est déjà un signet"
 
 #. ***************************
 #.              Strings for the 'Compressing' and 'Extracting' feature
 #.           ***************************
-#: tmp_strings.xml:178(string)
+#: tmp_strings.xml:179(string)
 msgid "Item compressed successfully"
 msgstr ""
 
-#: tmp_strings.xml:179(string)
+#: tmp_strings.xml:180(string)
 msgid "Could not compress the item"
 msgstr ""
 
-#: tmp_strings.xml:180(string)
+#: tmp_strings.xml:181(string)
 msgid "Compress into archive:"
 msgstr ""
 
-#: tmp_strings.xml:181(string)
+#: tmp_strings.xml:182(string)
 msgid "Item extracted successfully"
 msgstr ""
 
-#: tmp_strings.xml:182(string)
+#: tmp_strings.xml:183(string)
 msgid "Could not extract the item"
 msgstr ""
 
-#: tmp_strings.xml:183(string)
+#: tmp_strings.xml:184(string)
 msgid "Extract into folder:"
 msgstr ""
 
-#: tmp_strings.xml:184(string)
+#: tmp_strings.xml:185(string)
 msgid "Select folder to extract into"
 msgstr ""
 
-#: tmp_strings.xml:185(string)
+#: tmp_strings.xml:186(string)
 msgid "Extract here"
 msgstr ""
 
-#: tmp_strings.xml:186(string)
+#: tmp_strings.xml:187(string)
 msgid "Extracting..."
 msgstr ""
 
-#: tmp_strings.xml:187(string)
+#: tmp_strings.xml:188(string)
 msgid "Compressing..."
 msgstr ""
 
-#: tmp_strings.xml:188(string)
+#: tmp_strings.xml:189(string)
 msgid "File %s exists. Do you want to overwrite it?"
 msgstr ""
 
-#: tmp_strings.xml:190(string)
+#: tmp_strings.xml:191(string)
 msgid "Do you want to change the file extension?"
 msgstr ""

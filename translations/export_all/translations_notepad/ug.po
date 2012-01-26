@@ -215,15 +215,15 @@ msgstr "مەۋجۇت ھۆججەتنى راستىنلا قاپلىۋېتەمسى�
 
 #: tmp_strings.xml:100(string)
 msgid "Word count"
-msgstr ""
+msgstr "سۆز سانى"
 
 #: tmp_strings.xml:102(item)
 msgid "One word."
-msgstr ""
+msgstr "بىر سۆز."
 
 #: tmp_strings.xml:103(item)
 msgid "%d words."
-msgstr ""
+msgstr "%d سۆز."
 
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
 #: tmp_strings.xml:107(string)
@@ -353,15 +353,15 @@ msgstr "ئىزاھاتقا ئۇلانما قۇرما"
 
 #: tmp_strings.xml:156(string)
 msgid "Character count"
-msgstr ""
+msgstr "ھەرپ سانى"
 
 #: tmp_strings.xml:157(string)
 msgid "Show character count in editor"
-msgstr ""
+msgstr "تەھرىرلىگۈچتىكى ھەرپ سانىنى كۆرسەت"
 
 #: tmp_strings.xml:158(string)
 msgid "Do not show character count in editor"
-msgstr ""
+msgstr "تەھرىرلىگۈچتىكى ھەرپ سانىنى كۆرسەتمە"
 
 #: tmp_strings.xml:160(string)
 msgid "Settings"

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Tomass <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Latvian <lv@li.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
@@ -23,6 +23,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Tomass https://launchpad.net/~txt1"
 
 #. Short explanation of the application (max. 80 characters)
@@ -785,9 +786,8 @@ msgid "A backup file was found. Would you like to restore it?"
 msgstr ""
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "Rezerves kopijas izveidošana neizdevās:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

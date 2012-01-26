@@ -800,16 +800,12 @@ msgid "While not downloaded, default location will be used."
 msgstr "Quando non scarichi, la locazione implicita sarà utilizzata."
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
 msgstr ""
-"Nessun backup è stato realizzato fino ad ora. Desiderate effettuare il "
-"backup adesso?"
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "Backup fallito:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

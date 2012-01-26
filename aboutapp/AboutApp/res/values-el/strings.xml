@@ -28,7 +28,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis</string>
+  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">Ένας αυτόνομος σχετικός διάλογος που μοιράζεται μεταξύ των εφαρμογών.</string>

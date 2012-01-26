@@ -782,14 +782,12 @@ msgid "While not downloaded, default location will be used."
 msgstr ""
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
-msgstr "לא התבצע שום גיבוי עדיין. האם תרצה לבצע גיבוי כעת?"
+msgstr ""
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "תהליך הגיבוי נכשל:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

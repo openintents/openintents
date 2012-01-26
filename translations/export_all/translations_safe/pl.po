@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Piotr Łazarczyk <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -794,14 +794,12 @@ msgid "While not downloaded, default location will be used."
 msgstr "Dopóki nie jest pobrany, domyślne położenie będzie używane."
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
-msgstr "Nie stworzono jeszcze kopii zapasowej. Chcesz archiwizować teraz?"
+msgstr ""
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "Archiwizowanie nie powiodło się:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

@@ -6,12 +6,15 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Almufadado https://launchpad.net/~almufadado
   Peli https://launchpad.net/~peli0101
   PresuntoRJ https://launchpad.net/~fabio-tleitao
-  Tiago Silva https://launchpad.net/~tiagosilva</string>
+  Sérgio Marques https://launchpad.net/~sergio+marques
+  Tiago Silva https://launchpad.net/~tiagosilva
+  nglnx https://launchpad.net/~nglnx</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Set multiple countdowns with OI Countdown.</string>
+	<string name="about_comments">Definir contagens decrescentes com o OI Countdown.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -21,13 +24,13 @@
     
     <string name="start">Iniciar</string>
     <string name="stop">Parar</string>
-    <string name="modify">Alterar</string>
+    <string name="modify">Modificar</string>
     <string name="cont">Continuar</string>
     
 	<string name="no_durations">Utilize o menu para adicionar uma nova contagem decrescente.</string>
 	<string name="countdown_list">Lista de contagens decrescentes</string>
 	
-    <string name="menu_delete">Apagar</string>
+    <string name="menu_delete">Eliminar</string>
     <string name="menu_edit">Editar</string>
     <string name="menu_insert">Adicionar contagem decrescente</string>
     <string name="menu_pick_ringtone">Tom de chamada</string>
@@ -36,10 +39,10 @@
     <string name="menu_set_date">Definir data</string>
     
     <!-- Menu item: Set the countdown by setting a duration. -->
-    <string name="menu_set_duration">Definir a duração</string>
+    <string name="menu_set_duration">Definir duração</string>
     
     <!-- Menu item: Set the action to be performed at the end of the countdown. -->
-    <string name="menu_set_action">Definir a acção</string>
+    <string name="menu_set_action">Definir ação</string>
     
     <string name="hint_title">ex: pizza</string>
     
@@ -70,31 +73,31 @@
 	<string name="notification_in_status_bar">Notificação na barra de estado</string>
 	
 	<!-- Checkbox label whether to launch automation task through the status bar -->
-	<string name="launch_through_status_bar">Executar através da área de notificação</string>
+	<string name="launch_through_status_bar">Iniciar através da área de notificação</string>
 	
 	<!-- Checkbox label whether to use the ring tone for notifications. -->
-	<string name="ring">Som de chamada</string>
+	<string name="ring">Toque</string>
 	
 	<!-- Checkbox label whether to vibrate. -->
-	<string name="vibrate">Vibrar</string>
+	<string name="vibrate">Vibração</string>
 	
 	<!-- Checkbox label whether to flash light for notifications. -->
 	<string name="light">Aviso luminoso</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="action">Acção: %s</string>
+	<string name="action">Ação: %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="select_action">Seleccionar acção: %s</string>
+	<string name="select_action">Selecione a ação: %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="select_countdown">Seleccionar cont. decrescente: %s</string>
+	<string name="select_countdown">Selecione a contagem decrescente: %s</string>
 	
 	<!-- Button to test an action. -->
 	<string name="test">Testar</string>
 	
 	<!-- Button to view / edit settings. -->
-	<string name="settings">Preferências</string>
+	<string name="settings">Definições</string>
 	
 	<!-- Button label to dismiss notification after countdown ended. -->
 	<string name="dismiss">Ignorar</string>
@@ -112,25 +115,25 @@
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
 	<string name="group_shortcuts">Atalhos</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
-	<string name="group_automation_tasks">Tarefas de Automatização</string>
+	<string name="group_automation_tasks">Tarefas automáticas</string>
 	
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_shortcut">Seleccionar Atalho</string>
+	<string name="title_select_shortcut">Selecione o atalho</string>
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_automation_task">Seleccionar Tarefa de Automatização</string>
+	<string name="title_select_automation_task">Selecione a tarefa automática</string>
 	
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
-	<string name="activity_picker_label">Seleccionar Actividade</string>
+	<string name="activity_picker_label">Selecione a atividade</string>
  
 	<!-- Arrays -->
 	
     <string-array name="automation_actions">
     	<!-- Automation action to start a countdown. -->
-    	<item>Start countdown</item>
+    	<item>Iniciar contagem</item>
         <!-- Automation action to stop a countdown. -->
-    	<item>Stop countdown</item>
+    	<item>Parar contagem</item>
     </string-array>
     
 	<!-- ***************************
@@ -138,37 +141,37 @@
 	     *************************** -->
 
 	<!-- Preference section title for general settings regarding the countdown -->
-    <string name="preference_countdown">Countdown</string>
+    <string name="preference_countdown">Contagem decrescente</string>
 
-    <string name="preference_extensions">Extensions</string>
-    <string name="preference_get_extensions">Get new extensions</string>
-    <string name="preference_get_extensions_summary">Search for extensions online.</string>
-    <string name="preference_get_extensions_from">Get extensions from</string>
+    <string name="preference_extensions">Extensões</string>
+    <string name="preference_get_extensions">Obter extensões</string>
+    <string name="preference_get_extensions_summary">Procurar extensões na Web.</string>
+    <string name="preference_get_extensions_from">Obter extensões em</string>
     <string name="preference_extensions_market">Android Market</string>
-    <string name="preference_extensions_market_summary">Search for extensions at Android Market.</string>
+    <string name="preference_extensions_market_summary">Procurar extensões no Android Market.</string>
     <string name="preference_extensions_developer">OpenIntents</string>
-    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+    <string name="preference_extensions_developer_summary">Obter extensões na página OpenIntents.</string>
 	
 	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_title">Notification timeout</string>
+    <string name="preference_notification_timeout_title">Duração da notificação</string>
     
     <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_summary">Timeout for ring, vibrate, or light notification.</string>
+    <string name="preference_notification_timeout_summary">Duração para toque, vibração ou aviso luminoso.</string>
     
     <!-- Dialog title to set timeout for notification -->
-    <string name="preference_notification_timeout_dialog_title">Set timeout</string>
+    <string name="preference_notification_timeout_dialog_title">Definir duração</string>
     
     <!-- Timeout for notifications -->
     <string-array name="preference_notification_timeout_entries">
-        <item>2 seconds</item>
-        <item>5 seconds</item>
-        <item>10 seconds</item>
-        <item>30 seconds</item>
-        <item>1 minute</item>
-        <item>5 minutes</item>
-        <item>10 minutes</item>
+        <item>2 segundos</item>
+        <item>5 segundos</item>
+        <item>10 segundos</item>
+        <item>30 segundos</item>
+        <item>1 minuto</item>
+        <item>5 minutos</item>
+        <item>10 minutos</item>
     </string-array>
     
     
-    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
+    <string name="no_permission">O OI Countdown não possui as permissões para esta tarefa.</string>
 </resources>

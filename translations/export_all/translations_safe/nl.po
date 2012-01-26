@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Menno Vogel <Unknown>\n"
+"Last-Translator: Mark van Kuijk <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -24,6 +24,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Henk van der Velden https://launchpad.net/~henkvandervelden86\n"
+"  Mark van Kuijk https://launchpad.net/~markvankuyk\n"
 "  Menno Vogel https://launchpad.net/~mennovogel90\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
@@ -586,7 +587,7 @@ msgstr ""
 
 #: tmp_strings.xml:189(string)
 msgid "Auto backup"
-msgstr ""
+msgstr "Automatische backup"
 
 #: tmp_strings.xml:190(string)
 msgid "Automatically prompt to backup passwords"
@@ -610,7 +611,7 @@ msgstr ""
 
 #: tmp_strings.xml:197(string)
 msgid "Default export path"
-msgstr ""
+msgstr "Standaard exporteer pad"
 
 #: tmp_strings.xml:200(string)
 msgid "Decrypt (OI Safe)"
@@ -646,7 +647,7 @@ msgstr ""
 
 #: tmp_strings.xml:209(string)
 msgid "Password Length"
-msgstr ""
+msgstr "Lengte van het wachtwoord"
 
 #: tmp_strings.xml:210(string)
 msgid "Uppercase [A-Z]"
@@ -658,7 +659,7 @@ msgstr ""
 
 #: tmp_strings.xml:212(string)
 msgid "Numbers [0-9]"
-msgstr ""
+msgstr "Nummers [0-9]"
 
 #: tmp_strings.xml:213(string)
 msgid "Symbols [!@#$%^\\*]"
@@ -702,7 +703,7 @@ msgstr ""
 
 #: tmp_strings.xml:223(string)
 msgid "Unique name"
-msgstr ""
+msgstr "Unieke naam"
 
 #: tmp_strings.xml:224(string)
 msgid "Package access"
@@ -791,9 +792,8 @@ msgid "A backup file was found. Would you like to restore it?"
 msgstr ""
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "Reservekopie maken is niet gelukt:"
+msgstr "Backup bestand gevonden."
 
 #: tmp_strings.xml:246(string)
 msgid "0"

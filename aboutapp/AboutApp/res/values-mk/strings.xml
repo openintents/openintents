@@ -28,6 +28,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   Pance Zvezdanov https://launchpad.net/~pance-zvezdanov</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->

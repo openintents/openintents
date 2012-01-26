@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: txelu <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -226,15 +226,15 @@ msgstr "¿Realmente quiere sobreescribir el archivo existente?"
 
 #: tmp_strings.xml:100(string)
 msgid "Word count"
-msgstr ""
+msgstr "Número de palabras"
 
 #: tmp_strings.xml:102(item)
 msgid "One word."
-msgstr ""
+msgstr "Una palabra."
 
 #: tmp_strings.xml:103(item)
 msgid "%d words."
-msgstr ""
+msgstr "%d palabras."
 
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
 #: tmp_strings.xml:107(string)
@@ -365,15 +365,15 @@ msgstr "No crear enlaces de estas notas"
 
 #: tmp_strings.xml:156(string)
 msgid "Character count"
-msgstr ""
+msgstr "Número de caracteres"
 
 #: tmp_strings.xml:157(string)
 msgid "Show character count in editor"
-msgstr ""
+msgstr "Mostrar número de palabras en el editor"
 
 #: tmp_strings.xml:158(string)
 msgid "Do not show character count in editor"
-msgstr ""
+msgstr "No mostrar número de caracteres en el editor"
 
 #: tmp_strings.xml:160(string)
 msgid "Settings"

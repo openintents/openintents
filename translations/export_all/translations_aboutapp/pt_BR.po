@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Janeth Vargas <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,8 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Janeth Vargas https://launchpad.net/~janeth-vz-1"
+"  Janeth Vargas https://launchpad.net/~janeth-vz-1\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Explanation what this application does. It is a menu extension for other applications.
 #: tmp_strings.xml:33(string)

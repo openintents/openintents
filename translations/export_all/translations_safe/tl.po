@@ -800,14 +800,12 @@ msgid "While not downloaded, default location will be used."
 msgstr "Habang hindi na-download, gagamit ng default na lokasyon."
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
-msgstr "Wala pang backup ang nagawa. Gusto mo bang i-backup ngayon?"
+msgstr ""
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "Backup nabigo:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

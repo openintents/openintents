@@ -785,14 +785,12 @@ msgid "While not downloaded, default location will be used."
 msgstr ""
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
-msgstr "백업을 한번도 하지 않았습니다. 지금 백업하시겠습니까?"
+msgstr ""
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "백업에 실패하였습니다:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

@@ -46,7 +46,7 @@ msgid "Multi Select"
 msgstr "Πολλαπλή Επιλογή"
 
 #: tmp_strings.xml:39(string) tmp_strings.xml:81(string)
-#: tmp_strings.xml:166(string)
+#: tmp_strings.xml:167(string)
 msgid "Delete"
 msgstr "Διαγραφή"
 
@@ -94,7 +94,7 @@ msgstr "Φίλτρο"
 msgid "Include in media scan"
 msgstr "Συμπερίληψη στη σάρωση μέσων"
 
-#: tmp_strings.xml:51(string) tmp_strings.xml:131(string)
+#: tmp_strings.xml:51(string) tmp_strings.xml:132(string)
 msgid "Exclude from media scan"
 msgstr "Εξαίρεση από τη σάρωση μέσων"
 
@@ -192,290 +192,294 @@ msgid "Do you really want to delete %d files?"
 msgstr "Θέλετε σίγουρα να διαγράψετε %d αρχεία;"
 
 #: tmp_strings.xml:82(string)
+msgid "ZIP"
+msgstr ""
+
+#: tmp_strings.xml:83(string)
 msgid "Select multiple files"
 msgstr "Επιλογή πολλαπλών αρχείων"
 
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:84(string)
 msgid "Please select one or more file(s)."
 msgstr "Παρακαλώ επιλέξτε ένα ή περισσότερα αρχεία."
 
 #. Strings for details table
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:87(string)
 msgid "Type"
 msgstr "Τύπος"
 
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:88(string)
 msgid "Folder"
 msgstr "Φάκελος"
 
-#: tmp_strings.xml:88(string)
+#: tmp_strings.xml:89(string)
 msgid "File"
 msgstr "Αρχείο"
 
-#: tmp_strings.xml:89(string)
+#: tmp_strings.xml:90(string)
 msgid "Other"
 msgstr "Άλλο"
 
-#: tmp_strings.xml:90(string) tmp_strings.xml:150(item)
+#: tmp_strings.xml:91(string) tmp_strings.xml:151(item)
 msgid "Size"
 msgstr "Μέγεθος"
 
-#: tmp_strings.xml:91(string)
+#: tmp_strings.xml:92(string)
 msgid "Permissions"
 msgstr "Δικαιώματα"
 
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:93(string)
 msgid "Hidden"
 msgstr "Κρυφό"
 
-#: tmp_strings.xml:93(string)
+#: tmp_strings.xml:94(string)
 msgid "Last Modified"
 msgstr "Τελευταία Τροποποίηση"
 
-#: tmp_strings.xml:94(string)
+#: tmp_strings.xml:95(string)
 msgid "Yes"
 msgstr "Ναι"
 
-#: tmp_strings.xml:95(string)
+#: tmp_strings.xml:96(string)
 msgid "No"
 msgstr "Όχι"
 
 #. Construct a unique file name of a file called %s.
-#: tmp_strings.xml:98(string)
+#: tmp_strings.xml:99(string)
 msgid "Copy of %s"
 msgstr "Αντιγραφή του %s"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
-#: tmp_strings.xml:101(string)
+#: tmp_strings.xml:102(string)
 msgid "Copy %1$d of %2$s"
 msgstr "Αντιγραφή %1$d από %2$s"
 
-#: tmp_strings.xml:103(string)
+#: tmp_strings.xml:104(string)
 msgid "This folder will be included in the next media scan."
 msgstr "Αυτός ο φάκελος θα συμπεριληφθεί στην επόμενη σάρωση μέσων."
 
-#: tmp_strings.xml:104(string)
+#: tmp_strings.xml:105(string)
 msgid "This folder will be excluded during the next media scan."
 msgstr "Αυτός ο φάκελος θα εξαιρεθεί από την επόμενη σάρωση μέσων."
 
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:107(string)
 msgid "Could not create new folder."
 msgstr "Αδυναμία δημιουργίας νέου φακέλου."
 
-#: tmp_strings.xml:107(string)
+#: tmp_strings.xml:108(string)
 msgid "Could not delete file."
 msgstr "Αδυναμία διαφραφής αρχείου."
 
-#: tmp_strings.xml:108(string)
+#: tmp_strings.xml:109(string)
 msgid "Could not delete folder '%s'."
 msgstr "Αδυναμία διαγραφής του φακέλου '%s'."
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:110(string)
 msgid "Could not rename file."
 msgstr "Αδυναμία μετονομασίας αρχείου."
 
-#: tmp_strings.xml:110(string)
+#: tmp_strings.xml:111(string)
 msgid "Could not rename folder."
 msgstr "Αδυναμία μετονομασίας φακέλου."
 
-#: tmp_strings.xml:111(string)
+#: tmp_strings.xml:112(string)
 msgid "Could not move file."
 msgstr "Αδυναμία μετακίνησης αρχείου."
 
-#: tmp_strings.xml:112(string)
+#: tmp_strings.xml:113(string)
 msgid "Could not move folder."
 msgstr "Αδυναμία μετακίνησης φακέλου."
 
-#: tmp_strings.xml:113(string)
+#: tmp_strings.xml:114(string)
 msgid "Could not copy file."
 msgstr "Αδυναμία αντιγραφής αρχείου."
 
-#: tmp_strings.xml:114(string)
+#: tmp_strings.xml:115(string)
 msgid "File does not exist."
 msgstr "Το αρχείο δεν υπάρχει."
 
-#: tmp_strings.xml:115(string)
+#: tmp_strings.xml:116(string)
 msgid "Could not delete child file '%s'."
 msgstr "Αδυναμία δημιουργίας το παράγωγου αρχείου '%s'."
 
-#: tmp_strings.xml:116(string)
+#: tmp_strings.xml:117(string)
 msgid "An error occurred:"
 msgstr "Προέκυψε ένα σφάλμα:"
 
-#: tmp_strings.xml:117(string)
+#: tmp_strings.xml:118(string)
 msgid "Could not change media scan settings."
 msgstr "Αδυναμία αλλαγής των ρυθμίσεων της σάρωσης μέσων."
 
-#: tmp_strings.xml:119(string)
+#: tmp_strings.xml:120(string)
 msgid "No application available for sending."
 msgstr "Καμία διαθέσιμη εφαρμογή για αποστολή."
 
-#: tmp_strings.xml:121(string)
+#: tmp_strings.xml:122(string)
 msgid "Application not available"
 msgstr "Η εφαρμογή δεν είναι διαθέσιμη"
 
 #. Menu item for Settings
-#: tmp_strings.xml:127(string)
+#: tmp_strings.xml:128(string)
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
 #. Category for preferences.
-#: tmp_strings.xml:130(string)
+#: tmp_strings.xml:131(string)
 msgid "Advanced features"
 msgstr "Προηγμένα χαρακτηριστικά"
 
-#: tmp_strings.xml:132(string)
+#: tmp_strings.xml:133(string)
 msgid "Show menu item to exclude folders from media scan."
 msgstr ""
 "Εμφάνιση στοιχείου του μενού για την εξαίρεση φακέλων από τη σάρωση μέων."
 
-#: tmp_strings.xml:133(string)
+#: tmp_strings.xml:134(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr ""
 "Απόκρυψη στοιχείου του μενού για την εξαίρεση φακέλων από τη σάρωση μέων."
 
-#: tmp_strings.xml:135(string)
+#: tmp_strings.xml:136(string)
 msgid "Show all warnings"
 msgstr "Εφάνιση όλων των προειδοποιήσεων"
 
-#: tmp_strings.xml:136(string)
+#: tmp_strings.xml:137(string)
 msgid "Show all warning messages"
 msgstr "Εμφάνιση όλων των μηνυμάτων προειδοποίησης"
 
-#: tmp_strings.xml:137(string)
+#: tmp_strings.xml:138(string)
 msgid "Suppress warning messages"
 msgstr "Καταστολή των προειδοποιητικών μηνυμάτων"
 
-#: tmp_strings.xml:139(string) tmp_strings.xml:140(string)
+#: tmp_strings.xml:140(string) tmp_strings.xml:141(string)
 msgid "Display hidden files"
 msgstr "Προβολή κρυμμένων αρχείων"
 
-#: tmp_strings.xml:141(string)
+#: tmp_strings.xml:142(string)
 msgid "Hide hidden files"
 msgstr "Απόκρυψη κρυμμένων αρχείων"
 
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:144(string)
 msgid "Sort settings"
 msgstr "Ρυθμίσεις ταξινόμησης"
 
-#: tmp_strings.xml:144(string)
+#: tmp_strings.xml:145(string)
 msgid "Sort by"
 msgstr "Ταξινόμηση κατά"
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:146(string)
 msgid "In ascending order"
 msgstr "Κατά αύξουσα σειρά"
 
-#: tmp_strings.xml:146(string)
+#: tmp_strings.xml:147(string)
 msgid "Sort in ascending order"
 msgstr "Ταξινόμηση κατά αύξουσα σειρά"
 
-#: tmp_strings.xml:147(string)
+#: tmp_strings.xml:148(string)
 msgid "Sort in descending order"
 msgstr "Ταξινόμηση κατά φθίνουσα σειρά"
 
-#: tmp_strings.xml:149(item)
+#: tmp_strings.xml:150(item)
 msgid "Name"
 msgstr "Όνομα"
 
-#: tmp_strings.xml:151(item)
+#: tmp_strings.xml:152(item)
 msgid "Last modified"
 msgstr "Τελευταία τροποποίηση"
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
-#: tmp_strings.xml:158(string)
+#: tmp_strings.xml:159(string)
 msgid "You haven't picked any file."
 msgstr "Δεν έχετε επιλεξει κάποιο αρχείο."
 
-#: tmp_strings.xml:159(string)
+#: tmp_strings.xml:160(string)
 msgid "An error occured."
 msgstr "Προέκυψε ένα σφάλμα."
 
-#: tmp_strings.xml:160(string)
+#: tmp_strings.xml:161(string)
 msgid "File successfully saved!"
 msgstr "Το αρχείο αποθηκεύτηκε επιτυχώς!"
 
-#: tmp_strings.xml:164(string)
+#: tmp_strings.xml:165(string)
 msgid "Bookmarks"
 msgstr "Σελιδοδείκτες"
 
-#: tmp_strings.xml:165(string)
+#: tmp_strings.xml:166(string)
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: tmp_strings.xml:167(string)
+#: tmp_strings.xml:168(string)
 msgid "Select bookmarks to delete"
 msgstr "Επιλογή σελιδοδεικτών προς διαγραφή"
 
-#: tmp_strings.xml:168(string)
+#: tmp_strings.xml:169(string)
 msgid "Manage bookmarks"
 msgstr "Διαχείριση σελιδοδεικτών"
 
-#: tmp_strings.xml:169(string)
+#: tmp_strings.xml:170(string)
 msgid "Bookmark added"
 msgstr "Προστέθηκε ο σελιδοδείκτης"
 
-#: tmp_strings.xml:170(string)
+#: tmp_strings.xml:171(string)
 msgid "Bookmarked destination not found."
 msgstr "Ο προορισμός  του σελιδοδείκτη δε βρέθηκε."
 
-#: tmp_strings.xml:171(string)
+#: tmp_strings.xml:172(string)
 msgid "Selected bookmarks deleted"
 msgstr "Οι επιλεγμένοι σελιδοδείκτες διαγράφτηκαν."
 
-#: tmp_strings.xml:172(string)
+#: tmp_strings.xml:173(string)
 msgid "This file is already bookmarked"
 msgstr "Αυτό το αρχείο έχει ήδη προστεθεί στους σελιδοδείκτες"
 
 #. ***************************
 #.              Strings for the 'Compressing' and 'Extracting' feature
 #.           ***************************
-#: tmp_strings.xml:178(string)
+#: tmp_strings.xml:179(string)
 msgid "Item compressed successfully"
 msgstr "Το αντικείμενο συμπιέστηκε με επιτυχία"
 
-#: tmp_strings.xml:179(string)
+#: tmp_strings.xml:180(string)
 msgid "Could not compress the item"
 msgstr "Αδυναμία συμπίεσης του αντικειμένου"
 
-#: tmp_strings.xml:180(string)
+#: tmp_strings.xml:181(string)
 msgid "Compress into archive:"
 msgstr "Συμπίεση σε αρχείο:"
 
-#: tmp_strings.xml:181(string)
+#: tmp_strings.xml:182(string)
 msgid "Item extracted successfully"
 msgstr "Το αντικείμενο αποσυμπιέστηκε με επιτυχία"
 
-#: tmp_strings.xml:182(string)
+#: tmp_strings.xml:183(string)
 msgid "Could not extract the item"
 msgstr "Αδυναμία αποσυμπίεσης του αντικειμένου"
 
-#: tmp_strings.xml:183(string)
+#: tmp_strings.xml:184(string)
 msgid "Extract into folder:"
 msgstr "Αποσυμπίεση σε φάκελο:"
 
-#: tmp_strings.xml:184(string)
+#: tmp_strings.xml:185(string)
 msgid "Select folder to extract into"
 msgstr "Επιλέξτε φάκελο για να γίνει η απουμπίεση"
 
-#: tmp_strings.xml:185(string)
+#: tmp_strings.xml:186(string)
 msgid "Extract here"
 msgstr "Αποσυμπίεση εδώ"
 
-#: tmp_strings.xml:186(string)
+#: tmp_strings.xml:187(string)
 msgid "Extracting..."
 msgstr "Γίνεται αποσυμπίεση..."
 
-#: tmp_strings.xml:187(string)
+#: tmp_strings.xml:188(string)
 msgid "Compressing..."
 msgstr "Γίνεται συμπίεση..."
 
-#: tmp_strings.xml:188(string)
+#: tmp_strings.xml:189(string)
 msgid "File %s exists. Do you want to overwrite it?"
 msgstr "Το αρχείο %s υπάρχει ήδη. Θέλετε να το αντικαταστήσετε;"
 
-#: tmp_strings.xml:190(string)
+#: tmp_strings.xml:191(string)
 msgid "Do you want to change the file extension?"
 msgstr "Θέλετε να αλλάξτε την επέκταση του αρχείου;"

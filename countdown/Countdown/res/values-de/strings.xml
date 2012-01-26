@@ -7,7 +7,9 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Hans https://launchpad.net/~hans-wuerstchen42
-  Peli https://launchpad.net/~peli0101</string>
+  OpenIntents devs https://launchpad.net/~openintents-devs
+  Peli https://launchpad.net/~peli0101
+  mrx5682 https://launchpad.net/~mrx5682</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
 	<string name="about_comments">Mit OI Countdown können Sie mehrere Countdowns erstellen.</string>
@@ -169,5 +171,5 @@
     </string-array>
     
     
-    <string name="no_permission">OI Countdown doesn\'t have the permission for this task.</string>
+    <string name="no_permission">OI Countdown besitzt nicht die Berechtigung für diese Aufgabe</string>
 </resources>

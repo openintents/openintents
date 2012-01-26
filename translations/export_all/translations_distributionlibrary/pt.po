@@ -1,0 +1,219 @@
+# Portuguese translation for openintents
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Sérgio Marques <Unknown>\n"
+"Language-Team: Portuguese <pt@li.org>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#: tmp_strings.xml:3(string)
+msgid "OI Distribution Library"
+msgstr "Biblioteca de distribuição OI"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:10(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Sérgio Marques https://launchpad.net/~sergio+marques"
+
+#. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
+#. 		Translation should be short, since this is a title.
+#: tmp_strings.xml:19(string)
+msgid "%s EULA"
+msgstr "Eula do %s"
+
+#. EULA welcome message. %s is an application name, e.g. "... (EULA) for OI Notepad".
+#. 		Translation can be as long as required.
+#: tmp_strings.xml:23(string)
+msgid ""
+"Please read and accept the following End User License Agreement (EULA) for "
+"%s."
+msgstr ""
+"Por favor, leia e aceite o acordo de licenciamento de utilizador final "
+"(EULA) do %s."
+
+#. Button: Accept terms of EULA.
+#: tmp_strings.xml:26(string)
+msgid "Accept"
+msgstr "Aceitar"
+
+#. Button: Refuse terms of EULA.
+#: tmp_strings.xml:29(string)
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. Application name and version. %1$s is the application name (e.g. "OI Notepad") and %2$s is the version number (e.g. "1.2.0").
+#. 	Keep unmodified, unless your language requires that the version number is displayed first.
+#: tmp_strings.xml:34(string)
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#. Welcome message. %s is an application name.
+#: tmp_strings.xml:37(string)
+msgid "Welcome to this new version of %s."
+msgstr "Bem-vindo à nova versão do %s."
+
+#: tmp_strings.xml:39(string)
+msgid "Recent changes:"
+msgstr "Alterações recentes:"
+
+#. Button: Continue to main application.
+#: tmp_strings.xml:42(string)
+msgid "Continue"
+msgstr "Continuar"
+
+#. Menu command to look for updates.
+#: tmp_strings.xml:46(string)
+msgid "Check updates"
+msgstr "Procurar atualizações"
+
+#: tmp_strings.xml:47(string)
+msgid ""
+"Check manually for updates or install OI Update for automatic notifications."
+msgstr ""
+"Procure as atualizações manualmente ou instale o OI Update para receber "
+"notificações."
+
+#: tmp_strings.xml:48(string)
+msgid "Check now"
+msgstr "Procurar agora"
+
+#: tmp_strings.xml:49(string)
+msgid "Get OI Updater"
+msgstr "Obter OI Updater"
+
+#: tmp_strings.xml:50(string)
+msgid "Download application not available."
+msgstr "Atualização não disponível."
+
+#. Name of the application "OI Update". Translations of the application name should be consistent.
+#: tmp_strings.xml:53(string)
+msgid "OI Update"
+msgstr "OI Update"
+
+#. Menu command to open the "about" or "info" dialog.
+#: tmp_strings.xml:57(string)
+msgid "About"
+msgstr "Sobre"
+
+#. %s is the version number (e.g. "1.2.1")
+#: tmp_strings.xml:59(string)
+msgid ""
+"No compatible extension available to display full info (contact, credits, "
+"license)."
+msgstr ""
+"Não tem a extensão para exibir as informações integrais (contactos, "
+"créditos, licença)."
+
+#. Button text: Get the application "OI About". Translations of the application name should be consistent.
+#: tmp_strings.xml:63(string)
+msgid "Get OI About"
+msgstr "Obter OI About"
+
+#. Name of the application "OI About". Translations of the application name should be consistent.
+#: tmp_strings.xml:66(string)
+msgid "OI About"
+msgstr "OI About"
+
+#. Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.
+#: tmp_strings.xml:69(string)
+msgid "Barcode OI Plugin"
+msgstr "Plugin Barcode OI"
+
+#. Dialog message.
+#: tmp_strings.xml:71(string)
+msgid "No compatible barcode scanner is available."
+msgstr "não possui uma analisador de códigos de barras."
+
+#. Name of the application "OI File Manager". Translations of the application name should be consistent.
+#: tmp_strings.xml:74(string)
+msgid "OI File Manager"
+msgstr "Gestor de ficheiros OI"
+
+#. Dialog message.
+#: tmp_strings.xml:76(string)
+msgid "No compatible file manager is available."
+msgstr "Não possui um gestor de ficheiros compatível."
+
+#. Name of the application "OI Safe". Translations of the application name should be consistent.
+#: tmp_strings.xml:80(string)
+msgid "OI Safe"
+msgstr "OI Safe"
+
+#. Dialog message.
+#: tmp_strings.xml:82(string)
+msgid "No compatible application for encryption is available."
+msgstr "Não possui a aplicação para codificação."
+
+#: tmp_strings.xml:83(string)
+msgid ""
+"No compatible application for decryption is available.\\n\\nNote: You have "
+"to restore the master key from a backup file in order to access previously "
+"encrypted data."
+msgstr ""
+"Não possui a aplicação para descodificação.\\n\\nNota: tem que restaurar a "
+"chave mestre da cópia de segurança para aceder aos dados codificados."
+
+#. Dialog message: %s is the name of an application (e.g. "OI Notepad").
+#: tmp_strings.xml:86(string)
+msgid "Please download %s from the Market or the OpenIntents website."
+msgstr "Por favor, transfira %s do Market ou da página OpenIntents."
+
+#. Dialog message: %s is the name of an application (e.g. "OI Notepad").
+#: tmp_strings.xml:88(string)
+msgid "Please download %s from the OpenIntents website."
+msgstr "Por favor, transfira %s da página OpenIntents."
+
+#. Dialog button: download the suggested application from Android Market.
+#: tmp_strings.xml:90(string)
+msgid "Market download"
+msgstr "Transferência no Market"
+
+#. Dialog button: download the suggested application from the developer web site.
+#: tmp_strings.xml:92(string)
+msgid "Web download"
+msgstr "Transferência Web"
+
+#. Dialog title: %s is the name of an application (e.g. "OI Notepad").
+#: tmp_strings.xml:94(string)
+msgid "Download %s"
+msgstr "Transferir %s"
+
+#. %s is an application name (e.g. "OI About can be used with the following applications:")
+#: tmp_strings.xml:97(string)
+msgid "%s can be used with the following applications:"
+msgstr "Pode utilizar %s com as seguintes aplicações:"
+
+#. %s is an application name (e.g. "Launch OI Notepad")
+#: tmp_strings.xml:99(string)
+msgid "Launch %s"
+msgstr "Iniciar %s"
+
+#. %1$s is the current application name. %2$s is another application name, and %3$s is the other application's version name
+#.     (e.g. "OI About requires OI Notepad 1.2.0 or higher.")
+#: tmp_strings.xml:102(string)
+msgid "%1$s requires %2$s %3$s or higher."
+msgstr "%1$s requer %2$s %3$s ou superior."
+
+#. Title of a dialog.
+#: tmp_strings.xml:104(string)
+msgid "Instructions"
+msgstr "Instruções"
+
+#. Error message
+#: tmp_strings.xml:106(string)
+msgid "Application could not be launched"
+msgstr "A aplicação não foi iniciada"

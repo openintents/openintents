@@ -788,14 +788,12 @@ msgstr ""
 "Пакуль не загружана, будзе выкарыстоўвана месцазнаходжанне па змаўчанні."
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
-msgstr "Рэзервовае капіраванне яшчэ не было выканана. Выканаць яго зараз?"
+msgstr ""
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "Рэзервовая копія не створана:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"

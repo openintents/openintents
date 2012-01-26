@@ -798,14 +798,12 @@ msgstr ""
 "Докато не е изтеглено, ще бъде използвана директорията по подразбиране."
 
 #: tmp_strings.xml:244(string)
-#, fuzzy
 msgid "A backup file was found. Would you like to restore it?"
-msgstr "Не е извършено архивиране. Бихте ли искали да архивирате сега?"
+msgstr ""
 
 #: tmp_strings.xml:245(string)
-#, fuzzy
 msgid "Backup file found"
-msgstr "Архивирането е неуспешно:"
+msgstr ""
 
 #: tmp_strings.xml:246(string)
 msgid "0"
