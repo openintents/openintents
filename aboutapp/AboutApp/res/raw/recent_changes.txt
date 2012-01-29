@@ -1,10 +1,11 @@
 ----------------
 release: 1.1
-date: 2012-01-25
+date: 2012-01-29
 
 - high-resolution icon for Android 2.3 and later.
-- support for about.xml (GCI task by Matěj Konečný, issue 248)
+- support for about.xml (Google Code-in task by Matěj Konečný, issue 248)
 - list more languages for translations.
+- new icons and translations by Google Code-in students
 
 ----------------
 release: 1.0.3
