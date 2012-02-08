@@ -220,15 +220,15 @@ msgstr "Doriți într-adevăr să suprascrieți fișierul existent?"
 
 #: tmp_strings.xml:100(string)
 msgid "Word count"
-msgstr ""
+msgstr "Contor de cuvinte"
 
 #: tmp_strings.xml:102(item)
 msgid "One word."
-msgstr ""
+msgstr "Un cuvânt."
 
 #: tmp_strings.xml:103(item)
 msgid "%d words."
-msgstr ""
+msgstr "%d cuvinte."
 
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
 #: tmp_strings.xml:107(string)
@@ -359,15 +359,15 @@ msgstr "Nu crea legături în notițe"
 
 #: tmp_strings.xml:156(string)
 msgid "Character count"
-msgstr ""
+msgstr "Contor de caractere"
 
 #: tmp_strings.xml:157(string)
 msgid "Show character count in editor"
-msgstr ""
+msgstr "Afișează contorul de caractere în editor"
 
 #: tmp_strings.xml:158(string)
 msgid "Do not show character count in editor"
-msgstr ""
+msgstr "Nu afișa contorul de caractere în editor"
 
 #: tmp_strings.xml:160(string)
 msgid "Settings"

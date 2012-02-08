@@ -159,14 +159,12 @@ msgid "No items available"
 msgstr "Ingen tilgængelige varer"
 
 #: tmp_strings.xml:66(string)
-#, fuzzy
 msgid "No stores available for this list"
-msgstr "Vælg et tema til denne liste"
+msgstr ""
 
 #: tmp_strings.xml:67(string)
-#, fuzzy
 msgid "No tags available for this list"
-msgstr "Vælg et tema til denne liste"
+msgstr ""
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like

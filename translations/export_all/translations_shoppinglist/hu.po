@@ -157,14 +157,12 @@ msgid "No items available"
 msgstr ""
 
 #: tmp_strings.xml:66(string)
-#, fuzzy
 msgid "No stores available for this list"
-msgstr "Válasszon egy témát a listának"
+msgstr ""
 
 #: tmp_strings.xml:67(string)
-#, fuzzy
 msgid "No tags available for this list"
-msgstr "Válasszon egy témát a listának"
+msgstr ""
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like

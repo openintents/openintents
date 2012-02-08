@@ -22,6 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Sérgio Marques https://launchpad.net/~sergio+marques"
 
 #. Description of application
@@ -210,15 +211,15 @@ msgstr ""
 
 #: tmp_strings.xml:91(string)
 msgid "Available extensions for \"OI Countdown\":"
-msgstr ""
+msgstr "Extras para o \"OI Countdown\":"
 
 #: tmp_strings.xml:92(listitem)
 msgid "Launch applications through Android shortcuts"
-msgstr ""
+msgstr "Iniciar aplicações com os atalhos do Andoid"
 
 #: tmp_strings.xml:93(listitem)
 msgid "Use OI About to show license information"
-msgstr ""
+msgstr "Utilize o OI About para ver a licença"
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:97(listitem)
@@ -229,7 +230,7 @@ msgstr ""
 #: tmp_strings.xml:99(listitem) tmp_strings.xml:197(listitem)
 #: tmp_strings.xml:254(listitem) tmp_strings.xml:361(listitem)
 msgid "OI, OpenIntents, Open Intents"
-msgstr ""
+msgstr "OI, OpenIntents, Open Intents"
 
 #. Description of application
 #: tmp_strings.xml:116(string)
@@ -237,33 +238,39 @@ msgid ""
 "OI File Manager allows you to browse your SD card, create directories, "
 "rename, copy, move, and delete files."
 msgstr ""
+"O gestor de ficheiros OI permite-lhe explorar o cartão SD, criar diretórios, "
+"mover, copiar, eliminar e mudar o nome dos ficheiros."
 
 #: tmp_strings.xml:117(string)
 msgid ""
 "It also acts as an extension to other applications to display \"Open\" and "
 "\"Save\" dialogs."
 msgstr ""
+"Também atua como uma extensão de outras aplicações para exibir as caixas de "
+"diálogo \"Abrir\" e \"Gravar\"."
 
 #: tmp_strings.xml:131(listitem)
 msgid "Show list of files with thumbnails for images."
-msgstr ""
+msgstr "Mostrar lista de ficheiros com miniaturas."
 
 #: tmp_strings.xml:132(listitem)
 msgid "Move, copy, rename, and delete files."
-msgstr ""
+msgstr "Mover, copiar, eliminar e mudar o nome dos ficheiros"
 
 #: tmp_strings.xml:133(listitem)
 msgid "Create and delete directories (folders)."
-msgstr ""
+msgstr "Criar e eliminar diretórios (pastas)"
 
 #: tmp_strings.xml:134(listitem)
 msgid "Send files by email."
-msgstr ""
+msgstr "Enviar ficheiros por correio eletrónico."
 
 #: tmp_strings.xml:135(listitem)
 msgid ""
 "Acts as an extension to other applications, like GMail, to attach files."
 msgstr ""
+"Atua como uma extensão de outras aplicações, como GMail, para anexar "
+"ficheiros."
 
 #: tmp_strings.xml:136(listitem)
 msgid "Support for many file endings and mime types."
@@ -274,34 +281,36 @@ msgid ""
 "Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can "
 "use OI File Manager."
 msgstr ""
+"Com suporte a PICK_FILE e PICK_DIRECTORY, para que as outras aplicações "
+"possam utilizar o OI File Manager."
 
 #: tmp_strings.xml:139(string) tmp_strings.xml:296(string)
 msgid "Available extensions for \"OI File Manager\":"
-msgstr ""
+msgstr "Extras para o \"OI File Manager\":"
 
 #: tmp_strings.xml:140(listitem) tmp_strings.xml:189(listitem)
 #: tmp_strings.xml:241(listitem) tmp_strings.xml:297(listitem)
 #: tmp_strings.xml:351(listitem)
 msgid "Show the license information with \"OI About\"."
-msgstr ""
+msgstr "Mostrar a licença com o OI About."
 
 #: tmp_strings.xml:142(string) tmp_strings.xml:299(string)
 msgid "Applications that work with \"OI File Manager\":"
-msgstr ""
+msgstr "Aplicações que funcionam com o OI File Manager."
 
 #: tmp_strings.xml:143(listitem)
 msgid "Open and save text files in \"OI Notepad\"."
-msgstr ""
+msgstr "Abrir e gravar ficheiros de texto com o OI Notepad."
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:147(listitem)
 msgid "file manager, filemanager, file explorer"
-msgstr ""
+msgstr "gestor de ficheiros, gestordeficheiros, explorador de ficheiros"
 
 #. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
 #: tmp_strings.xml:149(listitem) tmp_strings.xml:306(listitem)
 msgid "OI, IO, OpenIntents, Open Intents"
-msgstr ""
+msgstr "OI, IO, OpenIntents, Open Intents"
 
 #. Description of application
 #: tmp_strings.xml:167(string)
@@ -341,7 +350,7 @@ msgstr ""
 
 #: tmp_strings.xml:188(string)
 msgid "Available extensions for \"OI Flashlight\":"
-msgstr ""
+msgstr "Extras para o \"OI Flashlight\":"
 
 #: tmp_strings.xml:190(listitem)
 msgid "Change the color of the backlight with \"OI Color Picker\"."
@@ -354,7 +363,7 @@ msgstr ""
 #: tmp_strings.xml:193(listitem) tmp_strings.xml:249(listitem)
 #: tmp_strings.xml:355(listitem)
 msgid "Update with \"OI Update\"."
-msgstr ""
+msgstr "Atualizações com o OI Update."
 
 #: tmp_strings.xml:196(listitem)
 msgid "Flashlight, light, Backlight"
@@ -385,7 +394,7 @@ msgstr ""
 
 #: tmp_strings.xml:231(listitem)
 msgid "Add, edit and delete notes."
-msgstr ""
+msgstr "Adicionar, editar e eliminar notas."
 
 #: tmp_strings.xml:232(listitem)
 msgid "Long-press on notes to add tags."
@@ -393,7 +402,7 @@ msgstr ""
 
 #: tmp_strings.xml:233(listitem)
 msgid "Change font size and sort order."
-msgstr ""
+msgstr "Altere o tamanho das letras e a organização."
 
 #: tmp_strings.xml:234(listitem)
 msgid "A clearly arranged layout with a variety of themes."
@@ -405,11 +414,11 @@ msgstr ""
 
 #: tmp_strings.xml:236(listitem)
 msgid "Send notes as MMS or SMS."
-msgstr ""
+msgstr "Enviar notas por MMS e SMS."
 
 #: tmp_strings.xml:238(string)
 msgid "Available extensions for \"OI Notepad\":"
-msgstr ""
+msgstr "Extras para o \"OI Notepad\":"
 
 #: tmp_strings.xml:239(listitem)
 msgid "Record and attach voice memos to notes with \"OI Voice Notes\"."
@@ -568,7 +577,7 @@ msgstr ""
 
 #: tmp_strings.xml:348(string)
 msgid "Available extensions for \"OI Shopping List\":"
-msgstr ""
+msgstr "Extras para o \"OI Shopping List\":"
 
 #: tmp_strings.xml:349(listitem)
 msgid "Add a recorded message to a note with \"OI Voice Notes\"."

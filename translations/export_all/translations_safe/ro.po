@@ -442,7 +442,7 @@ msgstr ""
 
 #: tmp_strings.xml:121(string)
 msgid "Select a file for restore"
-msgstr "Selectează un fișier pentru restaurare"
+msgstr "Selectează un fișier pentru restabilire"
 
 #: tmp_strings.xml:122(string)
 msgid "Error while restoring"
@@ -805,59 +805,59 @@ msgstr "Cât timp nu este descărcat, se va utiliza locația implicită."
 
 #: tmp_strings.xml:244(string)
 msgid "A backup file was found. Would you like to restore it?"
-msgstr ""
+msgstr "S-a găsit un fișier copie de rezervă. Doriți să îl restabiliți?"
 
 #: tmp_strings.xml:245(string)
 msgid "Backup file found"
-msgstr ""
+msgstr "Fișier copie de rezervă găsit"
 
 #: tmp_strings.xml:246(string)
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: tmp_strings.xml:247(string)
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: tmp_strings.xml:248(string)
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: tmp_strings.xml:249(string)
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: tmp_strings.xml:250(string)
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: tmp_strings.xml:251(string)
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: tmp_strings.xml:252(string)
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: tmp_strings.xml:253(string)
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: tmp_strings.xml:254(string)
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #: tmp_strings.xml:255(string)
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: tmp_strings.xml:256(string)
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: tmp_strings.xml:257(string)
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #. Permission to access master password
 #: tmp_strings.xml:265(string)

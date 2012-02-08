@@ -159,14 +159,12 @@ msgid "No items available"
 msgstr "Žiadne položky niesu dostupné"
 
 #: tmp_strings.xml:66(string)
-#, fuzzy
 msgid "No stores available for this list"
-msgstr "Vyberte tému pre tento zoznam"
+msgstr ""
 
 #: tmp_strings.xml:67(string)
-#, fuzzy
 msgid "No tags available for this list"
-msgstr "Vyberte tému pre tento zoznam"
+msgstr ""
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
@@ -254,9 +252,8 @@ msgid "Note"
 msgstr "Poznámka"
 
 #: tmp_strings.xml:104(string)
-#, fuzzy
 msgid "Stores"
-msgstr "Obchody..."
+msgstr ""
 
 #: tmp_strings.xml:105(string)
 msgid "List"

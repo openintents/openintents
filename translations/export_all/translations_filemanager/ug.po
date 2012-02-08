@@ -193,7 +193,7 @@ msgstr "راستىنلا %d ھۆججەتنى ئۆچۈرەمسىز؟"
 
 #: tmp_strings.xml:82(string)
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #: tmp_strings.xml:83(string)
 msgid "Select multiple files"

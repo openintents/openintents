@@ -159,14 +159,12 @@ msgid "No items available"
 msgstr "कोई आइटम मोजूद नहीं है"
 
 #: tmp_strings.xml:66(string)
-#, fuzzy
 msgid "No stores available for this list"
-msgstr "इस सूची के लिए विषयवस्तु चुनिए"
+msgstr ""
 
 #: tmp_strings.xml:67(string)
-#, fuzzy
 msgid "No tags available for this list"
-msgstr "इस सूची के लिए विषयवस्तु चुनिए"
+msgstr ""
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
@@ -254,9 +252,8 @@ msgid "Note"
 msgstr "व्याख्या"
 
 #: tmp_strings.xml:104(string)
-#, fuzzy
 msgid "Stores"
-msgstr "स्टोर्स..."
+msgstr ""
 
 #: tmp_strings.xml:105(string)
 msgid "List"

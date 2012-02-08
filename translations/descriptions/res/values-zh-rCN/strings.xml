@@ -2,6 +2,7 @@
 <main>
 	<translators>Launchpad Contributions:
   OpenIntents devs https://launchpad.net/~openintents-devs
+  Qiang HU https://launchpad.net/~nickhuq
   zhangchun https://launchpad.net/~zhangchun</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
@@ -11,18 +12,18 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI About is a standalone about dialog that is shared between apps.</string>
+		<string>OI About 是一个介于应用程序间的about对话框</string>
 		<string>This application is invoked through the menu of other OI applications.</string>
 		<string>It allows you to view version information, links, credits, and license of an application.</string>
 		<string>Credits include authors, documentation, translators, and artists.</string>
 		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
 		<emptyline/>
-		<string>应用程序的广告是免费的，不需要网络权限。</string>
+		<string>本程序不含广告，也不需要网络权限</string>
 		<emptyline/>
-		<string>开放源码应用程序的源代码是：</string>
+		<string>本程序是开源免费的，它的源代码能在这里获得</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>完整列表的更改，请访问：</string>
+		<string>你可以在这里获得完整的改变列表和常见问题回答</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
 		<string>可以翻译成您的语言：</string>
@@ -69,14 +70,14 @@
 		<string>It allows you to set a variety of different actions to notify you at the end of a timer. </string>
 		<string>Fully customize all your timers, with no limit on how many you can have running or saved. </string>
 		<emptyline/>
-		<string>应用程序的广告是免费的，不需要网络权限。</string>
+		<string>本程序不含广告，也不需要网络权限</string>
 		<emptyline/>
 		<emptyline/>
 		<emptyline/>
-		<string>开放源码应用程序的源代码是：</string>
+		<string>本程序是开源免费的，它的源代码能在这里获得</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>完整列表的更改，请访问：</string>
+		<string>你可以在这里获得完整的改变列表和常见问题回答</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
 		<emptyline/>
@@ -118,15 +119,15 @@
 		<string>文件管理器允许你浏览SD卡，创建目录，重命名，复制，移动和删除文件。</string>
 		<string>作为一个扩展到其他应用程序，显示“打开”和“保存”对话框。</string>
 		<emptyline/>
-		<string>应用程序的广告是免费的，不需要网络权限。</string>
+		<string>本程序不含广告，也不需要网络权限</string>
 		<emptyline/>
-		<string>完整列表的更改，请访问：</string>
+		<string>你可以在这里获得完整的改变列表和常见问题回答</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
 		<string>可以翻译成您的语言：</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>开放源码应用程序的源代码是：</string>
+		<string>本程序是开源免费的，它的源代码能在这里获得</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>功能</string>
@@ -171,12 +172,12 @@
 		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
 		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
 		<emptyline/>
-		<string>应用程序的广告是免费的，不需要网络权限。</string>
+		<string>本程序不含广告，也不需要网络权限</string>
 		<emptyline/>
-		<string>开放源码应用程序的源代码是：</string>
+		<string>本程序是开源免费的，它的源代码能在这里获得</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>完整列表的更改，请访问：</string>
+		<string>你可以在这里获得完整的改变列表和常见问题回答</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
 		<string>可以翻译成您的语言：</string>
@@ -218,12 +219,12 @@
 		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
 		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
 		<emptyline/>
-		<string>应用程序的广告是免费的，不需要网络权限。</string>
+		<string>本程序不含广告，也不需要网络权限</string>
 		<emptyline/>
-		<string>开放源码应用程序的源代码是：</string>
+		<string>本程序是开源免费的，它的源代码能在这里获得</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>完整列表的更改，请访问：</string>
+		<string>你可以在这里获得完整的改变列表和常见问题回答</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
 		<string>可以翻译成您的语言：</string>
@@ -273,15 +274,15 @@
 		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
 		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
 		<emptyline/>
-		<string>应用程序的广告是免费的，不需要网络权限。</string>
+		<string>本程序不含广告，也不需要网络权限</string>
 		<emptyline/>
-		<string>完整列表的更改，请访问：</string>
+		<string>你可以在这里获得完整的改变列表和常见问题回答</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
 		<string>可以翻译成您的语言：</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>开放源码应用程序的源代码是：</string>
+		<string>本程序是开源免费的，它的源代码能在这里获得</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>功能</string>
@@ -328,12 +329,12 @@
 		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
 		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
 		<emptyline/>
-		<string>开放源码应用程序的源代码是：</string>
+		<string>本程序是开源免费的，它的源代码能在这里获得</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>应用程序的广告是免费的，不需要网络权限。</string>
+		<string>本程序不含广告，也不需要网络权限</string>
 		<emptyline/>
-		<string>完整列表的更改，请访问：</string>
+		<string>你可以在这里获得完整的改变列表和常见问题回答</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
 		<string>可以翻译成您的语言：</string>

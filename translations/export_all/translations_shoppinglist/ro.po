@@ -161,14 +161,12 @@ msgid "No items available"
 msgstr "Nu există articole disponibile"
 
 #: tmp_strings.xml:66(string)
-#, fuzzy
 msgid "No stores available for this list"
-msgstr "Alege o temă pentru această listă"
+msgstr "Nu există magazine disponibile pentru această listă"
 
 #: tmp_strings.xml:67(string)
-#, fuzzy
 msgid "No tags available for this list"
-msgstr "Alege o temă pentru această listă"
+msgstr "Nu există etichete disponibile pentru această listă"
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
@@ -256,13 +254,12 @@ msgid "Note"
 msgstr "Notiță"
 
 #: tmp_strings.xml:104(string)
-#, fuzzy
 msgid "Stores"
-msgstr "Magazine..."
+msgstr "Magazine"
 
 #: tmp_strings.xml:105(string)
 msgid "List"
-msgstr ""
+msgstr "Listă"
 
 #: tmp_strings.xml:107(string)
 msgid "Other Quantity..."
@@ -274,7 +271,7 @@ msgstr "Altă prioritate..."
 
 #: tmp_strings.xml:109(string)
 msgid "(Unfiltered)"
-msgstr ""
+msgstr "(Nefiltrat)"
 
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:112(string)
@@ -471,11 +468,13 @@ msgstr "Ascunde imediat articolele bifate."
 
 #: tmp_strings.xml:178(string)
 msgid "Fast Scrolling"
-msgstr ""
+msgstr "Derulare rapidă"
 
 #: tmp_strings.xml:179(string)
 msgid "Scroll handle appears when scrolling 35 items or more."
 msgstr ""
+"Operatorul de derulare apare atunci când se derulează 35 sau mai multe "
+"elemente."
 
 #: tmp_strings.xml:180(string)
 msgid "Show price"
@@ -511,11 +510,11 @@ msgstr "Împiedică ecranul să fie blocat când este bifat."
 
 #: tmp_strings.xml:187(string)
 msgid "Filters"
-msgstr ""
+msgstr "Filtre"
 
 #: tmp_strings.xml:188(string)
 msgid "Lists can be filtered by tags or stores."
-msgstr ""
+msgstr "Listele pot fi filtrate după etichete sau magazine."
 
 #: tmp_strings.xml:189(string)
 msgid "Reset Quantity"

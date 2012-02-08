@@ -2,7 +2,7 @@
 OI Flashlight
 
 # Promo text:
-Keep the camera flash or the backlight turned on with OI Flashlight.
+Manter a luz da máquina fotográfica ou luz de fundo ligada com o OI Flashlight.
 
 # Description:
 OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
@@ -23,19 +23,19 @@ Características:
 * Lock camera flash on.
 * The color of backlight is customizable.
 
-Available extensions for "OI Flashlight": 
-* Show the license information with "OI About".
+Extras para o "OI Flashlight": 
+* Mostrar a licença com o OI About.
 * Change the color of the backlight with "OI Color Picker".
 
 Applications that work with "OI Flashlight": 
-* Update with "OI Update".
+* Atualizações com o OI Update.
 
 Palavras-chave: 
 * Flashlight, light, Backlight
 * OI, OpenIntents, Open Intents
 
 Versões internacionais: 
-Lanternă OI, Llanterna d'OI, OI フラッシュライト, OI 전등, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI قول چىراغ, OI Φακός, OI Светилка, OI Фенерче, OI टॉर्च, OI手电筒, مصباح يدوي OI, פנס OI
+Lanternă OI, Llanterna d'OI, OI フラッシュライト, OI 전등, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Zseblámpa, OI قول چىراغ, OI Φακός, OI Светилка, OI Фенерче, OI टॉर्च, OI手电筒, مصباح يدوي OI, פנס OI
 
 
 Linhas de procura no Market: 

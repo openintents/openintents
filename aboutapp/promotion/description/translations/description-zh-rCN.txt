@@ -5,14 +5,14 @@ OI简介
 一个在系统中共享的用于显示“关于”对话框的程序。
 
 # Description:
-OI About is a standalone about dialog that is shared between apps. This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 
+OI About 是一个介于应用程序间的about对话框 This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 
 
-应用程序的广告是免费的，不需要网络权限。 
+本程序不含广告，也不需要网络权限 
 
-开放源码应用程序的源代码是： 
+本程序是开源免费的，它的源代码能在这里获得 
 http://code.google.com/p/openintents
 
-完整列表的更改，请访问： 
+你可以在这里获得完整的改变列表和常见问题回答 
 http://www.openintents.org
 
 可以翻译成您的语言： 

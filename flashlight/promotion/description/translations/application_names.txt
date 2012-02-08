@@ -13,6 +13,7 @@ OI Plaslayt
 OI Taschenlampe
 OI Torcia
 OI Zaklamp
+OI Zseblámpa
 OI قول چىراغ
 OI Φακός
 OI Светилка

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: Sérgio Marques <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -25,43 +25,46 @@ msgstr ""
 "This is a dummy translation so that the credits are counted as translated.\n"
 "\n"
 "Launchpad Contributions:\n"
-"  Peli https://launchpad.net/~peli0101"
+"  Peli https://launchpad.net/~peli0101\n"
+"  Sérgio Marques https://launchpad.net/~sergio+marques"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
 msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
 msgstr ""
+"Manter a luz da máquina fotográfica ou luz de fundo ligada com o OI "
+"Flashlight."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
 msgid "OI Flashlight"
-msgstr ""
+msgstr "OI Flashlight"
 
 #: tmp_strings.xml:19(string)
 msgid "The backlight stays turned on."
-msgstr ""
+msgstr "A luz de fundo fica ligada."
 
 #: tmp_strings.xml:21(string)
 msgid "Color"
-msgstr ""
+msgstr "Cor"
 
 #. Application name should be consistent across translations.
 #: tmp_strings.xml:24(string)
 msgid "OI Color Picker"
-msgstr ""
+msgstr "OI Color Picker"
 
 #. Title for preferences or settings
 #: tmp_strings.xml:26(string) tmp_strings.xml:33(string)
 msgid "Preferences"
-msgstr ""
+msgstr "Preferências"
 
 #: tmp_strings.xml:34(string)
 msgid "Keep color"
-msgstr ""
+msgstr "Manter cor"
 
 #: tmp_strings.xml:35(string)
 msgid "Save color for next time Flashlight app is started"
-msgstr ""
+msgstr "Grava cor para utilizar na próxima vez que iniciar a aplicação."
 
 #. Explanation that is displayed if Color Picker has not been installed yet, but 
 #. 		user tries to access it.
@@ -70,20 +73,22 @@ msgid ""
 "To make the Color Picker more useful to other developers, we have split it "
 "into its own app."
 msgstr ""
+"Para que o Color Picker seja mais útil ao programadores, separámos a "
+"aplicação em duas."
 
 #: tmp_strings.xml:44(string)
 msgid "Use camera flash"
-msgstr ""
+msgstr "Utilizar flash da máquina fotográfica"
 
 #: tmp_strings.xml:45(string)
 msgid "Use the camera flash instead of the screen backlight."
-msgstr ""
+msgstr "Utilizar flash da máquina fotográfica em vez da luz de fundo."
 
 #. Information to enable the camera flash as flashlight.
 #: tmp_strings.xml:47(string)
 msgid "Press to enable camera light (May take a second)."
-msgstr ""
+msgstr "Prima para ativar o flash da máquina (pode levar um segundo)."
 
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
-msgstr ""
+msgstr "Prima para desativar o flash da máquina."

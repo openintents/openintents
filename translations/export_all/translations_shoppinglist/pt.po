@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: Sérgio Marques <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -26,17 +26,18 @@ msgstr ""
 "\n"
 "Launchpad Contributions:\n"
 "  Peli https://launchpad.net/~peli0101\n"
+"  Sérgio Marques https://launchpad.net/~sergio+marques\n"
 "  Tiago Silva https://launchpad.net/~tiagosilva"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:27(string)
 msgid "Keep track of your shopping items with OI Shopping List."
-msgstr ""
+msgstr "Registo de compras com o OI Shopping List."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
 msgid "OI Shopping List"
-msgstr ""
+msgstr "OI Shopping List"
 
 #: tmp_strings.xml:35(string)
 msgid "New item"
@@ -52,40 +53,40 @@ msgstr "Enviar lista"
 
 #: tmp_strings.xml:38(string)
 msgid "Mark all items"
-msgstr ""
+msgstr "Marcar todos os itens"
 
 #: tmp_strings.xml:39(string)
 msgid "Empty list not sent."
-msgstr ""
+msgstr "Lista vazia não enviada."
 
 #: tmp_strings.xml:40(string)
 msgid "No application available for sending."
-msgstr ""
+msgstr "Não possui a aplicação de envio."
 
 #: tmp_strings.xml:41(string)
 msgid "My shopping list"
-msgstr ""
+msgstr "A minha lista de compras"
 
 #: tmp_strings.xml:42(string)
 msgid "e.g. wishlist, family list"
-msgstr ""
+msgstr "ex.: intenções, lista familiar"
 
 #. Automation action to clean up a list.
 #: tmp_strings.xml:43(string) tmp_strings.xml:346(item)
 msgid "Clean up list"
-msgstr ""
+msgstr "Apagar lista"
 
 #: tmp_strings.xml:44(string)
 msgid "Delete list"
-msgstr ""
+msgstr "Eliminar lista"
 
 #: tmp_strings.xml:45(string)
 msgid "Enter name of new shopping list"
-msgstr ""
+msgstr "Indique o nome da lista de compras"
 
 #: tmp_strings.xml:46(string)
 msgid "Rename shopping list"
-msgstr ""
+msgstr "Mudar nome da lista de compras"
 
 #: tmp_strings.xml:47(string) tmp_strings.xml:59(string)
 msgid "Edit item"
@@ -93,31 +94,31 @@ msgstr "Editar item"
 
 #: tmp_strings.xml:48(string)
 msgid "Enter new store name"
-msgstr ""
+msgstr "Indique o nome da loja"
 
 #: tmp_strings.xml:49(string)
 msgid "Please enter a name"
-msgstr ""
+msgstr "Por favor, indique um nome"
 
 #: tmp_strings.xml:50(string)
 msgid "No items are marked as crossed out."
-msgstr ""
+msgstr "Sem itens riscados."
 
 #: tmp_strings.xml:51(string)
 msgid "Do you really want to delete this shopping list?"
-msgstr ""
+msgstr "Pretende eliminar esta lista de compras?"
 
 #: tmp_strings.xml:52(string)
 msgid "Error while accessing shopping lists."
-msgstr ""
+msgstr "Erro ao aceder às listas de compras."
 
 #: tmp_strings.xml:53(string)
 msgid "Pick an item"
-msgstr ""
+msgstr "Escolha um item"
 
 #: tmp_strings.xml:54(string)
 msgid "Pick a list"
-msgstr ""
+msgstr "Escolha uma lista"
 
 #: tmp_strings.xml:55(string)
 msgid "Theme"
@@ -125,68 +126,68 @@ msgstr "Tema"
 
 #: tmp_strings.xml:56(string)
 msgid "Theme settings"
-msgstr ""
+msgstr "Definições de tema"
 
 #: tmp_strings.xml:57(string)
 msgid "Rename list"
-msgstr ""
+msgstr "Mudar nome da lista"
 
 #: tmp_strings.xml:58(string)
 msgid "Mark item"
-msgstr ""
+msgstr "Marcar item"
 
 #: tmp_strings.xml:60(string)
 msgid "Auto add"
-msgstr ""
+msgstr "Adição automática"
 
 #: tmp_strings.xml:61(string)
 msgid "Stores..."
-msgstr ""
+msgstr "Lojas..."
 
 #: tmp_strings.xml:62(string)
 msgid "Rename store"
-msgstr ""
+msgstr "Mudar nome da loja"
 
 #: tmp_strings.xml:63(string)
 msgid "Delete store"
-msgstr ""
+msgstr "Eliminar loja"
 
 #: tmp_strings.xml:64(string)
 msgid "Do you really want to delete this store?"
-msgstr ""
+msgstr "Pretende eliminar esta loja?"
 
 #: tmp_strings.xml:65(string)
 msgid "No items available"
-msgstr ""
+msgstr "Sem itens disponíveis"
 
 #: tmp_strings.xml:66(string)
 msgid "No stores available for this list"
-msgstr ""
+msgstr "Sem lojas para esta lista"
 
 #: tmp_strings.xml:67(string)
 msgid "No tags available for this list"
-msgstr ""
+msgstr "Sem \"tags\" para esta lista"
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
 #. 	     tags or price will be kept.
 #: tmp_strings.xml:72(string)
 msgid "Remove item from list"
-msgstr ""
+msgstr "Remover item da lista"
 
 #. Delete this item completely. If the user wants to add it again, they
 #. 	     have to enter all the information again.
 #: tmp_strings.xml:76(string)
 msgid "Delete item permanently"
-msgstr ""
+msgstr "Eliminar item permanentemente"
 
 #: tmp_strings.xml:77(string)
 msgid "Move item to other list"
-msgstr ""
+msgstr "Mover item para outra lista"
 
 #: tmp_strings.xml:78(string)
 msgid "Copy item"
-msgstr ""
+msgstr "Copiar item"
 
 #. Button label to add an item to the list.
 #: tmp_strings.xml:81(string)
@@ -195,34 +196,34 @@ msgstr "Adicionar"
 
 #: tmp_strings.xml:83(string)
 msgid "Pick items"
-msgstr ""
+msgstr "Escolha os itens"
 
 #: tmp_strings.xml:84(string)
 msgid "Shopping"
-msgstr ""
+msgstr "Compras"
 
 #. Title supplement. '%s' is the name of the current list.
 #: tmp_strings.xml:87(string)
 msgid "%s - Pick items"
-msgstr ""
+msgstr "%s - Escolha os itens"
 
 #. Title supplement. '%s' is the name of the current list.
 #: tmp_strings.xml:90(string)
 msgid "%s - Shopping"
-msgstr ""
+msgstr "%s - Compras"
 
 #. Title supplement. '%s' is the name of the current item.
 #: tmp_strings.xml:93(string)
 msgid "%s - Stores"
-msgstr ""
+msgstr "%s - Lojas"
 
 #: tmp_strings.xml:94(string)
 msgid "Edit Item Stores"
-msgstr ""
+msgstr "Editar lojas"
 
 #: tmp_strings.xml:96(string)
 msgid "Tags"
-msgstr ""
+msgstr "\"Tags\""
 
 #: tmp_strings.xml:97(string)
 msgid "Price"
@@ -238,107 +239,107 @@ msgstr "Quantidade"
 
 #: tmp_strings.xml:100(string)
 msgid "Priority"
-msgstr ""
+msgstr "Prioridade"
 
 #: tmp_strings.xml:101(string)
 msgid "Has Note"
-msgstr ""
+msgstr "Tem nota"
 
 #: tmp_strings.xml:102(string)
 msgid "Units"
-msgstr ""
+msgstr "Unidades"
 
 #: tmp_strings.xml:103(string)
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 #: tmp_strings.xml:104(string)
 msgid "Stores"
-msgstr ""
+msgstr "Lojas"
 
 #: tmp_strings.xml:105(string)
 msgid "List"
-msgstr ""
+msgstr "Lista"
 
 #: tmp_strings.xml:107(string)
 msgid "Other Quantity..."
-msgstr ""
+msgstr "Outras quantidades..."
 
 #: tmp_strings.xml:108(string)
 msgid "Other Priority..."
-msgstr ""
+msgstr "Outra prioridade..."
 
 #: tmp_strings.xml:109(string)
 msgid "(Unfiltered)"
-msgstr ""
+msgstr "(Sem filtro)"
 
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:112(string)
 msgid "Total: %s"
-msgstr ""
+msgstr "Total: %s"
 
 #. Sum of all prices of the checked items. '%s' is the sum
 #: tmp_strings.xml:115(string)
 msgid "Checked: %s"
-msgstr ""
+msgstr "Verificada: %s"
 
 #: tmp_strings.xml:116(string)
 msgid "Priority 1: %s"
-msgstr ""
+msgstr "Prioridade 1: %s"
 
 #: tmp_strings.xml:117(string)
 msgid "Priority 1-2: %s"
-msgstr ""
+msgstr "Prioridade 1-2: %s"
 
 #: tmp_strings.xml:118(string)
 msgid "Priority 1-3: %s"
-msgstr ""
+msgstr "Prioridade 1-3: %s"
 
 #: tmp_strings.xml:119(string)
 msgid "Priority 1-4: %s"
-msgstr ""
+msgstr "Prioridade 1-4: %s"
 
 #: tmp_strings.xml:121(string)
 msgid "Are you sure you want to permanently delete this item?"
-msgstr ""
+msgstr "Tem a certeza que pretende eliminar este item permanentemente?"
 
 #: tmp_strings.xml:122(string)
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #. Added to an item to indicate it was bought.
 #: tmp_strings.xml:125(string)
 msgid "... OK"
-msgstr ""
+msgstr "... Aceitar"
 
 #. The shortcut is created on the home screen.
 #: tmp_strings.xml:129(string)
 msgid "Pick list for shortcut"
-msgstr ""
+msgstr "Escolha a lista para o atalho"
 
 #. Shown if external application wants to insert new items.
 #: tmp_strings.xml:132(string)
 msgid "Pick list to insert items"
-msgstr ""
+msgstr "Escolha a lista para inserção de itens"
 
 #. Title for selecting a theme
 #: tmp_strings.xml:136(string)
 msgid "Pick a theme"
-msgstr ""
+msgstr "Escolha o tema"
 
 #: tmp_strings.xml:137(string)
 msgid "Choose a theme for this list"
-msgstr ""
+msgstr "Escolha o tema para esta lista"
 
 #. Preference fontsize: default font size
 #: tmp_strings.xml:138(string) tmp_strings.xml:302(item)
 #: tmp_strings.xml:309(item)
 msgid "Default"
-msgstr ""
+msgstr "Padrão"
 
 #: tmp_strings.xml:139(string)
 msgid "Classic"
-msgstr ""
+msgstr "Clássico"
 
 #: tmp_strings.xml:140(string)
 msgid "Android"
@@ -346,16 +347,16 @@ msgstr "Android"
 
 #: tmp_strings.xml:141(string)
 msgid "Classic (from OI Shopping List)"
-msgstr ""
+msgstr "Clssicó (de OI Shopping List)"
 
 #: tmp_strings.xml:142(string)
 msgid "Android (from OI Shopping List)"
-msgstr ""
+msgstr "Android (de OI Shopping List)"
 
 #. Button label "OK"
 #: tmp_strings.xml:146(string)
 msgid "OK"
-msgstr ""
+msgstr "Aceitar"
 
 #. Button label "Cancel"
 #: tmp_strings.xml:148(string)
@@ -364,490 +365,500 @@ msgstr "Cancelar"
 
 #: tmp_strings.xml:149(string)
 msgid "Use this theme for all lists"
-msgstr ""
+msgstr "Utilizar tema em todas as listas"
 
 #: tmp_strings.xml:150(string)
 msgid "Get more themes"
-msgstr ""
+msgstr "Obter mais temas"
 
 #. preferences
 #: tmp_strings.xml:153(string)
 msgid "Settings"
-msgstr ""
+msgstr "Definições"
 
 #: tmp_strings.xml:155(string)
 msgid "Application settings"
-msgstr ""
+msgstr "Definições da aplicação"
 
 #: tmp_strings.xml:157(string)
 msgid "Unchecked on top"
-msgstr ""
+msgstr "Não verificados em cima"
 
 #: tmp_strings.xml:158(string)
 msgid "Always show unchecked items first"
-msgstr ""
+msgstr "Mostrar , primeiro, os itens não verificados"
 
 #: tmp_strings.xml:159(string)
 msgid "Font size"
-msgstr ""
+msgstr "Tamanho da letra"
 
 #: tmp_strings.xml:160(string)
 msgid "Change font size"
-msgstr ""
+msgstr "Alterar tamanho"
 
 #: tmp_strings.xml:161(string)
 msgid "Choose font size"
-msgstr ""
+msgstr "Escolha o tamanho"
 
 #: tmp_strings.xml:162(string)
 msgid "Orientation"
-msgstr ""
+msgstr "Orientação"
 
 #: tmp_strings.xml:163(string)
 msgid "Change orientation"
-msgstr ""
+msgstr "Alterar orientação"
 
 #: tmp_strings.xml:164(string)
 msgid "Choose orientation"
-msgstr ""
+msgstr "Escolha o tamanho"
 
 #: tmp_strings.xml:165(string)
 msgid "Sort order"
-msgstr ""
+msgstr "Ordenação"
 
 #: tmp_strings.xml:166(string)
 msgid "Change sort order of list items"
-msgstr ""
+msgstr "Alterar ordenação dos itens"
 
 #: tmp_strings.xml:167(string)
 msgid "Sort order - Pick Items"
-msgstr ""
+msgstr "Ordenação - Escolha os itens"
 
 #: tmp_strings.xml:168(string)
 msgid "Change sort order of list items in Pick Items mode."
-msgstr ""
+msgstr "Alterar ordenação dos itens da lista no modo de escolha de itens."
 
 #: tmp_strings.xml:169(string)
 msgid "Choose sort order"
-msgstr ""
+msgstr "Escolha a ordenação"
 
 #: tmp_strings.xml:170(string)
 msgid "Choose sort order for Pick Items mode"
-msgstr ""
+msgstr "Escolha a ordenação para o modo de escolha de itens."
 
 #: tmp_strings.xml:171(string)
 msgid "Load last list used"
-msgstr ""
+msgstr "Carregar última lista utilizada"
 
 #: tmp_strings.xml:172(string)
 msgid "Always start with the list viewed last time."
-msgstr ""
+msgstr "Abrir sempre a última lista visualizada."
 
 #: tmp_strings.xml:173(string)
 msgid "Capitalization"
-msgstr ""
+msgstr "Capitalização"
 
 #: tmp_strings.xml:174(string)
 msgid "Automatic capitalization of entries"
-msgstr ""
+msgstr "Capitalização automática de entradas"
 
 #: tmp_strings.xml:175(string)
 msgid "Choose capitalization"
-msgstr ""
+msgstr "Escolha a capitalização"
 
 #: tmp_strings.xml:176(string)
 msgid "Hide checked items"
-msgstr ""
+msgstr "Ocultar itens verificados"
 
 #: tmp_strings.xml:177(string)
 msgid "Immediately hide items checked off."
-msgstr ""
+msgstr "Ocultar automaticamente os itens não verificados."
 
 #: tmp_strings.xml:178(string)
 msgid "Fast Scrolling"
-msgstr ""
+msgstr "Deslocação rápida"
 
 #: tmp_strings.xml:179(string)
 msgid "Scroll handle appears when scrolling 35 items or more."
-msgstr ""
+msgstr "A barra de deslocação aparece ao deslocar 35 ou mais itens."
 
 #: tmp_strings.xml:180(string)
 msgid "Show price"
-msgstr ""
+msgstr "Mostrar preço"
 
 #: tmp_strings.xml:181(string) tmp_strings.xml:194(string)
 #: tmp_strings.xml:196(string) tmp_strings.xml:198(string)
 #: tmp_strings.xml:200(string)
 msgid "Shown as extra column in list."
-msgstr ""
+msgstr "Mostrar uma coluna extra na lista."
 
 #: tmp_strings.xml:182(string)
 msgid "Per-store prices"
-msgstr ""
+msgstr "Preço por loja"
 
 #: tmp_strings.xml:183(string)
 msgid "Track per-store prices"
-msgstr ""
+msgstr "Registar preço por loja"
 
 #: tmp_strings.xml:184(string)
 msgid "Keep track of separate prices for each item at each store."
-msgstr ""
+msgstr "Registar os diversos preços de cada item em cada loja."
 
 #: tmp_strings.xml:185(string)
 msgid "Disable screen lock"
-msgstr ""
+msgstr "Desativar bloqueio de ecrã"
 
 #: tmp_strings.xml:186(string)
 msgid "Prevents the screen to be locked when checked."
-msgstr ""
+msgstr "Se ativa, impede o bloqueio do ecrã."
 
 #: tmp_strings.xml:187(string)
 msgid "Filters"
-msgstr ""
+msgstr "Filtros"
 
 #: tmp_strings.xml:188(string)
 msgid "Lists can be filtered by tags or stores."
-msgstr ""
+msgstr "As listas podem ser filtradas por \"tags\" ou lojas."
 
 #: tmp_strings.xml:189(string)
 msgid "Reset Quantity"
-msgstr ""
+msgstr "Redefinir quantidade"
 
 #: tmp_strings.xml:190(string)
 msgid "Resets the quantity when adding items again."
-msgstr ""
+msgstr "Repõe a quantidade ao adicionar itens."
 
 #: tmp_strings.xml:191(string)
 msgid "Barcode Scanner"
-msgstr ""
+msgstr "Analisador de código de barras"
 
 #: tmp_strings.xml:192(string)
 msgid "Long press the Add button to start Barcode OI Plugin (if installed)."
 msgstr ""
+"Prima o botão Adicionar até que o Plugin Barcode OI seja iniciado (se "
+"instalado)."
 
 #: tmp_strings.xml:193(string)
 msgid "Show tags"
-msgstr ""
+msgstr "Mostrar \"tags\""
 
 #: tmp_strings.xml:195(string)
 msgid "Show quantity"
-msgstr ""
+msgstr "Mostrar quantidade"
 
 #: tmp_strings.xml:197(string)
 msgid "Show priority"
-msgstr ""
+msgstr "Mostrar prioridade"
 
 #: tmp_strings.xml:199(string)
 msgid "Show units"
-msgstr ""
+msgstr "Mostrar unidades"
 
 #: tmp_strings.xml:201(string) tmp_strings.xml:202(string)
 #: tmp_strings.xml:204(string)
 msgid "Subtotal by priority"
-msgstr ""
+msgstr "Subtotal por prioridade"
 
 #: tmp_strings.xml:203(string)
 msgid "No subtotal by priority shown."
-msgstr ""
+msgstr "Subtotal por prioridade não mostrado."
 
 #: tmp_strings.xml:205(string)
 msgid "Include checked items"
-msgstr ""
+msgstr "Incluir itens verificados"
 
 #: tmp_strings.xml:206(string)
 msgid "Subtotal by priority includes checked items"
-msgstr ""
+msgstr "Subtotal por prioridade inclui itens verificados"
 
 #: tmp_strings.xml:207(string)
 msgid "Subtotal by priority excludes checked items"
-msgstr ""
+msgstr "Subtotal por prioridade exclui itens verificados"
 
 #: tmp_strings.xml:208(string)
 msgid "Pick items directly in list"
-msgstr ""
+msgstr "Escolher itens na lista"
 
 #: tmp_strings.xml:209(string)
 msgid "Switch main list to edit mode to re-add existing items"
 msgstr ""
+"Troca a lista principal para o modo de edição para adicionar itens existentes"
 
 #: tmp_strings.xml:210(string)
 msgid "Add items to list using a dedicated dialog"
-msgstr ""
+msgstr "Adicionar itens à lista atravéd de um diálogo"
 
 #: tmp_strings.xml:211(string)
 msgid "Always same sort order"
-msgstr ""
+msgstr "Utilizar sempre a mesma ordenação"
 
 #: tmp_strings.xml:212(string)
 msgid "Items are sorted in Pick Items mode just as in Shopping mode."
 msgstr ""
+"Os itens são ordenados no modo de escolha de itens tal como no modo de "
+"compras."
 
 #: tmp_strings.xml:213(string)
 msgid "Sort order for Pick Items mode can be chosen separately."
 msgstr ""
+"A ordenação no modo de escolha de itens pode se escolhida separadamente."
 
 #. Preference title: Shake the phone to clean up the list.
 #: tmp_strings.xml:216(string)
 msgid "Shake to clean up"
-msgstr ""
+msgstr "Agite o telefone para apagar"
 
 #. Preference summary: Shake the phone to clean up the list.
 #: tmp_strings.xml:219(string)
 msgid "Shake the phone to clean up the list."
-msgstr ""
+msgstr "Agitte o telefone para apagar a lista."
 
 #: tmp_strings.xml:221(string)
 msgid "Advanced settings"
-msgstr ""
+msgstr "Definições avançadas"
 
 #: tmp_strings.xml:222(string)
 msgid "Additional settings."
-msgstr ""
+msgstr "Definições extra"
 
 #. Preference category: General settings
 #: tmp_strings.xml:225(string)
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: tmp_strings.xml:226(string)
 msgid "Pick Items"
-msgstr ""
+msgstr "Escolha os itens"
 
 #: tmp_strings.xml:228(string)
 msgid "Appearance"
-msgstr ""
+msgstr "Aspeto"
 
 #: tmp_strings.xml:230(string)
 msgid "Add-ons"
-msgstr ""
+msgstr "Extras"
 
 #: tmp_strings.xml:231(string)
 msgid "Get new add-ons"
-msgstr ""
+msgstr "Obter extras"
 
 #: tmp_strings.xml:232(string)
 msgid "Search for extensions and themes online."
-msgstr ""
+msgstr "Procurar extensões e temas na web."
 
 #: tmp_strings.xml:233(string)
 msgid "Get add-ons from Market"
-msgstr ""
+msgstr "Obter extras no Market"
 
 #: tmp_strings.xml:234(string)
 msgid "Get add-ons from OpenIntents"
-msgstr ""
+msgstr "Obter extras na OpenIntents"
 
 #: tmp_strings.xml:235(string)
 msgid "Extensions"
-msgstr ""
+msgstr "Extensões"
 
 #: tmp_strings.xml:236(string)
 msgid "Themes"
-msgstr ""
+msgstr "Temas"
 
 #: tmp_strings.xml:237(string)
 msgid "Search for extensions at Android Market."
-msgstr ""
+msgstr "Procurar extensões no Android Market."
 
 #: tmp_strings.xml:238(string)
 msgid "Search for themes at Android Market."
-msgstr ""
+msgstr "Procurar temas no Android Market."
 
 #: tmp_strings.xml:239(string)
 msgid "Get extensions from the OpenIntents homepage."
-msgstr ""
+msgstr "Obter extensões na página OpenIntents."
 
 #: tmp_strings.xml:240(string)
 msgid "Get themes from the OpenIntents homepage."
-msgstr ""
+msgstr "Obter temas na página OpenIntents."
 
 #: tmp_strings.xml:241(string)
 msgid "Quick Edit Mode"
-msgstr ""
+msgstr "Modo de edição rápida"
 
 #: tmp_strings.xml:242(string)
 msgid "Touch Priority or Quantity values for a menu of common values."
-msgstr ""
+msgstr "Toque nos valores de Quantidade ou Prioridade para ver o menu."
 
 #: tmp_strings.xml:243(string)
 msgid "Touching Priority or Quantity values summons the Edit Item dialog."
 msgstr ""
+"Ao tocar nos valores de Quantidade ou Prioridade abre o menu Editar item."
 
 #: tmp_strings.xml:244(string)
 msgid "Reset all settings"
-msgstr ""
+msgstr "Restaurar todas as definições"
 
 #: tmp_strings.xml:245(string)
 msgid "Do you really want to RESET ALL settings? This cannot be undone."
-msgstr ""
+msgstr "Pretende realmente restaurar as definições. A ação é irreversível."
 
 #: tmp_strings.xml:246(string)
 msgid "All settings have been reset"
-msgstr ""
+msgstr "As definições foram repostas"
 
 #. Permission to read shopping lists
 #: tmp_strings.xml:254(string)
 msgid "read shopping lists"
-msgstr ""
+msgstr "ler listas de compras"
 
 #: tmp_strings.xml:255(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
+"Permite que a aplicação leia a lista de compras. As notas codificadas são "
+"disponibilizadas nesse formato."
 
 #. Permission to write to shopping lists
 #: tmp_strings.xml:257(string)
 msgid "write shopping lists"
-msgstr ""
+msgstr "escrever lista de compras"
 
 #: tmp_strings.xml:258(string)
 msgid ""
 "Allows an application to create new lists and items or change existing ones."
 msgstr ""
+"Permite que uma aplicação crie e novas listas e itens ou edite as existentes."
 
 #. Preference sort order: List unchecked items first, sort items alphabetically
 #: tmp_strings.xml:267(item)
 msgid "unchecked first, alphabetical"
-msgstr ""
+msgstr "não verificadas primeiro, alfabeticamente"
 
 #. Preference sort order: Sort by item name
 #: tmp_strings.xml:269(item)
 msgid "alphabetical"
-msgstr ""
+msgstr "alfabeticamente"
 
 #. Preference sort order: Newest item first
 #: tmp_strings.xml:271(item)
 msgid "newest first"
-msgstr ""
+msgstr "mais recentes primeiro"
 
 #. Preference sort order: Oldest item first
 #: tmp_strings.xml:273(item)
 msgid "oldest first"
-msgstr ""
+msgstr "mais antigas primeiro"
 
 #. Preference sort order: Sort alphabetically by tags
 #: tmp_strings.xml:275(item)
 msgid "tags alphabetical"
-msgstr ""
+msgstr "alfabeticamente por \"tags\""
 
 #. Preference sort order: Sort by priority, then alphabetically by tags
 #: tmp_strings.xml:277(item)
 msgid "priority, tags alphabetical"
-msgstr ""
+msgstr "prioridade, alfabeticamente por \"tags\""
 
 #. Preference sort order: Sort by price, the most expensive first
 #: tmp_strings.xml:279(item)
 msgid "most expensive first"
-msgstr ""
+msgstr "mais caras primeiro"
 
 #. Preference sort order: List unchecked items first, sort alphabetically by tags
 #: tmp_strings.xml:281(item)
 msgid "unchecked first, tags alphabetical"
-msgstr ""
+msgstr "não verificadas primeiro, alfabeticamente por \"tags\""
 
 #. Preference sort order: List unchecked items first, priority, sort items alphabetically
 #: tmp_strings.xml:283(item)
 msgid "unchecked first, priority, alphabetical"
-msgstr ""
+msgstr "não verificadas primeiro, prioridade, alfabeticamente"
 
 #. Preference sort order: List unchecked items first, priority, tags, sort items alphabetically
 #: tmp_strings.xml:285(item)
 msgid "unchecked first, priority, tags alphabetical"
-msgstr ""
+msgstr "não verificadas primeiro, prioridade, alfabeticamente por \"tags\""
 
 #: tmp_strings.xml:289(item)
 msgid "Not shown"
-msgstr ""
+msgstr "Não mostradas"
 
 #: tmp_strings.xml:290(item)
 msgid "Priority 1"
-msgstr ""
+msgstr "Prioridade 1"
 
 #: tmp_strings.xml:291(item)
 msgid "Priority 1-2"
-msgstr ""
+msgstr "Prioridade 1-2"
 
 #: tmp_strings.xml:292(item)
 msgid "Priority 1-3"
-msgstr ""
+msgstr "Prioridade 1-3"
 
 #: tmp_strings.xml:293(item)
 msgid "Priority 1-4"
-msgstr ""
+msgstr "Prioridade 1-4"
 
 #. Preference fontsize: tiny font size
 #: tmp_strings.xml:298(item)
 msgid "Tiny"
-msgstr ""
+msgstr "Minimal"
 
 #. Preference fontsize: small font size
 #: tmp_strings.xml:300(item)
 msgid "Small"
-msgstr ""
+msgstr "Pequeno"
 
 #. Preference fontsize: large font size
 #: tmp_strings.xml:304(item)
 msgid "Large"
-msgstr ""
+msgstr "Grande"
 
 #. Preference orientation: landscape
 #: tmp_strings.xml:311(item)
 msgid "Landscape"
-msgstr ""
+msgstr "Horizontal"
 
 #. Preference orientation: portrait
 #: tmp_strings.xml:313(item)
 msgid "Portrait"
-msgstr ""
+msgstr "Vertical"
 
 #. Preference capitalization: No capitalization
 #: tmp_strings.xml:318(item)
 msgid "None"
-msgstr ""
+msgstr "Nenhuma"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:320(item)
 msgid "Per sentence"
-msgstr ""
+msgstr "Por frase"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:322(item)
 msgid "Per word"
-msgstr ""
+msgstr "por palavra"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
 #: tmp_strings.xml:329(string)
 msgid "Editing item notes requires OI Notepad."
-msgstr ""
+msgstr "Para editar itens, tem que instalar o OI Notepad."
 
 #. Name of application "OI Notepad". Translations should be consistent.
 #: tmp_strings.xml:331(string)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI Notepad"
 
 #. Label above spinner for all actions (automation tasks) that can be performed.
 #: tmp_strings.xml:337(string)
 msgid "Select action:"
-msgstr ""
+msgstr "Selecione a ação:"
 
 #. Label above button that opens a list of all shopping lists to choose from.
 #: tmp_strings.xml:340(string)
 msgid "Select list:"
-msgstr ""
+msgstr "Selecione a lista:"
 
 #: tmp_strings.xml:349(string)
 msgid "Previous page"
-msgstr ""
+msgstr "Página anterior"
 
 #: tmp_strings.xml:350(string)
 msgid "Next page"
-msgstr ""
+msgstr "Página seguinte"
 
 #: tmp_strings.xml:351(string)
 msgid "Choose a list"
-msgstr ""
+msgstr "Escolha a lista"
 
 #: tmp_strings.xml:352(string)
 msgid "No items on page %d"
-msgstr ""
+msgstr "Sem itens na página %d"

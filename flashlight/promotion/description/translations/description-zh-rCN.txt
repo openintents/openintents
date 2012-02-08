@@ -7,12 +7,12 @@ Keep the camera flash or the backlight turned on with OI Flashlight.
 # Description:
 OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
 
-应用程序的广告是免费的，不需要网络权限。 
+本程序不含广告，也不需要网络权限 
 
-开放源码应用程序的源代码是： 
+本程序是开源免费的，它的源代码能在这里获得 
 http://code.google.com/p/openintents
 
-完整列表的更改，请访问： 
+你可以在这里获得完整的改变列表和常见问题回答 
 http://www.openintents.org
 
 可以翻译成您的语言： 
@@ -35,7 +35,7 @@ Applications that work with "OI Flashlight":
 * OI, OpenIntents, Open Intents
 
 国际版本： 
-Lanternă OI, Llanterna d'OI, OI フラッシュライト, OI 전등, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI قول چىراغ, OI Φακός, OI Светилка, OI Фенерче, OI टॉर्च, OI手电筒, مصباح يدوي OI, פנס OI
+Lanternă OI, Llanterna d'OI, OI フラッシュライト, OI 전등, OI Baterka, OI Blic, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Lykt, OI Plaslayt, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Zseblámpa, OI قول چىراغ, OI Φακός, OI Светилка, OI Фенерче, OI टॉर्च, OI手电筒, مصباح يدوي OI, פנס OI
 
 
 Search strings for Market: 

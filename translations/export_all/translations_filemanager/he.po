@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Gabriel Shier <Unknown>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -23,6 +23,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Gabriel Shier https://launchpad.net/~gabrielshier\n"
 "  Neta Oren https://launchpad.net/~netao212\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
@@ -43,32 +44,32 @@ msgstr "תיקייה חדשה"
 #. Multi select option menu
 #: tmp_strings.xml:37(string)
 msgid "Multi Select"
-msgstr "רב- בחירה"
+msgstr "בחירה מרובה"
 
 #: tmp_strings.xml:39(string) tmp_strings.xml:81(string)
 #: tmp_strings.xml:167(string)
 msgid "Delete"
-msgstr "מחק"
+msgstr "מחיקה"
 
 #: tmp_strings.xml:40(string)
 msgid "Rename"
-msgstr "שנה שם"
+msgstr "שינוי שם"
 
 #: tmp_strings.xml:41(string)
 msgid "Send"
-msgstr "שלח"
+msgstr "שליחה"
 
 #: tmp_strings.xml:42(string)
 msgid "Open"
-msgstr "פתח"
+msgstr "פתיחה"
 
 #: tmp_strings.xml:43(string) tmp_strings.xml:79(string)
 msgid "Move"
-msgstr "העבר"
+msgstr "העברה"
 
 #: tmp_strings.xml:44(string) tmp_strings.xml:80(string)
 msgid "Copy"
-msgstr "העתק"
+msgstr "העתקה"
 
 #: tmp_strings.xml:45(string)
 msgid "Details"
@@ -80,19 +81,19 @@ msgstr "עוד"
 
 #: tmp_strings.xml:47(string)
 msgid "Compress (ZIP)"
-msgstr ""
+msgstr "דחיסה (פורמט ZIP)"
 
 #: tmp_strings.xml:48(string)
 msgid "Extract (ZIP)"
-msgstr ""
+msgstr "חילוץ (פורמט ZIP)"
 
 #: tmp_strings.xml:49(string)
 msgid "Filter"
-msgstr "סינון"
+msgstr "מסנן"
 
 #: tmp_strings.xml:50(string)
 msgid "Include in media scan"
-msgstr "תכלול בסריקת המדיה"
+msgstr "כלול בסריקת מדיה"
 
 #: tmp_strings.xml:51(string) tmp_strings.xml:132(string)
 msgid "Exclude from media scan"
@@ -104,11 +105,11 @@ msgstr "הסוף לסימניות"
 
 #: tmp_strings.xml:53(string)
 msgid "Refresh"
-msgstr ""
+msgstr "רענון"
 
 #: tmp_strings.xml:55(string)
 msgid "Create new folder"
-msgstr "צור תיקייה חדשה"
+msgstr "יצירת תיק חדש"
 
 #: tmp_strings.xml:56(string) tmp_strings.xml:57(string)
 msgid "Folder name"
@@ -124,7 +125,7 @@ msgstr "תיקייה זו ריקה."
 
 #: tmp_strings.xml:60(string)
 msgid "Do you really want to delete %s?"
-msgstr "אתה בטוח שאתה רוצה למחוק את %s"
+msgstr "האם ברצונך למחוק את %s?"
 
 #: tmp_strings.xml:61(string)
 msgid "File deleted."
@@ -160,7 +161,7 @@ msgstr "בחר תיקייה להעביר אליה"
 
 #: tmp_strings.xml:69(string)
 msgid "Move here"
-msgstr "הבא לכאן"
+msgstr "העבר לכאן"
 
 #: tmp_strings.xml:70(string)
 msgid "Select folder to copy to"
@@ -197,11 +198,11 @@ msgstr ""
 
 #: tmp_strings.xml:83(string)
 msgid "Select multiple files"
-msgstr "בחר כמה קבצים"
+msgstr "בחירת קבצים מרובה"
 
 #: tmp_strings.xml:84(string)
 msgid "Please select one or more file(s)."
-msgstr "אנא בחר קובץ אחד או יותר"
+msgstr "יש לבחור קובץ אחד או יותר"
 
 #. Strings for details table
 #: tmp_strings.xml:87(string)
@@ -300,7 +301,7 @@ msgstr "הקובץ לא קיים."
 
 #: tmp_strings.xml:116(string)
 msgid "Could not delete child file '%s'."
-msgstr "לא ניתן למחוק קובץ צאצא '%s'."
+msgstr "לא ניתן למחוק קובץ בן של '%s'."
 
 #: tmp_strings.xml:117(string)
 msgid "An error occurred:"
@@ -312,7 +313,7 @@ msgstr "לא ניתן לשנות הגדרות סריקת מדיה."
 
 #: tmp_strings.xml:120(string)
 msgid "No application available for sending."
-msgstr "אין יישום שזמין לשליחה."
+msgstr "אין יישום זמין לשליחה."
 
 #: tmp_strings.xml:122(string)
 msgid "Application not available"
@@ -338,7 +339,7 @@ msgstr "החבא פריט תפריט כדי לא לכלול תיקיות בסר�
 
 #: tmp_strings.xml:136(string)
 msgid "Show all warnings"
-msgstr "הראה את כל האזהרות"
+msgstr "הצג את כל האזהרות"
 
 #: tmp_strings.xml:137(string)
 msgid "Show all warning messages"
@@ -350,7 +351,7 @@ msgstr "התעלם מהודעת אזהרה"
 
 #: tmp_strings.xml:140(string) tmp_strings.xml:141(string)
 msgid "Display hidden files"
-msgstr "הצג קבצים מוחבאים"
+msgstr "הצג קבצים מוסתרים"
 
 #: tmp_strings.xml:142(string)
 msgid "Hide hidden files"

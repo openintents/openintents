@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Daniel Winzen <d@winzen4.de>\n"
+"Last-Translator: mrx5682 <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -30,10 +30,12 @@ msgstr ""
 "  Hans https://launchpad.net/~hans-wuerstchen42\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Patrick Eigensatz https://launchpad.net/~p.eigensatz\n"
+"  Peli https://launchpad.net/~peli0101\n"
 "  Schrotti https://launchpad.net/~schrott-micha\n"
 "  cmdrhenner https://launchpad.net/~cmdrhenner\n"
 "  hani https://launchpad.net/~markushahnenkamm\n"
-"  marco.jahn https://launchpad.net/~accounts+launchpad-net"
+"  marco.jahn https://launchpad.net/~accounts+launchpad-net\n"
+"  mrx5682 https://launchpad.net/~mrx5682"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:26(string)
@@ -134,7 +136,7 @@ msgstr "Dieser Ordner ist leer."
 
 #: tmp_strings.xml:60(string)
 msgid "Do you really want to delete %s?"
-msgstr "Soll %s wirklich gelöscht werden?"
+msgstr "Möchten Sie %s wirklich löschen?"
 
 #: tmp_strings.xml:61(string)
 msgid "File deleted."
@@ -166,7 +168,7 @@ msgstr "Datei kopiert."
 
 #: tmp_strings.xml:68(string)
 msgid "Select folder to move to"
-msgstr "Ordner zum Verschieben auswählen"
+msgstr "Wählen Sie ein Zielverzeichnis für das Verschieben aus"
 
 #: tmp_strings.xml:69(string)
 msgid "Move here"
@@ -174,7 +176,7 @@ msgstr "Hierher verschieben"
 
 #: tmp_strings.xml:70(string)
 msgid "Select folder to copy to"
-msgstr "Wählen Sie Zielverzeichnis für den Kopiervorgang"
+msgstr "Wählen Sie ein Zielverzeichnis für das Kopieren aus"
 
 #: tmp_strings.xml:71(string)
 msgid "Copy here"
@@ -182,7 +184,7 @@ msgstr "Hierher kopieren"
 
 #: tmp_strings.xml:72(string)
 msgid "Deleting files..."
-msgstr "Удаление файлов..."
+msgstr "Lösche Dateien..."
 
 #: tmp_strings.xml:73(string)
 msgid "Warning"
@@ -195,24 +197,24 @@ msgstr ""
 
 #: tmp_strings.xml:75(string)
 msgid "Show warning again"
-msgstr "Zeige diese Warnung noch einmal"
+msgstr "Zeige Warnung noch einmal"
 
 #. Strings for a multi select feature
 #: tmp_strings.xml:78(string)
 msgid "Do you really want to delete %d files?"
-msgstr "Вы действительно хотите удалить %d файл(ы)?"
+msgstr "Möchten Sie die %d Dateien wirklich löschen?"
 
 #: tmp_strings.xml:82(string)
 msgid "ZIP"
-msgstr ""
+msgstr "PLZ"
 
 #: tmp_strings.xml:83(string)
 msgid "Select multiple files"
-msgstr "Выберите несколько файлов"
+msgstr "Wählen Sie mehrere Dateien aus"
 
 #: tmp_strings.xml:84(string)
 msgid "Please select one or more file(s)."
-msgstr "Пожалуйста выберите один или более файлов"
+msgstr "Bitte wählen Sie eine oder mehrere Datei(en) aus."
 
 #. Strings for details table
 #: tmp_strings.xml:87(string)
@@ -263,7 +265,7 @@ msgstr "Kopie von %s"
 #. Construct a unique file name with number %1$d of a file called %2$s.
 #: tmp_strings.xml:102(string)
 msgid "Copy %1$d of %2$s"
-msgstr "Копировать %1$d из %2$s"
+msgstr "Kopie %1$d von %2$s"
 
 #: tmp_strings.xml:104(string)
 msgid "This folder will be included in the next media scan."
@@ -283,7 +285,7 @@ msgstr "Datei konnte nicht gelöscht werden."
 
 #: tmp_strings.xml:109(string)
 msgid "Could not delete folder '%s'."
-msgstr "Ordner '%s' kann nicht gelöscht werden."
+msgstr "Ordner '%s' konnte nicht gelöscht werden."
 
 #: tmp_strings.xml:110(string)
 msgid "Could not rename file."
@@ -303,7 +305,7 @@ msgstr "Ordner konnte nicht verschoben werden."
 
 #: tmp_strings.xml:114(string)
 msgid "Could not copy file."
-msgstr "Datei kann nicht kopiert werden."
+msgstr "Datei konnte nicht kopiert werden."
 
 #: tmp_strings.xml:115(string)
 msgid "File does not exist."
@@ -311,7 +313,7 @@ msgstr "Datei ist nicht vorhanden."
 
 #: tmp_strings.xml:116(string)
 msgid "Could not delete child file '%s'."
-msgstr "Konnte Unterdatei %s nicht löschen"
+msgstr "Unterdatei %s konnte nicht gelöscht werden."
 
 #: tmp_strings.xml:117(string)
 msgid "An error occurred:"
@@ -341,11 +343,13 @@ msgstr "Erweitert"
 
 #: tmp_strings.xml:133(string)
 msgid "Show menu item to exclude folders from media scan."
-msgstr "Zeige von der Mediensuche ausgeschlossene Ordner."
+msgstr ""
+"Zeige Menüeintrag für das Ausschließen von Ordnern von der Mediensuche."
 
 #: tmp_strings.xml:134(string)
 msgid "Hide menu item to exclude folders from media scan."
-msgstr "Скрыть пункт меню, что бы исключить папки из сканирования"
+msgstr ""
+"Verberge Menüeintrag für das Ausschließen von Ordnern von der Mediensuche."
 
 #: tmp_strings.xml:136(string)
 msgid "Show all warnings"
@@ -400,7 +404,7 @@ msgstr "Zuletzt geändert"
 #.     	 ***************************
 #: tmp_strings.xml:159(string)
 msgid "You haven't picked any file."
-msgstr "Es wurde keine Datei ausgewählt"
+msgstr "Sie haben keine Datei ausgewählt."
 
 #: tmp_strings.xml:160(string)
 msgid "An error occured."
@@ -420,7 +424,7 @@ msgstr "Abbrechen"
 
 #: tmp_strings.xml:168(string)
 msgid "Select bookmarks to delete"
-msgstr "Wähle ein Lesezeichen zum Löschen"
+msgstr "Wählen Sie ein Lesezeichen zum Löschen aus"
 
 #: tmp_strings.xml:169(string)
 msgid "Manage bookmarks"
@@ -436,7 +440,7 @@ msgstr "Adresse des Lesezeichens nicht gefunden"
 
 #: tmp_strings.xml:172(string)
 msgid "Selected bookmarks deleted"
-msgstr "Ausgeählte Lesezeichen wurden gelöscht"
+msgstr "Ausgewählte Lesezeichen gelöscht"
 
 #: tmp_strings.xml:173(string)
 msgid "This file is already bookmarked"
@@ -447,31 +451,31 @@ msgstr "Diese Datei hat schon ein Lesezeichen"
 #.           ***************************
 #: tmp_strings.xml:179(string)
 msgid "Item compressed successfully"
-msgstr "Die Datei wurde erfolgreich komprimiert"
+msgstr "Datei erfolgreich komprimiert"
 
 #: tmp_strings.xml:180(string)
 msgid "Could not compress the item"
-msgstr "Die Datei konnte nicht komprimiert werden"
+msgstr "Datei konnte nicht komprimiert werden"
 
 #: tmp_strings.xml:181(string)
 msgid "Compress into archive:"
-msgstr "In ein Archiv komprimieren"
+msgstr "In Archiv komprimieren:"
 
 #: tmp_strings.xml:182(string)
 msgid "Item extracted successfully"
-msgstr "Die Datei wurde erfolgreich entpackt"
+msgstr "Datei wurde erfolgreich entpackt"
 
 #: tmp_strings.xml:183(string)
 msgid "Could not extract the item"
-msgstr "Die Datei konnte nicht entpackt werden"
+msgstr "Datei konnte nicht entpackt werden"
 
 #: tmp_strings.xml:184(string)
 msgid "Extract into folder:"
-msgstr "In Ordner entpacken"
+msgstr "In Ordner entpacken:"
 
 #: tmp_strings.xml:185(string)
 msgid "Select folder to extract into"
-msgstr "Wählen Sie einen Ordner zum Entpacken aus"
+msgstr "Wählen Sie ein Zielverzeichnis für das Entpacken aus"
 
 #: tmp_strings.xml:186(string)
 msgid "Extract here"
@@ -487,8 +491,8 @@ msgstr "Komprimiere..."
 
 #: tmp_strings.xml:189(string)
 msgid "File %s exists. Do you want to overwrite it?"
-msgstr "Die Datei %s existiert schon. Wollen Sie die Datei überschreiben?"
+msgstr "Die Datei %s existiert schon. Möchten Sie die Datei überschreiben?"
 
 #: tmp_strings.xml:191(string)
 msgid "Do you want to change the file extension?"
-msgstr "Wollen Sie die Dateiendung ändern?"
+msgstr "Do you want to change the file extension?"

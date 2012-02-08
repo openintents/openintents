@@ -23,6 +23,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  mrx5682 https://launchpad.net/~mrx5682"
 
 #. Short explanation of the application (max. 80 characters)
@@ -192,7 +193,7 @@ msgstr "Do you really want to delete %d files?"
 
 #: tmp_strings.xml:82(string)
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #: tmp_strings.xml:83(string)
 msgid "Select multiple files"

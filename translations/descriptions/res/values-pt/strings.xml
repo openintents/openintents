@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   Sérgio Marques https://launchpad.net/~sergio+marques</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
@@ -89,9 +90,9 @@
 		<listitem>Save your countdowns and give them names to reuse at later times. </listitem>
 		<listitem>Modify countdowns, even while they are still running</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Countdown": </string>
-		<listitem>Launch applications through Android shortcuts</listitem>
-		<listitem>Use OI About to show license information</listitem>
+		<string>Extras para o "OI Countdown":</string>
+		<listitem>Iniciar aplicações com os atalhos do Andoid</listitem>
+		<listitem>Utilize o OI About para ver a licença</listitem>
 		<emptyline/>
 		<string>Palavras-chave:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
@@ -114,8 +115,8 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
-		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
+		<string>O gestor de ficheiros OI permite-lhe explorar o cartão SD, criar diretórios, mover, copiar, eliminar e mudar o nome dos ficheiros.</string>
+		<string>Também atua como uma extensão de outras aplicações para exibir as caixas de diálogo "Abrir" e "Gravar".</string>
 		<emptyline/>
 		<string>Esta aplicação é livre e não requer permissões de Internet.</string>
 		<emptyline/>
@@ -129,23 +130,23 @@
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Características:</string>
-		<listitem>Show list of files with thumbnails for images.</listitem>
-		<listitem>Move, copy, rename, and delete files.</listitem>
-		<listitem>Create and delete directories (folders).</listitem>
-		<listitem>Send files by email.</listitem>
-		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
+		<listitem>Mostrar lista de ficheiros com miniaturas.</listitem>
+		<listitem>Mover, copiar, eliminar e mudar o nome dos ficheiros</listitem>
+		<listitem>Criar e eliminar diretórios (pastas)</listitem>
+		<listitem>Enviar ficheiros por correio eletrónico.</listitem>
+		<listitem>Atua como uma extensão de outras aplicações, como GMail, para anexar ficheiros.</listitem>
 		<listitem>Support for many file endings and mime types.</listitem>
-		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
+		<listitem>Com suporte a PICK_FILE e PICK_DIRECTORY, para que as outras aplicações possam utilizar o OI File Manager.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>Extras para o "OI File Manager":</string>
+		<listitem>Mostrar a licença com o OI About.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<string>Aplicações que funcionam com o OI File Manager.</string>
+		<listitem>Abrir e gravar ficheiros de texto com o OI Notepad.</listitem>
 		<emptyline/>
 		<string>Palavras-chave:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>file manager, filemanager, file explorer</listitem>
+		<listitem>gestor de ficheiros, gestordeficheiros, explorador de ficheiros</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
@@ -186,12 +187,12 @@
 		<listitem>Lock camera flash on.</listitem>
 		<listitem>The color of backlight is customizable.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Flashlight":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>Extras para o "OI Flashlight":</string>
+		<listitem>Mostrar a licença com o OI About.</listitem>
 		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
 		<emptyline/>
 		<string>Applications that work with "OI Flashlight":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<listitem>Atualizações com o OI Update.</listitem>
 		<emptyline/>
 		<string>Palavras-chave:</string>
 		<listitem>Flashlight, light, Backlight</listitem>
@@ -229,17 +230,17 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Características:</string>
-		<listitem>Add, edit and delete notes.</listitem>
+		<listitem>Adicionar, editar e eliminar notas.</listitem>
 		<listitem>Long-press on notes to add tags.</listitem>
-		<listitem>Change font size and sort order.</listitem>
+		<listitem>Altere o tamanho das letras e a organização.</listitem>
 		<listitem>A clearly arranged layout with a variety of themes.</listitem>
 		<listitem>Quickly search through notes.</listitem>
-		<listitem>Send notes as MMS or SMS.</listitem>
+		<listitem>Enviar notas por MMS e SMS.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Notepad":</string>
+		<string>Extras para o "OI Notepad":</string>
 		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
 		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Mostrar a licença com o OI About.</listitem>
 		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
 		<listitem>Turn text upside down with "Upside Down".</listitem>
 		<emptyline/>
@@ -247,7 +248,7 @@
 		<listitem>Back up notes with "My Backup Pro".</listitem>
 		<listitem>Encrypt notes using "OI Safe".</listitem>
 		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
-		<listitem>Update with "OI Update".</listitem>
+		<listitem>Atualizações com o OI Update.</listitem>
 		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
 		<emptyline/>
 		<string>Palavras-chave:</string>
@@ -294,10 +295,10 @@
 		<listitem>Support for Obscura picture safe.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>Extras para o "OI File Manager":</string>
+		<listitem>Mostrar a licença com o OI About.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
+		<string>Aplicações que funcionam com o OI File Manager.</string>
 		<listitem>Encrypt notes created in "OI Notepad".</listitem>
 		<emptyline/>
 		<string>Palavras-chave:</string>
@@ -346,14 +347,14 @@
 		<listitem>Keep track of separate prices for each store.</listitem>
 		<listitem>Customizable list columns.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Shopping List":</string>
+		<string>Extras para o "OI Shopping List":</string>
 		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
 		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Mostrar a licença com o OI About.</listitem>
 		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
 		<emptyline/>
 		<string>Applications that work with "OI Shopping List":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<listitem>Atualizações com o OI Update.</listitem>
 		<listitem>Backup lists with "My Backup Pro".</listitem>
 		<listitem>Import ingredients of recipes with "Bites".</listitem>
 		<emptyline/>

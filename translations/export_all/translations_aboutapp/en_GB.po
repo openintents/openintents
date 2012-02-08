@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: mrx5682 <Unknown>\n"
+"Last-Translator: Anthony Harrington <untaintableangel@hotmail.co.uk>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -23,6 +23,8 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Anthony Harrington https://launchpad.net/~untaintableangel\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  mrx5682 https://launchpad.net/~mrx5682"
 
 #. Explanation what this application does. It is a menu extension for other applications.
@@ -96,7 +98,7 @@ msgstr "Credits"
 
 #: tmp_strings.xml:68(string)
 msgid "License"
-msgstr "License"
+msgstr "Licence"
 
 #: tmp_strings.xml:69(string)
 msgid "General Info"

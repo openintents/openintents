@@ -28,6 +28,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Anthony Harrington https://launchpad.net/~untaintableangel
+  OpenIntents devs https://launchpad.net/~openintents-devs
   mrx5682 https://launchpad.net/~mrx5682</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
@@ -66,7 +68,7 @@
 	<string name="l_artists">Artwork by</string>
 	<string name="l_international_translators">International translations by</string>
 	<string name="l_credits">Credits</string>
-	<string name="l_license">License</string>
+	<string name="l_license">Licence</string>
 	<string name="l_info">General Info</string>
 	<string name="l_recent_changes">Recent changes</string>
 	

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: mrx5682 <Unknown>\n"
+"Last-Translator: appricoo <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -31,6 +31,7 @@ msgstr ""
 "  Patrick Eigensatz https://launchpad.net/~p.eigensatz\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  SpaceCafé https://launchpad.net/~spacecafe\n"
+"  appricoo https://launchpad.net/~appricoo\n"
 "  friedger https://launchpad.net/~friedger\n"
 "  markus.ruderman https://launchpad.net/~markus-ruderman\n"
 "  mrx5682 https://launchpad.net/~mrx5682"
@@ -167,14 +168,12 @@ msgid "No items available"
 msgstr "Keine Einträge vorhanden"
 
 #: tmp_strings.xml:66(string)
-#, fuzzy
 msgid "No stores available for this list"
-msgstr "Wählen Sie ein Design für die Liste"
+msgstr "Für diese Liste sind keine Geschäfte verfügbar"
 
 #: tmp_strings.xml:67(string)
-#, fuzzy
 msgid "No tags available for this list"
-msgstr "Wählen Sie ein Design für die Liste"
+msgstr "Keine Schlagworte für diese Liste verfügbar"
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
@@ -262,13 +261,12 @@ msgid "Note"
 msgstr "Bemerkung"
 
 #: tmp_strings.xml:104(string)
-#, fuzzy
 msgid "Stores"
-msgstr "Geschäfte ..."
+msgstr "Läden"
 
 #: tmp_strings.xml:105(string)
 msgid "List"
-msgstr ""
+msgstr "Liste"
 
 #: tmp_strings.xml:107(string)
 msgid "Other Quantity..."
@@ -280,7 +278,7 @@ msgstr "Andere Priorität..."
 
 #: tmp_strings.xml:109(string)
 msgid "(Unfiltered)"
-msgstr ""
+msgstr "(Ungefiltert)"
 
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:112(string)
@@ -514,11 +512,11 @@ msgstr "Wenn aktiviert, wird der Bildschirm nicht mehr gesperrt."
 
 #: tmp_strings.xml:187(string)
 msgid "Filters"
-msgstr ""
+msgstr "Filter"
 
 #: tmp_strings.xml:188(string)
 msgid "Lists can be filtered by tags or stores."
-msgstr ""
+msgstr "Einkaufslisten können nach Tags und Läden gefiltert werden."
 
 #: tmp_strings.xml:189(string)
 msgid "Reset Quantity"

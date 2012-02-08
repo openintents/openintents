@@ -161,14 +161,12 @@ msgid "No items available"
 msgstr "لا يوجد أي عنصر متوفر"
 
 #: tmp_strings.xml:66(string)
-#, fuzzy
 msgid "No stores available for this list"
-msgstr "اختر ثيم من أجل هته القائمة"
+msgstr ""
 
 #: tmp_strings.xml:67(string)
-#, fuzzy
 msgid "No tags available for this list"
-msgstr "اختر ثيم من أجل هته القائمة"
+msgstr ""
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
@@ -256,9 +254,8 @@ msgid "Note"
 msgstr "الملاحظة"
 
 #: tmp_strings.xml:104(string)
-#, fuzzy
 msgid "Stores"
-msgstr "المتاجر..."
+msgstr ""
 
 #: tmp_strings.xml:105(string)
 msgid "List"

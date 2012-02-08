@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Qiang HU <nickhuq@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -23,12 +23,13 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
+"  Qiang HU https://launchpad.net/~nickhuq\n"
 "  zhangchun https://launchpad.net/~zhangchun"
 
 #. Description of application
 #: tmp_strings.xml:12(string)
 msgid "OI About is a standalone about dialog that is shared between apps."
-msgstr ""
+msgstr "OI About 是一个介于应用程序间的about对话框"
 
 #: tmp_strings.xml:13(string)
 msgid "This application is invoked through the menu of other OI applications."
@@ -56,7 +57,7 @@ msgstr ""
 #: tmp_strings.xml:332(string)
 msgid ""
 "This application is ad free and does not require the internet permission."
-msgstr "应用程序的广告是免费的，不需要网络权限。"
+msgstr "本程序不含广告，也不需要网络权限"
 
 #: tmp_strings.xml:20(string) tmp_strings.xml:74(string)
 #: tmp_strings.xml:127(string) tmp_strings.xml:174(string)
@@ -64,7 +65,7 @@ msgstr "应用程序的广告是免费的，不需要网络权限。"
 #: tmp_strings.xml:329(string)
 msgid ""
 "The source code of this free and open source application is available at:"
-msgstr "开放源码应用程序的源代码是："
+msgstr "本程序是开源免费的，它的源代码能在这里获得"
 
 #: tmp_strings.xml:23(string) tmp_strings.xml:77(string)
 #: tmp_strings.xml:121(string) tmp_strings.xml:177(string)
@@ -73,7 +74,7 @@ msgstr "开放源码应用程序的源代码是："
 msgid ""
 "For the complete list of changes and a list of frequently asked questions, "
 "please visit:"
-msgstr "完整列表的更改，请访问："
+msgstr "你可以在这里获得完整的改变列表和常见问题回答"
 
 #: tmp_strings.xml:26(string) tmp_strings.xml:81(string)
 #: tmp_strings.xml:124(string) tmp_strings.xml:180(string)

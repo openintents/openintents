@@ -158,14 +158,12 @@ msgid "No items available"
 msgstr "ئىشلىتىلىشچان تۈر يوق"
 
 #: tmp_strings.xml:66(string)
-#, fuzzy
 msgid "No stores available for this list"
-msgstr "بۇ تىزىمنىڭ ئۆرنىكىنى تاللاڭ"
+msgstr "بۇ تىزىمدا دۇكان يوق"
 
 #: tmp_strings.xml:67(string)
-#, fuzzy
 msgid "No tags available for this list"
-msgstr "بۇ تىزىمنىڭ ئۆرنىكىنى تاللاڭ"
+msgstr "بۇ تىزىمنىڭ بەلگىسى يوق"
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
@@ -253,13 +251,12 @@ msgid "Note"
 msgstr "ئىزاھات"
 
 #: tmp_strings.xml:104(string)
-#, fuzzy
 msgid "Stores"
-msgstr "دۇكانلار…"
+msgstr "دۇكانلار"
 
 #: tmp_strings.xml:105(string)
 msgid "List"
-msgstr ""
+msgstr "تىزىم"
 
 #: tmp_strings.xml:107(string)
 msgid "Other Quantity..."
@@ -271,7 +268,7 @@ msgstr "باشقا ئالدىنلىقى…"
 
 #: tmp_strings.xml:109(string)
 msgid "(Unfiltered)"
-msgstr ""
+msgstr "(سۈزۈلمىگەن)"
 
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:112(string)
@@ -504,11 +501,11 @@ msgstr "تەكشۈرۈلۈۋاتقاندا ئېكران قۇلۇپلاشنىڭ �
 
 #: tmp_strings.xml:187(string)
 msgid "Filters"
-msgstr ""
+msgstr "سۈزگۈچلەر"
 
 #: tmp_strings.xml:188(string)
 msgid "Lists can be filtered by tags or stores."
-msgstr ""
+msgstr "تىزىملارنى بەلگە ياكى دۇكانلار بويىچە سۈزگىلى بولىدۇ."
 
 #: tmp_strings.xml:189(string)
 msgid "Reset Quantity"

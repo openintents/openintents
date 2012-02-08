@@ -161,14 +161,12 @@ msgid "No items available"
 msgstr "利用できるアイテムはありません"
 
 #: tmp_strings.xml:66(string)
-#, fuzzy
 msgid "No stores available for this list"
-msgstr "このリストのテーマを選択"
+msgstr ""
 
 #: tmp_strings.xml:67(string)
-#, fuzzy
 msgid "No tags available for this list"
-msgstr "このリストのテーマを選択"
+msgstr ""
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
@@ -256,9 +254,8 @@ msgid "Note"
 msgstr "ノート"
 
 #: tmp_strings.xml:104(string)
-#, fuzzy
 msgid "Stores"
-msgstr "店..."
+msgstr ""
 
 #: tmp_strings.xml:105(string)
 msgid "List"

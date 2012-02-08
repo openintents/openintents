@@ -158,14 +158,12 @@ msgid "No items available"
 msgstr "Няма даступных элементаў"
 
 #: tmp_strings.xml:66(string)
-#, fuzzy
 msgid "No stores available for this list"
-msgstr "Абярыце тэму для гэтага спісу"
+msgstr ""
 
 #: tmp_strings.xml:67(string)
-#, fuzzy
 msgid "No tags available for this list"
-msgstr "Абярыце тэму для гэтага спісу"
+msgstr ""
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
@@ -253,9 +251,8 @@ msgid "Note"
 msgstr "Нататка"
 
 #: tmp_strings.xml:104(string)
-#, fuzzy
 msgid "Stores"
-msgstr "Магазіны..."
+msgstr ""
 
 #: tmp_strings.xml:105(string)
 msgid "List"

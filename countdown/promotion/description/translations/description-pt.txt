@@ -33,9 +33,9 @@ Características:
 * Save your countdowns and give them names to reuse at later times. 
 * Modify countdowns, even while they are still running
 
-Available extensions for "OI Countdown":  
-* Launch applications through Android shortcuts
-* Use OI About to show license information
+Extras para o "OI Countdown": 
+* Iniciar aplicações com os atalhos do Andoid
+* Utilize o OI About para ver a licença
 
 Palavras-chave: 
 * countdown, timer, alert

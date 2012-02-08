@@ -160,14 +160,12 @@ msgid "No items available"
 msgstr "No items available"
 
 #: tmp_strings.xml:66(string)
-#, fuzzy
 msgid "No stores available for this list"
-msgstr "Choose a theme for this list"
+msgstr "No stores available for this list"
 
 #: tmp_strings.xml:67(string)
-#, fuzzy
 msgid "No tags available for this list"
-msgstr "Choose a theme for this list"
+msgstr "No tags available for this list"
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
@@ -255,13 +253,12 @@ msgid "Note"
 msgstr "Note"
 
 #: tmp_strings.xml:104(string)
-#, fuzzy
 msgid "Stores"
-msgstr "Shops..."
+msgstr "Stores"
 
 #: tmp_strings.xml:105(string)
 msgid "List"
-msgstr ""
+msgstr "List"
 
 #: tmp_strings.xml:107(string)
 msgid "Other Quantity..."
@@ -273,7 +270,7 @@ msgstr "Other Priority..."
 
 #: tmp_strings.xml:109(string)
 msgid "(Unfiltered)"
-msgstr ""
+msgstr "(Unfiltered)"
 
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:112(string)
@@ -506,11 +503,11 @@ msgstr "Prevents the screen to be locked when checked."
 
 #: tmp_strings.xml:187(string)
 msgid "Filters"
-msgstr ""
+msgstr "Filters"
 
 #: tmp_strings.xml:188(string)
 msgid "Lists can be filtered by tags or stores."
-msgstr ""
+msgstr "Lists can be filtered by tags or stores."
 
 #: tmp_strings.xml:189(string)
 msgid "Reset Quantity"

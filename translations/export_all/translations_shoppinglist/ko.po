@@ -159,14 +159,12 @@ msgid "No items available"
 msgstr "항목이 없습니다"
 
 #: tmp_strings.xml:66(string)
-#, fuzzy
 msgid "No stores available for this list"
-msgstr "이 목록을 위한 테마를 고르세요"
+msgstr ""
 
 #: tmp_strings.xml:67(string)
-#, fuzzy
 msgid "No tags available for this list"
-msgstr "이 목록을 위한 테마를 고르세요"
+msgstr ""
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
@@ -254,9 +252,8 @@ msgid "Note"
 msgstr "메모"
 
 #: tmp_strings.xml:104(string)
-#, fuzzy
 msgid "Stores"
-msgstr "가게들..."
+msgstr ""
 
 #: tmp_strings.xml:105(string)
 msgid "List"
