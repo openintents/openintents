@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Li Shiyi <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -23,13 +23,14 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Li Shiyi https://launchpad.net/~li3shiyi\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  zhangchun https://launchpad.net/~zhangchun"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
 msgid "Keep the camera flash or the backlight turned on with OI Flashlight."
-msgstr ""
+msgstr "OI手电筒通过开启相机闪光灯或屏幕背光，给黑暗中的你带来光明。"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
@@ -38,7 +39,7 @@ msgstr "OI手电筒"
 
 #: tmp_strings.xml:19(string)
 msgid "The backlight stays turned on."
-msgstr "开启背光屏。"
+msgstr "保持背光开启"
 
 #: tmp_strings.xml:21(string)
 msgid "Color"
@@ -52,7 +53,7 @@ msgstr "OI拾色器"
 #. Title for preferences or settings
 #: tmp_strings.xml:26(string) tmp_strings.xml:33(string)
 msgid "Preferences"
-msgstr "设置"
+msgstr "选项"
 
 #: tmp_strings.xml:34(string)
 msgid "Keep color"
@@ -60,7 +61,7 @@ msgstr "保持颜色"
 
 #: tmp_strings.xml:35(string)
 msgid "Save color for next time Flashlight app is started"
-msgstr "手电筒下次开启是保持一样的颜色。"
+msgstr "手电筒下次开启时保持一样的颜色。"
 
 #. Explanation that is displayed if Color Picker has not been installed yet, but 
 #. 		user tries to access it.
@@ -68,21 +69,21 @@ msgstr "手电筒下次开启是保持一样的颜色。"
 msgid ""
 "To make the Color Picker more useful to other developers, we have split it "
 "into its own app."
-msgstr "使拾色器能应用于更多的开发者，我们已经分类好所有的应用程序。"
+msgstr "为了使拾色器能应用于其他开发者，我们已经把它分割为独立的应用。"
 
 #: tmp_strings.xml:44(string)
 msgid "Use camera flash"
-msgstr ""
+msgstr "使用相机闪光灯"
 
 #: tmp_strings.xml:45(string)
 msgid "Use the camera flash instead of the screen backlight."
-msgstr ""
+msgstr "使用相机闪光灯代替屏幕背光。"
 
 #. Information to enable the camera flash as flashlight.
 #: tmp_strings.xml:47(string)
 msgid "Press to enable camera light (May take a second)."
-msgstr ""
+msgstr "点击开启相机闪光灯（可能要一秒钟）"
 
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
-msgstr ""
+msgstr "点击关闭相机闪光灯"

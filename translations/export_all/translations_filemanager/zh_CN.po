@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Li Shiyi <Unknown>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -23,6 +23,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Li Shiyi https://launchpad.net/~li3shiyi\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Swandle https://launchpad.net/~swandle\n"
 "  zhangchun https://launchpad.net/~zhangchun"
@@ -30,7 +31,7 @@ msgstr ""
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:26(string)
 msgid "Manage files on the SD card with OI File Manager."
-msgstr ""
+msgstr "OI文件管理器用来管理SD卡上的文件。"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:32(string)
@@ -73,27 +74,27 @@ msgstr "复制"
 
 #: tmp_strings.xml:45(string)
 msgid "Details"
-msgstr ""
+msgstr "详细信息"
 
 #: tmp_strings.xml:46(string)
 msgid "More"
-msgstr ""
+msgstr "更多"
 
 #: tmp_strings.xml:47(string)
 msgid "Compress (ZIP)"
-msgstr ""
+msgstr "压缩(ZIP)"
 
 #: tmp_strings.xml:48(string)
 msgid "Extract (ZIP)"
-msgstr ""
+msgstr "解压(ZIP)"
 
 #: tmp_strings.xml:49(string)
 msgid "Filter"
-msgstr ""
+msgstr "筛选"
 
 #: tmp_strings.xml:50(string)
 msgid "Include in media scan"
-msgstr "包括媒体扫描"
+msgstr "包括在媒体扫描中"
 
 #: tmp_strings.xml:51(string) tmp_strings.xml:132(string)
 msgid "Exclude from media scan"
@@ -101,11 +102,11 @@ msgstr "从媒体扫描中排除"
 
 #: tmp_strings.xml:52(string)
 msgid "Add to bookmarks"
-msgstr ""
+msgstr "添加到书签"
 
 #: tmp_strings.xml:53(string)
 msgid "Refresh"
-msgstr ""
+msgstr "刷新"
 
 #: tmp_strings.xml:55(string)
 msgid "Create new folder"
@@ -117,11 +118,11 @@ msgstr "文件夹名称"
 
 #: tmp_strings.xml:58(string)
 msgid "Extension (with '.')"
-msgstr ""
+msgstr "扩展名(带'.')"
 
 #: tmp_strings.xml:59(string)
 msgid "This folder is empty."
-msgstr "该文件夹为空"
+msgstr "该文件夹为空。"
 
 #: tmp_strings.xml:60(string)
 msgid "Do you really want to delete %s?"
@@ -129,35 +130,35 @@ msgstr "确实要删除 %s 吗？"
 
 #: tmp_strings.xml:61(string)
 msgid "File deleted."
-msgstr "文件已删除"
+msgstr "文件已删除。"
 
 #: tmp_strings.xml:62(string)
 msgid "Folder deleted."
-msgstr "文件夹已删除"
+msgstr "文件夹已删除。"
 
 #: tmp_strings.xml:63(string)
 msgid "File renamed."
-msgstr "文件已重命名"
+msgstr "文件已重命名。"
 
 #: tmp_strings.xml:64(string)
 msgid "Folder renamed."
-msgstr "文件夹已重命名"
+msgstr "文件夹已重命名。"
 
 #: tmp_strings.xml:65(string)
 msgid "File moved."
-msgstr "文件已移动"
+msgstr "文件已移动。"
 
 #: tmp_strings.xml:66(string)
 msgid "Folder moved."
-msgstr "文件夹已移动"
+msgstr "文件夹已移动。"
 
 #: tmp_strings.xml:67(string)
 msgid "File copied."
-msgstr "文件已复制"
+msgstr "文件已复制。"
 
 #: tmp_strings.xml:68(string)
 msgid "Select folder to move to"
-msgstr "选择要移动的文件夹"
+msgstr "选择要移动到的文件夹"
 
 #: tmp_strings.xml:69(string)
 msgid "Move here"
@@ -165,7 +166,7 @@ msgstr "移至此处"
 
 #: tmp_strings.xml:70(string)
 msgid "Select folder to copy to"
-msgstr "选择要复制的文件夹"
+msgstr "选择要复制到的文件夹"
 
 #: tmp_strings.xml:71(string)
 msgid "Copy here"
@@ -177,24 +178,24 @@ msgstr "正在删除文件..."
 
 #: tmp_strings.xml:73(string)
 msgid "Warning"
-msgstr ""
+msgstr "警告"
 
 #: tmp_strings.xml:74(string)
 msgid "Some of the following options may not work."
-msgstr ""
+msgstr "下列选项中的某些可能不起作用。"
 
 #: tmp_strings.xml:75(string)
 msgid "Show warning again"
-msgstr ""
+msgstr "再次显示警告"
 
 #. Strings for a multi select feature
 #: tmp_strings.xml:78(string)
 msgid "Do you really want to delete %d files?"
-msgstr "删除文件%d?"
+msgstr "确定要删除文件%d？"
 
 #: tmp_strings.xml:82(string)
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #: tmp_strings.xml:83(string)
 msgid "Select multiple files"
@@ -202,118 +203,118 @@ msgstr "选择多个文件"
 
 #: tmp_strings.xml:84(string)
 msgid "Please select one or more file(s)."
-msgstr "选择一个或多个"
+msgstr "请选择一个或多个文件。"
 
 #. Strings for details table
 #: tmp_strings.xml:87(string)
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
 #: tmp_strings.xml:88(string)
 msgid "Folder"
-msgstr ""
+msgstr "文件夹"
 
 #: tmp_strings.xml:89(string)
 msgid "File"
-msgstr ""
+msgstr "文件"
 
 #: tmp_strings.xml:90(string)
 msgid "Other"
-msgstr ""
+msgstr "其他"
 
 #: tmp_strings.xml:91(string) tmp_strings.xml:151(item)
 msgid "Size"
-msgstr ""
+msgstr "大小"
 
 #: tmp_strings.xml:92(string)
 msgid "Permissions"
-msgstr ""
+msgstr "权限"
 
 #: tmp_strings.xml:93(string)
 msgid "Hidden"
-msgstr ""
+msgstr "隐藏"
 
 #: tmp_strings.xml:94(string)
 msgid "Last Modified"
-msgstr ""
+msgstr "最近修改"
 
 #: tmp_strings.xml:95(string)
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 #: tmp_strings.xml:96(string)
 msgid "No"
-msgstr ""
+msgstr "否"
 
 #. Construct a unique file name of a file called %s.
 #: tmp_strings.xml:99(string)
 msgid "Copy of %s"
-msgstr "复制 %s"
+msgstr "%s的副本"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
 #: tmp_strings.xml:102(string)
 msgid "Copy %1$d of %2$s"
-msgstr "复制%1$d的f %2$s"
+msgstr "%2$s的副本%1$d"
 
 #: tmp_strings.xml:104(string)
 msgid "This folder will be included in the next media scan."
-msgstr "这个文件夹将包含下一个媒体扫描。"
+msgstr "该文件夹将包含在下次媒体扫描中。"
 
 #: tmp_strings.xml:105(string)
 msgid "This folder will be excluded during the next media scan."
-msgstr "这个文件夹不包含下一个媒体扫描。"
+msgstr "该文件夹将从下次媒体扫描中排除。"
 
 #: tmp_strings.xml:107(string)
 msgid "Could not create new folder."
-msgstr "无法建立新文件夹"
+msgstr "无法建立新文件夹。"
 
 #: tmp_strings.xml:108(string)
 msgid "Could not delete file."
-msgstr "无法删除文件"
+msgstr "无法删除文件。"
 
 #: tmp_strings.xml:109(string)
 msgid "Could not delete folder '%s'."
-msgstr "无法删除文件夹'%s'."
+msgstr "无法删除文件夹'%s'。"
 
 #: tmp_strings.xml:110(string)
 msgid "Could not rename file."
-msgstr "无法重命名文件"
+msgstr "无法重命名文件。"
 
 #: tmp_strings.xml:111(string)
 msgid "Could not rename folder."
-msgstr "无法重命名文件夹"
+msgstr "无法重命名文件夹。"
 
 #: tmp_strings.xml:112(string)
 msgid "Could not move file."
-msgstr "无法移动文件"
+msgstr "无法移动文件。"
 
 #: tmp_strings.xml:113(string)
 msgid "Could not move folder."
-msgstr "无法移动文件夹"
+msgstr "无法移动文件夹。"
 
 #: tmp_strings.xml:114(string)
 msgid "Could not copy file."
-msgstr "无法复制文件"
+msgstr "无法复制文件。"
 
 #: tmp_strings.xml:115(string)
 msgid "File does not exist."
-msgstr "文件不存在"
+msgstr "文件不存在。"
 
 #: tmp_strings.xml:116(string)
 msgid "Could not delete child file '%s'."
-msgstr "无法删除子文件 '%s'."
+msgstr "无法删除子文件 '%s'。"
 
 #: tmp_strings.xml:117(string)
 msgid "An error occurred:"
-msgstr "出错"
+msgstr "出错："
 
 #: tmp_strings.xml:118(string)
 msgid "Could not change media scan settings."
-msgstr "无法更改媒体扫描设置"
+msgstr "无法更改媒体扫描设置。"
 
 #: tmp_strings.xml:120(string)
 msgid "No application available for sending."
-msgstr "无法找到用于传送的应用程序"
+msgstr "无法找到用于发送的应用程序。"
 
 #: tmp_strings.xml:122(string)
 msgid "Application not available"
@@ -331,154 +332,154 @@ msgstr "高级功能"
 
 #: tmp_strings.xml:133(string)
 msgid "Show menu item to exclude folders from media scan."
-msgstr "媒体扫描中排除的文件夹显示菜单项。"
+msgstr "显示用于在媒体扫描中排除文件夹的菜单项。"
 
 #: tmp_strings.xml:134(string)
 msgid "Hide menu item to exclude folders from media scan."
-msgstr "媒体扫描中排除的文件夹隐藏菜单项。"
+msgstr "隐藏用于在媒体扫描中排除文件夹的菜单项。"
 
 #: tmp_strings.xml:136(string)
 msgid "Show all warnings"
-msgstr ""
+msgstr "显示所有警告"
 
 #: tmp_strings.xml:137(string)
 msgid "Show all warning messages"
-msgstr ""
+msgstr "显示所有警告消息"
 
 #: tmp_strings.xml:138(string)
 msgid "Suppress warning messages"
-msgstr ""
+msgstr "忽略警告消息"
 
 #: tmp_strings.xml:140(string) tmp_strings.xml:141(string)
 msgid "Display hidden files"
-msgstr ""
+msgstr "显示隐藏文件"
 
 #: tmp_strings.xml:142(string)
 msgid "Hide hidden files"
-msgstr ""
+msgstr "不显示隐藏文件"
 
 #: tmp_strings.xml:144(string)
 msgid "Sort settings"
-msgstr ""
+msgstr "排序设置"
 
 #: tmp_strings.xml:145(string)
 msgid "Sort by"
-msgstr ""
+msgstr "排序方式"
 
 #: tmp_strings.xml:146(string)
 msgid "In ascending order"
-msgstr ""
+msgstr "升序"
 
 #: tmp_strings.xml:147(string)
 msgid "Sort in ascending order"
-msgstr ""
+msgstr "按升序排序"
 
 #: tmp_strings.xml:148(string)
 msgid "Sort in descending order"
-msgstr ""
+msgstr "按降充排序"
 
 #: tmp_strings.xml:150(item)
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: tmp_strings.xml:152(item)
 msgid "Last modified"
-msgstr ""
+msgstr "上次修改"
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
 #: tmp_strings.xml:159(string)
 msgid "You haven't picked any file."
-msgstr ""
+msgstr "你没有选择任何文件。"
 
 #: tmp_strings.xml:160(string)
 msgid "An error occured."
-msgstr ""
+msgstr "发生错误。"
 
 #: tmp_strings.xml:161(string)
 msgid "File successfully saved!"
-msgstr ""
+msgstr "文件保存成功！"
 
 #: tmp_strings.xml:165(string)
 msgid "Bookmarks"
-msgstr ""
+msgstr "书签"
 
 #: tmp_strings.xml:166(string)
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: tmp_strings.xml:168(string)
 msgid "Select bookmarks to delete"
-msgstr ""
+msgstr "选择要删除的书签"
 
 #: tmp_strings.xml:169(string)
 msgid "Manage bookmarks"
-msgstr ""
+msgstr "管理书签"
 
 #: tmp_strings.xml:170(string)
 msgid "Bookmark added"
-msgstr ""
+msgstr "书签已添加"
 
 #: tmp_strings.xml:171(string)
 msgid "Bookmarked destination not found."
-msgstr ""
+msgstr "书签对应目标没找到。"
 
 #: tmp_strings.xml:172(string)
 msgid "Selected bookmarks deleted"
-msgstr ""
+msgstr "所选书签已删除。"
 
 #: tmp_strings.xml:173(string)
 msgid "This file is already bookmarked"
-msgstr ""
+msgstr "该文件已添加过书签。"
 
 #. ***************************
 #.              Strings for the 'Compressing' and 'Extracting' feature
 #.           ***************************
 #: tmp_strings.xml:179(string)
 msgid "Item compressed successfully"
-msgstr ""
+msgstr "项目压缩完成"
 
 #: tmp_strings.xml:180(string)
 msgid "Could not compress the item"
-msgstr ""
+msgstr "无法压缩该项目"
 
 #: tmp_strings.xml:181(string)
 msgid "Compress into archive:"
-msgstr ""
+msgstr "压缩到存档文件："
 
 #: tmp_strings.xml:182(string)
 msgid "Item extracted successfully"
-msgstr ""
+msgstr "项目解压成功"
 
 #: tmp_strings.xml:183(string)
 msgid "Could not extract the item"
-msgstr ""
+msgstr "无法解压该项目"
 
 #: tmp_strings.xml:184(string)
 msgid "Extract into folder:"
-msgstr ""
+msgstr "解压到文件夹："
 
 #: tmp_strings.xml:185(string)
 msgid "Select folder to extract into"
-msgstr ""
+msgstr "选择要解压到的文件夹"
 
 #: tmp_strings.xml:186(string)
 msgid "Extract here"
-msgstr ""
+msgstr "解压到这里"
 
 #: tmp_strings.xml:187(string)
 msgid "Extracting..."
-msgstr ""
+msgstr "正在解压缩..."
 
 #: tmp_strings.xml:188(string)
 msgid "Compressing..."
-msgstr ""
+msgstr "正在压缩..."
 
 #: tmp_strings.xml:189(string)
 msgid "File %s exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "文件 %s 已存在。要覆盖吗？"
 
 #: tmp_strings.xml:191(string)
 msgid "Do you want to change the file extension?"
-msgstr ""
+msgstr "要更改扩展名吗？"

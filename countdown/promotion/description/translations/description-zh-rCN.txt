@@ -2,7 +2,7 @@
 OI倒计时
 
 # Promo text:
-Set multiple countdowns with OI Countdown.
+OI倒计时可以设置多个倒数计时器。
 
 # Description:
 

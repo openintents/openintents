@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Matěj Konečný <Unknown>\n"
+"Last-Translator: clever_fox <clever_fox@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,8 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Marek Dobransky https://launchpad.net/~marekdobr\n"
 "  Matěj Konečný https://launchpad.net/~matejkon\n"
-"  OpenIntents devs https://launchpad.net/~openintents-devs"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
+"  clever_fox https://launchpad.net/~clever-fox"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:26(string)
@@ -194,7 +195,7 @@ msgstr "Opravdu chcete odstranit %d souborů?"
 
 #: tmp_strings.xml:82(string)
 msgid "ZIP"
-msgstr ""
+msgstr "PSČ"
 
 #: tmp_strings.xml:83(string)
 msgid "Select multiple files"

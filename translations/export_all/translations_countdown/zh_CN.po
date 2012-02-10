@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Li Shiyi <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -23,13 +23,14 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Li Shiyi https://launchpad.net/~li3shiyi\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  zhangchun https://launchpad.net/~zhangchun"
 
 #. Short explanation of the application (max. 80 characters)
 #: tmp_strings.xml:11(string)
 msgid "Set multiple countdowns with OI Countdown."
-msgstr ""
+msgstr "OI倒计时可以设置多个倒数计时器。"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string) tmp_strings.xml:56(string)
@@ -98,7 +99,7 @@ msgstr "例如：批萨"
 #. Title of the activity for setting (editing) the countdown.
 #: tmp_strings.xml:44(string)
 msgid "Set countdown"
-msgstr "选择倒计时"
+msgstr "设定倒计时"
 
 #. Title of the activity for creating a new countdown.
 #: tmp_strings.xml:47(string)
@@ -128,7 +129,7 @@ msgstr "加载倒计时出错"
 #. Checkbox label whether to notifications.
 #: tmp_strings.xml:67(string)
 msgid "Notification in status bar"
-msgstr "通知在状态栏"
+msgstr "在状态栏显示通知"
 
 #. Checkbox label whether to launch automation task through the status bar
 #: tmp_strings.xml:70(string)
@@ -138,7 +139,7 @@ msgstr "通过状态栏启动"
 #. Checkbox label whether to use the ring tone for notifications.
 #: tmp_strings.xml:73(string)
 msgid "Ring"
-msgstr "环"
+msgstr "闹铃"
 
 #. Checkbox label whether to vibrate.
 #: tmp_strings.xml:76(string)
@@ -148,22 +149,22 @@ msgstr "振动"
 #. Checkbox label whether to flash light for notifications.
 #: tmp_strings.xml:79(string)
 msgid "Light"
-msgstr "灯光"
+msgstr "闪光"
 
 #. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
 #: tmp_strings.xml:82(string)
 msgid "Action: %s"
-msgstr "操作: %s"
+msgstr "操作：%s"
 
 #. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
 #: tmp_strings.xml:85(string)
 msgid "Select action: %s"
-msgstr "选择操作: %s"
+msgstr "选择操作：%s"
 
 #. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
 #: tmp_strings.xml:88(string)
 msgid "Select countdown: %s"
-msgstr "选择倒计时：: %s"
+msgstr "选择倒计时：%s"
 
 #. Button to test an action.
 #: tmp_strings.xml:91(string)
@@ -178,7 +179,7 @@ msgstr "设置"
 #. Button label to dismiss notification after countdown ended.
 #: tmp_strings.xml:97(string)
 msgid "Dismiss"
-msgstr "解散"
+msgstr "取消"
 
 #. For the countdown display. "%s" is the number of days remaining (more than 1).
 #: tmp_strings.xml:100(string)
@@ -241,23 +242,23 @@ msgstr "扩展程序"
 
 #: tmp_strings.xml:141(string)
 msgid "Get new extensions"
-msgstr "获取新扩展软件"
+msgstr "获取新的扩展程序"
 
 #: tmp_strings.xml:142(string)
 msgid "Search for extensions online."
-msgstr "在线搜索扩展软件"
+msgstr "在线搜索扩展程序"
 
 #: tmp_strings.xml:143(string)
 msgid "Get extensions from"
-msgstr "获取新扩展软件从"
+msgstr "获取新的扩展程序从"
 
 #: tmp_strings.xml:144(string)
 msgid "Android Market"
-msgstr "Android电子 市场"
+msgstr "电子市场"
 
 #: tmp_strings.xml:145(string)
 msgid "Search for extensions at Android Market."
-msgstr "从Android Market上获取插件 ."
+msgstr "从电子市场上获取扩展程序。"
 
 #: tmp_strings.xml:146(string)
 msgid "OpenIntents"
@@ -265,7 +266,7 @@ msgstr "OpenIntents"
 
 #: tmp_strings.xml:147(string)
 msgid "Get extensions from the OpenIntents homepage."
-msgstr "从OpenIntents 主页上获取插件."
+msgstr "从OpenIntents 主页获取扩展程序"
 
 #. Preference title: Set the notification timeout (2 sec, 10 min, ...)
 #: tmp_strings.xml:150(string)
@@ -312,4 +313,4 @@ msgstr "10 分钟"
 
 #: tmp_strings.xml:170(string)
 msgid "OI Countdown doesn't have the permission for this task."
-msgstr ""
+msgstr "OI倒计时没有权限执行该任务。"

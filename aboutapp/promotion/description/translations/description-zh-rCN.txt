@@ -2,7 +2,7 @@
 OI简介
 
 # Promo text:
-一个在系统中共享的用于显示“关于”对话框的程序。
+一个标准的关于对话框，可以由多个应用共享使用。
 
 # Description:
 OI About 是一个介于应用程序间的about对话框 This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 

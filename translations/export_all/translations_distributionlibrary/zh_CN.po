@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Li Shiyi <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,7 @@ msgstr "OI分布图书馆"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Li Shiyi https://launchpad.net/~li3shiyi\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  thebowseat https://launchpad.net/~takeshimochida\n"
 "  zhangchun https://launchpad.net/~zhangchun"
@@ -35,7 +36,7 @@ msgstr ""
 #. 		Translation should be short, since this is a title.
 #: tmp_strings.xml:19(string)
 msgid "%s EULA"
-msgstr "最终用户许可协议"
+msgstr "%s最终用户许可协议"
 
 #. EULA welcome message. %s is an application name, e.g. "... (EULA) for OI Notepad".
 #. 		Translation can be as long as required.
@@ -43,7 +44,7 @@ msgstr "最终用户许可协议"
 msgid ""
 "Please read and accept the following End User License Agreement (EULA) for "
 "%s."
-msgstr "请阅读并接受最终用户许可协议"
+msgstr "请阅读并接受%s的最终用户许可协议。"
 
 #. Button: Accept terms of EULA.
 #: tmp_strings.xml:26(string)
@@ -64,11 +65,11 @@ msgstr "%1$s %2$s"
 #. Welcome message. %s is an application name.
 #: tmp_strings.xml:37(string)
 msgid "Welcome to this new version of %s."
-msgstr "欢迎使用这个版本"
+msgstr "欢迎使用%s的这个新版本。"
 
 #: tmp_strings.xml:39(string)
 msgid "Recent changes:"
-msgstr "最近更改"
+msgstr "最近更改："
 
 #. Button: Continue to main application.
 #: tmp_strings.xml:42(string)
@@ -78,20 +79,20 @@ msgstr "继续"
 #. Menu command to look for updates.
 #: tmp_strings.xml:46(string)
 msgid "Check updates"
-msgstr "查看更新"
+msgstr "检查更新"
 
 #: tmp_strings.xml:47(string)
 msgid ""
 "Check manually for updates or install OI Update for automatic notifications."
-msgstr "手动查看更新或自动通知安装更新。"
+msgstr "手动检查更新或安装“OI更新”用于自动通知更新。"
 
 #: tmp_strings.xml:48(string)
 msgid "Check now"
-msgstr "立即查看"
+msgstr "立即检查"
 
 #: tmp_strings.xml:49(string)
 msgid "Get OI Updater"
-msgstr "下载OI更新"
+msgstr "获取OI更新"
 
 #: tmp_strings.xml:50(string)
 msgid "Download application not available."
@@ -112,7 +113,7 @@ msgstr "关于"
 msgid ""
 "No compatible extension available to display full info (contact, credits, "
 "license)."
-msgstr "没有扩展兼容，可显示完整的信息（联系方式，开发商，许可证）。"
+msgstr "没有兼容的扩展用于显示完整信息（联系方式，开发商，许可协议）。"
 
 #. Button text: Get the application "OI About". Translations of the application name should be consistent.
 #: tmp_strings.xml:63(string)
@@ -127,12 +128,12 @@ msgstr "OI简介"
 #. Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.
 #: tmp_strings.xml:69(string)
 msgid "Barcode OI Plugin"
-msgstr ""
+msgstr "条形码 OI 插件"
 
 #. Dialog message.
 #: tmp_strings.xml:71(string)
 msgid "No compatible barcode scanner is available."
-msgstr ""
+msgstr "没有兼容的条形码扫描器。"
 
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:74(string)
@@ -152,7 +153,7 @@ msgstr "OI安全"
 #. Dialog message.
 #: tmp_strings.xml:82(string)
 msgid "No compatible application for encryption is available."
-msgstr "没有加密的兼容应用程序。"
+msgstr "没有用于加密的兼容应用程序。"
 
 #: tmp_strings.xml:83(string)
 msgid ""
@@ -160,18 +161,18 @@ msgid ""
 "to restore the master key from a backup file in order to access previously "
 "encrypted data."
 msgstr ""
-"没有解密兼容应用程序。\\n\\n注意：必须从备份文件恢复主键，这样才可以访问以前"
-"加密的数据。"
+"没有用于解密的兼容应用程序。\\n\\n注意：必须从备份文件恢复主键，这样才可以访"
+"问以前加密的数据。"
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:86(string)
 msgid "Please download %s from the Market or the OpenIntents website."
-msgstr "请从电子市场或 OpenIntents网站下载应用程序"
+msgstr "请从电子市场或 OpenIntents网站下载 %s。"
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:88(string)
 msgid "Please download %s from the OpenIntents website."
-msgstr "请从OpenIntents网站下载应用程序"
+msgstr "请从OpenIntents网站下载 %s。"
 
 #. Dialog button: download the suggested application from Android Market.
 #: tmp_strings.xml:90(string)
@@ -191,7 +192,7 @@ msgstr "下载 %s"
 #. %s is an application name (e.g. "OI About can be used with the following applications:")
 #: tmp_strings.xml:97(string)
 msgid "%s can be used with the following applications:"
-msgstr "可用于以下应用程序："
+msgstr "%s 可用于以下应用程序："
 
 #. %s is an application name (e.g. "Launch OI Notepad")
 #: tmp_strings.xml:99(string)
@@ -202,7 +203,7 @@ msgstr "启动 %s"
 #.     (e.g. "OI About requires OI Notepad 1.2.0 or higher.")
 #: tmp_strings.xml:102(string)
 msgid "%1$s requires %2$s %3$s or higher."
-msgstr "%1$s需要 %2$s %3$s或更高。"
+msgstr "%1$s需要 %2$s %3$s或更高版本。"
 
 #. Title of a dialog.
 #: tmp_strings.xml:104(string)

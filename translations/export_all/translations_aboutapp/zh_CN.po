@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Li Shiyi <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -23,6 +23,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Li Shiyi https://launchpad.net/~li3shiyi\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  goodev https://launchpad.net/~3-admin-goodev-org\n"
@@ -31,7 +32,7 @@ msgstr ""
 #. Explanation what this application does. It is a menu extension for other applications.
 #: tmp_strings.xml:33(string)
 msgid "A standalone about dialog that is shared between apps."
-msgstr "一个在系统中共享的用于显示“关于”对话框的程序。"
+msgstr "一个标准的关于对话框，可以由多个应用共享使用。"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:39(string)
@@ -41,7 +42,7 @@ msgstr "OI文件管理器"
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:41(string)
 msgid "OI Shopping List"
-msgstr "OI购物列表"
+msgstr "OI购物清单"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:43(string)
@@ -56,7 +57,7 @@ msgstr "OI安全"
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:48(string)
 msgid "Launch %s and select menu &gt; About."
-msgstr "启动 %s选择“菜单”->关于。"
+msgstr "启动 %s 并选择 菜单->关于。"
 
 #. Application name. Can be localized, like "OI About", or "OI Info". 
 #. 	   This is an extension that shows an about dialog or info dialog.
@@ -66,7 +67,7 @@ msgstr "OI简介"
 
 #: tmp_strings.xml:57(string)
 msgid "About OI About itself"
-msgstr "关于OI"
+msgstr "关于OI简介"
 
 #. About some application, where "%s" is the name of another application.
 #: tmp_strings.xml:60(string)
@@ -83,7 +84,7 @@ msgstr "文档撰写者："
 
 #: tmp_strings.xml:64(string)
 msgid "Translated by"
-msgstr "翻译者："
+msgstr "翻译人员"
 
 #: tmp_strings.xml:65(string)
 msgid "Artwork by"
@@ -91,15 +92,15 @@ msgstr "美工："
 
 #: tmp_strings.xml:66(string)
 msgid "International translations by"
-msgstr "国际翻译由"
+msgstr "国际翻译"
 
 #: tmp_strings.xml:67(string)
 msgid "Credits"
-msgstr "制作组"
+msgstr "贡献者"
 
 #: tmp_strings.xml:68(string)
 msgid "License"
-msgstr "许可"
+msgstr "许可协议"
 
 #: tmp_strings.xml:69(string)
 msgid "General Info"
@@ -115,171 +116,171 @@ msgstr "无可用信息。"
 
 #: tmp_strings.xml:79(item)
 msgid "Arabic"
-msgstr "阿拉伯语"
+msgstr "阿拉伯语(Arabic)"
 
 #: tmp_strings.xml:80(item)
 msgid "Belarusian"
-msgstr ""
+msgstr "白俄罗斯语(Belarusian)"
 
 #: tmp_strings.xml:81(item)
 msgid "Bulgarian"
-msgstr ""
+msgstr "保加利亚语(Bulgarian)"
 
 #: tmp_strings.xml:82(item)
 msgid "Catalan"
-msgstr ""
+msgstr "加泰罗尼亚语(Catalan)"
 
 #: tmp_strings.xml:83(item)
 msgid "Czech"
-msgstr "捷克语"
+msgstr "捷克语(Czech)"
 
 #: tmp_strings.xml:84(item)
 msgid "Danish"
-msgstr "丹麦语"
+msgstr "丹麦语(Danish)"
 
 #: tmp_strings.xml:85(item)
 msgid "German"
-msgstr "德语"
+msgstr "德语(German)"
 
 #: tmp_strings.xml:86(item)
 msgid "Greek"
-msgstr "希腊语"
+msgstr "希腊语(Greek)"
 
 #: tmp_strings.xml:87(item)
 msgid "English"
-msgstr "英语"
+msgstr "英语(English)"
 
 #: tmp_strings.xml:88(item)
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "英语 (英国)"
 
 #: tmp_strings.xml:89(item)
 msgid "Spanish"
-msgstr "西班牙语"
+msgstr "西班牙语(Spanish)"
 
 #: tmp_strings.xml:90(item)
 msgid "Persian"
-msgstr "波斯语"
+msgstr "波斯语(Persian)"
 
 #: tmp_strings.xml:91(item)
 msgid "Finnish"
-msgstr "芬兰语"
+msgstr "芬兰语(Finnish)"
 
 #: tmp_strings.xml:92(item)
 msgid "Faroese"
-msgstr "法罗语"
+msgstr "法罗语(Faroese)"
 
 #: tmp_strings.xml:93(item)
 msgid "French"
-msgstr "法语"
+msgstr "法语(French)"
 
 #: tmp_strings.xml:94(item)
 msgid "Hindi"
-msgstr ""
+msgstr "印地语(Hindi)"
 
 #: tmp_strings.xml:95(item)
 msgid "Croatian"
-msgstr "克罗地亚语"
+msgstr "克罗地亚语(Croatian)"
 
 #: tmp_strings.xml:96(item)
 msgid "Hungarian"
-msgstr "匈牙利语"
+msgstr "匈牙利语(Hungarian)"
 
 #: tmp_strings.xml:97(item)
 msgid "Italian"
-msgstr "意大利语"
+msgstr "意大利语(Italian)"
 
 #: tmp_strings.xml:98(item)
 msgid "Hebrew"
-msgstr ""
+msgstr "希伯来语(Hebrew)"
 
 #: tmp_strings.xml:99(item)
 msgid "Japanese"
-msgstr "日语"
+msgstr "日语(Japanese)"
 
 #: tmp_strings.xml:100(item)
 msgid "Korean"
-msgstr "韩语"
+msgstr "朝鲜语(Korean)"
 
 #: tmp_strings.xml:101(item)
 msgid "Lao"
-msgstr "老挝语"
+msgstr "老挝语(Lao)"
 
 #: tmp_strings.xml:102(item)
 msgid "Latvian"
-msgstr ""
+msgstr "拉脱维亚语(Latvian)"
 
 #: tmp_strings.xml:103(item)
 msgid "Macedonian"
-msgstr ""
+msgstr "马其顿语(Macedonian)"
 
 #: tmp_strings.xml:104(item)
 msgid "Norwegian Bokmal"
-msgstr ""
+msgstr "挪威波克默尔语 (Bokmal)"
 
 #: tmp_strings.xml:105(item)
 msgid "Dutch"
-msgstr "荷兰语"
+msgstr "荷兰语(Dutch)"
 
 #: tmp_strings.xml:106(item)
 msgid "Occitan (post 1500)"
-msgstr "奥克语"
+msgstr "奥克西顿语 (1500 年后)"
 
 #: tmp_strings.xml:107(item)
 msgid "Punjabi"
-msgstr ""
+msgstr "旁遮普语(Punjabi)"
 
 #: tmp_strings.xml:108(item)
 msgid "Polish"
-msgstr "波兰语"
+msgstr "波兰语(Polish)"
 
 #: tmp_strings.xml:109(item)
 msgid "Portuguese"
-msgstr "葡萄牙语"
+msgstr "葡萄牙语(Portuguese)"
 
 #: tmp_strings.xml:110(item)
 msgid "Brazilian Portuguese"
-msgstr "巴西葡萄牙语"
+msgstr "巴西葡萄牙语(Brazilian Portuguese)"
 
 #: tmp_strings.xml:111(item)
 msgid "Romanian"
-msgstr "罗马尼亚语"
+msgstr "罗马尼亚语(Romanian)"
 
 #: tmp_strings.xml:112(item)
 msgid "Russian"
-msgstr "俄语"
+msgstr "俄语(Russian)"
 
 #: tmp_strings.xml:113(item)
 msgid "Sardinian"
-msgstr "撒丁语"
+msgstr "撒丁语(Sardinian)"
 
 #: tmp_strings.xml:114(item)
 msgid "Sindhi"
-msgstr ""
+msgstr "信德语(Sindhi)"
 
 #: tmp_strings.xml:115(item)
 msgid "Slovak"
-msgstr "斯洛伐克语"
+msgstr "斯洛伐克语(Slovak)"
 
 #: tmp_strings.xml:116(item)
 msgid "Slovenian"
-msgstr ""
+msgstr "斯洛文尼亚语(Slovenian)"
 
 #: tmp_strings.xml:117(item)
 msgid "Swedish"
-msgstr "瑞典语"
+msgstr "瑞典语(Swedish)"
 
 #: tmp_strings.xml:118(item)
 msgid "Tagalog"
-msgstr ""
+msgstr "塔加路语(Tagalog)"
 
 #: tmp_strings.xml:119(item)
 msgid "Turkish"
-msgstr "土耳其语"
+msgstr "土耳其语(Turkish)"
 
 #: tmp_strings.xml:120(item)
 msgid "Uyghur"
-msgstr ""
+msgstr "维吾尔语(Uyghur)"
 
 #: tmp_strings.xml:121(item)
 msgid "Chinese (Simplified)"

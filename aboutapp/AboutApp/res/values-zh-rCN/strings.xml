@@ -28,13 +28,14 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Li Shiyi https://launchpad.net/~li3shiyi
   OpenIntents devs https://launchpad.net/~openintents-devs
   Peli https://launchpad.net/~peli0101
   goodev https://launchpad.net/~3-admin-goodev-org
   zhangchun https://launchpad.net/~zhangchun</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
-	<string name="about_comments">一个在系统中共享的用于显示“关于”对话框的程序。</string>
+	<string name="about_comments">一个标准的关于对话框，可以由多个应用共享使用。</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -42,14 +43,14 @@
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_filemanager">OI文件管理器</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI购物列表</string>
+	<string name="info_app_shopping">OI购物清单</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_notepad">OI记事本</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_safe">OI安全</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">启动 %s选择“菜单”-&gt;关于。</string>
+	<string name="info_instructions">启动 %s 并选择 菜单-&gt;关于。</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -58,18 +59,18 @@
 	   This is an extension that shows an about dialog or info dialog.  -->
     <string name="app_name">OI简介</string>
 	
-    <string name="menu_about">关于OI</string>
+    <string name="menu_about">关于OI简介</string>
     
     <!-- About some application, where "%s" is the name of another application. -->
     <string name="about_activity_name_extended">关于%s</string>
     
 	<string name="l_authors">开发人员</string>
 	<string name="l_documenters">文档撰写者：</string>
-	<string name="l_translators">翻译者：</string>
+	<string name="l_translators">翻译人员</string>
 	<string name="l_artists">美工：</string>
-	<string name="l_international_translators">国际翻译由</string>
-	<string name="l_credits">制作组</string>
-	<string name="l_license">许可</string>
+	<string name="l_international_translators">国际翻译</string>
+	<string name="l_credits">贡献者</string>
+	<string name="l_license">许可协议</string>
 	<string name="l_info">基本信息</string>
 	<string name="l_recent_changes">最近更改</string>
 	
@@ -80,48 +81,48 @@
 	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
-		<item>阿拉伯语</item>
-		<item>Belarusian</item>
-		<item>Bulgarian</item>
-		<item>Catalan</item>
-		<item>捷克语</item>
-		<item>丹麦语</item>
-		<item>德语</item>
-		<item>希腊语</item>
-		<item>英语</item>
-		<item>English (United Kingdom)</item>
-		<item>西班牙语</item>
-		<item>波斯语</item>
-		<item>芬兰语</item>
-		<item>法罗语</item>
-		<item>法语</item>
-		<item>Hindi</item>
-		<item>克罗地亚语</item>
-		<item>匈牙利语</item>
-		<item>意大利语</item>
-		<item>Hebrew</item>
-		<item>日语</item>
-		<item>韩语</item>
-		<item>老挝语</item>
-		<item>Latvian</item>
-		<item>Macedonian</item>
-		<item>Norwegian Bokmal</item>
-		<item>荷兰语</item>
-		<item>奥克语</item>
-		<item>Punjabi</item>
-		<item>波兰语</item>
-		<item>葡萄牙语</item>
-		<item>巴西葡萄牙语</item>
-		<item>罗马尼亚语</item>
-		<item>俄语</item>
-		<item>撒丁语</item>
-		<item>Sindhi</item>
-		<item>斯洛伐克语</item>
-		<item>Slovenian</item>
-		<item>瑞典语</item>
-		<item>Tagalog</item>
-		<item>土耳其语</item>
-		<item>Uyghur</item>
+		<item>阿拉伯语(Arabic)</item>
+		<item>白俄罗斯语(Belarusian)</item>
+		<item>保加利亚语(Bulgarian)</item>
+		<item>加泰罗尼亚语(Catalan)</item>
+		<item>捷克语(Czech)</item>
+		<item>丹麦语(Danish)</item>
+		<item>德语(German)</item>
+		<item>希腊语(Greek)</item>
+		<item>英语(English)</item>
+		<item>英语 (英国)</item>
+		<item>西班牙语(Spanish)</item>
+		<item>波斯语(Persian)</item>
+		<item>芬兰语(Finnish)</item>
+		<item>法罗语(Faroese)</item>
+		<item>法语(French)</item>
+		<item>印地语(Hindi)</item>
+		<item>克罗地亚语(Croatian)</item>
+		<item>匈牙利语(Hungarian)</item>
+		<item>意大利语(Italian)</item>
+		<item>希伯来语(Hebrew)</item>
+		<item>日语(Japanese)</item>
+		<item>朝鲜语(Korean)</item>
+		<item>老挝语(Lao)</item>
+		<item>拉脱维亚语(Latvian)</item>
+		<item>马其顿语(Macedonian)</item>
+		<item>挪威波克默尔语 (Bokmal)</item>
+		<item>荷兰语(Dutch)</item>
+		<item>奥克西顿语 (1500 年后)</item>
+		<item>旁遮普语(Punjabi)</item>
+		<item>波兰语(Polish)</item>
+		<item>葡萄牙语(Portuguese)</item>
+		<item>巴西葡萄牙语(Brazilian Portuguese)</item>
+		<item>罗马尼亚语(Romanian)</item>
+		<item>俄语(Russian)</item>
+		<item>撒丁语(Sardinian)</item>
+		<item>信德语(Sindhi)</item>
+		<item>斯洛伐克语(Slovak)</item>
+		<item>斯洛文尼亚语(Slovenian)</item>
+		<item>瑞典语(Swedish)</item>
+		<item>塔加路语(Tagalog)</item>
+		<item>土耳其语(Turkish)</item>
+		<item>维吾尔语(Uyghur)</item>
 		<item>中文(简体)</item>
 		<item>中文 (繁体)</item>
 	</string-array>

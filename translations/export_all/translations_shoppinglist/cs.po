@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: clever_fox <clever_fox@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,7 @@ msgstr ""
 "  Matěj Konečný https://launchpad.net/~matejkon\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
+"  clever_fox https://launchpad.net/~clever-fox\n"
 "  friedger https://launchpad.net/~friedger"
 
 #. Short explanation of the application (max. 80 characters)
@@ -162,11 +163,11 @@ msgstr "Žádné položky nejsou k dispozici"
 
 #: tmp_strings.xml:66(string)
 msgid "No stores available for this list"
-msgstr ""
+msgstr "Pro tento seznam nejsou dostupné žádné obchody"
 
 #: tmp_strings.xml:67(string)
 msgid "No tags available for this list"
-msgstr ""
+msgstr "Pro tento seznam nejsou dostupné žádné tagy"
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
@@ -255,11 +256,11 @@ msgstr "Poznámka"
 
 #: tmp_strings.xml:104(string)
 msgid "Stores"
-msgstr ""
+msgstr "Obchody"
 
 #: tmp_strings.xml:105(string)
 msgid "List"
-msgstr ""
+msgstr "Seznam"
 
 #: tmp_strings.xml:107(string)
 msgid "Other Quantity..."
@@ -271,7 +272,7 @@ msgstr "Jiná priorita..."
 
 #: tmp_strings.xml:109(string)
 msgid "(Unfiltered)"
-msgstr ""
+msgstr "(Nefiltorváno)"
 
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:112(string)
@@ -467,11 +468,11 @@ msgstr "Ihned skrývat přeškrtnuté položky"
 
 #: tmp_strings.xml:178(string)
 msgid "Fast Scrolling"
-msgstr ""
+msgstr "Rychlé scrollování"
 
 #: tmp_strings.xml:179(string)
 msgid "Scroll handle appears when scrolling 35 items or more."
-msgstr ""
+msgstr "Nástroj pro scrollování se objeví při scrollování 35 a více položek."
 
 #: tmp_strings.xml:180(string)
 msgid "Show price"
@@ -505,11 +506,11 @@ msgstr "Pokud zaškrtnuto, zabraňuje dispeji se zamknout"
 
 #: tmp_strings.xml:187(string)
 msgid "Filters"
-msgstr ""
+msgstr "Filtry"
 
 #: tmp_strings.xml:188(string)
 msgid "Lists can be filtered by tags or stores."
-msgstr ""
+msgstr "Seznamy lze filtrovat pomocí tagů nebo obchodů."
 
 #: tmp_strings.xml:189(string)
 msgid "Reset Quantity"

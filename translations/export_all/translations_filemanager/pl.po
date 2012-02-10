@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Piotr Łazarczyk <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -199,7 +199,7 @@ msgstr "Czy na pewno chcesz usunąć %d plików?"
 
 #: tmp_strings.xml:82(string)
 msgid "ZIP"
-msgstr ""
+msgstr "Kod pocztowy"
 
 #: tmp_strings.xml:83(string)
 msgid "Select multiple files"

@@ -6,11 +6,12 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Li Shiyi https://launchpad.net/~li3shiyi
   OpenIntents devs https://launchpad.net/~openintents-devs
   zhangchun https://launchpad.net/~zhangchun</string>
 	
     <!-- Short explanation of the application (max. 80 characters) -->
-	<string name="about_comments">Keep the camera flash or the backlight turned on with OI Flashlight.</string>
+	<string name="about_comments">OI手电筒通过开启相机闪光灯或屏幕背光，给黑暗中的你带来光明。</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -18,23 +19,23 @@
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI手电筒</string>
     
-    <string name="backlight_info">开启背光屏。</string>
+    <string name="backlight_info">保持背光开启</string>
     
     <string name="color">颜色</string>
     
     <!-- Application name should be consistent across translations. -->
     <string name="color_picker">OI拾色器</string>
     
-    <string name="preferences">设置</string>
+    <string name="preferences">选项</string>
     
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
 	
 	<!-- Title for preferences or settings -->
-	<string name="settings_titlebar">设置</string>
+	<string name="settings_titlebar">选项</string>
 	<string name="settings_title_keep_color">保持颜色</string>
-	<string name="settings_summary_keep_color">手电筒下次开启是保持一样的颜色。</string>
+	<string name="settings_summary_keep_color">手电筒下次开启时保持一样的颜色。</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -42,11 +43,11 @@
 	
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
-    <string name="color_picker_modularization_explanation">使拾色器能应用于更多的开发者，我们已经分类好所有的应用程序。</string>
-    <string name="setting_use_camera_flash">Use camera flash</string>
-    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <string name="color_picker_modularization_explanation">为了使拾色器能应用于其他开发者，我们已经把它分割为独立的应用。</string>
+    <string name="setting_use_camera_flash">使用相机闪光灯</string>
+    <string name="setting_use_camera_flash_summary">使用相机闪光灯代替屏幕背光。</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
     <!-- Information to enable the camera flash as flashlight. -->
-    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
-    <string name="cameralight_stop_info">Press to disable camera light.</string>
+    <string name="cameralight_info">点击开启相机闪光灯（可能要一秒钟）</string>
+    <string name="cameralight_stop_info">点击关闭相机闪光灯</string>
     
 </resources>

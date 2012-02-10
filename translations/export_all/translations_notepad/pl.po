@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Tomasz 'Zen' Napierala <tomasz@napierala.org>\n"
+"Last-Translator: Piotr Łazarczyk <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -220,15 +220,15 @@ msgstr "Na pewno nadpisać istniejący plik?"
 
 #: tmp_strings.xml:100(string)
 msgid "Word count"
-msgstr ""
+msgstr "Liczba słów"
 
 #: tmp_strings.xml:102(item)
 msgid "One word."
-msgstr ""
+msgstr "Jedno słowo."
 
 #: tmp_strings.xml:103(item)
 msgid "%d words."
-msgstr ""
+msgstr "%d słów."
 
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
 #: tmp_strings.xml:107(string)
@@ -359,15 +359,15 @@ msgstr "Nie twórz odnośników w notatkach"
 
 #: tmp_strings.xml:156(string)
 msgid "Character count"
-msgstr ""
+msgstr "Liczba znaków"
 
 #: tmp_strings.xml:157(string)
 msgid "Show character count in editor"
-msgstr ""
+msgstr "Pokaż liczbę znaków w edytorze"
 
 #: tmp_strings.xml:158(string)
 msgid "Do not show character count in editor"
-msgstr ""
+msgstr "Nie pokazuj liczby znaków w edytorze"
 
 #: tmp_strings.xml:160(string)
 msgid "Settings"

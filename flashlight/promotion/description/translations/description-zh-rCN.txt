@@ -2,7 +2,7 @@
 OI手电筒
 
 # Promo text:
-Keep the camera flash or the backlight turned on with OI Flashlight.
+OI手电筒通过开启相机闪光灯或屏幕背光，给黑暗中的你带来光明。
 
 # Description:
 OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 

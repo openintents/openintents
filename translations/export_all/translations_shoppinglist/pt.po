@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Sérgio Marques <Unknown>\n"
+"Last-Translator: José Carlos Marques <JCABRANTESM@GMAIL.COM>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -25,6 +25,8 @@ msgstr ""
 "This is a dummy translation so that the credits are counted as translated.\n"
 "\n"
 "Launchpad Contributions:\n"
+"  José Carlos Marques https://launchpad.net/~jcabrantesm\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  Sérgio Marques https://launchpad.net/~sergio+marques\n"
 "  Tiago Silva https://launchpad.net/~tiagosilva"
@@ -78,15 +80,15 @@ msgstr "Apagar lista"
 
 #: tmp_strings.xml:44(string)
 msgid "Delete list"
-msgstr "Eliminar lista"
+msgstr "Apagar lista"
 
 #: tmp_strings.xml:45(string)
 msgid "Enter name of new shopping list"
-msgstr "Indique o nome da lista de compras"
+msgstr "Indique o nome da nova lista"
 
 #: tmp_strings.xml:46(string)
 msgid "Rename shopping list"
-msgstr "Mudar nome da lista de compras"
+msgstr "Alterar o nome da lista"
 
 #: tmp_strings.xml:47(string) tmp_strings.xml:59(string)
 msgid "Edit item"
@@ -94,7 +96,7 @@ msgstr "Editar item"
 
 #: tmp_strings.xml:48(string)
 msgid "Enter new store name"
-msgstr "Indique o nome da loja"
+msgstr "Indique o nome na nova loja"
 
 #: tmp_strings.xml:49(string)
 msgid "Please enter a name"
@@ -102,7 +104,7 @@ msgstr "Por favor, indique um nome"
 
 #: tmp_strings.xml:50(string)
 msgid "No items are marked as crossed out."
-msgstr "Sem itens riscados."
+msgstr "Não há itens seleccionados"
 
 #: tmp_strings.xml:51(string)
 msgid "Do you really want to delete this shopping list?"
