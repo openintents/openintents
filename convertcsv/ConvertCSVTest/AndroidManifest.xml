@@ -8,6 +8,11 @@
 
     <uses-library android:name="android.test.runner" />
     </application>
-    <uses-sdk android:minSdkVersion="3" />
+    <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="15" />
     <instrumentation android:targetPackage="org.openintents.convertcsv" android:name="android.test.InstrumentationTestRunner" />
+
+    <!-- Instrumentation for Jenkins server -->
+    <instrumentation
+       android:targetPackage="org.openintents.convertcsv"
+       android:name="pl.polidea.instrumentation.PolideaInstrumentationTestRunner" />
 </manifest> 

@@ -31,6 +31,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.test.InstrumentationTestCase;
+import android.test.suitebuilder.annotation.Smoke;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -57,7 +58,7 @@ public class TestConvertCSVActivity extends InstrumentationTestCase {
 
 	protected void tearDown() throws Exception {
 		try {
-			this.solo.finalize();
+			this.solo.finishOpenedActivities();
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
@@ -216,7 +217,32 @@ public class TestConvertCSVActivity extends InstrumentationTestCase {
 	private String shoppingListOutlook = ("Subject,% Complete,Categories,Tags\n" + 
 			"OI-Test-1-$RANDOM,0,TestList,\n" +
 			"OI-Test-2-$RANDOM,100,TestList,");
-	
+
+	@Smoke
+	public void test000Eula() {
+		String accept = getAppString(org.openintents.distribution.R.string.oi_distribution_eula_accept);
+		String cancel = getAppString(org.openintents.distribution.R.string.oi_distribution_eula_refuse);
+		boolean existsAccept = solo.searchButton(accept);
+		boolean existsCancel = solo.searchButton(cancel);
+		
+		if (existsAccept && existsCancel) {
+			solo.clickOnButton(accept);
+		}
+	}
+
+	@Smoke
+	public void test001RecentChanges() {
+		String recentChanges = getAppString(org.openintents.distribution.R.string.oi_distribution_newversion_recent_changes);
+		String cont = getAppString(org.openintents.distribution.R.string.oi_distribution_newversion_continue);
+		while(solo.scrollUp());
+		boolean existsRecentChanges = solo.searchText(recentChanges);
+		boolean existsCont = solo.searchButton(cont);
+		
+		if (existsRecentChanges && existsCont) {
+			solo.clickOnButton(cont);
+		}
+	}
+
 	public void testShoppingList() throws InterruptedException {
 		setUpActivity("org.openintents.convertcsv.shoppinglist.ConvertCsvActivity");
 		setPreference("ask_if_file_exists", false);
