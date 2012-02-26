@@ -16,4 +16,8 @@
         <uses-library android:name="android.test.runner" />
     </application>
 
+    <!-- Instrumentation for Jenkins server -->
+    <instrumentation
+       android:targetPackage="org.openintents.countdown"
+       android:name="pl.polidea.instrumentation.PolideaInstrumentationTestRunner" />
 </manifest>

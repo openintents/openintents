@@ -8,6 +8,7 @@ import org.openintents.countdown.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.test.InstrumentationTestCase;
+import android.test.suitebuilder.annotation.Smoke;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -41,13 +42,42 @@ public class TestCountdownActivity extends InstrumentationTestCase {
 	@Override
 	public void tearDown() throws Exception {
 		try {
-			solo.finalize(); 	//Robotium will finish all the activities that have been open
+			this.solo.finishOpenedActivities();
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 		super.tearDown();
 	}
-	
+
+	private String getAppString(int resId) {
+		return activity.getString(resId);
+	}
+
+	@Smoke
+	public void test000Eula() {
+		String accept = getAppString(org.openintents.distribution.R.string.oi_distribution_eula_accept);
+		String cancel = getAppString(org.openintents.distribution.R.string.oi_distribution_eula_refuse);
+		boolean existsAccept = solo.searchButton(accept);
+		boolean existsCancel = solo.searchButton(cancel);
+		
+		if (existsAccept && existsCancel) {
+			solo.clickOnButton(accept);
+		}
+	}
+
+	@Smoke
+	public void test001RecentChanges() {
+		String recentChanges = getAppString(org.openintents.distribution.R.string.oi_distribution_newversion_recent_changes);
+		String cont = getAppString(org.openintents.distribution.R.string.oi_distribution_newversion_continue);
+		while(solo.scrollUp());
+		boolean existsRecentChanges = solo.searchText(recentChanges);
+		boolean existsCont = solo.searchButton(cont);
+		
+		if (existsRecentChanges && existsCont) {
+			solo.clickOnButton(cont);
+		}
+	}
+
 	/*
 	 * Test adding a countdown
 	 */
