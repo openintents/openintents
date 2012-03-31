@@ -75,30 +75,5 @@
 					/>
 			</LinearLayout>
 		</ScrollView>
-		<LinearLayout
-			android:id="@+id/container2"
-			android:orientation="horizontal"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			>
-			<Button android:id="@+id/button1"
-				android:layout_width="0dip"
-				android:layout_height="wrap_content" 				
-				android:layout_gravity="bottom"
-				android:layout_weight="1"
-				android:text="@string/oi_distribution_eula_accept" />
-			<LinearLayout android:id="@+id/space"
-				android:orientation="horizontal"
-				android:layout_width="0dip"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				/>
-			<Button android:id="@+id/button2"
-				android:layout_width="0dip"
-				android:layout_height="wrap_content" 				
-				android:layout_gravity="bottom"
-				android:layout_weight="1"
-				android:text="@string/oi_distribution_eula_refuse" />
-		</LinearLayout>
-		
+		<include layout="@layout/oi_distribution_buttonbar" android:id="@+id/buttonbar"/>		
 </LinearLayout>
