@@ -31,8 +31,6 @@
 	
 	<!-- Title for preferences or settings -->
 	<string name="settings_titlebar">Preferences</string>
-	<string name="settings_title_keep_color">Keep color</string>
-	<string name="settings_summary_keep_color">Save color for next time Flashlight app is started</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -46,5 +44,18 @@
     <!-- Information to enable the camera flash as flashlight. -->
     <string name="cameralight_info">Press to enable camera light (May take a second).</string>
     <string name="cameralight_stop_info">Press to disable camera light.</string>
+    <string name="settings_color_options">Choose Color Options</string>
+    <string name="settings_color_options_summary">Choose either to remember color or to display random colors</string>
+    <string name="settings_color_options_dialog_title">Choose Color Options</string>
+    <string-array name="settings_color_options_entries">
+        <item >Keep Color</item>
+        <item >Random Color</item>
+        <item >White</item>
+    </string-array>
+    <string-array name="settings_color_options_entry_values">
+        <item >0</item>
+        <item >1</item>
+        <item >2</item>
+    </string-array>
     
 </resources>

@@ -21,6 +21,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ----------------
+release: 1.2
+date: ?
+
+- new setting for color randomizer (patch by Abhinav Vishwa)
+
+----------------
 release: 1.1
 date: 2012-01-01
 - new setting to use camera flash (Google Code-in task by Shuhao)

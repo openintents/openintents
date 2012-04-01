@@ -2,12 +2,6 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
 	android:title="@string/settings_titlebar">
-
-	<CheckBoxPreference
-		android:key="should_save_color"
-		android:defaultValue="true"
-		android:title="@string/settings_title_keep_color"
-		android:summary="@string/settings_summary_keep_color" />
-	<CheckBoxPreference android:key="use_camera_flash" android:summary="@string/setting_use_camera_flash_summary" android:title="@string/setting_use_camera_flash" android:defaultValue="false"/>
-	
+	<CheckBoxPreference android:key="use_camera_flash" android:disableDependentsState="true" android:summary="@string/setting_use_camera_flash_summary" android:title="@string/setting_use_camera_flash" android:defaultValue="false"/>
+	<ListPreference android:key="color_options" android:dependency="use_camera_flash" android:title="@string/settings_color_options" android:summary="@string/settings_color_options_summary" android:dialogTitle="@string/settings_color_options_dialog_title" android:entries="@array/settings_color_options_entries" android:entryValues="@array/settings_color_options_entry_values" android:defaultValue="0" />
 </PreferenceScreen>
