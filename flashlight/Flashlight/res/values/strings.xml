@@ -52,10 +52,5 @@
         <item >Random Color</item>
         <item >White</item>
     </string-array>
-    <string-array name="settings_color_options_entry_values">
-        <item >0</item>
-        <item >1</item>
-        <item >2</item>
-    </string-array>
     
 </resources>

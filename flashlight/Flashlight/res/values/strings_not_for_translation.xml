@@ -51,4 +51,9 @@
     <string name="color_picker_package">org.openintents.colorpicker</string>
     <string name="color_picker_website">http://www.openintents.org/en/colorpicker</string>
     
+    <string-array name="settings_color_options_entry_values">
+        <item >0</item>
+        <item >1</item>
+        <item >2</item>
+    </string-array>
 </resources>
