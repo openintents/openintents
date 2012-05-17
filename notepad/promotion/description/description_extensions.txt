@@ -1,5 +1,0 @@
-* uses OI About
-* uses OI File Manager
-* uses OI Safe
-* uses OI Update
-* uses My Backup Pro

@@ -1,7 +1,0 @@
-# Application:
-ແພ່ນຂຽນ OI
-
-# Promo text:
-Create and share your notes with OI Notepad.
-
-# Description:
