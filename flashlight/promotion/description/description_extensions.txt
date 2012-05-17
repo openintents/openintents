@@ -1,3 +1,0 @@
-* uses OI About
-* uses OI Color Picker
-* uses OI Update

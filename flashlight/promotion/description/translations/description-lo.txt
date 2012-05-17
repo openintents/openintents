@@ -1,7 +1,0 @@
-# Application:
-OI Flashlight
-
-# Promo text:
-Keep the camera flash or the backlight turned on with OI Flashlight.
-
-# Description:
