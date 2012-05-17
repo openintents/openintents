@@ -1,7 +1,0 @@
-# Application:
-OI Sobre
-
-# Promo text:
-O diálogo que é compartilhado entre os aplicativos.
-
-# Description:
