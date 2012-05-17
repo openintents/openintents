@@ -1,8 +1,0 @@
-* uses OI Voice Note
-* uses OI ConvertCSV
-* uses OI About
-* uses Barcode OI Plugin
-* uses OI Update
-* uses My Backup Pro
-* uses OI Notepad
-* extension for Bites
