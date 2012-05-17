@@ -1,7 +1,0 @@
-# Application:
-OI Sarvu
-
-# Promo text:
-Store your private data with OI Safe.
-
-# Description:

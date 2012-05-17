@@ -1,2 +1,0 @@
-* Uses OI About
-* Extension for OI Notepad
