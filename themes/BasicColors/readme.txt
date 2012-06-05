@@ -24,10 +24,11 @@ To obtain the current release, visit
 
 ----------------
 release: 1.0.1
-date: ?
+date: 2012-06-05
 
 - support moving app to SD card.
 - support Android 2.3.
+- fix #527, crash on open
 
 ----------------
 release: 1.0.0
