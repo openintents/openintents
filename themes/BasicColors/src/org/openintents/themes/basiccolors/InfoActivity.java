@@ -110,8 +110,7 @@ public class InfoActivity extends ListActivity implements OnItemClickListener {
 		View v = findViewById(R.id.background);
 		v.setBackgroundDrawable(background);
 
-		mTypeface = Typeface.createFromAsset(getResources().getAssets(),
-				typefaceName);
+		mTypeface = Typeface.create(typefaceName, Typeface.NORMAL);
 
 		TextView tv = (TextView) findViewById(R.id.text);
 		tv.setTypeface(mTypeface);
