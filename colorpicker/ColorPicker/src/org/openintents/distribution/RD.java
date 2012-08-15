@@ -10,7 +10,7 @@ import org.openintents.colorpicker.R;
  */
 public class RD {
 	
-	public class string {
+	public static class string {
 
 		public static final int update_error = R.string.update_error;
 
