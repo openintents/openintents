@@ -318,13 +318,13 @@ public class News {
 		Log.d(_TAG, "insertIfNotExists:entering ");
 		Log.d(_TAG, "checking for\n uri:" + uri + "\n selection:" + selection
 				+ "\n selArgs[]:" + selectionArgs + "\n cv:" + cs);
-		android.database.Cursor c = mContentResolver.query(uri, projection,
-				selection, selectionArgs, null);
-		Log.d(_TAG, "returned count of>>" + c.getCount());
-		if (c.getCount() <= 0) {
-			u = insert(uri, cs);
-		} else {
+		Cursor c = mContentResolver.query(uri, projection, selection,
+				selectionArgs, null);
+
+		if (c != null) {
+			Log.d(_TAG, "returned count of>>" + c.getCount());
 			if (!insertOnly) {
+
 				// do update
 				c.moveToFirst();
 				Log.d(_TAG, "uri part>>" + uri.getSchemeSpecificPart() + "<<");
@@ -335,13 +335,14 @@ public class News {
 
 				// update data
 				mContentResolver.update(uri, cs, null, null);
+				c.close();
 			} else {
 				// if insert only return null to indicate that content exists
-				u = null;
+				u = insert(uri, cs);
+				c.close();
 			}
 
 		}
-		c.close();
 		Log.d(_TAG, "insertIfNotExists:leaving");
 		return u;
 
