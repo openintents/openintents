@@ -1,3 +1,8 @@
-*/*/bin
-*/*/gen
-*/*/release
+bin
+gen
+release
+build
+*.iml
+.gradle
+.idea
+local.properties
