@@ -1,0 +1,22 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    lintOptions {
+        abortOnError true
+    }
+
+    defaultConfig {
+        versionCode 2
+        versionName '1.1.0'
+        minSdkVersion 4
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        applicationId 'org.openintents.voicenotes'
+    }
+}
+
+dependencies {
+    compile 'com.github.openintents:distribution:1.2.1'
+}
