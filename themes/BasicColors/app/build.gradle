@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "24.0.0 rc1"
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "org.openintents.themes.basiccolors"
         minSdkVersion 2
-        targetSdkVersion 23
+        targetSdkVersion 31
     }
 
     buildTypes {

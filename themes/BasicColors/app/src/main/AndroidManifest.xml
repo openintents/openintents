@@ -27,7 +27,7 @@
 	[1] 1.0.0-rc1: 2010-02-11 -->
 	
     <uses-sdk android:minSdkVersion="2"
-    	android:targetSdkVersion="15" />
+    	android:targetSdkVersion="31" />
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
     
     <application android:icon="@drawable/basiccolors" android:label="@string/app_name">
@@ -41,7 +41,7 @@
 	        android:resource="@xml/themes"
 	      />
 
-        <activity android:name=".InfoActivity">
+        <activity android:name=".InfoActivity" android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.INFO" />
